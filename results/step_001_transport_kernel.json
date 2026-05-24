@@ -1,0 +1,18 @@
+{
+  "artifacts": {
+    "csv": "results/step_001_transport_kernel.csv"
+  },
+  "cosmology": {
+    "H0_km_s_Mpc": 70.0,
+    "Omega_Lambda": 0.7,
+    "Omega_m": 0.3
+  },
+  "description": "FLRW recovery check for the open-path transport connection (K_T).",
+  "interpretation": "The transport law ln(1+z) = integral(K_T dl) exactly recovers the FLRW scale factor limit when the connection is integrable. The Big Bang corresponds to the boundary where the reconstruction factor a_eff = exp(-integral) vanishes.",
+  "metrics": {
+    "low_z_recovered_HT_km_s_Mpc": 70.336803,
+    "max_reconstruction_error_z": 0.0,
+    "transport_connection_density_z0": 0.000233504
+  },
+  "step": "step_001_transport_kernel"
+}

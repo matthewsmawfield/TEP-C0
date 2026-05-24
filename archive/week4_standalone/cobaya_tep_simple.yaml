@@ -1,0 +1,110 @@
+# Simplified Cobaya test for TEP cosmology
+# Uses mock likelihood (no external data required)
+# Tests TEP parameter estimation with Cobaya + TEP-CLASS
+
+output: chains/tep_simple_test
+resume: false
+force: true
+
+theory:
+  classy:
+    path: /tmp/class_tep
+    extra_args:
+      N_ur: 2.0328
+      N_ncdm: 1
+      m_ncdm: 0.06
+      l_max_scalars: 2500
+
+# Mock likelihood - computes theta* and compares to target
+likelihood:
+  mock_cmb_theta:
+    # External likelihood that computes chi2 based on theta*
+    external: "mock_theta_likelihood"
+    # Target theta* from Planck 2018: 1.04109 degrees = 62.4654 arcmin
+    # This is theta_s_100, so 100 * theta*
+    target_theta_s_100: 1.04109
+    sigma_theta_s_100: 0.0003
+
+params:
+  # TEP parameters - the key test
+  tep_epsilon_T:
+    prior:
+      min: 0.0
+      max: 0.5
+    ref: 0.05
+    proposal: 0.01
+    latex: \\epsilon_T
+  
+  tep_z_T:
+    prior:
+      min: 0.5
+      max: 15.0
+    ref: 3.0
+    proposal: 0.5
+    latex: z_T
+  
+  tep_n_T:
+    value: 1.0
+    latex: n_T
+  
+  # LCDM parameters
+  H0:
+    prior:
+      min: 60.0
+      max: 80.0
+    ref: 67.0
+    proposal: 2.0
+    latex: H_0
+  
+  omega_b:
+    prior:
+      min: 0.020
+      max: 0.025
+    ref: 0.0224
+    proposal: 0.0002
+    latex: \\Omega_b h^2
+  
+  omega_cdm:
+    prior:
+      min: 0.10
+      max: 0.14
+    ref: 0.120
+    proposal: 0.003
+    latex: \\Omega_{cdm} h^2
+  
+  # Fixed for simplicity in this test
+  tau_reio:
+    value: 0.054
+    latex: \\tau_{reio}
+  
+  A_s:
+    value: 2.1e-9
+    latex: A_s
+  
+  n_s:
+    value: 0.966
+    latex: n_s
+
+derived:
+  theta_s_100:
+    latex: 100\\theta_*
+  rs_drag:
+    latex: r_s
+  age:
+    latex: "{\\rm Age}/{{\\rm Gyr}}"
+
+sampler:
+  mcmc:
+    max_tries: 5000
+    burn_in: 0
+    Rminus1_stop: 0.05
+    covmat: auto
+    learn_every: 100
+    learning_rate: 0.3
+    proposal_scale: 2.4
+
+stop:
+  max_samples: 5000
+
+debug: false
+verbose: 1

@@ -1,0 +1,101 @@
+# Minimal Cobaya test for TEP cosmology
+# Tests parameter sampling with Cobaya + TEP-CLASS
+# Uses Cobaya's built-in gaussian mixture test
+
+output: chains/tep_minimal_test
+resume: false
+force: true
+
+theory:
+  classy:
+    path: /tmp/class_tep
+    extra_args:
+      N_ur: 2.0328
+      N_ncdm: 1
+      m_ncdm: 0.06
+
+# No external likelihood - just sample from prior
+# This tests that Cobaya can use TEP-CLASS without errors
+likelihood:
+  # Using a very simple one-point likelihood
+  one:
+    # Returns constant loglike - just tests the theory works
+
+params:
+  # TEP parameters
+  tep_epsilon_T:
+    prior:
+      min: 0.0
+      max: 0.3
+    ref: 0.05
+    proposal: 0.01
+    latex: \\epsilon_T
+  
+  tep_z_T:
+    prior:
+      min: 0.5
+      max: 10.0
+    ref: 3.0
+    proposal: 0.5
+    latex: z_T
+  
+  tep_n_T:
+    value: 1.0
+    latex: n_T
+  
+  # LCDM parameters
+  H0:
+    prior:
+      min: 60.0
+      max: 80.0
+    ref: 67.0
+    proposal: 2.0
+    latex: H_0
+  
+  omega_b:
+    prior:
+      min: 0.020
+      max: 0.025
+    ref: 0.0224
+    proposal: 0.0002
+    latex: \\Omega_b h^2
+  
+  omega_cdm:
+    prior:
+      min: 0.10
+      max: 0.14
+    ref: 0.120
+    proposal: 0.003
+    latex: \\Omega_{cdm} h^2
+  
+  # Fixed
+  tau_reio:
+    value: 0.054
+    latex: \\tau_{reio}
+  
+  A_s:
+    value: 2.1e-9
+    latex: A_s
+  
+  n_s:
+    value: 0.966
+    latex: n_s
+
+derived:
+  theta_s_100:
+    latex: 100\\theta_*
+
+sampler:
+  mcmc:
+    max_tries: 1000
+    burn_in: 0
+    Rminus1_stop: 0.1
+    covmat: auto
+    learn_every: 50
+    proposal_scale: 2.4
+
+stop:
+  max_samples: 1000
+
+debug: false
+verbose: 2

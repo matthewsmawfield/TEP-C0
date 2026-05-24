@@ -238,7 +238,7 @@ Using a standard three-component Galactic baryonic density model—stellar thin 
 
 Inverting the scaling relation to infer $n$ from the data yields $n = 1.5 \pm 0.9$ (bootstrap), consistent with the canonical $n = 1$ value within uncertainty. The large uncertainty reflects the modest lever arm between the two height bins; future analyses with finer $|Z|$ stratification would tighten this constraint substantially. The key point for TEP is not that the chameleon completion is uniquely required, but that within this tractable benchmark the observed $R_s$ ratio follows the standard density scaling without ad hoc tuning. Given a Galactic baryonic density model and one calibration point, the chameleon-completion benchmark renders $\epsilon_{\rm env}$ semi-predictive at arbitrary heights, and that prediction is confirmed by the data.
 
-![Chameleon Scaling Prediction](results/figures/005_chameleon_prediction.png)
+![Environmental Scaling Benchmark](results/figures/005_chameleon_prediction.png)
 
 **Figure 5.2:** Predicted screening radius $R_s$ as a function of Galactic height $|Z|$ from the chameleon-completion scaling relation with $n = 1$ (Ratra–Peebles potential), calibrated from the midplane joint-fit value. The two data points (midplane and high-$|Z|$ joint-fit values) are consistent with the benchmark prediction.
 

@@ -1,0 +1,125 @@
+# Joint TEP cosmology fit: Pantheon+ SNe + Planck CMB
+# Tests TEP parameters against combined SNe + CMB constraints
+
+output: chains/tep_joint_sne_cmb
+resume: false
+force: true
+
+theory:
+  classy:
+    path: /tmp/class_tep
+    extra_args:
+      N_ur: 2.0328
+      N_ncdm: 1
+      m_ncdm: 0.06
+      l_max_scalars: 2500
+      # TEP parameters will be passed by Cobaya
+
+likelihood:
+  # Planck 2018 CMB
+  planck_2018_highl_plik.TT:
+    # High-l TT likelihood
+  planck_2018_lowl.TT:
+    # Low-l TT likelihood
+  planck_2018_lowl.EE:
+    # Low-l EE likelihood
+  
+  # Pantheon+ SNe Ia (custom likelihood)
+  pantheon_plus_likelihood.pantheon_plus:
+    # Path to likelihood module
+    python_path: .
+
+params:
+  # TEP parameters - these are what we want to constrain
+  tep_epsilon_T:
+    prior:
+      min: 0.0
+      max: 0.5
+    ref: 0.05
+    proposal: 0.01
+    latex: \\epsilon_T
+  
+  tep_z_T:
+    prior:
+      min: 0.5
+      max: 15.0
+    ref: 3.0
+    proposal: 0.5
+    latex: z_T
+  
+  tep_n_T:
+    value: 1.0
+    latex: n_T
+  
+  # LCDM parameters
+  H0:
+    prior:
+      min: 55.0
+      max: 85.0
+    ref: 67.0
+    proposal: 2.0
+    latex: H_0
+  
+  omega_b:
+    prior:
+      min: 0.018
+      max: 0.025
+    ref: 0.0224
+    proposal: 0.0002
+    latex: \\Omega_b h^2
+  
+  omega_cdm:
+    prior:
+      min: 0.10
+      max: 0.15
+    ref: 0.120
+    proposal: 0.003
+    latex: \\Omega_{cdm} h^2
+  
+  tau_reio:
+    prior:
+      min: 0.01
+      max: 0.10
+    ref: 0.054
+    proposal: 0.007
+    latex: \\tau_{reio}
+  
+  A_s:
+    prior:
+      min: 1.5e-9
+      max: 2.5e-9
+    ref: 2.1e-9
+    proposal: 0.15e-9
+    latex: A_s
+  
+  n_s:
+    prior:
+      min: 0.90
+      max: 1.05
+    ref: 0.966
+    proposal: 0.006
+    latex: n_s
+
+derived:
+  theta_s_100:
+    latex: 100\\theta_*
+  rs_drag:
+    latex: r_s
+  age:
+    latex: "{\\rm Age}/{{\\rm Gyr}}"
+
+sampler:
+  mcmc:
+    max_tries: 20000
+    burn_in: 0
+    Rminus1_stop: 0.05
+    Rminus1_cl_stop: 0.2
+    covmat: auto
+    learn_every: 100
+    proposal_scale: 2.4
+
+stop:
+  max_samples: 20000
+
+debug: false
+verbose: 2

@@ -1,0 +1,61 @@
+{
+  "correlations": {
+    "p_value_LCDM": 1.0,
+    "p_value_TEP": 1.0,
+    "rho_LCDM_Sigma": 0.0,
+    "rho_TEP_Sigma": 0.0,
+    "significance_sigma": 0.0
+  },
+  "data_source": "Pantheon+",
+  "description": "Environment-dependent residual analysis with proper FLRW",
+  "environment_proxy_documentation": {
+    "proxy_type": "host_stellar_mass",
+    "proxy_validation": {
+      "citations": [
+        "Brout et al. 2024 (arXiv:2401.08741): Host-mass step in SN standardized distances",
+        "Uddin et al. 2020 (MNRAS 492, 1): Host-galaxy correlations with SN properties",
+        "Roman et al. 2018 (PASP 130, 989): SN environments and their relation to host properties",
+        "Rigault et al. 2018 (A&A 615, A115): SN Ia in star-forming vs passive environments",
+        "Hayden et al. 2013 (A&A 560, A66): Host-galaxy bias in SN cosmology",
+        "Sullivan et al. 2010 (MNRAS 406, 782): Dependence of SN luminosity on host galaxy"
+      ],
+      "correlation_strength": "Literature shows Hubble residual correlations with host mass at ~0.05-0.1 mag level (~2-3 sigma)",
+      "proxy_justification": "Host stellar mass serves as a proxy for galaxy environment, with massive early-type galaxies typically found in denser environments (clusters/fields). This correlation is well-established in SN cosmology literature.",
+      "systematic_limitations": [
+        "Host mass correlates with but is not identical to local environment",
+        "Projection effects: galaxy mass vs local density can differ",
+        "Evolves with redshift: massive galaxies at z>1 may have different environments",
+        "Selection bias: surveys preferentially target brighter hosts"
+      ]
+    },
+    "proxy_variable": "HOST_LOGMASS > 10.0",
+    "recommendation": "For final publication claims, cross-validate with direct environmental measures (local galaxy density, cluster membership) from DESI or similar surveys.",
+    "validation_status": "proxy_documented_not_validated"
+  },
+  "interpretation": "Partial correlation rho(R_TEP, Sigma|z) = 0.0 (p=1.00e+00)",
+  "key_finding": "Host-mass proxy correlation with environment documented per literature",
+  "model_parameters": {
+    "A_env": 0.1,
+    "H0": 70.0,
+    "Om0": 1.0,
+    "Sigma_0": 0.0
+  },
+  "n_supernovae": 1701,
+  "step": "step_027_environment_residuals",
+  "validation": {
+    "blockers": [
+      "Weak environment correlation detected (p=1.000, 0.0\u03c3). Strong claim requires p < 0.003 and >= 3 sigma significance."
+    ],
+    "claim_gate": "blocked",
+    "path_forward": "Host-mass proxy is scientifically justified but flagged as \"documented proxy\". For definitive claims, implement local galaxy density measure from DESI or cluster catalog cross-match.",
+    "real_data": true,
+    "research_grade_environment_residuals": false,
+    "research_grade_requirements": {
+      "environment_proxy": "host mass (documented proxy)",
+      "p_value_threshold": 0.003,
+      "recommended_proxy": "direct environment likelihood or local density",
+      "significance_threshold_sigma": 3.0
+    },
+    "synthetic": false
+  }
+}

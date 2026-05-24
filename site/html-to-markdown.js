@@ -1,198 +1,100 @@
 #!/usr/bin/env node
+
 const fs = require('fs');
 const path = require('path');
 const { createManuscriptContext, injectPlaceholders } = require('./manuscript-data.js');
 
 class HTMLToMarkdownConverter {
-    constructor() { this.output = ''; }
-
     decodeEntities(text) {
         return text
             .replace(/&amp;/g, '&')
             .replace(/&lt;/g, '<')
             .replace(/&gt;/g, '>')
             .replace(/&nbsp;/g, ' ')
-            .replace(/&mdash;/g, '—')
-            .replace(/&ndash;/g, '–')
-            .replace(/&#10004;/g, '✔')
-            .replace(/&#10008;/g, '✘');
+            .replace(/&ndash;/g, '-')
+            .replace(/&mdash;/g, '-');
     }
 
-    cleanInlineHtml(html) {
-        return this.decodeEntities(
-            html
-                .replace(/<(strong|b)[^>]*>([\s\S]*?)<\/(strong|b)>/gi, '**$2**')
-                .replace(/<(em|i)[^>]*>([\s\S]*?)<\/(em|i)>/gi, '*$2*')
-                .replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, '`$1`')
-                .replace(/<br\s*\/?>/gi, ' ')
-                .replace(/<\/?[a-zA-Z][^>]*>/g, '')
-        )
+    cleanInline(html) {
+        return this.decodeEntities(html)
+            .replace(/<(strong|b)[^>]*>([\s\S]*?)<\/(strong|b)>/gi, '**$2**')
+            .replace(/<(em|i)[^>]*>([\s\S]*?)<\/(em|i)>/gi, '*$2*')
+            .replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, '`$1`')
+            .replace(/<\/?[a-zA-Z][^>]*>/g, '')
             .replace(/\s+/g, ' ')
             .trim();
     }
 
     tableToMarkdown(tableHtml) {
-        const captionMatch = tableHtml.match(/<caption[^>]*>([\s\S]*?)<\/caption>/i);
-        const caption = captionMatch ? this.cleanInlineHtml(captionMatch[1]) : '';
         const rows = [];
         const rowRegex = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
         let rowMatch;
-
-        while ((rowMatch = rowRegex.exec(tableHtml)) !== null) {
+        while ((rowMatch = rowRegex.exec(tableHtml))) {
             const cells = [];
             const cellRegex = /<t[hd][^>]*>([\s\S]*?)<\/t[hd]>/gi;
             let cellMatch;
-
-            while ((cellMatch = cellRegex.exec(rowMatch[1])) !== null) {
-                cells.push(this.cleanInlineHtml(cellMatch[1]).replace(/\|/g, '\\|'));
+            while ((cellMatch = cellRegex.exec(rowMatch[1]))) {
+                cells.push(this.cleanInline(cellMatch[1]).replace(/\|/g, '\\|'));
             }
-
             if (cells.length) rows.push(cells);
         }
-
         if (!rows.length) return '';
-
-        const header = rows[0];
-        const normalizeRow = (row) => `| ${header.map((_, index) => row[index] || '').join(' | ')} |`;
-
-        let markdown = '';
-        if (caption) markdown += `\n\n${caption}\n\n`;
-        markdown += `${normalizeRow(header)}\n`;
-        markdown += `| ${header.map(() => '---').join(' | ')} |\n`;
-        for (const row of rows.slice(1)) markdown += `${normalizeRow(row)}\n`;
-        return `\n\n${markdown}\n`;
+        const width = rows[0].length;
+        const format = (row) => `| ${Array.from({ length: width }, (_, i) => row[i] || '').join(' | ')} |`;
+        return `\n\n${format(rows[0])}\n| ${Array.from({ length: width }, () => '---').join(' | ')} |\n${rows.slice(1).map(format).join('\n')}\n\n`;
     }
 
     htmlToMarkdown(html) {
-        html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gis, '');
-        html = html.replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gis, '');
-        html = html.replace(/<!--[\s\S]*?-->/g, '');
-        html = html.replace(/<nav\b[\s\S]*?<\/nav>/gi, '');
-        html = html.replace(/<div[^>]*class=["']manuscript-section[^"']*["'][^>]*data-section=["']([^"']*)["'][^>]*>/gi, '\n\n## $1\n\n');
-        html = html.replace(/<div[^>]*class=["'][^"']*equation[^"']*["'][^>]*>\s*([\s\S]*?)\s*<\/div>/gi, '\n\n$1\n\n');
-
-        html = html.replace(/<pre[^>]*>\s*<code(?: class=["']language-([^"']+)["'])?[^>]*>([\s\S]*?)<\/code>\s*<\/pre>/gi, (match, lang, code) => {
-            const language = (lang || '').trim();
-            const decodedCode = this.decodeEntities(code).replace(/\n+$/g, '');
-            return `\n\n@@@CODEBLOCK_START:${language}@@@\n${decodedCode}\n@@@CODEBLOCK_END@@@\n\n`;
-        });
-
-        html = html.replace(/<table[^>]*>[\s\S]*?<\/table>/gi, (match) => this.tableToMarkdown(match));
-
-        html = html.replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi, '\n# $1\n\n');
-        html = html.replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi, '\n## $1\n\n');
-        html = html.replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi, '\n### $1\n\n');
-        html = html.replace(/<h4[^>]*>([\s\S]*?)<\/h4>/gi, '\n#### $1\n\n');
-        html = html.replace(/<h5[^>]*>([\s\S]*?)<\/h5>/gi, '\n##### $1\n\n');
-        html = html.replace(/<h6[^>]*>([\s\S]*?)<\/h6>/gi, '\n###### $1\n\n');
-
-        html = html.replace(/\s*<figcaption[^>]*>([\s\S]*?)<\/figcaption>\s*/gi, '\n\n$1\n\n');
-        html = html.replace(/\s*<figure[^>]*>([\s\S]*?)<\/figure>\s*/gi, '\n\n$1\n\n');
-
-        html = html.replace(/\s*<img[^>]+>\s*/gi, (tag) => {
-            const srcMatch = tag.match(/src=["']([^"']+)["']/i);
-            const altMatch = tag.match(/alt=["']([^"']*)["']/i);
-            const rawSrc = srcMatch ? srcMatch[1] : '';
-            const src = rawSrc.startsWith('figures/') ? `results/${rawSrc}` : rawSrc;
-            const alt = altMatch ? altMatch[1] : '';
-            return src ? `\n\n![${alt}](${src})\n\n` : '';
-        });
-
-        html = html.replace(/<blockquote[^>]*>([\s\S]*?)<\/blockquote>/gi, '\n> $1\n\n');
-        html = html.replace(/<p[^>]*>([\s\S]*?)<\/p>\s*/gi, '\n\n$1\n\n');
-
-        html = html.replace(/<(strong|b)[^>]*>([\s\S]*?)<\/(strong|b)>/gi, '**$2**');
-        html = html.replace(/<(em|i)[^>]*>([\s\S]*?)<\/(em|i)>/gi, '*$2*');
-        html = html.replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, '`$1`');
-
-        html = html.replace(/<(ol|ul)[^>]*>\s*/gi, '\n\n');
-        html = html.replace(/<\/(ol|ul)>\s*/gi, '\n\n');
-        html = html.replace(/<li[^>]*>([\s\S]*?)<\/li>\s*/gi, '- $1\n');
-        html = html.replace(/<br\s*\/?>/gi, '\n');
-        html = html.replace(/<hr\s*\/?>/gi, '\n---\n');
-
-        html = html.replace(/<\/?[a-zA-Z][^>]*>/g, '');
-        html = this.decodeEntities(html);
-        html = html.replace(/@@@CODEBLOCK_START:([^@]*)@@@[\r\n]+([\s\S]*?)[\r\n]+@@@CODEBLOCK_END@@@/g, (match, lang, code) => {
-            const language = lang.trim();
-            return `\n\n\`\`\`${language}\n${code}\n\`\`\`\n\n`;
-        });
-        html = html.replace(/(^- .+\n)(?!(?:- |\n|$))/gm, '$1\n');
-
-        html = html.replace(/^[ \t]+$/gm, '');
-        html = html.replace(/[ \t]+$/gm, '');
-        return html.replace(/\n{3,}/g, '\n\n').trim();
+        return this.decodeEntities(html)
+            .replace(/<table[^>]*>[\s\S]*?<\/table>/gi, (match) => this.tableToMarkdown(match))
+            .replace(/<h1[^>]*>([\s\S]*?)<\/h1>/gi, '\n# $1\n\n')
+            .replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi, '\n## $1\n\n')
+            .replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi, '\n### $1\n\n')
+            .replace(/<h4[^>]*>([\s\S]*?)<\/h4>/gi, '\n#### $1\n\n')
+            .replace(/\s*<figcaption[^>]*>([\s\S]*?)<\/figcaption>\s*/gi, '\n\n$1\n\n')
+            .replace(/<img[^>]+>/gi, (tag) => {
+                const src = (tag.match(/src=["']([^"']+)["']/i) || [])[1];
+                const alt = (tag.match(/alt=["']([^"']*)["']/i) || [])[1] || '';
+                return src ? `\n\n![${alt}](${src})\n\n` : '';
+            })
+            .replace(/<blockquote[^>]*>\s*<p[^>]*>([\s\S]*?)<\/p>\s*<\/blockquote>/gi, '\n> $1\n\n')
+            .replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, '\n\n$1\n\n')
+            .replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, '\n- $1')
+            .replace(/<\/?ul[^>]*>/gi, '\n')
+            .replace(/<(strong|b)[^>]*>([\s\S]*?)<\/(strong|b)>/gi, '**$2**')
+            .replace(/<(em|i)[^>]*>([\s\S]*?)<\/(em|i)>/gi, '*$2*')
+            .replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, '`$1`')
+            .replace(/<\/?div[^>]*>/gi, '\n')
+            .replace(/<\/?section[^>]*>/gi, '\n')
+            .replace(/<\/?[a-zA-Z][^>]*>/g, '')
+            .replace(/^[ \t]+/gm, '') // Remove leading indentation
+            .replace(/[ \t]+$/gm, '')
+            .replace(/\n{3,}/g, '\n\n')
+            .trim();
     }
 
     async convertSiteToMarkdown() {
-        console.log('🔄 Converting HTML site to markdown (TEP-WB)...');
-        try {
-            const manifestPath = path.join(__dirname, 'manifest.json');
-            if (!fs.existsSync(manifestPath)) throw new Error('manifest.json not found.');
-            const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-            const sections = manifest.sections.sort((a, b) => a.order - b.order);
-            const injectionContext = createManuscriptContext();
+        const manifestPath = path.join(__dirname, 'manifest.json');
+        const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+        const sections = manifest.sections.slice().sort((a, b) => a.order - b.order);
+        const context = createManuscriptContext();
+        const body = sections
+            .map((section) => injectPlaceholders(fs.readFileSync(path.join(__dirname, 'components', section.file), 'utf8'), context))
+            .join('\n\n');
 
-            let allHtml = '';
-            for (const section of sections) {
-                const componentPath = path.join(__dirname, 'components', section.file);
-                if (fs.existsSync(componentPath)) {
-                    const html = injectPlaceholders(fs.readFileSync(componentPath, 'utf8'), injectionContext, { failOnUnresolved: true });
-                    allHtml += `\n<!-- SECTION: ${section.title} -->\n${html}\n`;
-                    console.log(`  ✓ ${section.file} (${(html.length / 1024).toFixed(1)} KB)`);
-                } else {
-                    console.warn(`  ⚠ Missing: ${section.file}`);
-                }
-            }
-
-            console.log(`  Total HTML: ${(allHtml.length / 1024).toFixed(1)} KB`);
-            
-            // Build header with metadata matching manuscript template format
-            const title = manifest.title || 'Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries';
-            const author = manifest.author || 'Matthew Lukin Smawfield';
-            const version = manifest.version || 'v0.1';
-            const firstPublished = manifest.first_published || '19 March 2026';
-            const lastUpdated = manifest.date || '29 April 2026';
-            const doi = manifest.doi || '10.5281/zenodo.19102061';
-            
-            const header = `# ${title}
-**${author}**
-Version: ${version}
-First published: ${firstPublished} · Last updated: ${lastUpdated}
-DOI: ${doi}
-
----
-
-`;
-            
-            const markdown = header + this.htmlToMarkdown(allHtml);
-            
-            // Extract version and codename for the filename
-            const versionRaw = manifest.version || 'v0.1 (Kilifi)';
-            // Matches "v0.2 (Kilifi)" or "0.2 (Kilifi)" or "v0.2"
-            const match = versionRaw.match(/^(v?[\d.]+)(?:\s*\(([^)]+)\))?$/);
-            
-            let versionPart = 'v0.1';
-            let codenamePart = 'Kilifi';
-            
-            if (match) {
-                versionPart = match[1].startsWith('v') ? match[1] : `v${match[1]}`;
-                codenamePart = match[2] || 'Kilifi';
-            }
-            
-            const markdownFilename = `13-TEP-WB-${versionPart}-${codenamePart}.md`;
-            const outputPath = path.join(__dirname, '..', markdownFilename);
-            
-            fs.writeFileSync(outputPath, markdown, 'utf8');
-            console.log(`✅ Markdown saved to: ${outputPath} (${(markdown.length / 1024).toFixed(1)} KB)`);
-        } catch (error) {
-            console.error('❌ Markdown conversion failed:', error.message);
-        }
+        const header = `# ${manifest.title}\n**${manifest.author}**\nVersion: ${manifest.version}\nFirst published: ${manifest.first_published} - Last updated: ${manifest.date}\nDOI: ${manifest.doi}\n\n---\n\n`;
+        const markdown = header + this.htmlToMarkdown(body) + '\n';
+        const outputPath = path.join(__dirname, '..', '14-TEP-C0-v0.1-Athens.md');
+        fs.writeFileSync(outputPath, markdown, 'utf8');
+        console.log(`Markdown saved to: ${outputPath}`);
     }
 }
 
 if (require.main === module) {
-    const c = new HTMLToMarkdownConverter();
-    c.convertSiteToMarkdown();
+    new HTMLToMarkdownConverter().convertSiteToMarkdown().catch((error) => {
+        console.error(error);
+        process.exit(1);
+    });
 }
+
 module.exports = { HTMLToMarkdownConverter };

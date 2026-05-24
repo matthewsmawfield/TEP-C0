@@ -1,0 +1,82 @@
+{
+  "artifacts": {
+    "csv": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/step_030_model_comparison_statistics.csv"
+  },
+  "model_statistics": [
+    {
+      "aic": -1281.423234,
+      "bic": -1270.54529,
+      "delta_aic": 7.722096,
+      "delta_bic": 7.722097,
+      "log_evidence": 633.670128,
+      "log_evidence_error": 0.157734,
+      "log_likelihood": 642.711617,
+      "model": "M0a_LCDM",
+      "n_parameters": 2
+    },
+    {
+      "aic": -700.528445,
+      "bic": -695.089474,
+      "delta_aic": 588.616885,
+      "delta_bic": 583.177913,
+      "log_evidence": 344.943433,
+      "log_evidence_error": 0.133814,
+      "log_likelihood": 351.264223,
+      "model": "M0b_EdS",
+      "n_parameters": 1
+    },
+    {
+      "aic": -1289.14533,
+      "bic": -1278.267387,
+      "delta_aic": 0.0,
+      "delta_bic": 0.0,
+      "log_evidence": 637.080984,
+      "log_evidence_error": 0.162409,
+      "log_likelihood": 646.572665,
+      "model": "M1_NoLambda_zT1",
+      "n_parameters": 2
+    },
+    {
+      "aic": -1289.14533,
+      "bic": -1278.267387,
+      "delta_aic": 0.0,
+      "delta_bic": 0.0,
+      "log_evidence": 636.19803,
+      "log_evidence_error": 0.16995,
+      "log_likelihood": 646.572665,
+      "model": "M1_NoLambda_zT5",
+      "n_parameters": 2
+    },
+    {
+      "aic": -1287.14533,
+      "bic": -1270.828415,
+      "delta_aic": 2.0,
+      "delta_bic": 7.438972,
+      "log_evidence": 636.38313,
+      "log_evidence_error": 0.168448,
+      "log_likelihood": 646.572665,
+      "model": "M1_free_zT",
+      "n_parameters": 3
+    },
+    {
+      "aic": -1232.710362,
+      "bic": -1221.832419,
+      "delta_aic": 56.434968,
+      "delta_bic": 56.434968,
+      "log_evidence": 609.488263,
+      "log_evidence_error": 0.159579,
+      "log_likelihood": 618.355181,
+      "model": "M2_PureShear",
+      "n_parameters": 2
+    }
+  ],
+  "source_step": "step_022_three_model_comparison",
+  "step": "step_030_model_comparison_statistics",
+  "validation": {
+    "aic_bic_available": true,
+    "blockers": [],
+    "claim_gate": "blocked",
+    "nested_sampling_evidence_available": true,
+    "research_grade_model_comparison": false
+  }
+}

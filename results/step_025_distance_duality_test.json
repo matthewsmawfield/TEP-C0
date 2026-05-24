@@ -1,0 +1,43 @@
+{
+  "ddr_constraints": [],
+  "description": "Distance-duality relation test with observational constraints",
+  "model_parameters": {
+    "A_env": 0.1,
+    "H0_lcdm": 70.0,
+    "H0_tep": 70.0,
+    "Om0": 0.3,
+    "Sigma_0": 0.0
+  },
+  "observational_data": {
+    "have_data": false,
+    "n_constraints": 0,
+    "redshift_range": [
+      0.0,
+      0.0
+    ]
+  },
+  "statistical_results": {
+    "chi2_lcdm": null,
+    "chi2_tep": null,
+    "delta_chi2": null,
+    "deviation_from_unity_sigma": null,
+    "eta_weighted_err": null,
+    "eta_weighted_mean": null
+  },
+  "status": "blocked",
+  "step": "step_025_distance_duality_test",
+  "theory_predictions": {
+    "delta_eta_theory": 0.0,
+    "eta_lcdm_at_z2": 1.0,
+    "eta_tep_at_z2": 1.0
+  },
+  "validation": {
+    "blockers": [
+      "No observational DDR constraints available",
+      "Insufficient constraints: 0 < 5"
+    ],
+    "claim_gate": "blocked",
+    "real_data": false,
+    "research_grade_distance_duality": false
+  }
+}

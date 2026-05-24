@@ -4,7 +4,6 @@ __pycache__/
 *$py.class
 *.so
 .Python
-env/
 build/
 develop-eggs/
 dist/
@@ -20,43 +19,65 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
-.pytest_cache/
-.coverage
-htmlcov/
-.env
-.venv
+MANIFEST
+
+# Virtual environments
 venv/
 ENV/
+env/
+.venv
 
-# Data and Results
-data/raw/*
-!data/raw/.gitkeep
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb
+
+# Data (keep structure, ignore contents)
+# Note: Raw data should be downloaded, not committed
+# data/raw/*
+# !data/raw/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
 data/interim/*
 !data/interim/.gitkeep
-results/outputs/*
-!results/outputs/.gitkeep
+
+# Results (keep structure, ignore contents)
 results/figures/*
 !results/figures/.gitkeep
+results/tables/*
+!results/tables/.gitkeep
+results/outputs/*.csv
+results/outputs/*.fits
+results/outputs/*.hdf5
 
 # Logs
-logs/*
-!logs/.gitkeep
-
-# Site build
-site/node_modules/
-site/dist/
-site/.nojekyll
-
-# IDE
-.vscode/
-.idea/
-.windsurf/
-*.swp
-*.swo
-.DS_Store
+logs/*.log
+logs/*.txt
 
 # Temporary files
 *.tmp
-*.temp
+*.bak
+*.cache
+
+# Test outputs
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation builds
+docs/_build/
+site/
+
+# Large binary files
+*.fits
+*.fits.gz
+*.hdf5
+*.pkl
+*.pickle

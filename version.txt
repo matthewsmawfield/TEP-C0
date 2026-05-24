@@ -1,9 +1,0 @@
-v0.3 (Kilifi) - Temporal Shear Recovery Update
-
-- Adopted TEP v0.8 Jakarta framework with Temporal Shear recovery nomenclature.
-- Replaced density-dependent screening terminology with Temporal Topology and Temporal Shear (∇ ln A) throughout.
-- Updated abstract, theory, and discussion sections with new terminology.
-- Added discriminating model comparison table (Table 4.0) and hostile reviewer paragraph.
-- Fixed pipeline order: step_012_newtonian_forward_model now runs before step_008_injection_recovery.
-- Removed deprecated ALPHA_0 constant; canonical coupling now KAPPA_GAL = 9.6e5 mag.
-- Synchronized version metadata and citation files to v0.3; updated publication date.

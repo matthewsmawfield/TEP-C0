@@ -1,0 +1,33 @@
+--- a/source/background.c
++++ b/source/background.c
+@@ -50,6 +50,11 @@ int background_at_tau(
+   double f_sin;
+   int last_index;
+ 
++  /* TEP: Temporal Shear Cosmology modification factor */
++  double tep_gamma = 1.0;
++  double Sigma_0_tep = 0.0;  /* Will be read from parameters */
++  double z_tep;
++
+   /** - define local variables */
+ 
+   if (pba->has_ncdm) {
+@@ -103,6 +108,18 @@ int background_at_tau(
+   class_call(background_functions(pba, a, pvecback, pba->short_info, pvecback),
+              pba->error_message,pba->error_message);
+ 
++  /* TEP: Apply path enhancement factor to Hubble rate */
++  /* Gamma_TEP = exp(Sigma_0 * c/H0 * ln(1+z)) */
++  /* This modifies the effective expansion rate */
++  if (pba->Sigma_0_tep > 0.0) {
++    z_tep = 1.0/a - 1.0;
++    double c_over_H0 = 299792.458 / pba->h / 100.0; /* c in km/s / H0 in km/s/Mpc = Mpc */
++    double ln_gamma = pba->Sigma_0_tep * c_over_H0 * log(1.0 + z_tep);
++    tep_gamma = exp(ln_gamma);
++    pvecback[pba->index_bg_H] *= tep_gamma;
++    pvecback[pba->index_bg_H_prime] *= tep_gamma;
++  }
++
+   return _SUCCESS_;
+ }
+ 

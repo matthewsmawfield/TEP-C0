@@ -1,0 +1,4 @@
+gate,status,metric
+SN_Pantheon_Model_Comparison,pass,646.5726649104085
+Hubble_Tension_Diagnostic,diagnostic,0.1613
+Temporal_Shear_Posterior_Diagnostic,diagnostic,0.33229629216842194

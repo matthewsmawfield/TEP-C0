@@ -1,0 +1,25 @@
+{
+  "cmb_results": {
+    "class_lcdm_reference": null,
+    "tep_spectra": null,
+    "tep_zero_limit": null
+  },
+  "description": "CLASS-backed CMB resolver with strict TEP parameter detection",
+  "parameters": {
+    "H0_mixed_mle": 70.0,
+    "Om0_mixed_mle": 1.0,
+    "Sigma_0_mixed_mle": 0.0,
+    "epsilon_T_mixed_mle": 0.524037,
+    "lmax": 2500
+  },
+  "status": "blocked",
+  "step": "step_017_tep_boltzmann_solver",
+  "tier": "Resolver",
+  "validation": {
+    "blockers": [
+      "TEP-enabled CLASS build not available. Install TEP-CLASS v2.1+ to unblock CMB spectra."
+    ],
+    "claim_gate": "blocked",
+    "research_grade_cmb": false
+  }
+}

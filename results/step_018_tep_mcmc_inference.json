@@ -1,0 +1,47 @@
+{
+  "description": "Independent mixed-TEP posterior diagnostic using full Pantheon+ covariance",
+  "mcmc": {
+    "acceptance_fraction": 0.713365625,
+    "autocorr_time_checked": true,
+    "burn_in": 5000,
+    "cpu_workers": 1,
+    "gelman_rubin_checked": true,
+    "max_r_hat": 1.000912236775302,
+    "max_tau": 31.55042750435829,
+    "mp_context": "serial",
+    "n_steps": 20000,
+    "n_walkers": 64,
+    "r_hat": [
+      1.0008962677842768,
+      1.000912236775302
+    ],
+    "tau": [
+      31.55042750435829,
+      31.404338611711957
+    ]
+  },
+  "n_samples": 960000,
+  "results": [
+    {
+      "ci_16": 0.32612373981684295,
+      "ci_84": 0.3382778086271345,
+      "median": 0.33234534824494855,
+      "parameter": "epsilon_T",
+      "std": 0.006107663208693491
+    },
+    {
+      "ci_16": -17.401674938636386,
+      "ci_84": -17.29726732549528,
+      "median": -17.348937960059917,
+      "parameter": "M",
+      "std": 0.052459138083284076
+    }
+  ],
+  "step": "step_018_tep_mcmc_inference",
+  "validation": {
+    "blockers": [],
+    "claim_gate": "open",
+    "posterior_samples_available": true,
+    "research_grade_mcmc": true
+  }
+}

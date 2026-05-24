@@ -1,0 +1,164 @@
+theory:
+  classy:
+    path: /tmp/class_tep
+    speed: 0.2
+    stop_at_error: false
+    extra_args:
+      N_ur: 2.0328
+      N_ncdm: 1
+      m_ncdm: 0.06
+      output: mPk
+      P_k_max_h/Mpc: 10
+    ignore_obsolete: false
+    renames:
+      As: A_s
+      ns: n_s
+      nrun: alpha_s
+      nrunrun: beta_s
+      nt: n_t
+      ntrun: alpha_t
+      rdrag: rs_drag
+      omegak: Omega_k
+      omegal: Omega_Lambda
+      w: w0_fld
+      wa: wa_fld
+      omegabh2: omega_b
+      omegab: Omega_b
+      omegach2: omega_cdm
+      omegac: Omega_cdm
+      omegam: Omega_m
+      omegan: Omega_nu
+      tau: tau_reio
+      zrei: z_reio
+      deltazrei: reionization_width
+      helium_redshift: helium_fullreio_redshift
+      helium_delta_redshift: helium_fullreio_width
+      yhe: YHe
+      yheused: YHe
+    version: v3.3.4
+    input_params:
+    - tep_epsilon_T
+    - tep_z_T
+    - tep_n_T
+    - H0
+    - omega_b
+    - omega_cdm
+    - tau_reio
+    - A_s
+    - n_s
+    output_params: []
+likelihood:
+  pantheon_plus_likelihood.pantheon_plus:
+    type: []
+    speed: -1
+    stop_at_error: false
+    version: null
+    python_path: .
+    input_params: []
+    output_params: []
+params:
+  tep_epsilon_T:
+    prior:
+      min: 0.0
+      max: 0.5
+    ref: 0.1
+    proposal: 0.02
+    latex: \\epsilon_T
+  tep_z_T:
+    prior:
+      min: 0.5
+      max: 15.0
+    ref: 3.0
+    proposal: 0.5
+    latex: z_T
+  tep_n_T:
+    value: 1.0
+    latex: n_T
+  H0:
+    prior:
+      min: 55.0
+      max: 85.0
+    ref: 70.0
+    proposal: 3.0
+    latex: H_0
+  omega_b:
+    prior:
+      min: 0.018
+      max: 0.025
+    ref: 0.0224
+    proposal: 0.0002
+    latex: \\Omega_b h^2
+    renames:
+    - omegabh2
+  omega_cdm:
+    prior:
+      min: 0.1
+      max: 0.15
+    ref: 0.12
+    proposal: 0.003
+    latex: \\Omega_{cdm} h^2
+    renames:
+    - omegach2
+  tau_reio:
+    value: 0.054
+    latex: \\tau_{reio}
+    renames:
+    - tau
+  A_s:
+    value: 2.1e-09
+    latex: A_s
+    renames:
+    - As
+  n_s:
+    value: 0.966
+    latex: n_s
+    renames:
+    - ns
+sampler:
+  mcmc:
+    sampler_type: mcmc
+    supports_periodic_params: true
+    burn_in: 0
+    max_tries: 5000
+    covmat: auto
+    covmat_params: null
+    proposal_scale: 2.4
+    output_every: 60s
+    learn_every: 50
+    temperature: 1
+    learn_proposal: true
+    learn_proposal_Rminus1_max: 2.0
+    learn_proposal_Rminus1_max_early: 30.0
+    learn_proposal_Rminus1_min: 0.0
+    max_samples: .inf
+    Rminus1_stop: 0.1
+    Rminus1_cl_stop: 0.2
+    Rminus1_cl_level: 0.95
+    Rminus1_single_split: 4
+    measure_speeds: true
+    oversample_power: 0.4
+    oversample_thin: true
+    drag: false
+    blocking:
+    - - 1
+      - - tep_epsilon_T
+        - tep_z_T
+        - H0
+        - omega_b
+        - omega_cdm
+    callback_function: null
+    callback_every: null
+    seed: null
+    check_every: null
+    oversample: null
+    drag_limits: null
+    fallback_covmat_scale: 4
+    version: 3.6.2
+output: tep_sne_only
+derived:
+  age:
+    latex: '{\rm Age}/{{\rm Gyr}}'
+stop:
+  max_samples: 5000
+verbose: 2
+version: 3.6.2

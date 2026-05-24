@@ -1,69 +1,19 @@
 {
-  "title": "Temporal Equivalence Principle: Temporal Shear Recovery in Gaia DR3 Wide Binaries",
-  "short_title": "TEP-WB: Temporal Shear Recovery",
+  "title": "Temporal Cosmology: Expansion as the Reconstruction of Temporal Shear",
   "author": "Matthew Lukin Smawfield",
-  "version": "v0.3 (Kilifi)",
-  "date": "29 April 2026",
+  "version": "v0.1 (Athens)",
+  "date": "30 April 2026",
+  "first_published": "30 April 2026",
+  "doi": "[TO BE ASSIGNED]",
   "sections": [
-    {
-      "id": "abstract",
-      "title": "Abstract",
-      "file": "1_abstract.html",
-      "order": 1
-    },
-    {
-      "id": "introduction",
-      "title": "1. Introduction",
-      "file": "1_introduction.html",
-      "order": 2
-    },
-    {
-      "id": "theory",
-      "title": "2. Theoretical Framework",
-      "file": "2_theory.html",
-      "order": 3
-    },
-    {
-      "id": "data",
-      "title": "3. Data and Methodology",
-      "file": "3_methodology.html",
-      "order": 4
-    },
-    {
-      "id": "results",
-      "title": "4. Results: The Screening Transition",
-      "file": "4_results.html",
-      "order": 5
-    },
-    {
-      "id": "environment",
-      "title": "5. Environmental Modulation",
-      "file": "5_environment.html",
-      "order": 6
-    },
-    {
-      "id": "discussion",
-      "title": "6. Discussion",
-      "file": "6_discussion.html",
-      "order": 7
-    },
-    {
-      "id": "conclusion",
-      "title": "7. Conclusion",
-      "file": "7_conclusion.html",
-      "order": 8
-    },
-    {
-      "id": "references",
-      "title": "References",
-      "file": "8_references.html",
-      "order": 9
-    },
-    {
-      "id": "reproducibility",
-      "title": "Data Availability & Reproducibility",
-      "file": "9_reproducibility.html",
-      "order": 10
-    }
+    { "id": "abstract", "title": "Abstract", "file": "1_abstract.html", "order": 1 },
+    { "id": "introduction", "title": "Introduction", "file": "1_introduction.html", "order": 2 },
+    { "id": "theory", "title": "Theoretical Framework", "file": "2_theory.html", "order": 3 },
+    { "id": "methodology", "title": "Methodology", "file": "3_methodology.html", "order": 4 },
+    { "id": "results", "title": "Results", "file": "4_results.html", "order": 5 },
+    { "id": "discussion", "title": "Discussion", "file": "5_discussion.html", "order": 6 },
+    { "id": "conclusion", "title": "Conclusion", "file": "6_conclusion.html", "order": 7 },
+    { "id": "references", "title": "References", "file": "7_references.html", "order": 8 },
+    { "id": "reproducibility", "title": "Data Availability and Reproducibility", "file": "8_reproducibility.html", "order": 9 }
   ]
 }

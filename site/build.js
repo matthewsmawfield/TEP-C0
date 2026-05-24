@@ -1,378 +1,166 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
-const { createManuscriptContext, injectPlaceholders: injectManuscriptPlaceholders } = require('./manuscript-data.js');
+(function () {
+    const isNode = typeof module !== 'undefined' && module.exports;
 
-function readJsonIfExists(filePath) {
-    if (!fs.existsSync(filePath)) {
-        return null;
-    }
-    try {
-        const raw = fs.readFileSync(filePath, 'utf8');
-        try {
-            return JSON.parse(raw);
-        } catch (error) {
-            const sanitized = raw
-                .replace(/:\s*-Infinity\b/g, ': null')
-                .replace(/:\s*Infinity\b/g, ': null')
-                .replace(/:\s*NaN\b/g, ': null');
-            return JSON.parse(sanitized);
-        }
-    } catch (error) {
-        console.warn(`⚠️  Failed to parse JSON: ${filePath}`);
-        return null;
-    }
-}
-
-function formatFixedNumber(value, decimals) {
-    if (value === null || value === undefined) {
-        return '';
-    }
-    const num = Number(value);
-    if (!Number.isFinite(num)) {
-        return '';
-    }
-    return num.toFixed(decimals);
-}
-
-function formatSignedNumber(value, decimals) {
-    const fixed = formatFixedNumber(value, decimals);
-    if (!fixed) {
-        return '';
-    }
-    const num = Number(value);
-    return `${num >= 0 ? '+' : ''}${fixed}`;
-}
-
-function formatCI(lower, upper, decimals) {
-    const lo = formatSignedNumber(lower, decimals);
-    const hi = formatSignedNumber(upper, decimals);
-    if (!lo || !hi) {
-        return '';
-    }
-    return `[${lo}, ${hi}]`;
-}
-
-function formatIntegerWithCommas(value) {
-    if (value === null || value === undefined) {
-        return '';
-    }
-    const num = Number(value);
-    if (!Number.isFinite(num)) {
-        return '';
-    }
-    return Math.round(num).toLocaleString('en-US');
-}
-
-function formatIntegerLatex(value) {
-    const s = formatIntegerWithCommas(value);
-    if (!s) {
-        return '';
-    }
-    return s.replace(/,/g, '{,}');
-}
-
-function formatPValueMantissaExp(pValue, mantissaDecimals = 1) {
-    if (pValue === null || pValue === undefined) {
-        return null;
-    }
-    const p = Number(pValue);
-    if (!Number.isFinite(p) || p <= 0) {
-        return null;
-    }
-    const exp = Math.floor(Math.log10(p));
-    let mantissa = p / Math.pow(10, exp);
-    let mantissaStr = mantissa.toFixed(mantissaDecimals);
-    if (Number(mantissaStr) >= 10) {
-        mantissa = mantissa / 10;
-        mantissaStr = mantissa.toFixed(mantissaDecimals);
-        return { mantissa: mantissaStr, exp: exp + 1 };
-    }
-    return { mantissa: mantissaStr, exp };
-}
-
-function formatPValueLatex(pValue, mantissaDecimals = 1) {
-    const parts = formatPValueMantissaExp(pValue, mantissaDecimals);
-    if (!parts) {
-        return null;
-    }
-    return `${parts.mantissa} \\times 10^{${parts.exp}}`;
-}
-
-function formatPValueCell(pValue, options = {}) {
-    const { includePrefix = false } = options;
-    if (pValue === null || pValue === undefined) {
-        return '';
-    }
-    const p = Number(pValue);
-    if (!Number.isFinite(p)) {
-        return '';
-    }
-    if (p >= 0.001) {
-        const s = formatFixedNumber(p, 3);
-        return includePrefix ? `p = ${s}` : s;
-    }
-    const latex = formatPValueLatex(p);
-    if (!latex) {
-        return '';
-    }
-    return includePrefix ? `p = ${latex}` : latex;
-}
-
-function formatPValueHtmlCell(pValue) {
-    if (pValue === null || pValue === undefined) {
-        return '';
-    }
-    const p = Number(pValue);
-    if (!Number.isFinite(p) || p <= 0) {
-        return '';
-    }
-    if (p >= 0.001) {
-        return formatFixedNumber(p, 3);
-    }
-    const latex = formatPValueLatex(p);
-    if (!latex) {
-        return '';
-    }
-    return `$${latex}$`;
-}
-
-function safeGet(obj, pathParts) {
-    let cur = obj;
-    for (const part of pathParts) {
-        if (cur === null || cur === undefined) {
-            return undefined;
-        }
-        cur = cur[part];
-    }
-    return cur;
-}
-
-function createInjectionContext() {
-    return createManuscriptContext();
-}
-
-function injectPlaceholders(template, context) {
-    return injectManuscriptPlaceholders(template, context, { failOnUnresolved: true });
-}
-
-async function buildStaticSite() {
-    console.log('🔨 Building static site...');
-    
-    try {
-        // Clean dist directory
-        const distDir = path.join(__dirname, 'dist');
-        if (fs.existsSync(distDir)) {
-            console.log('🧹 Cleaning dist directory...');
-            fs.rmSync(distDir, { recursive: true, force: true });
-        }
-        
-        // Read the manifest
-        const manifestPath = path.join(__dirname, 'manifest.json');
-        const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
-        
-        // Read the base index.html
-        const indexPath = path.join(__dirname, 'index.html');
-        let indexContent = fs.readFileSync(indexPath, 'utf8');
-        
-        const injectionContext = createInjectionContext();
-
-        // Build the component content
-        let componentsHtml = '';
-        
-        // Sort sections by order and load each component
-        const sortedSections = manifest.sections.sort((a, b) => a.order - b.order);
-        
-        for (const section of sortedSections) {
-            console.log(`📄 Loading section: ${section.title}`);
-            
-            const componentPath = path.join(__dirname, 'components', section.file);
-            
-            if (fs.existsSync(componentPath)) {
-                const componentHtmlRaw = fs.readFileSync(componentPath, 'utf8');
-                const componentHtml = injectPlaceholders(componentHtmlRaw, injectionContext);
-                
-                // Wrap component in section container (matching the dynamic loader)
-                componentsHtml += `
-                <section id="${section.id}" class="manuscript-section" data-section="${section.title}">
-                    ${componentHtml}
-                </section>`;
-            } else {
-                console.warn(`⚠️  Component not found: ${section.file}`);
-                componentsHtml += `
-                <section id="${section.id}" class="manuscript-section" data-section="${section.title}">
-                    <div style="background-color: #ffe6e6; border: 1px solid #ff9999; padding: 15px; margin: 20px 0; border-radius: 5px;">
-                        <h3 style="color: #cc0000; margin-top: 0;">Missing Section: ${section.title}</h3>
-                        <p>Component file <code>components/${section.file}</code> not found</p>
-                    </div>
-                </section>`;
-            }
-        }
-        
-        // Replace the dynamic content with static content
-        const staticContent = indexContent
-            .replace(
-                /<div id="loading".*?<\/div>\s*<div id="manuscript-content".*?<\/div>/s,
-                () => `<div id="manuscript-content">${componentsHtml}</div>`
-            )
-            .replace(/<div id="loading"[^>]*>[\s\S]*?<\/div>/g, '')
-            .replace(/<div id="manuscript-content"[^>]*style="display:\s*none;"[^>]*>[\s\S]*?<\/div>/g, '')
-            .replace(
-                /<!-- Component Loading Script -->[\s\S]*?<\/script>/g,
-                `<!-- Static build - components pre-loaded -->\n    <script>\n        document.addEventListener("DOMContentLoaded", function() {\n            if (window.MathJax && window.MathJax.typesetPromise) {\n                window.MathJax.typesetPromise().catch(function (err) {\n                    console.error("MathJax error:", err.message);\n                });\n            }\n        });\n    </script>`
-            )
-            .replace(
-                '<main id="main-content" role="main">',
-                '<!-- This is a statically built version for SEO/deployment -->\n    <main id="main-content" role="main">'
-            );
-        
-        // Create dist directory if it doesn't exist
-        if (!fs.existsSync(distDir)) {
-            fs.mkdirSync(distDir, { recursive: true });
-        }
-        
-        // Write the built file
-        const outputPath = path.join(distDir, 'index.html');
-        fs.writeFileSync(outputPath, staticContent, 'utf8');
-        
-        // Copy necessary static assets to dist
-        // EXPLICITLY COPY STYLES DIRECTORY
-        const assetDirs = ['public', 'figures', 'data', 'styles'];
-        for (const assetDir of assetDirs) {
-            const srcPath = path.join(__dirname, assetDir);
-            const destPath = path.join(distDir, assetDir);
-            
-            if (fs.existsSync(srcPath)) {
-                console.log(`📁 Copying ${assetDir}/`);
-                copyRecursiveSync(srcPath, destPath);
+    async function loadBrowserComponents() {
+        const sections = document.querySelectorAll('[data-component]');
+        for (const section of sections) {
+            const file = section.getAttribute('data-component');
+            try {
+                const response = await fetch(`components/${file}`);
+                if (!response.ok) {
+                    throw new Error(`${response.status} ${response.statusText}`);
+                }
+                section.innerHTML = await response.text();
+            } catch (error) {
+                section.innerHTML = `<p class="component-error">Unable to load ${file}: ${error.message}</p>`;
             }
         }
 
-        // Copy simple-styles.css if it exists
-        const simpleStylesSrc = path.join(__dirname, 'simple-styles.css');
-        const simpleStylesDest = path.join(distDir, 'simple-styles.css');
-        if (fs.existsSync(simpleStylesSrc)) {
-            fs.copyFileSync(simpleStylesSrc, simpleStylesDest);
-            console.log('📁 Copied simple-styles.css');
+        if (window.MathJax && window.MathJax.typesetPromise) {
+            await window.MathJax.typesetPromise();
         }
-        
-        // Copy figures from results/figures/ to dist/figures/ (main figure source)
-        const resultsFiguresPath = path.join(__dirname, '..', 'results', 'figures');
-        const distFiguresPath = path.join(distDir, 'figures');
-        const distPublicFiguresPath = path.join(distDir, 'public', 'figures');
-        if (fs.existsSync(resultsFiguresPath)) {
-            console.log('📁 Copying results/figures/ → dist/figures/');
-            copyRecursiveSync(resultsFiguresPath, distFiguresPath);
-            console.log('📁 Copying results/figures/ → dist/public/figures/');
-            copyRecursiveSync(resultsFiguresPath, distPublicFiguresPath);
-        }
-        
-        // Copy manifest.json for reference
-        fs.copyFileSync(manifestPath, path.join(distDir, 'manifest.json'));
-        
-        // Copy .nojekyll to dist root for GitHub Pages
-        const nojekyllSrc = path.join(__dirname, 'public', '.nojekyll');
-        const nojekyllDest = path.join(distDir, '.nojekyll');
-        if (fs.existsSync(nojekyllSrc)) {
-            fs.copyFileSync(nojekyllSrc, nojekyllDest);
-            console.log('📁 Copied .nojekyll to dist root');
-        } else {
-            // Create it if it doesn't exist
-            fs.writeFileSync(nojekyllDest, '');
-            console.log('📁 Created .nojekyll in dist root');
-        }
+    }
 
-        // Copy robots.txt and sitemap.xml to dist root
-        const rootFiles = ['404.html', 'robots.txt', 'sitemap.xml', 'CNAME', '29c6507763d2303d801cc8ed89d39f88.txt', 'favicon.ico'];
-        for (const file of rootFiles) {
-            const src = path.join(__dirname, 'public', file);
-            const dest = path.join(distDir, file);
-            if (fs.existsSync(src)) {
-                fs.copyFileSync(src, dest);
-                console.log(`📁 Copied ${file} to dist root`);
-            }
-        }
-        
-        // Copy citation files to dist root
-        const citationFiles = ['CITATION.cff', 'CITATION.bib', 'citation.json', 'codemeta.json', 'README.md'];
-        const optionalCitationFiles = new Set(['LICENSE']);
-        const projectRoot = path.join(__dirname, '..');
-        
-        for (const file of [...citationFiles, ...optionalCitationFiles]) {
-            const candidates = [
-                path.join(projectRoot, file),
-                path.join(__dirname, file),
-            ];
-            const src = candidates.find(candidate => fs.existsSync(candidate));
-            const dest = path.join(distDir, file);
-            if (src) {
-                fs.copyFileSync(src, dest);
-                console.log(`📁 Copied ${file} to dist root`);
-            } else if (!optionalCitationFiles.has(file)) {
-                console.warn(`⚠️  Missing citation file: ${file}`);
-            }
-        }
-        
-        // Copy .well-known directory
-        const wellKnownSrc = path.join(__dirname, 'public', '.well-known');
-        const wellKnownDest = path.join(distDir, '.well-known');
-        if (fs.existsSync(wellKnownSrc)) {
-            if (!fs.existsSync(wellKnownDest)) {
-                fs.mkdirSync(wellKnownDest, { recursive: true });
-            }
-            const files = fs.readdirSync(wellKnownSrc);
-            for (const file of files) {
-                fs.copyFileSync(path.join(wellKnownSrc, file), path.join(wellKnownDest, file));
-            }
-            console.log(`📁 Copied .well-known/ to dist`);
-        }
-        
-        // Generate markdown version
-        console.log('📝 Generating markdown version...');
+    async function buildStaticSite() {
+        const fs = require('fs');
+        const path = require('path');
         const { HTMLToMarkdownConverter } = require('./html-to-markdown.js');
+        const { createManuscriptContext, injectPlaceholders } = require('./manuscript-data.js');
+
+        const siteDir = __dirname;
+        const distDir = path.join(siteDir, 'dist');
+        const manifest = JSON.parse(fs.readFileSync(path.join(siteDir, 'manifest.json'), 'utf8'));
+        let index = fs.readFileSync(path.join(siteDir, 'index.html'), 'utf8');
+        const context = createManuscriptContext();
+
+        const components = manifest.sections
+            .slice()
+            .sort((a, b) => a.order - b.order)
+            .map((section) => {
+                const componentPath = path.join(siteDir, 'components', section.file);
+                const html = fs.existsSync(componentPath)
+                    ? injectPlaceholders(fs.readFileSync(componentPath, 'utf8'), context)
+                    : `<p>Missing component: ${section.file}</p>`;
+                return `<section id="${section.id}" class="manuscript-section" data-section="${section.title}">\n${html}\n</section>`;
+            })
+            .join('\n\n');
+
+        index = index.replace(
+            /<section id="abstract"[\s\S]*?<section id="reproducibility" data-component="8_reproducibility\.html"><\/section>/,
+            components
+        );
+        index = index.replace('<script src="build.js"></script>', '<script>window.__STATIC_MANUSCRIPT__ = true;</script>');
+
+        fs.rmSync(distDir, { recursive: true, force: true });
+        fs.mkdirSync(distDir, { recursive: true });
+        fs.writeFileSync(path.join(distDir, 'index.html'), index, 'utf8');
+        fs.copyFileSync(path.join(siteDir, 'styles.css'), path.join(distDir, 'styles.css'));
+        fs.copyFileSync(path.join(siteDir, 'manifest.json'), path.join(distDir, 'manifest.json'));
+        
+        // Copy public directory to dist
+        const publicDir = path.join(siteDir, 'public');
+        const publicDest = path.join(distDir, 'public');
+        if (fs.existsSync(publicDir)) {
+            copyRecursiveSync(publicDir, publicDest, fs, path);
+        }
+        
+        copyResults(path.join(siteDir, '..', 'results'), distDir, fs, path);
+        copyDataArtifacts(path.join(siteDir, '..'), distDir, fs, path);
+
+        for (const file of ['CITATION.cff', 'CITATION.bib', 'README.md', 'LICENSE', 'VERSION.json']) {
+            const src = path.join(siteDir, '..', file);
+            if (fs.existsSync(src)) {
+                fs.copyFileSync(src, path.join(distDir, file));
+            }
+        }
+
         const converter = new HTMLToMarkdownConverter();
         await converter.convertSiteToMarkdown();
-        
-        console.log('✅ Static site built successfully!');
-        console.log(`📁 Output: ${outputPath}`);
-        console.log(`📊 Generated ${manifest.sections.length} sections`);
-        console.log('🚀 Ready for deployment');
-        
-    } catch (error) {
-        console.error('❌ Build failed:', error);
-        process.exit(1);
-    }
-}
 
-// Helper function to copy directories recursively
-function copyRecursiveSync(src, dest) {
-    const exists = fs.existsSync(src);
-    const stats = exists && fs.statSync(src);
-    const isDirectory = exists && stats.isDirectory();
-    
-    if (isDirectory) {
-        if (!fs.existsSync(dest)) {
-            fs.mkdirSync(dest, { recursive: true });
-        }
-        fs.readdirSync(src).forEach(childItemName => {
-            copyRecursiveSync(
-                path.join(src, childItemName),
-                path.join(dest, childItemName)
-            );
-        });
-    } else {
-        // Filter out raw data files
-        if (src.endsWith('.csv') || src.endsWith('.dat') || src.endsWith('.nc')) {
+        console.log(`Built TEP-C0 static manuscript: ${path.join(distDir, 'index.html')}`);
+    }
+
+    function copyResults(resultsDir, distDir, fs, path) {
+        if (!fs.existsSync(resultsDir)) {
             return;
         }
-        fs.copyFileSync(src, dest);
+        const figuresSrc = path.join(resultsDir, 'figures');
+        const figuresDest = path.join(distDir, 'figures');
+        if (fs.existsSync(figuresSrc)) {
+            fs.mkdirSync(figuresDest, { recursive: true });
+            for (const file of fs.readdirSync(figuresSrc)) {
+                if (file.endsWith('.png')) {
+                    fs.copyFileSync(path.join(figuresSrc, file), path.join(figuresDest, file));
+                }
+            }
+        }
+
+        const resultsDest = path.join(distDir, 'results');
+        fs.mkdirSync(resultsDest, { recursive: true });
+        for (const file of fs.readdirSync(resultsDir)) {
+            if (file.endsWith('.json') || file.endsWith('.csv')) {
+                fs.copyFileSync(path.join(resultsDir, file), path.join(resultsDest, file));
+            }
+        }
     }
-}
 
-// Run if called directly
-if (require.main === module) {
-    buildStaticSite();
-}
+    function copyDataArtifacts(projectDir, distDir, fs, path) {
+        const resultsDir = path.join(projectDir, 'results');
+        const payloadFiles = [
+            path.join(resultsDir, 'step_000_data_download.json'),
+            path.join(resultsDir, 'step_000_data_ingestion.json'),
+        ];
+        const artifactPaths = new Set();
 
-module.exports = { buildStaticSite };
+        for (const payloadFile of payloadFiles) {
+            if (!fs.existsSync(payloadFile)) {
+                continue;
+            }
+            const payload = JSON.parse(fs.readFileSync(payloadFile, 'utf8'));
+            for (const artifactPath of Object.values(payload.artifacts || {})) {
+                if (typeof artifactPath === 'string' && artifactPath.startsWith('data/')) {
+                    artifactPaths.add(artifactPath);
+                }
+            }
+        }
+
+        for (const artifactPath of artifactPaths) {
+            const src = path.join(projectDir, artifactPath);
+            if (!fs.existsSync(src) || !fs.statSync(src).isFile()) {
+                continue;
+            }
+            const dest = path.join(distDir, artifactPath);
+            fs.mkdirSync(path.dirname(dest), { recursive: true });
+            fs.copyFileSync(src, dest);
+        }
+    }
+
+    function copyRecursiveSync(src, dest, fs, path) {
+        const stat = fs.statSync(src);
+        if (stat.isDirectory()) {
+            if (!fs.existsSync(dest)) {
+                fs.mkdirSync(dest, { recursive: true });
+            }
+            const entries = fs.readdirSync(src);
+            for (const entry of entries) {
+                copyRecursiveSync(path.join(src, entry), path.join(dest, entry), fs, path);
+            }
+        } else {
+            fs.copyFileSync(src, dest);
+        }
+    }
+
+    if (isNode) {
+        module.exports = { buildStaticSite };
+        if (require.main === module) {
+            buildStaticSite().catch((error) => {
+                console.error(error);
+                process.exit(1);
+            });
+        }
+    } else if (!window.__STATIC_MANUSCRIPT__) {
+        document.addEventListener('DOMContentLoaded', loadBrowserComponents);
+    }
+})();

@@ -1,0 +1,13 @@
+{
+  "description": "Tolman surface-brightness evolution test",
+  "results": {},
+  "step": "step_024_tolman_surface_brightness",
+  "validation": {
+    "blockers": [
+      "Surface brightness data not found. Run step_023c first."
+    ],
+    "claim_gate": "blocked",
+    "real_data": false,
+    "research_grade_tolman": false
+  }
+}

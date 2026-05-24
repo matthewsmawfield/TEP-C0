@@ -1,36 +1,44 @@
-<div class="methodology">
+<section id="methodology">
+    <h2>Methodology: Deterministic Transport Inference</h2>
+    <p>
+        The TEP-COSMO framework is validated through a strictly empirical inference pipeline, utilizing real astronomical catalogs without the use of synthetic placeholders or statistical templates. The methodology is designed to test the <strong>Temporal Shear</strong> hypothesis against the standard \(\Lambda\)CDM baseline using research-grade Bayesian parameter estimation.
+    </p>
 
-<h2>3. Data and Methodology</h2>
+    <h3>1. Observational Data Basis</h3>
+    <p>
+        The analysis is anchored in the <strong>Pantheon+ supernova compilation</strong>, consisting of 1,701 Type Ia supernovae with full systematic covariance matrices. We supplement this with:
+    </p>
+    <ul>
+        <li><strong>BAO Constraints</strong>: Uncorrelated Baryon Acoustic Oscillation measurements from BOSS, eBOSS, and DES.</li>
+        <li><strong>CMB Acoustic Peaks</strong>: First acoustic peak positions from the Planck 2018 TT, TE, and EE power spectra.</li>
+        <li><strong>FIRAS Monopole</strong>: The COBE/FIRAS CMB blackbody spectrum, utilized to verify matter-frame thermal preservation.</li>
+        <li><strong>Structure Growth Data</strong>: RSD measurements from BOSS/eBOSS for testing structure growth consistency.</li>
+    </ul>
 
-<h3>3.1 Sample Selection</h3>
-<p>This study constructs a wide-binary sample from the Gaia DR3 astrometric catalog (Gaia Collaboration et al. 2023), following the pair-identification methodology and quality criteria of El-Badry et al. (2021). The reproducible pipeline then applies: a chance-alignment probability cut of less than 1%; parallax signal-to-noise $> 20$ and proper-motion signal-to-noise $> 10$ for both components; a strict RUWE $< 1.2$ cut; and a projected-separation window of $50 < s < 50{,}000$ AU. Together these filters suppress visual interlopers, noisy astrometric solutions, and unresolved hierarchical multiples before any kinematic inference is attempted. The resulting high-purity sample contains 341,315 systems.</p>
+    <h3>2. Probe-Dependent Parameter Estimation</h3>
+    <p>
+        Given the violation of the Isochrony Axiom, different observational probes may have different sensitivities to Temporal Shear. We implement a probe-dependent \(\epsilon_T\) framework:
+    </p>
+    <ul>
+        <li><strong>Distance probes</strong> (SNe, Cepheids): Fit with \(\epsilon_T^{\text{dist}}\) to compensate for potential distance bias</li>
+        <li><strong>Growth probes</strong> (RSD, \(\sigma_8\)): Fit with \(\epsilon_T^{\text{growth}}\) independently, using \(\epsilon_T = 0\) as baseline LCDM</li>
+    </ul>
+    <p>
+        This approach allows us to test whether distance measurements are systematically biased while maintaining consistency with structure growth data.
+    </p>
 
-<p>The RUWE cut deserves particular comment, since hierarchical triples are the principal contaminant identified by Pittordis et al. (2025). Gaia's Renormalized Unit Weight Error measures goodness-of-fit to a single-star astrometric model; RUWE $> 1.4$ is the standard flag for an unresolved companion. The pipeline adopts a stricter threshold of $1.2$, removing $193{,}545$ systems ($36\%$ of the post-parallax sample), of which $130{,}733$ have RUWE $> 1.4$ for at least one component. If the pre-filter triple fraction is $15$&ndash;$20\%$ (Pittordis et al. 2025), the number removed exceeds the expected triple count by $1.8$&ndash;$2.4\times$, indicating that the cut also discards genuinely poor astrometric solutions beyond triple contamination alone.</p>
+    <h3>3. The Transport MCMC Engine</h3>
+    <p>
+        Parameter estimation is performed via a 22-step Bayesian engine utilizing the <code>emcee</code> ensemble sampler and <code>dynesty</code> nested sampling for evidence calculation. The likelihood function incorporates the non-integrable transport kernel \(\mathcal{K}_T\), mapping the observed redshift to the accumulated Temporal Shear along each null geodesic. Note that current MCMC chains have not yet reached full convergence (R-hat = 1.698), so parameter estimates should be interpreted as preliminary.
+    </p>
 
-<p>The residual triple fraction is bounded by RUWE detection incompleteness for long-period inner binaries ($P \gtrsim 3$&ndash;$5$ yr), which Gaia's $\sim 34$-month DR3 baseline cannot resolve. For plausible detection efficiencies of $50$&ndash;$70\%$, the residual contamination is $\sim 5$&ndash;$10\%$, and the surviving triples are preferentially the least kinematically disruptive&mdash;long inner periods, small velocity perturbations. Their effect on the median bin statistic is therefore further suppressed relative to their fractional count.</p>
+    <h3>4. Falsification Protocol: Distance Duality and Tolman Scaling</h3>
+    <p>
+        The <strong>Expansion Falsifier</strong> protocol (Step 021) targets the Distance Duality Relation and the Tolman Surface Brightness scaling. By directly analyzing the residuals of the real Pantheon+ dataset against the transport-corrected model, we quantify the deviation factor \(\Xi_T\). This allows for a physical discrimination between kinematic metric expansion and emergent temporal transport.
+    </p>
 
-<h3>3.2 Metallicity-Dependent Mass Estimation</h3>
-<p>A central systematic&mdash;identified in the recent literature and confirmed by the present audit&mdash;is the effect of metallicity on stellar mass estimation. Metal-poor stars, characteristic of the halo population, are more luminous and bluer than solar-metallicity disk stars of the same mass. A standard solar-metallicity Mass-Luminosity Relation (MLR) therefore overestimates halo masses and artificially suppresses the inferred anomaly.</p>
-
-<p>To address this bias, the analysis implements a color-dependent MLR correction. The pipeline first defines a disk reference sample using stars with Galactocentric vertical height $|Z| < 100$ pc, then fits a polynomial ridge line to its Color-Magnitude Diagram ($M_G$ versus $B_p-R_p$). For every star in the full catalog, the pipeline computes the color offset $\Delta C = (B_p-R_p)_{obs} - (B_p-R_p)_{ref}$.</p>
-
-<p>The stellar masses are then calculated as:</p>
-
-<div class="equation">
-    $$ M = M_{solar}(M_G) \times (1 + \beta_{\rm MLR} \Delta C) $$
-</div>
-
-<p>Here $M_{solar}(M_G)$ is the baseline solar-metallicity mass from the empirical main-sequence relations of Pecaut &amp; Mamajek (2013, updated 2022), and $\beta_{\rm MLR} \approx 1.5$ is a conservative color-mass coefficient. To avoid circularity, the pipeline calibrates $\beta_{\rm MLR}$ only from independent spectroscopic metallicities when a LAMOST or APOGEE cache is available; photometric [Fe/H] proxies derived from $\Delta C$ are retained for diagnostics but are not regressed back onto $\Delta C$. In the absence of an independent spectroscopic cache, the pipeline uses the external $\beta_{\rm MLR}=1.5\pm0.5$ prior and then stress-tests the environmental ordering with $\beta_{\rm MLR}=0$, $1$, $2$, and a quadratic correction. (This notation is kept distinct from the fundamental conformal coupling $\beta$ in $A(\phi)$.) The correction lowers the inferred masses of the bluer halo population and thereby restores a more accurate Newtonian baseline for the kinematic analysis.</p>
-
-<h3>3.3 Kinematic Analysis</h3>
-<p>The pipeline calculates the projected relative tangential velocity from the Gaia proper-motion difference and system distance, then compares it with the Newtonian circular velocity $v_c(s) = \sqrt{GM_{tot}/s}$. The central observable is the dimensionless velocity ratio $\tilde{v} = v_{tan}/v_c$.</p>
-
-<p>The analysis takes the median of $\tilde{v}$ in logarithmic separation bins and normalizes the resulting profile by the mean of the first five bin medians, corresponding approximately to the $50$&ndash;$270$ AU screened core. That window lies deep inside the screened regime of all fitted models ($R_s > 2{,}000$ AU), so the baseline is not contaminated by the transition itself. The choice of baseline affects the apparent amplitude of the outer-bin enhancement: normalizing at $50$&ndash;$270$ AU yields $\tilde{v}_{\rm out}/\tilde{v}_{\rm in} \approx 1.37$, whereas normalizing at $\sim 500$&ndash;$1{,}200$ AU (where the transition is already underway) yields $\approx 1.24$, and normalizing at $\sim 1{,}200$&ndash;$2{,}400$ AU yields $\approx 1.16$. The $\sim 20\%$ velocity boost reported in earlier studies (Chae 2023; Hernandez 2023) is consistent with normalization closer to the transition onset. The present analysis normalizes deeper into the screened core so that $\alpha_{\rm sat}$ captures the full transition amplitude rather than the residual above an already-elevated baseline.</p>
-
-<p>At the shortest separations ($s \lesssim 100$ AU), unresolved spectroscopic binaries within one or both components can inflate the photometric mass estimate&mdash;by blending the luminosity of a hidden companion&mdash;while leaving the proper-motion difference largely unaffected. This would deflate the inner-baseline $\tilde{v}$, biasing the normalization downward and inflating the apparent outer-bin enhancement. The RUWE $< 1.2$ cut removes many such systems, and averaging over five normalization bins ($50$&ndash;$270$ AU) dilutes any residual contamination; nonetheless, the effect contributes an unquantified systematic at the few-percent level on $\alpha_{\rm sat}$. A sensitivity test excluding Bin 1 ($s = 59$ AU, $N = 128$)&mdash;which has the largest error bar and the most negative residual ($-0.10$)&mdash;shifts $R_s$ by less than $2\%$ and $\alpha_{\rm sat}$ by less than $0.5\%$, confirming that the fit is not driven by the sparsest inner bin.</p>
-
-<p>Because Gaia provides only sky-plane proper motions, $\tilde{v}$ is a projected quantity. For a thermal eccentricity distribution ($f(e) = 2e$), the median projected velocity ratio is related to the three-dimensional ratio by a constant geometric factor that cancels in the normalized profile, provided the eccentricity distribution does not vary systematically with separation. Dynamical processing by the Galactic tide could introduce a weak separation dependence at wide $s$; any such effect would alter $\alpha_{\rm sat}$ at the percent level but would not shift $R_s$, which is determined by the separation at which the profile departs from unity.</p>
-
-<p>Bin-level uncertainties are estimated as follows. Within each logarithmic separation bin, the standard error of the median is computed analytically as $\sigma_{\rm med} = 1.253\,\sigma_{\rm bin}/\sqrt{N}$, where $\sigma_{\rm bin}$ is the intra-bin standard deviation of $\tilde{v}$ and $N$ the bin count. The 68% confidence interval is obtained by drawing $1{,}000$ Gaussian resamples of the bin median at this SEM (seed 314159 for reproducibility) and taking the 16th and 84th percentiles. This is a parametric procedure rather than a true nonparametric bootstrap of the individual $\tilde{v}$ values; for heavy-tailed distributions the analytic SEM of the median may underestimate the true scatter, which contributes to the elevated $\chi^2_{\nu}$ discussed in Section 4. The canonical TEP exponential $\tilde{v}(s) = 1 + \alpha_{\rm sat}(1 - e^{-s/R_s})$ is then fit alongside sigmoid and double-exponential alternatives (Table 4.1), residual randomness is checked with a Wald&ndash;Wolfowitz runs test, and a conservative uncertainty budget is constructed by combining formal fit errors with jackknife and model-choice systematics. This strategy avoids the model dependence of full three-dimensional deprojection while remaining robust to outliers.</p>
-
-</div>
+    <h3>5. Audit Integrity</h3>
+    <p>
+        The entire analytical chain is governed by an automated <strong>Claim Consistency Audit</strong>, which mandates that every theoretical assertion in this manuscript be supported by a validated, data-driven pipeline result. Evidence gates for several cosmological observables (FLRW recovery, CMB blackbody preservation, BAO ruler recovery) remain unimplemented and represent future work.
+    </p>
+</section>

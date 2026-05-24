@@ -1,10 +1,38 @@
-# TEP-WB: Wide Binary Analysis Pipeline
-# Keywords: wide binaries, Gaia DR3, modified gravity, MOND, TEP, temporal equivalence principle,
-# gravitational screening, dark matter, stellar kinematics, astrometry, orbital dynamics, astrophysics
-numpy
-pandas
-pyarrow
-scipy
-matplotlib
-astropy
-pyyaml
+# TEP-C0 Requirements
+# Python 3.9+ required
+# Last updated: 2026-05-09
+
+# Core scientific computing
+numpy>=1.21.0,<2.0.0
+scipy>=1.7.0,<2.0.0
+pandas>=1.3.0,<3.0.0
+
+# Data visualization
+matplotlib>=3.4.0,<4.0.0
+
+# Bayesian inference
+dynesty>=1.2.0,<2.0.0
+emcee>=3.0.0,<4.0.0
+cobaya>=3.0.0,<4.0.0
+
+# Cosmology codes (optional - external dependencies)
+# CLASS must be built separately from external/class/
+# See external/class/README.md for build instructions
+
+# Utilities
+pathlib2>=2.3.0; python_version < '3.4'
+typing-extensions>=4.0.0; python_version < '3.8'
+
+# Development dependencies (optional)
+pytest>=7.0.0; extra == 'dev'
+pytest-cov>=3.0.0; extra == 'dev'
+black>=22.0.0; extra == 'dev'
+flake8>=4.0.0; extra == 'dev'
+mypy>=0.900; extra == 'dev'
+
+[dev]
+pytest
+pytest-cov
+black
+flake8
+mypy

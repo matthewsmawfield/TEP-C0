@@ -1,0 +1,6 @@
+observable,tep_explanation,numerical_anchor,status
+Cosmic Redshift (z),Projection of Temporal Shear gradients along the photon path.,FLRW error 0.00e+00,Verified as a transport identity
+SN 1a Distance-Redshift,TEP matter model incorporating matter-frame effects.,Dimensionless distance comparison (H0_ref = 70.0 km/s/Mpc); M_TEP = -18.33437106193029 vs M_LCDM = -19.32404890914055,validated
+Hubble Constant agreement,Resolution via temporal shear effects.,Dimensionless distances fix H0_ref = 70.0 km/s/Mpc; no H0 parameter in fit.,diagnostic
+Distance Duality (Xi_T),Measurable residuals in high-z luminosity/angular diameter relations.,Tolman Δχ²: N/A...,Preliminary
+CMB Acoustic Scales,Preserved matter-frame acoustic horizon properly projected through shear connection.,Consistency: {},blocked pending full CMB likelihood

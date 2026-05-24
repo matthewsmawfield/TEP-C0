@@ -1,65 +1,222 @@
 #!/usr/bin/env node
-const chokidar = require('chokidar');
-const { spawn } = require('child_process');
-const path = require('path');
-const fs = require('fs');
-const net = require('net');
-const { buildStaticSite } = require('./build.js');
+
+const chokidar = require("chokidar");
+const { spawn } = require("child_process");
+const path = require("path");
+const fs = require("fs");
+const { buildStaticSite } = require("./build.js");
+const { HTMLToMarkdownConverter } = require("./html-to-markdown.js");
 
 class DevServer {
-    constructor() {
-        this.isBuilding = false;
+  constructor() {
+    this.isBuilding = false;
+    this.buildQueue = false;
+    this.liveServerProcess = null;
+    this.watcherReady = false;
+    this.watcherRestarting = false;
+  }
+
+  async startLiveServer() {
+    console.log("🚀 Starting Python HTTP server...");
+
+    // Kill any existing live server process
+    if (this.liveServerProcess) {
+      this.liveServerProcess.kill();
+    }
+
+    // Start Python HTTP server serving the dist directory
+    this.liveServerProcess = spawn("python3", ["-m", "http.server", "8347"], {
+      stdio: "pipe",
+      cwd: path.join(__dirname, "dist"),
+    });
+
+    this.liveServerProcess.stdout.on("data", (data) => {
+      const output = data.toString();
+      // Python's http.server logs to stderr, so we might not see much on stdout
+      if (output.trim()) {
+        console.log("📡 HTTP server:", output.trim());
+      }
+    });
+
+    this.liveServerProcess.stderr.on("data", (data) => {
+      const error = data.toString();
+      // Python http.server logs requests to stderr, so we filter out common request logs
+      if (!error.includes("GET /") && !error.includes('"GET /')) {
+        console.error("🚨 HTTP server error:", error.trim());
+      } else {
+        // Optionally, you can log requests if you want
+        // console.log('📡 Request:', error.trim());
+      }
+    });
+  }
+
+  async build() {
+    if (this.isBuilding) {
+      this.buildQueue = true;
+      return;
+    }
+
+    this.isBuilding = true;
+    console.log("\n🔄 Rebuilding site...");
+
+    try {
+      await buildStaticSite();
+      console.log(
+        "✅ Build complete! Changes will be reflected in the browser.",
+      );
+
+      // Auto-generate markdown after successful build
+      try {
+        console.log("📝 Generating markdown...");
+        const converter = new HTMLToMarkdownConverter();
+        await converter.convertSiteToMarkdown();
+        console.log("✅ Markdown generated successfully!\n");
+      } catch (markdownError) {
+        console.warn("⚠️  Markdown generation failed:", markdownError.message);
+        console.log(
+          "✅ Build complete! Changes will be reflected in the browser.\n",
+        );
+      }
+
+      // If there was a queued build, run it now
+      if (this.buildQueue) {
         this.buildQueue = false;
-        this.liveServerProcess = null;
-        this.watcherReady = false;
-        this.port = 51737; // Unique port for TEP-JWST
+        setTimeout(() => {
+          this.isBuilding = false;
+          this.build();
+        }, 100);
+        return;
+      }
+    } catch (error) {
+      console.error("❌ Build failed:", error.message);
     }
 
-    async startLiveServer() {
-        console.log('🚀 Starting live server...');
-        if (this.liveServerProcess) this.liveServerProcess.kill();
-        this.liveServerProcess = spawn('npx', [
-            'live-server', 'dist', `--port=${this.port}`, '--host=localhost', '--no-browser', '--wait=500'
-        ], { stdio: 'pipe', cwd: __dirname });
-        this.liveServerProcess.stdout.on('data', d => console.log('📡 ' + d.toString().trim()));
+    this.isBuilding = false;
+  }
+
+  async start() {
+    console.log("🎯 TEP-C0 Development Server");
+    console.log("===============================\n");
+
+    // Ensure dist directory exists and do initial build
+    const distDir = path.join(__dirname, "dist");
+    if (!fs.existsSync(distDir)) {
+      fs.mkdirSync(distDir, { recursive: true });
     }
 
-    async build() {
-        if (this.isBuilding) { this.buildQueue = true; return; }
-        this.isBuilding = true;
-        console.log('\n🔄 Rebuilding site...');
-        try {
-            await buildStaticSite();
-            console.log('✅ Build & Markdown complete!');
-            if (this.buildQueue) {
-                this.buildQueue = false;
-                setTimeout(() => { this.isBuilding = false; this.build(); }, 100);
-                return;
-            }
-        } catch (e) { console.error('❌ Build failed:', e.message); }
-        this.isBuilding = false;
-    }
+    console.log("🔨 Initial build...");
+    await this.build();
 
-    async start() {
-        console.log('🎯 TEP-WB Development Server');
-        const distDir = path.join(__dirname, 'dist');
-        const resultsFiguresDir = path.join(__dirname, '..', 'results', 'figures');
-        if (!fs.existsSync(distDir)) fs.mkdirSync(distDir, { recursive: true });
-        await this.build();
-        await this.startLiveServer();
-        
-        const watcher = chokidar.watch([
-            path.join(__dirname, 'components'),
-            path.join(__dirname, 'index.html'),
-            path.join(__dirname, 'manifest.json'),
-            resultsFiguresDir
-        ], { ignored: ['dist/**'], persistent: true, ignoreInitial: true });
+    // Start live server
+    await this.startLiveServer();
 
-        watcher.on('change', () => this.build());
-        watcher.on('add', () => this.build());
-        console.log(`\n🌐 Server running at: http://localhost:${this.port}`);
-    }
+    // Watch for file changes with absolute paths
+    const watchPaths = [
+      path.join(__dirname, "components"),
+      path.join(__dirname, "index.html"),
+      path.join(__dirname, "manifest.json"),
+      path.join(__dirname, "figures"),
+      path.join(__dirname, "data"),
+      path.join(__dirname, "public"),
+    ];
+
+    console.log("👁️  Watching paths:", watchPaths);
+
+    const watcher = chokidar.watch(watchPaths, {
+      ignored: ["dist/**", "node_modules/**", "**/.git/**", "**/.DS_Store"],
+      persistent: true,
+      ignoreInitial: true,
+      usePolling: true,
+      interval: 1000,
+      binaryInterval: 1000,
+      atomic: false,
+      alwaysStat: true,
+      depth: 10,
+      awaitWriteFinish: {
+        stabilityThreshold: 100,
+        pollInterval: 100,
+      },
+    });
+
+    watcher.on("ready", () => {
+      if (!this.watcherReady) {
+        console.log("👁️  File watcher is ready and monitoring for changes...");
+        console.log("👁️  Watched files:", watcher.getWatched());
+        this.watcherReady = true;
+      }
+    });
+
+    watcher.on("change", (filepath) => {
+      console.log(`📝 File changed: ${filepath}`);
+      console.log(`📝 Full path: ${path.resolve(filepath)}`);
+      this.build();
+    });
+
+    watcher.on("add", (filepath) => {
+      console.log(`➕ File added: ${filepath}`);
+      console.log(`➕ Full path: ${path.resolve(filepath)}`);
+      this.build();
+    });
+
+    watcher.on("unlink", (filepath) => {
+      console.log(`🗑️  File removed: ${filepath}`);
+      console.log(`🗑️  Full path: ${path.resolve(filepath)}`);
+      this.build();
+    });
+
+    watcher.on("error", (error) => {
+      console.error("🚨 File watcher error:", error.message);
+      // Try to restart watcher on error
+      if (!this.watcherRestarting) {
+        this.watcherRestarting = true;
+        console.log("🔄 Attempting to restart file watcher...");
+        setTimeout(() => {
+          this.watcherRestarting = false;
+          this.watcherReady = false;
+        }, 2000);
+      }
+    });
+
+    console.log("👀 Watching for changes in:");
+    console.log("   • components/*.html");
+    console.log("   • index.html");
+    console.log("   • manifest.json");
+    console.log("   • figures/*.png");
+    console.log("   • data/*.json");
+    console.log("   • public/*");
+    console.log("\n🌐 Server running at: http://localhost:8347");
+    console.log("� The page will auto-reload when you make changes!");
+    console.log("📝 Markdown will be auto-generated after each build!");
+    console.log("💡 If auto-reload doesn't work, run: npm run build");
+    console.log("");
+
+    // Graceful shutdown
+    process.on("SIGINT", () => {
+      console.log("\n🛑 Shutting down development server...");
+      if (watcher) {
+        watcher.close();
+      }
+      if (this.liveServerProcess) {
+        this.liveServerProcess.kill();
+      }
+      process.exit(0);
+    });
+
+    process.on("SIGTERM", () => {
+      console.log("\n🛑 Shutting down development server...");
+      if (watcher) {
+        watcher.close();
+      }
+      if (this.liveServerProcess) {
+        this.liveServerProcess.kill();
+      }
+      process.exit(0);
+    });
+  }
 }
 
-if (require.main === module) { const s = new DevServer(); s.start(); }
-module.exports = DevServer;
+// Run if called directly
+if (require.main === module) {
+  const server = new DevServer();
+  server.start().catch(console.error);
+}
