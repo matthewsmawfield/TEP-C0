@@ -1,0 +1,158 @@
+{
+  "cmb_results": {
+    "class_lcdm_reference": {
+      "derived": {
+        "rs_rec": 144.4,
+        "theta_s_100": 1.04371855,
+        "z_rec": 1090.0
+      },
+      "samples": [
+        {
+          "omega_b": 0.022
+        }
+      ],
+      "tt_power": [
+        {
+          "Dl_TT": 1002.0,
+          "ell": 2
+        },
+        {
+          "Dl_TT": 1003.0,
+          "ell": 3
+        },
+        {
+          "Dl_TT": 1004.0,
+          "ell": 4
+        },
+        {
+          "Dl_TT": 1005.0,
+          "ell": 5
+        },
+        {
+          "Dl_TT": 1006.0,
+          "ell": 6
+        },
+        {
+          "Dl_TT": 1007.0,
+          "ell": 7
+        },
+        {
+          "Dl_TT": 1008.0,
+          "ell": 8
+        },
+        {
+          "Dl_TT": 1009.0,
+          "ell": 9
+        }
+      ]
+    },
+    "tep_spectra": {
+      "derived": {
+        "rs_rec": 144.4,
+        "theta_s_100": 1.04371855,
+        "z_rec": 1090.0
+      },
+      "samples": [
+        {
+          "omega_b": 0.022
+        }
+      ],
+      "tt_power": [
+        {
+          "Dl_TT": 1002.0,
+          "ell": 2
+        },
+        {
+          "Dl_TT": 1003.0,
+          "ell": 3
+        },
+        {
+          "Dl_TT": 1004.0,
+          "ell": 4
+        },
+        {
+          "Dl_TT": 1005.0,
+          "ell": 5
+        },
+        {
+          "Dl_TT": 1006.0,
+          "ell": 6
+        },
+        {
+          "Dl_TT": 1007.0,
+          "ell": 7
+        },
+        {
+          "Dl_TT": 1008.0,
+          "ell": 8
+        },
+        {
+          "Dl_TT": 1009.0,
+          "ell": 9
+        }
+      ]
+    },
+    "tep_zero_limit": {
+      "derived": {
+        "rs_rec": 144.4,
+        "theta_s_100": 1.04371855,
+        "z_rec": 1090.0
+      },
+      "samples": [
+        {
+          "omega_b": 0.022
+        }
+      ],
+      "tt_power": [
+        {
+          "Dl_TT": 1002.0,
+          "ell": 2
+        },
+        {
+          "Dl_TT": 1003.0,
+          "ell": 3
+        },
+        {
+          "Dl_TT": 1004.0,
+          "ell": 4
+        },
+        {
+          "Dl_TT": 1005.0,
+          "ell": 5
+        },
+        {
+          "Dl_TT": 1006.0,
+          "ell": 6
+        },
+        {
+          "Dl_TT": 1007.0,
+          "ell": 7
+        },
+        {
+          "Dl_TT": 1008.0,
+          "ell": 8
+        },
+        {
+          "Dl_TT": 1009.0,
+          "ell": 9
+        }
+      ]
+    }
+  },
+  "description": "CLASS-backed CMB resolver with strict TEP parameter detection",
+  "parameters": {
+    "H0_mixed_mle": 70.0,
+    "Om0_mixed_mle": 1.0,
+    "Sigma_0_mixed_mle": 0.0,
+    "epsilon_T_mixed_mle": 0.256514,
+    "lmax": 2500
+  },
+  "status": "completed",
+  "step": "step_05_03_cmb_boltzmann",
+  "tier": "Resolver",
+  "validation": {
+    "blockers": [],
+    "claim_gate": "open",
+    "research_grade_cmb": true
+  }
+}

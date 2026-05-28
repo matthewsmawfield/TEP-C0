@@ -1,15 +1,15 @@
 ---
-description: Prepare TEP-WB project for new publication release
+description: Prepare TEP-C0 project for new publication release
 ---
 
 # Prepare Publication Workflow
 
-Comprehensive workflow to prepare the TEP-WB project for a new publication release. This ensures version consistency, date synchronization, abstract alignment, PDF generation, and final verification across the entire codebase.
+Comprehensive workflow to prepare the TEP-C0 project for a new publication release. This ensures version consistency, date synchronization, abstract alignment, PDF generation, and final verification across the entire codebase.
 
 ## Critical Date Rules
 
-- **First Published Date**: **NEVER CHANGES** - 19 March 2026 for TEP-WB (found in site/index.html)
-- **Citation/Publication Dates**: Use first published date (2026-03-19)
+- **First Published Date**: **NEVER CHANGES** - 25 May 2026 for TEP-C0 (found in site/index.html)
+- **Citation/Publication Dates**: Use first published date (2026-05-25)
 - **Last Updated Date**: Always set to TODAY when publishing
 - **Modified Time Meta**: Use today's date in ISO format (e.g., {TODAY_ISO})
 
@@ -18,7 +18,7 @@ Comprehensive workflow to prepare the TEP-WB project for a new publication relea
 First, extract the authoritative version, codename, dates, and abstract from `site/index.html`:
 
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 
 # Extract version and codename
 echo "=== VERSION INFO ==="
@@ -34,9 +34,9 @@ grep -E "article:published_time|citation_date|citation_publication_date" site/in
 ```
 
 **Record these values:**
-- Current Version: __________ (e.g., v0.5)
-- Codename: __________ (e.g., Tortola)
-- First Published: __________ (e.g., 19 December 2025 / 2026-03-19)
+- Current Version: __________ (e.g., v0.1)
+- Codename: __________ (e.g., Athens)
+- First Published: __________ (e.g., 25 May 2026 / 2026-05-25)
 - Today's Date: __________ (e.g., {TODAY} / {TODAY_ISO})
 
 ## Phase 2: Update Version.txt with Git Changes
@@ -77,7 +77,7 @@ Update the following files with consistent version and codename:
 {
   "version": "X.Y",
   "codename": "Codename",
-  "description": "White Dwarf Cooling and the Temporal Equivalence Principle"
+  "description": "Paper C0: Temporal Cosmology: Cosmic Redshift as Emergent Proper-Time Transport"
 }
 ```
 
@@ -86,21 +86,21 @@ Already updated in Phase 2. Verify it shows `vX.Y (Codename)`.
 
 ### 3.3 README.md
 - Line 9: Version badge → `vX.Y (Codename)`
-- Line 10: Date → `First published: 19 March 2026 · Last updated: DD MMMM YYYY`
+- Line 10: Date → `First published: 25 May 2026 · Last updated: DD MMMM YYYY`
 - Line 151: BibTeX note → `Preprint vX.Y (Codename)`
 
 ### 3.4 site/index.html
 Multiple locations to update:
-- Line ~53: PDF alternate link → `/public/docs/13-TEP-WB-vX.Y-Codename.pdf`
-- Line ~57: PDF href → `/public/docs/13-TEP-WB-vX.Y-Codename.pdf`
-- Line ~86: `article:published_time` → Keep as `2026-03-19T00:00:00Z` (first published)
+- Line ~53: PDF alternate link → `/public/docs/14-TEP-C0-vX.Y-Codename.pdf`
+- Line ~57: PDF href → `/public/docs/14-TEP-C0-vX.Y-Codename.pdf`
+- Line ~86: `article:published_time` → Keep as `2026-05-25T00:00:00Z` (first published)
 - Line ~89: `article:modified_time` → Update to today `{TODAY_ISO}T00:00:00Z`
 - Line ~90: `og:updated_time` → Update to today
-- Line ~138: `citation_date` → Keep as `2026-03-19` (first published)
-- Line ~147: `citation_publication_date` → Keep as `2026/03/19` (first published)
-- Line ~151: `citation_pdf_url` → `/public/docs/13-TEP-WB-vX.Y-Codename.pdf`
+- Line ~138: `citation_date` → Keep as `2026-05-25` (first published)
+- Line ~147: `citation_publication_date` → Keep as `2026/05/25` (first published)
+- Line ~151: `citation_pdf_url` → `/public/docs/14-TEP-C0-vX.Y-Codename.pdf`
 - Line ~947: Header version → `Version: vX.Y (Codename)`
-- Line ~949: Dates → `First published: 19 March 2026 · Last updated: DD MMMM YYYY`
+- Line ~949: Dates → `First published: 25 May 2026 · Last updated: DD MMMM YYYY`
 
 ### 3.5 site/manifest.json
 - Line 5: version → `vX.Y (Codename)`
@@ -112,7 +112,7 @@ Multiple locations to update:
 
 ### 3.7 site/CITATION.cff
 - Line 12: version → `vX.Y (Codename)`
-- Line 13: date-released → Keep as `2025-12-19` (first published)
+- Line 13: date-released → Keep as `2026-05-25` (first published)
 - Line 29: preferred-citation title → `(Codename vX.Y)`
 
 ### 3.8 site/citation.json
@@ -130,13 +130,13 @@ Multiple locations to update:
 ## Phase 3.11: Check/Cleanup Old PDF Versions
 
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 
 echo "=== Checking for old PDF versions ==="
 ls -la *.pdf 2>/dev/null || echo "No PDFs in root"
 ls -la site/public/docs/*.pdf 2>/dev/null || echo "No PDFs in site/public/docs"
 
-# Note: PDF naming uses dash: 13-TEP-WB-v0.5-Tortola.pdf
+# Note: PDF naming uses dash: 14-TEP-C0-v0.1-Athens.pdf
 # If version changed, remove old versions to avoid confusion
 ```
 
@@ -237,7 +237,7 @@ Copy the text between `<p>` and `</p>` (excluding keywords line).
   - Website: https://mlsmawfield.com/tep/jwst
   - Code: https://github.com/matthewsmawfield/TEP-JWST
   - Keywords: Cosmology: early universe – Galaxies: high-redshift – etc.
-- For TEP-WB: website is `https://mlsmawfield.com/tep/wb`, code is `https://github.com/matthewsmawfield/TEP-WB`
+- For TEP-C0: website is `https://mlsmawfield.com/tep/c0`, code is `https://github.com/matthewsmawfield/TEP-C0`
 - Keywords should match those in CITATION.cff and index.html meta tags
 
 **site/CITATION.cff** (Line 9-10):
@@ -270,19 +270,19 @@ python scripts/generate_site_pdf.py --quality maximum --wait-time 5
 
 ### 6.1 Check PDF Locations
 ```bash
-ls -lh "13-TEP-WB-vX.Y-Codename.pdf"
-ls -lh site/public/docs/"13-TEP-WB-vX.Y-Codename.pdf"
+ls -lh "14-TEP-C0-vX.Y-Codename.pdf"
+ls -lh site/public/docs/"14-TEP-C0-vX.Y-Codename.pdf"
 ```
 
 ### 6.2 Verify PDF Metadata
 ```bash
-exiftool -Title -Author -Creator -Subject -Keywords "13-TEP-WB-vX.Y-Codename.pdf"
+exiftool -Title -Author -Creator -Subject -Keywords "14-TEP-C0-vX.Y-Codename.pdf"
 ```
 
 **Expected metadata:**
-- Title: "White Dwarf Cooling and the Temporal Equivalence Principle"
+- Title: "Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion"
 - Author: "Matthew Lukin Smawfield"
-- Keywords should include: physics, cosmology, gravitational lensing, dark matter, TEP-WB
+- Keywords should include: physics, cosmology, supernovae, CMB, BBN, Bayesian inference, TEP-C0
 
 ### 6.3 Verify PDF Links
 Ensure the PDF URL in these locations points to `site/public/docs/`:
@@ -294,12 +294,12 @@ Ensure the PDF URL in these locations points to `site/public/docs/`:
 ### 7.1 Version String Scan
 ```bash
 # Search for any remaining old version strings
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 echo "=== Checking for inconsistent version strings ==="
 grep -r "v0\.[0-9]" --include="*.html" --include="*.md" --include="*.json" --include="*.txt" --include="*.bib" --include="*.cff" . 2>/dev/null | grep -v ".git" | grep -v node_modules | grep -v "vX.Y"
 
 # Check for PDF filename patterns
-grep -r "13-TEP-WB-v" --include="*.html" --include="*.md" . 2>/dev/null | grep -v ".git"
+grep -r "14-TEP-C0-v" --include="*.html" --include="*.md" . 2>/dev/null | grep -v ".git"
 
 # Check citation file versions specifically
 echo ""
@@ -316,8 +316,8 @@ grep '"version":' site/manifest.json
 
 ### 7.2 Date Consistency Check
 ```bash
-echo "=== First Published Dates (should all be Dec 2025) ==="
-grep -r "2025-12-19\|19 December 2025" --include="*.html" --include="*.json" --include="*.md" --include="*.txt" . 2>/dev/null | grep -v ".git"
+echo "=== First Published Dates (should all be May 2026) ==="
+grep -r "2026-05-25\|25 May 2026" --include="*.html" --include="*.json" --include="*.md" --include="*.txt" . 2>/dev/null | grep -v ".git"
 
 echo "=== Last Updated Dates (should be TODAY) ==="
 grep -r "{TODAY}\|{TODAY_ISO}" --include="*.html" --include="*.json" --include="*.md" . 2>/dev/null | grep -v ".git"
@@ -349,9 +349,9 @@ grep -E "^Keywords:" zenodo.txt
 echo "Open Science Statement:"
 grep -E "^Open Science Statement:" zenodo.txt
 echo ""
-echo "Expected for TEP-WB:"
-echo "  Website: https://mlsmawfield.com/tep/wb"
-echo "  Code Availability: https://github.com/matthewsmawfield/TEP-WB"
+echo "Expected for TEP-C0:"
+echo "  Website: https://mlsmawfield.com/tep/c0"
+echo "  Code Availability: https://github.com/matthewsmawfield/TEP-C0"
 echo "  Open Science Statement: Present"
 ```
 
@@ -394,7 +394,7 @@ echo "WARNING: If any titles don't match exactly, update them to match index.htm
 
 // turbo
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 
 echo "========================================"
 echo "SUGGESTED COMMIT MESSAGE"
@@ -426,8 +426,8 @@ echo "========================================"
 - [ ] `site/codemeta.json` - version, dateModified correct
 
 ### Dates
-- [ ] First published date: 19 December 2025 (unchanged everywhere)
-- [ ] Citation dates use first published date (2026-03-19/19)
+- [ ] First published date: 25 May 2026 (unchanged everywhere)
+- [ ] Citation dates use first published date (2026-05-25/25)
 - [ ] Last updated date: TODAY reflected in all locations
 - [ ] Modified meta tags: TODAY in ISO format
 
@@ -450,14 +450,14 @@ echo "========================================"
 - [ ] `site/index.html` - meta descriptions match
 
 ### PDF
-- [ ] PDF generated at root: `13-TEP-WB-vX.Y-Codename.pdf`
-- [ ] PDF copied to site: `site/public/docs/13-TEP-WB-vX.Y-Codename.pdf`
+- [ ] PDF generated at root: `14-TEP-C0-vX.Y-Codename.pdf`
+- [ ] PDF copied to site: `site/public/docs/14-TEP-C0-vX.Y-Codename.pdf`
 - [ ] Old PDF versions removed from root and site/public/docs/
 - [ ] PDF metadata embedded (Title, Author, Keywords, DOI)
 - [ ] PDF URL references point to `/public/docs/` path
 
 ### Citations & Metadata
-- [ ] All citation files have correct DOI: 10.5281/zenodo.17982540
+- [ ] All citation files have correct DOI: 10.5281/zenodo.20370144
 - [ ] All citation files have correct author: Matthew Lukin Smawfield
 - [ ] All citation files have correct title
 - [ ] Keywords consistent across CITATION.cff, codemeta.json, index.html
@@ -487,9 +487,9 @@ echo "========================================"
 
 ### Generated/Distribution
 - `site/dist/index.html` (rebuild via `node build.js`)
-- `13-TEP-WB-vX.Y-Codename.pdf` (root)
-- `site/public/docs/13-TEP-WB-vX.Y-Codename.pdf`
-- `13-TEP-WB-vX.Y-Codename.md` (auto-generated from site - will be rebuilt)
+- `14-TEP-C0-vX.Y-Codename.pdf` (root)
+- `site/public/docs/14-TEP-C0-vX.Y-Codename.pdf`
+- `14-TEP-C0-vX.Y-Codename.md` (auto-generated from site - will be rebuilt)
 
 ## Common Issues & Fixes
 
@@ -510,7 +510,7 @@ The title in `site/index.html` (inside `<title>` tags) is the source of truth. U
 
 ```bash
 # Extract the canonical title from index.html
-TITLE="White Dwarf Cooling and the Temporal Equivalence Principle"
+TITLE="Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion"
 
 # Update files (example)
 sed -i '' "s/^title: \".*\"/title: \"$TITLE\"/" site/CITATION.cff
@@ -524,14 +524,14 @@ sed -i '' "s/\"name\": \".*\"/\"name\": \"$TITLE\"/" site/codemeta.json
 The zenodo.txt must include the full template with Website, Code Availability, Keywords, and Open Science Statement:
 
 ```bash
-# Example zenodo.txt for TEP-WB:
+# Example zenodo.txt for TEP-C0:
 cat > zenodo.txt << 'EOF'
 {Abstract text here...}
 
-Website: https://mlsmawfield.com/tep/wb
-Code Availability: https://github.com/matthewsmawfield/TEP-WB
+Website: https://mlsmawfield.com/tep/c0
+Code Availability: https://github.com/matthewsmawfield/TEP-C0
 
-Keywords: gravitational lensing – dark matter – modified gravity – cosmology: theory – galaxies: kinematics and dynamics – temporal equivalence principle
+Keywords: temporal equivalence principle – cosmology – dark energy – supernovae – Bayesian inference – modified gravity – temporal shear
 
 Open Science Statement: This work is a preprint and is open to community review, ideas, and collaboration. All materials required for full reproducibility—including data downloads, analysis scripts, code, and manuscripts—are open-source. Feedback and contributions to further test these results are welcome.
 EOF
@@ -558,8 +558,8 @@ Remove old PDF versions after generating new one:
 ls -la *.pdf site/public/docs/*.pdf
 
 # Remove old versions (keep only current)
-rm "13-TEP-WB-v0.4-Tortola.pdf" 2>/dev/null
-rm "site/public/docs/13-TEP-WB-v0.4-Tortola.pdf" 2>/dev/null
+rm "14-TEP-C0-v0.1-Athens.pdf" 2>/dev/null
+rm "site/public/docs/14-TEP-C0-v0.1-Athens.pdf" 2>/dev/null
 ```
 
 ### PDF Not Found After Generation
@@ -569,7 +569,7 @@ rm "site/public/docs/13-TEP-WB-v0.4-Tortola.pdf" 2>/dev/null
 - Verify PDF filename uses dash: `vX.Y-Codename.pdf`
 
 ### Date Confusion
-Remember: **Citation dates = First published (Dec 2025)** | **Last updated = Today**
+Remember: **Citation dates = First published (May 2026)** | **Last updated = Today**
 
 ## Post-Publication Steps
 
@@ -587,7 +587,7 @@ After running this workflow and committing:
    - Verify metadata matches CITATION.cff
 
 3. Verify live site:
-   - Check https://matthewsmawfield.github.io/TEP-WB/
+   - Check https://matthewsmawfield.github.io/TEP-C0/
    - Verify version string in header
    - Verify PDF download works
    - Verify meta tags in page source

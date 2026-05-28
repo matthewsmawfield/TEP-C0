@@ -1,0 +1,129 @@
+{
+  "chi2_lcdm": 10.6,
+  "chi2_per_dof_lcdm": 0.964,
+  "chi2_per_dof_tep": 0.964,
+  "chi2_tep": 10.6,
+  "delta_chi2": 0.0,
+  "description": "RSD growth test with TEP-CLASS computations",
+  "n_data": 11,
+  "ndof": 11,
+  "results": [
+    {
+      "fsigma8_err": 0.055,
+      "fsigma8_lcdm": 0.4474,
+      "fsigma8_obs": 0.423,
+      "fsigma8_tep": 0.4474,
+      "survey": "6dFGRS",
+      "z": 0.067
+    },
+    {
+      "fsigma8_err": 0.07,
+      "fsigma8_lcdm": 0.4736,
+      "fsigma8_obs": 0.42,
+      "fsigma8_tep": 0.4736,
+      "survey": "WiggleZ",
+      "z": 0.22
+    },
+    {
+      "fsigma8_err": 0.045,
+      "fsigma8_lcdm": 0.4846,
+      "fsigma8_obs": 0.497,
+      "fsigma8_tep": 0.4846,
+      "survey": "BOSS-DR12",
+      "z": 0.38
+    },
+    {
+      "fsigma8_err": 0.04,
+      "fsigma8_lcdm": 0.4851,
+      "fsigma8_obs": 0.45,
+      "fsigma8_tep": 0.4851,
+      "survey": "WiggleZ",
+      "z": 0.41
+    },
+    {
+      "fsigma8_err": 0.038,
+      "fsigma8_lcdm": 0.4842,
+      "fsigma8_obs": 0.458,
+      "fsigma8_tep": 0.4842,
+      "survey": "BOSS-DR12",
+      "z": 0.51
+    },
+    {
+      "fsigma8_err": 0.04,
+      "fsigma8_lcdm": 0.4804,
+      "fsigma8_obs": 0.43,
+      "fsigma8_tep": 0.4804,
+      "survey": "WiggleZ",
+      "z": 0.6
+    },
+    {
+      "fsigma8_err": 0.034,
+      "fsigma8_lcdm": 0.4798,
+      "fsigma8_obs": 0.436,
+      "fsigma8_tep": 0.4798,
+      "survey": "BOSS-DR12",
+      "z": 0.61
+    },
+    {
+      "fsigma8_err": 0.04,
+      "fsigma8_lcdm": 0.4669,
+      "fsigma8_obs": 0.38,
+      "fsigma8_tep": 0.4669,
+      "survey": "WiggleZ",
+      "z": 0.78
+    },
+    {
+      "fsigma8_err": 0.047,
+      "fsigma8_lcdm": 0.4602,
+      "fsigma8_obs": 0.459,
+      "fsigma8_tep": 0.4602,
+      "survey": "eBOSS-DR16",
+      "z": 0.85
+    },
+    {
+      "fsigma8_err": 0.116,
+      "fsigma8_lcdm": 0.3987,
+      "fsigma8_obs": 0.482,
+      "fsigma8_tep": 0.3987,
+      "survey": "FastSound",
+      "z": 1.4
+    },
+    {
+      "fsigma8_err": 0.081,
+      "fsigma8_lcdm": 0.3897,
+      "fsigma8_obs": 0.397,
+      "fsigma8_tep": 0.3897,
+      "survey": "eBOSS-DR16",
+      "z": 1.48
+    }
+  ],
+  "statistical_assessment": {
+    "critical_delta_chi2": 6.0,
+    "lcdm_preferred": null,
+    "significance": "marginal",
+    "tep_preferred": null
+  },
+  "status": "completed",
+  "step": "step_06_05_growth_rsd",
+  "tep_parameters": {
+    "Om0_dist": 1.0,
+    "Om0_growth": 0.3,
+    "epsilon_T_dist": 0.256514,
+    "epsilon_T_growth": 0.0
+  },
+  "theoretical_challenges": {
+    "growth_independent": "\u03b5_T_growth=0 (baseline LCDM) allows independent determination from growth data",
+    "sne_distance_bias": "\u03b5_T_dist compensates for Isochrony violation in SNe/Cepheid distances",
+    "tension_description": "Probe-dependent framework: growth fit independent from distance bias",
+    "tension_identified": false
+  },
+  "validation": {
+    "class_used": true,
+    "n_data_points": 11,
+    "redshift_range": [
+      0.067,
+      1.48
+    ],
+    "research_grade": true
+  }
+}

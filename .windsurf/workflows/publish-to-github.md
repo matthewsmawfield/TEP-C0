@@ -16,7 +16,7 @@ Automated workflow to commit all changes, push to master branch, and create a ve
 ## Phase 1: Verify Ready to Publish
 
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 
 echo "=== Checking repository status ==="
 echo "Current branch:"
@@ -40,9 +40,9 @@ tail -n +2 version.txt
 ## Phase 2: Extract Version and Commit Message
 
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 
-# Extract version tag from version.txt (e.g., "v0.5 (Tortola)" -> "v0.5")
+# Extract version tag from version.txt (e.g., "v0.1 (Athens)" -> "v0.1")
 VERSION_TAG=$(head -1 version.txt | grep -oE '^v[0-9]+\.[0-9]+' || echo "")
 
 # Full commit message from version.txt
@@ -58,7 +58,7 @@ cat "$COMMIT_MSG_FILE"
 
 // turbo
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 
 echo "=== Staging all changes ==="
 git add -A
@@ -71,7 +71,7 @@ git diff --cached --stat
 
 // turbo
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 
 # Commit using version.txt as the message
 git commit -F version.txt
@@ -84,7 +84,7 @@ git log -1 --oneline
 
 // turbo
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 
 echo "=== Pushing to origin master ==="
 git push origin master
@@ -96,9 +96,9 @@ echo "Push complete."
 
 // turbo
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 
-# Extract version tag (e.g., "v0.5")
+# Extract version tag (e.g., "v0.1")
 VERSION_TAG=$(head -1 version.txt | grep -oE '^v[0-9]+\.[0-9]+')
 CODENAME=$(head -1 version.txt | grep -oE '\([^)]+\)' | tr -d '()' || echo "Release")
 
@@ -113,20 +113,20 @@ git tag -l -n1 "$VERSION_TAG"
 
 // turbo
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 
 echo "=== Pushing tag to origin ==="
 git push origin "$VERSION_TAG"
 
 echo ""
 echo "Tag push complete!"
-echo "GitHub release URL: https://github.com/matthewsmawfield/TEP-WB/releases/tag/$VERSION_TAG"
+echo "GitHub release URL: https://github.com/matthewsmawfield/TEP-C0/releases/tag/$VERSION_TAG"
 ```
 
 ## Phase 8: Verify Publication
 
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB"
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0"
 
 echo "=== Verification ==="
 echo "Latest commit:"
@@ -147,7 +147,7 @@ echo "========================================"
 echo "Version: $(head -1 version.txt)"
 echo "Commit: $(git rev-parse --short HEAD)"
 echo "Tag: $(git describe --tags --exact-match 2>/dev/null || echo 'N/A')"
-echo "GitHub: https://github.com/matthewsmawfield/TEP-WB"
+echo "GitHub: https://github.com/matthewsmawfield/TEP-C0"
 echo "========================================"
 ```
 
@@ -157,7 +157,7 @@ For subsequent releases after initial setup:
 
 // turbo
 ```bash
-cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-WB" && \
+cd "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0" && \
 VERSION_TAG=$(head -1 version.txt | grep -oE '^v[0-9]+\.[0-9]+') && \
 git add -A && \
 git commit -F version.txt && \
@@ -219,8 +219,8 @@ head -5 version.txt
 
 After successful push:
 
-- [ ] GitHub shows latest commit at https://github.com/matthewsmawfield/TEP-WB
-- [ ] Tag appears in releases: https://github.com/matthewsmawfield/TEP-WB/releases
+- [ ] GitHub shows latest commit at https://github.com/matthewsmawfield/TEP-C0
+- [ ] Tag appears in releases: https://github.com/matthewsmawfield/TEP-C0/releases
 - [ ] Tag message matches version.txt first line
 - [ ] PDF is downloadable from GitHub release assets (if manually uploaded)
 - [ ] Website reflects new version (if auto-deployed via GitHub Pages)
@@ -229,17 +229,17 @@ After successful push:
 
 After pushing the tag, create rich release notes on GitHub:
 
-1. Go to https://github.com/matthewsmawfield/TEP-WB/releases
+1. Go to https://github.com/matthewsmawfield/TEP-C0/releases
 2. Click "Draft a new release"
 3. Select the tag created by this workflow
 4. Add release title: `vX.Y (Codename)`
 5. Copy changelog from `version.txt` (0-6 high-level bullets, latest changes only)
-6. Attach PDF: `13-TEP-WB-vX.Y-Codename.pdf`
+6. Attach PDF: `14-TEP-C0-vX.Y-Codename.pdf`
 7. Mark as pre-release if applicable
 8. Publish release
 
 ## Files Referenced
 
 - `version.txt` - Source of commit message and version tag
-- GitHub repository: https://github.com/matthewsmawfield/TEP-WB
+- GitHub repository: https://github.com/matthewsmawfield/TEP-C0
 - Default branch: master

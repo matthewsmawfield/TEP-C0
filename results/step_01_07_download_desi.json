@@ -1,0 +1,62 @@
+{
+  "data_sources": {
+    "desi": 2,
+    "eboss_lya": 1,
+    "eboss_qso_lya": 1
+  },
+  "ddr_constraints": [
+    {
+      "D_A": 1760.1189189189188,
+      "D_A_err": 46.54054054054053,
+      "D_L": null,
+      "D_L_err": null,
+      "arxiv": "TBD",
+      "reference": "DESI Collaboration 2024 (preliminary)",
+      "source": "DESI-DR1 Lyman-\u03b1 BAO",
+      "survey": "DESI-DR1",
+      "type": "Lyman-alpha",
+      "z": 2.33
+    },
+    {
+      "D_A": 1758.0071985602879,
+      "D_A_err": 46.48470305938812,
+      "D_L": null,
+      "D_L_err": null,
+      "arxiv": "2004.01198",
+      "reference": "du Mas des Bourboux et al. 2020",
+      "source": "eBOSS Lyman-\u03b1 BAO",
+      "survey": "eBOSS",
+      "type": "Lyman-alpha",
+      "z": 2.334
+    },
+    {
+      "D_A": 1739.1627906976744,
+      "D_A_err": 96.11162790697674,
+      "D_L": null,
+      "D_L_err": null,
+      "arxiv": "1812.02891",
+      "reference": "Blomqvist et al. 2019",
+      "source": "eBOSS Lyman-\u03b1 BAO",
+      "survey": "eBOSS",
+      "type": "QSO-Lya cross",
+      "z": 2.225
+    }
+  ],
+  "description": "DESI/eBOSS Lyman-\u03b1 BAO for high-z DDR test",
+  "highz_test": {
+    "n_constraints": 3,
+    "purpose": "Test TEP screening model prediction",
+    "tep_prediction_eta": "should approach unity at high z",
+    "z_range": [
+      2.0,
+      2.5
+    ]
+  },
+  "paired_constraints": [],
+  "status": "completed",
+  "step": "step_01_07_download_desi",
+  "validation": {
+    "real_data": true,
+    "sufficient_for_highz_test": true
+  }
+}

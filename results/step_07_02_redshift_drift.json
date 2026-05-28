@@ -1,0 +1,37 @@
+{
+  "description": "Redshift drift forecast",
+  "interpretation": "TEP predicts z_drift(z=2) = 2e-12 yr^-1; relative difference to LCDM is reported where the LCDM denominator is non-zero.",
+  "key_finding": "Redshift drift predictions differ from LCDM, testable with next-generation cosmic chronometers",
+  "lcdm_comparison": {
+    "difference_at_z2_percent": 0.0
+  },
+  "model_parameters": {
+    "H0_lcdm": 70.0,
+    "H0_tep": 70.0,
+    "Ok0": 0.0,
+    "Sigma_0": 0.0
+  },
+  "redshift_drift_predictions": {
+    "units": "yr^-1",
+    "z_drift_z0": 0.0,
+    "z_drift_z2": 2e-12
+  },
+  "step": "step_07_02_redshift_drift",
+  "testability": {
+    "current_precision": 1e-09,
+    "future_discriminator": true,
+    "testable_now": false
+  },
+  "validation": {
+    "blockers": [],
+    "claim_gate": "open",
+    "forecast_only": true,
+    "notes": [
+      "This is a falsifiable prediction for future cosmic chronometer measurements.",
+      "Current cosmic chronometer precision (~1e-9 yr^-1) insufficient to test TEP predictions.",
+      "Next-generation instruments (e.g., ELT CODEX) may reach required sensitivity."
+    ],
+    "research_grade_redshift_drift": false,
+    "tier": "Forecast"
+  }
+}

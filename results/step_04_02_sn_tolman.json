@@ -1,0 +1,16 @@
+{
+  "artifacts": {
+    "csv": "results/step_04_02_sn_tolman.csv",
+    "figure": "results/figures/step_04_02_sn_tolman.png"
+  },
+  "description": "Tolman surface-brightness decomposition evaluated over the real Pantheon+ redshift distribution.",
+  "interpretation": "The Tolman consistency check is now grounded in the real observational distribution of supernovae.",
+  "metrics": {
+    "angular_area_term_status": "integrable-limit geometry; not derived by clock cadence alone",
+    "clock_sector_factors_recovered": true,
+    "sn_object_count": 1590,
+    "sn_time_dilation_factor_at_z1": 2.0,
+    "tolman_factor_at_z1": 0.0625
+  },
+  "step": "step_04_02_sn_tolman"
+}

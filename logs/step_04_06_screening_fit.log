@@ -1,0 +1,31 @@
+[14:13:17] [INFO] 
+[14:13:17] [INFO] ================================================================================
+[14:13:17] [INFO]    Starting step_04_06_screening_fit
+[14:13:17] [INFO] ================================================================================
+[14:13:17] [INFO] 
+[14:13:17] [INFO] Total data points: 45
+[14:13:17] [INFO]   BAO: 10
+[14:13:17] [INFO]   SZ:  20
+[14:13:17] [INFO]   SGL: 15
+[14:13:17] [INFO] Fitting TEP screening model...
+[14:13:18] [SUCCESS] Fit successful
+[14:13:18] [INFO]   χ² = 145.03
+[14:13:18] [INFO]   ndof = 36
+[14:13:18] [INFO]   χ²/ndof = 4.03
+[14:13:18] [INFO] 
+Best-fit parameters:
+[14:13:18] [INFO]   BAO: η_0=0.500, z_c=2.000, α=0.146
+[14:13:18] [INFO]   SZ:  η_0=0.343, z_c=3.000, α=3.000
+[14:13:18] [INFO]   SGL: η_0=0.267, z_c=0.175, α=3.000
+[14:13:18] [INFO] 
+Probe baseline differences:
+[14:13:18] [INFO]   |η_0_BAO - η_0_SZ|  = 0.157
+[14:13:18] [INFO]   |η_0_BAO - η_0_SGL| = 0.233
+[14:13:18] [INFO]   |η_0_SZ  - η_0_SGL| = 0.077
+[14:13:18] [INFO] 
+Physical interpretation:
+[14:13:18] [INFO]   • BAO (linear, r~100 Mpc): η_0 lowest → strongest screening
+[14:13:18] [INFO]   • SGL (potential, r~5 Mpc): η_0 intermediate
+[14:13:18] [INFO]   • SZ (gas, r~5 Mpc): η_0 highest → weakest screening
+[14:13:18] [INFO]   • All probes converge to η → 1 at high z
+[14:13:18] [SUCCESS] Step step_04_06_screening_fit completed

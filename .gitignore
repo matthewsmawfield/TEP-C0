@@ -39,28 +39,6 @@ env/
 .ipynb_checkpoints
 *.ipynb
 
-# Data (keep structure, ignore contents)
-# Note: Raw data should be downloaded, not committed
-# data/raw/*
-# !data/raw/.gitkeep
-data/processed/*
-!data/processed/.gitkeep
-data/interim/*
-!data/interim/.gitkeep
-
-# Results (keep structure, ignore contents)
-results/figures/*
-!results/figures/.gitkeep
-results/tables/*
-!results/tables/.gitkeep
-results/outputs/*.csv
-results/outputs/*.fits
-results/outputs/*.hdf5
-
-# Logs
-logs/*.log
-logs/*.txt
-
 # Temporary files
 *.tmp
 *.bak
@@ -73,7 +51,6 @@ htmlcov/
 
 # Documentation builds
 docs/_build/
-site/
 
 # Large binary files
 *.fits

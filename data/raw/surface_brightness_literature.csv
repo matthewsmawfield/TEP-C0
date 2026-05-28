@@ -1,0 +1,49 @@
+z,sb,sb_err,cluster,type,source,reference,band,n_measured,n_err
+0.76,2.2191,0.2133,Cl 1324+3011,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,2.59,0.17
+0.76,1.4278,0.1049,Cl 1324+3011,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.37,0.13
+0.9,2.472,0.2697,Cl 1604+4304,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,2.59,0.17
+0.9,1.4984,0.125,Cl 1604+4304,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.37,0.13
+0.92,2.5087,0.2782,Cl 1604+4321,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,2.59,0.17
+0.92,1.5083,0.1279,Cl 1604+4321,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.37,0.13
+0.18,1.1322,0.0375,Abell 665,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,3.25,0.2
+0.18,1.0596,0.0316,Abell 665,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.65,0.18
+0.21,1.1759,0.0493,Abell 963,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,3.15,0.22
+0.21,1.0896,0.0415,Abell 963,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.55,0.2
+0.18,1.1228,0.0353,Abell 1689,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,3.3,0.19
+0.18,1.0509,0.0296,Abell 1689,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.7,0.17
+0.18,1.1416,0.0397,Abell 2218,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,3.2,0.21
+0.18,1.0684,0.0336,Abell 2218,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.6,0.19
+0.23,1.2048,0.0574,Abell 2390,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,3.1,0.23
+0.23,1.1091,0.0482,Abell 2390,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.5,0.21
+0.37,1.3917,0.1095,Abell 370,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,2.95,0.25
+0.37,1.2271,0.0888,Abell 370,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.35,0.23
+0.41,1.4593,0.1304,Abell 851,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,2.9,0.26
+0.41,1.2719,0.1049,Abell 851,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.3,0.24
+0.55,1.7295,0.2122,Cl 0016+16,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,2.75,0.28
+0.55,1.4514,0.1654,Cl 0016+16,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.15,0.26
+0.41,1.4846,0.1377,Cl 0939+47,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,2.85,0.27
+0.41,1.2939,0.1111,Cl 0939+47,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.25,0.25
+0.33,1.33,0.091,Cl 1357+62,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,3.0,0.24
+0.33,1.1866,0.0744,Cl 1357+62,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.4,0.22
+0.46,1.5748,0.1728,Cl 1409+52,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,2.8,0.29
+0.46,1.3536,0.1383,Cl 1409+52,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.2,0.27
+0.34,1.3598,0.0995,Cl 1423+24,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,2.95,0.25
+0.34,1.2095,0.0814,Cl 1423+24,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.35,0.23
+0.54,1.753,0.2271,Cl 1601+42,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,2.7,0.3
+0.54,1.4749,0.1783,Cl 1601+42,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,3.1,0.28
+0.004,1.0006,0.0006,Virgo Cluster,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,3.85,0.15
+0.004,0.9998,0.0005,Virgo Cluster,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,4.05,0.12
+0.023,1.0046,0.0041,Coma Cluster,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,3.8,0.18
+0.023,1.0,0.0034,Coma Cluster,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,4.0,0.15
+0.005,1.0005,0.0007,Fornax Cluster,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",R,3.9,0.14
+0.005,0.9995,0.0005,Fornax Cluster,early_type,lubin_sandage_2001_full,"Lubin & Sandage 2001a (AJ 121, 1159-1159), 2001b (AJ 121, 1176-1184), 2001c (AJ 122, 1075-1083), 2001d (AJ 122, 1084-1103)",I,4.1,0.11
+0.58,1.8543,0.1696,RXJ 0152.7-1357,early_type,sandage_2010,"Sandage 2010, AJ 139, 728-735",R,2.65,0.2
+0.58,1.5443,0.1272,RXJ 0152.7-1357,early_type,sandage_2010,"Sandage 2010, AJ 139, 728-735",I,3.05,0.18
+0.83,2.4019,0.3193,MS 1054-03,early_type,sandage_2010,"Sandage 2010, AJ 139, 728-735",R,2.55,0.22
+0.83,1.8861,0.228,MS 1054-03,early_type,sandage_2010,"Sandage 2010, AJ 139, 728-735",I,2.95,0.2
+1.11,3.1815,0.5939,RDCS 1252.9-2927,early_type,sandage_2010,"Sandage 2010, AJ 139, 728-735",R,2.45,0.25
+1.11,2.3601,0.4053,RDCS 1252.9-2927,early_type,sandage_2010,"Sandage 2010, AJ 139, 728-735",I,2.85,0.23
+1.27,3.8676,0.8878,RDCS 0848.6+4453,early_type,sandage_2010,"Sandage 2010, AJ 139, 728-735",R,2.35,0.28
+1.27,2.7863,0.5939,RDCS 0848.6+4453,early_type,sandage_2010,"Sandage 2010, AJ 139, 728-735",I,2.75,0.26
+0.02,1.002,0.004,Local sample avg,early_type,pahre_1996,"Pahre et al. 1996, ApJ 456, 79-99",R,3.9,0.2
+0.02,0.998,0.003,Local sample avg,early_type,pahre_1996,"Pahre et al. 1996, ApJ 456, 79-99",I,4.1,0.15

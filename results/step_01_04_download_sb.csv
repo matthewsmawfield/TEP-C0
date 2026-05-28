@@ -1,0 +1,4 @@
+source_id,domain,status,bytes,sha256,raw_path,url,citation,data_type,download_epoch,error
+lubin_sandage_2001_full,surface_brightness,downloaded,2062,5956bfc5b844d6b53472a1cd38c674a3fc9cc4cc568c81619f64831d2e130064,data/raw/lubin_sandage_2001_abstract.html,https://ui.adsabs.harvard.edu/abs/2001AJ....122.1084L,"Lubin & Sandage 2001a,b,c,d, AJ 121-122 (Tolman Test I-IV)",published_literature_data,1779698387,
+sandage_2010,surface_brightness,downloaded,2062,e811d2fb4c539eba9e172430550af29145f356322def3df08283614f80a41a81,data/raw/sandage_2010_abstract.html,https://ui.adsabs.harvard.edu/abs/2010AJ....139..728S,"Sandage 2010, AJ 139, 728",published_literature_data,1779698388,
+pahre_1996,surface_brightness,downloaded,2062,19b2f935578eba38dc796abb765cf3046962a2a6c63bb9162e7775a7e8175308,data/raw/pahre_1996_abstract.html,https://ui.adsabs.harvard.edu/abs/1996ApJ...456...79P,"Pahre et al. 1996, ApJ 456, 79",published_literature_data,1779698389,

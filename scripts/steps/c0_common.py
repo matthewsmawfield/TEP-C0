@@ -28,7 +28,7 @@ PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 C_KM_S = 299_792.458
 
 # Cosmological constants for transport kernel and distance calculations
-# Used by step_001_transport_kernel and related steps
+# Used by step_02_01_transport_kernel and related steps
 H0_KM_S_MPC = 70.0
 OMEGA_M = 0.3
 OMEGA_L = 0.7

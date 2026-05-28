@@ -1,0 +1,9 @@
+{
+  "generated_plots": [
+    "results/figures/hubble_residuals.png",
+    "results/figures/distance_duality.png",
+    "results/figures/mcmc_posteriors.png"
+  ],
+  "status": "completed",
+  "step": "step_08_08_diagnostic_plots"
+}

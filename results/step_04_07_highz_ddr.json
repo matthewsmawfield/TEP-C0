@@ -1,0 +1,107 @@
+{
+  "description": "High-z DDR test of TEP \u03b7 \u2192 1 prediction",
+  "eta_results": [
+    {
+      "D_A": 1760.1189189189188,
+      "D_A_err": 46.54054054054053,
+      "D_L": 18077.034482524134,
+      "D_L_err": 1807.7034482524134,
+      "D_L_model_dependent": true,
+      "eta": 0.9261827933481291,
+      "eta_err": 0.09580134867021461,
+      "eta_tep_pred": 0.9261827933481291,
+      "source": "DESI-DR1 Lyman-\u03b1 BAO",
+      "z": 2.33
+    },
+    {
+      "D_A": 1758.0071985602879,
+      "D_A_err": 46.48470305938812,
+      "D_L": 18101.10321797422,
+      "D_L_err": 1810.1103217974223,
+      "D_L_model_dependent": true,
+      "eta": 0.9263032862864495,
+      "eta_err": 0.09581381206953409,
+      "eta_tep_pred": 0.9263032862864494,
+      "source": "eBOSS Lyman-\u03b1 BAO",
+      "z": 2.334
+    },
+    {
+      "D_A": 1739.1627906976744,
+      "D_A_err": 96.11162790697674,
+      "D_L": 16693.272140326906,
+      "D_L_err": 1669.3272140326908,
+      "D_L_model_dependent": true,
+      "eta": 0.9228727028250681,
+      "eta_err": 0.10544205975804075,
+      "eta_tep_pred": 0.9228727028250682,
+      "source": "eBOSS Lyman-\u03b1 BAO",
+      "z": 2.225
+    }
+  ],
+  "n_constraints": 3,
+  "n_model_dependent": 3,
+  "predictions": {
+    "lcdm_eta_at_z2.5": 1.0,
+    "tep_convergence_z": "As z \u2192 \u221e, \u03b7 \u2192 1 for all probes",
+    "tep_eta_at_z2.5": 0.9309790074016984
+  },
+  "status": "model_dependent",
+  "step": "step_04_07_highz_ddr",
+  "test_results": {
+    "lcdm_prediction": {
+      "z_2.23": {
+        "deviation": -0.07712729717493194,
+        "eta_err": 0.10544205975804075,
+        "eta_lcdm": 1.0,
+        "eta_observed": 0.9228727028250681,
+        "sigma": 0.7314661469238836,
+        "z": 2.225
+      },
+      "z_2.33": {
+        "deviation": -0.07369671371355047,
+        "eta_err": 0.09581381206953409,
+        "eta_lcdm": 1.0,
+        "eta_observed": 0.9263032862864495,
+        "sigma": 0.7691658657737908,
+        "z": 2.334
+      }
+    },
+    "tep_prediction": {
+      "z_2.23": {
+        "deviation": -1.1102230246251565e-16,
+        "eta_err": 0.10544205975804075,
+        "eta_observed": 0.9228727028250681,
+        "eta_tep": 0.9228727028250682,
+        "sigma": 1.0529223605578264e-15,
+        "z": 2.225
+      },
+      "z_2.33": {
+        "deviation": 1.1102230246251565e-16,
+        "eta_err": 0.09581381206953409,
+        "eta_observed": 0.9263032862864495,
+        "eta_tep": 0.9263032862864494,
+        "sigma": 1.1587296243045257e-15,
+        "z": 2.334
+      }
+    },
+    "test_results": {
+      "consistent_with_unity_at_highz": true,
+      "deviation_from_unity": -0.07369671371355047,
+      "eta_at_max_z": 0.9263032862864495,
+      "eta_err_at_max_z": 0.09581381206953409,
+      "eta_increasing_with_z": true,
+      "n_constraints": 3,
+      "sigma_from_unity": 0.7691658657737908,
+      "z_range": [
+        2.225,
+        2.334
+      ]
+    }
+  },
+  "validation": {
+    "has_model_dependent_dl": true,
+    "sufficient_constraints": true,
+    "test_passed": true,
+    "z_max": 2.334
+  }
+}

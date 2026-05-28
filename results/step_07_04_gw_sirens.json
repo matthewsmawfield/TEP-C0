@@ -1,0 +1,41 @@
+{
+  "current_events": {
+    "GW170817": {
+      "D_L_Mpc": 40,
+      "type": "NS-NS",
+      "z": 0.0098
+    },
+    "GW190521": {
+      "D_L_Mpc": 5000,
+      "type": "BH-BH",
+      "z": 0.82
+    }
+  },
+  "future_facilities": [
+    "Einstein Telescope",
+    "Cosmic Explorer",
+    "LISA"
+  ],
+  "planned_tests": {
+    "test_1_h0_tension": {
+      "data_source": "GWTC-3 catalog",
+      "description": "H\u2080 from GW vs CMB",
+      "status": "Plan",
+      "tep_prediction": "GW D_L unbiased, CMB D_A affected by screening"
+    },
+    "test_2_ddr_independent": {
+      "data_source": "GW170817 and future NS-NS",
+      "description": "DDR test with GW+EM pairs",
+      "status": "Plan",
+      "tep_prediction": "\u03b7_GW \u2248 1 (unscreened), \u03b7_EM \u2260 1"
+    },
+    "test_3_high_z_gw": {
+      "data_source": "Einstein Telescope, Cosmic Explorer",
+      "description": "GW at z > 0.5 (future ET/CE)",
+      "status": "Future",
+      "tep_prediction": "Convergence to unity at high z"
+    }
+  },
+  "status": "planning",
+  "step": "step_07_04_gw_sirens"
+}

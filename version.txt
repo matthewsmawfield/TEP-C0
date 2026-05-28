@@ -1,0 +1,7 @@
+v0.1 (Athens) - Initial release of TEP-C0 cosmological pipeline
+
+- TEP-COSMO framework with Temporal Shear reconstruction
+- Pantheon+ supernova cosmology with full covariance
+- CMB physics with TEP-modified Boltzmann equations
+- BBN nucleosynthesis with path-enhanced expansion
+- Bayesian evidence comparison via nested sampling

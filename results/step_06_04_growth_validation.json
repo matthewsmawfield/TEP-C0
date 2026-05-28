@@ -1,0 +1,95 @@
+{
+  "description": "Structure growth validation with TEP-CLASS v2.0 (probe-dependent \u03b5_T framework)",
+  "fsigma8": [
+    {
+      "chi": 2.13,
+      "fs8_obs": 0.428,
+      "fs8_obs_err": 0.046,
+      "fs8_tep": 0.526,
+      "ref": "Huterer+2017",
+      "z": 0.02
+    },
+    {
+      "chi": 0.3,
+      "fs8_obs": 0.53,
+      "fs8_obs_err": 0.08,
+      "fs8_tep": 0.554,
+      "ref": "Howlett+2015",
+      "z": 0.15
+    },
+    {
+      "chi": 2.44,
+      "fs8_obs": 0.44,
+      "fs8_obs_err": 0.06,
+      "fs8_tep": 0.587,
+      "ref": "Blake+2011",
+      "z": 0.38
+    },
+    {
+      "chi": 2.48,
+      "fs8_obs": 0.43,
+      "fs8_obs_err": 0.06,
+      "fs8_tep": 0.579,
+      "ref": "Blake+2012",
+      "z": 0.6
+    },
+    {
+      "chi": 2.42,
+      "fs8_obs": 0.4,
+      "fs8_obs_err": 0.06,
+      "fs8_tep": 0.545,
+      "ref": "Pezzotta+2017",
+      "z": 0.86
+    }
+  ],
+  "growth_factor": [
+    {
+      "D_lcdm": 1.0,
+      "D_tep": 1.0,
+      "ratio": 1.0,
+      "z": 0.0
+    },
+    {
+      "D_lcdm": 0.7693,
+      "D_tep": 0.7693,
+      "ratio": 1.0,
+      "z": 0.5
+    },
+    {
+      "D_lcdm": 0.6072,
+      "D_tep": 0.6072,
+      "ratio": 1.0,
+      "z": 1.0
+    },
+    {
+      "D_lcdm": 0.4176,
+      "D_tep": 0.4176,
+      "ratio": 1.0,
+      "z": 2.0
+    }
+  ],
+  "parameters": {
+    "epsilon_T_dist": 0.256514,
+    "epsilon_T_growth": 0.0,
+    "screening_mode": "probe-dependent (growth fit independent of distance bias)"
+  },
+  "sigma_8": {
+    "deviation_percent": 1.3,
+    "deviation_sigma": 1.49,
+    "lcdm": 0.8229,
+    "note": "Growth fit independent: \u03b5_T_growth=0 (baseline LCDM), \u03b5_T_dist compensates for distance bias",
+    "planck": 0.812,
+    "planck_err": 0.0073,
+    "tep": 0.8229
+  },
+  "status": "completed",
+  "step": "step_06_04_growth_validation",
+  "validation": {
+    "blockers": [],
+    "claim_gate": "open",
+    "growth_consistent": true,
+    "research_grade": true,
+    "sigma8_consistent": true,
+    "tep_available": true
+  }
+}

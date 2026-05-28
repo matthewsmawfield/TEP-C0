@@ -1,0 +1,12 @@
+[14:13:17] [INFO] 
+[14:13:17] [INFO] ================================================================================
+[14:13:17] [INFO]    Starting step_04_03_tolman_sb
+[14:13:17] [INFO] ================================================================================
+[14:13:17] [INFO] 
+[14:13:17] [INFO] Using TEP parameters: H0=70.00, Sigma_0 (epsilon_T)=0.256514
+[14:13:17] [INFO] Loaded 48 surface brightness measurements
+[14:13:17] [INFO] Tolman index: 3.375 ± 0.027 (LCDM expects 4.0)
+[14:13:17] [INFO] Δχ² (LCDM - TEP) = 1017.91
+[14:13:17] [INFO] TEP preferred: True
+[14:13:17] [SUCCESS] Research grade: True
+[14:13:17] [SUCCESS] Step step_04_03_tolman_sb completed

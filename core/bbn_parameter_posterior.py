@@ -48,10 +48,11 @@ def run_bbn_mcmc(
     dh_constraint = None
     yp_constraint = None
     for row in registry_rows:
-        if row['isotope'] == 'D_H':
-            dh_constraint = (row['value'], row['error'])
-        elif row['isotope'] == 'Y_p':
-            yp_constraint = (row['value'], row['error'])
+        q = row.get('quantity', '')
+        if 'DH' in q or 'D_H' in q:
+            dh_constraint = (float(row['observed_value']), float(row['observed_sigma']))
+        elif 'Yp' in q or 'Y_p' in q:
+            yp_constraint = (float(row['observed_value']), float(row['observed_sigma']))
     
     # If no registry data available, use published Planck 2018/PDG values
     if dh_constraint is None:

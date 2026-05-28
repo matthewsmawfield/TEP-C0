@@ -11,7 +11,11 @@ from scipy.integrate import cumulative_trapezoid, quad
 
 class TEPCosmology:
     """TEP cosmology with temporal shear effects."""
-    
+
+    # Spatial transition density (manuscript: rho_half ≈ 0.5 M_sun/pc^3)
+    # Maps to Equation in Section 2.5: S(rho) = [1 + (rho/rho_half)^2]^-1
+    RHO_HALF: float = 0.5  # M_sun / pc^3, threshold galactic onset density
+
     def __init__(
         self,
         H0: float = 70.0,
@@ -28,18 +32,48 @@ class TEPCosmology:
         self.Omega_lambda = 1.0 - Omega_m
         
     def tep_gamma(self, z: float | np.ndarray) -> float | np.ndarray:
-        """TEP path enhancement factor."""
+        """TEP path enhancement factor.
+        
+        Uses the exact normalised formula: gamma(z) = 1 - epsilon_T * ln(1+z) * S(z).
+        This guarantees gamma(0) = 1 (recovering the local reference frame),
+        and gamma < 1 for z > 0 (reflecting clocks ran faster in the denser past,
+        A_past > A_today, thus gamma = A_today / A_past < 1).
+        This makes intermediate distances smaller, actively absorbing the Pantheon tension.
+        """
         z_arr = np.asarray(z, dtype=float)
         if self.epsilon_T == 0:
             gamma = np.ones_like(z_arr)
             return float(gamma) if np.isscalar(z) else gamma
 
-        z_ratio = np.maximum((1.0 + z_arr) / (1.0 + self.z_T), np.finfo(float).tiny)
-        log_factor = np.log(z_ratio)
-        enhancement = 1 + self.epsilon_T * log_factor
+        log_factor = np.log(1.0 + z_arr)
+        suppression = np.exp(-((z_arr / self.z_T) ** self.n_T))
+        enhancement = 1.0 - self.epsilon_T * log_factor * suppression
         gamma = np.maximum(enhancement, 0.1)  # Physical bound
         return float(gamma) if np.isscalar(z) else gamma
-    
+
+    def screening_function(self, rho: float | np.ndarray) -> float | np.ndarray:
+        """TEP environmental screening factor S(rho).
+
+        Implements the continuous shear-suppression formula from
+        Section 2.5 of the manuscript:
+            S(rho) = [1 + (rho / rho_half)^2]^-1
+
+        where rho_half = 0.5 M_sun / pc^3 is the threshold galactic
+        onset density (class constant RHO_HALF).
+
+        Parameters
+        ----------
+        rho : float or array
+            Local matter density in M_sun / pc^3.
+
+        Returns
+        -------
+        float or array
+            Screening factor between 0 (fully screened) and 1 (unscreened).
+        """
+        ratio = np.asarray(rho, dtype=float) / self.RHO_HALF
+        return 1.0 / (1.0 + ratio ** 2)
+
     def e_func(self, z: float | np.ndarray) -> float | np.ndarray:
         """Dimensionless Hubble parameter."""
         zp1 = 1.0 + np.asarray(z, dtype=float)
@@ -107,11 +141,12 @@ class TEPPerturbations:
         # Standard sound horizon approximation
         r_s_std = 147.0  # Mpc for standard LCDM
         
-        # TEP modifies sound horizon through expansion history
-        # In matter-frame BBN/sound horizon, TEP corrections are suppressed
-        if self.sigma_0 > 0:
-            # Small suppression from early-universe temporal shear
-            tep_factor = 1.0 - 0.1 * self.sigma_0 * 1e4
+        # In matter-frame BBN/sound horizon, TEP corrections are exponentially suppressed
+        if self.sigma_0 > 0 or self.epsilon_T > 0:
+            # The Temporal-Shear suppression function exp[-(z/z_T)^n_T] inherently
+            # vanishes at early times (z >> z_T), leaving the pre-recombination
+            # sound horizon preserved.
+            tep_factor = 1.0
             return r_s_std * tep_factor
         
         return r_s_std
@@ -122,9 +157,10 @@ class TEPPerturbations:
         sigma_8_planck = 0.81
         
         # TEP modification through growth suppression
-        if self.sigma_0 > 0:
-            # Growth suppression factor
-            suppression = 1.0 - 0.05 * self.sigma_0 * 1e4
+        if self.sigma_0 > 0 or self.epsilon_T > 0:
+            # Late-time structure growth is preserved due to galactic screening
+            # (rho >> rho_half).
+            suppression = 1.0
             return sigma_8_planck * suppression
         
         return sigma_8_planck

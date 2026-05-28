@@ -1,0 +1,42 @@
+{
+  "artifacts": {
+    "csv": "results/step_08_04_evidence_matrix.csv"
+  },
+  "matrix": [
+    {
+      "numerical_anchor": "FLRW error 0.00e+00",
+      "observable": "Cosmic Redshift (z)",
+      "status": "Verified as a transport identity",
+      "tep_explanation": "Projection of Temporal Shear gradients along the photon path."
+    },
+    {
+      "numerical_anchor": "Dimensionless distance comparison (H0_ref = 70.0 km/s/Mpc); M_TEP = -18.567240507598846 vs M_LCDM = -19.32404890914055",
+      "observable": "SN 1a Distance-Redshift",
+      "status": "diagnostic",
+      "tep_explanation": "TEP matter model incorporating matter-frame effects."
+    },
+    {
+      "numerical_anchor": "Dimensionless distances fix H0_ref = 70.0 km/s/Mpc; no H0 parameter in fit.",
+      "observable": "Hubble Constant agreement",
+      "status": "diagnostic",
+      "tep_explanation": "Resolution via temporal shear effects."
+    },
+    {
+      "numerical_anchor": "Tolman \u0394\u03c7\u00b2: 1017.91...",
+      "observable": "Distance Duality (Xi_T)",
+      "status": "Moderate",
+      "tep_explanation": "Measurable residuals in high-z luminosity/angular diameter relations."
+    },
+    {
+      "numerical_anchor": "Consistency: {'lcdm_sigma': 0.0}",
+      "observable": "CMB Acoustic Scales",
+      "status": "blocked pending full CMB likelihood",
+      "tep_explanation": "Preserved matter-frame acoustic horizon properly projected through shear connection."
+    }
+  ],
+  "step": "step_08_04_evidence_matrix",
+  "validation": {
+    "blockers": [],
+    "claim_gate": "blocked"
+  }
+}

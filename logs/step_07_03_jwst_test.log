@@ -1,0 +1,13 @@
+[14:13:24] [INFO] 
+[14:13:24] [INFO] ================================================================================
+[14:13:24] [INFO]    Starting step_07_03_jwst_test
+[14:13:24] [INFO] ================================================================================
+[14:13:24] [INFO] 
+[14:13:24] [INFO] Planned JWST tests:
+[14:13:24] [INFO]   test_1_angular_sizes: Medium priority
+[14:13:24] [INFO]     Galaxy angular sizes at z > 6
+[14:13:24] [INFO]   test_2_surface_brightness: High priority
+[14:13:24] [INFO]     UV surface brightness evolution
+[14:13:24] [INFO]   test_3_luminosity_functions: Low priority
+[14:13:24] [INFO]     Galaxy luminosity functions
+[14:13:24] [SUCCESS] Step step_07_03_jwst_test completed (planning)

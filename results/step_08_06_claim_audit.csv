@@ -1,0 +1,34 @@
+check,status,detail
+required guardrail: source datasets,pass,present
+required guardrail: data ingestion,pass,present
+required guardrail: explanatory evidence matrix,pass,present
+required guardrail: transport phenomenon,pass,present
+required guardrail: matter-frame nuclear history,pass,present
+required guardrail: phase-space,pass,present
+required guardrail: TEP Boltzmann,pass,present
+required guardrail: global MCMC,pass,present
+required guardrail: inference,pass,present
+required guardrail: preservation constraints,pass,present
+required guardrail: resolution of the Hubble tension,pass,present
+required guardrail: mixing fraction,pass,present
+required guardrail: Cosmological Isochrony Assumption,pass,present
+required guardrail: emergent transport,pass,present
+required guardrail: geometric misinterpretation,pass,present
+required guardrail: non-integrable transport,pass,present
+required guardrail: integrable reconstruction,pass,present
+required guardrail: open-path,pass,present
+required guardrail: temporal-transport connection,pass,present
+required guardrail: caustic,pass,present
+artifact existence: step_01_01_data_download,pass,json exists
+artifact existence: step_01_02_data_ingestion,pass,json exists
+artifact existence: step_02_01_transport_kernel,pass,json exists
+artifact existence: step_07_01_mixed_forecast,pass,json exists
+artifact existence: step_05_01_cmb_blackbody,pass,json exists
+artifact existence: step_06_01_bao_projection,pass,json exists
+artifact existence: step_05_06_bbn_registry,pass,json exists
+artifact existence: step_05_08_cmb_acoustic,pass,json exists
+artifact existence: step_06_03_growth_solver,pass,json exists
+artifact existence: step_03_07_likelihood_synthesis,pass,json exists
+artifact existence: step_08_04_evidence_matrix,pass,json exists
+artifact existence: step_08_01_expansion_falsifier,pass,json exists
+artifact existence: step_03_01_three_model_comparison,pass,json exists

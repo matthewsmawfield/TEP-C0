@@ -97,7 +97,7 @@ class TEPLogger:
         ch = logging.StreamHandler(sys.stdout)
         ch.setLevel(logging.DEBUG)
         ch.stream.reconfigure(line_buffering=True)
-        ch.setFormatter(TEPFormatter())
+        ch.setFormatter(TEPFormatter(use_colors=sys.stdout.isatty()))
         self.logger.addHandler(ch)
         self.logger.propagate = False
 
@@ -157,8 +157,9 @@ def print_status(message: str, level: str = "INFO") -> None:
         import datetime
         timestamp = datetime.datetime.now().strftime("%H:%M:%S")
         formatter = TEPFormatter()
-        color = formatter.COLORS.get(level, '')
-        reset = formatter.RESET
+        is_tty = sys.stdout.isatty()
+        color = formatter.COLORS.get(level, '') if is_tty else ''
+        reset = formatter.RESET if is_tty else ''
         if level == "TITLE":
             print(f"\n{color}{'='*80}{reset}")
             print(f"{color}   {message}{reset}")

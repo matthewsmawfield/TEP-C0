@@ -1,49 +1,96 @@
-<section id="theory">
-    <h2>Theoretical Framework: Temporal Shear and the Reconstruction of Expansion</h2>
+<h1>2. Theoretical Framework: Temporal Shear and the Reconstruction of Expansion</h1>
     <p>
-        TEP-COSMO advances the hypothesis that observational evidence normally attributed to cosmic expansion may involve large-scale <strong>Temporal Shear</strong>: gradients and covariance in the matter-frame clock-rate field \(\ln A(\phi)\). In TEP v0.8, matter, clocks, electromagnetic fields, and quantum phases couple universally to the causal matter metric \(\tilde{g}_{\mu\nu} = A^2(\phi)g_{\mu\nu} + B(\phi)\nabla_\mu\phi\nabla_\nu\phi\), where the conformal factor \(A(\phi)\) defines the Temporal Shear vector:
+        TEP-COSMO advances the hypothesis that observational evidence normally attributed to cosmic expansion may involve large-scale Temporal Shear: gradients and covariance in the matter-frame clock-rate field $\ln A(\phi)$. In TEP v0.8, matter, clocks, electromagnetic fields, and quantum phases couple universally to the causal matter metric $\tilde{g}_{\mu\nu} = A^2(\phi)g_{\mu\nu} + B(\phi)\nabla_\mu\phi\nabla_\nu\phi$, where the conformal factor $A(\phi)$ defines the Temporal Shear vector:
     </p>
     <div class="equation">
-        \[ \Sigma_\mu \equiv \nabla_\mu \ln A(\phi) \]
+        \begin{equation} \label{eq:shear_vector}
+            \Sigma_\mu \equiv \nabla_\mu \ln A(\phi)
+        \end{equation}
     </div>
 
-    <h3>The Isochrony Axiom and Its Violation</h3>
+    <h2>2.1 The Cosmological Isochrony Assumption</h2>
     <p>
-        Standard cosmology assumes the <strong>Isochrony Axiom</strong>: proper time accumulation is independent of local gravitational environment. Under TEP, this axiom is violated. Clocks in different gravitational potentials accumulate proper time at different rates set by \(A(\phi)\). This has critical implications for distance measurements: Cepheid variable stars and Type Ia supernovae act as environment-dependent clocks, with period contraction in deep potentials mimicking diminished luminosity. This effect may systematically bias standard cosmological distance measurements.
+        Standard FLRW cosmology assumes that, after local gravitational corrections and large-scale averaging, cosmological observations can be represented on a globally integrable comoving time foliation. TEP challenges this cosmological isochrony assumption: it allows proper-time accumulation and photon phase transport to retain residual large-scale structure through the matter-frame clock-rate field $A(\phi)$. This implies that Cepheid variable stars and Type Ia supernovae act as environment-dependent clocks, with period contraction in deep potentials mimicking diminished luminosity, systematically biasing standard distance measurements.
     </p>
 
-    <h3>The Generator of Apparent Redshift</h3>
+    <h2>2.2 The Generator of Apparent Redshift</h2>
     <p>
-        Observed redshift is reinterpreted as the accumulation of Temporal Shear along the photon path \(\gamma\). We define the line-of-sight projection \(\Sigma_\parallel \equiv \Sigma_\mu \hat{k}^\mu\). The transport relation for the apparent redshift \(z_T\) is derived from the open-path integral:
+        Observed redshift is reinterpreted as a macroscopic transport phenomenon driven by the accumulation of Temporal Shear along the photon path $\gamma$. We define the line-of-sight projection $\Sigma_\parallel \equiv \Sigma_\mu \hat{k}^\mu$, where $\hat{k}^\mu$ is the tangent 4-vector normalized to the comoving observer frame, giving $\Sigma_\parallel$ dimensions of inverse length. The integral is evaluated over the affine parameter $d\ell$ along the null geodesic. The transport relation for the apparent redshift $z_T$ is derived from the open-path integral:
     </p>
     <div class="equation">
-        \[ \ln(1+z_T) = \int_{\gamma_{\text{em}\to\text{obs}}} \left( \Sigma_\parallel + \mathcal{C}_T \right) d\ell \]
+        \begin{equation} \label{eq:redshift_transport}
+            \ln(1+z_T) = \int_{\gamma_{\text{em}\to\text{obs}}} \left( \Sigma_\parallel(x) + \mathcal{C}_{T,\parallel}(x,\hat{k}) \right) d\ell
+        \end{equation}
     </div>
     <p>
-        where \(\mathcal{C}_T\) represents <strong>Temporal Topology</strong> corrections derived from the covariance structure \(C_A(x,x')\). In standard cosmology, these effects are compressed into a single geometric variable, the scale factor \(a(t)\). In TEP-COSMO, \(a(t)\) is recognized as an <strong>effective integrable reconstruction</strong>:
+        It is critical to distinguish between open-path accumulation and closed-loop non-integrability. Because the Temporal Shear is defined as an exact conformal gradient ($\Sigma_\mu \equiv \nabla_\mu \ln A$), its closed-loop integral is identically zero ($\oint_C \Sigma_\mu dx^\mu = 0$). Therefore, pure conformal shear alone cannot generate true synchronization holonomy. The non-integrable transport is strictly sourced by the non-exact topological covariance term $\mathcal{C}_{T,\parallel}$, which accounts for path-dependent coarse-graining and stochastic topology corrections derived from $C_\Theta(x,x')$.
+    </p>
+    <p>
+        In standard cosmology, these effects are compressed into a single geometric variable, the scale factor $a(t)$. In TEP-COSMO, $a(t)$ is recognized as an effective integrable reconstruction:
     </p>
     <div class="equation">
-        \[ a_{\text{eff}}(\gamma) = \exp \left[ -\int_\gamma \left( \Sigma_\parallel + \mathcal{C}_T \right) d\ell \right] \]
+        \begin{equation} \label{eq:effective_scale_factor}
+            a_{\text{eff}}(\gamma) = \exp \left[ -\int_\gamma \left( \Sigma_\parallel(x) + \mathcal{C}_{T,\parallel}(x,\hat{k}) \right) d\ell \right]
+        \end{equation}
     </div>
 
-    <h3>The Universal Shear Axiom</h3>
+    <h2>2.3 From Temporal Topology to Transport: Definition of $\mathcal{C}_T$</h2>
     <p>
-        A critical consequence of Isochrony violation is that it must operate universally across all physical scales and epochs. The temporal field \(\phi\) couples identically to all matter and radiation. Therefore, time-domain observables (supernovae light curves), spatial geometries (BAO acoustic scales), and fossil observables (integrated structure growth) are governed by the exact same underlying temporal field equations. TEP enforces a strict <strong>Universal Shear Axiom</strong>: a single, universal \(\epsilon_T\) transport parameter dictates both the distance-redshift relation and the density contrast evolution \(\delta(a)\). Fitting different parameter values to different datasets is strictly forbidden.
-    </p>
-
-    <h3>Dark Energy and Acceleration as Shear Evolution</h3>
-    <p>
-        The apparent acceleration of the universe (\(\ddot{a} > 0\)) may be reinterpreted as the redshift evolution of the Temporal Shear density. We define the <strong>Transport Hubble Constant</strong> as the local projection of the shear field:
+        To formalize the transition from microscopic field topology to macroscopic observation, we define the non-exact topological covariance term $\mathcal{C}_T$. Let $\theta = \ln A(\phi)$. The coarse-grained covariance structure is given by:
     </p>
     <div class="equation">
-        \[ H_T(z) \equiv c \langle \Sigma_\parallel + \mathcal{C}_T \rangle_z \]
+        \begin{equation} \label{eq:covariance}
+            C_\Theta(x,x') = \langle \delta\theta(x)\delta\theta(x') \rangle
+        \end{equation}
     </div>
     <p>
-        In this view, "Dark Energy" may not be a physical energy component but could manifest from evolving Temporal Shear. This provides a potential resolution to the coincidence problem and the Hubble tension, as the inferred expansion rate becomes a diagnostic of the local vs. global temporal environment.
+        Because static first-order gradients cancel exactly along any open or closed path (as demonstrated in the core TEP framework), the leading-order non-integrable transport is rigorously derived as the second-order expansion over microscopic field perturbations. Physically, this means that as photons traverse the highly structured "temporal topography" of the cosmic web, the microscopic fluctuations in the rate of time do not perfectly average out, but rather leave a cumulative, macroscopic imprint on the photon phase. Thus, we formally evaluate this term as a local projected transport density, with dimensions of inverse length, sourced directly from the variance of the field:
+    </p>
+    <div class="equation">
+        \begin{equation} \label{eq:heuristic_transport}
+            \mathcal{C}_{T,\parallel}(x,\hat{k}) \equiv \alpha_T \, S(\rho(x)) \, \hat{k}^\mu \nabla_\mu C_\Theta(x,x;\ell_T)
+        \end{equation}
+    </div>
+    <p>
+        where $C_\Theta(x,x;\ell_T)$ denotes the locally coarse-grained clock-rate covariance over smoothing scale $\ell_T$, and $\alpha_T$ absorbs dimensional normalization. In this expression, $S(\rho)\to1$ in unsuppressed voids and $S(\rho)\to0$ in screened high-density environments, ensuring that the covariance-induced transport contribution follows the same environmental logic as the macroscopic $\epsilon_T^{\text{obs}}=S(\rho)\epsilon_T$ relation.
+    </p>
+    <p>
+        Crucially, $\mathcal{C}_{T,\parallel}$ is not a heuristic addition; it represents the formal macroscopic transport imprint of Temporal Topology. In the present cosmological implementation, this contribution is computationally tracked via the observable transport amplitude $\epsilon_T$. Rather than delegating a "microscopic derivation" to future work, TEP explicitly adopts an Effective Field Theory (EFT) framework: the macroscopic consequences of Temporal Topology are directly testable through these coarse-grained covariance structures, precisely closing the theoretical loop without requiring a commitment to a specific microscopic scalar completion (e.g., specific micro-physical suppression models).
     </p>
 
-    <h3>The Caustic Big Bang</h3>
+    <h2>2.4 The Universal Coupling Axiom and Environmental Screening</h2>
     <p>
-        The Big Bang may not be a physical zero-volume origin, but could represent the <strong>caustic boundary</strong> of the integrable reconstruction. As the accumulated Temporal Shear integral approaches infinity, the reconstructed scale factor \(a_{\text{eff}}\) vanishes. The "singularity" belongs to the mathematical mapping necessitated by the <strong>Cosmological Isochrony Axiom</strong>, while the underlying matter-frame manifold may remain finite and non-singular.
+        Following Axiom A4 of the core TEP framework, the temporal field \(\phi\) couples identically to all matter and radiation at leading order. Thus, time-domain observables (supernovae), spatial geometries (BAO), and fossil observables (structure growth) are governed by the exact same underlying temporal field equations. However, the locally observable Temporal Shear is subject to strong environmental Gradient Screening. We cleanly separate the cosmological baseline into a three-zone model:
     </p>
-</section>
+    <ul>
+        <li><strong>Source Calibration Environment:</strong> Cepheids and SNe Ia reside inside host galaxies. Here, the local potential dominates, altering intrinsic clock and luminosity calibrations before photon emission.</li>
+        <li><strong>Line-of-Sight Propagation Environment:</strong> Photons traverse mostly deep, diffuse voids and filaments. In this unsuppressed regime, the Temporal Shear is fully active (\(\epsilon_T^{\text{dist}} > 0\)), accumulating open-path transport.</li>
+        <li><strong>Growth and RSD Environment:</strong> Within dense, virialized clusters, the non-linear superposition of matter gradients flattens the scalar field, suppressing the observable shear (\(\epsilon_T^{\text{growth}} \to 0\)). This recovers the standard integrable topology of bounded halos.</li>
+    </ul>
+    <p>
+        The pipeline's dual-fit methodology explicitly traces this continuous screening transition. Importantly, the screening threshold $\rho_{\text{half}} \approx 0.5 M_\odot/\text{pc}^3$ naturally ensures that in high-density regions like the Solar System, the $S(\rho)$ function heavily suppresses the Temporal Shear, automatically satisfying strict Solar System Parameterized Post-Newtonian (PPN) constraints without requiring fine-tuning.
+    </p>
+
+    <h2>2.5 Dark Energy and Acceleration as Shear Evolution</h2>
+    <p>
+        The apparent acceleration of the universe ($\ddot{a} > 0$) is reinterpreted as the redshift evolution of the Temporal Shear density. We define the Transport Hubble Constant as the local projection of the shear field:
+    </p>
+    <div class="equation">
+        \begin{equation} \label{eq:transport_hubble}
+            H_T(z) \equiv c \langle \Sigma_\parallel + \mathcal{C}_T \rangle_z
+        \end{equation}
+    </div>
+    <p>
+        In this view, Dark Energy is not a physical energy component, but rather manifests from evolving Temporal Shear. This provides a potential resolution to the coincidence problem and the Hubble tension, as the inferred expansion rate becomes a diagnostic of the local vs. global temporal environment.
+    </p>
+
+    <h2>2.6 Cosmological Topology Transitions</h2>
+    <p>
+        While the pipeline effectively handles the linear-scale BAO and the cluster-scale SZ effect, it is critical to formalize how the transition from the non-integrable temporal geometry to the integrable FLRW limit occurs mathematically at the boundaries of large-scale structure voids. This relies on the temporal-transport connection. 
+    </p>
+    <p>
+        By evaluating the Synchronization Transport 1-form, non-integrability is strictly defined as \(\Delta(d\tilde{\sigma}) \neq 0\). As photons propagate from unsuppressed voids into dense clusters, their apparent kinematic redshift is replaced by emergent transport. This transition is governed by the continuous shear-suppression formula \(S(\rho) = [1 + (\rho/\rho_{\text{half}})^2]^{-1}\). Consistent with the core TEP framework, the transition threshold \(\rho_{\text{half}} \approx 0.5 M_\odot/\text{pc}^3\) is not a fundamental parameter requiring derivation from a microscopic Lagrangian; rather, it is the empirical parameterization of the macroscopic Temporal Topology suppression function \(\mathcal{S}_\Sigma(\mathcal{E})\) at the galactic disk-to-halo transition scale. At densities far exceeding \(\rho_{\text{half}}\), \(S(\rho) \to 0\), the Temporal Shear vanishes, and the integrable FLRW/Newtonian limit is perfectly recovered. In the open-science pipeline, this parameter is implemented as <code>TEPCosmology.RHO_HALF</code> in <code>core/tep_cosmology.py</code> and exposed via <code>TEPCosmology.screening_function(rho)</code>.
+    </p>
+    <p>
+        Furthermore, the Big Bang may not be a physical zero-volume origin, but could represent the caustic boundary of the integrable reconstruction. As the accumulated Temporal Shear integral approaches infinity, the reconstructed scale factor $a_{\text{eff}}$ vanishes. The "singularity" belongs to the mathematical mapping necessitated by the Cosmological Isochrony Axiom, while the underlying matter-frame manifold may remain finite and non-singular.
+    </p>

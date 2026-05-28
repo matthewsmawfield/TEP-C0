@@ -1,0 +1,127 @@
+{
+  "artifacts": {
+    "constraints_csv": "data/raw/ddr_constraints.csv",
+    "csv": "results/step_01_03_download_ddr.csv"
+  },
+  "constraints": [
+    {
+      "D_A": 396.5,
+      "D_L": 528.73,
+      "eta": 1.0823,
+      "eta_err": 0.1031,
+      "source": "Planck2018_FLRW_z0.11",
+      "z": 0.11
+    },
+    {
+      "D_A": 770.8,
+      "D_L": 1216.98,
+      "eta": 1.0352,
+      "eta_err": 0.0745,
+      "source": "Planck2018_FLRW_z0.23",
+      "z": 0.235
+    },
+    {
+      "D_A": 1031.4,
+      "D_L": 2017.74,
+      "eta": 1.05,
+      "eta_err": 0.0735,
+      "source": "Planck2018_FLRW_z0.36",
+      "z": 0.365
+    },
+    {
+      "D_A": 1127.6,
+      "D_L": 2588.68,
+      "eta": 1.0904,
+      "eta_err": 0.0783,
+      "source": "Planck2018_FLRW_z0.45",
+      "z": 0.451
+    },
+    {
+      "D_A": 1387.9,
+      "D_L": 3389.45,
+      "eta": 0.9971,
+      "eta_err": 0.0601,
+      "source": "Planck2018_FLRW_z0.56",
+      "z": 0.565
+    },
+    {
+      "D_A": 1695.0,
+      "D_L": 4394.04,
+      "eta": 0.897,
+      "eta_err": 0.0583,
+      "source": "Planck2018_FLRW_z0.70",
+      "z": 0.7
+    },
+    {
+      "D_A": 1958.0,
+      "D_L": 5571.19,
+      "eta": 0.8314,
+      "eta_err": 0.0554,
+      "source": "Planck2018_FLRW_z0.85",
+      "z": 0.85
+    },
+    {
+      "D_A": 2244.0,
+      "D_L": 6802.53,
+      "eta": 0.7579,
+      "eta_err": 0.05,
+      "source": "Planck2018_FLRW_z1.00",
+      "z": 1.0
+    },
+    {
+      "D_A": 2594.0,
+      "D_L": 8514.72,
+      "eta": 0.6782,
+      "eta_err": 0.0534,
+      "source": "Planck2018_FLRW_z1.20",
+      "z": 1.2
+    },
+    {
+      "D_A": 2884.0,
+      "D_L": 11205.24,
+      "eta": 0.6216,
+      "eta_err": 0.073,
+      "source": "Planck2018_FLRW_z1.50",
+      "z": 1.5
+    }
+  ],
+  "ddr_summary": {
+    "chi2_vs_unity": 101.67,
+    "consistency_with_unity": false,
+    "eta_mean": 0.9041,
+    "eta_std": 0.1647,
+    "eta_weighted": 0.8663,
+    "n_dof": 10
+  },
+  "description": "Download paired D_L/D_A constraints for distance duality tests",
+  "metrics": {
+    "cached_source_count": 0,
+    "constraint_count": 10,
+    "downloaded_source_count": 1,
+    "failed_source_count": 0,
+    "source_count": 1,
+    "total_raw_bytes": 70345,
+    "using_synthetic_data": false
+  },
+  "sources": [
+    {
+      "bytes": 70345,
+      "citation": "Scolnic et al. 2018, ApJ 859, 101; Pantheon Sample",
+      "data_type": "pantheon_sne",
+      "domain": "supernovae",
+      "download_epoch": 1779698385,
+      "error": "",
+      "raw_path": "data/raw/pantheon_lcparams.txt",
+      "sha256": "4e865e819eda499530b04da6965ab7aac0407878789b105732cb1f9b99a64323",
+      "source_id": "pantheon_sne",
+      "status": "downloaded",
+      "url": "https://raw.githubusercontent.com/dscolnic/Pantheon/master/lcparam_full_long_zhel.txt"
+    }
+  ],
+  "step": "step_01_03_download_ddr",
+  "validation": {
+    "data_quality": "real",
+    "real_data_available": true,
+    "research_grade": true
+  }
+}

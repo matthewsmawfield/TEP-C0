@@ -1,0 +1,12 @@
+[20:46:58] [INFO] 
+[20:46:58] [INFO] ================================================================================
+[20:46:58] [INFO]    Starting step_04_08_environment_residuals
+[20:46:58] [INFO] ================================================================================
+[20:46:58] [INFO] 
+[20:46:58] [PROCESS] Loading fitted TEP model
+[20:46:58] [PROCESS] Loading SN data
+[20:46:59] [INFO] Loaded 1701 SNe
+[20:46:59] [PROCESS] Computing residuals with proper FLRW
+[20:47:01] [INFO] rho(R_TEP, epsilon_eff|z) = 0.211 (p = 1.40e-18)
+[20:47:01] [INFO] Significance: 8.7 sigma
+[20:47:01] [SUCCESS] Step step_04_08_environment_residuals completed successfully

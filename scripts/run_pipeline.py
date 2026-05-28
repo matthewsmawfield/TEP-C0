@@ -3,6 +3,11 @@
 
 The runner is intentionally strict: failed dependencies are recorded as failed
 results, not silently ignored.
+
+Manuscript-to-code mapping for external auditors:
+    rho_half (manuscript, Section 2.5)  ->  core.tep_cosmology.TEPCosmology.RHO_HALF
+    Screening formula S(rho)            ->  TEPCosmology.screening_function(rho)
+    Value: 0.5 M_sun / pc^3
 """
 
 from __future__ import annotations
@@ -19,35 +24,57 @@ sys.path.insert(0, str(Path(__file__).parent / "steps"))
 from c0_common import step_json_path
 
 PIPELINE_STEPS = [
-    ("step_000_data_download", "Download Pantheon+ and auxiliary data", []),
-    ("step_000_data_ingestion", "Ingest and validate data", ["step_000_data_download"]),
-    ("step_001_transport_kernel", "Define TEP transport kernel", []),
-    ("step_022_three_model_comparison", "Fit M0/LCDM, M1/Mixed, M2/TEP", ["step_000_data_ingestion", "step_001_transport_kernel"]),
-    ("step_018_tep_mcmc_inference", "Independent posterior check for TEP parameters", ["step_022_three_model_comparison"]),
-    ("step_023_sn_time_dilation_test", "SN time dilation test", ["step_022_three_model_comparison"]),
-    ("step_024_tolman_surface_brightness", "Tolman surface brightness", ["step_022_three_model_comparison"]),
-    ("step_025_distance_duality_test", "Distance-duality relation", ["step_022_three_model_comparison"]),
-    ("step_026_redshift_drift_forecast", "Redshift drift predictions", ["step_022_three_model_comparison"]),
-    ("step_027_environment_residuals", "Environment correlation", ["step_022_three_model_comparison"]),
-    ("step_010_cmb_blackbody_preservation", "CMB blackbody check", []),
-    ("step_011_bao_acoustic_projection", "BAO constraints", ["step_022_three_model_comparison"]),
-    ("step_017_tep_boltzmann_solver", "CMB spectra diagnostic", ["step_022_three_model_comparison"]),
-    ("step_014_cmb_acoustic_projection", "CMB acoustic peaks", ["step_017_tep_boltzmann_solver"]),
-    ("step_028_cmb_full_spectra", "CMB full-spectra gate", ["step_017_tep_boltzmann_solver"]),
-    ("step_012_bbn_preservation_registry", "BBN registry check", ["step_022_three_model_comparison"]),
-    ("step_029_bbn_preservation", "BBN abundance diagnostic", ["step_022_three_model_comparison"]),
-    ("step_015_structure_growth_solver", "Structure growth", ["step_022_three_model_comparison"]),
-    ("step_016_global_likelihood_synthesis", "Global likelihood", ["step_022_three_model_comparison", "step_018_tep_mcmc_inference"]),
-    ("step_030_model_comparison_statistics", "Model-comparison statistics gate", ["step_022_three_model_comparison"]),
-    ("step_031_sensitivity_analysis", "Sensitivity analysis", ["step_022_three_model_comparison"]),
-    ("step_013_explanatory_evidence_matrix", "Evidence matrix", ["step_022_three_model_comparison", "step_018_tep_mcmc_inference"]),
-    ("step_007_level3_gate_registry", "Evidence gate registry", ["step_013_explanatory_evidence_matrix"]),
-    ("step_008_claim_consistency_audit", "Claim audit", ["step_022_three_model_comparison", "step_013_explanatory_evidence_matrix"]),
-    ("step_009_evidence_gate_summary", "Final summary", ["step_007_level3_gate_registry", "step_008_claim_consistency_audit"]),
-    ("step_020_tep_blind_injection_recovery", "Blind injection recovery", ["step_022_three_model_comparison"]),
-    ("step_021_expansion_falsifier", "Expansion discriminator", ["step_025_distance_duality_test", "step_024_tolman_surface_brightness"]),
-    ("step_032_full_physics_implementation", "Full physics implementation audit", ["step_022_three_model_comparison"]),
-    ("step_033_cobaya_tep_inference", "Cobaya TEP-CLASS inference", ["step_022_three_model_comparison"]),
+    ("step_01_01_data_download", "Data download", []),
+    ("step_01_02_data_ingestion", "Data ingestion", ["step_01_01_data_download"]),
+    ("step_01_03_download_ddr", "Download ddr", []),
+    ("step_01_04_download_sb", "Download sb", []),
+    ("step_01_05_download_sz", "Download sz", []),
+    ("step_01_06_download_sgl", "Download sgl", []),
+    ("step_01_07_download_desi", "Download desi", []),
+    ("step_01_08_compile_sb", "Compile sb", ["step_01_04_download_sb"]),
+    ("step_02_01_transport_kernel", "Transport kernel", []),
+    ("step_02_02_theory_derivation", "Theory derivation", []),
+    ("step_02_03_physics_implementation", "Physics implementation", []),
+    ("step_03_01_three_model_comparison", "Three model comparison", ["step_01_02_data_ingestion", "step_02_01_transport_kernel"]),
+    ("step_03_02_independent_mcmc", "Independent mcmc", ["step_03_01_three_model_comparison"]),
+    ("step_03_04_cobaya_mcmc", "Cobaya mcmc", ["step_03_01_three_model_comparison"]),
+    ("step_03_05_analyze_cobaya", "Analyze cobaya", ["step_03_04_cobaya_mcmc"]),
+    ("step_03_06_cobaya_verbose", "Cobaya verbose", ["step_03_01_three_model_comparison"]),
+    ("step_03_07_likelihood_synthesis", "Likelihood synthesis", ["step_03_01_three_model_comparison", "step_03_02_independent_mcmc", "step_03_04_cobaya_mcmc"]),
+    ("step_04_01_sn_time_dilation", "Sn time dilation", ["step_03_01_three_model_comparison"]),
+    ("step_04_02_sn_tolman", "Sn tolman", ["step_03_01_three_model_comparison"]),
+    ("step_04_03_tolman_sb", "Tolman sb", ["step_03_01_three_model_comparison"]),
+    ("step_04_04_distance_duality", "Distance duality", ["step_03_01_three_model_comparison", "step_01_03_download_ddr"]),
+    ("step_04_05_ddr_threeway", "Ddr threeway", ["step_04_04_distance_duality"]),
+    ("step_04_06_screening_fit", "Screening fit", ["step_03_01_three_model_comparison"]),
+    ("step_04_07_highz_ddr", "Highz ddr", ["step_03_01_three_model_comparison", "step_01_07_download_desi"]),
+    ("step_05_01_cmb_blackbody", "Cmb blackbody", []),
+    ("step_05_03_cmb_boltzmann", "Cmb boltzmann", ["step_03_01_three_model_comparison"]),
+    ("step_05_04_cmb_spectra", "Cmb spectra", ["step_05_03_cmb_boltzmann"]),
+    ("step_05_05_cmb_consistency", "Cmb consistency", ["step_05_03_cmb_boltzmann"]),
+    ("step_05_06_bbn_registry", "Bbn registry", ["step_03_01_three_model_comparison"]),
+    ("step_05_07_bbn_preservation", "Bbn preservation", ["step_03_01_three_model_comparison"]),
+    ("step_05_08_cmb_acoustic", "Cmb acoustic", ["step_05_03_cmb_boltzmann"]),
+    ("step_06_01_bao_projection", "Bao projection", ["step_03_01_three_model_comparison"]),
+    ("step_06_02_bao_likelihood", "Bao likelihood", ["step_03_01_three_model_comparison"]),
+    ("step_06_03_growth_solver", "Growth solver", ["step_03_01_three_model_comparison"]),
+    ("step_06_04_growth_validation", "Growth validation", ["step_06_03_growth_solver"]),
+    ("step_06_05_growth_rsd", "Growth rsd", ["step_03_01_three_model_comparison"]),
+    ("step_07_01_mixed_forecast", "Mixed forecast", ["step_03_01_three_model_comparison"]),
+    ("step_07_02_redshift_drift", "Redshift drift", ["step_03_01_three_model_comparison"]),
+    ("step_07_03_jwst_test", "Jwst test", ["step_03_01_three_model_comparison"]),
+    ("step_07_04_gw_sirens", "Gw sirens", []),
+    ("step_07_05_weak_lensing_plan", "Weak lensing plan", []),
+    ("step_07_06_weak_lensing", "Weak lensing", []),
+    ("step_07_07_blind_injection", "Blind injection", ["step_03_01_three_model_comparison"]),
+    ("step_08_01_expansion_falsifier", "Expansion falsifier", ["step_04_04_distance_duality", "step_04_03_tolman_sb"]),
+    ("step_08_02_comparison_stats", "Comparison stats", ["step_03_01_three_model_comparison"]),
+    ("step_08_03_sensitivity_analysis", "Sensitivity analysis", ["step_03_01_three_model_comparison"]),
+    ("step_08_04_evidence_matrix", "Evidence matrix", ["step_03_01_three_model_comparison", "step_03_02_independent_mcmc", "step_03_04_cobaya_mcmc"]),
+    ("step_08_05_gate_registry", "Gate registry", ["step_08_04_evidence_matrix"]),
+    ("step_08_06_claim_audit", "Claim audit", ["step_03_01_three_model_comparison", "step_08_04_evidence_matrix"]),
+    ("step_08_07_final_summary", "Final summary", ["step_08_05_gate_registry", "step_08_06_claim_audit"]),
+    ("step_08_08_diagnostic_plots", "Diagnostic plots", ["step_03_01_three_model_comparison", "step_04_04_distance_duality"]),
 ]
 
 
@@ -150,9 +177,9 @@ def main() -> int:
 
     if args.core:
         steps = [
-            "step_022_three_model_comparison",
-            "step_018_tep_mcmc_inference",
-            "step_030_model_comparison_statistics",
+            "step_03_01_three_model_comparison",
+            "step_03_02_independent_mcmc",
+            "step_08_02_comparison_stats",
         ]
     else:
         steps = args.steps

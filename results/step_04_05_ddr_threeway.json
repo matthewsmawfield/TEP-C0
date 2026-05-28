@@ -1,0 +1,57 @@
+{
+  "comparisons": {
+    "BAO_vs_SGL": {
+      "delta_eta": 0.39922339207154817,
+      "significant": true
+    },
+    "BAO_vs_SZ": {
+      "consistent": false,
+      "delta_eta": 0.3768437711115306,
+      "sigma": 15.749355726422403
+    },
+    "SZ_vs_SGL": {
+      "consistent": true,
+      "delta_eta": 0.022379620960017554,
+      "sigma": 1.078517165012082
+    }
+  },
+  "critical_finding": {
+    "description": "SZ and SGL agree (cluster-scale physics); BAO differs (linear regime)",
+    "found": true,
+    "implication": "Evidence for probe-dependent Etherington relation"
+  },
+  "description": "Three-way comparison of DDR from BAO, SZ, and SGL methods",
+  "methods": {
+    "BAO": {
+      "eta_weighted": 0.8662755277611283,
+      "eta_weighted_err": 0.020171406513828538,
+      "n_points": 10,
+      "physical_scale": "~100 Mpc",
+      "physics": "linear density perturbations"
+    },
+    "SGL": {
+      "eta_weighted": 0.4670521356895801,
+      "eta_weighted_err": 0.016276813455831513,
+      "n_points": 15,
+      "physical_scale": "~5 Mpc",
+      "physics": "cluster gravitational potential"
+    },
+    "SZ": {
+      "eta_weighted": 0.48943175664959765,
+      "eta_weighted_err": 0.012870230857919177,
+      "n_points": 20,
+      "physical_scale": "~5 Mpc",
+      "physics": "intracluster hot gas"
+    }
+  },
+  "status": "completed",
+  "step": "step_04_05_ddr_threeway",
+  "timestamp": 1779707597,
+  "validation": {
+    "blockers": [],
+    "real_data": true,
+    "sgl_blocked": false,
+    "sn_matching_required": true,
+    "sz_blocked": false
+  }
+}

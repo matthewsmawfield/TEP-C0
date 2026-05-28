@@ -1,0 +1,20 @@
+{
+  "cobaya_available": true,
+  "config": {
+    "max_samples": 30000,
+    "output_prefix": "results/outputs/tep_cobaya_sne"
+  },
+  "description": "Cobaya-based TEP inference with TEP-CLASS v2.0",
+  "mcmc_result": {
+    "error": null,
+    "success": true
+  },
+  "pantheon_data_available": true,
+  "status": "completed",
+  "step": "step_03_04_cobaya_mcmc",
+  "tep_class_available": true,
+  "validation": {
+    "can_run_joint_analysis": true,
+    "tep_class_path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/external/class"
+  }
+}

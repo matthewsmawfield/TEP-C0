@@ -4,10 +4,10 @@ authors:
   - family-names: "Smawfield"
     given-names: "Matthew Lukin"
     orcid: "https://orcid.org/0009-0003-8219-3159"
-title: "TEP-C0: Temporal Cosmology: Cosmic Redshift as Emergent Proper-Time Transport"
-version: "v0.1"
-date-released: 2026-04-30
-doi: [TO BE ASSIGNED]
+title: "Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion"
+version: "v0.1 (Athens)"
+date-released: 2026-05-25
+doi: 10.5281/zenodo.20370144
 url: "https://github.com/matthewsmawfield/TEP-C0"
 license: CC-BY-4.0
 keywords:

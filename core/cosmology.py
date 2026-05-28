@@ -34,6 +34,20 @@ def _compute_integrand_grid(zp, H0, Om0, Ok0, Ode0, c):
 
 
 @jit(nopython=True)
+def _compute_integrand_grid_wcdm(zp, H0, Om0, Ok0, Ode0, w, c):
+    """Compute integrand for comoving distance on a grid for wCDM."""
+    zp1 = 1.0 + zp
+    return c / (H0 * np.sqrt(Om0 * zp1**3 + Ok0 * zp1**2 + Ode0 * (zp1**(3.0 * (1.0 + w)))))
+
+
+@jit(nopython=True)
+def _compute_integrand_grid_cpl(zp, H0, Om0, Ok0, Ode0, w0, wa, c):
+    """Compute integrand for comoving distance on a grid for CPL."""
+    zp1 = 1.0 + zp
+    return c / (H0 * np.sqrt(Om0 * zp1**3 + Ok0 * zp1**2 + Ode0 * (zp1**(3.0 * (1.0 + w0 + wa))) * np.exp(-3.0 * wa * zp / zp1)))
+
+
+@jit(nopython=True)
 def _compute_cumulative_integral(integrand, dz):
     """Compute cumulative integral using the trapezoidal rule."""
     distances = np.zeros_like(integrand)
@@ -181,3 +195,58 @@ class TEPModulatedCosmology(CosmologyFLRW):
         """
         z_arr = np.atleast_1d(z)
         return 1.0 + z_arr
+
+
+class wCDMCosmology(CosmologyFLRW):
+    """wCDM cosmology with constant dark energy equation of state."""
+    
+    def __init__(self, H0: float = 70.0, Om0: float = 0.3, Ok0: float = 0.0, Ode0: float = None, w: float = -1.0):
+        super().__init__(H0=H0, Om0=Om0, Ok0=Ok0, Ode0=Ode0)
+        self.w = w
+        
+    def e_func(self, z):
+        zp1 = 1.0 + np.asarray(z)
+        return np.sqrt(self.Om0 * zp1**3 + self.Ok0 * zp1**2 + self.Ode0 * (zp1**(3.0 * (1.0 + self.w))))
+        
+    def comoving_distance(self, z):
+        z_arr = np.atleast_1d(z)
+        c = 299792.458
+        n_points = 1000
+        max_z = np.max(z_arr)
+        if max_z == 0:
+            return np.zeros_like(z_arr)
+        zp = np.linspace(0, max_z, n_points)
+        dz = zp[1] - zp[0]
+        integrand = _compute_integrand_grid_wcdm(zp, self.H0, self.Om0, self.Ok0, self.Ode0, self.w, c)
+        integral = _compute_cumulative_integral(integrand, dz)
+        distances = np.interp(z_arr, zp, integral)
+        return distances if len(distances) > 1 else distances[0]
+
+
+class CPLCosmology(CosmologyFLRW):
+    """CPL (w0 wa) cosmology with evolving dark energy equation of state."""
+    
+    def __init__(self, H0: float = 70.0, Om0: float = 0.3, Ok0: float = 0.0, Ode0: float = None, w0: float = -1.0, wa: float = 0.0):
+        super().__init__(H0=H0, Om0=Om0, Ok0=Ok0, Ode0=Ode0)
+        self.w0 = w0
+        self.wa = wa
+        
+    def e_func(self, z):
+        zp = np.asarray(z)
+        zp1 = 1.0 + zp
+        return np.sqrt(self.Om0 * zp1**3 + self.Ok0 * zp1**2 + self.Ode0 * (zp1**(3.0 * (1.0 + self.w0 + self.wa))) * np.exp(-3.0 * self.wa * zp / zp1))
+        
+    def comoving_distance(self, z):
+        z_arr = np.atleast_1d(z)
+        c = 299792.458
+        n_points = 1000
+        max_z = np.max(z_arr)
+        if max_z == 0:
+            return np.zeros_like(z_arr)
+        zp = np.linspace(0, max_z, n_points)
+        dz = zp[1] - zp[0]
+        integrand = _compute_integrand_grid_cpl(zp, self.H0, self.Om0, self.Ok0, self.Ode0, self.w0, self.wa, c)
+        integral = _compute_cumulative_integral(integrand, dz)
+        distances = np.interp(z_arr, zp, integral)
+        return distances if len(distances) > 1 else distances[0]
+

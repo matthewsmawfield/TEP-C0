@@ -9,7 +9,8 @@ theory:
       P_k_max_h/Mpc: 10
       l_max_scalars: 2500
       lensing: 'yes'
-      tep_mode: 'no'
+      tep_mode: 'yes'
+      non_linear: halofit
 likelihood:
   planck_2018_highl_plik.TTTEEE: {}
   planck_2018_lowl.TT: {}
@@ -18,17 +19,17 @@ likelihood:
 params:
   tep_epsilon_T:
     prior:
-      min: 0.0
-      max: 0.4
-    ref: 0.1
-    proposal: 0.02
+      min: -0.05
+      max: 0.05
+    ref: 0.001
+    proposal: 0.0001
     latex: \epsilon_T
   tep_z_T:
     prior:
       min: 0.5
       max: 15.0
     ref: 3.0
-    proposal: 0.5
+    proposal: 0.01
     latex: z_T
   tep_n_T:
     value: 1.0
@@ -37,54 +38,57 @@ params:
     prior:
       min: 60.0
       max: 80.0
-    ref: 70.0
-    proposal: 1.0
+    ref: 67.5
+    proposal: 0.01
     latex: H_0
   omega_b:
     prior:
       min: 0.018
       max: 0.025
     ref: 0.0224
-    proposal: 0.0002
+    proposal: 1.0e-05
     latex: \Omega_b h^2
   omega_cdm:
     prior:
       min: 0.1
-      max: 0.15
+      max: 0.14
     ref: 0.12
-    proposal: 0.003
+    proposal: 0.0001
     latex: \Omega_{cdm} h^2
   tau_reio:
     prior:
       min: 0.01
       max: 0.1
     ref: 0.054
-    proposal: 0.007
+    proposal: 0.001
     latex: \tau_{reio}
-  A_s:
+  logA:
     prior:
-      min: 1.5e-09
-      max: 2.5e-09
-    ref: 2.1e-09
-    proposal: 1.5e-10
+      min: 2.5
+      max: 3.5
+    ref: 3.044
+    proposal: 0.001
+    latex: \ln(10^{10}A_s)
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10 * np.exp(logA)'
     latex: A_s
   n_s:
     prior:
       min: 0.9
       max: 1.05
     ref: 0.966
-    proposal: 0.006
+    proposal: 0.0001
     latex: n_s
 sampler:
   mcmc:
-    max_tries: 20000
+    max_tries: 10000
     burn_in: 0
-    Rminus1_stop: 0.05
+    Rminus1_stop: 0.02
     Rminus1_cl_stop: 0.2
     covmat: auto
     learn_every: 40d
     proposal_scale: 2.4
+    max_samples: 30000
 output: tep_cobaya_sne
-stop:
-  max_samples: 300
 verbose: 2

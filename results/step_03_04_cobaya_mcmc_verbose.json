@@ -1,0 +1,7 @@
+{
+  "cobaya_available": true,
+  "reason": "Missing dependencies",
+  "status": "skipped",
+  "step": "step_03_04_cobaya_mcmc_verbose",
+  "tep_class_available": false
+}

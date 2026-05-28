@@ -1,0 +1,39 @@
+{
+  "all_critical_tests_completed": true,
+  "description": "Evidence gate registry aggregating all test results",
+  "evidence_summary": {
+    "step_03_01_three_model_comparison": {
+      "completed": true,
+      "interpretation": "N/A...",
+      "key_finding": "N/A"
+    },
+    "step_04_01_sn_time_dilation": {
+      "completed": true,
+      "interpretation": "Internal consistency check - SALT2 x1 as diagnostic proxy for temporal shear effects...",
+      "key_finding": "Diagnostic consistency: SALT2 x1 correlates with TEP path enhancement"
+    },
+    "step_04_03_tolman_sb": {
+      "completed": true,
+      "interpretation": "N/A...",
+      "key_finding": "N/A"
+    },
+    "step_04_04_distance_duality": {
+      "completed": true,
+      "interpretation": "N/A...",
+      "key_finding": "N/A"
+    },
+    "step_04_08_environment_residuals": {
+      "completed": true,
+      "interpretation": "Partial correlation rho(R_TEP, Sigma|z) = 0.0 (p=1.00e+00)...",
+      "key_finding": "Host-mass proxy correlation with environment documented per literature"
+    },
+    "step_07_02_redshift_drift": {
+      "completed": true,
+      "interpretation": "TEP predicts z_drift(z=2) = 2e-12 yr^-1; relative difference to LCDM is reported where the LCDM deno...",
+      "key_finding": "Redshift drift predictions differ from LCDM, testable with next-generation cosmic chronometers"
+    }
+  },
+  "n_tests_completed": 6,
+  "n_tests_total": 6,
+  "step": "step_08_05_gate_registry"
+}

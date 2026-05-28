@@ -1,0 +1,19 @@
+{
+  "interpretation": "Current Pantheon+ MLE diagnostic gives delta log L = -4.79 for M1 relative to M0. This is not a replacement claim unless the posterior, CMB, BBN, and robustness gates are open.",
+  "metrics": {
+    "delta_logl": -4.8,
+    "logl_lcdm": 642.7,
+    "logl_tep": 637.9,
+    "mcmc_converged": true,
+    "mcmc_ft": 0.007,
+    "mcmc_h0": 66.73,
+    "tension_resolution_factor": 0.4269
+  },
+  "step": "step_03_07_likelihood_synthesis",
+  "validation": {
+    "blockers": [],
+    "claim_gate": "open",
+    "cobaya_chain_available": true,
+    "step_033_converged": true
+  }
+}

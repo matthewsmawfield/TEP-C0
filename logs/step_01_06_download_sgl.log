@@ -1,0 +1,10 @@
+[11:39:49] [INFO] 
+[11:39:49] [INFO] ================================================================================
+[11:39:49] [INFO]    Starting step_01_06_download_sgl
+[11:39:49] [INFO] ================================================================================
+[11:39:49] [INFO] 
+[11:39:49] [SUCCESS] Loaded 15 strong lensing systems from Liao et al. 2016, MNRAS 463, 1511
+[11:39:49] [INFO] Lens redshift range: 0.152 - 0.245
+[11:39:49] [INFO] Source redshift range: 0.528 - 0.889
+[11:39:49] [INFO] D_A range: 485.0 - 595.0 Mpc
+[11:39:49] [SUCCESS] Step step_01_06_download_sgl completed

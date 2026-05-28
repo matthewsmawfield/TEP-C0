@@ -1,0 +1,17 @@
+{
+  "interpretation": "TEP-C0 records the current empirical diagnostics and exposes claim gates explicitly. Expansion-replacement, CMB-replacement, and BBN-replacement claims remain blocked unless the research-grade likelihood, CMB, BBN, and robustness gates are open.",
+  "reconstruction_metrics": {
+    "transport_low_z_ht": 70.336803,
+    "transport_recovery_error": 0.0
+  },
+  "step": "step_08_07_final_summary",
+  "summary": {
+    "audit_status": "SUCCESS",
+    "claim_blockers": [],
+    "f_t_mcmc": 0.07,
+    "h0_mcmc": 69.3,
+    "pass_rate": 1.0,
+    "research_grade_claim_gate": "blocked",
+    "trf": 0.2087
+  }
+}

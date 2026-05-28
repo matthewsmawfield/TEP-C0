@@ -1,0 +1,40 @@
+ 2026-05-28 02:20:05,732 [output] Output to be read-from/written-into folder 'results/outputs', with prefix 'tep_cobaya_sne'
+ 2026-05-28 02:20:05,732 [output] Found existing info files with the requested output prefix: 'results/outputs/tep_cobaya_sne'
+ 2026-05-28 02:20:05,732 [output] There was old updated info, but no resume or force requested. Behavior will be handled by sampler.
+ 2026-05-28 02:20:11,972 [input] 'core.pantheon_cobaya_likelihood.PantheonCobaya' could not be found as internal, trying external.
+ 2026-05-28 02:20:11,973 [input] 'core.pantheon_cobaya_likelihood.PantheonCobaya' could not be found as external component in the current path.
+ 2026-05-28 02:20:11,978 [input] *ERROR* 'core.pantheon_cobaya_likelihood.PantheonCobaya' could not be found. Tried loading internal and external classes. No component path was given.
+ 2026-05-28 02:20:12,009 [exception handler] ---------------------------------------
+
+Traceback (most recent call last):
+  File "/Users/matthewsmawfield/opt/miniconda3/bin/cobaya-run", line 8, in <module>
+    sys.exit(run_script())
+             ~~~~~~~~~~^^
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/cobaya/run.py", line 266, in run_script
+    run(info, **arguments.__dict__)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/cobaya/run.py", line 115, in run
+    updated_info = update_info(info)
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/cobaya/input.py", line 374, in update_info
+    default_class_info, annotations = get_default_info(
+                                      ~~~~~~~~~~~~~~~~^
+        name,
+        ^^^^^
+    ...<4 lines>...
+        return_undefined_annotations=True,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/cobaya/input.py", line 270, in get_default_info
+    cls = get_component_class(
+        component_or_class, kind, component_path, class_name, logger=logger
+    )
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/cobaya/component.py", line 795, in get_component_class
+    raise ComponentNotFoundError(logger, _not_found_msg + add_msg, level=not_found_level)
+cobaya.component.ComponentNotFoundError: 'core.pantheon_cobaya_likelihood.PantheonCobaya' could not be found. Tried loading internal and external classes. No component path was given.
+-------------------------------------------------------------
+
+ 2026-05-28 02:20:12,009 [exception handler] Some unexpected ERROR occurred. You can see the exception information above.
+We recommend trying to reproduce this error with 'debug:True' in the input.
+If you cannot solve it yourself and need to report it, include the debug output,
+which you can send it to a file setting 'debug:[some_file_name]'.

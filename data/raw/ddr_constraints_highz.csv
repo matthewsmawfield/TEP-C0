@@ -1,0 +1,4 @@
+z,D_A,D_A_err,D_L,D_L_err,source,survey,type,reference,arxiv
+2.33,1760.1189189189188,46.54054054054053,,,DESI-DR1 Lyman-α BAO,DESI-DR1,Lyman-alpha,DESI Collaboration 2024 (preliminary),TBD
+2.334,1758.0071985602879,46.48470305938812,,,eBOSS Lyman-α BAO,eBOSS,Lyman-alpha,du Mas des Bourboux et al. 2020,2004.01198
+2.225,1739.1627906976744,96.11162790697674,,,eBOSS Lyman-α BAO,eBOSS,QSO-Lya cross,Blomqvist et al. 2019,1812.02891

@@ -66,6 +66,13 @@
             copyRecursiveSync(publicDir, publicDest, fs, path);
         }
         
+        // Copy assets directory to dist
+        const assetsDir = path.join(siteDir, 'assets');
+        const assetsDest = path.join(distDir, 'assets');
+        if (fs.existsSync(assetsDir)) {
+            copyRecursiveSync(assetsDir, assetsDest, fs, path);
+        }
+        
         copyResults(path.join(siteDir, '..', 'results'), distDir, fs, path);
         copyDataArtifacts(path.join(siteDir, '..'), distDir, fs, path);
 

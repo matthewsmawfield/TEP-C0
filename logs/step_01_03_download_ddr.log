@@ -1,0 +1,17 @@
+[11:39:44] [INFO] 
+[11:39:44] [INFO] ================================================================================
+[11:39:44] [INFO]    Starting step_01_03_download_ddr
+[11:39:44] [INFO] ================================================================================
+[11:39:44] [INFO] 
+[11:39:44] [PROCESS] Processing source: pantheon_sne
+[11:39:45] [SUCCESS] Downloaded pantheon_sne
+[11:39:45] [PROCESS] Processing BAO angular diameter distances...
+[11:39:45] [SUCCESS] Loaded 10 BAO D_A measurements
+[11:39:45] [PROCESS] Parsing Pantheon SNe from pantheon_lcparams.txt...
+[11:39:45] [SUCCESS] Parsed 1048 SNe Ia measurements
+[11:39:45] [PROCESS] Computing D_L at BAO redshifts via FLRW interpolation...
+[11:39:45] [INFO] Using Planck 2018 published values to avoid circular dependency
+[11:39:45] [INFO] Planck 2018 values: H0=67.4±0.5, Om0=0.315 (independent observational data)
+[11:39:45] [INFO] Using independent Planck 2018: H0=67.40, Om0=0.315
+[11:39:46] [SUCCESS] Created 10 paired D_A/D_L constraints
+[11:39:46] [SUCCESS] Step step_01_03_download_ddr completed: 10 constraints

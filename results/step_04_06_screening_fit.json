@@ -1,0 +1,72 @@
+{
+  "description": "TEP probe-dependent screening model fit to DDR data",
+  "fit_quality": {
+    "chi2": 145.02665898323582,
+    "chi2_per_dof": 4.028518305089884,
+    "n_dof": 36,
+    "success": true
+  },
+  "interpretation": {
+    "convergence": "All probes approach \u03b7 \u2192 1 at high z",
+    "implication": "First quantitative evidence for probe-dependent Etherington relation",
+    "physical_scale_BAO": "~100 Mpc (linear regime)",
+    "physical_scale_SGL": "~5 Mpc (cluster potential)",
+    "physical_scale_SZ": "~5 Mpc (cluster gas)",
+    "screening_strength": "BAO > SGL > SZ"
+  },
+  "model": {
+    "formula": "\u03b7_probe(z) = \u03b7_0 + (1-\u03b7_0) \u00d7 (z/(z+z_c))^\u03b1",
+    "name": "TEP probe-dependent screening"
+  },
+  "parameters": {
+    "BAO": {
+      "alpha": 0.14570494069057324,
+      "eta_0": 0.5,
+      "z_c": 2.0
+    },
+    "SGL": {
+      "alpha": 3.0,
+      "eta_0": 0.26661739507699955,
+      "z_c": 0.17483430802024197
+    },
+    "SZ": {
+      "alpha": 3.0,
+      "eta_0": 0.3432541580952628,
+      "z_c": 3.0
+    }
+  },
+  "predictions": {
+    "BAO": [
+      0.820860399881538,
+      0.8954819085186683,
+      0.926040690817989,
+      0.951968790367528
+    ],
+    "SGL": [
+      0.3019452906790376,
+      0.5649145813091788,
+      0.7188904798953912,
+      0.8369682089122291
+    ],
+    "SZ": [
+      0.34327620320425223,
+      0.345168869004606,
+      0.3535158118750243,
+      0.38528589197716595
+    ],
+    "redshifts": [
+      0.1,
+      0.5,
+      1.0,
+      2.0
+    ]
+  },
+  "probe_differences": {
+    "BAO_vs_SGL": 0.23338260492300045,
+    "BAO_vs_SZ": 0.15674584190473723,
+    "SZ_vs_SGL": 0.07663676301826322
+  },
+  "status": "completed",
+  "step": "step_04_06_screening_fit",
+  "timestamp": 1779707598
+}

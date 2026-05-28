@@ -1,0 +1,13 @@
+{
+  "confidence": "Moderate",
+  "description": "Expansion falsifier using DDR and Tolman tests",
+  "distance_duality_deviation": 6.63,
+  "expansion_hypothesis": {
+    "ddr_must_be": 1.0,
+    "tolman_xi_must_be": 1.0
+  },
+  "interpretation": "TEP predicts measurable deviations from pure expansion in DDR and Tolman tests",
+  "step": "step_08_01_expansion_falsifier",
+  "tep_hypothesis_favored": true,
+  "tolman_delta_chi2": 1017.91
+}

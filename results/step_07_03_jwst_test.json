@@ -1,0 +1,35 @@
+{
+  "data_acquisition": {
+    "astodeep_jwst": "Available (6,860 galaxies)",
+    "ceers": "To be downloaded",
+    "jades": "To be downloaded"
+  },
+  "planned_tests": {
+    "test_1_angular_sizes": {
+      "data_source": "JWST CEERS, JADES surveys",
+      "description": "Galaxy angular sizes at z > 6",
+      "discriminating": "No - both predict same at high z",
+      "lcdm_prediction": "Standard angular diameter distance",
+      "priority": "Medium",
+      "tep_prediction": "Standard angular diameter distance"
+    },
+    "test_2_surface_brightness": {
+      "data_source": "ASTRODEEP-JWST catalogue",
+      "description": "UV surface brightness evolution",
+      "discriminating": "Yes - TEP predicts convergence",
+      "lcdm_prediction": "(1+z)^-4 Tolman dimming",
+      "priority": "High",
+      "tep_prediction": "Convergence to standard (1+z)^-4 dimming"
+    },
+    "test_3_luminosity_functions": {
+      "data_source": "JWST deep fields",
+      "description": "Galaxy luminosity functions",
+      "discriminating": "No - both agree at high z",
+      "lcdm_prediction": "Standard evolution",
+      "priority": "Low",
+      "tep_prediction": "Standard evolution at high z"
+    }
+  },
+  "status": "planning",
+  "step": "step_07_03_jwst_test"
+}

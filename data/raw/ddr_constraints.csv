@@ -1,0 +1,11 @@
+z,D_L,D_L_err,D_A,D_A_err,source,method,survey,ref
+0.11,528.73,11.28,396.5,36.8,Planck2018_FLRW_z0.11,FLRW_interpolation_Planck2018,SDSS-DR7-CMASS,Carter et al. 2018
+0.235,1216.98,25.96,770.8,53.0,Planck2018_FLRW_z0.23,FLRW_interpolation_Planck2018,SDSS-DR11-LRG,Nunes et al. 2020
+0.365,2017.74,43.04,1031.4,68.8,Planck2018_FLRW_z0.36,FLRW_interpolation_Planck2018,SDSS-DR11-LRG,Nunes et al. 2020
+0.451,2588.68,55.22,1127.6,77.3,Planck2018_FLRW_z0.45,FLRW_interpolation_Planck2018,SDSS-DR11-LRG,Nunes et al. 2020
+0.565,3389.45,72.3,1387.9,78.2,Planck2018_FLRW_z0.56,FLRW_interpolation_Planck2018,SDSS-DR11-LRG,Nunes et al. 2020
+0.7,4394.04,93.73,1695.0,104.0,Planck2018_FLRW_z0.70,FLRW_interpolation_Planck2018,eBOSS-DR16-LRG,Bautista et al. 2021
+0.85,5571.19,118.84,1958.0,123.6,Planck2018_FLRW_z0.85,FLRW_interpolation_Planck2018,eBOSS-DR16-LRG,Gil-Marin et al. 2020
+1.0,6802.53,145.11,2244.0,140.0,Planck2018_FLRW_z1.00,FLRW_interpolation_Planck2018,eBOSS-DR16-ELG,de Mattia et al. 2021
+1.2,8514.72,181.63,2594.0,196.5,Planck2018_FLRW_z1.20,FLRW_interpolation_Planck2018,eBOSS-DR16-QSO,Hou et al. 2021
+1.5,11205.24,239.02,2884.0,333.0,Planck2018_FLRW_z1.50,FLRW_interpolation_Planck2018,eBOSS-DR16-QSO,Neveux et al. 2020

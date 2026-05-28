@@ -1,0 +1,131 @@
+{
+  "ddr_constraints": [
+    {
+      "D_A": 396.5,
+      "D_A_err": 36.8,
+      "D_L": 528.73,
+      "D_L_err": 11.28,
+      "eta_err": 0.1031,
+      "eta_obs": 1.0823,
+      "z": 0.11
+    },
+    {
+      "D_A": 770.8,
+      "D_A_err": 53.0,
+      "D_L": 1216.98,
+      "D_L_err": 25.96,
+      "eta_err": 0.0745,
+      "eta_obs": 1.0352,
+      "z": 0.235
+    },
+    {
+      "D_A": 1031.4,
+      "D_A_err": 68.8,
+      "D_L": 2017.74,
+      "D_L_err": 43.04,
+      "eta_err": 0.0735,
+      "eta_obs": 1.05,
+      "z": 0.365
+    },
+    {
+      "D_A": 1127.6,
+      "D_A_err": 77.3,
+      "D_L": 2588.68,
+      "D_L_err": 55.22,
+      "eta_err": 0.0783,
+      "eta_obs": 1.0904,
+      "z": 0.451
+    },
+    {
+      "D_A": 1387.9,
+      "D_A_err": 78.2,
+      "D_L": 3389.45,
+      "D_L_err": 72.3,
+      "eta_err": 0.0601,
+      "eta_obs": 0.9971,
+      "z": 0.565
+    },
+    {
+      "D_A": 1695.0,
+      "D_A_err": 104.0,
+      "D_L": 4394.04,
+      "D_L_err": 93.73,
+      "eta_err": 0.0583,
+      "eta_obs": 0.897,
+      "z": 0.7
+    },
+    {
+      "D_A": 1958.0,
+      "D_A_err": 123.6,
+      "D_L": 5571.19,
+      "D_L_err": 118.84,
+      "eta_err": 0.0554,
+      "eta_obs": 0.8314,
+      "z": 0.85
+    },
+    {
+      "D_A": 2244.0,
+      "D_A_err": 140.0,
+      "D_L": 6802.53,
+      "D_L_err": 145.11,
+      "eta_err": 0.05,
+      "eta_obs": 0.7579,
+      "z": 1.0
+    },
+    {
+      "D_A": 2594.0,
+      "D_A_err": 196.5,
+      "D_L": 8514.72,
+      "D_L_err": 181.63,
+      "eta_err": 0.0534,
+      "eta_obs": 0.6782,
+      "z": 1.2
+    },
+    {
+      "D_A": 2884.0,
+      "D_A_err": 333.0,
+      "D_L": 11205.24,
+      "D_L_err": 239.02,
+      "eta_err": 0.073,
+      "eta_obs": 0.6216,
+      "z": 1.5
+    }
+  ],
+  "description": "Distance-duality relation test with observational constraints",
+  "model_parameters": {
+    "H0_lcdm": 70.0,
+    "H0_tep": 70.0,
+    "Om0": 0.3,
+    "epsilon_T": 0.425647,
+    "z_T": 1.0
+  },
+  "observational_data": {
+    "have_data": true,
+    "n_constraints": 10,
+    "redshift_range": [
+      0.11,
+      1.5
+    ]
+  },
+  "statistical_results": {
+    "chi2_lcdm": 101.75,
+    "chi2_tep": 101.75,
+    "delta_chi2": 0.0,
+    "deviation_from_unity_sigma": 6.63,
+    "eta_weighted_err": 0.0202,
+    "eta_weighted_mean": 0.8662
+  },
+  "status": "completed",
+  "step": "step_04_04_distance_duality",
+  "theory_predictions": {
+    "delta_eta_theory": -0.0,
+    "eta_lcdm_at_z2": 1.0,
+    "eta_tep_at_z2": 1.0
+  },
+  "validation": {
+    "blockers": [],
+    "claim_gate": "open",
+    "real_data": true,
+    "research_grade_distance_duality": true
+  }
+}

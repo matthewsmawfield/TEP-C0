@@ -1,11 +1,23 @@
 import sys
-sys.path.insert(0, '/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/external/class/build/lib.macosx-11.1-arm64-cpython-313')
-import classy
-print("Classy loaded")
-cosmo = classy.Class()
-cosmo.set({'tep_epsilon_T': 0.1, 'tep_z_T': 2.0, 'output': 'tCl,lCl,mPk'})
-cosmo.compute()
-z = 1.0
-dl = cosmo.luminosity_distance(z)
-da = cosmo.angular_distance(z)
-print(f"z={z}, dL={dl}, dA={da}, ratio={dl/(da*(1+z)**2)}")
+sys.path.insert(0, "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/external/class/python/build/lib.macosx-11.1-arm64-cpython-313")
+from classy import Class
+
+c = Class()
+c.set({
+    'tep_mode': 'yes',
+    'tep_epsilon_T': 0.001,
+    'tep_z_T': 3.0,
+    'tep_n_T': 1.0,
+    'H0': 67.5,
+    'omega_b': 0.0224,
+    'omega_cdm': 0.120,
+    'tau_reio': 0.054,
+    'A_s': 2.1e-9,
+    'n_s': 0.966,
+    'output': 'tCl,pCl,lCl,mPk',
+    'P_k_max_h/Mpc': 10,
+    'l_max_scalars': 2500,
+    'lensing': 'yes'
+})
+c.compute()
+print("CLASS compute successful!")

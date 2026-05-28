@@ -1,0 +1,16 @@
+[11:39:43] [INFO] 
+[11:39:43] [INFO] ================================================================================
+[11:39:43] [INFO]    Starting step_01_02_data_ingestion
+[11:39:43] [INFO] ================================================================================
+[11:39:43] [INFO] 
+[11:39:43] [PROCESS] Ingesting Pantheon+ distances
+[11:39:43] [SUCCESS] Ingested Pantheon+ distances to data/processed/tep_c0_pantheon_plus_distances.csv
+[11:39:43] [PROCESS] Ingesting Pantheon+ full covariance
+[11:39:44] [SUCCESS] Ingested Pantheon+ full covariance to data/processed/tep_c0_pantheon_plus_covariance_manifest.csv
+[11:39:44] [PROCESS] Ingesting FIRAS CMB monopole
+[11:39:44] [SUCCESS] Ingested FIRAS CMB monopole to data/processed/tep_c0_firas_monopole_spectrum.csv
+[11:39:44] [PROCESS] Ingesting BAO compilation
+[11:39:44] [SUCCESS] Ingested BAO compilation to data/processed/tep_c0_bao_uncorrelated_compilation.csv
+[11:39:44] [PROCESS] Ingesting BBN abundance review
+[11:39:44] [SUCCESS] Ingested BBN abundance review to data/processed/tep_c0_bbn_abundance_registry.csv
+[11:39:44] [SUCCESS] Step step_01_02_data_ingestion completed successfully

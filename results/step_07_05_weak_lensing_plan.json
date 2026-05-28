@@ -1,0 +1,68 @@
+{
+  "current_surveys": {
+    "DES-Y3": {
+      "area": 5000,
+      "status": "Complete",
+      "z_max": 1.5
+    },
+    "HSC-SSP": {
+      "area": 1400,
+      "status": "Ongoing",
+      "z_max": 2.0
+    },
+    "KiDS-1000": {
+      "area": 1000,
+      "status": "Complete",
+      "z_max": 1.0
+    }
+  },
+  "future_surveys": {
+    "Euclid": {
+      "area": 15000,
+      "status": "Launch 2023",
+      "z_max": 3.0
+    },
+    "LSST": {
+      "area": 18000,
+      "status": "Operations 2025",
+      "z_max": 6.0
+    }
+  },
+  "planned_tests": {
+    "test_1_shear_power": {
+      "data_sources": [
+        "KiDS-1000",
+        "DES-Y3",
+        "HSC-SSP"
+      ],
+      "description": "Cosmic shear power spectrum",
+      "lcdm_prediction": "Standard C_\u2113^\u03ba",
+      "priority": "High",
+      "tep_prediction": "C_\u2113^\u03ba modified by ~5% at \u2113 ~ 1000"
+    },
+    "test_2_cross_correlation": {
+      "data_sources": [
+        "DES-Y3",
+        "HSC-SSP"
+      ],
+      "description": "Galaxy-galaxy lensing",
+      "lcdm_prediction": "Standard lensing",
+      "priority": "Medium",
+      "tep_prediction": "Modified geodesic deviation"
+    },
+    "test_3_growth_rate": {
+      "data_sources": [
+        "KiDS",
+        "DES",
+        "Euclid",
+        "LSST"
+      ],
+      "description": "\u03c3\u2088 from lensing",
+      "lcdm_prediction": "Planck-normalized \u03c3\u2088",
+      "priority": "High",
+      "tep_prediction": "Slightly lower \u03c3\u2088"
+    }
+  },
+  "status": "planning",
+  "step": "step_07_05_weak_lensing_plan"
+}

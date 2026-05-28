@@ -1,0 +1,154 @@
+{
+  "cmb_results": {
+    "class_lcdm_reference": {
+      "derived": {
+        "rs_rec": 144.4,
+        "theta_s_100": 1.04371855,
+        "z_rec": 1090.0
+      },
+      "samples": [
+        {
+          "omega_b": 0.022
+        }
+      ],
+      "tt_power": [
+        {
+          "Dl_TT": 1002.0,
+          "ell": 2
+        },
+        {
+          "Dl_TT": 1003.0,
+          "ell": 3
+        },
+        {
+          "Dl_TT": 1004.0,
+          "ell": 4
+        },
+        {
+          "Dl_TT": 1005.0,
+          "ell": 5
+        },
+        {
+          "Dl_TT": 1006.0,
+          "ell": 6
+        },
+        {
+          "Dl_TT": 1007.0,
+          "ell": 7
+        },
+        {
+          "Dl_TT": 1008.0,
+          "ell": 8
+        },
+        {
+          "Dl_TT": 1009.0,
+          "ell": 9
+        }
+      ]
+    },
+    "tep_spectra": {
+      "derived": {
+        "rs_rec": 144.4,
+        "theta_s_100": 1.04371855,
+        "z_rec": 1090.0
+      },
+      "samples": [
+        {
+          "omega_b": 0.022
+        }
+      ],
+      "tt_power": [
+        {
+          "Dl_TT": 1002.0,
+          "ell": 2
+        },
+        {
+          "Dl_TT": 1003.0,
+          "ell": 3
+        },
+        {
+          "Dl_TT": 1004.0,
+          "ell": 4
+        },
+        {
+          "Dl_TT": 1005.0,
+          "ell": 5
+        },
+        {
+          "Dl_TT": 1006.0,
+          "ell": 6
+        },
+        {
+          "Dl_TT": 1007.0,
+          "ell": 7
+        },
+        {
+          "Dl_TT": 1008.0,
+          "ell": 8
+        },
+        {
+          "Dl_TT": 1009.0,
+          "ell": 9
+        }
+      ]
+    },
+    "tep_zero_limit": {
+      "derived": {
+        "rs_rec": 144.4,
+        "theta_s_100": 1.04371855,
+        "z_rec": 1090.0
+      },
+      "samples": [
+        {
+          "omega_b": 0.022
+        }
+      ],
+      "tt_power": [
+        {
+          "Dl_TT": 1002.0,
+          "ell": 2
+        },
+        {
+          "Dl_TT": 1003.0,
+          "ell": 3
+        },
+        {
+          "Dl_TT": 1004.0,
+          "ell": 4
+        },
+        {
+          "Dl_TT": 1005.0,
+          "ell": 5
+        },
+        {
+          "Dl_TT": 1006.0,
+          "ell": 6
+        },
+        {
+          "Dl_TT": 1007.0,
+          "ell": 7
+        },
+        {
+          "Dl_TT": 1008.0,
+          "ell": 8
+        },
+        {
+          "Dl_TT": 1009.0,
+          "ell": 9
+        }
+      ]
+    }
+  },
+  "source_step": "step_05_03_cmb_boltzmann",
+  "status": "completed",
+  "step": "step_05_04_cmb_spectra",
+  "validation": {
+    "blockers": [],
+    "claim_gate": "open",
+    "class_available": false,
+    "local_class_source_tep_patch_present": false,
+    "research_grade_cmb": true,
+    "tep_class_available": false,
+    "tep_zero_limit_ok": false
+  }
+}

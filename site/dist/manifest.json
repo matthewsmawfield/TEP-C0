@@ -1,10 +1,10 @@
 {
-  "title": "Temporal Cosmology: Expansion as the Reconstruction of Temporal Shear",
+  "title": "Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion",
   "author": "Matthew Lukin Smawfield",
   "version": "v0.1 (Athens)",
-  "date": "30 April 2026",
-  "first_published": "30 April 2026",
-  "doi": "[TO BE ASSIGNED]",
+  "date": "25 May 2026",
+  "first_published": "25 May 2026",
+  "doi": "10.5281/zenodo.20370144",
   "sections": [
     { "id": "abstract", "title": "Abstract", "file": "1_abstract.html", "order": 1 },
     { "id": "introduction", "title": "Introduction", "file": "1_introduction.html", "order": 2 },
