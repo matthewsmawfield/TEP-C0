@@ -1,9 +1,10 @@
-[11:39:49] [INFO] 
-[11:39:49] [INFO] ================================================================================
-[11:39:49] [INFO]    Starting step_01_05_download_sz
-[11:39:49] [INFO] ================================================================================
-[11:39:49] [INFO] 
-[11:39:49] [SUCCESS] Loaded 20 SZ clusters from Holanda, Busti & Alcaniz 2016, JCAP 06, 022
-[11:39:49] [INFO] Redshift range: 0.042 - 0.451
-[11:39:49] [INFO] D_A range: 135.0 - 950.0 Mpc
-[11:39:49] [SUCCESS] Step step_01_05_download_sz completed
+[22:47:19] [INFO] 
+[22:47:19] [INFO] ================================================================================
+[22:47:19] [INFO]    Starting step_01_05_download_sz
+[22:47:19] [INFO] ================================================================================
+[22:47:19] [INFO] 
+[22:47:19] [INFO] Loaded Pantheon+ for real eta_obs computation
+[22:47:19] [SUCCESS] Loaded 20 SZ clusters from Holanda, Busti & Alcaniz 2016, JCAP 06, 022
+[22:47:19] [INFO] Redshift range: 0.042 - 0.451
+[22:47:19] [INFO] D_A range: 135.0 - 950.0 Mpc
+[22:47:19] [SUCCESS] Step step_01_05_download_sz completed

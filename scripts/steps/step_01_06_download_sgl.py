@@ -76,6 +76,36 @@ def run() -> dict:
 
     systems = LIAO_2016_SGL_SYSTEMS
     
+    import pandas as pd
+    sne_path = RAW_DIR / "pantheon_plus_shoes.dat"
+    sn_df = None
+    if sne_path.exists():
+        sn_df = pd.read_csv(sne_path, sep=r'\s+', comment='#')
+        print_status("Loaded Pantheon+ for real eta_obs computation", "INFO")
+        
+    # Compute eta_obs
+    for s in systems:
+        z = s["z_lens"]
+        da = s["D_A"]
+        da_err = s["D_A_err"]
+        
+        if sn_df is not None:
+            mask = np.abs(sn_df['zHD'] - z) < 0.01
+            matched = sn_df[mask]
+            if len(matched) == 0:
+                idx = np.abs(sn_df['zHD'] - z).argmin()
+                matched = sn_df.iloc[[idx]]
+                
+            mu = matched['MU_SH0ES'].mean()
+            mu_err = matched['MU_SH0ES_ERR_DIAG'].mean() / np.sqrt(len(matched))
+            dl = 10**((mu - 25.0)/5.0)
+            dl_err = dl * (np.log(10)/5.0) * mu_err
+            
+            eta = dl / (da * (1+z)**2)
+            eta_err = eta * np.sqrt((dl_err/dl)**2 + (da_err/da)**2)
+            s["eta_obs"] = float(eta)
+            s["eta_err"] = float(eta_err)
+    
     # Write data to CSV
     csv_path = RAW_DIR / "strong_lensing_da.csv"
     write_csv(csv_path, systems)

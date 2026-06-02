@@ -34,11 +34,11 @@ class TEPCosmology:
     def tep_gamma(self, z: float | np.ndarray) -> float | np.ndarray:
         """TEP path enhancement factor.
         
-        Uses the exact normalised formula: gamma(z) = 1 - epsilon_T * ln(1+z) * S(z).
+        Uses the exact normalised formula: gamma(z) = 1 + epsilon_T * ln(1+z) * S(z).
         This guarantees gamma(0) = 1 (recovering the local reference frame),
-        and gamma < 1 for z > 0 (reflecting clocks ran faster in the denser past,
-        A_past > A_today, thus gamma = A_today / A_past < 1).
-        This makes intermediate distances smaller, actively absorbing the Pantheon tension.
+        and gamma > 1 for z > 0 (reflecting clocks ran slower in the denser past,
+        A_past < A_today, thus gamma = A_today / A_past > 1).
+        This makes intermediate distances larger, actively mimicking dark energy acceleration.
         """
         z_arr = np.asarray(z, dtype=float)
         if self.epsilon_T == 0:
@@ -47,7 +47,7 @@ class TEPCosmology:
 
         log_factor = np.log(1.0 + z_arr)
         suppression = np.exp(-((z_arr / self.z_T) ** self.n_T))
-        enhancement = 1.0 - self.epsilon_T * log_factor * suppression
+        enhancement = 1.0 + self.epsilon_T * log_factor * suppression
         gamma = np.maximum(enhancement, 0.1)  # Physical bound
         return float(gamma) if np.isscalar(z) else gamma
 

@@ -8,10 +8,10 @@
   "summary": {
     "audit_status": "SUCCESS",
     "claim_blockers": [],
-    "f_t_mcmc": 0.07,
-    "h0_mcmc": 69.3,
+    "f_t_mcmc": 0.0,
+    "h0_mcmc": 66.88,
     "pass_rate": 1.0,
-    "research_grade_claim_gate": "blocked",
-    "trf": 0.2087
+    "research_grade_claim_gate": "open",
+    "trf": 0.4879
   }
 }

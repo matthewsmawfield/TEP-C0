@@ -42,14 +42,25 @@ def run():
     
     for step in steps_to_check:
         result = load_step_result(step)
+        
+        # Check if the step genuinely passed its validation checks
+        is_completed = False
         if result:
+            val = result.get('validation', {})
+            # Look for strong validation signals
+            if val.get('research_grade', False) or val.get('all_validated', False) or result.get('test_passed', False):
+                is_completed = True
+            elif result.get('status') in ['completed', 'validated', 'passed']:
+                is_completed = True
+                
+        if is_completed:
             evidence_summary[step] = {
                 'completed': True,
                 'key_finding': result.get('key_finding', 'N/A'),
                 'interpretation': result.get('interpretation', 'N/A')[:100] + '...'
             }
         else:
-            evidence_summary[step] = {'completed': False}
+            evidence_summary[step] = {'completed': False, 'reason': 'Failed validation or missing'}
             all_passed = False
     
     results = {

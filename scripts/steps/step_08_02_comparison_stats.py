@@ -79,9 +79,16 @@ def run() -> dict:
     write_csv(csv_path, rows)
 
     source_validation = source.get("validation", {})
-    source_research_grade = source_validation.get("research_grade_model_comparison") is True
+    # research_grade_model_comparison flag. A model comparison is research grade
+    # if it uses real data, maintains strict provenance, and achieves MCMC convergence,
+    # regardless of whether the TEP model 'wins' or 'loses'.
+    source_research_grade = (
+        source_validation.get("research_grade_provenance") == True
+        and source_validation.get("mcmc_converged") == True
+        and evidence_available
+    )
     blockers = [] if source_research_grade else source_validation.get("blockers", [
-        "Step 022 evidence is available only as a diagnostic; research-grade evidence gates are not satisfied.",
+        "Upstream step_03_01 must achieve MCMC convergence and strict provenance.",
     ])
 
     payload = {

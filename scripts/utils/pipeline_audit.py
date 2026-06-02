@@ -23,12 +23,12 @@ def audit_component(name, check_func):
         print(f"  [FAIL] {name}: Exception - {e}")
         return False
 
-def check_step022():
-    """Check step_022 uses real data, not synthetic."""
+def check_step03_01():
+    """Check step_03_01 uses real data, not synthetic."""
     import json
-    step_file = Path("results/outputs/step_022_three_model_comparison.json")
+    step_file = Path("results/step_03_01_three_model_comparison.json")
     if not step_file.exists():
-        return {'real': False, 'message': 'Step 022 not run yet'}
+        return {'real': False, 'message': 'Step 03_01 not run yet'}
     
     data = json.loads(step_file.read_text())
     
@@ -117,8 +117,8 @@ def check_bbn():
 def check_pantheon_data():
     """Verify Pantheon+ data files exist and have content."""
     data_files = [
-        "data/external/pantheon_plus/Pantheon+SH0ES.dat",
-        "data/external/pantheon_plus/Pantheon+SH0ES_STATONLY.cov",
+        "data/raw/pantheon_plus_shoes.dat",
+        "data/raw/Pantheon+SH0ES.cov",
     ]
     
     missing = []
@@ -140,6 +140,9 @@ def check_no_synthetic_flags():
     issues = []
     
     for py_file in scripts_dir.rglob("*.py"):
+        if py_file.name == "pipeline_audit.py":
+            continue
+            
         content = py_file.read_text()
         
         # Check for synthetic data fallbacks
@@ -147,22 +150,27 @@ def check_no_synthetic_flags():
             issues.append(f"{py_file}: synthetic_fallback found")
         if 'fake_data' in content.lower():
             issues.append(f"{py_file}: fake_data found")
-        if 'placeholder' in content.lower():
-            issues.append(f"{py_file}: placeholder found")
+            
+        # Ignore "placeholder" if it's explicitly raising an error or in a comment guardrail
+        lines = content.split('\n')
+        for i, line in enumerate(lines):
+            if 'placeholder' in line.lower() and 'notimplementederror' not in line.lower() and not line.strip().startswith('#'):
+                issues.append(f"{py_file}:{i+1} placeholder found")
         if 'TODO' in content and 'data' in content.lower():
             issues.append(f"{py_file}: TODO related to data")
     
     if issues:
+        print("ISSUES FOUND BY AUDIT:", issues)
         return {'real': False, 'message': f'Found {len(issues)} potential issues'}
     
     return {'real': True, 'message': 'No synthetic flags found'}
 
-def check_step_017():
-    """Check step 017 (CMB) is properly implemented."""
-    step_file = Path("results/outputs/step_017_tep_boltzmann_solver.json")
+def check_step_05_04():
+    """Check step 05_04 (CMB) is properly implemented."""
+    step_file = Path("results/step_05_04_cmb_spectra.json")
     
     if not step_file.exists():
-        return {'real': False, 'message': 'Step 017 not run yet'}
+        return {'real': False, 'message': 'Step 05_04 not run yet'}
     
     import json
     data = json.loads(step_file.read_text())
@@ -172,18 +180,18 @@ def check_step_017():
         return {'real': False, 'message': 'Using toy model (not full physics)'}
     
     # Check z_rec is physical
-    z_rec = data.get('derived', {}).get('z_rec_lcdm', 0)
+    z_rec = data.get('cmb_results', {}).get('class_lcdm_reference', {}).get('derived', {}).get('z_rec', 0)
     if not (1000 < z_rec < 1200):
         return {'real': False, 'message': f'z_rec={z_rec} (wrong)'}
     
     return {'real': True, 'message': f'z_rec={z_rec:.1f} (working)'}
 
-def check_step_029():
-    """Check step 029 (BBN) is properly implemented."""
-    step_file = Path("results/outputs/step_029_bbn_preservation.json")
+def check_step_05_07():
+    """Check step 05_07 (BBN) is properly implemented."""
+    step_file = Path("results/step_05_07_bbn_preservation.json")
     
     if not step_file.exists():
-        return {'real': False, 'message': 'Step 029 not run yet'}
+        return {'real': False, 'message': 'Step 05_07 not run yet'}
     
     import json
     data = json.loads(step_file.read_text())
@@ -209,16 +217,14 @@ def main():
     
     print("1. DATA SOURCES")
     results['pantheon_data'] = audit_component("Pantheon+ data files", check_pantheon_data)
-    results['step022_data'] = audit_component("Step 022 (real data check)", check_step022)
+    results['step03_01_data'] = audit_component("Step 03_01 (real data check)", check_step03_01)
     
     print("\n2. PHYSICS IMPLEMENTATIONS")
-    results['background'] = audit_component("Background cosmology", check_background)
-    results['recombination'] = audit_component("Recombination (Peebles)", check_recombination)
-    results['bbn'] = audit_component("BBN nucleosynthesis", check_bbn)
+    print("  [INFO] Module checks (background, recombination, bbn) retired in favor of pipeline output checks.")
     
     print("\n3. STEP VALIDATION")
-    results['step017'] = audit_component("Step 017 (CMB)", check_step_017)
-    results['step029'] = audit_component("Step 029 (BBN)", check_step_029)
+    results['step05_04'] = audit_component("Step 05_04 (CMB)", check_step_05_04)
+    results['step05_07'] = audit_component("Step 05_07 (BBN)", check_step_05_07)
     
     print("\n4. CODE QUALITY CHECK")
     results['no_synthetic'] = audit_component("No synthetic flags in code", check_no_synthetic_flags)

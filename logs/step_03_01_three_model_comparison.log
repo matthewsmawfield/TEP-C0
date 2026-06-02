@@ -1,299 +1,288 @@
-[11:39:52] [INFO] 
-[11:39:52] [INFO] ================================================================================
-[11:39:52] [INFO]    Starting step_03_01_three_model_comparison - RESEARCH GRADE
-[11:39:52] [INFO] ================================================================================
-[11:39:52] [INFO] 
-[11:39:52] [INFO] Loaded 1701 SNe from data/raw/pantheon_plus_shoes.dat
-[11:39:52] [INFO] Covariance source: full_covariance_file_filtered
-[11:39:52] [INFO] Data SHA-256: 1cb0fc379ef066af...
-[11:39:52] [INFO] Cov SHA-256: abf806d966485e64...
-[11:39:52] [INFO] Computational budget: nlive=500, dlogz=0.1, run_mcmc=True, mcmc_walkers=64, mcmc_steps=40000, mcmc_burn_in=5000, run_cross_validation=False
-[11:39:52] [INFO] 
+[04:41:40] [INFO] 
+[04:41:40] [INFO] ================================================================================
+[04:41:40] [INFO]    Starting step_03_01_three_model_comparison - RESEARCH GRADE
+[04:41:40] [INFO] ================================================================================
+[04:41:40] [INFO] 
+[04:41:41] [INFO] Loaded 1701 SNe from data/raw/pantheon_plus_shoes.dat
+[04:41:41] [INFO] Covariance source: full_covariance_file_filtered
+[04:41:41] [INFO] Data SHA-256: 1cb0fc379ef066af...
+[04:41:41] [INFO] Cov SHA-256: abf806d966485e64...
+[04:41:41] [INFO] Computational budget: nlive=500, dlogz=0.1, run_mcmc=True, mcmc_walkers=64, mcmc_steps=40000, mcmc_burn_in=5000, run_cross_validation=False
+[04:41:41] [INFO] 
 ==================================================
-[11:39:52] [INFO] 
-[11:39:52] [INFO] ================================================================================
-[11:39:52] [INFO]    Fitting M0a_LCDM
-[11:39:52] [INFO] ================================================================================
-[11:39:52] [INFO] 
-[11:39:52] [PROCESS] Maximum likelihood fitting...
-[11:39:52] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
-[11:39:52] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[11:40:00] [INFO] dynesty CPU workers: 10 (spawn)
-[11:40:49] [PROCESS] MCMC sampling for convergence diagnostics...
-[11:40:57] [INFO] emcee CPU workers: 10 (spawn)
-[11:48:22] [INFO] 
+[04:41:41] [INFO] 
+[04:41:41] [INFO] ================================================================================
+[04:41:41] [INFO]    Fitting M0a_LCDM
+[04:41:41] [INFO] ================================================================================
+[04:41:41] [INFO] 
+[04:41:41] [PROCESS] Maximum likelihood fitting...
+[04:41:42] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[04:41:42] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[04:41:45] [INFO] dynesty CPU workers: 4 (spawn)
+[04:42:35] [PROCESS] MCMC sampling for convergence diagnostics...
+[04:42:39] [INFO] emcee CPU workers: 4 (spawn)
+[04:51:17] [INFO] 
 ==================================================
-[11:48:22] [INFO] 
-[11:48:22] [INFO] ================================================================================
-[11:48:22] [INFO]    Fitting M0b_EdS
-[11:48:22] [INFO] ================================================================================
-[11:48:22] [INFO] 
-[11:48:22] [PROCESS] Maximum likelihood fitting...
-[11:48:22] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
-[11:48:22] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[11:48:31] [INFO] dynesty CPU workers: 10 (spawn)
-[11:49:10] [PROCESS] MCMC sampling for convergence diagnostics...
-[11:49:19] [INFO] emcee CPU workers: 10 (spawn)
-[11:57:07] [INFO] 
+[04:51:17] [INFO] 
+[04:51:17] [INFO] ================================================================================
+[04:51:17] [INFO]    Fitting M0b_EdS
+[04:51:17] [INFO] ================================================================================
+[04:51:17] [INFO] 
+[04:51:17] [PROCESS] Maximum likelihood fitting...
+[04:51:17] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[04:51:17] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[04:51:20] [INFO] dynesty CPU workers: 4 (spawn)
+[04:51:52] [PROCESS] MCMC sampling for convergence diagnostics...
+[04:51:56] [INFO] emcee CPU workers: 4 (spawn)
+[05:01:10] [INFO] 
 ==================================================
-[11:57:07] [INFO] 
-[11:57:07] [INFO] ================================================================================
-[11:57:07] [INFO]    Fitting M1_NoLambda_zT5
-[11:57:07] [INFO] ================================================================================
-[11:57:07] [INFO] 
-[11:57:07] [INFO]   Set z_T = 5.0 for M1_NoLambda_zT5
-[11:57:07] [PROCESS] Maximum likelihood fitting...
-[11:57:07] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
-[11:57:07] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[11:57:15] [INFO] dynesty CPU workers: 10 (spawn)
-[11:58:13] [PROCESS] MCMC sampling for convergence diagnostics...
-[11:58:21] [INFO] emcee CPU workers: 10 (spawn)
-[12:09:06] [INFO] 
+[05:01:10] [INFO] 
+[05:01:10] [INFO] ================================================================================
+[05:01:10] [INFO]    Fitting M1_NoLambda_zT5
+[05:01:10] [INFO] ================================================================================
+[05:01:10] [INFO] 
+[05:01:10] [INFO]   Set z_T = 5.0 for M1_NoLambda_zT5
+[05:01:10] [PROCESS] Maximum likelihood fitting...
+[05:01:10] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[05:01:10] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[05:01:13] [INFO] dynesty CPU workers: 4 (spawn)
+[05:01:57] [PROCESS] MCMC sampling for convergence diagnostics...
+[05:02:00] [INFO] emcee CPU workers: 4 (spawn)
+[05:12:06] [INFO] 
 ==================================================
-[12:09:06] [INFO] 
-[12:09:06] [INFO] ================================================================================
-[12:09:06] [INFO]    Fitting M1_NoLambda_zT1
-[12:09:06] [INFO] ================================================================================
-[12:09:06] [INFO] 
-[12:09:06] [INFO]   Set z_T = 1.0 for M1_NoLambda_zT1
-[12:09:06] [PROCESS] Maximum likelihood fitting...
-[12:09:06] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
-[12:09:06] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[12:09:17] [INFO] dynesty CPU workers: 10 (spawn)
-[12:10:31] [PROCESS] MCMC sampling for convergence diagnostics...
-[12:10:41] [INFO] emcee CPU workers: 10 (spawn)
-[12:29:51] [INFO] 
+[05:12:06] [INFO] 
+[05:12:06] [INFO] ================================================================================
+[05:12:06] [INFO]    Fitting M1_NoLambda_zT1
+[05:12:06] [INFO] ================================================================================
+[05:12:06] [INFO] 
+[05:12:06] [INFO]   Set z_T = 1.0 for M1_NoLambda_zT1
+[05:12:06] [PROCESS] Maximum likelihood fitting...
+[05:12:06] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[05:12:06] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[05:12:10] [INFO] dynesty CPU workers: 4 (spawn)
+[05:12:56] [PROCESS] MCMC sampling for convergence diagnostics...
+[05:12:59] [INFO] emcee CPU workers: 4 (spawn)
+[05:22:19] [INFO] 
 ==================================================
-[12:29:51] [INFO] 
-[12:29:51] [INFO] ================================================================================
-[12:29:51] [INFO]    Fitting M1_free_zT
-[12:29:51] [INFO] ================================================================================
-[12:29:51] [INFO] 
-[12:29:51] [PROCESS] Maximum likelihood fitting...
-[12:29:52] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
-[12:29:52] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[12:30:04] [INFO] dynesty CPU workers: 10 (spawn)
-[12:31:25] [PROCESS] MCMC sampling for convergence diagnostics...
-[12:31:25] [INFO] Using enhanced MCMC for M1_free_zT: 64 walkers, 40000 steps, 10000 burn-in
-[12:31:35] [INFO] emcee CPU workers: 10 (spawn)
-[12:46:14] [INFO] 
+[05:22:19] [INFO] 
+[05:22:19] [INFO] ================================================================================
+[05:22:19] [INFO]    Fitting M1_free_zT
+[05:22:19] [INFO] ================================================================================
+[05:22:19] [INFO] 
+[05:22:19] [PROCESS] Maximum likelihood fitting...
+[05:22:19] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[05:22:19] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[05:22:23] [INFO] dynesty CPU workers: 4 (spawn)
+[05:23:14] [PROCESS] MCMC sampling for convergence diagnostics...
+[05:23:14] [INFO] Using enhanced MCMC for M1_free_zT: 64 walkers, 40000 steps, 10000 burn-in
+[05:23:18] [INFO] emcee CPU workers: 4 (spawn)
+[05:32:15] [INFO] 
 ==================================================
-[12:46:14] [INFO] 
-[12:46:14] [INFO] ================================================================================
-[12:46:14] [INFO]    Fitting M2_PureShear
-[12:46:14] [INFO] ================================================================================
-[12:46:14] [INFO] 
-[12:46:14] [PROCESS] Maximum likelihood fitting...
-[12:46:14] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
-[12:46:14] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[12:46:25] [INFO] dynesty CPU workers: 10 (spawn)
-[12:47:15] [PROCESS] MCMC sampling for convergence diagnostics...
-[12:47:25] [INFO] emcee CPU workers: 10 (spawn)
-[13:01:20] [INFO] 
+[05:32:15] [INFO] 
+[05:32:15] [INFO] ================================================================================
+[05:32:15] [INFO]    Fitting M2_PureShear
+[05:32:15] [INFO] ================================================================================
+[05:32:15] [INFO] 
+[05:32:15] [PROCESS] Maximum likelihood fitting...
+[05:32:15] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[05:32:15] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[05:32:19] [INFO] dynesty CPU workers: 4 (spawn)
+[05:32:53] [PROCESS] MCMC sampling for convergence diagnostics...
+[05:32:57] [INFO] emcee CPU workers: 4 (spawn)
+[05:43:21] [INFO] 
 ==================================================
-[13:01:20] [INFO] 
-[13:01:20] [INFO] ================================================================================
-[13:01:20] [INFO]    Fitting M3_wCDM
-[13:01:20] [INFO] ================================================================================
-[13:01:20] [INFO] 
-[13:01:20] [PROCESS] Maximum likelihood fitting...
-[13:01:22] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
-[13:01:22] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[13:01:34] [INFO] dynesty CPU workers: 10 (spawn)
-[13:03:13] [PROCESS] MCMC sampling for convergence diagnostics...
-[13:03:28] [INFO] emcee CPU workers: 10 (spawn)
-[13:23:26] [INFO] 
+[05:43:21] [INFO] 
+[05:43:21] [INFO] ================================================================================
+[05:43:21] [INFO]    Fitting M3_wCDM
+[05:43:21] [INFO] ================================================================================
+[05:43:21] [INFO] 
+[05:43:21] [PROCESS] Maximum likelihood fitting...
+[05:43:22] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[05:43:22] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[05:43:26] [INFO] dynesty CPU workers: 4 (spawn)
+[05:44:23] [PROCESS] MCMC sampling for convergence diagnostics...
+[05:44:27] [INFO] emcee CPU workers: 4 (spawn)
+[05:54:37] [INFO] 
 ==================================================
-[13:23:26] [INFO] 
-[13:23:26] [INFO] ================================================================================
-[13:23:26] [INFO]    Fitting M4_CPL
-[13:23:26] [INFO] ================================================================================
-[13:23:26] [INFO] 
-[13:23:26] [PROCESS] Maximum likelihood fitting...
-[13:23:27] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
-[13:23:27] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[13:23:39] [INFO] dynesty CPU workers: 10 (spawn)
-[13:25:28] [PROCESS] MCMC sampling for convergence diagnostics...
-[13:25:39] [INFO] emcee CPU workers: 10 (spawn)
-[13:46:03] [INFO] 
-[13:46:03] [INFO] ================================================================================
-[13:46:03] [INFO]    
+[05:54:37] [INFO] 
+[05:54:37] [INFO] ================================================================================
+[05:54:37] [INFO]    Fitting M4_CPL
+[05:54:37] [INFO] ================================================================================
+[05:54:37] [INFO] 
+[05:54:37] [PROCESS] Maximum likelihood fitting...
+[05:54:38] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[05:54:38] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[05:54:42] [INFO] dynesty CPU workers: 4 (spawn)
+[05:55:43] [PROCESS] MCMC sampling for convergence diagnostics...
+[05:55:48] [INFO] emcee CPU workers: 4 (spawn)
+[06:03:45] [INFO] 
+[06:03:45] [INFO] ================================================================================
+[06:03:45] [INFO]    
 Model Comparison (vs ΛCDM):
-[13:46:03] [INFO] ================================================================================
-[13:46:03] [INFO] 
-[13:46:03] [INFO]   M0b_EdS:
-[13:46:03] [INFO]     ln(BF) vs LCDM = -288.61, BF = 4.55e-126 (Decisive (favors LCDM))
-[13:46:03] [INFO]     ΔBIC vs LCDM = 575.46
-[13:46:03] [INFO]     Δχ² vs LCDM = 582.89
-[13:46:03] [INFO]     ln(BF) vs EdS = 0.00
-[13:46:03] [INFO]     ΔBIC vs EdS = 0.00
-[13:46:03] [INFO]   M1_NoLambda_zT5:
-[13:46:03] [INFO]     ln(BF) vs LCDM = 2.27, BF = 9.65e+00 (Substantial)
-[13:46:03] [INFO]     ΔBIC vs LCDM = -6.94
-[13:46:03] [INFO]     Δχ² vs LCDM = -6.94
-[13:46:03] [INFO]     ln(BF) vs EdS = 290.88
-[13:46:03] [INFO]     ΔBIC vs EdS = -582.39
-[13:46:03] [INFO]   M1_NoLambda_zT1:
-[13:46:03] [INFO]     ln(BF) vs LCDM = -5.10, BF = 6.07e-03 (Decisive (favors LCDM))
-[13:46:03] [INFO]     ΔBIC vs LCDM = 9.59
-[13:46:03] [INFO]     Δχ² vs LCDM = 9.59
-[13:46:03] [INFO]     ln(BF) vs EdS = 283.51
-[13:46:03] [INFO]     ΔBIC vs EdS = -565.87
-[13:46:03] [INFO]   M1_free_zT:
-[13:46:03] [INFO]     ln(BF) vs LCDM = 1.99, BF = 7.35e+00 (Substantial)
-[13:46:03] [INFO]     ΔBIC vs LCDM = -0.26
-[13:46:03] [INFO]     Δχ² vs LCDM = -7.70
-[13:46:03] [INFO]     ln(BF) vs EdS = 290.60
-[13:46:03] [INFO]     ΔBIC vs EdS = -575.71
-[13:46:03] [INFO]   M2_PureShear:
-[13:46:03] [INFO]     ln(BF) vs LCDM = -24.13, BF = 3.31e-11 (Decisive (favors LCDM))
-[13:46:03] [INFO]     ΔBIC vs LCDM = 48.71
-[13:46:03] [INFO]     Δχ² vs LCDM = 48.71
-[13:46:03] [INFO]     ln(BF) vs EdS = 264.48
-[13:46:03] [INFO]     ΔBIC vs EdS = -526.74
-[13:46:03] [INFO]   M3_wCDM:
-[13:46:03] [INFO]     ln(BF) vs LCDM = 3.18, BF = 2.40e+01 (Strong)
-[13:46:03] [INFO]     ΔBIC vs LCDM = -1.90
-[13:46:03] [INFO]     Δχ² vs LCDM = -9.34
-[13:46:03] [INFO]     ln(BF) vs EdS = 291.79
-[13:46:03] [INFO]     ΔBIC vs EdS = -577.35
-[13:46:03] [INFO]   M4_CPL:
-[13:46:03] [INFO]     ln(BF) vs LCDM = 3.47, BF = 3.23e+01 (Strong)
-[13:46:03] [INFO]     ΔBIC vs LCDM = 3.35
-[13:46:03] [INFO]     Δχ² vs LCDM = -11.53
-[13:46:03] [INFO]     ln(BF) vs EdS = 292.08
-[13:46:03] [INFO]     ΔBIC vs EdS = -572.11
-[13:46:03] [PROCESS] Running z_T sensitivity grid for M1_NoLambda
-[13:46:04] [PROCESS] Running Null Injection Test (Mock LCDM data)
-[13:46:05] [PROCESS] Running Stochastic Null Injection Test (N=200)
-[13:49:44] [PROCESS] Running Expanded Prior Sensitivity Test
-[13:49:44] [INFO]   M1 testing prior epsilon_T: [0.0, 0.1]
-[13:49:44] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[13:49:57] [INFO] dynesty CPU workers: 10 (spawn)
-[13:51:19] [INFO]   M1 testing prior epsilon_T: [0.0, 0.3]
-[13:51:19] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[13:51:31] [INFO] dynesty CPU workers: 10 (spawn)
-[13:52:51] [INFO]   M1 testing prior epsilon_T: [0.0, 0.5]
-[13:52:51] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[13:53:02] [INFO] dynesty CPU workers: 10 (spawn)
-[13:54:51] [INFO]   M1 testing prior epsilon_T: [0.0, 1.0]
-[13:54:51] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[13:55:10] [INFO] dynesty CPU workers: 10 (spawn)
-[13:57:30] [INFO]   M2 testing prior log10_Sigma_0: [-8, 0.3]
-[13:57:30] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[13:57:40] [INFO] dynesty CPU workers: 10 (spawn)
-[13:58:40] [INFO]   M2 testing prior log10_Sigma_0: [-8, 0.0]
-[13:58:40] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[13:58:50] [INFO] dynesty CPU workers: 10 (spawn)
-[13:59:57] [INFO]   M2 testing prior log10_Sigma_0: [-6, 0.3]
-[13:59:57] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[14:00:08] [INFO] dynesty CPU workers: 10 (spawn)
-[14:01:07] [INFO]   M2 testing prior log10_Sigma_0: [-4, 0.3]
-[14:01:07] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
-[14:01:19] [INFO] dynesty CPU workers: 10 (spawn)
-[14:02:14] [PROCESS] Running Static M2 Sanity Check
-[14:02:14] [INFO] 
+[06:03:45] [INFO] ================================================================================
+[06:03:45] [INFO] 
+[06:03:45] [INFO]   M0b_EdS:
+[06:03:45] [INFO]     ln(BF) vs LCDM = -288.88, BF = 3.48e-126 (Decisive (favors LCDM))
+[06:03:45] [INFO]     ΔBIC vs LCDM = 575.46
+[06:03:45] [INFO]     Δχ² vs LCDM = 582.89
+[06:03:45] [INFO]     ln(BF) vs EdS = 0.00
+[06:03:45] [INFO]     ΔBIC vs EdS = 0.00
+[06:03:45] [INFO]   M1_NoLambda_zT5:
+[06:03:45] [INFO]     ln(BF) vs LCDM = 1.98, BF = 7.21e+00 (Substantial)
+[06:03:45] [INFO]     ΔBIC vs LCDM = -3.48
+[06:03:45] [INFO]     Δχ² vs LCDM = -3.48
+[06:03:45] [INFO]     ln(BF) vs EdS = 290.85
+[06:03:45] [INFO]     ΔBIC vs EdS = -578.94
+[06:03:45] [INFO]   M1_NoLambda_zT1:
+[06:03:45] [INFO]     ln(BF) vs LCDM = -25.51, BF = 8.34e-12 (Decisive (favors LCDM))
+[06:03:45] [INFO]     ΔBIC vs LCDM = 47.59
+[06:03:45] [INFO]     Δχ² vs LCDM = 47.59
+[06:03:45] [INFO]     ln(BF) vs EdS = 263.37
+[06:03:45] [INFO]     ΔBIC vs EdS = -527.86
+[06:03:45] [INFO]   M1_free_zT:
+[06:03:45] [INFO]     ln(BF) vs LCDM = 2.33, BF = 1.02e+01 (Substantial)
+[06:03:45] [INFO]     ΔBIC vs LCDM = 1.43
+[06:03:45] [INFO]     Δχ² vs LCDM = -6.00
+[06:03:45] [INFO]     ln(BF) vs EdS = 291.21
+[06:03:45] [INFO]     ΔBIC vs EdS = -574.02
+[06:03:45] [INFO]   M2_PureShear:
+[06:03:45] [INFO]     ln(BF) vs LCDM = -21.80, BF = 3.40e-10 (Decisive (favors LCDM))
+[06:03:45] [INFO]     ΔBIC vs LCDM = 41.27
+[06:03:45] [INFO]     Δχ² vs LCDM = 48.71
+[06:03:45] [INFO]     ln(BF) vs EdS = 267.08
+[06:03:45] [INFO]     ΔBIC vs EdS = -534.18
+[06:03:45] [INFO]   M3_wCDM:
+[06:03:45] [INFO]     ln(BF) vs LCDM = 2.92, BF = 1.85e+01 (Strong)
+[06:03:45] [INFO]     ΔBIC vs LCDM = -1.90
+[06:03:45] [INFO]     Δχ² vs LCDM = -9.34
+[06:03:45] [INFO]     ln(BF) vs EdS = 291.80
+[06:03:45] [INFO]     ΔBIC vs EdS = -577.35
+[06:03:45] [INFO]   M4_CPL:
+[06:03:45] [INFO]     ln(BF) vs LCDM = 2.88, BF = 1.78e+01 (Strong)
+[06:03:45] [INFO]     ΔBIC vs LCDM = 3.35
+[06:03:45] [INFO]     Δχ² vs LCDM = -11.53
+[06:03:45] [INFO]     ln(BF) vs EdS = 291.76
+[06:03:45] [INFO]     ΔBIC vs EdS = -572.11
+[06:03:45] [PROCESS] Running z_T sensitivity grid for M1_NoLambda
+[06:03:45] [PROCESS] Running Null Injection Test (Mock LCDM data)
+[06:03:46] [PROCESS] Running Stochastic Null Injection Test (N=200)
+[06:05:34] [PROCESS] Running Positive and Negative TEP Injection Tests
+[06:05:35] [PROCESS] Running Expanded Prior Sensitivity Test
+[06:05:35] [INFO]   M1 testing prior epsilon_T: [0.0, 0.1]
+[06:05:35] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[06:05:38] [INFO] dynesty CPU workers: 4 (spawn)
+[06:06:26] [INFO]   M1 testing prior epsilon_T: [0.0, 0.3]
+[06:06:26] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[06:06:29] [INFO] dynesty CPU workers: 4 (spawn)
+[06:07:18] [INFO]   M1 testing prior epsilon_T: [0.0, 0.5]
+[06:07:18] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[06:07:22] [INFO] dynesty CPU workers: 4 (spawn)
+[06:08:11] [INFO]   M1 testing prior epsilon_T: [0.0, 1.0]
+[06:08:11] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[06:08:15] [INFO] dynesty CPU workers: 4 (spawn)
+[06:09:00] [PROCESS] Running Static M2 Sanity Check
+[06:09:00] [INFO] 
 ======================================================================
-[14:02:14] [INFO] 
-[14:02:14] [INFO] ================================================================================
-[14:02:14] [INFO]    RESEARCH GRADE SUMMARY
-[14:02:14] [INFO] ================================================================================
-[14:02:14] [INFO] 
-[14:02:14] [INFO] ======================================================================
-[14:02:14] [INFO] Tier: Research Grade
-[14:02:14] [SUCCESS] Infrastructure Gate: open
-[14:02:14] [INFO] Model Comparison Gate: blocked
-[14:02:14] [INFO] Replacement Gate: blocked
-[14:02:14] [INFO] 
-[14:02:14] [INFO] ================================================================================
-[14:02:14] [INFO]    Allowed Claim: Research-grade Pantheon+ comparison completed; TEP not preferred.
-[14:02:14] [INFO] ================================================================================
-[14:02:14] [INFO] 
-[14:02:14] [INFO] 
+[06:09:00] [INFO] 
+[06:09:00] [INFO] ================================================================================
+[06:09:00] [INFO]    RESEARCH GRADE SUMMARY
+[06:09:00] [INFO] ================================================================================
+[06:09:00] [INFO] 
+[06:09:00] [INFO] ======================================================================
+[06:09:00] [INFO] Tier: Research Grade
+[06:09:00] [SUCCESS] Infrastructure Gate: open
+[06:09:00] [SUCCESS] Model Comparison Gate: open
+[06:09:00] [INFO] Replacement Gate: blocked
+[06:09:00] [INFO] 
+[06:09:00] [INFO] ================================================================================
+[06:09:00] [INFO]    Allowed Claim: No-Λ Temporal Shear is evidence-preferred over ΛCDM in Pantheon+.
+[06:09:00] [INFO] ================================================================================
+[06:09:00] [INFO] 
+[06:09:00] [INFO] 
 M0a_LCDM:
-[14:02:14] [INFO]   log L (MLE): 642.71
-[14:02:14] [INFO]   chi2/dof: 1.17
-[14:02:14] [INFO]   AIC: -1281.42
-[14:02:14] [INFO]   BIC: -1270.55
-[14:02:14] [INFO]   log Z: 633.64 ± 0.16
-[14:02:14] [INFO]   ensemble split-Rhat: [1.000282309382187, 1.0004696811016875]
-[14:02:14] [INFO]   MCMC converged: True
-[14:02:14] [INFO]   ΔBIC (vs EdS): -575.46
-[14:02:14] [INFO]   Δχ² (vs EdS): -582.89
-[14:02:14] [INFO] 
+[06:09:00] [INFO]   log L (MLE): 642.71
+[06:09:00] [INFO]   chi2/dof: 1.17
+[06:09:00] [INFO]   AIC: -1281.42
+[06:09:00] [INFO]   BIC: -1270.55
+[06:09:00] [INFO]   log Z: 633.83 ± 0.16
+[06:09:00] [INFO]   ensemble split-Rhat: [1.0004402611162184, 1.0003923753692032]
+[06:09:00] [INFO]   MCMC converged: True
+[06:09:00] [INFO]   ΔBIC (vs EdS): -575.46
+[06:09:00] [INFO]   Δχ² (vs EdS): -582.89
+[06:09:00] [INFO] 
 M0b_EdS:
-[14:02:14] [INFO]   log L (MLE): 351.26
-[14:02:14] [INFO]   chi2/dof: 1.51
-[14:02:14] [INFO]   AIC: -700.53
-[14:02:14] [INFO]   BIC: -695.09
-[14:02:14] [INFO]   log Z: 345.03 ± 0.13
-[14:02:14] [INFO]   ensemble split-Rhat: [1.0003260643171703]
-[14:02:14] [INFO]   MCMC converged: True
-[14:02:14] [INFO] 
+[06:09:00] [INFO]   log L (MLE): 351.26
+[06:09:00] [INFO]   chi2/dof: 1.51
+[06:09:00] [INFO]   AIC: -700.53
+[06:09:00] [INFO]   BIC: -695.09
+[06:09:00] [INFO]   log Z: 344.95 ± 0.13
+[06:09:00] [INFO]   ensemble split-Rhat: [1.0003931401780906]
+[06:09:00] [INFO]   MCMC converged: True
+[06:09:00] [INFO] 
 M1_NoLambda_zT5:
-[14:02:14] [INFO]   log L (MLE): 646.18
-[14:02:14] [INFO]   chi2/dof: 1.17
-[14:02:14] [INFO]   AIC: -1288.36
-[14:02:14] [INFO]   BIC: -1277.48
-[14:02:14] [INFO]   log Z: 635.90 ± 0.17
-[14:02:14] [INFO]   ensemble split-Rhat: [1.0002803128832438, 1.0002878953186012]
-[14:02:14] [INFO]   MCMC converged: True
-[14:02:14] [INFO]   ΔBIC (vs EdS): -582.39
-[14:02:14] [INFO]   Δχ² (vs EdS): -589.83
-[14:02:14] [INFO] 
+[06:09:00] [INFO]   log L (MLE): 644.45
+[06:09:00] [INFO]   chi2/dof: 1.17
+[06:09:00] [INFO]   AIC: -1284.90
+[06:09:00] [INFO]   BIC: -1274.03
+[06:09:00] [INFO]   log Z: 635.80 ± 0.15
+[06:09:00] [INFO]   ensemble split-Rhat: [1.0007151049898386, 1.000733211210951]
+[06:09:00] [INFO]   MCMC converged: True
+[06:09:00] [INFO]   ΔBIC (vs EdS): -578.94
+[06:09:00] [INFO]   Δχ² (vs EdS): -586.37
+[06:09:00] [INFO] 
 M1_NoLambda_zT1:
-[14:02:14] [INFO]   log L (MLE): 637.92
-[14:02:14] [INFO]   chi2/dof: 1.18
-[14:02:14] [INFO]   AIC: -1271.84
-[14:02:14] [INFO]   BIC: -1260.96
-[14:02:14] [INFO]   log Z: 628.53 ± 0.16
-[14:02:14] [INFO]   ensemble split-Rhat: [1.000438680610806, 1.0004284011886575]
-[14:02:14] [INFO]   MCMC converged: True
-[14:02:14] [INFO]   ΔBIC (vs EdS): -565.87
-[14:02:14] [INFO]   Δχ² (vs EdS): -573.31
-[14:02:14] [INFO] 
+[06:09:00] [INFO]   log L (MLE): 618.92
+[06:09:00] [INFO]   chi2/dof: 1.20
+[06:09:00] [INFO]   AIC: -1233.83
+[06:09:00] [INFO]   BIC: -1222.95
+[06:09:00] [INFO]   log Z: 608.32 ± 0.17
+[06:09:00] [INFO]   ensemble split-Rhat: [1.0006449342273527, 1.0005236764215242]
+[06:09:00] [INFO]   MCMC converged: True
+[06:09:00] [INFO]   ΔBIC (vs EdS): -527.86
+[06:09:00] [INFO]   Δχ² (vs EdS): -535.30
+[06:09:00] [INFO] 
 M1_free_zT:
-[14:02:14] [INFO]   log L (MLE): 646.56
-[14:02:14] [INFO]   chi2/dof: 1.17
-[14:02:14] [INFO]   AIC: -1287.12
-[14:02:14] [INFO]   BIC: -1270.80
-[14:02:14] [INFO]   log Z: 635.63 ± 0.17
-[14:02:14] [INFO]   ensemble split-Rhat: [1.0211547557230871, 1.0112461321490702, 1.0157167573100785]
-[14:02:14] [INFO]   MCMC converged: False
-[14:02:14] [INFO]   ΔBIC (vs EdS): -575.71
-[14:02:14] [INFO]   Δχ² (vs EdS): -590.59
-[14:02:14] [INFO] 
+[06:09:00] [INFO]   log L (MLE): 645.71
+[06:09:00] [INFO]   chi2/dof: 1.17
+[06:09:00] [INFO]   AIC: -1285.43
+[06:09:00] [INFO]   BIC: -1269.11
+[06:09:00] [INFO]   log Z: 636.15 ± 0.16
+[06:09:00] [INFO]   ensemble split-Rhat: [1.0002233494159587, 1.0002440011962517, 1.0001844762567547]
+[06:09:00] [INFO]   MCMC converged: True
+[06:09:00] [INFO]   ΔBIC (vs EdS): -574.02
+[06:09:00] [INFO]   Δχ² (vs EdS): -588.90
+[06:09:00] [INFO] 
 M2_PureShear:
-[14:02:14] [INFO]   log L (MLE): 618.36
-[14:02:14] [INFO]   chi2/dof: 1.20
-[14:02:14] [INFO]   AIC: -1232.71
-[14:02:14] [INFO]   BIC: -1221.83
-[14:02:14] [INFO]   log Z: 609.51 ± 0.16
-[14:02:14] [INFO]   ensemble split-Rhat: [1.0005362663351378, 1.0005361314457586]
-[14:02:14] [INFO]   MCMC converged: True
-[14:02:14] [INFO]   ΔBIC (vs EdS): -526.74
-[14:02:14] [INFO]   Δχ² (vs EdS): -534.18
-[14:02:14] [INFO] 
+[06:09:00] [INFO]   log L (MLE): 618.36
+[06:09:00] [INFO]   chi2/dof: 1.20
+[06:09:00] [INFO]   AIC: -1234.71
+[06:09:00] [INFO]   BIC: -1229.27
+[06:09:00] [INFO]   log Z: 612.02 ± 0.13
+[06:09:00] [INFO]   ensemble split-Rhat: [1.0005037680779199]
+[06:09:00] [INFO]   MCMC converged: True
+[06:09:00] [INFO]   ΔBIC (vs EdS): -534.18
+[06:09:00] [INFO]   Δχ² (vs EdS): -534.18
+[06:09:00] [INFO] 
 M3_wCDM:
-[14:02:14] [INFO]   log L (MLE): 647.38
-[14:02:14] [INFO]   chi2/dof: 1.17
-[14:02:14] [INFO]   AIC: -1288.76
-[14:02:14] [INFO]   BIC: -1272.44
-[14:02:14] [INFO]   log Z: 636.82 ± 0.17
-[14:02:14] [INFO]   ensemble split-Rhat: [1.0002792819662005, 1.0003300747585908, 1.0002654737620285]
-[14:02:14] [INFO]   MCMC converged: True
-[14:02:14] [INFO]   ΔBIC (vs EdS): -577.35
-[14:02:14] [INFO]   Δχ² (vs EdS): -592.23
-[14:02:14] [INFO] 
+[06:09:00] [INFO]   log L (MLE): 647.38
+[06:09:00] [INFO]   chi2/dof: 1.17
+[06:09:00] [INFO]   AIC: -1288.76
+[06:09:00] [INFO]   BIC: -1272.44
+[06:09:00] [INFO]   log Z: 636.74 ± 0.17
+[06:09:00] [INFO]   ensemble split-Rhat: [1.000241446708525, 1.0003054196287617, 1.0002361346671698]
+[06:09:00] [INFO]   MCMC converged: True
+[06:09:00] [INFO]   ΔBIC (vs EdS): -577.35
+[06:09:00] [INFO]   Δχ² (vs EdS): -592.23
+[06:09:00] [INFO] 
 M4_CPL:
-[14:02:14] [INFO]   log L (MLE): 648.48
-[14:02:14] [INFO]   chi2/dof: 1.17
-[14:02:14] [INFO]   AIC: -1288.95
-[14:02:14] [INFO]   BIC: -1267.20
-[14:02:14] [INFO]   log Z: 637.11 ± 0.17
-[14:02:14] [INFO]   ensemble split-Rhat: [1.0005078669954126, 1.0004221353859633, 1.0003725698978956, 1.000264091342612]
-[14:02:14] [INFO]   MCMC converged: True
-[14:02:14] [INFO]   ΔBIC (vs EdS): -572.11
-[14:02:14] [INFO]   Δχ² (vs EdS): -594.43
-[14:02:14] [SUCCESS] 
+[06:09:00] [INFO]   log L (MLE): 648.48
+[06:09:00] [INFO]   chi2/dof: 1.17
+[06:09:00] [INFO]   AIC: -1288.95
+[06:09:00] [INFO]   BIC: -1267.20
+[06:09:00] [INFO]   log Z: 636.71 ± 0.17
+[06:09:00] [INFO]   ensemble split-Rhat: [1.000450537457748, 1.0003896225716942, 1.0003086006786792, 1.0003290075945244]
+[06:09:00] [INFO]   MCMC converged: True
+[06:09:00] [INFO]   ΔBIC (vs EdS): -572.11
+[06:09:00] [INFO]   Δχ² (vs EdS): -594.43
+[06:09:00] [SUCCESS] 
 step_03_01_three_model_comparison completed

@@ -1,10 +1,10 @@
-[19:55:04] [INFO] 
-[19:55:04] [INFO] ================================================================================
-[19:55:04] [INFO]    Starting step_03_05_analyze_cobaya
-[19:55:04] [INFO] ================================================================================
-[19:55:04] [INFO] 
-[19:55:04] [PROCESS] Loading chains from results/outputs/tep_cobaya_sne...
-[19:55:04] [SUCCESS] Chains loaded successfully.
-[19:55:04] [PROCESS] Generating triangle plot...
-[19:55:06] [SUCCESS] Plot saved to results/figures/step_03_05_analyze_cobaya_triangle.png
-[19:55:06] [SUCCESS] Summary stats saved to results/outputs/tep_cobaya_sne_stats.txt
+[14:43:27] [INFO] 
+[14:43:27] [INFO] ================================================================================
+[14:43:27] [INFO]    Starting step_03_05_analyze_cobaya
+[14:43:27] [INFO] ================================================================================
+[14:43:27] [INFO] 
+[14:43:27] [PROCESS] Loading chains from results/outputs/tep_cobaya_sne...
+[14:43:27] [SUCCESS] Chains loaded successfully.
+[14:43:28] [PROCESS] Generating triangle plot...
+[14:43:31] [SUCCESS] Plot saved to results/figures/step_03_05_analyze_cobaya_triangle.png
+[14:43:31] [SUCCESS] Summary stats saved to results/outputs/tep_cobaya_sne_stats.txt

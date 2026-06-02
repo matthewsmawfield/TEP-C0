@@ -122,7 +122,7 @@ def create_cobaya_config(
         "tep_epsilon_T": {
             "prior": {"min": -0.05, "max": 0.05},
             "ref": 0.001,
-            "proposal": 0.0001,
+            "proposal": 0.00005,
             "latex": r"\epsilon_T",
         },
         "tep_z_T": {
@@ -182,9 +182,9 @@ def create_cobaya_config(
     # Sampler configuration for production run
     sampler = {
         "mcmc": {
-            "max_tries": 10000,
+            "max_tries": 100000,
             "burn_in": 0,
-            "Rminus1_stop": 0.02,  # 0.02 is standard publication threshold; 0.01 forces dangerously long runs causing OOM
+            "Rminus1_stop": 0.02,  # 0.02 is standard publication threshold
             "Rminus1_cl_stop": 0.2,
             "covmat": "auto",
             "learn_every": "40d",
@@ -195,8 +195,8 @@ def create_cobaya_config(
     
     config = {
         "output": output_prefix,
-        "resume": False,
-        "force": True,
+        "resume": True,
+        "force": False,
         "theory": theory,
         "likelihood": likelihood,
         "params": params,
@@ -270,12 +270,12 @@ def run_cobaya_mcmc(
             # Run Cobaya and redirect its stdout/stderr to the log file on rank 0
             with open(log_path, 'a') as f:
                 with contextlib.redirect_stdout(f), contextlib.redirect_stderr(f):
-                    updated_info = run(config)
+                    updated_info = run(config, resume=True)
         else:
             # Discard stdout/stderr on other ranks
             with open(os.devnull, 'w') as f:
                 with contextlib.redirect_stdout(f), contextlib.redirect_stderr(f):
-                    updated_info = run(config)
+                    updated_info = run(config, resume=True)
                     
         if rank == 0:
             result["success"] = True
@@ -338,7 +338,7 @@ def run() -> dict:
     output_prefix = str(output_dir / "tep_cobaya_sne")
     
     # Create configuration
-    max_samples = int(os.getenv("TEP_COBAYA_SAMPLES", "30000"))
+    max_samples = int(os.getenv("TEP_COBAYA_SAMPLES", "500000"))
     
     # Run sanity check
     if not sanity_check_tep_active():

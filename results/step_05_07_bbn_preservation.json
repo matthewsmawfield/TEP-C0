@@ -165,7 +165,7 @@
     "H0_tep": 70.0,
     "Sigma_0": 0.0,
     "early_microphysical_coupling": 0.0,
-    "epsilon_T": 0.425647,
+    "epsilon_T": 1.0,
     "eta": "6.10e-10"
   },
   "posterior_fits": {

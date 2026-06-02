@@ -94,7 +94,7 @@
             return;
         }
         const figuresSrc = path.join(resultsDir, 'figures');
-        const figuresDest = path.join(distDir, 'figures');
+        const figuresDest = path.join(distDir, 'results', 'figures');
         if (fs.existsSync(figuresSrc)) {
             fs.mkdirSync(figuresDest, { recursive: true });
             for (const file of fs.readdirSync(figuresSrc)) {
@@ -155,6 +155,10 @@
                 copyRecursiveSync(path.join(src, entry), path.join(dest, entry), fs, path);
             }
         } else {
+            const parentDir = path.dirname(dest);
+            if (!fs.existsSync(parentDir)) {
+                fs.mkdirSync(parentDir, { recursive: true });
+            }
             fs.copyFileSync(src, dest);
         }
     }

@@ -9,5 +9,5 @@
   "interpretation": "TEP predicts measurable deviations from pure expansion in DDR and Tolman tests",
   "step": "step_08_01_expansion_falsifier",
   "tep_hypothesis_favored": true,
-  "tolman_delta_chi2": 1017.91
+  "tolman_delta_chi2": -3647.74
 }

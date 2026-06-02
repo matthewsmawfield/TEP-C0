@@ -22,17 +22,17 @@
   "key_finding": "Diagnostic consistency: SALT2 x1 correlates with TEP path enhancement",
   "model_parameters": {
     "H0_km_s_Mpc": 70.0,
-    "epsilon_T": 0.426,
+    "epsilon_T": 1.0,
     "z_T": 1.0
   },
   "n_supernovae": 1701,
   "results": {
     "chi2_lcdm": 174194.5,
-    "chi2_tep": 151028.5,
+    "chi2_tep": 177733.2,
     "degrees_of_freedom": 1698,
-    "delta_chi2": 23166.1,
+    "delta_chi2": -3538.6,
     "reduced_chi2_lcdm": 102.588,
-    "reduced_chi2_tep": 88.945
+    "reduced_chi2_tep": 104.672
   },
   "step": "step_04_01_sn_time_dilation",
   "test_classification": "diagnostic_consistency",
@@ -48,7 +48,6 @@
     "real_data": true,
     "research_grade_diagnostic": true,
     "research_grade_time_dilation": false,
-    "synthetic": false,
     "test_purpose": "internal_consistency_not_proof"
   }
 }

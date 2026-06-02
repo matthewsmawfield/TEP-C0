@@ -1,7 +1,7 @@
 {
   "cobaya_available": true,
   "config": {
-    "max_samples": 30000,
+    "max_samples": 500000,
     "output_prefix": "results/outputs/tep_cobaya_sne"
   },
   "description": "Cobaya-based TEP inference with TEP-CLASS v2.0",

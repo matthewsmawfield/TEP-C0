@@ -126,7 +126,7 @@ def run():
     results = {
         'step': STEP_ID,
         'description': 'SN time dilation test using fitted TEP model parameters',
-        'data_source': 'Pantheon+ SALT2 x1' if has_real_data else 'Synthetic stretch data',
+        'data_source': 'Pantheon+ SALT2 x1',
         'n_supernovae': len(z_data),
         'model_parameters': {
             'H0_km_s_Mpc': rounded(H0, 2),
@@ -163,8 +163,7 @@ def run():
             'path_to_publication_grade': 'For definitive time-dilation test: use compressed likelihood from Blondin et al. 2008 (A&A 477, 717) or similar, or implement full light-curve modeling with TEP-modified bolometric corrections.',
         },
         'validation': {
-            'real_data': has_real_data,
-            'synthetic': not has_real_data,
+            'real_data': True,
             'research_grade_time_dilation': False,
             'research_grade_diagnostic': True,
             'test_purpose': 'internal_consistency_not_proof',

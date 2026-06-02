@@ -42,10 +42,7 @@ class StaticCosmology:
         """Physical path distance in pure temporal shear model."""
         z_arr = np.atleast_1d(z)
         c = 299792.458
-        if self.Sigma_0 > 0:
-            d = c * np.log(1 + z_arr) / (self.H0 * self.Sigma_0)
-        else:
-            d = c * z_arr / self.H0
+        d = c * np.log1p(z_arr) / self.H0
         return d if len(d) > 1 else d[0]
 
     def angular_diameter_distance(self, z):

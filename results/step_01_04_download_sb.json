@@ -5,9 +5,9 @@
   },
   "description": "Download surface brightness evolution data for Tolman test",
   "metrics": {
-    "cached_source_count": 0,
+    "cached_source_count": 3,
     "data_point_count": 48,
-    "downloaded_source_count": 3,
+    "downloaded_source_count": 0,
     "failed_source_count": 0,
     "source_count": 3,
     "sources_processed": [
@@ -857,12 +857,12 @@
       "citation": "Lubin & Sandage 2001a,b,c,d, AJ 121-122 (Tolman Test I-IV)",
       "data_type": "published_literature_data",
       "domain": "surface_brightness",
-      "download_epoch": 1779698387,
-      "error": "",
+      "download_epoch": 1780343228,
+      "error": "HTTP Error 403: Forbidden",
       "raw_path": "data/raw/lubin_sandage_2001_abstract.html",
-      "sha256": "5956bfc5b844d6b53472a1cd38c674a3fc9cc4cc568c81619f64831d2e130064",
+      "sha256": "55c03bccc9cb3c9fb12f1ab45c75d4477ed5d574afe5670efce3417e6aec4ef6",
       "source_id": "lubin_sandage_2001_full",
-      "status": "downloaded",
+      "status": "cached",
       "url": "https://ui.adsabs.harvard.edu/abs/2001AJ....122.1084L"
     },
     {
@@ -870,12 +870,12 @@
       "citation": "Sandage 2010, AJ 139, 728",
       "data_type": "published_literature_data",
       "domain": "surface_brightness",
-      "download_epoch": 1779698388,
-      "error": "",
+      "download_epoch": 1780343233,
+      "error": "HTTP Error 403: Forbidden",
       "raw_path": "data/raw/sandage_2010_abstract.html",
-      "sha256": "e811d2fb4c539eba9e172430550af29145f356322def3df08283614f80a41a81",
+      "sha256": "52ca10b7cf873e468f7580bb0aeb14248f188fad292192380354b54d30c8d9e6",
       "source_id": "sandage_2010",
-      "status": "downloaded",
+      "status": "cached",
       "url": "https://ui.adsabs.harvard.edu/abs/2010AJ....139..728S"
     },
     {
@@ -883,12 +883,12 @@
       "citation": "Pahre et al. 1996, ApJ 456, 79",
       "data_type": "published_literature_data",
       "domain": "surface_brightness",
-      "download_epoch": 1779698389,
-      "error": "",
+      "download_epoch": 1780343239,
+      "error": "HTTP Error 403: Forbidden",
       "raw_path": "data/raw/pahre_1996_abstract.html",
-      "sha256": "19b2f935578eba38dc796abb765cf3046962a2a6c63bb9162e7775a7e8175308",
+      "sha256": "f88212864bf753c94e828d249c49abe7dc11e0eb4af58106ac957b4cd76a2483",
       "source_id": "pahre_1996",
-      "status": "downloaded",
+      "status": "cached",
       "url": "https://ui.adsabs.harvard.edu/abs/1996ApJ...456...79P"
     }
   ],

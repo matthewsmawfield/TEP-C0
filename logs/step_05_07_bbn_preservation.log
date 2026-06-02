@@ -1,10 +1,10 @@
-[14:13:19] [INFO] 
-[14:13:19] [INFO] ================================================================================
-[14:13:19] [INFO]    Starting step_05_07_bbn_preservation
-[14:13:19] [INFO] ================================================================================
-[14:13:19] [INFO] 
-[14:13:19] [WARNING] BBN package not available, falling back to bbn_working.py
-[14:13:19] [PROCESS] Running BBN parameter posterior MCMC...
-[14:13:19] [PROCESS] Running BBN cross-validation against reference codes...
-[14:13:19] [SUCCESS] LCDM: Y_p=0.2471, D/H=2.60e-05
-[14:13:19] [SUCCESS] TEP:  Y_p=0.2471, D/H=2.60e-05
+[06:39:06] [INFO] 
+[06:39:06] [INFO] ================================================================================
+[06:39:06] [INFO]    Starting step_05_07_bbn_preservation
+[06:39:06] [INFO] ================================================================================
+[06:39:06] [INFO] 
+[06:39:06] [WARNING] BBN package not available, falling back to bbn_working.py
+[06:39:06] [PROCESS] Running BBN parameter posterior MCMC...
+[06:39:06] [PROCESS] Running BBN cross-validation against reference codes...
+[06:39:07] [SUCCESS] LCDM: Y_p=0.2471, D/H=2.60e-05
+[06:39:07] [SUCCESS] TEP:  Y_p=0.2471, D/H=2.60e-05

@@ -1,0 +1,85 @@
+theory:
+  classy:
+    extra_args:
+      N_ur: 2.0328
+      N_ncdm: 1
+      m_ncdm: 0.06
+      output: tCl,pCl,lCl
+      l_max_scalars: 2500
+      lensing: 'yes'
+      tep_mode: 'yes'
+      Omega_Lambda: 0.0
+likelihood:
+  planck_2018_highl_plik.TTTEEE: {}
+  planck_2018_lowl.TT: {}
+  planck_2018_lowl.EE: {}
+  core.pantheon_cobaya_likelihood.PantheonCobaya: {}
+params:
+  tep_epsilon_T:
+    prior:
+      min: -0.5
+      max: 2.0
+    ref: 0.89
+    proposal: 0.1
+    latex: \epsilon_T
+  tep_z_T:
+    prior:
+      min: 0.5
+      max: 15.0
+    ref: 5.0
+    proposal: 0.5
+    latex: z_T
+  tep_n_T:
+    value: 1.0
+    latex: n_T
+  H0:
+    prior:
+      min: 30.0
+      max: 80.0
+    ref: 67.5
+    proposal: 1.0
+    latex: H_0
+  omega_b:
+    prior:
+      min: 0.018
+      max: 0.03
+    ref: 0.0224
+    proposal: 0.0001
+    latex: \omega_b
+  omega_cdm:
+    prior:
+      min: 0.05
+      max: 0.4
+    ref: 0.12
+    proposal: 0.01
+    latex: \omega_{cdm}
+  tau_reio:
+    prior:
+      min: 0.01
+      max: 0.1
+    ref: 0.054
+    proposal: 0.005
+    latex: \tau
+  logA:
+    prior:
+      min: 2.5
+      max: 3.5
+    ref: 3.044
+    proposal: 0.01
+    drop: true
+  A_s:
+    value: 'lambda logA: 1e-10 * np.exp(logA)'
+    latex: A_s
+  n_s:
+    prior:
+      min: 0.9
+      max: 1.05
+    ref: 0.966
+    proposal: 0.005
+    latex: n_s
+sampler:
+  minimize:
+    ignore_prior: false
+    max_evals: 3000
+    best_of: 1
+output: step_03_07_cobaya_no_lambda

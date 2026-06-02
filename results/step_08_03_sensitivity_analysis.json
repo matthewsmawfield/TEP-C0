@@ -1,28 +1,23 @@
 {
   "best_fit_parameters": {
-    "M": -18.844826,
-    "log10_Sigma_0": 0.08369
+    "M": -19.263277
   },
   "cramer_rao_bounds": {
-    "M": 0.00014,
-    "log10_Sigma_0": 0.000701
+    "M": 0.003644
   },
   "description": "Parameter sensitivity via Fisher information matrix",
   "finite_difference_point": {
-    "M": -18.844826,
-    "log10_Sigma_0": 0.08369
+    "M": -19.263277
   },
   "fisher_computation": "Successful",
-  "fisher_condition_number": 1006641698539.3752,
-  "interpretation": "Fisher matrix around the M2 likelihood gives log_Sigma_0 uncertainty ~0.8%.",
+  "fisher_condition_number": 1.0,
+  "interpretation": "Fisher matrix around the M2 likelihood gives log_Sigma_0 uncertainty ~0.0%.",
   "method": "Numerical second derivatives of log-likelihood",
   "parameter_uncertainties": {
-    "M": 0.00014,
-    "log10_Sigma_0": 0.000701
+    "M": 0.003644
   },
   "relative_precision_percent": {
-    "M": 0.0,
-    "log10_Sigma_0": 0.84
+    "M": 0.02
   },
   "status": "FISHER_MATRIX",
   "step": "step_08_03_sensitivity_analysis",

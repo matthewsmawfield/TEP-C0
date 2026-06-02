@@ -13,14 +13,14 @@
     "cached_source_count": 0,
     "downloaded_source_count": 5,
     "source_count": 5,
-    "total_raw_bytes": 35301777
+    "total_raw_bytes": 35290369
   },
   "sources": [
     {
       "bytes": 1711,
       "citation": "Zhao, Wang, Alam, and Ross BAO multi-survey compilation, Zenodo 10.5281/zenodo.16285883.",
       "domain": "bao",
-      "download_epoch": 1779698354,
+      "download_epoch": 1780343201,
       "error": "",
       "raw_path": "data/raw/uncorBAO.txt",
       "sha256": "439abb400aab078b3025ff3542dcbc279714c082153ae7a221d64a16cae3bb3d",
@@ -29,22 +29,10 @@
       "url": "https://zenodo.org/records/16285883/files/uncorBAO.txt?download=1"
     },
     {
-      "bytes": 2388,
-      "citation": "NASA LAMBDA COBE/FIRAS CMB monopole spectrum.",
-      "domain": "cmb_blackbody",
-      "download_epoch": 1779698354,
-      "error": "",
-      "raw_path": "data/raw/firas_monopole_spec_v1.txt",
-      "sha256": "df793c3dca09ebfa7dbc5aa0ec1951daa8884431bc30eff28a710d7516cf50fa",
-      "source_id": "firas_cmb_monopole",
-      "status": "downloaded",
-      "url": "https://lambda.gsfc.nasa.gov/data/cobe/firas/monopole_spec/firas_monopole_spec_v1.txt"
-    },
-    {
       "bytes": 579283,
       "citation": "Pantheon+SH0ES DataRelease, Pantheon+ distance table.",
       "domain": "supernovae",
-      "download_epoch": 1779698354,
+      "download_epoch": 1780343202,
       "error": "",
       "raw_path": "data/raw/pantheon_plus_shoes.dat",
       "sha256": "1cb0fc379ef066afdc2ffd1857681cc478024570d8a3eba284fb645775198cf8",
@@ -53,13 +41,25 @@
       "url": "https://raw.githubusercontent.com/PantheonPlusSH0ES/DataRelease/main/Pantheon%2B_Data/4_DISTANCES_AND_COVAR/Pantheon%2BSH0ES.dat"
     },
     {
-      "bytes": 1433435,
+      "bytes": 2388,
+      "citation": "NASA LAMBDA COBE/FIRAS CMB monopole spectrum.",
+      "domain": "cmb_blackbody",
+      "download_epoch": 1780343203,
+      "error": "",
+      "raw_path": "data/raw/firas_monopole_spec_v1.txt",
+      "sha256": "df793c3dca09ebfa7dbc5aa0ec1951daa8884431bc30eff28a710d7516cf50fa",
+      "source_id": "firas_cmb_monopole",
+      "status": "downloaded",
+      "url": "https://lambda.gsfc.nasa.gov/data/cobe/firas/monopole_spec/firas_monopole_spec_v1.txt"
+    },
+    {
+      "bytes": 1422027,
       "citation": "Pizzone et al. 2020 Frontiers review of BBN reaction rates and abundance constraints.",
       "domain": "bbn",
-      "download_epoch": 1779698361,
+      "download_epoch": 1780343205,
       "error": "",
       "raw_path": "data/raw/bbn_frontiers_2020_review.html",
-      "sha256": "aa5b15279754b477e049aa0e804ec2ae1c2200a15808764316b34d86c4dbda1b",
+      "sha256": "bf82506afd6d444b230ebc0c6e38bc8decc97a4316357b0e2de38733e55fff95",
       "source_id": "bbn_open_review",
       "status": "downloaded",
       "url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2020.560149/full"
@@ -68,7 +68,7 @@
       "bytes": 33284960,
       "citation": "Pantheon+SH0ES DataRelease, full statistical plus systematic covariance matrix.",
       "domain": "supernovae",
-      "download_epoch": 1779698383,
+      "download_epoch": 1780343219,
       "error": "",
       "raw_path": "data/raw/Pantheon+SH0ES.cov",
       "sha256": "abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc",

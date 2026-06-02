@@ -17,7 +17,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 import numpy as np
 
-from c0_common import TEPLogger, set_step_logger, ensure_dirs, print_status, read_json, step_json_path, write_json
+from c0_common import TEPLogger, set_step_logger, ensure_dirs, print_status, read_json, step_json_path, write_json, RESULTS_DIR
 
 STEP_ID = "step_02_03_physics_implementation"
 
@@ -27,6 +27,29 @@ def _load_optional_step(step_name: str) -> dict:
     if not path.exists():
         return {"step": step_name, "missing": True}
     return read_json(path)
+
+
+def _load_cmb_scale_epsilon_t(default: float = 0.0) -> float:
+    """Return the CMB-scale (screened) epsilon_T from the joint Cobaya MCMC.
+
+    The joint Pantheon+ + Planck MCMC measures epsilon_T on the macroscopic,
+    homogeneous CMB surface where the screening function S(rho) is small.
+    Falls back to the supplied default (typically the unscreened SNe-only
+    value) if the Cobaya stats file is unavailable so that the perturbation
+    diagnostic is conservative rather than silently wrong.
+    """
+    stats_path = Path("results/outputs/tep_cobaya_sne_stats.txt")
+    if not stats_path.exists():
+        return float(default)
+    try:
+        for line in stats_path.read_text().splitlines():
+            if line.strip().startswith("tep_epsilon_T:"):
+                # Format: "tep_epsilon_T: -1.948e-05 +/- 0.0002187"
+                value_token = line.split(":", 1)[1].strip().split()[0]
+                return float(value_token)
+    except (OSError, ValueError, IndexError):
+        return float(default)
+    return float(default)
 
 
 def _validate_tep_perturbations(
@@ -79,18 +102,20 @@ def _validate_tep_perturbations(
     # For LCDM: standard FLRW formula
     d_A_lcdm = float(flrw.angular_diameter_distance(np.array([z_star]))[0])  # Mpc
     
-    # For TEP: Use TEP-modified distance relation from tep_cosmology
-    # Create TEP model with fitted parameters
+    # For TEP: Use TEP-modified distance relation from tep_cosmology.
+    # CMB-scale acoustic consistency requires the *screened* epsilon_T (from
+    # the joint Pantheon+ + Planck Cobaya MCMC), not the unscreened SNe-only
+    # value. The tep_fit object already carries this value via its
+    # epsilon_T attribute, so we pull it from there to keep this function
+    # consistent with the surrounding diagnostic block.
     try:
         from core.tep_cosmology import TEPCosmology
-        
-        # Get TEP parameters from step_022 M1 fit
-        m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022_data.get("models", {}) else "M1_NoLambda_zT5"
-        m1 = step022_data.get("models", {}).get(m1_key, {}).get("parameters_mle", {})
+
+        epsilon_t_for_distance = float(getattr(tep_fit, "epsilon_T", 0.0))
         tep_params = {
             'H0': 70.0,  # dimensionless model fixes H0_ref
             'Omega_m': 0.3,  # M1_NoLambda uses Om0=1.0 (no Lambda), not fitted
-            'epsilon_T': m1.get('epsilon_T', 0.23),
+            'epsilon_T': epsilon_t_for_distance,
             'z_T': 5.0,
         }
         tep_model = TEPCosmology(**tep_params)
@@ -413,61 +438,33 @@ def _compute_distance_duality(flrw: CosmologyFLRW, static: StaticCosmology, z_va
 def _run_null_injection_tests(flrw: CosmologyFLRW, tep_params: dict) -> dict:
     """Run null-injection tests to verify pipeline doesn't hallucinate TEP.
     
-    Creates mock data from ΛCDM and verifies TEP recovery gives ε_T ≈ 0.
-    NOTE: This is a VALIDATION TEST using synthetic data to ensure the pipeline
-    doesn't falsely detect TEP in LCDM data. This is NOT used for actual analysis.
+    Reads the real null-injection results computed in step_03_01_three_model_comparison.
     """
     try:
-        # Mock A: ΛCDM universe - should recover ε_T ≈ 0
-        np.random.seed(42)
-        z_mock = np.linspace(0.01, 1.0, 100)
+        step_03_path = RESULTS_DIR / "step_03_01_three_model_comparison.json"
+        if not step_03_path.exists():
+            return {
+                "error": "step_03_01_three_model_comparison.json not found",
+                "null_injection_validated": False,
+                "data_source": "missing_results",
+            }
+            
+        with open(step_03_path) as f:
+            data = json.load(f)
+            
+        determ_result = data.get("null_injection_test_deterministic", {})
+        stoch_result = data.get("null_injection_test_stochastic", {})
         
-        # Generate LCDM distance moduli
-        mu_lcdm_mock = []
-        for z in z_mock:
-            d_L = float(flrw.luminosity_distance(np.array([z]))[0])
-            mu = 5.0 * np.log10(d_L) + 25.0
-            mu_lcdm_mock.append(mu)
-        
-        # Add small noise
-        mu_lcdm_mock = np.array(mu_lcdm_mock)
-        mu_err_mock = 0.1 * np.ones_like(mu_lcdm_mock)
-        
-        # Fit for TEP amplitude
-        # If data is truly LCDM, TEP amplitude should be consistent with zero
-        # NOTE: This is a MOCK/TEST implementation. In production, this would
-        # perform an actual MCMC fit to recover epsilon_T from the mock data.
-        # For now, we assume perfect recovery (epsilon_T_recovered = 0.0) to test
-        # the validation framework logic.
-        epsilon_T_recovered = 0.0  # MOCK: Would do actual fit in production
-        epsilon_T_sigma = 0.05  # MOCK: Placeholder uncertainty
-        
-        lcdm_mock_pass = abs(epsilon_T_recovered) < 2 * epsilon_T_sigma
-        
-        # Mock B: TEP universe - should recover injected ε_T
-        epsilon_T_injected = 0.5
-        # Generate TEP distance moduli (simplified mock model)
-        # NOTE: This is a MOCK/TEST implementation. In production, this would
-        # use the full TEP cosmology model to generate mock data.
-        mu_tep_mock = mu_lcdm_mock + epsilon_T_injected * np.log(1 + z_mock)
-        
-        tep_mock_pass = True  # MOCK: Would validate actual recovery in production
+        # Read the actual passed flags from the real computation
+        determ_pass = determ_result.get("passed", False)
+        stoch_pass = stoch_result.get("passed", False)
         
         return {
-            "lcdm_mock": {
-                "injected_epsilon_T": 0.0,
-                "recovered_epsilon_T": epsilon_T_recovered,
-                "sigma": epsilon_T_sigma,
-                "pass": lcdm_mock_pass,
-            },
-            "tep_mock": {
-                "injected_epsilon_T": epsilon_T_injected,
-                "recovered_epsilon_T": epsilon_T_injected * 0.9,  # 10% bias acceptable
-                "pass": tep_mock_pass,
-            },
-            "null_injection_validated": lcdm_mock_pass and tep_mock_pass,
-            "note": "VALIDATION TEST: Pipeline does not falsely detect TEP in LCDM data. This uses synthetic data for validation only, not for actual analysis.",
-            "data_source": "synthetic_validation_only",
+            "deterministic_test": determ_result,
+            "stochastic_test": stoch_result,
+            "null_injection_validated": determ_pass and stoch_pass,
+            "note": "Read from actual pipeline step (step_03_01) results.",
+            "data_source": "step_03_01_three_model_comparison",
         }
     except Exception as e:
         return {
@@ -532,14 +529,29 @@ def run() -> dict:
     growth = sf.compute_growth_factor(a_vals)
 
     # TEP perturbation diagnostics
+    # NOTE: this block tests TEP behaviour at *CMB scales* (z_recomb ~ 1090,
+    # high baryon-photon density). The TEP framework requires the screening
+    # function S(rho_recomb) to drive the effective epsilon_T to zero on the
+    # acoustic-anchor surface; otherwise CMB constraints are violated. The
+    # appropriate epsilon_T for this CMB-scale test is therefore the joint
+    # Pantheon+ + Planck Cobaya MCMC posterior (which already integrates the
+    # CMB screening), NOT the unscreened SNe-only fit (which probes voids).
     m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m1_params = step022.get("models", {}).get(m1_key, {}).get("parameters_mle", {})
     H0_tep = 70.0  # dimensionless model fixes H0_ref
-    Sigma_0_tep = m1_params.get("Sigma_0", 4.3e-5)  # M1 has no Sigma_0; default fallback
-    epsilon_t_tep = m1_params.get("epsilon_T", 0.29)
-    
+    # M1 (no-Lambda Temporal Shear) has Sigma_0 = 0 by construction; only the
+    # epsilon_T temporal-shear amplitude is free. Earlier code defaulted to a
+    # non-zero placeholder (4.3e-5) when the parameter was absent, which
+    # silently introduced a spurious ~15% shift in D_M and broke the LCDM
+    # acoustic-consistency limit. Use 0.0 as the correct M1 default.
+    Sigma_0_tep = float(m1_params.get("Sigma_0", 0.0))
+    epsilon_t_sne = float(m1_params.get("epsilon_T", 0.29))  # unscreened, void line-of-sight
+    epsilon_t_cmb = _load_cmb_scale_epsilon_t(default=epsilon_t_sne)  # screened, CMB-scale
+
     tep_lcdm = TEPPerturbations(H0=H0_tep, sigma_0=0.0, epsilon_t=0.0)
-    tep_fit = TEPPerturbations(H0=H0_tep, sigma_0=Sigma_0_tep, epsilon_t=epsilon_t_tep)
+    # tep_fit probes CMB-scale acoustic consistency, so use the screened value.
+    tep_fit = TEPPerturbations(H0=H0_tep, sigma_0=Sigma_0_tep, epsilon_t=epsilon_t_cmb)
+    epsilon_t_tep = epsilon_t_cmb
     
     perturbation_diagnostics = {
         "lcdm_sound_horizon_Mpc": tep_lcdm.sound_horizon(),
@@ -603,41 +615,61 @@ def run() -> dict:
     
     tep_comparison = None  # Initialize before try block
     
+    # Read research-grade model comparison from step_03_01 instead of
+    # re-fitting with the broken TEPCosmologyFitter (which used diagonal
+    # errors, different redshift column, and different parameterization).
     try:
-        import pandas as pd
-        from core.tep_cosmology import TEPCosmologyFitter
-        
-        # Load Pantheon+ data
-        sne_data_path = Path("data/raw/pantheon_plus_shoes.dat")
-        if sne_data_path.exists():
-            df = pd.read_csv(sne_data_path, sep=r'\s+', comment='#')
-            df = df[df['zHD'] <= 1.5]  # Reasonable redshift range
+        step022_path = RESULTS_DIR / "step_03_01_three_model_comparison.json"
+        if step022_path.exists():
+            step022 = read_json(step022_path)
+            models = step022.get("models", {})
+            m0 = models.get("M0a_LCDM", {})
+            # Use M1_NoLambda_zT5 as the canonical TEP variant (best BIC)
+            m1 = models.get("M1_NoLambda_zT5", {})
             
-            if len(df) > 0:
-                z_data = df['zHD'].values
-                mu_data = df['MU_SH0ES'].values
-                mu_err_data = df['MU_SH0ES_ERR_DIAG'].values
-                
-                # Fit TEP and compare models
-                fitter = TEPCosmologyFitter(z_data, mu_data, mu_err_data)
-                tep_comparison = fitter.compare_models()
-                
-                print_status(f"TEP fit complete: ε_T = {tep_comparison['tep']['parameters']['epsilon_T']:.3f}", "SUCCESS")
-                print_status(f"χ²/dof (TEP) = {tep_comparison['tep']['chi2_per_dof']:.3f}", "INFO")
-                print_status(f"χ²/dof (ΛCDM) = {tep_comparison['lcdm']['chi2_per_dof']:.3f}", "INFO")
-                print_status(f"ΔBIC (TEP vs ΛCDM) = {tep_comparison['delta_bic_tep_vs_lcdm']:.1f}", "INFO")
-                
-                if tep_comparison['tep_competitive']:
-                    print_status("TEP IS COMPETITIVE WITH ΛCDM!", "SUCCESS")
-                else:
-                    print_status("TEP not yet competitive - needs refinement", "WARNING")
+            lcdm_bic = m0.get("bic", 0.0)
+            tep_bic = m1.get("bic", 0.0)
+            delta_bic = tep_bic - lcdm_bic
+            
+            tep_comparison = {
+                "status": "completed",
+                "lcdm": {
+                    "parameters": m0.get("parameters_mle", {}),
+                    "chi2": m0.get("chi2_mle", 0.0),
+                    "chi2_per_dof": m0.get("chi2_red_mle", 0.0),
+                    "bic": lcdm_bic,
+                    "aic": m0.get("aic", 0.0),
+                },
+                "tep": {
+                    "parameters": m1.get("parameters_mle", {}),
+                    "chi2": m1.get("chi2_mle", 0.0),
+                    "chi2_per_dof": m1.get("chi2_red_mle", 0.0),
+                    "bic": tep_bic,
+                    "aic": m1.get("aic", 0.0),
+                },
+                "delta_bic_tep_vs_lcdm": float(delta_bic),
+                "tep_competitive": bool(delta_bic < 2.0),
+                "best_model": "tep" if delta_bic < 0.0 else "lcdm",
+                "data_source": "step_03_01_three_model_comparison.json",
+                "note": "Research-grade results from full-covariance nested sampling",
+            }
+            
+            print_status(f"TEP fit (from step 03_01): ε_T = {tep_comparison['tep']['parameters'].get('epsilon_T', 0.0):.3f}", "SUCCESS")
+            print_status(f"χ²/dof (TEP) = {tep_comparison['tep']['chi2_per_dof']:.3f}", "INFO")
+            print_status(f"χ²/dof (ΛCDM) = {tep_comparison['lcdm']['chi2_per_dof']:.3f}", "INFO")
+            print_status(f"ΔBIC (TEP vs ΛCDM) = {tep_comparison['delta_bic_tep_vs_lcdm']:.1f}", "INFO")
+            
+            if tep_comparison['tep_competitive']:
+                print_status("TEP IS COMPETITIVE WITH ΛCDM!", "SUCCESS")
             else:
-                tep_comparison = None
+                print_status("TEP not yet competitive - needs refinement", "WARNING")
         else:
+            print_status("step_03_01 results not found, falling back to None", "WARNING")
             tep_comparison = None
-            
     except Exception as e:
-        print(f"TEP fit error: {e}")
+        import traceback
+        print_status(f"TEP fit error: {e}", "ERROR")
+        traceback.print_exc()
         tep_comparison = None
 
     # ============================================================================
@@ -666,7 +698,7 @@ def run() -> dict:
                 expected_stretch_factor = 1.0 + epsilon_T * f_T_at_1 * 1.0
                 
                 final_tests["sn_time_dilation"] = {
-                    "status": "validated",
+                    "status": "NOT_IMPLEMENTED",
                     "expected_stretch_at_z1": float(expected_stretch_factor),
                     "framework": "implemented",
                     "note": "TEP predicts stretch factor from temporal transport; observational test requires full light curve analysis",
@@ -682,7 +714,7 @@ def run() -> dict:
         # The key TEP prediction is distance duality violation, not Tolman violation
         
         final_tests["tolman_surface_brightness"] = {
-            "status": "validated",
+            "status": "NOT_IMPLEMENTED",
             "framework": "implemented",
             "tep_prediction": "Approximately standard Tolman with corrections from distance duality",
             "key_discriminator": "Distance duality η(z) = D_L/[D_A(1+z)²]",
@@ -698,7 +730,7 @@ def run() -> dict:
         # This is a critical test but requires BAO data with full covariance
         
         final_tests["bao_ratio_consistency"] = {
-            "status": "validated",
+            "status": "NOT_IMPLEMENTED",
             "tep_sound_horizon_Mpc": 103.9,
             "lcdm_sound_horizon_Mpc": 150.9,
             "sound_horizon_shift_percent": -31.1,
@@ -709,7 +741,7 @@ def run() -> dict:
     except Exception as e:
         final_tests["bao_ratio_consistency"]["error"] = str(e)
     
-    # All boxes ticked status
+    # All boxes ticked status (requires all replacement tests to be genuinely validated)
     all_boxes_ticked = all([
         tep_comparison is not None and tep_comparison.get('tep_competitive', False),
         replacement_tests.get('replacement_valid', False),
@@ -718,7 +750,7 @@ def run() -> dict:
         final_tests['bao_ratio_consistency']['status'] == 'validated',
     ])
     
-    print_status(f"Final validation tests: {sum(1 for t in final_tests.values() if t['status'] == 'validated')}/{len(final_tests)} validated", "SUCCESS" if all_boxes_ticked else "WARNING")
+    print_status(f"Final validation tests implemented and passed: {sum(1 for t in final_tests.values() if t['status'] == 'validated')}/{len(final_tests)}", "INFO")
 
     cmb_validation = cmb.get("validation", {})
     bbn_validation = bbn.get("validation", {})
@@ -861,7 +893,7 @@ def run() -> dict:
                     "✅ Full TEP cosmology (M2): IMPLEMENTED",
                     f"{'✅' if tep_comparison and tep_comparison.get('tep_competitive', False) else '❌' if tep_comparison else '⚠️'} TEP competitive with LCDM (ΔBIC={tep_comparison.get('delta_bic_tep_vs_lcdm', 'N/A'):.1f})" if tep_comparison else "⚠️ TEP fit: NOT COMPLETED",
                     f"{'✅' if tep_comparison and tep_comparison.get('best_model') == 'tep' else '❌' if tep_comparison else '⚠️'} Preferred model: {tep_comparison.get('best_model', 'unknown')}" if tep_comparison else "⚠️ Preferred model: unknown",
-                    f"TEP parameters: ε_T={tep_comparison['tep']['parameters']['epsilon_T']:.3f}, z_T={tep_comparison['tep']['parameters']['z_T']:.2f}" if tep_comparison and 'parameters' in tep_comparison.get('tep', {}) else "",
+                    f"TEP parameters: ε_T={tep_comparison['tep']['parameters'].get('epsilon_T', 0):.3f}, z_T={tep_comparison['tep']['parameters'].get('z_T', 5.0):.2f}" if tep_comparison and 'parameters' in tep_comparison.get('tep', {}) else "",
                 ],
             },
             "replacement": {

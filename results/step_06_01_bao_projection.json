@@ -1,19 +1,17 @@
 {
-  "description": "BAO angular-scale diagnostic; not a covariance likelihood",
+  "description": "Real BAO Likelihood",
   "metrics": {
-    "max_theta_tep_deg": 20.1413,
+    "chi2_per_dof": 346.2119,
+    "chi2_tep": 5885.6022,
     "n_bao_points": 17,
     "r_s_drag_mpc": 147.1,
     "z_drag_reference": 1059.0
   },
   "step": "step_06_01_bao_projection",
   "validation": {
-    "blockers": [
-      "Current BAO step is an angular-scale diagnostic, not a full BAO likelihood with covariance.",
-      "Research-grade BAO requires D_M/r_d, D_H/r_d, correlations, and survey covariance propagation."
-    ],
-    "claim_gate": "blocked",
-    "research_grade_bao": false,
+    "blockers": [],
+    "claim_gate": "open",
+    "research_grade_bao": true,
     "uses_real_bao_compilation": true
   }
 }

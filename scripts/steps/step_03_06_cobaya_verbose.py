@@ -207,9 +207,9 @@ def create_cobaya_config(
         "likelihood": {},
         "params": {
             "tep_epsilon_T": {
-                "prior": {"min": 0.0, "max": 0.5},
-                "ref": 0.1,
-                "proposal": 0.02,
+                "prior": {"min": -0.05, "max": 0.05},
+                "ref": 0.001,
+                "proposal": 0.00005,
                 "latex": r"\epsilon_T",
             },
             "tep_z_T": {

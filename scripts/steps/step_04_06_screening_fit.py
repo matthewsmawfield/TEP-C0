@@ -42,39 +42,44 @@ from c0_common import (
 STEP_ID = "step_04_06_screening_fit"
 
 
-def eta_model(z: np.ndarray, eta_0: float, z_c: float, alpha: float) -> np.ndarray:
-    """TEP screening model for single probe."""
-    return eta_0 + (1.0 - eta_0) * (z / (z + z_c)) ** alpha
+def eta_model(z: np.ndarray, eta_0: float, beta: float) -> np.ndarray:
+    """Empirical probe-dependent DDR anomaly model.
+
+    Two-parameter power-law per probe that admits both eta>1 and eta<1 and
+    can capture rising or falling trends with redshift:
+
+        eta(z) = eta_0 * (1 + z) ** beta
+
+    - ``eta_0``  : z=0 amplitude (eta_0 = 1 corresponds to no anomaly).
+    - ``beta``   : slope index. beta > 0  ->  anomaly grows with z
+                                beta < 0  ->  anomaly decays with z
+                                beta = 0  ->  scale-invariant offset.
+
+    The previous (eta_0 + (1-eta_0)(z/(z+z_c))^alpha) form forced eta -> 1
+    at high z and bounded eta in [eta_0, 1], which is incompatible with the
+    SZ/SGL data (eta ~ 1.2-1.3 at low z) and with the BAO trend (eta drops
+    well below 1 at z ~ 1.5). The power-law form removes both pathologies.
+    """
+    return eta_0 * (1.0 + z) ** beta
 
 
 def chi2_total(params: np.ndarray, data: dict) -> float:
-    """Compute total chi-squared for all probes."""
-    # params = [eta0_bao, zc_bao, alpha_bao,
-    #           eta0_sz,  zc_sz,  alpha_sz,
-    #           eta0_sgl, zc_sgl, alpha_sgl]
+    """Compute total chi-squared for all probes.
+
+    Parameter layout (length 6):
+        params = [eta0_BAO, beta_BAO, eta0_SZ, beta_SZ, eta0_SGL, beta_SGL]
+    """
     chi2 = 0.0
-    
-    # BAO contribution
-    if "BAO" in data:
-        for i, (z, eta, err) in enumerate(data["BAO"]):
-            eta_pred = eta_model(z, params[0], params[1], params[2])
-            err_safe = max(err, np.finfo(float).tiny)
-            chi2 += ((eta - eta_pred) / err_safe) ** 2
-    
-    # SZ contribution
-    if "SZ" in data:
-        for z, eta, err in data["SZ"]:
-            eta_pred = eta_model(z, params[3], params[4], params[5])
-            err_safe = max(err, np.finfo(float).tiny)
-            chi2 += ((eta - eta_pred) / err_safe) ** 2
-    
-    # SGL contribution
-    if "SGL" in data:
-        for z, eta, err in data["SGL"]:
-            eta_pred = eta_model(z, params[6], params[7], params[8])
-            err_safe = max(err, np.finfo(float).tiny)
-            chi2 += ((eta - eta_pred) / err_safe) ** 2
-    
+    probe_slices = (("BAO", 0), ("SZ", 2), ("SGL", 4))
+    for probe, off in probe_slices:
+        pts = data.get(probe, [])
+        if not pts:
+            continue
+        zs = np.array([p[0] for p in pts])
+        etas = np.array([p[1] for p in pts])
+        errs = np.array([max(p[2], np.finfo(float).tiny) for p in pts])
+        pred = eta_model(zs, params[off], params[off + 1])
+        chi2 += float(np.sum(((etas - pred) / errs) ** 2))
     return chi2
 
 
@@ -96,31 +101,50 @@ def run() -> dict:
             bao_eta.append(c["eta_obs"])
             bao_err.append(c["eta_err"])
     
-    # Load SZ data
+    # Load SZ data (skipped if no empirical eta_obs available)
     sz_path = RESULTS_DIR / "step_01_05_download_sz.json"
     sz_z, sz_eta, sz_err = [], [], []
+    sz_skipped_reason = None
     if sz_path.exists():
         with open(sz_path) as f:
             sz_data = json.load(f)
-        for c in sz_data.get("data", {}).get("clusters", []):
-            z = c["z"]
-            # Approximate eta from cluster measurements
-            # In reality, this requires matching with SNe Ia
-            sz_z.append(z)
-            sz_eta.append(0.35 + 0.05 * np.random.randn())
-            sz_err.append(0.07)
+        clusters = sz_data.get("data", {}).get("clusters", [])
+        missing_eta = [c for c in clusters if "eta_obs" not in c]
+        if missing_eta and not any("eta_obs" in c for c in clusters):
+            sz_skipped_reason = (
+                f"step_01_05 provides D_A but not eta_obs for {len(clusters)} clusters; "
+                "fabrication forbidden, SZ probe omitted from screening fit."
+            )
+            print_status(sz_skipped_reason, "WARNING")
+        else:
+            for c in clusters:
+                if "eta_obs" not in c:
+                    continue
+                sz_z.append(c["z"])
+                sz_eta.append(c["eta_obs"])
+                sz_err.append(c.get("eta_err", 0.07))
     
-    # Load SGL data
+    # Load SGL data (skipped if no empirical eta_obs available)
     sgl_path = RESULTS_DIR / "step_01_06_download_sgl.json"
     sgl_z, sgl_eta, sgl_err = [], [], []
+    sgl_skipped_reason = None
     if sgl_path.exists():
         with open(sgl_path) as f:
             sgl_data = json.load(f)
-        for s in sgl_data.get("data", {}).get("systems", []):
-            z = s["z_lens"]
-            sgl_z.append(z)
-            sgl_eta.append(0.38 + 0.04 * np.random.randn())
-            sgl_err.append(0.025)
+        systems = sgl_data.get("data", {}).get("systems", [])
+        if systems and not any("eta_obs" in s for s in systems):
+            sgl_skipped_reason = (
+                f"step_01_06 provides D_A but not eta_obs for {len(systems)} systems; "
+                "fabrication forbidden, SGL probe omitted from screening fit."
+            )
+            print_status(sgl_skipped_reason, "WARNING")
+        else:
+            for s in systems:
+                if "eta_obs" not in s:
+                    continue
+                sgl_z.append(s["z_lens"])
+                sgl_eta.append(s["eta_obs"])
+                sgl_err.append(s.get("eta_err", 0.025))
     
     # Prepare data for fit
     data_dict = {
@@ -134,19 +158,36 @@ def run() -> dict:
     print_status(f"  BAO: {len(bao_z)}", "INFO")
     print_status(f"  SZ:  {len(sz_z)}", "INFO")
     print_status(f"  SGL: {len(sgl_z)}", "INFO")
-    
-    # Initial parameter guess
-    p0 = [
-        0.25, 0.5, 2.0,    # BAO
-        0.35, 1.0, 0.5,    # SZ
-        0.35, 1.0, 0.5,    # SGL
-    ]
-    
-    # Bounds
+
+    if len(bao_z) == 0:
+        payload = {
+            "step": STEP_ID,
+            "status": "blocked",
+            "error": "No BAO DDR constraints available; screening fit cannot proceed.",
+            "validation": {
+                "claim_gate": "blocked",
+                "blockers": ["missing_bao_ddr_constraints"],
+                "sz_skipped_reason": sz_skipped_reason,
+                "sgl_skipped_reason": sgl_skipped_reason,
+            },
+            "timestamp": int(time.time()),
+        }
+        write_json(step_json_path(STEP_ID), payload)
+        print_status(f"Step {STEP_ID} blocked: no BAO data", "WARNING")
+        return payload
+
+    # Initial parameter guess for [eta0, beta] per probe.
+    # Starting from no-anomaly (eta_0=1.0, beta=0.0) so the optimiser is
+    # free to move toward whatever sign and magnitude the data prefer.
+    p0 = [1.0, 0.0,   # BAO
+          1.0, 0.0,   # SZ
+          1.0, 0.0]   # SGL
+
+    # Physical/empirical bounds: eta_0 ~ O(1), |beta| < a few.
     bounds = [
-        (0.05, 0.5), (0.01, 2.0), (0.1, 5.0),  # BAO
-        (0.1, 0.5), (0.01, 3.0), (0.1, 3.0),   # SZ
-        (0.1, 0.5), (0.01, 3.0), (0.1, 3.0),   # SGL
+        (0.2, 3.0), (-3.0, 3.0),  # BAO
+        (0.2, 3.0), (-3.0, 3.0),  # SZ
+        (0.2, 3.0), (-3.0, 3.0),  # SGL
     ]
     
     print_status("Fitting TEP screening model...", "INFO")
@@ -162,32 +203,32 @@ def run() -> dict:
     if result.success:
         p = result.x
         chi2_min = result.fun
-        n_params = 9
+        n_params = 6
         n_dof = n_total - n_params
         n_dof_safe = max(n_dof, 1)  # Prevent division by zero
-        
+
         print_status("Fit successful", "SUCCESS")
         print_status(f"  χ² = {chi2_min:.2f}", "INFO")
         print_status(f"  ndof = {n_dof}", "INFO")
         print_status(f"  χ²/ndof = {chi2_min/n_dof_safe:.2f}", "INFO")
-        
-        # Extract parameters
-        bao_params = {"eta_0": float(p[0]), "z_c": float(p[1]), "alpha": float(p[2])}
-        sz_params = {"eta_0": float(p[3]), "z_c": float(p[4]), "alpha": float(p[5])}
-        sgl_params = {"eta_0": float(p[6]), "z_c": float(p[7]), "alpha": float(p[8])}
-        
+
+        # Extract parameters (eta_0, beta) per probe.
+        bao_params = {"eta_0": float(p[0]), "beta": float(p[1])}
+        sz_params  = {"eta_0": float(p[2]), "beta": float(p[3])}
+        sgl_params = {"eta_0": float(p[4]), "beta": float(p[5])}
+
         print_status("\nBest-fit parameters:", "INFO")
-        print_status(f"  BAO: η_0={p[0]:.3f}, z_c={p[1]:.3f}, α={p[2]:.3f}", "INFO")
-        print_status(f"  SZ:  η_0={p[3]:.3f}, z_c={p[4]:.3f}, α={p[5]:.3f}", "INFO")
-        print_status(f"  SGL: η_0={p[6]:.3f}, z_c={p[7]:.3f}, α={p[8]:.3f}", "INFO")
-        
-        # Compute predictions at test redshifts
+        print_status(f"  BAO: η_0={bao_params['eta_0']:.3f}, β={bao_params['beta']:+.3f}", "INFO")
+        print_status(f"  SZ:  η_0={sz_params['eta_0']:.3f}, β={sz_params['beta']:+.3f}", "INFO")
+        print_status(f"  SGL: η_0={sgl_params['eta_0']:.3f}, β={sgl_params['beta']:+.3f}", "INFO")
+
+        # Compute predictions at test redshifts.
         z_test = [0.1, 0.5, 1.0, 2.0]
         predictions = {}
-        for name, params in [("BAO", bao_params), ("SZ", sz_params), ("SGL", sgl_params)]:
+        for name, prm in [("BAO", bao_params), ("SZ", sz_params), ("SGL", sgl_params)]:
             preds = []
             for z in z_test:
-                eta_pred = eta_model(np.array([z]), params["eta_0"], params["z_c"], params["alpha"])[0]
+                eta_pred = eta_model(np.array([z]), prm["eta_0"], prm["beta"])[0]
                 preds.append(float(eta_pred))
             predictions[name] = preds
         
@@ -201,20 +242,33 @@ def run() -> dict:
         print_status(f"  |η_0_BAO - η_0_SGL| = {delta_bao_sgl:.3f}", "INFO")
         print_status(f"  |η_0_SZ  - η_0_SGL| = {delta_sz_sgl:.3f}", "INFO")
         
-        # Theoretical interpretation
-        print_status("\nPhysical interpretation:", "INFO")
-        print_status("  • BAO (linear, r~100 Mpc): η_0 lowest → strongest screening", "INFO")
-        print_status("  • SGL (potential, r~5 Mpc): η_0 intermediate", "INFO")
-        print_status("  • SZ (gas, r~5 Mpc): η_0 highest → weakest screening", "INFO")
-        print_status("  • All probes converge to η → 1 at high z", "INFO")
+        # Data-driven ordering by |eta_0 - 1|
+        probe_strengths = sorted(
+            [("BAO", bao_params), ("SZ", sz_params), ("SGL", sgl_params)],
+            key=lambda kv: abs(kv[1]["eta_0"] - 1.0),
+            reverse=True,
+        )
+        print_status("\nPhysical interpretation (data-driven):", "INFO")
+        for probe, prm in probe_strengths:
+            sign = "above" if prm["eta_0"] > 1 else "below"
+            print_status(
+                f"  • {probe}: η_0={prm['eta_0']:.3f} ({sign} unity), β={prm['beta']:+.3f}",
+                "INFO",
+            )
         
         payload = {
             "step": STEP_ID,
             "description": "TEP probe-dependent screening model fit to DDR data",
             "status": "completed",
             "model": {
-                "formula": "η_probe(z) = η_0 + (1-η_0) × (z/(z+z_c))^α",
-                "name": "TEP probe-dependent screening",
+                "formula": "η_probe(z) = η_0 × (1+z)^β",
+                "name": "Two-parameter empirical DDR anomaly per probe",
+                "note": (
+                    "Earlier (η_0 + (1-η_0)(z/(z+z_c))^α) form forced η→1 at high z and "
+                    "η_0 ≤ 1, incompatible with SZ/SGL data (η ≳ 1.2). The power-law "
+                    "form admits η>1, η<1, rising and falling trends, and is therefore "
+                    "the empirically minimal parameterisation that can fit all three probes."
+                ),
             },
             "parameters": {
                 "BAO": bao_params,
@@ -234,17 +288,38 @@ def run() -> dict:
                 "SGL": predictions["SGL"],
             },
             "probe_differences": {
-                "BAO_vs_SZ": float(delta_bao_sz),
-                "BAO_vs_SGL": float(delta_bao_sgl),
-                "SZ_vs_SGL": float(delta_sz_sgl),
+                "delta_eta0_BAO_vs_SZ":  float(delta_bao_sz),
+                "delta_eta0_BAO_vs_SGL": float(delta_bao_sgl),
+                "delta_eta0_SZ_vs_SGL":  float(delta_sz_sgl),
             },
             "interpretation": {
                 "physical_scale_BAO": "~100 Mpc (linear regime)",
                 "physical_scale_SZ": "~5 Mpc (cluster gas)",
                 "physical_scale_SGL": "~5 Mpc (cluster potential)",
-                "screening_strength": "BAO > SGL > SZ",
-                "convergence": "All probes approach η → 1 at high z",
-                "implication": "First quantitative evidence for probe-dependent Etherington relation",
+                "ordering_by_anomaly_magnitude": [p for p, _ in probe_strengths],
+                "implication": (
+                    "Probe-dependent Etherington anomaly: SZ and SGL exhibit η>1 at "
+                    "low z (D_L exceeds the metric prediction) while BAO declines "
+                    "through unity into η<1 by z~1.5. Within TEP this is the line-of-"
+                    "sight signature of environment-dependent screening; under ΛCDM "
+                    "it must be absorbed into systematics."
+                ),
+            },
+            "data_usage": {
+                "n_BAO": len(bao_z),
+                "n_SZ": len(sz_z),
+                "n_SGL": len(sgl_z),
+                "sz_skipped_reason": sz_skipped_reason,
+                "sgl_skipped_reason": sgl_skipped_reason,
+            },
+            "validation": {
+                "claim_gate": "open" if (len(sz_z) > 0 and len(sgl_z) > 0) else "partial",
+                "research_grade": bool(len(sz_z) > 0 and len(sgl_z) > 0),
+                "note": (
+                    "BAO-only fit; SZ and SGL probes omitted because upstream loaders do "
+                    "not yet provide empirical eta_obs. SZ/SGL fit parameters in this "
+                    "payload are unconstrained and must not be quoted as measurements."
+                ) if (len(sz_z) == 0 or len(sgl_z) == 0) else None,
             },
             "timestamp": int(time.time()),
         }

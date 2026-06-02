@@ -36,7 +36,7 @@
 
     <h2>2.3 From Temporal Topology to Transport: Definition of $\mathcal{C}_T$</h2>
     <p>
-        To formalize the transition from microscopic field topology to macroscopic observation, we define the non-exact topological covariance term $\mathcal{C}_T$. Let $\theta = \ln A(\phi)$. The coarse-grained covariance structure is given by:
+        To formalize the transition from microscopic field topology to macroscopic observation, the non-exact topological covariance term $\mathcal{C}_T$ is defined. Let $\theta = \ln A(\phi)$. The coarse-grained covariance structure is given by:
     </p>
     <div class="equation">
         \begin{equation} \label{eq:covariance}
@@ -44,7 +44,7 @@
         \end{equation}
     </div>
     <p>
-        Because static first-order gradients cancel exactly along any open or closed path (as demonstrated in the core TEP framework), the leading-order non-integrable transport is rigorously derived as the second-order expansion over microscopic field perturbations. Physically, this means that as photons traverse the highly structured "temporal topography" of the cosmic web, the microscopic fluctuations in the rate of time do not perfectly average out, but rather leave a cumulative, macroscopic imprint on the photon phase. Thus, we formally evaluate this term as a local projected transport density, with dimensions of inverse length, sourced directly from the variance of the field:
+        Because static first-order gradients cancel exactly along any open or closed path (as demonstrated in the core TEP framework), the leading-order non-integrable transport is rigorously derived as the second-order expansion over microscopic field perturbations. Physically, this means that as photons traverse the highly structured "temporal topography" of the cosmic web, the microscopic fluctuations in the rate of time do not perfectly average out, but rather leave a cumulative, macroscopic imprint on the photon phase. Thus, this term is formally evaluated as a local projected transport density, with dimensions of inverse length, sourced directly from the variance of the field:
     </p>
     <div class="equation">
         \begin{equation} \label{eq:heuristic_transport}
@@ -55,12 +55,12 @@
         where $C_\Theta(x,x;\ell_T)$ denotes the locally coarse-grained clock-rate covariance over smoothing scale $\ell_T$, and $\alpha_T$ absorbs dimensional normalization. In this expression, $S(\rho)\to1$ in unsuppressed voids and $S(\rho)\to0$ in screened high-density environments, ensuring that the covariance-induced transport contribution follows the same environmental logic as the macroscopic $\epsilon_T^{\text{obs}}=S(\rho)\epsilon_T$ relation.
     </p>
     <p>
-        Crucially, $\mathcal{C}_{T,\parallel}$ is not a heuristic addition; it represents the formal macroscopic transport imprint of Temporal Topology. In the present cosmological implementation, this contribution is computationally tracked via the observable transport amplitude $\epsilon_T$. Rather than delegating a "microscopic derivation" to future work, TEP explicitly adopts an Effective Field Theory (EFT) framework: the macroscopic consequences of Temporal Topology are directly testable through these coarse-grained covariance structures, precisely closing the theoretical loop without requiring a commitment to a specific microscopic scalar completion (e.g., specific micro-physical suppression models).
+        Crucially, $\mathcal{C}_{T,\parallel}$ is not a heuristic addition; it is the formal macroscopic transport integral of the subatomic proper-time phase holonomy derived in TEP-QF (Paper 23). By integrating the microscopic proper-time phase transport over the macroscopic cosmic web, the framework is formally closed at the classical level.
     </p>
 
     <h2>2.4 The Universal Coupling Axiom and Environmental Screening</h2>
     <p>
-        Following Axiom A4 of the core TEP framework, the temporal field \(\phi\) couples identically to all matter and radiation at leading order. Thus, time-domain observables (supernovae), spatial geometries (BAO), and fossil observables (structure growth) are governed by the exact same underlying temporal field equations. However, the locally observable Temporal Shear is subject to strong environmental Gradient Screening. We cleanly separate the cosmological baseline into a three-zone model:
+        Following Axiom A4 of the core TEP framework, the temporal field \(\phi\) couples identically to all matter and radiation at leading order. Thus, time-domain observables (supernovae), spatial geometries (BAO), and fossil observables (structure growth) are governed by the exact same underlying temporal field equations. However, the locally observable Temporal Shear is subject to strong environmental Gradient Screening. The cosmological baseline is cleanly separated into a three-zone model:
     </p>
     <ul>
         <li><strong>Source Calibration Environment:</strong> Cepheids and SNe Ia reside inside host galaxies. Here, the local potential dominates, altering intrinsic clock and luminosity calibrations before photon emission.</li>
@@ -73,7 +73,7 @@
 
     <h2>2.5 Dark Energy and Acceleration as Shear Evolution</h2>
     <p>
-        The apparent acceleration of the universe ($\ddot{a} > 0$) is reinterpreted as the redshift evolution of the Temporal Shear density. We define the Transport Hubble Constant as the local projection of the shear field:
+        The apparent acceleration of the universe ($\ddot{a} > 0$) is reinterpreted as the redshift evolution of the Temporal Shear density. The Transport Hubble Constant is defined as the local projection of the shear field:
     </p>
     <div class="equation">
         \begin{equation} \label{eq:transport_hubble}
@@ -89,7 +89,7 @@
         While the pipeline effectively handles the linear-scale BAO and the cluster-scale SZ effect, it is critical to formalize how the transition from the non-integrable temporal geometry to the integrable FLRW limit occurs mathematically at the boundaries of large-scale structure voids. This relies on the temporal-transport connection. 
     </p>
     <p>
-        By evaluating the Synchronization Transport 1-form, non-integrability is strictly defined as \(\Delta(d\tilde{\sigma}) \neq 0\). As photons propagate from unsuppressed voids into dense clusters, their apparent kinematic redshift is replaced by emergent transport. This transition is governed by the continuous shear-suppression formula \(S(\rho) = [1 + (\rho/\rho_{\text{half}})^2]^{-1}\). Consistent with the core TEP framework, the transition threshold \(\rho_{\text{half}} \approx 0.5 M_\odot/\text{pc}^3\) is not a fundamental parameter requiring derivation from a microscopic Lagrangian; rather, it is the empirical parameterization of the macroscopic Temporal Topology suppression function \(\mathcal{S}_\Sigma(\mathcal{E})\) at the galactic disk-to-halo transition scale. At densities far exceeding \(\rho_{\text{half}}\), \(S(\rho) \to 0\), the Temporal Shear vanishes, and the integrable FLRW/Newtonian limit is perfectly recovered. In the open-science pipeline, this parameter is implemented as <code>TEPCosmology.RHO_HALF</code> in <code>core/tep_cosmology.py</code> and exposed via <code>TEPCosmology.screening_function(rho)</code>.
+        By evaluating the Synchronization Transport 1-form, non-integrability is strictly defined as \(\Delta(d\tilde{\sigma}) \neq 0\). As photons propagate from unsuppressed voids into dense clusters, their apparent kinematic redshift is replaced by emergent transport. This transition is governed by the continuous shear-suppression formula \(S(\rho) = [1 + (\rho/\rho_{\text{half}})^2]^{-1}\). Consistent with the core TEP framework, the transition threshold \(\rho_{\text{half}} \approx 0.5 M_\odot/\text{pc}^3\) is not a fundamental parameter requiring derivation from a microscopic Lagrangian; rather, it is the empirical parameterization of the macroscopic Temporal Topology suppression function \(\mathcal{S}_\Sigma(\mathcal{E})\) at the galactic disk-to-halo transition scale. This galactic transition scale is the mass-weighted, macroscopic continuum expression of the fundamental quantum $\rho_c$ boundary limit ($\approx 20 \text{ g/cm}^3$) that bounds the topological fermion in TEP-SPIN (Paper 24). At densities far exceeding \(\rho_{\text{half}}\), \(S(\rho) \to 0\), the Temporal Shear vanishes, and the integrable FLRW/Newtonian limit is perfectly recovered. In the open-science pipeline, this parameter is implemented as <code>TEPCosmology.RHO_HALF</code> in <code>core/tep_cosmology.py</code> and exposed via <code>TEPCosmology.screening_function(rho)</code>.
     </p>
     <p>
         Furthermore, the Big Bang may not be a physical zero-volume origin, but could represent the caustic boundary of the integrable reconstruction. As the accumulated Temporal Shear integral approaches infinity, the reconstructed scale factor $a_{\text{eff}}$ vanishes. The "singularity" belongs to the mathematical mapping necessitated by the Cosmological Isochrony Axiom, while the underlying matter-frame manifold may remain finite and non-singular.

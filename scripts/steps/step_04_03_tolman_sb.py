@@ -76,24 +76,26 @@ def load_surface_brightness_data():
 def compute_tep_sb(z, H0, Sigma_0, A_env):
     """Compute TEP surface brightness prediction.
     
-    TEP modifies the standard (1+z)^(-4) law through temporal shear:
-    - Standard: SB ∝ (1+z)^(-4)
-    - TEP: SB ∝ (1+z)^(-4 - 2.5*Sigma_0/log(10))
-    
-    The temporal shear adds a correction to the distance modulus:
-    mu_TEP = mu_LCDM - 2.5 * Sigma_0 * log10(1+z)
-    
-    Since surface brightness scales as 10^(-0.4*mu), the TEP correction
-    modifies the (1+z)^(-4) scaling factor.
+    TEP modifies the standard (1+z)^(-4) law through temporal shear.
+    Because TEP expands the effective distance (mu_TEP > mu_LCDM),
+    the observed flux is lower, meaning the surface brightness falls off faster.
     """
+    import sys
+    import os
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+    from core.tep_cosmology import TEPCosmology
+    
     # Standard LCDM surface brightness: SB ∝ (1+z)^(-4)
     sb_lcdm = (1 + z)**(-4)
     
-    # TEP correction factor from distance modulus change
-    # mu_TEP = mu_LCDM - 2.5 * Sigma_0 * log10(1+z)
-    # SB ∝ 10^(-0.4*mu), so SB_TEP/SB_LCDM = 10^(0.4 * 2.5 * Sigma_0 * log10(1+z))
-    # = 10^(Sigma_0 * log10(1+z)) = (1+z)^Sigma_0
-    tep_factor = (1 + z)**Sigma_0
+    cosmo_tep = TEPCosmology(H0=H0, epsilon_T=Sigma_0)
+    cosmo_lcdm = TEPCosmology(H0=H0, epsilon_T=0.0)
+    
+    # Flux ratio = 10^(-0.4 * Delta mu)
+    mu_tep = cosmo_tep.distance_modulus(z)
+    mu_lcdm = cosmo_lcdm.distance_modulus(z)
+    
+    tep_factor = 10**(-0.4 * (mu_tep - mu_lcdm))
     
     return sb_lcdm * tep_factor
 
