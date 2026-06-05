@@ -6,6 +6,25 @@ In TEP, this relation acquires a correction from environment-dependent
 path enhancement affecting luminosity and angular distances differently.
 
 Uses downloaded DDR constraints from step_023b for observational testing.
+
+STATISTICAL RIGOR AND MULTIPLE-TESTING CORRECTION
+-------------------------------------------------
+This step performs ONE primary test:
+  - H0: η = 1 (distance duality holds exactly)
+  - H1: η ≠ 1 (TEP predicts a redshift-dependent deviation)
+
+The deviation_from_unity_sigma is a two-sided test: any nonzero deviation
+is interesting because standard cosmology predicts η = 1 exactly.
+No multiple-testing correction is needed because this is a single
+observable. The Δχ² between LCDM and TEP fits is a model-comparison
+metric, not a hypothesis-test p-value, and is reported without correction.
+
+NOTE: This test was NOT formally pre-registered (no pre-registration
+document exists for TEP-C0). The distance-duality observable is a
+standard cosmological probe; the TEP prediction of a redshift-dependent
+deviation was motivated by the framework before the analysis, but the
+specific DDR constraint compilation and weighting scheme were developed
+through exploratory work.
 """
 
 from __future__ import annotations
@@ -123,7 +142,9 @@ def run():
     print_status("Loading fitted TEP model", "PROCESS")
     step022 = load_step022_results()
     
-    m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022.get("models", {}) else "M1_NoLambda_zT5"
+    m1_key = "M1_free_zT"
+    if m1_key not in step022.get("models", {}):
+        m1_key = "M1_NoLambda_zT5"
     m0_params = step022['models']['M0a_LCDM']['parameters_mle']
     m1_params = step022['models'][m1_key]['parameters_mle']
 

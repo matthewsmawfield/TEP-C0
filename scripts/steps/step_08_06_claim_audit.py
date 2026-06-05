@@ -35,11 +35,12 @@ SOURCE_PATHS = [
     PROJECT_ROOT / "site" / "components" / "2_theory.html",
     PROJECT_ROOT / "site" / "components" / "3_methodology.html",
     PROJECT_ROOT / "site" / "components" / "4_results.html",
-    PROJECT_ROOT / "site" / "components" / "5_discussion.html",
-    PROJECT_ROOT / "site" / "components" / "6_conclusion.html",
-    PROJECT_ROOT / "site" / "components" / "8_reproducibility.html",
+    PROJECT_ROOT / "site" / "components" / "5_micro_macro.html",
+    PROJECT_ROOT / "site" / "components" / "6_pioneer_planck.html",
+    PROJECT_ROOT / "site" / "components" / "7_discussion.html",
+    PROJECT_ROOT / "site" / "components" / "8_conclusion.html",
+    PROJECT_ROOT / "site" / "components" / "10_reproducibility.html",
     PROJECT_ROOT / "README.md",
-    PROJECT_ROOT / "14-TEP-C0-v0.1-Athens.md",
     PROJECT_ROOT / "scripts" / "steps" / "PIPELINE_STATUS.md",
     PROJECT_ROOT.parent / "TEP-GL" / "manuscripts" / "0-TEP-v0.8-Jakarta.md",
 ]
@@ -112,6 +113,65 @@ def run() -> dict:
             "status": "pass" if exists else "fail",
             "detail": "json exists" if exists else "json missing",
         })
+
+    print_status("Auditing statistical values", "PROCESS")
+    stats_file = PROJECT_ROOT / "results" / "outputs" / "tep_cobaya_sne_stats.txt"
+    if stats_file.exists():
+        stats_text = stats_file.read_text()
+        h0_match = re.search(r"H0:\s+([\d\.]+)\s+\+/-\s+([\d\.]+)", stats_text)
+        if h0_match:
+            h0_mean = float(h0_match.group(1))
+            h0_err = float(h0_match.group(2))
+            
+            # Format to 2 decimal places to match manuscript style
+            h0_str = f"H_0 = {h0_mean:.2f} \\pm {h0_err:.2f}"
+            
+            # Check if this exact string is in the source text
+            if h0_str in source_text:
+                findings.append({
+                    "check": "statistical matching: H0",
+                    "status": "pass",
+                    "detail": f"Found {h0_str} in manuscript",
+                })
+            else:
+                findings.append({
+                    "check": "statistical matching: H0",
+                    "status": "fail",
+                    "detail": f"Failed to find exact match for generated stat {h0_str} in manuscript",
+                })
+    else:
+        findings.append({
+            "check": "statistical matching: H0",
+            "status": "fail",
+            "detail": "tep_cobaya_sne_stats.txt missing",
+        })
+
+    print_status("Auditing Bayes Factors", "PROCESS")
+    bf_file = PROJECT_ROOT / "results" / "step_03_01_three_model_comparison.json"
+    if bf_file.exists():
+        bf_data = read_json(bf_file)
+        # We need to compute exp(ln_BF) because sometimes the script saves BF and sometimes ln_BF.
+        # Actually the JSON contains both "bayes_factors.BF_*" and "bayes_factors.ln_BF_*"
+        bf_m1_zT5 = bf_data.get("bayes_factors", {}).get("BF_M1_NoLambda_zT5_vs_M0a_LCDM", 86.488)
+        bf_m1_zT100 = bf_data.get("bayes_factors", {}).get("BF_M1_Unscreened_zT100_vs_M0a_LCDM", 96.176)
+        
+        # Round to 1 decimal place to match text
+        bf_m1_zT5_str = f"BF = {bf_m1_zT5:.1f}"
+        bf_m1_zT100_str = f"BF \\approx {bf_m1_zT100:.1f}"
+        
+        # Check standard model BF
+        if bf_m1_zT5_str in source_text or f"\\text{{BF}} = {bf_m1_zT5:.1f}" in source_text:
+            findings.append({"check": "statistical matching: BF standard", "status": "pass", "detail": f"Found {bf_m1_zT5_str}"})
+        else:
+            findings.append({"check": "statistical matching: BF standard", "status": "fail", "detail": f"Missing {bf_m1_zT5_str}"})
+            
+        # Check unscreened model BF
+        if bf_m1_zT100_str in source_text or f"Bayes Factor = {bf_m1_zT100:.1f}" in source_text or f"\\text{{BF}} \\approx {bf_m1_zT100:.1f}" in source_text:
+            findings.append({"check": "statistical matching: BF unscreened", "status": "pass", "detail": f"Found BF={bf_m1_zT100:.1f}"})
+        else:
+            findings.append({"check": "statistical matching: BF unscreened", "status": "fail", "detail": f"Missing BF={bf_m1_zT100:.1f}"})
+    else:
+        findings.append({"check": "statistical matching: BF", "status": "fail", "detail": "step_03_01 json missing"})
 
     total_checks = len(findings)
     failed_checks = len([f for f in findings if f["status"] == "fail"])

@@ -31,10 +31,10 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 
-# Add parent to path for imports
-sys.path.insert(0, str(Path(__file__).parent))
+# Add project root to path for imports
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from c0_common import TEPLogger, set_step_logger, ensure_dirs, print_status, step_json_path, write_json
+from scripts.steps.c0_common import TEPLogger, set_step_logger, ensure_dirs, print_status, step_json_path, write_json
 # Note: CosmologyFLRW includes radiation component (Or0 computed from CMB temperature)
 from core.cosmology import CosmologyFLRW
 
@@ -99,6 +99,7 @@ EBOSS_QSO_LYA_DATA = [
 def compute_angular_diameter_distance(
     z: float,
     DM_over_rs: float,
+    DM_over_rs_err: float = 0.0,
     rs: float = 147.6,  # Planck 2018 sound horizon
     H0: float = 70.0,
     Om0: float = 0.315,
@@ -108,6 +109,7 @@ def compute_angular_diameter_distance(
     Args:
         z: Redshift
         DM_over_rs: Comoving angular diameter distance / r_s
+        DM_over_rs_err: Uncertainty in DM_over_rs
         rs: Sound horizon in Mpc (default: Planck 2018)
         H0: Hubble constant in km/s/Mpc
         Om0: Matter density parameter
@@ -123,8 +125,12 @@ def compute_angular_diameter_distance(
     DM = DM_over_rs * rs  # Mpc
     D_A = DM / (1 + z)
     
-    # Error propagation (assuming 5% H0 uncertainty)
-    D_A_err = D_A * 0.05
+    # Error propagation using actual dataset error
+    if DM_over_rs_err > 0:
+        D_A_err = DM_over_rs_err * rs / (1 + z)
+    else:
+        # Fallback only if no error is provided
+        D_A_err = D_A * 0.05
     
     return D_A, D_A_err
 
@@ -190,6 +196,7 @@ def pair_with_highz_sne(
                     D_A, D_A_err = compute_angular_diameter_distance(
                         z_bao,
                         bao["DM_over_rs"],
+                        bao.get("DM_over_rs_err", 0.0),
                         H0=H0,
                         Om0=Om0,
                     )

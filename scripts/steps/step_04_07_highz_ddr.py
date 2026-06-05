@@ -231,7 +231,9 @@ def run() -> dict:
     # Load TEP parameters from step_022
     try:
         step022 = json.loads(Path("results/step_03_01_three_model_comparison.json").read_text())
-        m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022.get("models", {}) else "M1_NoLambda_zT5"
+        m1_key = "M1_free_zT"
+        if m1_key not in step022.get("models", {}):
+            m1_key = "M1_NoLambda_zT5"
         m1_params = step022['models'][m1_key]['parameters_mle']
         h0_tep = 70.0  # dimensionless model fixes H0_ref
         om0_tep = 1.0  # M1_NoLambda is matter-only (no Lambda)

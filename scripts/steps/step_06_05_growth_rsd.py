@@ -34,7 +34,14 @@ import numpy as np
 # Add TEP-CLASS to path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 TEP_CLASS_PATH = PROJECT_ROOT / "external" / "class"
-TEP_CLASS_BUILD = TEP_CLASS_PATH / "build" / "lib.macosx-11.1-arm64-cpython-313"
+import glob
+_build_dir = PROJECT_ROOT / "external" / "class" / "build"
+_lib_dirs = glob.glob(str(_build_dir / "lib.*"))
+if _lib_dirs:
+    CLASS_BUILD_PATH_STR = str(_lib_dirs[0])
+else:
+    CLASS_BUILD_PATH_STR = str(_build_dir / "lib.macosx-11.1-arm64-cpython-313")
+TEP_CLASS_BUILD = Path(CLASS_BUILD_PATH_STR)
 if str(TEP_CLASS_BUILD) not in sys.path:
     sys.path.insert(0, str(TEP_CLASS_BUILD))
 
@@ -203,7 +210,7 @@ def run() -> dict:
         else:
             epsilon_T_dist = 0.28865
             Om0_dist = 0.3
-    except:
+    except Exception:
         epsilon_T_dist = 0.28865
         Om0_dist = 0.3
     

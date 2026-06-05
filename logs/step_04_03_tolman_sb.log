@@ -1,12 +1,12 @@
-[06:39:02] [INFO] 
-[06:39:02] [INFO] ================================================================================
-[06:39:02] [INFO]    Starting step_04_03_tolman_sb
-[06:39:02] [INFO] ================================================================================
-[06:39:02] [INFO] 
-[06:39:02] [INFO] Using TEP parameters: H0=70.00, Sigma_0 (epsilon_T)=0.858539
-[06:39:02] [INFO] Loaded 48 surface brightness measurements
-[06:39:02] [INFO] Tolman index: 3.375 ± 0.027 (LCDM expects 4.0)
-[06:39:02] [INFO] Δχ² (LCDM - TEP) = -3647.74
-[06:39:02] [INFO] TEP preferred: False
-[06:39:02] [WARNING] Research grade: False
-[06:39:02] [SUCCESS] Step step_04_03_tolman_sb completed
+[01:39:51] [INFO] 
+[01:39:51] [INFO] ================================================================================
+[01:39:51] [INFO]    Starting step_04_03_tolman_sb
+[01:39:51] [INFO] ================================================================================
+[01:39:51] [INFO] 
+[01:39:51] [INFO] Using TEP parameters: H0=70.00, Sigma_0 (epsilon_T)=0.756256
+[01:39:51] [INFO] Loaded 48 surface brightness measurements
+[01:39:51] [INFO] Tolman index: 3.375 ± 0.027 (LCDM expects 4.0)
+[01:39:51] [INFO] Δχ² (LCDM - TEP) = -3236.77
+[01:39:51] [INFO] TEP preferred: False
+[01:39:51] [WARNING] Research grade: False
+[01:39:51] [SUCCESS] Step step_04_03_tolman_sb completed

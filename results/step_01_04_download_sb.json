@@ -5,9 +5,9 @@
   },
   "description": "Download surface brightness evolution data for Tolman test",
   "metrics": {
-    "cached_source_count": 3,
+    "cached_source_count": 0,
     "data_point_count": 48,
-    "downloaded_source_count": 0,
+    "downloaded_source_count": 3,
     "failed_source_count": 0,
     "source_count": 3,
     "sources_processed": [
@@ -15,7 +15,7 @@
       "sandage_2010",
       "pahre_1996"
     ],
-    "total_raw_bytes": 6186,
+    "total_raw_bytes": 6210,
     "using_synthetic_data": false
   },
   "sb_data": [
@@ -853,42 +853,42 @@
   },
   "sources": [
     {
-      "bytes": 2062,
+      "bytes": 2070,
       "citation": "Lubin & Sandage 2001a,b,c,d, AJ 121-122 (Tolman Test I-IV)",
       "data_type": "published_literature_data",
       "domain": "surface_brightness",
-      "download_epoch": 1780343228,
-      "error": "HTTP Error 403: Forbidden",
+      "download_epoch": 1780593130,
+      "error": "",
       "raw_path": "data/raw/lubin_sandage_2001_abstract.html",
-      "sha256": "55c03bccc9cb3c9fb12f1ab45c75d4477ed5d574afe5670efce3417e6aec4ef6",
+      "sha256": "727967b83dee73f468f6ace62feaa8c4fa2acab028f0a1b36eac78b1f683d1a9",
       "source_id": "lubin_sandage_2001_full",
-      "status": "cached",
+      "status": "downloaded",
       "url": "https://ui.adsabs.harvard.edu/abs/2001AJ....122.1084L"
     },
     {
-      "bytes": 2062,
+      "bytes": 2070,
       "citation": "Sandage 2010, AJ 139, 728",
       "data_type": "published_literature_data",
       "domain": "surface_brightness",
-      "download_epoch": 1780343233,
-      "error": "HTTP Error 403: Forbidden",
+      "download_epoch": 1780593131,
+      "error": "",
       "raw_path": "data/raw/sandage_2010_abstract.html",
-      "sha256": "52ca10b7cf873e468f7580bb0aeb14248f188fad292192380354b54d30c8d9e6",
+      "sha256": "f382678e0dddd4432d261faf4ebeaa20fc584dfbf06aa67942a64be68b0fa9f6",
       "source_id": "sandage_2010",
-      "status": "cached",
+      "status": "downloaded",
       "url": "https://ui.adsabs.harvard.edu/abs/2010AJ....139..728S"
     },
     {
-      "bytes": 2062,
+      "bytes": 2070,
       "citation": "Pahre et al. 1996, ApJ 456, 79",
       "data_type": "published_literature_data",
       "domain": "surface_brightness",
-      "download_epoch": 1780343239,
-      "error": "HTTP Error 403: Forbidden",
+      "download_epoch": 1780593132,
+      "error": "",
       "raw_path": "data/raw/pahre_1996_abstract.html",
-      "sha256": "f88212864bf753c94e828d249c49abe7dc11e0eb4af58106ac957b4cd76a2483",
+      "sha256": "4b9191a1712e5e50d8601bae80b64a631cdc2cfdf10c12f32b45c20ecf962bde",
       "source_id": "pahre_1996",
-      "status": "cached",
+      "status": "downloaded",
       "url": "https://ui.adsabs.harvard.edu/abs/1996ApJ...456...79P"
     }
   ],

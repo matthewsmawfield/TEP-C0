@@ -15,8 +15,8 @@
       "path": "results/figures/hubble_residuals.png",
       "status": "ok",
       "tep_m1_params": {
-        "M": -19.316960081392537,
-        "epsilon_T": 0.8585386275220572,
+        "M": -19.31017052049644,
+        "epsilon_T": 0.7562555262279003,
         "z_T": 10.0
       }
     }
@@ -28,7 +28,7 @@
   "skipped": {},
   "status": "completed",
   "step": "step_08_08_diagnostic_plots",
-  "timestamp": 1780410214,
+  "timestamp": 1780612817,
   "validation": {
     "claim_gate": "open",
     "note": "Diagnostic plots are generated only from real upstream artefacts. Synthetic image figures are forbidden.",

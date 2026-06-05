@@ -42,7 +42,7 @@ def run():
     ensure_dirs()
     
     step022 = load_step022()
-    m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022.get("models", {}) else "M1_NoLambda_zT5"
+    m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m0 = step022['models']['M0a_LCDM']['parameters_mle']
     m1 = step022['models'][m1_key]['parameters_mle']
 

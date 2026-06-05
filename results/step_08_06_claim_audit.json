@@ -168,14 +168,29 @@
       "check": "artifact existence: step_03_01_three_model_comparison",
       "detail": "json exists",
       "status": "pass"
+    },
+    {
+      "check": "statistical matching: H0",
+      "detail": "Found H_0 = 66.87 \\pm 0.55 in manuscript",
+      "status": "pass"
+    },
+    {
+      "check": "statistical matching: BF standard",
+      "detail": "Found BF = 131.6",
+      "status": "pass"
+    },
+    {
+      "check": "statistical matching: BF unscreened",
+      "detail": "Found BF=108.1",
+      "status": "pass"
     }
   ],
   "metrics": {
     "audit_status": "SUCCESS",
     "failed_checks": 0,
-    "pass_count": 33,
+    "pass_count": 36,
     "pass_rate": 1.0,
-    "total_checks": 33
+    "total_checks": 36
   },
   "step": "step_08_06_claim_audit"
 }

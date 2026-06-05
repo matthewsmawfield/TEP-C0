@@ -1,8 +1,8 @@
-[06:39:07] [INFO] 
-[06:39:07] [INFO] ================================================================================
-[06:39:07] [INFO]    Starting step_06_04_growth_validation
-[06:39:07] [INFO] ================================================================================
-[06:39:07] [INFO] 
-[06:39:07] [INFO] Growth calculations use ε_T=0.00000 (baseline LCDM for independent fit)
-[06:39:07] [INFO] SNe distance ε_T=0.85854 (compensates for distance bias, not used for growth)
-[06:39:08] [SUCCESS] Step step_06_04_growth_validation completed: research_grade=True
+[01:40:09] [INFO] 
+[01:40:09] [INFO] ================================================================================
+[01:40:09] [INFO]    Starting step_06_04_growth_validation
+[01:40:09] [INFO] ================================================================================
+[01:40:09] [INFO] 
+[01:40:09] [INFO] Growth calculations use ε_T=0.00000 (baseline LCDM for independent fit)
+[01:40:09] [INFO] SNe distance ε_T=0.75626 (compensates for distance bias, not used for growth)
+[01:40:10] [SUCCESS] Step step_06_04_growth_validation completed: research_grade=True

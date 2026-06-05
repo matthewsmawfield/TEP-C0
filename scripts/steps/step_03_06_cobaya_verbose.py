@@ -21,6 +21,11 @@ Outputs:
 
 References:
   - Pantheon+: Scolnic et al. 2022, ApJ, 938, 113
+
+Dual-Domain Logic:
+Like step_03_04, this joint MCMC step allows `omega_cdm` to float in order 
+to test the boundary constraints of the TEP screening mechanism, validating
+that the early universe recovers standard Lambda-CDM.
 """
 
 from __future__ import annotations

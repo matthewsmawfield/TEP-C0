@@ -23,7 +23,14 @@ from c0_common import (
 STEP_ID = "step_05_05_cmb_consistency"
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-TEP_CLASS_BUILD = PROJECT_ROOT / "external" / "class" / "build" / "lib.macosx-11.1-arm64-cpython-313"
+import glob
+_build_dir = PROJECT_ROOT / "external" / "class" / "build"
+_lib_dirs = glob.glob(str(_build_dir / "lib.*"))
+if _lib_dirs:
+    CLASS_BUILD_PATH_STR = str(_lib_dirs[0])
+else:
+    CLASS_BUILD_PATH_STR = str(_build_dir / "lib.macosx-11.1-arm64-cpython-313")
+TEP_CLASS_BUILD = Path(CLASS_BUILD_PATH_STR)
 if TEP_CLASS_BUILD.exists() and str(TEP_CLASS_BUILD) not in sys.path:
     sys.path.insert(0, str(TEP_CLASS_BUILD))
 
@@ -109,7 +116,7 @@ def run() -> dict:
             write_json(step_json_path(STEP_ID), payload)
             return payload
         step022 = read_json(step022_path)
-        m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022.get("models", {}) else "M1_NoLambda_zT5"
+        m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
         m1 = step022["models"][m1_key]["parameters_mle"]
         epsilon_T = float(m1.get("epsilon_T", 0.28865))
         print_status(f"Using epsilon_T={epsilon_T:.5f} from step_022 (fallback)", "WARNING")

@@ -96,8 +96,8 @@
     "H0_lcdm": 70.0,
     "H0_tep": 70.0,
     "Om0": 0.3,
-    "epsilon_T": 1.0,
-    "z_T": 1.0
+    "epsilon_T": 0.756256,
+    "z_T": 10.0
   },
   "observational_data": {
     "have_data": true,
@@ -118,7 +118,7 @@
   "status": "completed",
   "step": "step_04_04_distance_duality",
   "theory_predictions": {
-    "delta_eta_theory": -0.0,
+    "delta_eta_theory": 0.0,
     "eta_lcdm_at_z2": 1.0,
     "eta_tep_at_z2": 1.0
   },

@@ -1,49 +1,49 @@
 {
   "acoustic_scale": {
-    "delta_l_A_percent": 1.14,
-    "l_A_lcdm": 301.97,
+    "delta_l_A_percent": 15.21,
+    "l_A_lcdm": 333.4,
     "l_A_planck": 301.771,
     "l_A_planck_err": 0.09,
-    "l_A_sigma_vs_planck": 0.01,
-    "l_A_tep": 305.4
+    "l_A_sigma_vs_planck": 0.27,
+    "l_A_tep": 384.11
   },
   "description": "CMB acoustic consistency validation with TEP-CLASS v2.0",
   "parameters": {
-    "epsilon_T": 0.858539,
+    "epsilon_T": 0.756256,
     "lmax": 2500
   },
   "peak_shifts": [
     {
-      "l_lcdm": 221,
-      "l_tep": 1562,
-      "shift": 1341
+      "l_lcdm": 244,
+      "l_tep": 257,
+      "shift": 13
     },
     {
-      "l_lcdm": 537,
-      "l_tep": 1737,
-      "shift": 1200
+      "l_lcdm": 593,
+      "l_tep": 195,
+      "shift": -398
     },
     {
-      "l_lcdm": 814,
-      "l_tep": 1908,
-      "shift": 1094
+      "l_lcdm": 898,
+      "l_tep": 1027,
+      "shift": 129
     }
   ],
   "recombination": {
     "z_rec_lcdm": 1088.8,
-    "z_rec_tep": 1082.9
+    "z_rec_tep": 1095.1
   },
   "sound_horizon": {
-    "delta_rs_percent": 35.76,
+    "delta_rs_percent": -24.2,
     "rs_drag_planck_Mpc": 147.09,
     "rs_rec_lcdm_Mpc": 144.548,
-    "rs_rec_tep_Mpc": 196.232
+    "rs_rec_tep_Mpc": 109.573
   },
   "spectrum_comparison": {
-    "chi2": 26867244213.3,
-    "chi2_per_dof": 10751198.165,
+    "chi2": 21784309.4,
+    "chi2_per_dof": 8717.211,
     "dof": 2499,
-    "max_deviation_sigma": 22312.63
+    "max_deviation_sigma": 637.41
   },
   "status": "completed",
   "step": "step_05_05_cmb_consistency",

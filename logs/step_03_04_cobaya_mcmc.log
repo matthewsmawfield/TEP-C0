@@ -1,14 +1,14 @@
-[14:27:10] [INFO] 
-[14:27:10] [INFO] ================================================================================
-[14:27:10] [INFO]    Starting step_03_04_cobaya_mcmc
-[14:27:10] [INFO] ================================================================================
-[14:27:10] [INFO] 
-[14:27:11] [SUCCESS] TEP-CLASS: TEP-CLASS v2.0 available
-[14:27:11] [SUCCESS] Cobaya: Cobaya 3.6.2 available
-[14:27:11] [SUCCESS] Pantheon+ data: 1701 SNe loaded
-[14:27:11] [PROCESS] Running TEP sanity check...
-[14:27:12] [SUCCESS] TEP sanity check passed: dL(eps=0)=6780.87, dL(eps=0.2)=7172.75
-[14:27:12] [PROCESS] Running Cobaya MCMC (max_samples=500000)...
+[01:39:16] [INFO] 
+[01:39:16] [INFO] ================================================================================
+[01:39:16] [INFO]    Starting step_03_04_cobaya_mcmc
+[01:39:16] [INFO] ================================================================================
+[01:39:16] [INFO] 
+[01:39:19] [SUCCESS] TEP-CLASS: TEP-CLASS v2.0 available
+[01:39:19] [SUCCESS] Cobaya: Cobaya 3.6.2 available
+[01:39:20] [SUCCESS] Pantheon+ data: 1701 SNe loaded
+[01:39:20] [PROCESS] Running TEP sanity check...
+[01:39:21] [SUCCESS] TEP sanity check passed: dL(eps=0)=9302.66, dL(eps=0.2)=10122.32
+[01:39:22] [PROCESS] Running Cobaya MCMC (max_samples=500000)...
 [output] Output to be read-from/written-into folder 'results/outputs', with prefix 'tep_cobaya_sne'
 [output] Found existing info files with the requested output prefix: 'results/outputs/tep_cobaya_sne'
 [output] Let's try to resume/load.
@@ -27,8 +27,8 @@ clipy_0.15
 Checking likelihood '/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/data/planck_2018/baseline/plc_3.0/hi_l/plik/plik_rd12_HM_v22b_TTTEEE.clik' on test data. got -1172.47 expected -1172.47 (diff 4.00569e-06)
 ----
 [mcmc] Resuming from previous sample!
-[samplecollection] Loaded 117061 sample points from 'results/outputs/tep_cobaya_sne.1.txt'
-[mcmc] Initial point: tep_epsilon_T:2.794372e-05, tep_z_T:9.92579, H0:66.57786, omega_b:0.02237234, omega_cdm:0.1221584, tau_reio:0.05281856, logA:3.042441, n_s:0.9611873, A_planck:1.00002, calib_100T:0.9995533, calib_217T:0.9985483, A_cib_217:54.52802, xi_sz_cib:0.9075861, A_sz:3.09342, ksz_norm:5.122176, gal545_A_100:9.416801, gal545_A_143:15.33547, gal545_A_143_217:23.55551, gal545_A_217:98.54059, ps_A_100_100:284.249, ps_A_143_143:46.26154, ps_A_143_217:37.19105, ps_A_217_217:91.81304, galf_TE_A_100:0.1368141, galf_TE_A_100_143:0.1937351, galf_TE_A_100_217:0.4408411, galf_TE_A_143:0.2275856, galf_TE_A_143_217:0.5134285, galf_TE_A_217:1.947618
+[samplecollection] Loaded 120960 sample points from 'results/outputs/tep_cobaya_sne.1.txt'
+[mcmc] Initial point: tep_epsilon_T:-0.0002795882, tep_z_T:7.75832, H0:67.38794, omega_b:0.02226467, omega_cdm:0.1197327, tau_reio:0.06487552, logA:3.063416, n_s:0.9682901, A_planck:1.001601, calib_100T:0.9995587, calib_217T:0.9981006, A_cib_217:47.61732, xi_sz_cib:0.7875477, A_sz:4.303391, ksz_norm:5.476285, gal545_A_100:11.03888, gal545_A_143:10.20635, gal545_A_143_217:13.38207, gal545_A_217:85.77499, ps_A_100_100:253.7671, ps_A_143_143:51.80022, ps_A_143_217:49.3595, ps_A_217_217:115.5859, galf_TE_A_100:0.1086144, galf_TE_A_100_143:0.09671959, galf_TE_A_100_217:0.5702831, galf_TE_A_143:0.1503527, galf_TE_A_143_217:0.7144071, galf_TE_A_217:2.485382
 [mcmc] *WARNING* Parameter blocking manually/previously fixed: speeds will not be measured.
 [mcmc] Oversampling with factors:
 [mcmc] * 1 : ['tep_epsilon_T', 'tep_z_T', 'H0', 'omega_b', 'omega_cdm', 'tau_reio', 'logA', 'n_s']
@@ -36,231 +36,6 @@ Checking likelihood '/Users/matthewsmawfield/www/Temporal Equivalence Principle/
 [mcmc] * 5 : ['calib_100T', 'calib_217T', 'A_cib_217', 'xi_sz_cib', 'A_sz', 'ksz_norm', 'gal545_A_100', 'gal545_A_143', 'gal545_A_143_217', 'gal545_A_217', 'ps_A_100_100', 'ps_A_143_143', 'ps_A_143_217', 'ps_A_217_217', 'galf_TE_A_100', 'galf_TE_A_100_143', 'galf_TE_A_100_217', 'galf_TE_A_143', 'galf_TE_A_143_217', 'galf_TE_A_217']
 [mcmc] Covariance matrix from previous sample.
 [mcmc] Sampling!
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:27:17 : 1 steps taken, and 117061 accepted.
-[mcmc] Progress @ 2026-06-02 14:28:17 : 1105 steps taken, and 117252 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:29:18 : 2452 steps taken, and 117488 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Learn + convergence test @ 117600 samples accepted.
-[mcmc]  - Acceptance rate: 0.707
-[mcmc]  - Convergence of means: R-1 = 0.024632 after 94080 accepted steps
-[mcmc]  - Updated covariance matrix of proposal pdf.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:30:18 : 3574 steps taken, and 117693 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:31:18 : 5011 steps taken, and 117936 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:32:18 : 6628 steps taken, and 118223 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:33:19 : 8051 steps taken, and 118471 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Learn + convergence test @ 118720 samples accepted.
-[mcmc]  - Acceptance rate: 0.707
-[mcmc]  - Convergence of means: R-1 = 0.021451 after 94976 accepted steps
-[mcmc]  - Updated covariance matrix of proposal pdf.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:34:19 : 9965 steps taken, and 118806 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:35:19 : 11463 steps taken, and 119076 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:36:20 : 12734 steps taken, and 119297 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:37:20 : 14188 steps taken, and 119563 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Learn + convergence test @ 119840 samples accepted.
-[mcmc]  - Acceptance rate: 0.707
-[mcmc]  - Convergence of means: R-1 = 0.016553 after 95872 accepted steps
-[mcmc]  - Updated covariance matrix of proposal pdf.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:38:20 : 15830 steps taken, and 119864 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:39:21 : 17428 steps taken, and 120155 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:40:21 : 18946 steps taken, and 120409 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:41:21 : 20199 steps taken, and 120621 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Progress @ 2026-06-02 14:42:21 : 21397 steps taken, and 120842 accepted.
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: divide by zero encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: overflow encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/data/external/cobaya_packages/code/planck/clipy/clipy/smica.py:311: RuntimeWarning: invalid value encountered in matmul
-  lkl = -.5 * delta.T @ (self.siginv @ delta)
-[mcmc] Learn + convergence test @ 120960 samples accepted.
-[mcmc]  - Acceptance rate: 0.707
-[mcmc]  - Convergence of means: R-1 = 0.016520 after 96768 accepted steps
-[mcmc]  - Convergence of bounds: R-1 = 0.069851 after 120960 accepted steps
-[mcmc] The run has converged!
 [mcmc] Sampling complete after 120960 accepted steps.
-[14:42:56] [SUCCESS] Cobaya MCMC completed successfully
-[14:42:56] [SUCCESS] Step step_03_04_cobaya_mcmc completed with status: completed
+[01:39:41] [SUCCESS] Cobaya MCMC completed successfully
+[01:39:41] [SUCCESS] Step step_03_04_cobaya_mcmc completed with status: completed

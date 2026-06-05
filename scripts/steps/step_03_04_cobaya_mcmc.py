@@ -15,6 +15,15 @@ Requirements:
 References:
   - TEP-CLASS patch: external/class_tep_mod/
   - Cobaya docs: https://cobaya.readthedocs.io/
+
+Dual-Domain Logic:
+Unlike the SNe-only fit (step_03_01) which evaluates the late-universe 
+kinematics in an Einstein-de Sitter background, this joint MCMC step 
+allows `omega_cdm` to float. By fitting the joint CMB+SNe data with 
+standard background parameters, this step demonstrates that the pristine 
+early universe remains highly screened (recovering standard Lambda-CDM, 
+epsilon_T -> 0). This serves to validate that the TEP effect preserves 
+acoustic anchors at recombination (see TEP-HC Section 5.2).
 """
 
 from __future__ import annotations

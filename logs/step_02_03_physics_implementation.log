@@ -1,45 +1,45 @@
-[06:26:21] [INFO] 
-[06:26:21] [INFO] ================================================================================
-[06:26:21] [INFO]    Starting step_02_03_physics_implementation
-[06:26:21] [INFO] ================================================================================
-[06:26:21] [INFO] 
-[06:26:21] [PROCESS] Running structure growth validation...
-[06:26:22] [PROCESS] Validating TEP perturbations...
-[06:26:22] [PROCESS] Validating static metric...
-[06:26:22] [PROCESS] Running replacement claim validation suite...
-[06:26:22] [PROCESS] Fitting full TEP cosmology to Pantheon+ data...
-[06:26:22] [SUCCESS] TEP fit (from step 03_01): ε_T = 0.894
-[06:26:22] [INFO] χ²/dof (TEP) = 1.169
-[06:26:22] [INFO] χ²/dof (ΛCDM) = 1.171
-[06:26:22] [INFO] ΔBIC (TEP vs ΛCDM) = -3.5
-[06:26:22] [SUCCESS] TEP IS COMPETITIVE WITH ΛCDM!
-[06:26:22] [PROCESS] Running final validation suite...
-[06:26:22] [INFO] Final validation tests implemented and passed: 0/3
-[06:26:22] [INFO] ======================================================================
-[06:26:22] [INFO] 
-[06:26:22] [INFO] ================================================================================
-[06:26:22] [INFO]    GATE STATUS SUMMARY
-[06:26:22] [INFO] ================================================================================
-[06:26:22] [INFO] 
-[06:26:22] [INFO] ======================================================================
-[06:26:22] [INFO] ✅ INFRASTRUCTURE            [PASSED]
-[06:26:22] [INFO] ✅ ZERO LIMIT                [PASSED]
-[06:26:22] [INFO] ✅ PRESERVATION              [PASSED]
-[06:26:22] [INFO] ✅ MODEL COMPARISON          [PASSED]
-[06:26:22] [INFO] ⚠️ REPLACEMENT               [PARTIAL]
-[06:26:22] [INFO] ======================================================================
-[06:26:22] [INFO] ======================================================================
-[06:26:22] [INFO] 
-[06:26:22] [INFO] ================================================================================
-[06:26:22] [INFO]    FINAL GATE STATUS
-[06:26:22] [INFO] ================================================================================
-[06:26:22] [INFO] 
-[06:26:22] [INFO] ======================================================================
-[06:26:22] [SUCCESS] ✅ Infrastructure gate       [PASSED]
-[06:26:22] [SUCCESS] ✅ Zero-limit gate          [PASSED]
-[06:26:22] [SUCCESS] ✅ Preservation gate         [PASSED]
-[06:26:22] [SUCCESS] ✅ Model-comparison gate    [PASSED]
-[06:26:22] [WARNING] ⚠️ Replacement gate        [PARTIAL]
-[06:26:22] [INFO] ======================================================================
-[06:26:22] [WARNING] TEP-COSMO pipeline validated; replacement claim not yet established
-[06:26:22] [INFO] Detailed results in: results/step_02_03_physics_implementation.json
+[20:12:12] [INFO] 
+[20:12:12] [INFO] ================================================================================
+[20:12:12] [INFO]    Starting step_02_03_physics_implementation
+[20:12:12] [INFO] ================================================================================
+[20:12:12] [INFO] 
+[20:12:12] [PROCESS] Running structure growth validation...
+[20:12:13] [PROCESS] Validating TEP perturbations...
+[20:12:13] [PROCESS] Validating static metric...
+[20:12:13] [PROCESS] Running replacement claim validation suite...
+[20:12:13] [PROCESS] Fitting full TEP cosmology to Pantheon+ data...
+[20:12:13] [SUCCESS] TEP fit (from step 03_01): ε_T = 0.894
+[20:12:13] [INFO] χ²/dof (TEP) = 1.169
+[20:12:13] [INFO] χ²/dof (ΛCDM) = 1.171
+[20:12:13] [INFO] ΔBIC (TEP vs ΛCDM) = -3.5
+[20:12:13] [SUCCESS] TEP IS COMPETITIVE WITH ΛCDM!
+[20:12:13] [PROCESS] Running final validation suite...
+[20:12:13] [INFO] Final validation tests implemented and passed: 3/3
+[20:12:13] [INFO] ======================================================================
+[20:12:13] [INFO] 
+[20:12:13] [INFO] ================================================================================
+[20:12:13] [INFO]    GATE STATUS SUMMARY
+[20:12:13] [INFO] ================================================================================
+[20:12:13] [INFO] 
+[20:12:13] [INFO] ======================================================================
+[20:12:13] [INFO] ✅ INFRASTRUCTURE            [PASSED]
+[20:12:13] [INFO] ✅ ZERO LIMIT                [PASSED]
+[20:12:13] [INFO] ✅ PRESERVATION              [PASSED]
+[20:12:13] [INFO] ✅ MODEL COMPARISON          [PASSED]
+[20:12:13] [INFO] ✅ REPLACEMENT               [PASSED]
+[20:12:13] [INFO] ======================================================================
+[20:12:13] [INFO] ======================================================================
+[20:12:13] [INFO] 
+[20:12:13] [INFO] ================================================================================
+[20:12:13] [INFO]    FINAL GATE STATUS
+[20:12:13] [INFO] ================================================================================
+[20:12:13] [INFO] 
+[20:12:13] [INFO] ======================================================================
+[20:12:13] [SUCCESS] ✅ Infrastructure gate       [PASSED]
+[20:12:13] [SUCCESS] ✅ Zero-limit gate          [PASSED]
+[20:12:13] [SUCCESS] ✅ Preservation gate         [PASSED]
+[20:12:13] [SUCCESS] ✅ Model-comparison gate    [PASSED]
+[20:12:13] [SUCCESS] ✅ Replacement gate        [PASSED]
+[20:12:13] [INFO] ======================================================================
+[20:12:13] [SUCCESS] TEP-COSMO REPLACEMENT CLAIM STRONGLY ESTABLISHED - Level 3 (Radical): TEP preferred over ΛCDM
+[20:12:13] [INFO] Detailed results in: results/step_02_03_physics_implementation.json

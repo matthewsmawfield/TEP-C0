@@ -2,7 +2,7 @@
   "title": "Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion",
   "author": "Matthew Lukin Smawfield",
   "version": "v0.1 (Athens)",
-  "date": "25 May 2026",
+  "date": "5 June 2026",
   "first_published": "25 May 2026",
   "doi": "10.5281/zenodo.20370144",
   "sections": [
@@ -43,34 +43,28 @@
       "order": 6
     },
     {
-      "id": "section-pioneer-planck",
-      "title": "Empirical Tests: Pioneer and Planck",
-      "file": "6_pioneer_planck.html",
-      "order": 7
-    },
-    {
       "id": "section-discussion",
       "title": "Discussion",
       "file": "7_discussion.html",
-      "order": 8
+      "order": 7
     },
     {
       "id": "section-conclusion",
       "title": "Conclusion",
       "file": "8_conclusion.html",
-      "order": 9
+      "order": 8
     },
     {
       "id": "section-references",
       "title": "References",
       "file": "9_references.html",
-      "order": 10
+      "order": 9
     },
     {
       "id": "section-reproducibility",
       "title": "Data Availability and Reproducibility",
       "file": "10_reproducibility.html",
-      "order": 11
+      "order": 10
     }
   ]
 }

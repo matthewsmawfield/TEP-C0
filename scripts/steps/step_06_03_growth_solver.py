@@ -16,7 +16,14 @@ import numpy as np
 # Add TEP-CLASS to path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 TEP_CLASS_PATH = PROJECT_ROOT / "external" / "class"
-TEP_CLASS_BUILD = TEP_CLASS_PATH / "build" / "lib.macosx-11.1-arm64-cpython-313"
+import glob
+_build_dir = PROJECT_ROOT / "external" / "class" / "build"
+_lib_dirs = glob.glob(str(_build_dir / "lib.*"))
+if _lib_dirs:
+    CLASS_BUILD_PATH_STR = str(_lib_dirs[0])
+else:
+    CLASS_BUILD_PATH_STR = str(_build_dir / "lib.macosx-11.1-arm64-cpython-313")
+TEP_CLASS_BUILD = Path(CLASS_BUILD_PATH_STR)
 if str(TEP_CLASS_BUILD) not in sys.path:
     sys.path.insert(0, str(TEP_CLASS_BUILD))
 
@@ -109,7 +116,7 @@ def run():
     ensure_dirs()
 
     step022 = read_json(step_json_path("step_03_01_three_model_comparison"))
-    m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022.get("models", {}) else "M1_NoLambda_zT5"
+    m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m1 = step022['models'][m1_key]['parameters_mle']
     Om0 = 1.0  # M1_NoLambda is matter-only (no Lambda); Om0 is fixed, not fitted
     epsilon_T = m1.get('epsilon_T', 0.1)

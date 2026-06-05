@@ -38,7 +38,7 @@ def run():
     ensure_dirs()
 
     step022 = load_step022_results()
-    m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022.get("models", {}) else "M1_NoLambda_zT5"
+    m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m1_params = step022['models'][m1_key]['parameters_mle']
     ft = m1_params.get('ft', m1_params.get('epsilon_T', 0.1))  # epsilon_T is the TEP coupling parameter
     

@@ -1,8 +1,8 @@
-[17:23:34] [INFO] 
-[17:23:34] [INFO] ================================================================================
-[17:23:34] [INFO]    Starting step_08_08_diagnostic_plots
-[17:23:34] [INFO] ================================================================================
-[17:23:34] [INFO] 
-[17:23:34] [PROCESS] Generating distance-duality figure...
-[17:23:34] [PROCESS] Generating Hubble residuals figure...
-[17:23:34] [SUCCESS] Step step_08_08_diagnostic_plots: 2 figure(s) generated, 0 skipped
+[01:40:17] [INFO] 
+[01:40:17] [INFO] ================================================================================
+[01:40:17] [INFO]    Starting step_08_08_diagnostic_plots
+[01:40:17] [INFO] ================================================================================
+[01:40:17] [INFO] 
+[01:40:17] [PROCESS] Generating distance-duality figure...
+[01:40:17] [PROCESS] Generating Hubble residuals figure...
+[01:40:17] [SUCCESS] Step step_08_08_diagnostic_plots: 2 figure(s) generated, 0 skipped

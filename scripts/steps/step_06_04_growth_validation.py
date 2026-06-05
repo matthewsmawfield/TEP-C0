@@ -28,7 +28,14 @@ from c0_common import (
 STEP_ID = "step_06_04_growth_validation"
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-TEP_CLASS_BUILD = PROJECT_ROOT / "external" / "class" / "build" / "lib.macosx-11.1-arm64-cpython-313"
+import glob
+_build_dir = PROJECT_ROOT / "external" / "class" / "build"
+_lib_dirs = glob.glob(str(_build_dir / "lib.*"))
+if _lib_dirs:
+    CLASS_BUILD_PATH_STR = str(_lib_dirs[0])
+else:
+    CLASS_BUILD_PATH_STR = str(_build_dir / "lib.macosx-11.1-arm64-cpython-313")
+TEP_CLASS_BUILD = Path(CLASS_BUILD_PATH_STR)
 if TEP_CLASS_BUILD.exists() and str(TEP_CLASS_BUILD) not in sys.path:
     sys.path.insert(0, str(TEP_CLASS_BUILD))
 

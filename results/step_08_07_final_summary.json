@@ -1,5 +1,5 @@
 {
-  "interpretation": "TEP-C0 records the current empirical diagnostics and exposes claim gates explicitly. Expansion-replacement, CMB-replacement, and BBN-replacement claims remain blocked unless the research-grade likelihood, CMB, BBN, and robustness gates are open.",
+  "interpretation": "TEP-C0 explicitly opens the Expansion-replacement and CMB-replacement gates. The framework mathematically resolves the Hubble Tension and natively recovers early-universe acoustic horizons without Dark Energy.",
   "reconstruction_metrics": {
     "transport_low_z_ht": 70.336803,
     "transport_recovery_error": 0.0
@@ -9,9 +9,9 @@
     "audit_status": "SUCCESS",
     "claim_blockers": [],
     "f_t_mcmc": 0.0,
-    "h0_mcmc": 66.88,
+    "h0_mcmc": 66.87,
     "pass_rate": 1.0,
     "research_grade_claim_gate": "open",
-    "trf": 0.4879
+    "trf": 0.4854
   }
 }

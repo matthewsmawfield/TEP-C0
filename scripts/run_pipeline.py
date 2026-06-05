@@ -55,6 +55,7 @@ PIPELINE_STEPS = [
     ("step_05_06_bbn_registry", "Bbn registry", ["step_03_01_three_model_comparison"]),
     ("step_05_07_bbn_preservation", "Bbn preservation", ["step_03_01_three_model_comparison"]),
     ("step_05_08_cmb_acoustic", "Cmb acoustic", ["step_05_03_cmb_boltzmann"]),
+    ("step_05_09_jordan_frame_proof", "Jordan frame proof", []),
     ("step_06_01_bao_projection", "Bao projection", ["step_03_01_three_model_comparison"]),
     ("step_06_02_bao_likelihood", "Bao likelihood", ["step_03_01_three_model_comparison"]),
     ("step_06_03_growth_solver", "Growth solver", ["step_03_01_three_model_comparison"]),

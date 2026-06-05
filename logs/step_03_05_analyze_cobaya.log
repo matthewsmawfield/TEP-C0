@@ -1,10 +1,12 @@
-[14:43:27] [INFO] 
-[14:43:27] [INFO] ================================================================================
-[14:43:27] [INFO]    Starting step_03_05_analyze_cobaya
-[14:43:27] [INFO] ================================================================================
-[14:43:27] [INFO] 
-[14:43:27] [PROCESS] Loading chains from results/outputs/tep_cobaya_sne...
-[14:43:27] [SUCCESS] Chains loaded successfully.
-[14:43:28] [PROCESS] Generating triangle plot...
-[14:43:31] [SUCCESS] Plot saved to results/figures/step_03_05_analyze_cobaya_triangle.png
-[14:43:31] [SUCCESS] Summary stats saved to results/outputs/tep_cobaya_sne_stats.txt
+[01:39:42] [INFO] 
+[01:39:42] [INFO] ================================================================================
+[01:39:42] [INFO]    Starting step_03_05_analyze_cobaya
+[01:39:42] [INFO] ================================================================================
+[01:39:42] [INFO] 
+[01:39:42] [PROCESS] Loading chains from results/outputs/tep_cobaya_sne...
+[01:39:43] [SUCCESS] Chains loaded successfully.
+[01:39:44] [PROCESS] Generating triangle plot...
+[01:39:50] [SUCCESS] Plot saved to results/figures/step_03_05_analyze_cobaya_triangle.png
+[01:39:50] [SUCCESS] Summary stats saved to results/outputs/tep_cobaya_sne_stats.txt
+[01:39:50] [ERROR] TEP-CLASS: TEP-CLASS not found at /tmp/class_tep
+[01:39:50] [SUCCESS] Cobaya: Cobaya 3.6.2 available

@@ -24,7 +24,7 @@ def run():
     ensure_dirs()
 
     step022 = read_json(step_json_path("step_03_01_three_model_comparison"))
-    m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022.get("models", {}) else "M1_NoLambda_zT5"
+    m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m1 = step022['models'][m1_key]['parameters_mle']
     H0 = 70.0  # Dimensionless-distance models fix H0_ref; no H0 parameter in fit
 

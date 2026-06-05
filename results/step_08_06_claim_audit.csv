@@ -32,3 +32,6 @@ artifact existence: step_03_07_likelihood_synthesis,pass,json exists
 artifact existence: step_08_04_evidence_matrix,pass,json exists
 artifact existence: step_08_01_expansion_falsifier,pass,json exists
 artifact existence: step_03_01_three_model_comparison,pass,json exists
+statistical matching: H0,pass,Found H_0 = 66.87 \pm 0.55 in manuscript
+statistical matching: BF standard,pass,Found BF = 131.6
+statistical matching: BF unscreened,pass,Found BF=108.1

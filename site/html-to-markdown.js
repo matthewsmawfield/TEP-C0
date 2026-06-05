@@ -84,7 +84,7 @@ class HTMLToMarkdownConverter {
 
         const header = `# ${manifest.title}\n**${manifest.author}**\nVersion: ${manifest.version}\nFirst published: ${manifest.first_published} - Last updated: ${manifest.date}\nDOI: ${manifest.doi}\n\n---\n\n`;
         const markdown = header + this.htmlToMarkdown(body) + '\n';
-        const outputPath = path.join(__dirname, '..', '14-TEP-C0-v0.1-Athens.md');
+        const outputPath = path.join(__dirname, '..', '26-TEP-C0-v0.1-Athens.md');
         fs.writeFileSync(outputPath, markdown, 'utf8');
         console.log(`Markdown saved to: ${outputPath}`);
     }

@@ -1,11 +1,11 @@
-[06:39:02] [INFO] 
-[06:39:02] [INFO] ================================================================================
-[06:39:02] [INFO]    Starting step_04_01_sn_time_dilation
-[06:39:02] [INFO] ================================================================================
-[06:39:02] [INFO] 
-[06:39:02] [INFO] Parameters: H0=70.00, epsilon_T=1.000, z_T=1.0
-[06:39:02] [INFO] Loaded 1701 SN stretch measurements
-[06:39:02] [PROCESS] Computing TEP time dilation predictions
-[06:39:02] [INFO] Chi2 TEP: 177733.2 (reduced: 104.672)
-[06:39:02] [INFO] Chi2 LCDM: 174194.5 (reduced: 102.588)
-[06:39:02] [SUCCESS] Step step_04_01_sn_time_dilation completed successfully
+[01:39:51] [INFO] 
+[01:39:51] [INFO] ================================================================================
+[01:39:51] [INFO]    Starting step_04_01_sn_time_dilation
+[01:39:51] [INFO] ================================================================================
+[01:39:51] [INFO] 
+[01:39:51] [INFO] Parameters: H0=70.00, epsilon_T=0.756, z_T=10.0
+[01:39:51] [INFO] Loaded 1701 SN stretch measurements
+[01:39:51] [PROCESS] Computing TEP time dilation predictions
+[01:39:51] [INFO] Chi2 TEP: 177843.6 (reduced: 104.737)
+[01:39:51] [INFO] Chi2 LCDM: 174194.5 (reduced: 102.588)
+[01:39:51] [SUCCESS] Step step_04_01_sn_time_dilation completed successfully

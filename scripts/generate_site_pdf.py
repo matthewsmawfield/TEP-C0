@@ -105,7 +105,7 @@ def copy_pdf_to_docs(source_pdf: Path, docs_dir: Path):
     version_str = f"v{metadata['version']}-{metadata['codename']}"
 
     # Primary PDF name (using new naming convention)
-    target_name = f"14-TEP-C0-{version_str}.pdf"
+    target_name = f"26-TEP-C0-{version_str}.pdf"
     target_path = docs_dir / target_name
 
     # Copy the file
@@ -124,7 +124,7 @@ def copy_pdf_to_root(source_pdf: Path, base_dir: Path):
     version_str = f"v{metadata['version']}-{metadata['codename']}"
 
     # Primary PDF name (using new naming convention)
-    target_name = f"14-TEP-C0-{version_str}.pdf"
+    target_name = f"26-TEP-C0-{version_str}.pdf"
     target_path = base_dir / target_name
 
     # Copy the file

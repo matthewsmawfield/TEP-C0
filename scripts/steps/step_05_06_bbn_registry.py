@@ -27,7 +27,7 @@ def run():
     ensure_dirs()
 
     step022 = load_step022_results()
-    m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022.get("models", {}) else "M1_NoLambda_zT5"
+    m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m1 = step022['models'][m1_key]['parameters_mle']
     Sigma_0 = m1.get('Sigma_0', 0.001)  # M1 has no Sigma_0; default fallback
     

@@ -65,12 +65,15 @@ def run():
 
     step022 = load_step022_results()
     
-    m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022.get("models", {}) else "M1_NoLambda_zT5"
+    m1_key = "M1_free_zT"
+    if m1_key not in step022.get("models", {}):
+        m1_key = "M1_NoLambda_zT5"
+        
     m1_params = step022['models'][m1_key]['parameters_mle']
     H0 = 70.0  # dimensionless model fixes H0_ref
     epsilon_T = m1_params.get('epsilon_T', 0.0)
     # Parse z_T if it's fixed in the model name, or extract from params
-    z_T = m1_params.get('z_T', 1.0 if "zT1" in m1_key else 5.0)
+    z_T = m1_params.get('z_T', 5.0)
     Om0 = 1.0  # M1_NoLambda is matter-only (no Lambda)
     
     print_status(f"Parameters: H0={H0:.2f}, epsilon_T={epsilon_T:.3f}, z_T={z_T}", "INFO")

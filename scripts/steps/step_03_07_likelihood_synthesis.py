@@ -29,7 +29,7 @@ def run():
         print_status(f"Missing dependency: {e}", "ERROR")
         raise
 
-    m1_key = "M1_NoLambda_zT1" if "M1_NoLambda_zT1" in step022.get("models", {}) else "M1_NoLambda_zT5"
+    m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     logl_lcdm = step022.get('models', {}).get('M0a_LCDM', {}).get('log_likelihood_mle')
     logl_tep = step022.get('models', {}).get(m1_key, {}).get('log_likelihood_mle')
     if logl_lcdm is None or logl_tep is None:
@@ -37,10 +37,22 @@ def run():
     
     delta_logl = logl_tep - logl_lcdm
     
-    # Use converged Step 033 parameters
-    # Extract from Cobaya chain file directly
+    # Use converged Step 033 parameters. Prefer the final Cobaya stats artifact
+    # because the manuscript reports mean +/- std, then fall back to the chain.
+    cobaya_stats_path = Path("results/outputs/tep_cobaya_sne_stats.txt")
     cobaya_chain_path = Path("results/outputs/tep_cobaya_sne.1.txt")
-    if cobaya_chain_path.exists():
+    if cobaya_stats_path.exists():
+        stats = {}
+        for line in cobaya_stats_path.read_text(encoding="utf-8").splitlines():
+            if ":" not in line or "+/-" not in line:
+                continue
+            name, values = line.split(":", 1)
+            mean, err = values.split("+/-", 1)
+            stats[name.strip()] = (float(mean.strip()), float(err.strip()))
+        h0_mcmc = stats["H0"][0]
+        epsilon_t = stats["tep_epsilon_T"][0]
+        mcmc_converged = step033.get("status") == "completed"
+    elif cobaya_chain_path.exists():
         chain_data = np.loadtxt(cobaya_chain_path, skiprows=1)
         # Columns: weight, minuslogpost, tep_epsilon_T, tep_z_T, H0, omega_b, omega_cdm, tau_reio, A_s, n_s, ...
         h0_samples = chain_data[:, 4]  # H0 column

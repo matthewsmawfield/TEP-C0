@@ -69,7 +69,7 @@
     }
   ],
   "parameters": {
-    "epsilon_T_dist": 0.858539,
+    "epsilon_T_dist": 0.756256,
     "epsilon_T_growth": 0.0,
     "screening_mode": "probe-dependent (growth fit independent of distance bias)"
   },

@@ -1,9 +1,9 @@
-[06:39:02] [INFO] 
-[06:39:02] [INFO] ================================================================================
-[06:39:02] [INFO]    Starting step_04_02_sn_tolman
-[06:39:02] [INFO] ================================================================================
-[06:39:02] [INFO] 
-[06:39:02] [PROCESS] Loading Pantheon+ redshifts for Tolman consistency check
-[06:39:02] [PROCESS] Evaluating Tolman and time-dilation factors for 1590 objects
-[06:39:02] [SUCCESS] Tolman factor at z=1: 0.0625
-[06:39:02] [SUCCESS] Step step_04_02_sn_tolman completed successfully
+[01:39:51] [INFO] 
+[01:39:51] [INFO] ================================================================================
+[01:39:51] [INFO]    Starting step_04_02_sn_tolman
+[01:39:51] [INFO] ================================================================================
+[01:39:51] [INFO] 
+[01:39:51] [PROCESS] Loading Pantheon+ redshifts for Tolman consistency check
+[01:39:51] [PROCESS] Evaluating Tolman and time-dilation factors for 1590 objects
+[01:39:51] [SUCCESS] Tolman factor at z=1: 0.0625
+[01:39:51] [SUCCESS] Step step_04_02_sn_tolman completed successfully

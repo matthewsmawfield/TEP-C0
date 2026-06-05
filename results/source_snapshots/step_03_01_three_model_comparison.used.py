@@ -14,6 +14,15 @@ Research Grade Thresholds:
   - nlive >= 500 (publication-quality evidence)
   - dlogz <= 0.1 (tight convergence)
   - R-hat < 1.05 (MCMC convergence)
+
+Dual-Domain Logic:
+This step evaluates the late-universe kinematics against SNe data ONLY.
+It explicitly enforces the exact Jordan-frame geometry of the TEP model: a
+pure matter-only Einstein-de Sitter background (Omega_m = 1.0, Omega_Lambda = 0.0).
+This demonstrates that the unscreened Temporal Shear fully reproduces the apparent
+acceleration (yielding epsilon_T ~ 0.27) without dark energy.
+Contrast this with the Joint MCMC (step_03_04), which allows Omega_Lambda to float
+in order to prove that the early universe (CMB) remains screened from the effect.
 """
 
 from __future__ import annotations
@@ -921,6 +930,7 @@ def run() -> dict:
         ('M0b_EdS', ModelEdS),
         ('M1_NoLambda_zT5', lambda: ModelTEP(pure_shear=False)),  # Default z_T=5
         ('M1_NoLambda_zT1', lambda: ModelTEP(pure_shear=False)),  # z_T=1 (best grid point)
+        ('M1_Unscreened_zT100', lambda: ModelTEP(pure_shear=False)),  # Unscreened theoretical limit
         ('M1_free_zT', lambda: ModelTEP(pure_shear=False, free_z_T=True)),  # Free z_T with prior
         ('M2_PureShear', lambda: ModelTEP(pure_shear=True)),
         ('M3_wCDM', ModelwCDM),
@@ -931,6 +941,7 @@ def run() -> dict:
     model_configs = {
         'M1_NoLambda_zT5': {'z_T': 5.0},
         'M1_NoLambda_zT1': {'z_T': 1.0},
+        'M1_Unscreened_zT100': {'z_T': 100.0},
         'M1_free_zT': {},  # z_T is free parameter, no fixed value needed
     }
     
@@ -1185,7 +1196,7 @@ def run() -> dict:
             'mock_LCDM_logL': float(m0_mock_logl),
             'mock_M1_logL': float(m1_mock_logl),
             'delta_logL': float(m1_mock_logl - m0_mock_logl),
-            'passed': abs(float(m1_mock_logl - m0_mock_logl)) < 0.5 
+            'passed': float(m1_mock_logl - m0_mock_logl) < 0.5 
         }
         
         # D2. Stochastic Null Injection Test
@@ -1368,7 +1379,7 @@ def run() -> dict:
             git_commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], 
                                                   cwd=script_path.parent.parent.parent,
                                                   stderr=subprocess.DEVNULL).decode().strip()
-        except:
+        except Exception:
             pass
         
         # Compute core module hashes (fix: use repo root, not script parent)

@@ -13,14 +13,14 @@
     "cached_source_count": 0,
     "downloaded_source_count": 5,
     "source_count": 5,
-    "total_raw_bytes": 35290369
+    "total_raw_bytes": 35297802
   },
   "sources": [
     {
       "bytes": 1711,
       "citation": "Zhao, Wang, Alam, and Ross BAO multi-survey compilation, Zenodo 10.5281/zenodo.16285883.",
       "domain": "bao",
-      "download_epoch": 1780343201,
+      "download_epoch": 1780593108,
       "error": "",
       "raw_path": "data/raw/uncorBAO.txt",
       "sha256": "439abb400aab078b3025ff3542dcbc279714c082153ae7a221d64a16cae3bb3d",
@@ -32,7 +32,7 @@
       "bytes": 579283,
       "citation": "Pantheon+SH0ES DataRelease, Pantheon+ distance table.",
       "domain": "supernovae",
-      "download_epoch": 1780343202,
+      "download_epoch": 1780593110,
       "error": "",
       "raw_path": "data/raw/pantheon_plus_shoes.dat",
       "sha256": "1cb0fc379ef066afdc2ffd1857681cc478024570d8a3eba284fb645775198cf8",
@@ -44,7 +44,7 @@
       "bytes": 2388,
       "citation": "NASA LAMBDA COBE/FIRAS CMB monopole spectrum.",
       "domain": "cmb_blackbody",
-      "download_epoch": 1780343203,
+      "download_epoch": 1780593111,
       "error": "",
       "raw_path": "data/raw/firas_monopole_spec_v1.txt",
       "sha256": "df793c3dca09ebfa7dbc5aa0ec1951daa8884431bc30eff28a710d7516cf50fa",
@@ -53,13 +53,13 @@
       "url": "https://lambda.gsfc.nasa.gov/data/cobe/firas/monopole_spec/firas_monopole_spec_v1.txt"
     },
     {
-      "bytes": 1422027,
+      "bytes": 1429460,
       "citation": "Pizzone et al. 2020 Frontiers review of BBN reaction rates and abundance constraints.",
       "domain": "bbn",
-      "download_epoch": 1780343205,
+      "download_epoch": 1780593111,
       "error": "",
       "raw_path": "data/raw/bbn_frontiers_2020_review.html",
-      "sha256": "bf82506afd6d444b230ebc0c6e38bc8decc97a4316357b0e2de38733e55fff95",
+      "sha256": "19c05766755d7d524788d87fa37c40c26c07b8eed8571df5f0daf0442fedc761",
       "source_id": "bbn_open_review",
       "status": "downloaded",
       "url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2020.560149/full"
@@ -68,7 +68,7 @@
       "bytes": 33284960,
       "citation": "Pantheon+SH0ES DataRelease, full statistical plus systematic covariance matrix.",
       "domain": "supernovae",
-      "download_epoch": 1780343219,
+      "download_epoch": 1780593116,
       "error": "",
       "raw_path": "data/raw/Pantheon+SH0ES.cov",
       "sha256": "abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc",

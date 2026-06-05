@@ -1,8 +1,8 @@
-[06:32:42] [INFO] 
-[06:32:42] [INFO] ================================================================================
-[06:32:42] [INFO]    Starting step_03_02_independent_mcmc
-[06:32:42] [INFO] ================================================================================
-[06:32:42] [INFO] 
-[06:32:42] [PROCESS] Running mixed-model MCMC with 64 walkers, 20000 steps, burn-in 5000
-[06:32:46] [INFO] emcee CPU workers: 4 (spawn)
-[06:38:53] [SUCCESS] MCMC diagnostic completed; converged=True
+[01:23:30] [INFO] 
+[01:23:30] [INFO] ================================================================================
+[01:23:30] [INFO]    Starting step_03_02_independent_mcmc
+[01:23:30] [INFO] ================================================================================
+[01:23:30] [INFO] 
+[01:23:31] [PROCESS] Running mixed-model MCMC with 64 walkers, 20000 steps, burn-in 5000
+[01:23:59] [INFO] emcee CPU workers: 4 (spawn)
+[01:39:15] [SUCCESS] MCMC diagnostic completed; converged=True

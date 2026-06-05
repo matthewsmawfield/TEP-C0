@@ -1,2 +1,2 @@
 source_id,domain,status,bytes,sha256,raw_path,url,citation,data_type,download_epoch,error
-pantheon_sne,supernovae,downloaded,70345,4e865e819eda499530b04da6965ab7aac0407878789b105732cb1f9b99a64323,data/raw/pantheon_lcparams.txt,https://raw.githubusercontent.com/dscolnic/Pantheon/master/lcparam_full_long_zhel.txt,"Scolnic et al. 2018, ApJ 859, 101; Pantheon Sample",pantheon_sne,1780343221,
+pantheon_sne,supernovae,downloaded,70345,4e865e819eda499530b04da6965ab7aac0407878789b105732cb1f9b99a64323,data/raw/pantheon_lcparams.txt,https://raw.githubusercontent.com/dscolnic/Pantheon/master/lcparam_full_long_zhel.txt,"Scolnic et al. 2018, ApJ 859, 101; Pantheon Sample",pantheon_sne,1780593121,

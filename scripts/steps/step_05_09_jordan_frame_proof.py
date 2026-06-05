@@ -23,7 +23,14 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(PROJECT_ROOT / "scripts"))
-CLASS_PATH = PROJECT_ROOT / "external/class/build/lib.macosx-11.1-arm64-cpython-313"
+import glob
+_build_dir = PROJECT_ROOT / "external" / "class" / "build"
+_lib_dirs = glob.glob(str(_build_dir / "lib.*"))
+if _lib_dirs:
+    CLASS_BUILD_PATH_STR = str(_lib_dirs[0])
+else:
+    CLASS_BUILD_PATH_STR = str(_build_dir / "lib.macosx-11.1-arm64-cpython-313")
+CLASS_PATH = Path(CLASS_BUILD_PATH_STR)
 sys.path.insert(0, str(CLASS_PATH))
 
 from classy import Class
@@ -125,7 +132,7 @@ def main():
     
     plt.xlabel(r"Temporal Shear Coupling ($\epsilon_T$)", fontsize=14)
     plt.ylabel(r"Acoustic Angular Scale ($100\theta_s$)", fontsize=14)
-    plt.title("Hubble Tension Resolution via Temporal Shear\n(Einstein-de Sitter Background $\Omega_m=1.0, \Omega_\Lambda=0.0$)", fontsize=12)
+    plt.title(r"Hubble Tension Resolution via Temporal Shear" + "\n" + r"(Einstein-de Sitter Background $\Omega_m=1.0, \Omega_\Lambda=0.0$)", fontsize=12)
     plt.grid(True, alpha=0.3)
     plt.legend(fontsize=12)
     plt.tight_layout()
@@ -137,6 +144,11 @@ def main():
     print(f"\nOutputs written to:")
     print(f"  - {results_dir / 'step05_jordan_frame_proof.json'}")
     print(f"  - {fig_path}")
+
+    return output_data
+
+def run():
+    return main()
 
 if __name__ == "__main__":
     main()

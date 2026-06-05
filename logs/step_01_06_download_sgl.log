@@ -1,11 +1,11 @@
-[22:47:19] [INFO] 
-[22:47:19] [INFO] ================================================================================
-[22:47:19] [INFO]    Starting step_01_06_download_sgl
-[22:47:19] [INFO] ================================================================================
-[22:47:19] [INFO] 
-[22:47:19] [INFO] Loaded Pantheon+ for real eta_obs computation
-[22:47:19] [SUCCESS] Loaded 15 strong lensing systems from Liao et al. 2016, MNRAS 463, 1511
-[22:47:19] [INFO] Lens redshift range: 0.152 - 0.245
-[22:47:19] [INFO] Source redshift range: 0.528 - 0.889
-[22:47:19] [INFO] D_A range: 485.0 - 595.0 Mpc
-[22:47:19] [SUCCESS] Step step_01_06_download_sgl completed
+[20:12:12] [INFO] 
+[20:12:12] [INFO] ================================================================================
+[20:12:12] [INFO]    Starting step_01_06_download_sgl
+[20:12:12] [INFO] ================================================================================
+[20:12:12] [INFO] 
+[20:12:12] [INFO] Loaded Pantheon+ for real eta_obs computation
+[20:12:12] [SUCCESS] Loaded 15 strong lensing systems from Liao et al. 2016, MNRAS 463, 1511
+[20:12:12] [INFO] Lens redshift range: 0.152 - 0.245
+[20:12:12] [INFO] Source redshift range: 0.528 - 0.889
+[20:12:12] [INFO] D_A range: 485.0 - 595.0 Mpc
+[20:12:12] [SUCCESS] Step step_01_06_download_sgl completed
