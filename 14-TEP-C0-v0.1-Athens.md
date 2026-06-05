@@ -258,7 +258,7 @@ The screening threshold *&rho;c &asymp; 20 g/cm3* at the quantum scale maps dire
 
 ## 5.2 The Galactic Screening Threshold
 
-At the quantum scale, the saturation density *&rho;c* marks the boundary where the conformal factor flattens and the temporal shear vanishes, bounding the vortex core. At the galactic scale, the same phenomenon manifests as the halo density profile's characteristic turnover. The Navarro-Frenk-White (NFW) profile's scale radius *rs* corresponds to the radius at which the enclosed density drops below *&rho;half*, and the conformal factor transitions from its screened to unscreened form.
+At the quantum scale, the saturation proximity scale *&rho;c* marks the boundary where the conformal factor flattens and the temporal shear vanishes, bounding the vortex core. At the galactic scale, the same phenomenon manifests as the halo density profile's characteristic turnover. The Navarro-Frenk-White (NFW) profile's scale radius *rs* corresponds to the radius at which the enclosed density drops below *&rho;half*, and the conformal factor transitions from its screened to unscreened form.
 
 In the TEP framework, there is no dark matter halo. The observed rotation curves are the direct consequence of the temporal shear field's radial profile, which modifies the effective gravitational potential without requiring additional mass. The "missing mass" inferred from standard dynamics is simply the mass-equivalent of the temporal shear energy density. This closes the dark-matter interpretation at the phenomenological level: the halo is not a particle reservoir but the gravitational imprint of non-integrable proper-time structure.
 
