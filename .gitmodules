@@ -1,0 +1,6 @@
+[submodule "AlterBBN"]
+	path = external/AlterBBN
+	url = https://github.com/espensem/AlterBBN.git
+[submodule "class"]
+	path = external/class
+	url = https://github.com/lesgourg/class_public.git
