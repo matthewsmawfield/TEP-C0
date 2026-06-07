@@ -1,7 +1,7 @@
 # Temporal Equivalence Principle: A Standard-Siren Test of Bi-Metric Gravitational-Wave Propagation
 **Matthew Lukin Smawfield**
 Version: v0.1 (Harare)
-First published: 6 June 2026
+First published: 7 June 2026
 DOI: 10.5281/zenodo.20572696
 
 ---
