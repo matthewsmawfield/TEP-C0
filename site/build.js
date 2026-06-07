@@ -59,6 +59,14 @@
         fs.copyFileSync(path.join(siteDir, 'styles.css'), path.join(distDir, 'styles.css'));
         fs.copyFileSync(path.join(siteDir, 'manifest.json'), path.join(distDir, 'manifest.json'));
         
+        // Copy root-level static files
+        for (const file of ['robots.txt', 'sitemap.xml']) {
+            const src = path.join(siteDir, 'public', file);
+            if (fs.existsSync(src)) {
+                fs.copyFileSync(src, path.join(distDir, file));
+            }
+        }
+        
         // Copy public directory to dist
         const publicDir = path.join(siteDir, 'public');
         const publicDest = path.join(distDir, 'public');

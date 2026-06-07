@@ -7,10 +7,11 @@ authors:
 title: 'Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion'
 type: article
 version: v0.1 (Athens)
-date-released: 2026-05-25
+date-released: 2026-06-07
 doi: 10.5281/zenodo.20370144
-url: https://github.com/matthewsmawfield/TEP-C0
+url: https://mlsmawfield.com/tep/c0
 license: CC-BY-4.0
+abstract: "This paper develops the cosmological extension of the Temporal Equivalence Principle (TEP): the hypothesis that observational evidence normally interpreted as cosmic expansion may involve large-scale Temporal Shear. Utilizing a dual-domain Bayesian synthesis of Pantheon+ supernovae and Planck 2018 acoustic anchors, the analysis demonstrates that standard cosmological expansion can be reconstructed from accumulated Temporal Shear and Temporal Topology along cosmological lines of sight."
 keywords:
 - Temporal Equivalence Principle
 - Temporal Shear

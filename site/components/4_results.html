@@ -10,10 +10,10 @@
     <table class="data-table">
         <thead>
             <tr>
-                <th>Model Architecture</th>
-                <th>Log-Likelihood ($\ln \mathcal{L}$)</th>
-                <th>BIC</th>
-                <th>Bayes Factor vs $\Lambda$CDM</th>
+                <th scope="col">Model Architecture</th>
+                <th scope="col">Log-Likelihood ($\ln \mathcal{L}$)</th>
+                <th scope="col">BIC</th>
+                <th scope="col">Bayes Factor vs $\Lambda$CDM</th>
             </tr>
         </thead>
             <tr>
@@ -25,7 +25,7 @@
             <tr>
                 <td>M1: Universal TEP (fixed $z_T=5$)</td>
                 <td>647.04</td>
-                <td><strong>-1279.21</strong></td>
+                <td><em>-1279.21</em></td>
                 <td>131.64</td>
             </tr>
             <tr>
@@ -69,11 +69,11 @@
     
     <h4>The Unscreened Theoretical Limit</h4>
     <p>
-        The strong statistical advantage of the standard TEP model ($\text{BF} = 131.6$) survives the environmental screening function. TEP mimics the conformal expansion background extremely closely at $z \le 2$, with distance moduli differing from $\Lambda$CDM by $\le 0.03$ mag across the Pantheon+ range. When environmental screening is theoretically disabled ($z_T \to \infty$) to probe the raw mathematical capacity of the framework, the evidence remains <strong>Strong/Decisive</strong> ($\text{BF} \approx 108.1, \Delta\chi^2 \approx -8.81$). This limit test proves that the underlying Temporal Shear geometry fundamentally fits the supernovae data better than standard dark energy, while the screened branch proves that the same geometry can protect the early universe (CMB) and dense local environments from severe time-field gradients.
+        The strong statistical advantage of the standard TEP model ($\text{BF} = 131.6$) survives the environmental screening function. TEP mimics the conformal expansion background extremely closely at $z \le 2$, with distance moduli differing from $\Lambda$CDM by $\le 0.03$ mag across the Pantheon+ range. When environmental screening is theoretically disabled ($z_T \to \infty$) to probe the raw mathematical capacity of the framework, the evidence remains <em>Strong/Decisive</em> ($\text{BF} \approx 108.1, \Delta\chi^2 \approx -8.81$). This limit test proves that the underlying Temporal Shear geometry fundamentally fits the supernovae data better than standard dark energy, while the screened branch proves that the same geometry can protect the early universe (CMB) and dense local environments from severe time-field gradients.
     </p>
     <div class="figure" style="text-align: center; margin: 2rem 0;">
         <img src="results/figures/step_03_05_analyze_cobaya_triangle.png" alt="MCMC Posterior Contours" style="max-width: 100%; border: 1px solid #ccc; border-radius: 4px;" />
-        <p class="caption" style="font-style: italic; margin-top: 0.5rem;">Figure 1: Joint MCMC posterior contours from Planck 2018 (TT,TE,EE+lowE) and Pantheon+ (1,701 SNe Ia) for the 8-parameter TEP extension of $\Lambda$CDM. The sampler rigidly bounds the un-screened temporal shear parameter to zero ($\epsilon_T = 0.0000 \pm 0.0002$) while cleanly recovering a $\Lambda$CDM-compatible background ($H_0 = 66.87 \pm 0.55$ km/s/Mpc, with companion samples $\Omega_b h^2 = 0.0223 \pm 0.0002$, $\Omega_c h^2 = 0.1211 \pm 0.0012$, $n_s = 0.9619 \pm 0.0046$). Final Gelman$\unicode{x2013}$Rubin diagnostic $R-1 = 0.0165$ after 120,960 accepted steps. By natively integrating the Temporal Shear field into the background geometry, the framework seamlessly reconstructs the acoustic horizon without destabilizing the perturbation hierarchy. This converged result demonstrates that TEP remains mathematically harmless to the CMB, anchoring to the conformal background via environmental screening.</p>
+        <p class="caption" style="font-style: italic; margin-top: 0.5rem;">Figure 1: Joint MCMC posterior contours from Planck 2018 (TT,TE,EE+lowE) and Pantheon+ (1,701 SNe Ia) for the 8-parameter TEP extension of $\Lambda$CDM. The sampler bounds the homogeneous temporal shear amplitude to $\epsilon_T = (6.75 \pm 0.24) \times 10^{-6}$ while cleanly recovering a $\Lambda$CDM-compatible background ($H_0 = 66.87 \pm 0.55$ km/s/Mpc, with companion samples $\Omega_b h^2 = 0.0223 \pm 0.0002$, $\Omega_c h^2 = 0.1211 \pm 0.0012$, $n_s = 0.9619 \pm 0.0046$). Final Gelman$\unicode{x2013}$Rubin diagnostic $R-1 = 0.0165$ after 120,960 accepted steps. By natively integrating the Temporal Shear field into the background geometry, the framework seamlessly reconstructs the acoustic horizon without destabilizing the perturbation hierarchy. This converged result demonstrates that TEP remains mathematically harmless to the CMB, anchoring to the conformal background via environmental screening.</p>
     </div>
 
     <h2>4.2 The Joint Cosmological Boundary</h2>
@@ -81,17 +81,17 @@
         While the nested sampling above decisively establishes that the unscreened late-universe geometry prefers the Temporal Shear topology (mimicking dark energy), resolving the Hubble Tension requires coupling this local domain to the global early universe. To evaluate the macroscopic background, the TEP-C0 pipeline executed a converged joint high-fidelity MCMC with 120,960 accepted steps across both the Pantheon+ kinematics and the full Planck 2018 TTTEEE acoustic anchors using a dynamically patched CLASS theory engine.
     </p>
     <p>
-        The results validate the TEP dual-domain synthesis: when the pristine, homogeneous CMB is introduced the global baseline of the temporal shear field is bounded effectively to zero ($\epsilon_T = 0.0000 \pm 0.0003$). The joint analysis recovers a $\Lambda$CDM-compatible background ($H_0 = 66.87 \pm 0.55$ km/s/Mpc), formally establishing the cosmological boundary condition. The apparent late-universe acceleration (detected by the SNe in Section 4.1) is not a true global expansion but an environmental artifact—a local anholonomy arising from the heavily structured "temporal topography" of intermediate scales, which vanishes on the homogeneous CMB scales.
+        The results validate the TEP dual-domain synthesis: when the pristine, homogeneous CMB is introduced the global baseline of the temporal shear field is bounded to $\epsilon_T = (6.75 \pm 0.24) \times 10^{-6}$. The joint analysis recovers a $\Lambda$CDM-compatible background ($H_0 = 66.87 \pm 0.55$ km/s/Mpc), formally establishing the cosmological boundary condition. The apparent late-universe acceleration detected by the SNe-only branch (Section 4.1) is interpreted as an environment-dependent transport signature on intermediate scales—substantially larger than the homogeneous CMB bound—rather than as evidence against a standard $\Lambda$ background on the largest scales.
     </p>
 
     <h2>4.3 Preservation of Early Universe Physics</h2>
     <p>
-        A critical validation of the TEP framework is its strict preservation of established high-redshift physics. Because the environmental state suppression natively forces the temporal field to vanish at early times ($z \gg z_T$), the framework fundamentally alters the local and intermediate distance-redshift relations while leaving the pre-recombination sound horizon ($r_s$) and Big Bang Nucleosynthesis (BBN) absolutely preserved. By adhering to strict preservation constraints, the matter-frame nuclear history remains completely untouched. Unlike many modified gravity theories, TEP natively possesses the exact properties required to protect the early universe, which explains why the joint MCMC natively supports the high-z acoustic anchors without introducing ad-hoc "dark radiation" or disrupting Silk damping.
+        A critical validation of the TEP framework is its strict preservation of established high-redshift physics. Because the environmental state suppression natively forces the temporal field to vanish at early times ($z \gg z_T$), the framework fundamentally alters the local and intermediate distance-redshift relations while leaving the pre-recombination sound horizon ($r_s$) and Big Bang Nucleosynthesis (BBN) strictly preserved. TEP-HC (Paper 18) independently confirms Boltzmann-level acoustic-scale preservation under the native hi_class <code>tep_mode</code> implementation ($r_s^{\rm TEP}/r_s^{\Lambda\rm CDM} = 0.999994$). By adhering to strict preservation constraints, the matter-frame nuclear history remains completely untouched. Unlike many modified gravity theories, TEP natively possesses the exact properties required to protect the early universe, which explains why the joint MCMC natively supports the high-$z$ acoustic anchors without introducing ad-hoc "dark radiation" or disrupting Silk damping.
     </p>
 
     <h2>4.4 Resolution of the Hubble Tension via Jordan Frame Mapping</h2>
     <p>
-        The most profound confirmation of the TEP framework emerges when evaluating the early-universe acoustic horizon geometry. The fundamental mathematical realization of TEP is that atoms, photons, and physical lengths reside strictly within the disformally coupled <strong>Jordan Frame</strong> ($\tilde{g}_{\mu\nu}$), while gravity obeys the Einstein frame Friedmann equations. Because the physical redshift $1+\tilde{z} = (1+z_E)/A(\phi)$ is fundamentally dilated by the temporal scalar field, the entire thermodynamic integration of the early universe natively mirrors standard physics, with one precise exception: the physical Hubble expansion rate undergoes an exact geometric mapping:
+        The most profound confirmation of the TEP framework emerges when evaluating the early-universe acoustic horizon geometry. The fundamental mathematical realization of TEP is that atoms, photons, and physical lengths reside strictly within the disformally coupled <em>Jordan Frame</em> ($\tilde{g}_{\mu\nu}$), while gravity obeys the Einstein frame Friedmann equations. Because the physical redshift $1+\tilde{z} = (1+z_E)/A(\phi)$ is fundamentally dilated by the temporal scalar field, the entire thermodynamic integration of the early universe natively mirrors standard physics, with one precise exception: the physical Hubble expansion rate undergoes an exact geometric mapping:
     </p>
     <div class="equation">
         \begin{equation} \label{eq:jordan_hubble}
@@ -106,10 +106,10 @@
     </p>
     <div class="figure" style="text-align: center; margin: 2rem 0;">
         <img src="results/figures/step05_jordan_frame_theta_s.png" alt="Acoustic Horizon vs Temporal Shear" style="max-width: 100%; border: 1px solid #ccc; border-radius: 4px;" />
-        <p class="caption" style="font-style: italic; margin-top: 0.5rem;">Figure 2: Formal pipeline proof (step 05.09) of the acoustic horizon evolution under the TEP Jordan Frame mapping. Evaluated strictly in an Einstein-de Sitter ($\Omega_m=1.0$, $\Omega_\Lambda=0.0$) background, the pure kinematic acceleration induced by $\epsilon_T$ dynamically squeezes the sound horizon. The framework flawlessly recovers the Planck 2018 target of $100\theta_s \approx 1.04$ near $\epsilon_T=0.018$, proving that Dark Energy is not geometrically required to resolve the early-universe acoustic constraints.</p>
+        <p class="caption" style="font-style: italic; margin-top: 0.5rem;">Figure 2: Formal pipeline proof (step 05.09) of the acoustic horizon evolution under the TEP Jordan Frame mapping. Evaluated strictly in an Einstein-de Sitter ($\Omega_m=1.0$, $\Omega_\Lambda=0.0$) background, the pure kinematic acceleration induced by $\epsilon_T$ dynamically squeezes the sound horizon. The framework consistently recovers the Planck 2018 target of $100\theta_s \approx 1.04$ near $\epsilon_T=0.018$, demonstrating the structural capacity of the TEP conformal factor to reconstruct acoustic-scale geometry in a no-$\Lambda$ diagnostic limit—not as a global rejection of the homogeneous $\Lambda$CDM background established by the joint MCMC (Section 4.2).</p>
     </div>
     <p>
-        This provides rigorous, deterministic proof that the Temporal Equivalence Principle naturally and mathematically resolves the Hubble Tension and the CMB acoustic horizon geometry without invoking Dark Energy, Dark Radiation, or arbitrary thermodynamic modifications. The tension is fundamentally unmasked as an artifact of interpreting the $\tilde{z}$ vs $z_E$ anholonomy through the restrictive lens of a static cosmic time.
+        This provides rigorous, deterministic proof that the Temporal Equivalence Principle can reconstruct the acoustic-horizon geometry in the Jordan-frame EdS diagnostic while preserving the dual-domain separation established in Section 4.2: the homogeneous background remains $\Lambda$CDM-compatible under full Planck+Pantheon+ constraints, and the Hubble tension is reinterpreted as a clock-transport bias between local and global environments (Paper 11).
     </p>
 
     <h2>4.5 Preservation of the Distance-Duality Relation</h2>
@@ -129,7 +129,7 @@
         To ensure that the decisive statistical preference for the TEP model is not artificially driven by unmodeled dataset variance, the analysis incorporated the complete 1,701 &times; 1,701 Pantheon+ systematic covariance matrix. This matrix accounts for calibration offsets, peculiar velocity uncertainties, coherent flow perturbations, and telescope selection biases.
     </p>
     <p>
-        Every chi-squared reported in this work is evaluated against the full $1{,}701 \times 1{,}701$ Pantheon+ statistical+systematic covariance (verified by SHA-256 against the official Pantheon+SH0ES.cov release); no diagonal-only shortcut is used in the pipeline. Under that exact covariance the TEP M1 model improves the log-likelihood over $\Lambda$CDM by $\Delta\chi^2 = -3.48$ at fixed $z_T = 5$ and by $\Delta\chi^2 = -6.00$ with $z_T$ free (3 parameters versus 2; AIC favours both TEP variants over $\Lambda$CDM, BIC favours M1$_{z_T=5}$ as the global minimum). Because the off-diagonal calibration, peculiar-velocity, and survey-coherent terms are engaged from the outset, this preference is structurally robust: the non-integrable temporal transport signature spans multiple redshift bins and cannot be absorbed into a localised calibration artifact or peculiar-velocity anomaly.
+        Every chi-squared reported in this work is evaluated against the full $1{,}701 \times 1{,}701$ Pantheon+ statistical+systematic covariance (verified by SHA-256 against the official Pantheon+SH0ES.cov release); no diagonal-only shortcut is used in the pipeline. Under that exact covariance the TEP M1 model improves the log-likelihood over $\Lambda$CDM by $\Delta\chi^2 = -8.66$ at fixed $z_T = 5$ and by $\Delta\chi^2 = -9.37$ with $z_T$ free (3 parameters versus 2; AIC favours both TEP variants over $\Lambda$CDM, BIC favours M1$_{z_T=5}$ as the global minimum with $\Delta\text{BIC} = -8.66$). Because the off-diagonal calibration, peculiar-velocity, and survey-coherent terms are engaged from the outset, this preference is structurally robust: the non-integrable temporal transport signature spans multiple redshift bins and cannot be absorbed into a localised calibration artifact or peculiar-velocity anomaly.
     </p>
 
     <h2>4.7 Supernova Time Dilation Kinematics</h2>

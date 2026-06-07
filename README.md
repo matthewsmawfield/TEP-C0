@@ -1,7 +1,13 @@
-# TEP-C0: Temporal Equivalence Principle Cosmological Pipeline
+# Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion
 
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+**Status:** In Development
+
+## Abstract
+
+Abstract This paper develops the cosmological extension of the Temporal Equivalence Principle (TEP): the hypothesis that observational evidence normally interpreted as cosmic expansion may involve large-scale Temporal Shear. In TEP, matter clocks and photon phases evolve in the causal matter metric g_{}, with the conformal clock-rate field A() defining the Temporal Shear _ = _  A(). Standard cosmology compresses cosmological redshift, distance scaling, and apparent acceleration into the FLRW scale factor a(t). TEP establishes that a(t) is an effective variable reconstructed from accumulated Temporal Shear and Temporal Topology along cosmological lines of sight. The core relation is a_{eff}() = [-_ _^{eff} d], where 1+z_T = a_{eff}^{-1}. In the homogeneous integrable limit, this reproduces the FLRW relation 1+z = a_0/a_{em}. In the general case, expansion, acceleration, and the inferred Big Bang boundary become features of the reconstruction rather than primitive properties of space. Utilizing a dual-domain Bayesian synthesis of 1,701 Pantheon+ supernovae and Planck 2018 acoustic anchors, the analysis reveals a critical structural separation. In the late universe, nested sampling over the supernovae strictly prefers the TEP geometry over standard  and phenomenological dark energy (BIC = -1279.21, BF = 131.6). The converged 120,960-accepted-step joint Cobaya MCMC demonstrates that the pristine global CMB bounds the macroscopic temporal shear to zero, acting as the ultimate cosmological boundary condition. By formalizing environmental state suppression across the hierarchically structured cosmic web, the framework perfectly reconciles this divergence. The theory natively isolates massive anomalies—providing a rigorous geometric origin for the supernova "mass step" and resolving the Hubble tension (Paper 11) and JWST high-redshift mass anomalies (Paper 12)—entirely within local and intermediate scales, while consistently protecting the standard cosmological background. The framework culminates in a preregistered empirical testing program targeting the theory's central hallmark: synchronization holonomy (H). Driven by non-zero disformal proper-time transport, H provides a directly observable, convention-independent metric of non-integrability, guiding a new class of multi-leg time-transfer experiments. Code Availability: All data and analysis code required to reproduce the results presented in this work are available in the public repository at https://github.com/matthewsmawfield/TEP-C0 .
 
 ## Overview
 
@@ -142,17 +148,20 @@ python -m tep_c0.utils.audit
 
 ### TEP Modification
 
-The TEP framework modifies the standard FLRW expansion:
+The native TEP background (shared with TEP-HC Paper 18 via `core/cosmology.py` and the hi_class `tep_mode` patch) modifies the FLRW expansion through the Jordan-frame factor:
 
 ```
-H_TEP(z) = H_LCDM(z) × Γ_TEP(z)
-Γ_TEP(z) = exp(Sigma_0 × c/H_0 × ln(1+z))
+f_T(z) = ln(1+z) * exp(-(z/z_T)^n_T)
+A(z) = exp(epsilon_T * ln(1+z) * S(z)),  S(z) = exp(-(z/z_T)^n_T)
+M(z) = A(z) / (1 - alpha_A(z))
+H_TEP(z) = H_LCDM(z) * M(z)
 ```
 
 Where:
 - `H_TEP`: TEP-modified Hubble parameter
-- `Sigma_0`: TEP shear amplitude
-- `Γ_TEP`: Path enhancement factor
+- `epsilon_T`: homogeneous temporal-shear amplitude (screened at z >> z_T)
+- `z_T`, `n_T`: transition redshift and steepness (default 5.0, 2.0)
+- `M(z)`: exact Jordan-frame conformal factor (not the legacy Γ_TEP exponential approximation)
 
 ### Cosmological Fitting
 

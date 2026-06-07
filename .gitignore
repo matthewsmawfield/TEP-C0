@@ -60,4 +60,4 @@ docs/_build/
 *.pkl
 *.pickle
 
-.devin
+.devin/
