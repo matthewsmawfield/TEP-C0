@@ -171,25 +171,25 @@
     },
     {
       "check": "statistical matching: H0",
-      "detail": "Found H_0 = 66.87 \\pm 0.55 in manuscript",
-      "status": "pass"
+      "detail": "tep_cobaya_sne_stats.txt missing",
+      "status": "fail"
     },
     {
       "check": "statistical matching: BF standard",
-      "detail": "Found BF = 131.6",
-      "status": "pass"
+      "detail": "Missing BF = 9.7",
+      "status": "fail"
     },
     {
       "check": "statistical matching: BF unscreened",
-      "detail": "Found BF=108.1",
-      "status": "pass"
+      "detail": "Missing BF=73.5",
+      "status": "fail"
     }
   ],
   "metrics": {
-    "audit_status": "SUCCESS",
-    "failed_checks": 0,
-    "pass_count": 36,
-    "pass_rate": 1.0,
+    "audit_status": "WARNING",
+    "failed_checks": 3,
+    "pass_count": 33,
+    "pass_rate": 0.9167,
     "total_checks": 36
   },
   "step": "step_08_06_claim_audit"

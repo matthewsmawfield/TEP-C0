@@ -68,7 +68,7 @@ except ImportError:
 
 from c0_common import TEPLogger, ensure_dirs, print_status, rel, set_step_logger, step_json_path, write_json, read_json, RESULTS_DIR
 from core.cosmology import CosmologyFLRW
-from core.tep_cosmology import TEPCosmology
+from core.cosmology import TEPCosmology
 
 STEP_ID = "step_03_01_three_model_comparison"
 
@@ -93,16 +93,14 @@ _WORKER_WIDTHS = None
 
 
 def _default_cpu_workers() -> int:
-    """Optimized default for Apple Silicon M4 Pro: use performance cores efficiently.
-    
-    M4 Pro architecture: 8 performance cores + 6 efficiency cores = 14 total
-    Strategy: Use 4 workers to stay on performance cores while avoiding oversubscription.
-    macOS spawn context has high overhead, so fewer workers with better utilization is optimal.
+    """Default to single-threaded sampling.
+
+    The likelihood is dominated by 1701x1701 Cholesky / logdet operations
+    which are already parallelized by BLAS (OpenBLAS/Accelerate). Adding
+    process or thread pools causes oversubscription and cache thrashing.
+    Override with TEP_CPU_WORKERS=N if the likelihood is pure Python.
     """
-    detected = os.cpu_count() or 1
-    # M4 Pro: use 4 workers (performance cores only)
-    # Leaves 4 performance cores + 6 efficiency cores for OS/UI
-    return 4
+    return 1
 
 
 def _default_mp_context() -> str:
@@ -483,7 +481,7 @@ class ModelTEP:
         M = params.get('M', 0.0)
 
         if self.pure_shear:
-            from core.static_metric import StaticCosmology
+            from scripts.utils.static_metric import StaticCosmology
             # Enforce local Hubble law implicitly by removing Sigma_0 modifier
             tep_cosmo = StaticCosmology(H0=self.H0_ref)
             mu_ref = tep_cosmo.distance_modulus(z)
@@ -705,22 +703,41 @@ def run_nested_evidence(model, data: PantheonData, nlive: int, dlogz: float) -> 
                 initializer=_init_nested_worker,
                 initargs=(model, data, lows, widths),
             )
+            print_status(f"dynesty CPU workers: {worker_count} ({mp_context})", "INFO")
             sampler_kwargs.update({
                 "pool": pool,
                 "queue_size": worker_count,
                 "use_pool": {"loglikelihood": True, "prior_transform": False, "propose_point": False, "update_bound": False},
             })
-            print_status(f"dynesty CPU workers: {worker_count} ({mp_context})", "INFO")
 
-        sampler = dynesty.NestedSampler(
-            _nested_loglike,
-            _nested_prior_transform,
-            model.n_params,
-            nlive=nlive,
-            bound="multi",
-            sample="rwalk",
-            **sampler_kwargs,
-        )
+        try:
+            sampler = dynesty.NestedSampler(
+                _nested_loglike,
+                _nested_prior_transform,
+                model.n_params,
+                nlive=nlive,
+                bound="multi",
+                sample="rwalk",
+                **sampler_kwargs,
+            )
+        except (RuntimeError, ValueError) as init_exc:
+            if pool is not None and "map-like callable" in str(init_exc):
+                pool.close()
+                pool.join()
+                pool = None
+                sampler_kwargs = {}
+                print_status("Multiprocessing pool rejected by dynesty; falling back to single-threaded", "WARNING")
+                sampler = dynesty.NestedSampler(
+                    _nested_loglike,
+                    _nested_prior_transform,
+                    model.n_params,
+                    nlive=nlive,
+                    bound="multi",
+                    sample="rwalk",
+                    **sampler_kwargs,
+                )
+            else:
+                raise
 
         sampler.run_nested(dlogz=dlogz, print_progress=progress)
         results = sampler.results
@@ -1229,7 +1246,7 @@ def run() -> dict:
         }
         # D3. Positive and Negative TEP Injection Tests
         print_status("Running Positive and Negative TEP Injection Tests", "PROCESS")
-        from core.tep_cosmology import TEPCosmology
+        from core.cosmology import TEPCosmology
         
         # Positive TEP injection (epsilon_T = 0.23, z_T = 5.0)
         mock_tep_pos = TEPCosmology(H0=70, Omega_m=1.0, epsilon_T=0.23, z_T=5.0)
@@ -1315,7 +1332,7 @@ def run() -> dict:
 
     # E. Static M2 Sanity Check
     print_status("Running Static M2 Sanity Check", "PROCESS")
-    from core.static_metric import StaticCosmology
+    from scripts.utils.static_metric import StaticCosmology
     m2_best = results['models'].get('M2_PureShear', {}).get('parameters_mle')
     if m2_best:
         # Sigma_0 is removed; local Hubble law is exactly enforced
@@ -1384,12 +1401,11 @@ def run() -> dict:
         
         # Compute core module hashes (fix: use repo root, not script parent)
         repo_root = script_path.resolve().parents[2]
-        core_tep_cosmology_path = repo_root / "core" / "tep_cosmology.py"
         core_static_metric_path = repo_root / "core" / "static_metric.py"
         core_cosmology_path = repo_root / "core" / "cosmology.py"
-        
+
         core_hashes = {}
-        for core_path in [core_tep_cosmology_path, core_static_metric_path, core_cosmology_path]:
+        for core_path in [core_static_metric_path, core_cosmology_path]:
             if core_path.exists():
                 core_hashes[core_path.name] = compute_sha256(core_path)
         

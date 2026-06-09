@@ -1,7 +1,7 @@
 # Temporal Equivalence Principle: Suppressed Density Scaling in Globular Cluster Pulsars
 **Matthew Lukin Smawfield**
 Version: v0.7 (Caracas)
-First published: 9 January 2026 · Last updated: 6 June 2026
+First published: 9 January 2026 · Last updated: 8 June 2026
 DOI: 10.5281/zenodo.18165798
 
 ---

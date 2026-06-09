@@ -182,26 +182,26 @@ def run():
         },
         'validation': {
             'bbn_working': 0.2 < r_lcdm['Y_p'] < 0.3,
-            'nuclear_network_active': True,
-            'abundance_covariance_active': True,
+            'nuclear_network_active': network_engine == "BBN_package",
+            'abundance_covariance_active': network_engine == "BBN_package",
             'matter_frame_preservation_active': True,
             'bbn_lithium_tension_present': tep_chi2['chi2_terms'].get('Li7_H', 0.0) > 9.0,
             'naive_lowz_extrapolation_rejected': tep_naive_chi2['chi2'] > lcdm_chi2['chi2'] + 25.0,
-            'research_grade': True,  # BBN package provides research-grade accuracy
-            'research_grade_bbn': True,
-            'tier': 'Research Grade',
-            'claim_gate': 'open',  # BBN package is sufficient; PArthENoPE/AlterBBN are optional enhancements
+            'research_grade': network_engine == "BBN_package",
+            'research_grade_bbn': network_engine == "BBN_package",
+            'tier': 'Research Grade' if network_engine == "BBN_package" else 'Working Model',
+            'claim_gate': 'open' if network_engine == "BBN_package" else 'conditional',
             'cross_validation_status': {
                 'lcdm_validated': cross_val_report.get('lcdm_validation', {}).get('validated', False),
                 'tep_validated': cross_val_report.get('tep_validation', {}).get('validated', False),
                 'tep_lcdm_consistent': cross_val_report.get('tep_lcdm_consistent', False),
             },
             'notes': [
-                'AlterBBN installed and operational at external/AlterBBN/',
-                'BBN abundances cross-validated against AlterBBN reference code.',
-                'Posterior fits for eta, tau_n, N_eff use full nuclear network.',
+                f'Network engine: {network_engine}',
+                'AlterBBN installed at external/AlterBBN/' if network_engine == "BBN_package" else 'AlterBBN installed but wrapper import failed; using analytic fallback.',
+                'BBN abundances computed with full nuclear network.' if network_engine == "BBN_package" else 'BBN abundances from analytic working model (standard BBN values).',
             ],
-            'blockers': []  # AlterBBN installed - no blockers
+            'blockers': [] if network_engine == "BBN_package" else ['AlterBBN wrapper import failed']
         }
     }
     

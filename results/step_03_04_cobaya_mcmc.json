@@ -6,15 +6,16 @@
   },
   "description": "Cobaya-based TEP inference with TEP-CLASS v2.0",
   "mcmc_result": {
-    "error": null,
-    "success": true
+    "error": "Could not find random point giving finite posterior after 100000 tries",
+    "success": false
   },
   "pantheon_data_available": true,
-  "status": "completed",
+  "status": "skipped",
   "step": "step_03_04_cobaya_mcmc",
   "tep_class_available": true,
   "validation": {
     "can_run_joint_analysis": true,
     "tep_class_path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/external/class"
-  }
+  },
+  "reason": "TEP-CLASS configuration issue: Could not find random point giving finite posterior"
 }

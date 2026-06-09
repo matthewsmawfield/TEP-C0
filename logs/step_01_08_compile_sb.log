@@ -1,16 +1,16 @@
-[20:12:12] [INFO] 
-[20:12:12] [INFO] ================================================================================
-[20:12:12] [INFO]    Starting step_01_08_compile_sb
-[20:12:12] [INFO] ================================================================================
-[20:12:12] [INFO] 
-[20:12:12] [INFO] Compiled 48 surface brightness measurements
-[20:12:12] [INFO] z < 0.5: 30 points
-[20:12:12] [INFO] 0.5 <= z < 1.0: 14 points
-[20:12:12] [INFO] z >= 1.0: 4 points
-[20:12:12] [INFO] SB_ratio fit: α = 0.816 ± 0.031
-[20:12:12] [INFO] Tolman index n = 3.184 ± 0.031
-[20:12:12] [INFO] ΛCDM expects: α = 0.000 (SB_ratio = 1.0)
-[20:12:12] [INFO] χ²/ndof = 3.99
-[20:12:12] [SUCCESS] Saved to data/raw/surface_brightness_literature.csv
-[20:12:12] [SUCCESS] Step step_01_08_compile_sb completed
-[20:12:12] [SUCCESS] Research grade: True
+[17:27:56] [INFO] 
+[17:27:56] [INFO] ================================================================================
+[17:27:56] [INFO]    Starting step_01_08_compile_sb
+[17:27:56] [INFO] ================================================================================
+[17:27:56] [INFO] 
+[17:27:56] [INFO] Compiled 48 surface brightness measurements
+[17:27:56] [INFO] z < 0.5: 30 points
+[17:27:56] [INFO] 0.5 <= z < 1.0: 14 points
+[17:27:56] [INFO] z >= 1.0: 4 points
+[17:27:56] [INFO] SB_ratio fit: α = 0.816 ± 0.031
+[17:27:56] [INFO] Tolman index n = 3.184 ± 0.031
+[17:27:56] [INFO] ΛCDM expects: α = 0.000 (SB_ratio = 1.0)
+[17:27:56] [INFO] χ²/ndof = 3.99
+[17:27:56] [SUCCESS] Saved to data/raw/surface_brightness_literature.csv
+[17:27:56] [SUCCESS] Step step_01_08_compile_sb completed
+[17:27:56] [SUCCESS] Research grade: True

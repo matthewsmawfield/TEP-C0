@@ -1,0 +1,9 @@
+[22:18:54] [INFO] 
+[22:18:54] [INFO] ================================================================================
+[22:18:54] [INFO]    Starting step_05_07_bbn_preservation
+[22:18:54] [INFO] ================================================================================
+[22:18:54] [INFO] 
+[22:18:56] [PROCESS] Running BBN parameter posterior MCMC...
+[22:18:56] [PROCESS] Running BBN cross-validation against reference codes...
+[22:18:56] [SUCCESS] LCDM: Y_p=0.2472, D/H=2.46e-05
+[22:18:56] [SUCCESS] TEP:  Y_p=0.2472, D/H=2.46e-05

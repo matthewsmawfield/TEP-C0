@@ -1,10 +1,10 @@
-[20:12:12] [INFO] 
-[20:12:12] [INFO] ================================================================================
-[20:12:12] [INFO]    Starting step_01_07_download_desi
-[20:12:12] [INFO] ================================================================================
-[20:12:12] [INFO] 
-[20:12:12] [INFO] Processing 4 Lyman-α BAO measurements
-[20:12:12] [INFO] Generated 3 DDR constraints
-[20:12:12] [INFO] Paired with 0 high-z SNe
-[20:12:12] [SUCCESS] Saved constraints to data/raw/ddr_constraints_highz.csv
-[20:12:12] [SUCCESS] Step step_01_07_download_desi completed successfully
+[17:27:56] [INFO] 
+[17:27:56] [INFO] ================================================================================
+[17:27:56] [INFO]    Starting step_01_07_download_desi
+[17:27:56] [INFO] ================================================================================
+[17:27:56] [INFO] 
+[17:27:56] [INFO] Processing 4 Lyman-α BAO measurements
+[17:27:56] [INFO] Generated 3 DDR constraints
+[17:27:56] [INFO] Paired with 0 high-z SNe
+[17:27:56] [SUCCESS] Saved constraints to data/raw/ddr_constraints_highz.csv
+[17:27:56] [SUCCESS] Step step_01_07_download_desi completed successfully

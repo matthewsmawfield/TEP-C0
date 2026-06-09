@@ -1,19 +1,8 @@
-[20:12:12] [INFO] 
-[20:12:12] [INFO] ================================================================================
-[20:12:12] [INFO]    Starting step_02_02_theory_derivation
-[20:12:12] [INFO] ================================================================================
-[20:12:12] [INFO] 
-[20:12:12] [INFO] Loaded SNe M1 fit (M1_free_zT): epsilon_T=0.8585, z_T=10.000
-[20:12:12] [INFO] Loaded empirical eta(z) fits from step_04_06: BAO: eta_0=1.295, beta=-0.742, SGL: eta_0=0.853, beta=+1.930, SZ: eta_0=1.226, beta=+0.181
-[20:12:12] [INFO] Derived parameters (data-calibrated):
-[20:12:12] [INFO]   S_BAO_0 = 0.7723
-[20:12:12] [INFO]   S_SZ_0 = 0.8154
-[20:12:12] [INFO]   S_SGL_0 = 1.1724
-[20:12:12] [INFO]   z_c_BAO = 2.8518
-[20:12:12] [INFO]   z_c_SZ = 248.4060
-[20:12:12] [INFO]   z_c_SGL = 0.6790
-[20:12:12] [INFO] Power-law indices alpha_probe:
-[20:12:12] [INFO]   alpha_BAO = -0.742
-[20:12:12] [INFO]   alpha_SZ = +0.181
-[20:12:12] [INFO]   alpha_SGL = +1.930
-[20:12:12] [SUCCESS] Step step_02_02_theory_derivation completed
+[17:27:56] [INFO] 
+[17:27:56] [INFO] ================================================================================
+[17:27:56] [INFO]    Starting step_02_02_theory_derivation
+[17:27:56] [INFO] ================================================================================
+[17:27:56] [INFO] 
+[17:27:56] [WARNING] No empirical screening fit found.
+[17:27:56] [WARNING] Theory derivation not run; missing empirical inputs.
+[17:27:56] [WARNING] Step step_02_02_theory_derivation blocked

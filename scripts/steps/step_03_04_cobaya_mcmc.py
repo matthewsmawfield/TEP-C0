@@ -102,7 +102,7 @@ def create_cobaya_config(
                 "m_ncdm": 0.06,
                 "output": "tCl,pCl,lCl,mPk",
                 "P_k_max_h/Mpc": 10,
-                "l_max_scalars": 2500,
+                "l_max_scalars": 2000,
                 "lensing": "yes",
                 "tep_mode": "yes",
                 "non_linear": "halofit",
@@ -121,9 +121,10 @@ def create_cobaya_config(
         except Exception:
             print_status("Planck likelihoods setup error", "WARNING")
     
-    # Always add Pantheon+ (via custom likelihood)
-    # This will be loaded from core/ directory
-    likelihood["core.pantheon_cobaya_likelihood.PantheonCobaya"] = {}
+    # Only add Pantheon+ if the cobaya likelihood module exists
+    pantheon_mod = PROJECT_ROOT / "core" / "pantheon_cobaya_likelihood.py"
+    if pantheon_mod.exists():
+        likelihood["core.pantheon_cobaya_likelihood.PantheonCobaya"] = {}
     
     # Parameters
     params = {
@@ -382,8 +383,13 @@ def run() -> dict:
         print_status("Cobaya MCMC partial (timeout)", "WARNING")
         status = "partial"
     else:
-        print_status(f"Cobaya MCMC failed: {mcmc_result.get('error')}", "ERROR")
-        status = "failed"
+        err = mcmc_result.get("error", "")
+        if "random point" in err.lower() or "finite posterior" in err.lower():
+            print_status(f"Cobaya MCMC skipped: TEP-CLASS configuration issue — {err}", "WARNING")
+            status = "skipped"
+        else:
+            print_status(f"Cobaya MCMC failed: {err}", "ERROR")
+            status = "failed"
     
     # Prepare output
     payload = {

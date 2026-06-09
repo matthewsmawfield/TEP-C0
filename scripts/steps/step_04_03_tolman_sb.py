@@ -83,7 +83,7 @@ def compute_tep_sb(z, H0, Sigma_0, A_env):
     import sys
     import os
     sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
-    from core.tep_cosmology import TEPCosmology
+    from core.cosmology import TEPCosmology
     
     # Standard LCDM surface brightness: SB ∝ (1+z)^(-4)
     sb_lcdm = (1 + z)**(-4)

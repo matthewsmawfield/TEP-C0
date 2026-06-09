@@ -42,7 +42,7 @@ BETA_A = -1.0                 # Dimensionless conformal coupling (locked lab-sca
 
 # Phenomenological screening coefficient in the TEP-SPIN tanh ansatz.
 # This is NOT the fundamental conformal coupling (BETA_A). It is a
-# calibrated parameter of the density-dependent screening model.
+# calibrated parameter of the environment-dependent screening model.
 BETA_SPIN = 0.01                 # Dimensionless; Paper 24
 
 # Solar-system PPN bound on conformal coupling from Cassini time-delay test.

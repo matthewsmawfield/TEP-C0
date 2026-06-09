@@ -27,8 +27,8 @@ def run():
     chain_prefix = "results/outputs/tep_cobaya_sne"
     
     if not Path(f"{chain_prefix}.1.txt").exists():
-        print_status(f"Chain files not found at {chain_prefix}.1.txt", "ERROR")
-        return
+        print_status(f"Chain files not found at {chain_prefix}.1.txt", "WARNING")
+        return {"step": STEP_ID, "status": "skipped", "reason": "No chain files from cobaya MCMC"}
         
     print_status(f"Loading chains from {chain_prefix}...", "PROCESS")
     

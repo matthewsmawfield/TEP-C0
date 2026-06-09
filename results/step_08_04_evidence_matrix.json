@@ -10,7 +10,7 @@
       "tep_explanation": "Projection of Temporal Shear gradients along the photon path."
     },
     {
-      "numerical_anchor": "Dimensionless distance comparison (H0_ref = 70.0 km/s/Mpc); M_TEP = -19.31017052049644 vs M_LCDM = -19.32404890914055",
+      "numerical_anchor": "Dimensionless distance comparison (H0_ref = 70.0 km/s/Mpc); M_TEP = -19.31696028237551 vs M_LCDM = -19.324050612383857",
       "observable": "SN 1a Distance-Redshift",
       "status": "validated",
       "tep_explanation": "TEP matter model incorporating matter-frame effects."
@@ -22,13 +22,13 @@
       "tep_explanation": "Resolution via temporal shear effects."
     },
     {
-      "numerical_anchor": "Tolman \u0394\u03c7\u00b2: -3236.77...",
+      "numerical_anchor": "Tolman \u0394\u03c7\u00b2: -3647.74...",
       "observable": "Distance Duality (Xi_T)",
       "status": "Moderate",
       "tep_explanation": "Measurable residuals in high-z luminosity/angular diameter relations."
     },
     {
-      "numerical_anchor": "Consistency: {'lcdm_sigma': 4.838} (Jordan Frame 100\\theta_s = 1.0433 @ \\epsilon_T = 0.018)",
+      "numerical_anchor": "Consistency: {} (Jordan Frame 100\\theta_s = 1.0433 @ \\epsilon_T = 0.018)",
       "observable": "CMB Acoustic Scales",
       "status": "validated via Jordan Frame mapping (step 05.09)",
       "tep_explanation": "Preserved matter-frame acoustic horizon properly projected through shear connection."

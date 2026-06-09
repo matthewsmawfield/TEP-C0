@@ -9,8 +9,8 @@ TEP weak lensing theoretical predictions.
 """
 
 import numpy as np
-from core.tep_cosmology import TEPCosmology
-from core.structure_formation import TEPStructureFormation
+from core.cosmology import TEPCosmology
+from scripts.utils.structure_formation import TEPStructureFormation
 
 class TEPWeakLensing:
     def __init__(self, epsilon_T=0.1, z_T=5.0, H0=70.0, Omega_m=0.3):

@@ -500,7 +500,7 @@ demonstrate that the relevant residual component couples
 coherently over continental scales after standard modeling,
 rather than remaining dominated by station-local weather. The
 continuous spatial profile of the Temporal Topology predicts
-smooth, density-dependent correlation structures without
+smooth, environment-dependent correlation structures without
 discrete boundary transitions.
 
 -

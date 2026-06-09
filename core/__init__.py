@@ -7,7 +7,7 @@ This package provides the shared physics layer used by all TEP papers:
   - conformal_scaling: A(phi), Temporal Shear, effective coupling
   - cosmology: LCDM + TEP distance-redshift relations
   - scalar_field: lab-scale scalar-field solver
-  - screening: density-dependent screening functions
+  - screening: environment-dependent screening functions
   - evidence: Bayesian evidence and model-comparison utilities
 """
 

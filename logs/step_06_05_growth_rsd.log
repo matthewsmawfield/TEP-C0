@@ -1,24 +1,24 @@
-[01:40:10] [INFO] 
-[01:40:10] [INFO] ================================================================================
-[01:40:10] [INFO]    Starting step_06_05_growth_rsd
-[01:40:10] [INFO] ================================================================================
-[01:40:10] [INFO] 
-[01:40:10] [INFO] TEP-CLASS available for growth calculations
-[01:40:10] [INFO] SNe distance parameters: ε_T_dist=0.75626, Om0_dist=1.000 (compensates for distance bias)
-[01:40:10] [INFO] Growth parameters: ε_T_growth=0.00000, Om0_growth=0.300 (independent fit)
-[01:40:10] [INFO] z=0.07: obs=0.423±0.055, LCDM=0.447, TEP=0.447
-[01:40:11] [INFO] z=0.22: obs=0.420±0.070, LCDM=0.474, TEP=0.474
-[01:40:11] [INFO] z=0.38: obs=0.497±0.045, LCDM=0.485, TEP=0.485
-[01:40:12] [INFO] z=0.41: obs=0.450±0.040, LCDM=0.485, TEP=0.485
-[01:40:13] [INFO] z=0.51: obs=0.458±0.038, LCDM=0.484, TEP=0.484
-[01:40:13] [INFO] z=0.60: obs=0.430±0.040, LCDM=0.480, TEP=0.480
-[01:40:14] [INFO] z=0.61: obs=0.436±0.034, LCDM=0.480, TEP=0.480
-[01:40:14] [INFO] z=0.78: obs=0.380±0.040, LCDM=0.467, TEP=0.467
-[01:40:15] [INFO] z=0.85: obs=0.459±0.047, LCDM=0.460, TEP=0.460
-[01:40:16] [INFO] z=1.40: obs=0.482±0.116, LCDM=0.399, TEP=0.399
-[01:40:16] [INFO] z=1.48: obs=0.397±0.081, LCDM=0.390, TEP=0.390
-[01:40:16] [INFO] 
+[20:52:32] [INFO] 
+[20:52:32] [INFO] ================================================================================
+[20:52:32] [INFO]    Starting step_06_05_growth_rsd
+[20:52:32] [INFO] ================================================================================
+[20:52:32] [INFO] 
+[20:52:32] [INFO] TEP-CLASS available for growth calculations
+[20:52:32] [INFO] SNe distance parameters: ε_T_dist=0.85854, Om0_dist=1.000 (compensates for distance bias)
+[20:52:32] [INFO] Growth parameters: ε_T_growth=0.00000, Om0_growth=0.300 (independent fit)
+[20:52:33] [INFO] z=0.07: obs=0.423±0.055, LCDM=0.447, TEP=0.447
+[20:52:34] [INFO] z=0.22: obs=0.420±0.070, LCDM=0.474, TEP=0.474
+[20:52:34] [INFO] z=0.38: obs=0.497±0.045, LCDM=0.485, TEP=0.485
+[20:52:35] [INFO] z=0.41: obs=0.450±0.040, LCDM=0.485, TEP=0.485
+[20:52:35] [INFO] z=0.51: obs=0.458±0.038, LCDM=0.484, TEP=0.484
+[20:52:36] [INFO] z=0.60: obs=0.430±0.040, LCDM=0.480, TEP=0.480
+[20:52:37] [INFO] z=0.61: obs=0.436±0.034, LCDM=0.480, TEP=0.480
+[20:52:37] [INFO] z=0.78: obs=0.380±0.040, LCDM=0.467, TEP=0.467
+[20:52:38] [INFO] z=0.85: obs=0.459±0.047, LCDM=0.460, TEP=0.460
+[20:52:38] [INFO] z=1.40: obs=0.482±0.116, LCDM=0.399, TEP=0.399
+[20:52:39] [INFO] z=1.48: obs=0.397±0.081, LCDM=0.390, TEP=0.390
+[20:52:39] [INFO] 
 ΛCDM: χ² = 10.60, χ²/ndof = 0.96
-[01:40:16] [INFO] TEP:  χ² = 10.60, χ²/ndof = 0.96
-[01:40:16] [INFO] Δχ² = 0.00 (marginal)
-[01:40:16] [SUCCESS] Step step_06_05_growth_rsd completed
+[20:52:39] [INFO] TEP:  χ² = 10.60, χ²/ndof = 0.96
+[20:52:39] [INFO] Δχ² = 0.00 (marginal)
+[20:52:39] [SUCCESS] Step step_06_05_growth_rsd completed

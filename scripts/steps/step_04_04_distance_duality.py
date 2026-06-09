@@ -170,7 +170,7 @@ def run():
     eta_lcdm_theory = compute_ddr(D_L_lcdm, D_A_lcdm, z_grid)
     
     # TEP cosmology prediction
-    from core.tep_cosmology import TEPCosmology
+    from core.cosmology import TEPCosmology
     cosmo_tep = TEPCosmology(H0=H0_tep, Omega_m=Om0, epsilon_T=epsilon_T, z_T=z_T)
     D_L_tep_theory, D_A_tep_theory = compute_distances_proper(z_grid, cosmo_tep)
     eta_tep_theory = compute_ddr(D_L_tep_theory, D_A_tep_theory, z_grid)

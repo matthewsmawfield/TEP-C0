@@ -1,49 +1,49 @@
-[20:11:47] [INFO] 
-[20:11:47] [INFO] ================================================================================
-[20:11:47] [INFO]    Starting step_01_01_data_download
-[20:11:47] [INFO] ================================================================================
-[20:11:47] [INFO] 
-[20:11:47] [INFO] Downloading 5 sources in parallel
-[20:11:47] [PROCESS] Processing source: pantheon_plus_distances
-[20:11:47] [PROCESS] Processing source: pantheon_plus_stat_sys_covariance
-[20:11:47] [PROCESS] Processing source: firas_cmb_monopole
-[20:11:47] [PROCESS] Processing source: bao_uncorrelated_compilation
-[20:11:48] [SUCCESS] Downloaded bao_uncorrelated_compilation
-[20:11:48] [PROCESS] Processing source: bbn_open_review
-[20:11:49] [SUCCESS] Downloaded pantheon_plus_distances
-[20:11:51] [SUCCESS] Downloaded firas_cmb_monopole
-[20:11:51] [INFO] Download progress: 3.2% (1.0MB/31.7MB)
-[20:11:51] [INFO] Download progress: 6.3% (2.0MB/31.7MB)
-[20:11:51] [INFO] Download progress: 73.4% (1.0MB/1.4MB)
-[20:11:51] [SUCCESS] Downloaded bbn_open_review
-[20:11:51] [INFO] Download progress: 9.5% (3.0MB/31.7MB)
-[20:11:52] [INFO] Download progress: 12.6% (4.0MB/31.7MB)
-[20:11:52] [INFO] Download progress: 15.8% (5.0MB/31.7MB)
-[20:11:52] [INFO] Download progress: 18.9% (6.0MB/31.7MB)
-[20:11:52] [INFO] Download progress: 22.1% (7.0MB/31.7MB)
-[20:11:52] [INFO] Download progress: 25.2% (8.0MB/31.7MB)
-[20:11:52] [INFO] Download progress: 28.4% (9.0MB/31.7MB)
-[20:11:53] [INFO] Download progress: 31.5% (10.0MB/31.7MB)
-[20:11:53] [INFO] Download progress: 34.7% (11.0MB/31.7MB)
-[20:11:53] [INFO] Download progress: 37.8% (12.0MB/31.7MB)
-[20:11:53] [INFO] Download progress: 41.0% (13.0MB/31.7MB)
-[20:11:53] [INFO] Download progress: 44.1% (14.0MB/31.7MB)
-[20:11:53] [INFO] Download progress: 47.3% (15.0MB/31.7MB)
-[20:11:54] [INFO] Download progress: 50.4% (16.0MB/31.7MB)
-[20:11:54] [INFO] Download progress: 53.6% (17.0MB/31.7MB)
-[20:11:54] [INFO] Download progress: 56.7% (18.0MB/31.7MB)
-[20:11:54] [INFO] Download progress: 59.9% (19.0MB/31.7MB)
-[20:11:54] [INFO] Download progress: 63.0% (20.0MB/31.7MB)
-[20:11:54] [INFO] Download progress: 66.2% (21.0MB/31.7MB)
-[20:11:54] [INFO] Download progress: 69.3% (22.0MB/31.7MB)
-[20:11:54] [INFO] Download progress: 72.5% (23.0MB/31.7MB)
-[20:11:55] [INFO] Download progress: 75.6% (24.0MB/31.7MB)
-[20:11:55] [INFO] Download progress: 78.8% (25.0MB/31.7MB)
-[20:11:55] [INFO] Download progress: 81.9% (26.0MB/31.7MB)
-[20:11:55] [INFO] Download progress: 85.1% (27.0MB/31.7MB)
-[20:11:55] [INFO] Download progress: 88.2% (28.0MB/31.7MB)
-[20:11:55] [INFO] Download progress: 91.4% (29.0MB/31.7MB)
-[20:11:55] [INFO] Download progress: 94.5% (30.0MB/31.7MB)
-[20:11:56] [INFO] Download progress: 97.7% (31.0MB/31.7MB)
-[20:11:56] [SUCCESS] Downloaded pantheon_plus_stat_sys_covariance
-[20:11:56] [SUCCESS] Step step_01_01_data_download completed successfully
+[17:27:39] [INFO] 
+[17:27:39] [INFO] ================================================================================
+[17:27:39] [INFO]    Starting step_01_01_data_download
+[17:27:39] [INFO] ================================================================================
+[17:27:39] [INFO] 
+[17:27:39] [INFO] Downloading 5 sources in parallel
+[17:27:39] [PROCESS] Processing source: pantheon_plus_distances
+[17:27:39] [PROCESS] Processing source: pantheon_plus_stat_sys_covariance
+[17:27:39] [PROCESS] Processing source: firas_cmb_monopole
+[17:27:39] [PROCESS] Processing source: bao_uncorrelated_compilation
+[17:27:41] [SUCCESS] Downloaded bao_uncorrelated_compilation
+[17:27:41] [PROCESS] Processing source: bbn_open_review
+[17:27:42] [SUCCESS] Downloaded firas_cmb_monopole
+[17:27:43] [SUCCESS] Downloaded pantheon_plus_distances
+[17:27:43] [INFO] Download progress: 3.2% (1.0MB/31.7MB)
+[17:27:44] [INFO] Download progress: 6.3% (2.0MB/31.7MB)
+[17:27:44] [INFO] Download progress: 9.5% (3.0MB/31.7MB)
+[17:27:44] [INFO] Download progress: 12.6% (4.0MB/31.7MB)
+[17:27:44] [INFO] Download progress: 15.8% (5.0MB/31.7MB)
+[17:27:44] [INFO] Download progress: 73.6% (1.0MB/1.4MB)
+[17:27:44] [INFO] Download progress: 18.9% (6.0MB/31.7MB)
+[17:27:45] [INFO] Download progress: 22.1% (7.0MB/31.7MB)
+[17:27:45] [SUCCESS] Downloaded bbn_open_review
+[17:27:45] [INFO] Download progress: 25.2% (8.0MB/31.7MB)
+[17:27:45] [INFO] Download progress: 28.4% (9.0MB/31.7MB)
+[17:27:45] [INFO] Download progress: 31.5% (10.0MB/31.7MB)
+[17:27:45] [INFO] Download progress: 34.7% (11.0MB/31.7MB)
+[17:27:45] [INFO] Download progress: 37.8% (12.0MB/31.7MB)
+[17:27:46] [INFO] Download progress: 41.0% (13.0MB/31.7MB)
+[17:27:46] [INFO] Download progress: 44.1% (14.0MB/31.7MB)
+[17:27:46] [INFO] Download progress: 47.3% (15.0MB/31.7MB)
+[17:27:46] [INFO] Download progress: 50.4% (16.0MB/31.7MB)
+[17:27:46] [INFO] Download progress: 53.6% (17.0MB/31.7MB)
+[17:27:46] [INFO] Download progress: 56.7% (18.0MB/31.7MB)
+[17:27:47] [INFO] Download progress: 59.9% (19.0MB/31.7MB)
+[17:27:47] [INFO] Download progress: 63.0% (20.0MB/31.7MB)
+[17:27:47] [INFO] Download progress: 66.2% (21.0MB/31.7MB)
+[17:27:47] [INFO] Download progress: 69.3% (22.0MB/31.7MB)
+[17:27:47] [INFO] Download progress: 72.5% (23.0MB/31.7MB)
+[17:27:48] [INFO] Download progress: 75.6% (24.0MB/31.7MB)
+[17:27:48] [INFO] Download progress: 78.8% (25.0MB/31.7MB)
+[17:27:48] [INFO] Download progress: 81.9% (26.0MB/31.7MB)
+[17:27:48] [INFO] Download progress: 85.1% (27.0MB/31.7MB)
+[17:27:48] [INFO] Download progress: 88.2% (28.0MB/31.7MB)
+[17:27:49] [INFO] Download progress: 91.4% (29.0MB/31.7MB)
+[17:27:49] [INFO] Download progress: 94.5% (30.0MB/31.7MB)
+[17:27:49] [INFO] Download progress: 97.7% (31.0MB/31.7MB)
+[17:27:49] [SUCCESS] Downloaded pantheon_plus_stat_sys_covariance
+[17:27:49] [SUCCESS] Step step_01_01_data_download completed successfully

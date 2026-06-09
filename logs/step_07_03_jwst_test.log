@@ -1,13 +1,13 @@
-[01:40:16] [INFO] 
-[01:40:16] [INFO] ================================================================================
-[01:40:16] [INFO]    Starting step_07_03_jwst_test
-[01:40:16] [INFO] ================================================================================
-[01:40:16] [INFO] 
-[01:40:16] [INFO] Planned JWST tests:
-[01:40:16] [INFO]   test_1_angular_sizes: Medium priority
-[01:40:16] [INFO]     Galaxy angular sizes at z > 6
-[01:40:16] [INFO]   test_2_surface_brightness: High priority
-[01:40:16] [INFO]     UV surface brightness evolution
-[01:40:16] [INFO]   test_3_luminosity_functions: Low priority
-[01:40:16] [INFO]     Galaxy luminosity functions
-[01:40:16] [SUCCESS] Step step_07_03_jwst_test completed (planning)
+[20:52:39] [INFO] 
+[20:52:39] [INFO] ================================================================================
+[20:52:39] [INFO]    Starting step_07_03_jwst_test
+[20:52:39] [INFO] ================================================================================
+[20:52:39] [INFO] 
+[20:52:39] [INFO] Planned JWST tests:
+[20:52:39] [INFO]   test_1_angular_sizes: Medium priority
+[20:52:39] [INFO]     Galaxy angular sizes at z > 6
+[20:52:39] [INFO]   test_2_surface_brightness: High priority
+[20:52:39] [INFO]     UV surface brightness evolution
+[20:52:39] [INFO]   test_3_luminosity_functions: Low priority
+[20:52:39] [INFO]     Galaxy luminosity functions
+[20:52:39] [SUCCESS] Step step_07_03_jwst_test completed (planning)

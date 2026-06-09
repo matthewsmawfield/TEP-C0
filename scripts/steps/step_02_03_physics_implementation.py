@@ -103,14 +103,14 @@ def _validate_tep_perturbations(
     # For LCDM: standard FLRW formula
     d_A_lcdm = float(flrw.angular_diameter_distance(np.array([z_star]))[0])  # Mpc
     
-    # For TEP: Use TEP-modified distance relation from tep_cosmology.
+    # For TEP: Use TEP-modified distance relation from core.cosmology.
     # CMB-scale acoustic consistency requires the *screened* epsilon_T (from
     # the joint Pantheon+ + Planck Cobaya MCMC), not the unscreened SNe-only
     # value. The tep_fit object already carries this value via its
     # epsilon_T attribute, so we pull it from there to keep this function
     # consistent with the surrounding diagnostic block.
     try:
-        from core.tep_cosmology import TEPCosmology
+        from core.cosmology import TEPCosmology
 
         epsilon_t_for_distance = float(getattr(tep_fit, "epsilon_T", 0.0))
         tep_params = {
@@ -508,10 +508,10 @@ def run() -> dict:
     ensure_dirs()
 
     from core.cosmology import CosmologyFLRW
-    from core.static_metric import StaticCosmology
-    from core.structure_formation import StructureFormation, TEPStructureFormation
-    from core.tep_perturbations import TEPPerturbations
-    from core.structure_growth_validation import StructureGrowthValidator, run_full_structure_validation
+    from scripts.utils.static_metric import StaticCosmology
+    from scripts.utils.structure_formation import StructureFormation, TEPStructureFormation
+    from scripts.utils.tep_perturbations import TEPPerturbations
+    from scripts.utils.structure_growth_validation import StructureGrowthValidator, run_full_structure_validation
 
     cmb = _load_optional_step("step_05_04_cmb_spectra")
     bbn = _load_optional_step("step_05_07_bbn_preservation")
@@ -737,7 +737,7 @@ def run() -> dict:
             
             # Import TEP Cosmology explicitly for the test
             try:
-                from core.tep_cosmology import TEPCosmology
+                from core.cosmology import TEPCosmology
                 tep_bao = TEPCosmology(epsilon_T=epsilon_t_cmb, z_T=5.0)
             except ImportError:
                 tep_bao = None

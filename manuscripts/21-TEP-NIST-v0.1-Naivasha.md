@@ -1,9 +1,8 @@
 # Temporal Equivalence Principle: Spatial Variance of Laboratory Gravitational Constants as Local Temporal Topology
 **Matthew Lukin Smawfield**
 Version: v0.1 (Naivasha)
-First published: 7 June 2026
+First published: 6 June 2026
 DOI: 10.5281/zenodo.20576483
-Status: In Development
 
 ---
 

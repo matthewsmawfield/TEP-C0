@@ -1,18 +1,18 @@
 {
   "comparisons": {
     "BAO_vs_SGL": {
-      "delta_eta": 0.3444176703620361,
+      "delta_eta": 0.34820919151735175,
       "significant": true
     },
     "BAO_vs_SZ": {
       "consistent": false,
-      "delta_eta": 0.4024301550557705,
-      "sigma": 10.322373549266354
+      "delta_eta": 0.4064033535867664,
+      "sigma": 10.400424845577117
     },
     "SZ_vs_SGL": {
       "consistent": true,
-      "delta_eta": 0.058012484693734434,
-      "sigma": 1.0785171650120775
+      "delta_eta": 0.058194162069414634,
+      "sigma": 1.0785171650120802
     }
   },
   "critical_finding": {
@@ -30,15 +30,15 @@
       "physics": "linear density perturbations"
     },
     "SGL": {
-      "eta_weighted": 1.2106931981231643,
-      "eta_weighted_err": 0.04219277856207531,
+      "eta_weighted": 1.21448471927848,
+      "eta_weighted_err": 0.042324913452043846,
       "n_points": 15,
       "physical_scale": "~5 Mpc",
       "physics": "cluster gravitational potential"
     },
     "SZ": {
-      "eta_weighted": 1.2687056828168988,
-      "eta_weighted_err": 0.033362230396295434,
+      "eta_weighted": 1.2726788813478946,
+      "eta_weighted_err": 0.0334667107076841,
       "n_points": 20,
       "physical_scale": "~5 Mpc",
       "physics": "intracluster hot gas"
@@ -46,7 +46,7 @@
   },
   "status": "completed",
   "step": "step_04_05_ddr_threeway",
-  "timestamp": 1780612791,
+  "timestamp": 1781027533,
   "validation": {
     "blockers": [],
     "real_data": true,

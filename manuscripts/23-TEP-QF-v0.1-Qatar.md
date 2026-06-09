@@ -1,7 +1,7 @@
 # Temporal Equivalence Principle: The Dirac Limit of Dynamical Proper Time
 **Matthew Lukin Smawfield**
 Version: v0.1 (Qatar)
-First published: 1 June 2026 · Last updated: 1 June 2026
+First published: 7 June 2026 · Last updated: 8 June 2026
 DOI: 10.5281/zenodo.20572698
 
 ---

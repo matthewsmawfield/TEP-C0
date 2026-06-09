@@ -1,8 +1,8 @@
 {
   "step_id": "step_03_04_cobaya_mcmc_verbose",
-  "start_time": "2026-06-05T01:39:50.641942",
-  "end_time": "2026-06-05T01:39:50.653623",
-  "duration_ms": 11.681079864501953,
+  "start_time": "2026-06-09T20:52:13.074576",
+  "end_time": "2026-06-09T20:52:13.091616",
+  "duration_ms": 17.040014266967773,
   "status": "success",
   "operations": [],
   "parameters": {
@@ -10,12 +10,12 @@
     "tep_class.exists": false,
     "cobaya.available": true,
     "cobaya.version": "3.6.2",
-    "cobaya.check_duration_ms": 0.2002716064453125,
+    "cobaya.check_duration_ms": 1.1289119720458984,
     "prerequisites.tep_class": false,
     "prerequisites.cobaya": true
   },
   "environment": {
-    "timestamp": "2026-06-05T01:39:50.641949",
+    "timestamp": "2026-06-09T20:52:13.074578",
     "python_version": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 11:23:37) [Clang 14.0.6 ]",
     "platform": "darwin",
     "cwd": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0",

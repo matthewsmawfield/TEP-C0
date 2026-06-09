@@ -1,6 +1,6 @@
 observable,tep_explanation,numerical_anchor,status
 Cosmic Redshift (z),Projection of Temporal Shear gradients along the photon path.,FLRW error 0.00e+00,Verified as a transport identity
-SN 1a Distance-Redshift,TEP matter model incorporating matter-frame effects.,Dimensionless distance comparison (H0_ref = 70.0 km/s/Mpc); M_TEP = -19.31017052049644 vs M_LCDM = -19.32404890914055,validated
+SN 1a Distance-Redshift,TEP matter model incorporating matter-frame effects.,Dimensionless distance comparison (H0_ref = 70.0 km/s/Mpc); M_TEP = -19.31696028237551 vs M_LCDM = -19.324050612383857,validated
 Hubble Constant agreement,Resolution via temporal shear effects.,Dimensionless distances fix H0_ref = 70.0 km/s/Mpc; no H0 parameter in fit.,diagnostic
-Distance Duality (Xi_T),Measurable residuals in high-z luminosity/angular diameter relations.,Tolman Δχ²: -3236.77...,Moderate
-CMB Acoustic Scales,Preserved matter-frame acoustic horizon properly projected through shear connection.,Consistency: {'lcdm_sigma': 4.838} (Jordan Frame 100\theta_s = 1.0433 @ \epsilon_T = 0.018),validated via Jordan Frame mapping (step 05.09)
+Distance Duality (Xi_T),Measurable residuals in high-z luminosity/angular diameter relations.,Tolman Δχ²: -3647.74...,Moderate
+CMB Acoustic Scales,Preserved matter-frame acoustic horizon properly projected through shear connection.,Consistency: {} (Jordan Frame 100\theta_s = 1.0433 @ \epsilon_T = 0.018),validated via Jordan Frame mapping (step 05.09)

@@ -10,13 +10,13 @@
       "status": "ok"
     },
     "hubble_residuals": {
-      "lcdm_Om0_mle": 0.3809112849384738,
+      "lcdm_Om0_mle": 0.38093496411581507,
       "n_sne": 1701,
       "path": "results/figures/hubble_residuals.png",
       "status": "ok",
       "tep_m1_params": {
-        "M": -19.31017052049644,
-        "epsilon_T": 0.7562555262279003,
+        "M": -19.31696028237551,
+        "epsilon_T": 0.8585391719758505,
         "z_T": 10.0
       }
     }
@@ -28,7 +28,7 @@
   "skipped": {},
   "status": "completed",
   "step": "step_08_08_diagnostic_plots",
-  "timestamp": 1780612817,
+  "timestamp": 1781027560,
   "validation": {
     "claim_gate": "open",
     "note": "Diagnostic plots are generated only from real upstream artefacts. Synthetic image figures are forbidden.",

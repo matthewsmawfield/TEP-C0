@@ -9,7 +9,8 @@ theory:
       m_ncdm: 0.06
       output: tCl,pCl,lCl,mPk
       P_k_max_h/Mpc: 10
-      l_max_scalars: 2500
+      l_max_scalars: 2000
+      l_max_tensors: 0
       lensing: 'yes'
       tep_mode: 'yes'
       non_linear: halofit
@@ -135,15 +136,6 @@ likelihood:
     version: null
     input_params:
     - A_planck
-    output_params: []
-  core.pantheon_cobaya_likelihood.PantheonCobaya:
-    data_file: data/processed/tep_c0_pantheon_plus_distances.csv
-    cov_file: data/processed/tep_c0_pantheon_plus_covariance_manifest.csv
-    type: []
-    speed: -1
-    stop_at_error: false
-    version: null
-    input_params: []
     output_params: []
 prior:
   SZ: 'lambda ksz_norm, A_sz: stats.norm.logpdf(ksz_norm+1.6*A_sz, loc=9.5, scale=3.0)'
@@ -566,39 +558,7 @@ sampler:
     oversample_power: 0.4
     oversample_thin: true
     drag: false
-    blocking:
-    - - 1
-      - - tep_epsilon_T
-        - tep_z_T
-        - H0
-        - omega_b
-        - omega_cdm
-        - tau_reio
-        - logA
-        - n_s
-    - - 5
-      - - A_planck
-    - - 5
-      - - calib_100T
-        - calib_217T
-        - A_cib_217
-        - xi_sz_cib
-        - A_sz
-        - ksz_norm
-        - gal545_A_100
-        - gal545_A_143
-        - gal545_A_143_217
-        - gal545_A_217
-        - ps_A_100_100
-        - ps_A_143_143
-        - ps_A_143_217
-        - ps_A_217_217
-        - galf_TE_A_100
-        - galf_TE_A_100_143
-        - galf_TE_A_100_217
-        - galf_TE_A_143
-        - galf_TE_A_143_217
-        - galf_TE_A_217
+    blocking: null
     callback_function: null
     callback_every: null
     seed: null
@@ -606,7 +566,7 @@ sampler:
     oversample: null
     drag_limits: null
     fallback_covmat_scale: 4
-    version: 3.6.2
+    version: null
 output: tep_cobaya_sne
 verbose: 2
 version: 3.6.2

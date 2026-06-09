@@ -1552,7 +1552,7 @@ While the circularity concern cannot be entirely eliminated without independent 
 
 4. Phenomenological gradient suppression model:
 
-- *Issue:* The screened field model uses parameterized density-dependent field values rather than a full first-principles calculation from a specific scalar-tensor action.
+- *Issue:* The screened field model uses parameterized environment-dependent field values rather than a full first-principles calculation from a specific scalar-tensor action.
 
 - *Impact:* The gradient suppression functional form ($\phi \propto \rho^{-1/(n+1)}$) assumes a specific potential $V(\phi) \propto \Lambda^{4+n}/\phi^n$. Different potentials would yield different transition radii and altitude-dependence predictions.
 
@@ -1753,7 +1753,7 @@ relaxation techniques) validates the phenomenological gradient
 suppression model used in this analysis. This enables prediction of the
 Temporal Topology profile without the phase-boundary approximation and
 could explain the observed $\beta_A$ scatter through detailed
-density-dependent effects.
+environment-dependent effects.
 
 - Inclination-dependent modeling: Incorporation of
 Earth's oblateness ($J_2$) and latitude-dependent density variations

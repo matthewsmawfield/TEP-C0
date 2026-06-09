@@ -1,7 +1,7 @@
 # What Do Precision Tests of General Relativity Actually Measure?
 **Matthew Lukin Smawfield**
 Version: v0.4 (Istanbul)
-First published: 31 December 2025 · Last updated: 6 June 2026
+First published: 31 December 2025 · Last updated: 8 June 2026
 DOI: 10.5281/zenodo.18109760
 
 ---

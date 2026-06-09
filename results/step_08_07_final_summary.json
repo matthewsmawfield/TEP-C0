@@ -6,12 +6,12 @@
   },
   "step": "step_08_07_final_summary",
   "summary": {
-    "audit_status": "SUCCESS",
+    "audit_status": "WARNING",
     "claim_blockers": [],
-    "f_t_mcmc": 0.0,
-    "h0_mcmc": 66.87,
-    "pass_rate": 1.0,
+    "f_t_mcmc": 0.859,
+    "h0_mcmc": 70.0,
+    "pass_rate": 0.9167,
     "research_grade_claim_gate": "open",
-    "trf": 0.4854
+    "trf": 0.1613
   }
 }

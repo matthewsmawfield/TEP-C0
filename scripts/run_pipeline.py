@@ -5,7 +5,7 @@ The runner is intentionally strict: failed dependencies are recorded as failed
 results, not silently ignored.
 
 Manuscript-to-code mapping for external auditors:
-    rho_half (manuscript, Section 2.5)  ->  core.tep_cosmology.TEPCosmology.RHO_HALF
+    rho_half (manuscript, Section 2.5)  ->  core.cosmology.TEPCosmology.RHO_HALF
     Screening formula S(rho)            ->  TEPCosmology.screening_function(rho)
     Value: 0.5 M_sun / pc^3
 """
@@ -149,9 +149,12 @@ def run_pipeline(specific_steps: list[str] | None = None, resume: bool = False) 
         start = time.time()
         result = run_step(step_module)
         elapsed = time.time() - start
+
+        if result is None:
+            result = {"step": step_module, "status": "failed", "error": "Step returned None (missing return value)"}
         results[step_module] = result
 
-        if "error" in result:
+        if isinstance(result, dict) and "error" in result:
             print(f"  [FAIL] {elapsed:.1f}s: {result['error']}")
             failed.append(step_module)
         else:

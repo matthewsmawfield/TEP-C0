@@ -142,7 +142,7 @@ parameters:
     class: "observable_response"
     first_paper: 0
     used_in: [0, 6, 18, 22, 24]
-    description: "Solar-system PPN bound |β| < 3.4×10⁻³ from Cassini time-delay measurements (Bertotti et al. 2003). The lab-scale bare coupling β_A = -1.0 must be screened by a factor ~300 in the solar system; this is achieved by the density-dependent coupling model f(ρ) = 1/[1+(ρ_transition/ρ)^n]."
+    description: "Solar-system PPN bound |β| < 3.4×10⁻³ from Cassini time-delay measurements (Bertotti et al. 2003). The lab-scale bare coupling β_A = -1.0 must be screened by a factor ~300 in the solar system; this is achieved by the environment-dependent coupling model f(ρ) = 1/[1+(ρ_transition/ρ)^n]."
 
   - symbol: "B"
     latex: "B(\\phi)"

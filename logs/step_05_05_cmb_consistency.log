@@ -1,9 +1,9 @@
-[01:39:55] [INFO] 
-[01:39:55] [INFO] ================================================================================
-[01:39:55] [INFO]    Starting step_05_05_cmb_consistency
-[01:39:55] [INFO] ================================================================================
-[01:39:55] [INFO] 
-[01:39:55] [INFO] Using epsilon_T=0.75626 from step_017 (TEP-CLASS CMB fit)
-[01:39:57] [INFO] Zero-limit max relative difference: 0.000e+00
-[01:39:57] [INFO] Zero-limit OK: True
-[01:39:57] [SUCCESS] Step step_05_05_cmb_consistency completed: research_grade=True
+[20:52:13] [INFO] 
+[20:52:13] [INFO] ================================================================================
+[20:52:13] [INFO]    Starting step_05_05_cmb_consistency
+[20:52:13] [INFO] ================================================================================
+[20:52:13] [INFO] 
+[20:52:13] [INFO] Using epsilon_T=0.85854 from step_017 (TEP-CLASS CMB fit)
+[20:52:15] [INFO] Zero-limit max relative difference: 0.000e+00
+[20:52:15] [INFO] Zero-limit OK: True
+[20:52:15] [SUCCESS] Step step_05_05_cmb_consistency completed: research_grade=True

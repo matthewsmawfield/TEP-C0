@@ -1,16 +1,16 @@
-[01:39:51] [INFO] 
-[01:39:51] [INFO] ================================================================================
-[01:39:51] [INFO]    Starting step_04_04_distance_duality
-[01:39:51] [INFO] ================================================================================
-[01:39:51] [INFO] 
-[01:39:51] [PROCESS] Loading fitted TEP model
-[01:39:51] [INFO] Parameters: LCDM H0=70.00, TEP H0=70.00, epsilon_T=0.756256, z_T=10.0
-[01:39:51] [PROCESS] Computing theoretical distance-duality relation
-[01:39:51] [PROCESS] Loading DDR observational constraints
-[01:39:51] [INFO] Loaded 10 DDR constraints
-[01:39:51] [INFO] DDR weighted mean: η = 0.8662 ± 0.0202
-[01:39:51] [INFO] Deviation from unity: 6.63σ
-[01:39:51] [INFO] Δχ² (LCDM - TEP) = 0.00
-[01:39:51] [INFO] TEP η(z=2) prediction: 1.0000
-[01:39:51] [SUCCESS] Research grade: True
-[01:39:51] [SUCCESS] Step step_04_04_distance_duality completed successfully
+[20:52:13] [INFO] 
+[20:52:13] [INFO] ================================================================================
+[20:52:13] [INFO]    Starting step_04_04_distance_duality
+[20:52:13] [INFO] ================================================================================
+[20:52:13] [INFO] 
+[20:52:13] [PROCESS] Loading fitted TEP model
+[20:52:13] [INFO] Parameters: LCDM H0=70.00, TEP H0=70.00, epsilon_T=0.858539, z_T=10.0
+[20:52:13] [PROCESS] Computing theoretical distance-duality relation
+[20:52:13] [PROCESS] Loading DDR observational constraints
+[20:52:13] [INFO] Loaded 10 DDR constraints
+[20:52:13] [INFO] DDR weighted mean: η = 0.8662 ± 0.0202
+[20:52:13] [INFO] Deviation from unity: 6.63σ
+[20:52:13] [INFO] Δχ² (LCDM - TEP) = 0.00
+[20:52:13] [INFO] TEP η(z=2) prediction: 1.0000
+[20:52:13] [SUCCESS] Research grade: True
+[20:52:13] [SUCCESS] Step step_04_04_distance_duality completed successfully

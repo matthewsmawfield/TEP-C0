@@ -1,13 +1,5 @@
 {
-  "alpha_results": {
-    "alpha_BAO": -0.7415383944304706,
-    "alpha_SGL": 1.9297977261427315,
-    "alpha_SZ": 0.18118954634384787,
-    "definition": "alpha_probe = beta_probe (step_04_06 empirical power-law)",
-    "input_parameters": {
-      "epsilon_T": 0.8585386275220572
-    }
-  },
+  "alpha_results": null,
   "description": "Data-calibrated TEP screening derivation. epsilon_T and z_T are taken from step_03_01; per-probe k_probe, S_probe and alpha_probe are extracted from step_04_06. No hand-tuned coefficients.",
   "implications": {
     "distance_duality_anomaly": "Probe-dependent (eta_0 measured separately per probe)",
@@ -16,191 +8,24 @@
     "hubble_tension": "Reconciled via environment-dependent screening of epsilon_T"
   },
   "input_parameters": {
-    "epsilon_T": 0.8585386275220572,
-    "sne_fit_variant": "M1_free_zT",
-    "z_T": 10.0
+    "epsilon_T": null,
+    "sne_fit_variant": null,
+    "z_T": null
   },
-  "predictions": {
-    "S_vs_z": {
-      "BAO": [
-        {
-          "S": 0.8288252296176676,
-          "z": 0.1
-        },
-        {
-          "S": 1.043150875376535,
-          "z": 0.5
-        },
-        {
-          "S": 1.2912014259228795,
-          "z": 1.0
-        },
-        {
-          "S": 1.7441041942931812,
-          "z": 2.0
-        },
-        {
-          "S": 2.916068530789532,
-          "z": 5.0
-        }
-      ],
-      "SGL": [
-        {
-          "S": 0.975421748702403,
-          "z": 0.1
-        },
-        {
-          "S": 0.5361069446924404,
-          "z": 0.5
-        },
-        {
-          "S": 0.30771236155764975,
-          "z": 1.0
-        },
-        {
-          "S": 0.14070982792887624,
-          "z": 2.0
-        },
-        {
-          "S": 0.03693154112587108,
-          "z": 5.0
-        }
-      ],
-      "SZ": [
-        {
-          "S": 0.8014819405010255,
-          "z": 0.1
-        },
-        {
-          "S": 0.7576833913804258,
-          "z": 0.5
-        },
-        {
-          "S": 0.7192008210088999,
-          "z": 1.0
-        },
-        {
-          "S": 0.6682581732151837,
-          "z": 2.0
-        },
-        {
-          "S": 0.5893873234508794,
-          "z": 5.0
-        }
-      ]
-    },
-    "eta_vs_z": {
-      "BAO": [
-        {
-          "eta": 1.2065269785058237,
-          "z": 0.1
-        },
-        {
-          "eta": 0.9586340994432283,
-          "z": 0.5
-        },
-        {
-          "eta": 0.7744725028360739,
-          "z": 1.0
-        },
-        {
-          "eta": 0.5733602403297137,
-          "z": 2.0
-        },
-        {
-          "eta": 0.3429274687619388,
-          "z": 5.0
-        }
-      ],
-      "SGL": [
-        {
-          "eta": 1.0251975633414914,
-          "z": 0.1
-        },
-        {
-          "eta": 1.8652994703765513,
-          "z": 0.5
-        },
-        {
-          "eta": 3.2497881948517384,
-          "z": 1.0
-        },
-        {
-          "eta": 7.106824126780001,
-          "z": 2.0
-        },
-        {
-          "eta": 27.077126204719505,
-          "z": 5.0
-        }
-      ],
-      "SZ": [
-        {
-          "eta": 1.247688749387012,
-          "z": 0.1
-        },
-        {
-          "eta": 1.3198124855001727,
-          "z": 0.5
-        },
-        {
-          "eta": 1.390432228090609,
-          "z": 1.0
-        },
-        {
-          "eta": 1.4964276384211066,
-          "z": 2.0
-        },
-        {
-          "eta": 1.6966771428760492,
-          "z": 5.0
-        }
-      ]
-    },
-    "note": "Per-probe H0 inferences omitted: they require a joint cosmology MCMC and are not derivable from the screening fit alone."
-  },
-  "status": "completed",
+  "predictions": null,
+  "status": "blocked",
   "step": "step_02_02_theory_derivation",
-  "theory_results": {
-    "calibration_source": "step_04_06_screening_fit",
-    "connection_to_eta": {
-      "eta_0_BAO": 1.2948853060910912,
-      "eta_0_SGL": 0.8529588027724899,
-      "eta_0_SZ": 1.2263271325381624,
-      "relation": "eta_probe(0) = 1 + k_probe * epsilon_T;  S_probe(0) = 1/eta_probe(0)"
-    },
-    "derived_parameters": {
-      "S_BAO_0": 0.772269169551958,
-      "S_SGL_0": 1.172389565298537,
-      "S_SZ_0": 0.8154431011652438,
-      "z_c_BAO": 2.851827996431164,
-      "z_c_SGL": 0.6789842943494957,
-      "z_c_SZ": 248.4060271891567,
-      "z_c_definition": "z_c_probe = exp(1/|beta_probe|) - 1 (e-folding from step_04_06)"
-    },
-    "environment_couplings_k": {
-      "BAO": 0.3434735452057632,
-      "SGL": -0.17126916892709332,
-      "SZ": 0.2636190443654181,
-      "definition": "k_probe = (eta_0_probe - 1) / epsilon_T"
-    },
-    "inputs": {
-      "epsilon_T": 0.8585386275220572,
-      "z_T": 10.0
-    },
-    "physical_interpretation": {
-      "epsilon_T": "Universal TEP coupling amplitude (Pantheon+ M1 fit, step_03_01)",
-      "k_probe": "Environment-dependent macroscopic coupling extracted from step_04_06 empirical eta_0 fit",
-      "z_T": "Characteristic TEP transport redshift (Pantheon+ M1 fit, step_03_01)"
-    }
-  },
+  "theory_results": null,
   "validation": {
-    "blockers": [],
+    "blockers": [
+      "missing step_03_01 TEP-M1 MLE (epsilon_T, z_T)",
+      "missing step_04_06 screening fit"
+    ],
     "calibration_pipeline": [
       "step_03_01_three_model_comparison -> epsilon_T, z_T",
       "step_04_06_screening_fit -> eta_0_probe, beta_probe"
     ],
-    "research_grade": true,
-    "theory_consistent_with_data": true
+    "research_grade": false,
+    "theory_consistent_with_data": false
   }
 }

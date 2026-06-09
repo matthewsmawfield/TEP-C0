@@ -13,7 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import numpy as np
-from core.tep_cosmology import TEPCosmology
+from core.cosmology import TEPCosmology
 from c0_common import TEPLogger, ensure_dirs, print_status, read_json, rounded, set_step_logger, step_csv_path, step_json_path, write_csv, write_json
 
 STEP_ID = "step_04_01_sn_time_dilation"

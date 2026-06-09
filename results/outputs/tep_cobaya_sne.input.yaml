@@ -7,7 +7,8 @@ theory:
       m_ncdm: 0.06
       output: tCl,pCl,lCl,mPk
       P_k_max_h/Mpc: 10
-      l_max_scalars: 2500
+      l_max_scalars: 2000
+      l_max_tensors: 0
       lensing: 'yes'
       tep_mode: 'yes'
       non_linear: halofit
@@ -15,7 +16,6 @@ likelihood:
   planck_2018_highl_plik.TTTEEE: {}
   planck_2018_lowl.TT: {}
   planck_2018_lowl.EE: {}
-  core.pantheon_cobaya_likelihood.PantheonCobaya: {}
 params:
   tep_epsilon_T:
     prior:

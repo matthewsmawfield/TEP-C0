@@ -1,7 +1,7 @@
 # Temporal Equivalence Principle: A Topological Fermion Model for Spin and the g−2 Anomaly
 **Matthew Lukin Smawfield**
 Version: v0.1 (Paris)
-First published: 31 May 2026 · Last updated: 7 June 2026
+First published: 7 June 2026 · Last updated: 8 June 2026
 
 ---
 
