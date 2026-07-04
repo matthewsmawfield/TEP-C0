@@ -9,10 +9,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import csv
 import numpy as np
 from c0_common import PROCESSED_DIR, TEPLogger, ensure_dirs, print_status, read_json, rounded, set_step_logger, step_json_path, write_json
-from core.bbn_network_resolver import BBNInputs, chi2_against_registry, run_network
-from core.bbn_parameter_posterior import BBNPosteriorConfig, load_bbn_registry, run_bbn_mcmc
-from core.bbn_working import BBNWorking
-from core.bbn_cross_validation import (
+from scripts.utils.bbn_network_resolver import BBNInputs, chi2_against_registry, run_network
+from scripts.utils.bbn_parameter_posterior import BBNPosteriorConfig, load_bbn_registry, run_bbn_mcmc
+from scripts.utils.bbn_working import BBNWorking
+from scripts.utils.bbn_cross_validation import (
     BBNCrossValidator,
     generate_cross_validation_report,
 )

@@ -1,8 +1,11 @@
-[20:52:13] [INFO] 
-[20:52:13] [INFO] ================================================================================
-[20:52:13] [INFO]    Starting step_03_05_analyze_cobaya
-[20:52:13] [INFO] ================================================================================
-[20:52:13] [INFO] 
-[20:52:13] [WARNING] Chain files not found at results/outputs/tep_cobaya_sne.1.txt
-[20:52:13] [ERROR] TEP-CLASS: TEP-CLASS not found at /tmp/class_tep
-[20:52:13] [SUCCESS] Cobaya: Cobaya 3.6.2 available
+[12:27:14] [INFO] 
+[12:27:14] [INFO] ================================================================================
+[12:27:14] [INFO]    Starting step_03_05_analyze_cobaya
+[12:27:14] [INFO] ================================================================================
+[12:27:14] [INFO] 
+[12:27:14] [PROCESS] Loading chains from results/outputs/tep_cobaya_joint_combined...
+[12:27:14] [SUCCESS] Chains loaded successfully.
+[12:27:18] [PROCESS] Generating triangle plot...
+[12:27:25] [SUCCESS] Plot saved to results/figures/step_03_05_analyze_cobaya_triangle.png
+[12:27:25] [INFO] NOTE: This is a joint SNe+CMB background/acoustic MCMC diagnostic. tep_epsilon_T here is the homogeneous acoustic-sector amplitude, distinct from epsilon_shear_los fitted to SNe alone. H0 boundary behaviour is separately stress-tested.
+[12:27:25] [SUCCESS] Summary stats saved to results/outputs/tep_cobaya_joint_converged_stats.txt

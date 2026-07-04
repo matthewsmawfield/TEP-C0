@@ -48,7 +48,7 @@
             .join('\n\n');
 
         index = index.replace(
-            /<section id="abstract"[\s\S]*?<section id="reproducibility" data-component="8_reproducibility\.html"><\/section>/,
+            /<section id="abstract"[\s\S]*?<section id="reproducibility" data-component="9_reproducibility\.html"><\/section>/,
             components
         );
         index = index.replace('<script src="build.js"></script>', '<script>window.__STATIC_MANUSCRIPT__ = true;</script>');
@@ -73,7 +73,14 @@
         if (fs.existsSync(publicDir)) {
             copyRecursiveSync(publicDir, publicDest, fs, path);
         }
-        
+
+        // Copy public/figures to dist/figures for manuscript image references
+        const publicFiguresDir = path.join(siteDir, 'public', 'figures');
+        const figuresDest = path.join(distDir, 'figures');
+        if (fs.existsSync(publicFiguresDir)) {
+            copyRecursiveSync(publicFiguresDir, figuresDest, fs, path);
+        }
+
         // Copy assets directory to dist
         const assetsDir = path.join(siteDir, 'assets');
         const assetsDest = path.join(distDir, 'assets');

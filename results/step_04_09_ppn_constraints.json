@@ -1,0 +1,132 @@
+{
+  "beta_A": -1.0,
+  "bounds": {
+    "cassini_gamma": {
+      "central": 1.0,
+      "err": 2.3e-05,
+      "source": "Bertotti et al. 2003"
+    },
+    "llr_beta": {
+      "central": 1.0,
+      "err": 0.00012,
+      "source": "LLR Nordtvedt effect"
+    }
+  },
+  "description": "TEP PPN derivation: gradient-dependent screening closes Cassini gap and resolves density-regime paradox",
+  "gradient_dependent_screening": {
+    "cassini_gate": {
+      "beta_eff": -0.0,
+      "g_saturn_orbit_m_s2": 6.570928358165676e-05,
+      "gamma": 1.0,
+      "passes_cassini": true,
+      "screening_factor": 0.0
+    },
+    "conclusion": "passes_Cassini_and_preserves_galactic_coupling",
+    "environments": [
+      {
+        "beta_eff": -0.0,
+        "description": "Sun surface, r=R_sun",
+        "environment": "solar_surface",
+        "g_m_s2": 274.2084034394405,
+        "gamma": 1.0,
+        "gamma_deviation_sigma": 0.0,
+        "passes_cassini": null,
+        "ppn_test_environment": false,
+        "screening_factor": 0.0
+      },
+      {
+        "beta_eff": -0.0,
+        "description": "Saturn orbit (~9.5 AU), Cassini path",
+        "environment": "solar_wind_saturn",
+        "g_m_s2": 6.570928358165676e-05,
+        "gamma": 1.0,
+        "gamma_deviation_sigma": 0.0,
+        "passes_cassini": true,
+        "ppn_test_environment": true,
+        "screening_factor": 0.0
+      },
+      {
+        "beta_eff": -0.0,
+        "description": "Earth orbit (1 AU)",
+        "environment": "solar_wind_earth",
+        "g_m_s2": 0.005930262843244523,
+        "gamma": 1.0,
+        "gamma_deviation_sigma": 0.0,
+        "passes_cassini": true,
+        "ppn_test_environment": true,
+        "screening_factor": 0.0
+      },
+      {
+        "beta_eff": -0.0,
+        "description": "Mercury orbit (~0.39 AU)",
+        "environment": "mercury_orbit",
+        "g_m_s2": 0.03898923631324473,
+        "gamma": 1.0,
+        "gamma_deviation_sigma": 0.0,
+        "passes_cassini": true,
+        "ppn_test_environment": true,
+        "screening_factor": 0.0
+      },
+      {
+        "beta_eff": -0.0,
+        "description": "Earth surface, r=R_earth",
+        "environment": "earth_surface",
+        "g_m_s2": 9.820302293385645,
+        "gamma": 1.0,
+        "gamma_deviation_sigma": 0.0,
+        "passes_cassini": null,
+        "ppn_test_environment": false,
+        "screening_factor": 0.0
+      },
+      {
+        "beta_eff": -0.890869,
+        "description": "Galactic halo virial radius",
+        "environment": "galactic_halo",
+        "g_m_s2": 3.5e-10,
+        "gamma": -0.5872937138,
+        "gamma_deviation_sigma": -69012.77,
+        "passes_cassini": null,
+        "ppn_test_environment": false,
+        "screening_factor": 0.890869
+      },
+      {
+        "beta_eff": -0.985804,
+        "description": "Wide binary / deep MOND regime",
+        "environment": "wide_binary",
+        "g_m_s2": 1.2e-10,
+        "gamma": -0.9436206948,
+        "gamma_deviation_sigma": -84505.25,
+        "passes_cassini": null,
+        "ppn_test_environment": false,
+        "screening_factor": 0.985804
+      }
+    ],
+    "g_t_m_s2": 1e-09,
+    "model": "f(g) = [1 + (g/g_t)^n]\u207b\u00b9 where g = |\u2207\u03a6|",
+    "note": "Phenomenological parameterization of TEP environmental screening factor S_Sigma(E) tracking local Newtonian acceleration",
+    "ppn_test_passes_cassini": true,
+    "steepness_n": 2.0,
+    "wide_binary_gate": {
+      "beta_eff": -0.985804,
+      "coupling_active_fraction": 0.9858,
+      "g_wide_binary_m_s2": 1.2e-10,
+      "screening_factor": 0.985804
+    }
+  },
+  "lorentzian_source_screening": {
+    "Q_eff_over_Msun_approx": 0.141248,
+    "beta_eff": -0.141248,
+    "conclusion": "gap_identified_steeper_profile_needed",
+    "gamma": 0.960098005,
+    "gamma_deviation_sigma": -1734.9,
+    "passes_cassini": false
+  },
+  "status": "completed",
+  "step": "step_04_09_ppn_constraints",
+  "unscreened": {
+    "beta": 1.0,
+    "cassini_deviation_sigma": 86956.5,
+    "conclusion": "ruled_out_by_Cassini",
+    "gamma": -1.0
+  }
+}

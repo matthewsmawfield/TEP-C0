@@ -75,8 +75,12 @@ def run():
         write_json(step_json_path(STEP_ID), results)
         return results
     
-    # Test if data favors TEP over pure expansion
-    tep_favored = abs(ddr_deviation) > 2.0 or tolman_delta_chi2 > 9.0
+    # Neither DDR nor Tolman currently provides a clean TEP discriminator:
+    # - DDR: both LCDM and TEP predict eta=1 by construction; the 6.6σ deviation
+    #   reflects systematic tension in the compiled D_L/D_A sample (Planck D_L vs BAO D_A)
+    # - Tolman: TEP predicts n_TEP ≈ 4.8, LCDM predicts n=4.0, data shows n=3.375;
+    #   TEP is further from the data than LCDM, and evolution/K-correction systematics dominate
+    tep_favored = False
     
     results = {
         'step': STEP_ID,
@@ -88,8 +92,8 @@ def run():
             'tolman_xi_must_be': 1.0
         },
         'tep_hypothesis_favored': tep_favored,
-        'confidence': 'Preliminary' if not ddr or not tolman else ('Moderate' if tep_favored else 'Weak'),
-        'interpretation': 'TEP predicts measurable deviations from pure expansion in DDR and Tolman tests'
+        'confidence': 'Blocked',
+        'interpretation': 'DDR and Tolman sectors are currently blocked as clean discriminators. DDR compilation mixes inconsistent D_L/D_A sources. Tolman is dominated by galaxy-evolution systematics. A self-consistent TEP-derived compilation and evolution-corrected Tolman analysis are required before these tests can discriminate.'
     }
     
     write_json(step_json_path(STEP_ID), results)

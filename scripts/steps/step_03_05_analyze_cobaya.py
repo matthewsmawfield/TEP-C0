@@ -14,6 +14,12 @@ import numpy as np
 
 # Add project root to path for imports
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts" / "utils"))
+from plot_style import apply_tep_style
+
+# Apply TEP manuscript style (affects matplotlib backend used by getdist)
+apply_tep_style()
+
 from c0_common import TEPLogger, ensure_dirs, print_status, set_step_logger
 
 STEP_ID = "step_03_05_analyze_cobaya"
@@ -24,7 +30,15 @@ def run():
     print_status(f"Starting {STEP_ID}", "TITLE")
     ensure_dirs()
     
-    chain_prefix = "results/outputs/tep_cobaya_sne"
+    # Support both old single-chain and new multi-chain outputs
+    combined_prefix = "results/outputs/tep_cobaya_joint_combined"
+    
+    if Path(f"{combined_prefix}.1.txt").exists():
+        # Use pre-combined multi-chain file
+        chain_prefix = combined_prefix
+    else:
+        # Fall back to single chain
+        chain_prefix = "results/outputs/tep_cobaya_joint_final"
     
     if not Path(f"{chain_prefix}.1.txt").exists():
         print_status(f"Chain files not found at {chain_prefix}.1.txt", "WARNING")
@@ -58,33 +72,85 @@ def run():
         
         # Plot triangle
         print_status("Generating triangle plot...", "PROCESS")
-        g = plots.get_subplot_plotter()
-        g.settings.figure_legend_frame = False
+        g = plots.get_subplot_plotter(subplot_size=2.8)
+        g.settings.figure_legend_frame = True
         g.settings.alpha_filled_add = 0.85
         g.settings.title_limit_fontsize = 14
+        g.settings.axes_fontsize = 12
+        g.settings.lab_fontsize = 13
+        g.settings.legend_fontsize = 11
         
         try:
-            g.triangle_plot([samples], plot_params, filled=True, title_limit=1)
+            g.triangle_plot([samples], plot_params, filled=True)
             
             out_path = Path(f"results/figures/{STEP_ID}_triangle.png")
             out_path.parent.mkdir(parents=True, exist_ok=True)
             g.export(str(out_path))
             print_status(f"Plot saved to {out_path}", "SUCCESS")
+            print_status(
+                "NOTE: This is a joint SNe+CMB background/acoustic MCMC diagnostic. "
+                "tep_epsilon_T here is the homogeneous acoustic-sector amplitude, "
+                "distinct from epsilon_shear_los fitted to SNe alone. "
+                "H0 boundary behaviour is separately stress-tested.",
+                "INFO",
+            )
         except Exception as e:
             print_status(f"Could not generate triangle plot (chains may lack variance): {e}", "WARNING")
         
         # Save a basic stats dump
-        stats_path = Path("results/outputs/tep_cobaya_sne_stats.txt")
+        stats_path = Path("results/outputs/tep_cobaya_joint_converged_stats.txt")
+        constraint_list = []
         with open(stats_path, 'w') as f:
             f.write("--- Parameter Constraints ---\n")
             for param in plot_params:
                 par_stat = stats.parWithName(param)
                 if par_stat:
                     f.write(f"{param}: {par_stat.mean:.4g} +/- {par_stat.err:.4g}\n")
+                    constraint_list.append({
+                        "parameter": param,
+                        "mean": float(par_stat.mean),
+                        "std": float(par_stat.err),
+                        "lower_68": float(par_stat.limits[0].lower),
+                        "upper_68": float(par_stat.limits[0].upper),
+                    })
         print_status(f"Summary stats saved to {stats_path}", "SUCCESS")
         
+        # Read convergence from step_03_04 JSON (multi-chain combined R-1)
+        import json
+        step04_path = Path("results/step_03_04_cobaya_mcmc.json")
+        convergence_info = {}
+        if step04_path.exists():
+            try:
+                with open(step04_path) as f:
+                    step04 = json.load(f)
+                convergence_info = step04.get("convergence", {})
+            except Exception:
+                pass
+
         from c0_common import step_json_path, write_json
-        payload = {"step": STEP_ID, "status": "completed"}
+        
+        # Determine overall status based on convergence
+        is_converged = convergence_info.get("converged", False)
+        r_minus1 = convergence_info.get("Rminus1", float('inf'))
+        status = "completed" if is_converged else "blocked"
+        
+        payload = {
+            "step": STEP_ID,
+            "status": status,
+            "constraints": constraint_list,
+            "n_parameters": len(plot_params),
+            "figure_path": str(out_path) if Path(out_path).exists() else None,
+            "stats_path": str(stats_path),
+            "chain_files": [f.name for f in Path("results/outputs").glob("tep_cobaya_joint_chain*")],
+            "convergence": convergence_info,
+            "note": (
+                "Joint SNe+CMB background/acoustic MCMC diagnostic. "
+                "tep_epsilon_T here is the homogeneous acoustic-sector amplitude, "
+                "distinct from epsilon_shear_los fitted to SNe alone. "
+                f"R-1 = {r_minus1:.3f} (threshold 0.05 for 39-parameter Planck+SNe). "
+                + ("Converged." if is_converged else "Not yet converged — constraints are preliminary.")
+            ),
+        }
         write_json(step_json_path(STEP_ID), payload)
         return payload
         

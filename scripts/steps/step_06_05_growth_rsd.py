@@ -88,20 +88,10 @@ def compute_fsigma8_class(
     
     h = 0.7
     
-    # Scale A_s to match Planck sigma8 normalization for LCDM (Om0=0.3)
-    # For probe-dependent framework, growth uses same baseline (ε_T=0, Om0=0.3)
-    # This allows independent determination of ε_T_growth from growth data
-    A_s_base = 2.1e-9
-    if abs(Om0 - 0.3) < 0.01 and epsilon_T == 0.0:
-        # LCDM or TEP growth baseline: use base A_s
-        A_s_scaled = A_s_base
-    else:
-        # Non-standard parameters: scale A_s to maintain sigma8 normalization
-        sigma8_baseline = 0.35  # For Om0=0.127 with A_s=2.1e-9
-        sigma8_target = 0.81
-        scaling = (sigma8_target / sigma8_baseline)**2
-        A_s_scaled = A_s_base * scaling
-        print(f"  [A_s scaling: {scaling:.2f}x for Om0={Om0:.3f}]")
+    # A_s is kept at Planck baseline for honest confrontation with data.
+    # If TEP predicts a different sigma_8 for the same A_s, that is a real
+    # theoretical prediction, not a calibration error.
+    A_s_scaled = 2.1e-9
     
     params = {
         'output': 'mPk',
@@ -214,10 +204,13 @@ def run() -> dict:
         epsilon_T_dist = 0.28865
         Om0_dist = 0.3
     
-    # Use ε_T=0 for growth calculations (probe-dependent framework)
-    epsilon_T_growth = 0.0
-    Om0_growth = 0.3  # Use standard LCDM matter density for growth
-    print_status(f"Growth parameters: ε_T_growth={epsilon_T_growth:.5f}, Om0_growth={Om0_growth:.3f} (independent fit)", "INFO")
+    # Honest confrontation: use TEP acoustic-sector parameters for growth
+    # The acoustic-sector epsilon_T ~ 0.018 and Om0 = 1.0 (EdS) are the
+    # parameters that reproduce CMB acoustics. Confronting them with RSD
+    # data tests whether nonlinear screening can resolve the sigma_8 tension.
+    epsilon_T_growth = 0.018
+    Om0_growth = 1.0
+    print_status(f"Growth parameters: ε_T_growth={epsilon_T_growth:.5f}, Om0_growth={Om0_growth:.3f} (TEP acoustic sector)", "INFO")
     
     for data in RSD_DATA:
         z = data["z"]
@@ -242,8 +235,8 @@ def run() -> dict:
                 fs8_tep = fs8_lcdm
         else:
             fs8_lcdm = lcdm_fsigma8_approx(z)
-            # TEP: lower matter density → proportionally lower growth
-            fs8_tep = fs8_lcdm * (Om0_tep / 0.3)**0.55
+            # TEP: EdS matter density → proportionally different growth
+            fs8_tep = fs8_lcdm * (Om0_growth / 0.3)**0.55
         
         # Chi2
         chi2_lcdm += ((fs8_obs - fs8_lcdm) / fs8_err)**2
@@ -287,13 +280,13 @@ def run() -> dict:
     chi2_per_dof_tep = chi2_tep / ndof_safe
     if chi2_per_dof_tep > 5:
         print_status("\nTHEORETICAL TENSION IDENTIFIED:", "WARNING")
-        print_status(f"  SNe Ia data (Step 022) favors: Om0 = {Om0_tep:.3f}", "WARNING")
+        print_status(f"  TEP acoustic sector: Om0 = {Om0_growth:.3f}, ε_T = {epsilon_T_growth:.3f}", "WARNING")
         print_status(f"  RSD data prefers: Om0 ≈ 0.3 for maximal growth", "WARNING")
-        print_status(f"  TEP fσ₈ predictions: ~20% below ΛCDM (physical consequence of low Ωₘ)", "WARNING")
-        print_status(f"  Resolution paths: (1) Modified TEP growth physics, (2) Joint SNe+RSD fit", "WARNING")
+        print_status(f"  TEP fσ₈ predictions: differ from ΛCDM (physical consequence of EdS+TEP)", "WARNING")
+        print_status(f"  Resolution paths: (1) Nonlinear screening S(ρ)→0 in clusters, (2) Joint SNe+RSD fit", "WARNING")
     elif chi2_per_dof_tep > 2:
-        print_status("\nNote: Mild tension between SNe and RSD preferred Ωₘ", "INFO")
-        print_status(f"  SNe favor Om0 = {Om0_tep:.3f}, RSD prefers higher values", "INFO")
+        print_status("\nNote: Mild tension between TEP and RSD preferred Ωₘ", "INFO")
+        print_status(f"  TEP acoustic sector Om0 = {Om0_growth:.3f}, RSD prefers ≈ 0.3", "INFO")
     
     # Research grade assessment
     research_grade = class_available and ndof >= 10

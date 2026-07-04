@@ -1,0 +1,14 @@
+[09:55:02] [INFO] 
+[09:55:02] [INFO] ================================================================================
+[09:55:02] [INFO]    Starting step_03_08_h0_boundary_stress
+[09:55:02] [INFO] ================================================================================
+[09:55:02] [INFO] 
+[09:55:02] [INFO] Testing prior A: uniform[50.0, 100.0]
+[09:55:02] [INFO]   Prior A: H0=70.00, lnL=-0.00, boundary_mass=0.760
+[09:55:02] [INFO] Testing prior B: uniform[20.0, 100.0]
+[09:55:02] [INFO]   Prior B: H0=70.00, lnL=-0.00, boundary_mass=0.101
+[09:55:02] [INFO] Testing prior C: uniform[0.1, 100.0]
+[09:55:02] [INFO]   Prior C: H0=70.00, lnL=-0.00, boundary_mass=0.005
+[09:55:02] [INFO] Testing prior D: log_uniform[1.0, 100.0]
+[09:55:02] [INFO]   Prior D: H0=70.00, lnL=-0.00, boundary_mass=0.006
+[09:55:02] [SUCCESS] Step step_03_08_h0_boundary_stress completed

@@ -1,0 +1,60 @@
+[09:56:05] [INFO] 
+[09:56:05] [INFO] ================================================================================
+[09:56:05] [INFO]    Starting step_03_10_pantheon_subset_robustness
+[09:56:05] [INFO] ================================================================================
+[09:56:05] [INFO] 
+[09:56:06] [INFO]   Fitting subset 'all': 1701 SNe
+[09:56:07] [INFO]     Δχ²(TEP-LCDM)=-3.39, eps=0.894
+[09:56:07] [INFO]   Fitting subset 'low_z': 741 SNe
+[09:56:07] [INFO]     Δχ²(TEP-LCDM)=-0.58, eps=0.000
+[09:56:07] [INFO]   Fitting subset 'z_gt_0.01': 1588 SNe
+[09:56:08] [INFO]     Δχ²(TEP-LCDM)=-0.97, eps=0.977
+[09:56:08] [INFO]   Fitting subset 'z_gt_0.023': 1367 SNe
+[09:56:09] [INFO]     Δχ²(TEP-LCDM)=-0.70, eps=0.981
+[09:56:09] [INFO]   Fitting subset 'z_gt_0.05': 1053 SNe
+[09:56:10] [INFO]     Δχ²(TEP-LCDM)=-0.13, eps=1.011
+[09:56:10] [INFO]   Fitting subset 'high_z': 210 SNe
+[09:56:10] [INFO]     Δχ²(TEP-LCDM)=-0.00, eps=1.250
+[09:56:10] [INFO]   Fitting subset 'no_1': 1380 SNe
+[09:56:10] [INFO]     Δχ²(TEP-LCDM)=-3.06, eps=0.894
+[09:56:10] [INFO]   Fitting subset 'no_4': 1541 SNe
+[09:56:11] [INFO]     Δχ²(TEP-LCDM)=-3.84, eps=0.870
+[09:56:11] [INFO]   Fitting subset 'no_5': 1612 SNe
+[09:56:12] [INFO]     Δχ²(TEP-LCDM)=-2.79, eps=0.901
+[09:56:12] [INFO]   Fitting subset 'no_10': 1498 SNe
+[09:56:13] [INFO]     Δχ²(TEP-LCDM)=-2.17, eps=0.923
+[09:56:13] [INFO]   Fitting subset 'no_15': 1432 SNe
+[09:56:14] [INFO]     Δχ²(TEP-LCDM)=-4.32, eps=0.872
+[09:56:14] [INFO]   Fitting subset 'no_18': 1686 SNe
+[09:56:15] [INFO]     Δχ²(TEP-LCDM)=-3.48, eps=0.893
+[09:56:15] [INFO]   Fitting subset 'no_50': 1655 SNe
+[09:56:16] [INFO]     Δχ²(TEP-LCDM)=-3.08, eps=0.890
+[09:56:16] [INFO]   Fitting subset 'no_51': 1653 SNe
+[09:56:18] [INFO]     Δχ²(TEP-LCDM)=-2.75, eps=0.912
+[09:56:18] [INFO]   Fitting subset 'no_56': 1644 SNe
+[09:56:19] [INFO]     Δχ²(TEP-LCDM)=-3.27, eps=0.898
+[09:56:19] [INFO]   Fitting subset 'no_57': 1596 SNe
+[09:56:20] [INFO]     Δχ²(TEP-LCDM)=-3.28, eps=0.899
+[09:56:20] [INFO]   Fitting subset 'no_61': 1688 SNe
+[09:56:21] [INFO]     Δχ²(TEP-LCDM)=-3.28, eps=0.896
+[09:56:21] [INFO]   Fitting subset 'no_62': 1677 SNe
+[09:56:22] [INFO]     Δχ²(TEP-LCDM)=-3.33, eps=0.890
+[09:56:22] [INFO]   Fitting subset 'no_63': 1667 SNe
+[09:56:23] [INFO]     Δχ²(TEP-LCDM)=-3.20, eps=0.898
+[09:56:23] [INFO]   Fitting subset 'no_64': 1643 SNe
+[09:56:24] [INFO]     Δχ²(TEP-LCDM)=-3.51, eps=0.889
+[09:56:24] [INFO]   Fitting subset 'no_65': 1663 SNe
+[09:56:26] [INFO]     Δχ²(TEP-LCDM)=-3.44, eps=0.893
+[09:56:26] [INFO]   Fitting subset 'no_66': 1689 SNe
+[09:56:27] [INFO]     Δχ²(TEP-LCDM)=-3.12, eps=0.901
+[09:56:27] [INFO]   Fitting subset 'no_100': 1685 SNe
+[09:56:28] [INFO]     Δχ²(TEP-LCDM)=-2.15, eps=0.866
+[09:56:28] [INFO]   Fitting subset 'no_101': 1695 SNe
+[09:56:29] [INFO]     Δχ²(TEP-LCDM)=-3.45, eps=0.894
+[09:56:29] [INFO]   Fitting subset 'no_106': 1693 SNe
+[09:56:31] [INFO]     Δχ²(TEP-LCDM)=-3.04, eps=0.890
+[09:56:31] [INFO]   Fitting subset 'no_150': 1522 SNe
+[09:56:32] [INFO]     Δχ²(TEP-LCDM)=-4.08, eps=0.865
+[09:56:32] [INFO]   Fitting subset 'no_SH0ES': 1367 SNe
+[09:56:32] [INFO]     Δχ²(TEP-LCDM)=-0.70, eps=0.981
+[09:56:32] [SUCCESS] Step step_03_10_pantheon_subset_robustness completed

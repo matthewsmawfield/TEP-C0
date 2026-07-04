@@ -1,17 +1,17 @@
-[17:27:50] [INFO] 
-[17:27:50] [INFO] ================================================================================
-[17:27:50] [INFO]    Starting step_01_03_download_ddr
-[17:27:50] [INFO] ================================================================================
-[17:27:50] [INFO] 
-[17:27:50] [PROCESS] Processing source: pantheon_sne
-[17:27:51] [SUCCESS] Downloaded pantheon_sne
-[17:27:51] [PROCESS] Processing BAO angular diameter distances...
-[17:27:51] [SUCCESS] Loaded 10 BAO D_A measurements
-[17:27:51] [PROCESS] Parsing Pantheon SNe from pantheon_lcparams.txt...
-[17:27:52] [SUCCESS] Parsed 1048 SNe Ia measurements
-[17:27:52] [PROCESS] Computing D_L at BAO redshifts via FLRW interpolation...
-[17:27:52] [INFO] Using Planck 2018 published values to avoid circular dependency
-[17:27:52] [INFO] Planck 2018 values: H0=67.4±0.5, Om0=0.315 (independent observational data)
-[17:27:52] [INFO] Using independent Planck 2018: H0=67.40, Om0=0.315
-[17:27:52] [SUCCESS] Created 10 paired D_A/D_L constraints
-[17:27:52] [SUCCESS] Step step_01_03_download_ddr completed: 10 constraints
+[01:51:05] [INFO] 
+[01:51:05] [INFO] ================================================================================
+[01:51:05] [INFO]    Starting step_01_03_download_ddr
+[01:51:05] [INFO] ================================================================================
+[01:51:05] [INFO] 
+[01:51:05] [PROCESS] Processing source: pantheon_sne
+[01:51:06] [SUCCESS] Downloaded pantheon_sne
+[01:51:06] [PROCESS] Processing BAO angular diameter distances...
+[01:51:06] [SUCCESS] Loaded 10 BAO D_A measurements
+[01:51:06] [PROCESS] Parsing Pantheon SNe from pantheon_lcparams.txt...
+[01:51:06] [SUCCESS] Parsed 1048 SNe Ia measurements
+[01:51:06] [PROCESS] Computing D_L at BAO redshifts via FLRW interpolation...
+[01:51:06] [INFO] Using Planck 2018 published values to avoid circular dependency
+[01:51:06] [INFO] Planck 2018 values: H0=67.4±0.5, Om0=0.315 (independent observational data)
+[01:51:06] [INFO] Using independent Planck 2018: H0=67.40, Om0=0.315
+[01:51:06] [SUCCESS] Created 10 paired D_A/D_L constraints
+[01:51:06] [SUCCESS] Step step_01_03_download_ddr completed: 10 constraints

@@ -15,7 +15,7 @@
       "sandage_2010",
       "pahre_1996"
     ],
-    "total_raw_bytes": 6210,
+    "total_raw_bytes": 6297,
     "using_synthetic_data": false
   },
   "sb_data": [
@@ -853,40 +853,40 @@
   },
   "sources": [
     {
-      "bytes": 2070,
+      "bytes": 2099,
       "citation": "Lubin & Sandage 2001a,b,c,d, AJ 121-122 (Tolman Test I-IV)",
       "data_type": "published_literature_data",
       "domain": "surface_brightness",
-      "download_epoch": 1781015274,
+      "download_epoch": 1781916666,
       "error": "",
       "raw_path": "data/raw/lubin_sandage_2001_abstract.html",
-      "sha256": "bde209c6660bf0e042af598b09868d76f4bb84231e8319c0317fdb6103a03fc1",
+      "sha256": "eff7c7afbe628579d5ea72d2abbf934938fc9eb73ef920ec77d2a084017a3fea",
       "source_id": "lubin_sandage_2001_full",
       "status": "downloaded",
       "url": "https://ui.adsabs.harvard.edu/abs/2001AJ....122.1084L"
     },
     {
-      "bytes": 2070,
+      "bytes": 2099,
       "citation": "Sandage 2010, AJ 139, 728",
       "data_type": "published_literature_data",
       "domain": "surface_brightness",
-      "download_epoch": 1781015275,
+      "download_epoch": 1781916667,
       "error": "",
       "raw_path": "data/raw/sandage_2010_abstract.html",
-      "sha256": "43092dbfc3f6638ad2b4da4f985683b17fe31f07d94d9e1dc0810e59b5d0a04f",
+      "sha256": "a4b16b7827e3859ca6ac8349cc71b2e597a4a5a4eedb31f6a7dcc0d439679531",
       "source_id": "sandage_2010",
       "status": "downloaded",
       "url": "https://ui.adsabs.harvard.edu/abs/2010AJ....139..728S"
     },
     {
-      "bytes": 2070,
+      "bytes": 2099,
       "citation": "Pahre et al. 1996, ApJ 456, 79",
       "data_type": "published_literature_data",
       "domain": "surface_brightness",
-      "download_epoch": 1781015276,
+      "download_epoch": 1781916667,
       "error": "",
       "raw_path": "data/raw/pahre_1996_abstract.html",
-      "sha256": "5a571f26d7562d84bef5f5fef38c97355d55131408a5d2fa32c4136ce2f3cfe9",
+      "sha256": "73615f85c54cb15761946bff842193effc729826726a663c24aa860b6b356a64",
       "source_id": "pahre_1996",
       "status": "downloaded",
       "url": "https://ui.adsabs.harvard.edu/abs/1996ApJ...456...79P"

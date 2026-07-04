@@ -1,0 +1,11 @@
+[15:33:27] [INFO] 
+[15:33:27] [INFO] ================================================================================
+[15:33:27] [INFO]    Starting step_03_04_cobaya_mcmc
+[15:33:27] [INFO] ================================================================================
+[15:33:27] [INFO] 
+[15:33:27] [SUCCESS] TEP-CLASS: TEP-CLASS v2.0 available
+[15:33:27] [SUCCESS] Cobaya: Cobaya 3.6.2 available
+[15:33:28] [SUCCESS] Pantheon+ data: 1701 SNe loaded
+[15:33:28] [PROCESS] Running TEP sanity check...
+[15:33:28] [SUCCESS] TEP sanity check passed: dL(eps=0)=9302.66, dL(eps=0.2)=10122.32
+[15:33:28] [PROCESS] Running Cobaya MCMC (max_samples=150000)...

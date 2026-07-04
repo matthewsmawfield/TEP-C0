@@ -1,30 +1,30 @@
-[20:52:13] [INFO] 
-[20:52:13] [INFO] ================================================================================
-[20:52:13] [INFO]    Starting step_04_06_screening_fit
-[20:52:13] [INFO] ================================================================================
-[20:52:13] [INFO] 
-[20:52:13] [INFO] Total data points: 45
-[20:52:13] [INFO]   BAO: 10
-[20:52:13] [INFO]   SZ:  20
-[20:52:13] [INFO]   SGL: 15
-[20:52:13] [INFO] Fitting TEP screening model...
-[20:52:13] [SUCCESS] Fit successful
-[20:52:13] [INFO]   χ² = 10.27
-[20:52:13] [INFO]   ndof = 39
-[20:52:13] [INFO]   χ²/ndof = 0.26
-[20:52:13] [INFO] 
+[09:56:33] [INFO] 
+[09:56:33] [INFO] ================================================================================
+[09:56:33] [INFO]    Starting step_04_06_screening_fit
+[09:56:33] [INFO] ================================================================================
+[09:56:33] [INFO] 
+[09:56:33] [INFO] Total data points: 45
+[09:56:33] [INFO]   BAO: 10
+[09:56:33] [INFO]   SZ:  20
+[09:56:33] [INFO]   SGL: 15
+[09:56:33] [INFO] Fitting TEP screening model...
+[09:56:33] [SUCCESS] Fit successful
+[09:56:33] [INFO]   χ² = 10.27
+[09:56:33] [INFO]   ndof = 39
+[09:56:33] [INFO]   χ²/ndof = 0.26
+[09:56:33] [INFO] 
 Best-fit parameters:
-[20:52:13] [INFO]   BAO: η_0=1.295, β=-0.742
-[20:52:13] [INFO]   SZ:  η_0=1.226, β=+0.181
-[20:52:13] [INFO]   SGL: η_0=0.853, β=+1.930
-[20:52:13] [INFO] 
+[09:56:33] [INFO]   BAO: η_0=1.295, β=-0.742
+[09:56:33] [INFO]   SZ:  η_0=1.226, β=+0.181
+[09:56:33] [INFO]   SGL: η_0=0.853, β=+1.930
+[09:56:33] [INFO] 
 Probe baseline differences:
-[20:52:13] [INFO]   |η_0_BAO - η_0_SZ|  = 0.069
-[20:52:13] [INFO]   |η_0_BAO - η_0_SGL| = 0.442
-[20:52:13] [INFO]   |η_0_SZ  - η_0_SGL| = 0.373
-[20:52:13] [INFO] 
+[09:56:33] [INFO]   |η_0_BAO - η_0_SZ|  = 0.069
+[09:56:33] [INFO]   |η_0_BAO - η_0_SGL| = 0.442
+[09:56:33] [INFO]   |η_0_SZ  - η_0_SGL| = 0.373
+[09:56:33] [INFO] 
 Physical interpretation (data-driven):
-[20:52:13] [INFO]   • BAO: η_0=1.295 (above unity), β=-0.742
-[20:52:13] [INFO]   • SZ: η_0=1.226 (above unity), β=+0.181
-[20:52:13] [INFO]   • SGL: η_0=0.853 (below unity), β=+1.930
-[20:52:13] [SUCCESS] Step step_04_06_screening_fit completed
+[09:56:33] [INFO]   • BAO: η_0=1.295 (above unity), β=-0.742
+[09:56:33] [INFO]   • SZ: η_0=1.226 (above unity), β=+0.181
+[09:56:33] [INFO]   • SGL: η_0=0.853 (below unity), β=+1.930
+[09:56:33] [SUCCESS] Step step_04_06_screening_fit completed

@@ -1,0 +1,15 @@
+[12:11:50] [INFO] 
+[12:11:50] [INFO] ================================================================================
+[12:11:50] [INFO]    Starting step_04_08_host_mass_step_prediction
+[12:11:50] [INFO] ================================================================================
+[12:11:50] [INFO] 
+[12:11:51] [INFO] Loaded 1700 SNe with host masses
+[12:11:51] [INFO] High-mass hosts (logM>10.0): 912
+[12:11:54] [INFO] TEP predicted mass-step offset: -0.0053 mag
+[12:11:54] [INFO]   (phi_high=0.4347, phi_low=0.4396, screen_high=1.0000, screen_low=1.0000)
+[12:11:56] [INFO] Observed mass step (LCDM fitted): 0.0072 mag
+[12:11:56] [INFO] TEP predicted mass step: -0.0053 mag
+[12:11:56] [INFO] Residual after TEP locked correction: 0.0124 mag
+[12:11:56] [INFO] Δχ² TEP_locked vs LCDM_no_step: -1.29
+[12:11:56] [INFO] Δχ² TEP_locked vs LCDM_fitted: -1.87
+[12:11:56] [SUCCESS] Step step_04_08_host_mass_step_prediction completed

@@ -1,0 +1,19 @@
+[12:11:59] [INFO] 
+[12:11:59] [INFO] ================================================================================
+[12:11:59] [INFO]    Starting step_06_06_nonlinear_growth_closure
+[12:11:59] [INFO] ================================================================================
+[12:11:59] [INFO] 
+[12:11:59] [PROCESS] Computing halo-model screened σ₈
+[12:11:59] [INFO]   Linear σ₈ (EdS):            1.5010
+[12:11:59] [INFO]   Halo-model screened σ₈:     1.5010
+[12:11:59] [INFO]   Planck σ₈:                  0.8120 ± 0.0070
+[12:11:59] [INFO]   Bias suppression factor:    1.0000
+[12:11:59] [INFO]   Deviation from Planck:      98.43σ
+[12:11:59] [WARNING]   Halo-model σ₈ still in tension with Planck
+[12:11:59] [INFO]   Full nonlinear TEP-CLASS closure still required
+[12:11:59] [SUCCESS] Results written to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/step_06_06_nonlinear_growth_closure.json
+[12:11:59] [INFO] 
+[12:11:59] [INFO] ================================================================================
+[12:11:59] [INFO]    step_06_06_nonlinear_growth_closure complete
+[12:11:59] [INFO] ================================================================================
+[12:11:59] [INFO] 

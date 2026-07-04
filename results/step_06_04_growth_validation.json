@@ -1,47 +1,63 @@
 {
-  "description": "Structure growth validation with TEP-CLASS v2.0 (probe-dependent \u03b5_T framework)",
-  "fsigma8": [
-    {
-      "chi": 2.13,
-      "fs8_obs": 0.428,
-      "fs8_obs_err": 0.046,
-      "fs8_tep": 0.526,
-      "ref": "Huterer+2017",
-      "z": 0.02
-    },
-    {
-      "chi": 0.3,
-      "fs8_obs": 0.53,
-      "fs8_obs_err": 0.08,
-      "fs8_tep": 0.554,
-      "ref": "Howlett+2015",
-      "z": 0.15
-    },
-    {
-      "chi": 2.44,
-      "fs8_obs": 0.44,
-      "fs8_obs_err": 0.06,
-      "fs8_tep": 0.587,
-      "ref": "Blake+2011",
-      "z": 0.38
-    },
-    {
-      "chi": 2.48,
-      "fs8_obs": 0.43,
-      "fs8_obs_err": 0.06,
-      "fs8_tep": 0.579,
-      "ref": "Blake+2012",
-      "z": 0.6
-    },
-    {
-      "chi": 2.42,
-      "fs8_obs": 0.4,
-      "fs8_obs_err": 0.06,
-      "fs8_tep": 0.545,
-      "ref": "Pezzotta+2017",
-      "z": 0.86
-    }
-  ],
+  "description": "Structure growth validation with TEP-CLASS v2.0 (mean-field gradient screening v3)",
+  "fsigma8": {
+    "chi2": 224.92,
+    "chi2_per_dof": 44.98,
+    "data": [
+      {
+        "chi": 12.84,
+        "fs8_obs": 0.428,
+        "fs8_obs_err": 0.046,
+        "fs8_tep": 1.019,
+        "g_char_m_s2": 0.0,
+        "gradient_screening_f": 1.0,
+        "ref": "Huterer+2017",
+        "z": 0.02
+      },
+      {
+        "chi": 4.9,
+        "fs8_obs": 0.53,
+        "fs8_obs_err": 0.08,
+        "fs8_tep": 0.922,
+        "g_char_m_s2": 0.0,
+        "gradient_screening_f": 0.9999,
+        "ref": "Howlett+2015",
+        "z": 0.15
+      },
+      {
+        "chi": 4.62,
+        "fs8_obs": 0.44,
+        "fs8_obs_err": 0.06,
+        "fs8_tep": 0.717,
+        "g_char_m_s2": 0.0,
+        "gradient_screening_f": 0.9999,
+        "ref": "Blake+2011",
+        "z": 0.38
+      },
+      {
+        "chi": 3.24,
+        "fs8_obs": 0.43,
+        "fs8_obs_err": 0.06,
+        "fs8_tep": 0.624,
+        "g_char_m_s2": 0.0,
+        "gradient_screening_f": 0.9998,
+        "ref": "Blake+2012",
+        "z": 0.6
+      },
+      {
+        "chi": 2.05,
+        "fs8_obs": 0.4,
+        "fs8_obs_err": 0.06,
+        "fs8_tep": 0.523,
+        "g_char_m_s2": 0.0,
+        "gradient_screening_f": 0.9996,
+        "ref": "Pezzotta+2017",
+        "z": 0.86
+      }
+    ],
+    "fs8_ok": false,
+    "n_dof": 5
+  },
   "growth_factor": [
     {
       "D_lcdm": 1.0,
@@ -51,45 +67,66 @@
     },
     {
       "D_lcdm": 0.7693,
-      "D_tep": 0.7693,
-      "ratio": 1.0,
+      "D_tep": 0.6633,
+      "ratio": 0.8622,
       "z": 0.5
     },
     {
       "D_lcdm": 0.6072,
-      "D_tep": 0.6072,
-      "ratio": 1.0,
+      "D_tep": 0.4971,
+      "ratio": 0.8187,
       "z": 1.0
     },
     {
       "D_lcdm": 0.4176,
-      "D_tep": 0.4176,
-      "ratio": 1.0,
+      "D_tep": 0.3324,
+      "ratio": 0.7961,
       "z": 2.0
     }
   ],
   "parameters": {
-    "epsilon_T_dist": 0.858539,
-    "epsilon_T_growth": 0.0,
-    "screening_mode": "probe-dependent (growth fit independent of distance bias)"
+    "epsilon_T_acoustic": 0.018,
+    "epsilon_T_dist": 0.0,
+    "gradient_screening": {
+      "g_char_z0_m_s2": "5.563e-12",
+      "g_t_m_s2": 1e-09,
+      "n": 2.0,
+      "note": "Cosmic halos have g_char << g_t; f \u2248 1 (unscreened). Growth suppression is from \u03b1_M running in hi_class, not environmental screening.",
+      "operator": "f(g) = [1 + (g/g_t)^n]^-1"
+    },
+    "screening_factor": 0.999969,
+    "screening_mode": "mean_field_gradient_screening_v3"
   },
   "sigma_8": {
-    "deviation_percent": 1.3,
-    "deviation_sigma": 1.49,
+    "deviation_percent_eds": 84.8,
+    "deviation_percent_gradient_screened": 84.8,
+    "deviation_percent_pb": 31.6,
+    "deviation_percent_unscreened": 84.8,
+    "deviation_sigma_eds": 94.36,
+    "deviation_sigma_gradient_screened": 94.35,
+    "deviation_sigma_pb": 35.16,
+    "deviation_sigma_unscreened": 94.36,
     "lcdm": 0.8229,
-    "note": "Growth fit independent: \u03b5_T_growth=0 (baseline LCDM), \u03b5_T_dist compensates for distance bias",
+    "note": "TEP growth uses acoustic \u03b5_T=0.018 (CMB sector). Mean-field gradient screening gives f(g)\u22481 on cosmic scales (g_char << g_t), so \u03c3_8 remains essentially unscreened. The ~0.55 suppression observed in TEP-HC comes from \u03b1_M running in the full hi_class perturbation equations, not from environmental gradient screening. Full first-principles nonlinear closure is deferred to TEP-HC.",
     "planck": 0.812,
     "planck_err": 0.0073,
-    "tep": 0.8229
+    "tep_canonical": 1.5008,
+    "tep_eds": 1.5008,
+    "tep_gradient_screened": 1.5008,
+    "tep_planck_baseline": 1.0687
   },
-  "status": "completed",
+  "status": "blocked",
   "step": "step_06_04_growth_validation",
   "validation": {
-    "blockers": [],
-    "claim_gate": "open",
-    "growth_consistent": true,
-    "research_grade": true,
-    "sigma8_consistent": true,
+    "blockers": [
+      "Screened sigma_8 deviates by 94.4\u03c3 from Planck (unscreened linear: 94.4\u03c3)",
+      "f\u03c38 comparison chi2/DOF = 44.98 against RSD data",
+      "Growth predictions inconsistent with RSD observations"
+    ],
+    "claim_gate": "blocked",
+    "growth_consistent": false,
+    "research_grade": false,
+    "sigma8_consistent": false,
     "tep_available": true
   }
 }

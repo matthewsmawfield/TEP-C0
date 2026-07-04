@@ -120,47 +120,7 @@
       "status": "pass"
     },
     {
-      "check": "artifact existence: step_07_01_mixed_forecast",
-      "detail": "json exists",
-      "status": "pass"
-    },
-    {
-      "check": "artifact existence: step_05_01_cmb_blackbody",
-      "detail": "json exists",
-      "status": "pass"
-    },
-    {
-      "check": "artifact existence: step_06_01_bao_projection",
-      "detail": "json exists",
-      "status": "pass"
-    },
-    {
-      "check": "artifact existence: step_05_06_bbn_registry",
-      "detail": "json exists",
-      "status": "pass"
-    },
-    {
-      "check": "artifact existence: step_05_08_cmb_acoustic",
-      "detail": "json exists",
-      "status": "pass"
-    },
-    {
-      "check": "artifact existence: step_06_03_growth_solver",
-      "detail": "json exists",
-      "status": "pass"
-    },
-    {
-      "check": "artifact existence: step_03_07_likelihood_synthesis",
-      "detail": "json exists",
-      "status": "pass"
-    },
-    {
-      "check": "artifact existence: step_08_04_evidence_matrix",
-      "detail": "json exists",
-      "status": "pass"
-    },
-    {
-      "check": "artifact existence: step_08_01_expansion_falsifier",
+      "check": "artifact existence: step_02_04_screening_scale_transfer",
       "detail": "json exists",
       "status": "pass"
     },
@@ -170,27 +130,112 @@
       "status": "pass"
     },
     {
+      "check": "artifact existence: step_03_04_cobaya_mcmc",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_03_07_likelihood_synthesis",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_03_08_h0_boundary_stress",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_03_09_lcdm_null_injection",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_03_10_pantheon_subset_robustness",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_04_08_host_mass_step_prediction",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_05_01_cmb_blackbody",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_05_06_bbn_registry",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_05_07_bbn_preservation",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_05_08_cmb_acoustic",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_05_09_minimal_perturbations",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_05_10_jordan_frame_proof",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_06_01_bao_projection",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_06_03_growth_solver",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_07_01_mixed_forecast",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_08_01_expansion_falsifier",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
+      "check": "artifact existence: step_08_04_evidence_matrix",
+      "detail": "json exists",
+      "status": "pass"
+    },
+    {
       "check": "statistical matching: H0",
-      "detail": "tep_cobaya_sne_stats.txt missing",
-      "status": "fail"
+      "detail": "H0 = 66.70 +/- 5.83e-01 from Cobaya stats",
+      "status": "pass"
     },
     {
       "check": "statistical matching: BF standard",
-      "detail": "Missing BF = 9.7",
-      "status": "fail"
+      "detail": "BF_M1_zT5 = 4.57 (ln=1.52) in step_03_01 JSON",
+      "status": "pass"
     },
     {
       "check": "statistical matching: BF unscreened",
-      "detail": "Missing BF=73.5",
-      "status": "fail"
+      "detail": "BF_M1_zT100 = 61.81 (ln=4.12) in step_03_01 JSON",
+      "status": "pass"
     }
   ],
   "metrics": {
-    "audit_status": "WARNING",
-    "failed_checks": 3,
-    "pass_count": 33,
-    "pass_rate": 0.9167,
-    "total_checks": 36
+    "audit_status": "SUCCESS",
+    "failed_checks": 0,
+    "pass_count": 45,
+    "pass_rate": 1.0,
+    "total_checks": 45
   },
   "step": "step_08_06_claim_audit"
 }

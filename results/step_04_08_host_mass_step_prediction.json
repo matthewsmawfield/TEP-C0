@@ -1,0 +1,45 @@
+{
+  "TEP_predicted_mass_step": -0.00530066974074707,
+  "alpha_log": -0.00766,
+  "delta_chi2_tep_locked_vs_lcdm_fitted": -1.8736914975961554,
+  "delta_chi2_tep_locked_vs_lcdm_no_step": -1.2851282385563536,
+  "description": "Host mass step prediction mini-analysis",
+  "host_mass_threshold": 10.0,
+  "interpretation": "The TEP locked prediction captures part of the host-mass effect; residual indicates additional environmental physics not yet included.",
+  "models": {
+    "LCDM_fitted_step": {
+      "aic": 1994.407551631668,
+      "bic": 2010.7227022218008,
+      "chi2": 1988.407551631668,
+      "gamma": 0.0071926847542469865,
+      "k": 3
+    },
+    "LCDM_no_step": {
+      "aic": 1992.9961148907078,
+      "bic": 2003.8728819507965,
+      "chi2": 1988.9961148907078,
+      "k": 2
+    },
+    "TEP_fitted_residual": {
+      "aic": 1994.5082830883455,
+      "bic": 2010.8234336784783,
+      "chi2": 1988.5082830883455,
+      "epsilon_shear": 0.00017461326520386178,
+      "gamma_residual": 0.012406804063853591,
+      "k": 3
+    },
+    "TEP_locked_step": {
+      "aic": 1994.281243129264,
+      "bic": 2005.1580101893528,
+      "chi2": 1990.281243129264,
+      "epsilon_shear": 0.0,
+      "k": 2
+    }
+  },
+  "n_sne": 1700,
+  "observed_mass_step": 0.0071926847542469865,
+  "residual_after_TEP_correction": 0.012406804063853591,
+  "status": "completed",
+  "step": "step_04_08_host_mass_step_prediction",
+  "timestamp": 1782213116
+}

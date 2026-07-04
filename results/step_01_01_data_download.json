@@ -4,23 +4,22 @@
     "bbn_open_review": "data/raw/bbn_frontiers_2020_review.html",
     "csv": "results/step_01_01_data_download.csv",
     "firas_cmb_monopole": "data/raw/firas_monopole_spec_v1.txt",
-    "pantheon_plus_distances": "data/raw/pantheon_plus_shoes.dat",
-    "pantheon_plus_stat_sys_covariance": "data/raw/Pantheon+SH0ES.cov"
+    "pantheon_plus_distances": "data/raw/pantheon_plus_shoes.dat"
   },
   "description": "Download and cache public cosmology source datasets for the TEP-C0 empirical front end.",
   "interpretation": "The C0 pipeline now begins from explicit public data products rather than benchmark-only synthetic inputs.",
   "metrics": {
     "cached_source_count": 0,
-    "downloaded_source_count": 5,
-    "source_count": 5,
-    "total_raw_bytes": 35293048
+    "downloaded_source_count": 4,
+    "source_count": 4,
+    "total_raw_bytes": 2007253
   },
   "sources": [
     {
       "bytes": 1711,
       "citation": "Zhao, Wang, Alam, and Ross BAO multi-survey compilation, Zenodo 10.5281/zenodo.16285883.",
       "domain": "bao",
-      "download_epoch": 1781015261,
+      "download_epoch": 1781916663,
       "error": "",
       "raw_path": "data/raw/uncorBAO.txt",
       "sha256": "439abb400aab078b3025ff3542dcbc279714c082153ae7a221d64a16cae3bb3d",
@@ -29,22 +28,10 @@
       "url": "https://zenodo.org/records/16285883/files/uncorBAO.txt?download=1"
     },
     {
-      "bytes": 2388,
-      "citation": "NASA LAMBDA COBE/FIRAS CMB monopole spectrum.",
-      "domain": "cmb_blackbody",
-      "download_epoch": 1781015262,
-      "error": "",
-      "raw_path": "data/raw/firas_monopole_spec_v1.txt",
-      "sha256": "df793c3dca09ebfa7dbc5aa0ec1951daa8884431bc30eff28a710d7516cf50fa",
-      "source_id": "firas_cmb_monopole",
-      "status": "downloaded",
-      "url": "https://lambda.gsfc.nasa.gov/data/cobe/firas/monopole_spec/firas_monopole_spec_v1.txt"
-    },
-    {
       "bytes": 579283,
       "citation": "Pantheon+SH0ES DataRelease, Pantheon+ distance table.",
       "domain": "supernovae",
-      "download_epoch": 1781015263,
+      "download_epoch": 1781916663,
       "error": "",
       "raw_path": "data/raw/pantheon_plus_shoes.dat",
       "sha256": "1cb0fc379ef066afdc2ffd1857681cc478024570d8a3eba284fb645775198cf8",
@@ -53,28 +40,28 @@
       "url": "https://raw.githubusercontent.com/PantheonPlusSH0ES/DataRelease/main/Pantheon%2B_Data/4_DISTANCES_AND_COVAR/Pantheon%2BSH0ES.dat"
     },
     {
-      "bytes": 1424706,
+      "bytes": 2388,
+      "citation": "NASA LAMBDA COBE/FIRAS CMB monopole spectrum.",
+      "domain": "cmb_blackbody",
+      "download_epoch": 1781916663,
+      "error": "",
+      "raw_path": "data/raw/firas_monopole_spec_v1.txt",
+      "sha256": "df793c3dca09ebfa7dbc5aa0ec1951daa8884431bc30eff28a710d7516cf50fa",
+      "source_id": "firas_cmb_monopole",
+      "status": "downloaded",
+      "url": "https://lambda.gsfc.nasa.gov/data/cobe/firas/monopole_spec/firas_monopole_spec_v1.txt"
+    },
+    {
+      "bytes": 1423871,
       "citation": "Pizzone et al. 2020 Frontiers review of BBN reaction rates and abundance constraints.",
       "domain": "bbn",
-      "download_epoch": 1781015265,
+      "download_epoch": 1781916664,
       "error": "",
       "raw_path": "data/raw/bbn_frontiers_2020_review.html",
-      "sha256": "9a38584ed2f96f8d4bd9dd38ed9a9bfdcc312971e3a1897f2710a930734bc2c6",
+      "sha256": "01029ffb899686002d1f2b7d31c68235fb7690f2bc165f5bad1e043f68465315",
       "source_id": "bbn_open_review",
       "status": "downloaded",
       "url": "https://www.frontiersin.org/journals/astronomy-and-space-sciences/articles/10.3389/fspas.2020.560149/full"
-    },
-    {
-      "bytes": 33284960,
-      "citation": "Pantheon+SH0ES DataRelease, full statistical plus systematic covariance matrix.",
-      "domain": "supernovae",
-      "download_epoch": 1781015269,
-      "error": "",
-      "raw_path": "data/raw/Pantheon+SH0ES.cov",
-      "sha256": "abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc",
-      "source_id": "pantheon_plus_stat_sys_covariance",
-      "status": "downloaded",
-      "url": "https://raw.githubusercontent.com/PantheonPlusSH0ES/DataRelease/main/Pantheon%2B_Data/4_DISTANCES_AND_COVAR/Pantheon%2BSH0ES_STAT%2BSYS.cov"
     }
   ],
   "step": "step_01_01_data_download"

@@ -179,6 +179,16 @@ async def generate_pdf(quality: str = 'high', wait_time: float = 5.0, skip_build
         print(f"❌ HTML file not found: {html_file}")
         return False
 
+    # Create a temporary PDF-specific HTML with synchronous MathJax loading
+    pdf_html_file = dist_dir / 'index_pdf.html'
+    html_content = html_file.read_text(encoding='utf8')
+    # Remove 'async' from MathJax so it loads synchronously and finishes before PDF capture
+    html_content = html_content.replace(
+        'id="MathJax-script" async',
+        'id="MathJax-script"'
+    )
+    pdf_html_file.write_text(html_content, encoding='utf8')
+
     # Output path (temp, will be copied to docs)
     output_pdf = dist_dir / 'manuscript.pdf'
 
@@ -229,7 +239,7 @@ async def generate_pdf(quality: str = 'high', wait_time: float = 5.0, skip_build
 
     async with HTMLToPDFConverter() as converter:
         success = await converter.convert_file(
-            str(html_file),
+            str(pdf_html_file),
             str(output_pdf),
             options
         )
@@ -254,6 +264,12 @@ async def generate_pdf(quality: str = 'high', wait_time: float = 5.0, skip_build
         
         # Copy compressed PDF to root directory
         copy_pdf_to_root(docs_pdf, base_dir)
+
+        # Clean up temporary PDF-specific HTML
+        try:
+            pdf_html_file.unlink()
+        except Exception:
+            pass
 
         print("\n✅ Complete! PDF available at:")
         print(f"   {docs_pdf}")

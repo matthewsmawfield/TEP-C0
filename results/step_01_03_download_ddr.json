@@ -109,7 +109,7 @@
       "citation": "Scolnic et al. 2018, ApJ 859, 101; Pantheon Sample",
       "data_type": "pantheon_sne",
       "domain": "supernovae",
-      "download_epoch": 1781015271,
+      "download_epoch": 1781916666,
       "error": "",
       "raw_path": "data/raw/pantheon_lcparams.txt",
       "sha256": "4e865e819eda499530b04da6965ab7aac0407878789b105732cb1f9b99a64323",

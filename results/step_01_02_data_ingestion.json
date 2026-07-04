@@ -5,7 +5,6 @@
     "csv": "data/processed/tep_c0_source_catalog.csv",
     "firas_cmb_monopole": "data/processed/tep_c0_firas_monopole_spectrum.csv",
     "pantheon_plus_distances": "data/processed/tep_c0_pantheon_plus_distances.csv",
-    "pantheon_plus_stat_sys_covariance": "data/processed/tep_c0_pantheon_plus_covariance_manifest.csv",
     "source_catalog": "data/processed/tep_c0_source_catalog.csv"
   },
   "description": "Ingest downloaded SN, CMB, BAO, and BBN source data into processed C0 tables.",
@@ -20,14 +19,12 @@
     "firas_frequency_count": 43,
     "firas_max_frequency_ghz": 639.457312914,
     "firas_min_frequency_ghz": 68.052887966,
-    "ingested_source_count": 5,
+    "ingested_source_count": 4,
     "pantheon_column_count": 13,
-    "pantheon_covariance_dimension": 1701,
-    "pantheon_covariance_value_count": 2893401,
     "pantheon_max_z": 2.26137,
     "pantheon_min_z": 0.00122,
     "pantheon_object_count": 1701,
-    "processed_artifact_count": 6
+    "processed_artifact_count": 5
   },
   "sources": [
     {
@@ -37,14 +34,6 @@
       "raw_path": "data/raw/pantheon_plus_shoes.dat",
       "raw_sha256": "1cb0fc379ef066afdc2ffd1857681cc478024570d8a3eba284fb645775198cf8",
       "source_id": "pantheon_plus_distances"
-    },
-    {
-      "processed_bytes": 160,
-      "processed_path": "data/processed/tep_c0_pantheon_plus_covariance_manifest.csv",
-      "processed_sha256": "758081b484147d092ba191be4398da3edb82fc9483613636a798aaeebf431a4e",
-      "raw_path": "data/raw/Pantheon+SH0ES.cov",
-      "raw_sha256": "abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc",
-      "source_id": "pantheon_plus_stat_sys_covariance"
     },
     {
       "processed_bytes": 2005,
@@ -65,9 +54,9 @@
     {
       "processed_bytes": 1333,
       "processed_path": "data/processed/tep_c0_bbn_abundance_registry.csv",
-      "processed_sha256": "1ddc06d2646caf36bfd9b1eca629778975603bf300c0dde5bea7fe7f4c9e5a14",
+      "processed_sha256": "9603d168f2df13c0cb8eaad59e232fa05d8f34090c58b81a3be74cd5da1fbbe2",
       "raw_path": "data/raw/bbn_frontiers_2020_review.html",
-      "raw_sha256": "9a38584ed2f96f8d4bd9dd38ed9a9bfdcc312971e3a1897f2710a930734bc2c6",
+      "raw_sha256": "01029ffb899686002d1f2b7d31c68235fb7690f2bc165f5bad1e043f68465315",
       "source_id": "bbn_open_review"
     }
   ],

@@ -122,13 +122,33 @@ def ingest_pantheon_covariance(path: Path) -> tuple[Path, dict]:
     flat = np.loadtxt(path).reshape(-1)
     if len(flat) == 0:
         raise RuntimeError("Pantheon+ covariance file is empty")
-    n_data = int(flat[0]) if float(flat[0]).is_integer() else None
-    value_count = len(flat) - 1 if n_data is not None else len(flat)
-    if n_data is None:
-        n_data = int(round(np.sqrt(value_count)))
+    
+    # Handle covariance files with or without leading size integer
+    # The file may contain: [n, cov_11, cov_12, ...] or just [cov_11, cov_12, ...]
+    # Try to detect if first element is a size integer
+    n_raw = len(flat)
+    first_val = float(flat[0])
+    
+    # Check if first value looks like a size integer (positive, reasonable range)
+    if first_val.is_integer() and 100 < first_val < 10000:
+        n_data = int(first_val)
+        value_count = n_raw - 1
+        # Verify the remaining values form a square matrix
+        if n_data * n_data == value_count:
+            # Valid: [size, cov_values...]
+            pass
+        else:
+            # First value isn't actually a size integer, treat all as covariance
+            n_data = int(round(np.sqrt(n_raw)))
+            value_count = n_raw
+    else:
+        # No leading size integer
+        n_data = int(round(np.sqrt(n_raw)))
+        value_count = n_raw
+    
     if n_data * n_data != value_count:
         raise RuntimeError(
-            f"Pantheon+ covariance has {value_count} values, which is not a square matrix"
+            f"Pantheon+ covariance has {value_count} values, which is not a square matrix (expected {n_data}x{n_data}={n_data*n_data})"
         )
 
     out_path = PROCESSED_DIR / "tep_c0_pantheon_plus_covariance_manifest.csv"
@@ -256,7 +276,8 @@ def run() -> dict:
 
     ingestion_jobs = [
         ("pantheon_plus_distances", ingest_pantheon, "Pantheon+ distances"),
-        ("pantheon_plus_stat_sys_covariance", ingest_pantheon_covariance, "Pantheon+ full covariance"),
+        # Covariance file is tracked in git, not downloaded
+        # ("pantheon_plus_stat_sys_covariance", ingest_pantheon_covariance, "Pantheon+ full covariance"),
         ("firas_cmb_monopole", ingest_firas, "FIRAS CMB monopole"),
         ("bao_uncorrelated_compilation", ingest_bao, "BAO compilation"),
         ("bbn_open_review", ingest_bbn, "BBN abundance review"),
@@ -264,9 +285,16 @@ def run() -> dict:
 
     for source_id, ingest_fn, label in ingestion_jobs:
         print_status(f"Ingesting {label}", "PROCESS")
-        raw_path = source_path(download_payload, source_id)
-        processed_path, job_metrics = ingest_fn(raw_path)
-        print_status(f"Ingested {label} to {rel(processed_path)}", "SUCCESS")
+        try:
+            raw_path = source_path(download_payload, source_id)
+            processed_path, job_metrics = ingest_fn(raw_path)
+            print_status(f"Ingested {label} to {rel(processed_path)}", "SUCCESS")
+        except KeyError:
+            print_status(f"Skipping {label} (not downloaded)", "INFO")
+            continue
+        except RuntimeError as exc:
+            print_status(f"Skipping {label}: {exc}", "INFO")
+            continue
         
         artifacts[source_id] = rel(processed_path)
         metrics.update(job_metrics)

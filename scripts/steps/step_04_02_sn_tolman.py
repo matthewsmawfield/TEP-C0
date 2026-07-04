@@ -12,6 +12,13 @@ import pandas as pd
 from pathlib import Path
 from c0_common import PROCESSED_DIR, TEPLogger, ensure_dirs, figure_path, print_status, rel, rounded, set_step_logger, step_csv_path, step_json_path, write_csv, write_json
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts" / "utils"))
+from plot_style import apply_tep_style
+
+# Apply TEP manuscript style
+apply_tep_style()
+
 
 STEP_ID = "step_04_02_sn_tolman"
 
@@ -60,20 +67,21 @@ def run() -> dict:
 
     import matplotlib.pyplot as plt
 
-    fig, ax = plt.subplots(figsize=(7.2, 4.6))
-    ax.plot(z, photon_energy_factor, color="#1a3a3a", lw=2, label=r"photon energy $(1+z)^{-1}$")
-    ax.plot(z, arrival_rate_factor, color="#3d8b8b", lw=2, ls="--", label=r"arrival cadence $(1+z)^{-1}$")
-    ax.plot(z, angular_area_factor, color="#b8872b", lw=2, label=r"angular area $(1+z)^{-2}$")
-    ax.plot(z, tolman_factor, color="#8a4f2a", lw=2, label=r"Tolman total $(1+z)^{-4}$")
+    colors = apply_tep_style()
+
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.plot(z, photon_energy_factor, color=colors['blue'], lw=1.8, label=r"photon energy $(1+z)^{-1}$")
+    ax.plot(z, arrival_rate_factor, color=colors['light_blue'], lw=1.8, ls="--", label=r"arrival cadence $(1+z)^{-1}$")
+    ax.plot(z, angular_area_factor, color=colors['green'], lw=1.8, label=r"angular area $(1+z)^{-2}$")
+    ax.plot(z, tolman_factor, color=colors['red'], lw=1.8, label=r"Tolman total $(1+z)^{-4}$")
     ax.set_yscale("log")
     ax.set_xlabel("Redshift z")
-    ax.set_ylabel("Dimensionless factor")
-    ax.set_title("Tolman Decomposition: Real SN Redshifts")
-    ax.legend(frameon=False)
-    ax.grid(alpha=0.25, which="both")
-    fig.tight_layout()
+    ax.set_ylabel("Dimensionless factor normalized at z=0")
+    ax.set_title("Reference Tolman Surface-Brightness Decomposition over the Pantheon+ Redshift Range")
+    ax.legend(loc='best')
+    ax.grid(which="both")
     fig_path = figure_path(STEP_ID)
-    fig.savefig(fig_path, dpi=180)
+    fig.savefig(fig_path, dpi=300, bbox_inches='tight')
     plt.close(fig)
 
     z1_tolman = float((1 + 1.0) ** -4)

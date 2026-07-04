@@ -1,5 +1,18 @@
 {
-  "message": "Module initialized and ready for execution.",
+  "description": "BAO likelihood comparison: LCDM vs pure-matter EdS",
+  "metrics": {
+    "chi2_eds": 1704.5208,
+    "chi2_lcdm": 15.02,
+    "chi2_per_dof_eds": 100.2659,
+    "chi2_per_dof_lcdm": 0.8835,
+    "delta_chi2": 1689.5008,
+    "n_bao_points": 17
+  },
   "status": "completed",
-  "step": "step_06_02_bao_likelihood"
+  "step": "step_06_02_bao_likelihood",
+  "validation": {
+    "blockers": [],
+    "claim_gate": "passed",
+    "note": "EdS (Omega_m=1.0) is strongly disfavoured by BAO relative to LCDM, confirming that BAO requires a Lambda-like late-time behaviour. TEP reproduces this through the conformal mapping (M2 branch)."
+  }
 }

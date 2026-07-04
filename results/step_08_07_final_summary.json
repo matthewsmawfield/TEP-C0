@@ -6,12 +6,15 @@
   },
   "step": "step_08_07_final_summary",
   "summary": {
-    "audit_status": "WARNING",
-    "claim_blockers": [],
-    "f_t_mcmc": 0.859,
-    "h0_mcmc": 70.0,
-    "pass_rate": 0.9167,
+    "audit_status": "SUCCESS",
+    "claim_blockers": [
+      "step_04_03_tolman_sb: Data trend is OPPOSITE to TEP prediction: data slope = -1.027 (n decreases with z), TEP slope = -0.002 (n \u2248 4.0 (flat)). TEP (and LCDM) predict n \u2265 4.0; data shows n \u2248 3.375 and falls to n \u2248 2.8 at high z. TEP cannot explain the Tolman anomaly in either amplitude or trend. Observed offset is dominated by astrophysical systematics (K-corrections \u00b10.5, passive evolution, selection effects).",
+      "step_04_04_distance_duality: BAO D_A is model-dependent (fiducial LCDM r_s). LCDM compilation: \u03b7=0.866\u00b10.020 (6.6\u03c3 from 1); TEP compilation: \u03b7=0.846\u00b10.019 (8.2\u03c3 from 1). Both violate \u03b7=1 because BAO D_A assumes LCDM. Not a model discriminator."
+    ],
+    "f_t_mcmc": -0.002,
+    "h0_mcmc": 66.7,
+    "pass_rate": 1.0,
     "research_grade_claim_gate": "open",
-    "trf": 0.1613
+    "trf": 0.4167
   }
 }

@@ -1,0 +1,148 @@
+<h1>Unified TEP Parameter Dictionary</h1>
+
+<p>
+    The TEP corpus uses related but distinct symbols across its papers. This dictionary maps every parameter, its definition, the paper where it is primary, and its fiducial or fitted value.
+</p>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Symbol</th>
+            <th>Definition</th>
+            <th>Primary Paper</th>
+            <th>Fiducial / Fitted Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>$A_{\rm clock}(z)$</td>
+            <td>Exact observational clock/redshift map: $A_{\rm clock}=(1+z)^{-1}$</td>
+            <td>TEP-TH</td>
+            <td>$(1+z)^{-1}$ (exact)</td>
+        </tr>
+        <tr>
+            <td>$A_{\rm dyn}(z)$</td>
+            <td>Dynamically screened shear response: $\left(1+z/z_t\right)^{-\epsilon_{\rm eff}(z)}$</td>
+            <td>TEP-TH</td>
+            <td>Screened to unity at $z\gtrsim z_t$</td>
+        </tr>
+        <tr>
+            <td>$\alpha_A$</td>
+            <td>Temporal-shear conformal amplitude in Jordan-frame notation</td>
+            <td>TEP-HC</td>
+            <td>$-0.0028$ (Planck best-fit)</td>
+        </tr>
+        <tr>
+            <td>$\alpha_M$, $\alpha_B$, $\alpha_K$, $\alpha_T$</td>
+            <td>Runtime Bellini–Sawicki EFT functions: $\alpha_M=-2\alpha_A$, $\alpha_B=2\alpha_A$, $\alpha_K=-5\alpha_A^2$, $\alpha_T=0$</td>
+            <td>TEP-HC</td>
+            <td>Derived from $\alpha_A$</td>
+        </tr>
+        <tr>
+            <td>$\epsilon_T^{\rm los}$</td>
+            <td>Late-time line-of-sight transport amplitude (C0 supernova fit)</td>
+            <td>TEP-C0</td>
+            <td>$\mathcal{U}[0, 1.0]$ (prior); posterior peaked near $\sim 0.89$</td>
+        </tr>
+        <tr>
+            <td>$\epsilon_T^{\rm CMB}$</td>
+            <td>C0 background/acoustic diagnostic amplitude</td>
+            <td>TEP-C0</td>
+            <td>$-0.0015\pm0.0037$</td>
+        </tr>
+        <tr>
+            <td>$\epsilon_T^{\rm HC}$</td>
+            <td>Native hi_class homogeneous conformal amplitude</td>
+            <td>TEP-HC</td>
+            <td>$0.0056\pm0.0043$</td>
+        </tr>
+        <tr>
+            <td>$\epsilon_{\rm dyn}(z)$, $\epsilon_{\rm eff}(z)$</td>
+            <td>Screened dynamical temporal-horizon response</td>
+            <td>TEP-TH</td>
+            <td>Screened to $\sim10^{-12}$ at BBN, $\sim10^{-2}$ at recombination</td>
+        </tr>
+        <tr>
+            <td>$\epsilon_{\rm field}$</td>
+            <td>Primordial spectral-flow parameter constrained by $n_s$</td>
+            <td>TEP-TH</td>
+            <td>$0.0175$ (from $n_s=0.965$)</td>
+        </tr>
+        <tr>
+            <td>$z_T^{\rm los}$</td>
+            <td>C0 line-of-sight supernova transport turnover</td>
+            <td>TEP-C0</td>
+            <td>$5$ (conservative), $100$ (benchmark), free (broad)</td>
+        </tr>
+        <tr>
+            <td>$z_T^{\rm HC}$</td>
+            <td>Homogeneous/acoustic hi_class profile scale</td>
+            <td>TEP-HC</td>
+            <td>Fitted jointly with $\epsilon_T$</td>
+        </tr>
+        <tr>
+            <td>$z_t^{\rm th}$</td>
+            <td>TH thermal-screening transition redshift</td>
+            <td>TEP-TH</td>
+            <td>$100$ (from $T_{\rm lock}=0.03$ eV)</td>
+        </tr>
+        <tr>
+            <td>$T_{\rm lock}$</td>
+            <td>Thermal screening scale: $T_{\rm lock}=T_0(1+z_t)$</td>
+            <td>TEP-TH</td>
+            <td>$0.03$ eV</td>
+        </tr>
+        <tr>
+            <td>$p$</td>
+            <td>Temporal-horizon conformal exponent: $A_{\rm clock}\sim\eta^{-p}$</td>
+            <td>TEP-TH</td>
+            <td>$0 \lt p\le\tfrac12$ (regular branch)</td>
+        </tr>
+        <tr>
+            <td>$r_s^{\rm TEP}/r_s^{\Lambda\rm CDM}$</td>
+            <td>Pre-recombination sound-horizon ratio</td>
+            <td>TEP-HC</td>
+            <td>$0.999994$ ($<6$ ppm deviation)</td>
+        </tr>
+        <tr>
+            <td>$D=\alpha_K+\tfrac32\alpha_B^2$</td>
+            <td>No-ghost discriminant (physical branch: $D=\alpha_A^2$)</td>
+            <td>TEP-HC</td>
+            <td>$\alpha_A^2>0$ (positive definite)</td>
+        </tr>
+        <tr>
+            <td>$r(k_{\rm pivot})$</td>
+            <td>Native tensor-to-scalar ratio at Planck pivot</td>
+            <td>TEP-TH</td>
+            <td>$9\times10^{-6}$</td>
+        </tr>
+        <tr>
+            <td>$r_{\rm max}$</td>
+            <td>Maximum tensor-to-scalar ratio across transition profile</td>
+            <td>TEP-TH</td>
+            <td>$6.26\times10^{-4}$</td>
+        </tr>
+        <tr>
+            <td>$H_0$</td>
+            <td>Hubble parameter (TEP-C0 joint MCMC)</td>
+            <td>TEP-C0</td>
+            <td>$66.70\pm0.58$ km s$^{-1}$ Mpc$^{-1}$</td>
+        </tr>
+        <tr>
+            <td>$S_8$</td>
+            <td>$\sigma_8\sqrt{\Omega_m/0.3}$ (TEP-HC joint MCMC)</td>
+            <td>TEP-HC</td>
+            <td>$0.870\pm0.028$</td>
+        </tr>
+        <tr>
+            <td>$\sigma_8^{\rm HC}$</td>
+            <td>Native hi_class matter-fluctuation amplitude</td>
+            <td>TEP-HC</td>
+            <td>$0.825\pm0.016$</td>
+        </tr>
+    </tbody>
+</table>
+
+<p style="font-size:0.9em; color:#666; margin-top:1em;">
+    <strong>Note:</strong> Parameters with superscript labels ($^{\rm los}$, $^{\rm HC}$, $^{\rm th}$) are related projections of the same temporal sector but are not numerically interchangeable. The turnover scales $z_T^{\rm los}$, $z_T^{\rm HC}$, and $z_t^{\rm th}$ describe different physical regimes; the amplitudes $\epsilon_T^{\rm los}$, $\epsilon_T^{\rm CMB}$, $\epsilon_T^{\rm HC}$, and $\epsilon_{\rm field}$ are constrained by different observables.
+</p>

@@ -65,6 +65,10 @@ def run():
     # TEP predicts identical blackbody (photon conservation)
     T_tep_prediction = 2.725
     
+    # Guard against zero or vanishing fit error (synthetic data can give T_err ≈ 0)
+    T_err_safe = max(T_err, 0.001)  # minimum 1 mK tolerance
+    consistent = abs(T_fit - T_tep_prediction) < 3 * T_err_safe
+
     results = {
         'step': STEP_ID,
         'description': 'CMB blackbody preservation under TEP',
@@ -73,8 +77,8 @@ def run():
         'temperature_error': rounded(T_err, 4),
         'TEP_prediction': T_tep_prediction,
         'deviation_mK': rounded((T_fit - T_tep_prediction) * 1000, 2),
-        'consistent_with_TEP': abs(T_fit - T_tep_prediction) < 3 * T_err,
-        'interpretation': f'CMB temperature {rounded(T_fit, 4)}±{rounded(T_err, 4)} K consistent with TEP prediction'
+        'consistent_with_TEP': consistent,
+        'interpretation': f'CMB temperature {rounded(T_fit, 4)}±{rounded(T_err, 4)} K consistent with TEP prediction' if consistent else f'CMB temperature {rounded(T_fit, 4)}±{rounded(T_err, 4)} K deviates from TEP prediction by {rounded(abs(T_fit - T_tep_prediction)*1000, 2)} mK'
     }
     
     write_json(step_json_path(STEP_ID), results)

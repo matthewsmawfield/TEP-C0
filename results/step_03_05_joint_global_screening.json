@@ -1,0 +1,77 @@
+{
+  "constraints": {
+    "BBN": "Gaussian(0.0, 0.001)",
+    "CMB": "Gaussian(0.0056, 0.0043)",
+    "PPN": "Cassini bound |gamma-1| < 2.3e-05"
+  },
+  "correlation_matrix": [
+    [
+      0.9999999999999999,
+      -0.028786957723697007,
+      -0.008910013759195362,
+      -0.008165337558981208,
+      -0.01177917228150201
+    ],
+    [
+      -0.028786957723697028,
+      1.0,
+      0.015384486997763198,
+      -0.0019498077250630534,
+      0.010471473627679164
+    ],
+    [
+      -0.008910013759195357,
+      0.015384486997763198,
+      1.0000000000000002,
+      -0.01130626718788475,
+      -0.00710058815362298
+    ],
+    [
+      -0.008165337558981212,
+      -0.0019498077250630524,
+      -0.011306267187884751,
+      1.0,
+      0.010878066479426515
+    ],
+    [
+      -0.011779172281502008,
+      0.010471473627679168,
+      -0.007100588153622984,
+      0.010878066479426518,
+      1.0
+    ]
+  ],
+  "description": "Joint global screening fit: Pantheon+ \u00d7 CMB \u00d7 BBN \u00d7 PPN",
+  "interpretation": "This is a scoping run with Gaussian-approximated CMB/BBN likelihoods. A production version would call hi_class for each CMB evaluation. The correlation matrix reveals whether screening parameters are degenerate.",
+  "log_evidence": -1298.4524369121846,
+  "log_evidence_error": 0.08184254356523551,
+  "method": "dynesty DynamicNestedSampler",
+  "nlive": 500,
+  "parameters": {
+    "M": {
+      "mean": -19.166127598297074,
+      "prior": "U[-21, -16]",
+      "std": 0.003643183268565212
+    },
+    "epsilon_T": {
+      "mean": 0.0010245647862897136,
+      "prior": "U[-0.4, 0.4]",
+      "std": 0.0009719299542337672
+    },
+    "log10_g_t": {
+      "mean": -9.517382865452749,
+      "prior": "U[-11, -8] m/s^2",
+      "std": 0.8624949665167057
+    },
+    "log10_rho_half": {
+      "mean": 0.4860259260900021,
+      "prior": "U[-1, 2] g/cm^3",
+      "std": 0.8582848002924234
+    },
+    "z_T": {
+      "mean": 10.480763267309753,
+      "prior": "U[1, 20]",
+      "std": 5.456740901900187
+    }
+  }
+}

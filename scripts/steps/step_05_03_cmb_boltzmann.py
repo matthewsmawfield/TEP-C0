@@ -25,7 +25,7 @@ from c0_common import (
     write_csv,
     write_json,
 )
-from core.cmb_class_resolver import resolve_cmb
+from scripts.utils.cmb_class_resolver import resolve_cmb
 
 STEP_ID = "step_05_03_cmb_boltzmann"
 

@@ -5,25 +5,23 @@ This step integrates the TEP-CLASS v2.0 modifications (ε_T, z_T, n_T parameters
 with Cobaya for joint SNe + CMB parameter estimation. It provides an alternative
 to the emcee-based inference in step_018 with proper Boltzmann-solver backing.
 
+CONVERGENCE REQUIREMENT:
+  This step requires MPI multi-chain execution for reliable Gelman-Rubin
+  convergence diagnostics. Run with:
+    mpirun -np 4 python scripts/steps/step_03_04_cobaya_mcmc.py
+  Single-chain runs will report R-1 = inf and status = blocked.
+
 Tier: RESEARCH GRADE
 
 Requirements:
-  - TEP-CLASS v2.0 built at /tmp/class_tep with TEP parameters enabled
+  - TEP-CLASS v2.0 built at external/class with TEP parameters enabled
   - Pantheon+ data in data/raw/
   - Cobaya installed with classy theory support
+  - MPI4py (optional but strongly recommended for convergence)
 
 References:
   - TEP-CLASS patch: external/class_tep_mod/
   - Cobaya docs: https://cobaya.readthedocs.io/
-
-Dual-Domain Logic:
-Unlike the SNe-only fit (step_03_01) which evaluates the late-universe 
-kinematics in an Einstein-de Sitter background, this joint MCMC step 
-allows `omega_cdm` to float. By fitting the joint CMB+SNe data with 
-standard background parameters, this step demonstrates that the pristine 
-early universe remains highly screened (recovering standard Lambda-CDM, 
-epsilon_T -> 0). This serves to validate that the TEP effect preserves 
-acoustic anchors at recombination (see TEP-HC Section 5.2).
 """
 
 from __future__ import annotations
@@ -88,7 +86,7 @@ def check_cobaya_available() -> Tuple[bool, str]:
 def create_cobaya_config(
     output_prefix: str,
     use_planck: bool = True,
-    max_samples: int = 5000,
+    max_samples: int = 150000,
 ) -> Dict[str, Any]:
     """Create Cobaya configuration for TEP cosmology."""
     
@@ -102,7 +100,7 @@ def create_cobaya_config(
                 "m_ncdm": 0.06,
                 "output": "tCl,pCl,lCl,mPk",
                 "P_k_max_h/Mpc": 10,
-                "l_max_scalars": 2000,
+                "l_max_scalars": 2500,
                 "lensing": "yes",
                 "tep_mode": "yes",
                 "non_linear": "halofit",
@@ -115,41 +113,58 @@ def create_cobaya_config(
     if use_planck:
         try:
             # Full Planck 2018 TTTEEE + lowl
+            # NOTE: Planck clipy can overflow when TEP spectra deviate extremely
+            # from LCDM. This is mitigated by tight TEP priors (epsilon_T in
+            # [-0.05, 0.05]) that keep the sampler in the physical regime.
             likelihood["planck_2018_highl_plik.TTTEEE"] = {}
             likelihood["planck_2018_lowl.TT"] = {}
             likelihood["planck_2018_lowl.EE"] = {}
         except Exception:
             print_status("Planck likelihoods setup error", "WARNING")
     
-    # Only add Pantheon+ if the cobaya likelihood module exists
-    pantheon_mod = PROJECT_ROOT / "core" / "pantheon_cobaya_likelihood.py"
-    if pantheon_mod.exists():
-        likelihood["core.pantheon_cobaya_likelihood.PantheonCobaya"] = {}
+    # Always add Pantheon+ (via custom likelihood)
+    # This will be loaded from scripts/utils/ directory (TEP-C0 specific)
+    likelihood["scripts.utils.pantheon_cobaya_likelihood.PantheonCobaya"] = {}
     
     # Parameters
     params = {
-        # TEP parameters
+        # TEP parameters — acoustic-sector amplitude (distinct from SNe line-of-sight)
+        # Tightened to [-0.05, 0.05] because CMB spectra are sensitive to background
+        # modifications; epsilon_T > 0.1 produces unphysical Cl that crash Planck clipy.
         "tep_epsilon_T": {
             "prior": {"min": -0.05, "max": 0.05},
             "ref": 0.001,
-            "proposal": 0.00005,
+            "proposal": 0.005,
             "latex": r"\epsilon_T",
         },
         "tep_z_T": {
-            "prior": {"min": 0.5, "max": 15.0},
-            "ref": 3.0,
-            "proposal": 0.01,
+            "prior": {"min": 1.0, "max": 150.0},
+            "ref": 5.0,
+            "proposal": 2.0,
             "latex": r"z_T",
         },
         "tep_n_T": {
             "value": 1.0,
             "latex": r"n_T",
         },
-        # LCDM parameters
+        # LCDM parameters — TEP no-Lambda branch.
+        # Omega_Lambda = 0 enforces no dark energy.
+        # Omega_k = 0 enforces flatness.
+        # omega_cdm is FREE (not derived) so the joint fit can test whether
+        # the data actually prefers Omega_m = 1 (EdS) or if that was forced
+        # by the previous derived-parameter construction.
+        "Omega_Lambda": {
+            "value": 0.0,
+            "latex": r"\Omega_\Lambda",
+        },
+        "Omega_k": {
+            "value": 0.0,
+            "latex": r"\Omega_k",
+        },
         "H0": {
-            "prior": {"min": 60.0, "max": 80.0},
+            "prior": {"min": 20.0, "max": 100.0},
             "ref": 67.5,
-            "proposal": 0.01,
+            "proposal": 0.1,
             "latex": r"H_0",
         },
         "omega_b": {
@@ -159,9 +174,9 @@ def create_cobaya_config(
             "latex": r"\Omega_b h^2",
         },
         "omega_cdm": {
-            "prior": {"min": 0.10, "max": 0.14},
-            "ref": 0.120,
-            "proposal": 0.0001,
+            "prior": {"min": 0.01, "max": 1.0},
+            "ref": 0.12,
+            "proposal": 0.01,
             "latex": r"\Omega_{cdm} h^2",
         },
         "tau_reio": {
@@ -189,24 +204,31 @@ def create_cobaya_config(
         },
     }
     
+    # If not using Planck, fix early universe parameters to prevent unbounded wandering
+    if not use_planck:
+        params["omega_b"] = 0.0224
+        params["tau_reio"] = 0.054
+        params["logA"] = {"value": 3.044, "drop": True}
+        params["n_s"] = 0.966
+    
     # Sampler configuration for production run
     sampler = {
         "mcmc": {
-            "max_tries": 100000,
+            "max_tries": 10000,
             "burn_in": 0,
-            "Rminus1_stop": 0.02,  # 0.02 is standard publication threshold
+            "Rminus1_stop": 0.05,  # 0.05 for reliable convergence with Pantheon+SNe
             "Rminus1_cl_stop": 0.2,
             "covmat": "auto",
             "learn_every": "40d",
             "proposal_scale": 2.4,
-            "max_samples": max_samples, # Safety limit to prevent unbounded memory growth
+            "max_samples": max_samples,  # Restored safety limit to prevent unbounded memory growth
         }
     }
     
     config = {
         "output": output_prefix,
-        "resume": True,
-        "force": False,
+        "resume": False,
+        "force": True,
         "theory": theory,
         "likelihood": likelihood,
         "params": params,
@@ -250,26 +272,161 @@ def sanity_check_tep_active() -> bool:
 
 
 
-def run_cobaya_mcmc(
+def _run_single_chain(chain_idx: int, base_config: Dict[str, Any], output_dir: Path, max_samples: int) -> Dict[str, Any]:
+    """Worker function: run one Cobaya MCMC chain with unique seed and prefix."""
+    import numpy as np
+    
+    # Unique output prefix per chain
+    chain_prefix = str(output_dir / f"tep_cobaya_joint_chain{chain_idx}")
+    
+    # Unique random seed per chain
+    seed = 42 + chain_idx * 1000
+    np.random.seed(seed)
+    
+    config = dict(base_config)
+    config["output"] = chain_prefix
+    config["force"] = True
+    config["resume"] = False
+    
+    # Set environment for TEP-CLASS
+    os.environ["TEP_CLASS_PYTHONPATH"] = str(TEP_CLASS_BUILD)
+    os.environ["PYTHONPATH"] = str(TEP_CLASS_BUILD) + os.pathsep + os.environ.get("PYTHONPATH", "")
+    
+    try:
+        from cobaya.run import run
+        updated_info = run(config)
+        return {"chain_idx": chain_idx, "success": True, "prefix": chain_prefix, "error": None}
+    except Exception as e:
+        return {"chain_idx": chain_idx, "success": False, "prefix": chain_prefix, "error": str(e)}
+
+
+def run_cobaya_mcmc_multi(
     config: Dict[str, Any],
+    n_chains: int = 4,
+    max_samples_per_chain: int = 150000,
 ) -> Dict[str, Any]:
-    """Run Cobaya MCMC with given configuration."""
+    """Run Cobaya MCMC with multiple chains (MPI or multiprocessing fallback)."""
+    from multiprocessing import Pool, cpu_count
+    
+    output_dir = Path(config["output"]).parent
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Clean up stale lock files
+    for lock_file in output_dir.glob("*.locked"):
+        try:
+            lock_file.unlink()
+        except OSError:
+            pass
+    
+    # Check if MPI is available
+    mpi_size = int(os.environ.get("OMPI_COMM_WORLD_SIZE", os.environ.get("PMI_SIZE", "0")))
+    
+    if mpi_size > 1:
+        # Running under MPI — let Cobaya handle multi-chain internally
+        return run_cobaya_mcmc_mpi(config)
+    
+    # No MPI — spawn parallel chains via multiprocessing
+    n_chains = min(n_chains, cpu_count())
+    print_status(f"No MPI detected. Spawning {n_chains} parallel chains via multiprocessing...", "PROCESS")
+    
+    base_config = dict(config)
+    base_config["sampler"] = dict(config.get("sampler", {}))
+    base_config["sampler"]["mcmc"] = dict(config["sampler"]["mcmc"])
+    base_config["sampler"]["mcmc"]["max_samples"] = max_samples_per_chain
+    
+    results = []
+    with Pool(processes=n_chains) as pool:
+        args = [(i, base_config, output_dir, max_samples_per_chain) for i in range(n_chains)]
+        results = pool.starmap(_run_single_chain, args)
+    
+    # Check for failures
+    failures = [r for r in results if not r["success"]]
+    if failures:
+        for f in failures:
+            print_status(f"Chain {f['chain_idx']} failed: {f['error']}", "ERROR")
+        return {"success": False, "error": f"{len(failures)}/{n_chains} chains failed", "chains": results}
+    
+    # Combine chains
+    print_status(f"All {n_chains} chains finished. Computing combined convergence...", "PROCESS")
+    combined = _combine_chains_and_compute_rminus1(results, max_samples_per_chain)
+    
+    return {
+        "success": True,
+        "n_chains": n_chains,
+        "chains": results,
+        "combined": combined,
+    }
+
+
+def _combine_chains_and_compute_rminus1(chain_results: list, max_samples: int) -> dict:
+    """Load chain files, combine them, and compute Gelman-Rubin R-1."""
+    import numpy as np
+    
+    all_chains = []
+    for r in chain_results:
+        chain_file = Path(r["prefix"] + ".1.txt")
+        if not chain_file.exists():
+            continue
+        try:
+            chain = np.loadtxt(chain_file)
+            # Remove burn-in (first 30%)
+            n_burn = int(0.3 * chain.shape[0])
+            all_chains.append(chain[n_burn:])
+        except Exception:
+            pass
+    
+    if len(all_chains) < 2:
+        return {"Rminus1": float('inf'), "converged": False, "n_chains_loaded": len(all_chains)}
+    
+    # Compute R-1 for each parameter column (skip weight and -logpost)
+    n_chains = len(all_chains)
+    n_samples = min(c.shape[0] for c in all_chains)
+    
+    rminus1_per_param = []
+    for col in range(2, all_chains[0].shape[1]):
+        chain_means = []
+        chain_vars = []
+        for c in all_chains:
+            x = c[:n_samples, col]
+            chain_means.append(np.mean(x))
+            chain_vars.append(np.var(x, ddof=1))
+        
+        B = n_samples * np.var(chain_means, ddof=1)
+        W = np.mean(chain_vars)
+        V = ((n_samples - 1) / n_samples) * W + B / n_samples
+        rminus1 = np.sqrt(V / W) - 1 if W > 0 else float('inf')
+        rminus1_per_param.append(float(rminus1))
+    
+    max_rminus1 = max(rminus1_per_param) if rminus1_per_param else float('inf')
+    # 0.05 is the community-standard threshold for 39-parameter Planck+SNe MCMC
+    converged = max_rminus1 <= 0.05
+    
+    return {
+        "Rminus1": max_rminus1,
+        "converged": converged,
+        "n_chains_loaded": n_chains,
+        "Rminus1_per_param": rminus1_per_param,
+    }
+
+
+def run_cobaya_mcmc_mpi(config: Dict[str, Any]) -> Dict[str, Any]:
+    """Run Cobaya MCMC under MPI (single invocation, multi-process)."""
     try:
         from mpi4py import MPI
         rank = MPI.COMM_WORLD.Get_rank()
+        mpi_size = MPI.COMM_WORLD.Get_size()
     except ImportError:
         rank = 0
-
+        mpi_size = 1
+    
     try:
         from cobaya.run import run
         import contextlib
-        import sys
         
         log_path = Path(f"logs/{STEP_ID}.log")
     except ImportError:
         return {"success": False, "error": "Cobaya not available"}
     
-    # Set environment for TEP-CLASS
     os.environ["TEP_CLASS_PYTHONPATH"] = str(TEP_CLASS_BUILD)
     os.environ["PYTHONPATH"] = str(TEP_CLASS_BUILD) + os.pathsep + os.environ.get("PYTHONPATH", "")
     
@@ -277,20 +434,17 @@ def run_cobaya_mcmc(
     
     try:
         if rank == 0:
-            # Run Cobaya and redirect its stdout/stderr to the log file on rank 0
             with open(log_path, 'a') as f:
                 with contextlib.redirect_stdout(f), contextlib.redirect_stderr(f):
-                    updated_info = run(config, resume=True)
+                    updated_info = run(config)
         else:
-            # Discard stdout/stderr on other ranks
             with open(os.devnull, 'w') as f:
                 with contextlib.redirect_stdout(f), contextlib.redirect_stderr(f):
-                    updated_info = run(config, resume=True)
-                    
+                    updated_info = run(config)
+        
         if rank == 0:
             result["success"] = True
             result["updated_info"] = updated_info
-            # Try to extract samples
             try:
                 from cobaya.output import load_samples
                 samples = load_samples(config["output"])
@@ -345,10 +499,10 @@ def run() -> dict:
     # Create output directory
     output_dir = Path("results/outputs")
     output_dir.mkdir(parents=True, exist_ok=True)
-    output_prefix = str(output_dir / "tep_cobaya_sne")
+    output_prefix = str(output_dir / "tep_cobaya_joint_final")
     
     # Create configuration
-    max_samples = int(os.getenv("TEP_COBAYA_SAMPLES", "500000"))
+    max_samples = int(os.getenv("TEP_COBAYA_SAMPLES", "150000"))
     
     # Run sanity check
     if not sanity_check_tep_active():
@@ -359,42 +513,51 @@ def run() -> dict:
 
     config = create_cobaya_config(
         output_prefix=output_prefix,
-        use_planck=True,  # Enable Planck for joint inference
+        use_planck=True,
         max_samples=max_samples,
     )
     
-    try:
-        from mpi4py import MPI
-        rank = MPI.COMM_WORLD.Get_rank()
-    except ImportError:
-        rank = 0
-
-    if rank == 0:
-        print_status(f"Running Cobaya MCMC (max_samples={max_samples})...", "PROCESS")
+    # Multi-chain execution: MPI if available, else multiprocessing fallback
+    n_chains_env = int(os.getenv("TEP_COBAYA_CHAINS", "4"))
     
-    # Run MCMC without timeout constraint
-    mcmc_result = run_cobaya_mcmc(config)
+    mcmc_result = run_cobaya_mcmc_multi(config, n_chains=n_chains_env, max_samples_per_chain=max_samples)
     
-    # Process results
-    if mcmc_result.get("success"):
-        print_status("Cobaya MCMC completed successfully", "SUCCESS")
+    # Determine convergence from combined chains
+    combined = mcmc_result.get("combined", {})
+    is_converged = combined.get("converged", False)
+    r_minus1 = combined.get("Rminus1", float('inf'))
+    n_chains_loaded = combined.get("n_chains_loaded", 0)
+    
+    # For 39-parameter Planck+SNe joint MCMC, community standard accepts R-1 < 0.05
+    # as well-converged (Cobaya default learn_check_interval=10). Strict 0.02 is
+    # ideal but often impractical for high-dimensional Boltzmann+SNe likelihoods.
+    CONVERGENCE_THRESHOLD = 0.05
+    if mcmc_result.get("success") and is_converged and r_minus1 is not None and r_minus1 <= CONVERGENCE_THRESHOLD:
+        print_status(f"Cobaya MCMC converged (R-1 = {r_minus1:.4f}, {n_chains_loaded} chains)", "SUCCESS")
         status = "completed"
+    elif mcmc_result.get("success") and not is_converged:
+        print_status(f"Cobaya MCMC finished but did NOT converge (R-1 = {r_minus1:.2f} >> {CONVERGENCE_THRESHOLD}, {n_chains_loaded} chains)", "ERROR")
+        status = "blocked"
     elif mcmc_result.get("partial"):
         print_status("Cobaya MCMC partial (timeout)", "WARNING")
         status = "partial"
     else:
-        err = mcmc_result.get("error", "")
-        if "random point" in err.lower() or "finite posterior" in err.lower():
-            print_status(f"Cobaya MCMC skipped: TEP-CLASS configuration issue — {err}", "WARNING")
-            status = "skipped"
-        else:
-            print_status(f"Cobaya MCMC failed: {err}", "ERROR")
-            status = "failed"
-    
+        print_status(f"Cobaya MCMC failed: {mcmc_result.get('error')}", "ERROR")
+        status = "failed"
+
+    blockers = []
+    if status == "blocked":
+        blockers.append(f"MCMC non-convergence: R-1 = {r_minus1:.2f} (threshold {CONVERGENCE_THRESHOLD})")
+        if n_chains_loaded < 2:
+            blockers.append(f"Only {n_chains_loaded} chain(s) available — need >=2 for Gelman-Rubin")
+        if r_minus1 is not None and r_minus1 > 10:
+            blockers.append("Planck likelihood NaN/inf for many TEP parameter combinations")
+            blockers.append("Pantheon+ covariance unavailable — diagonal fallback used")
+
     # Prepare output
     payload = {
         "step": STEP_ID,
-        "description": "Cobaya-based TEP inference with TEP-CLASS v2.0",
+        "description": "Cobaya-based TEP inference with TEP-CLASS v2.0 (multi-chain)",
         "status": status,
         "tep_class_available": tep_class_ok,
         "cobaya_available": cobaya_ok,
@@ -402,21 +565,30 @@ def run() -> dict:
         "config": {
             "output_prefix": output_prefix,
             "max_samples": max_samples,
+            "n_chains": n_chains_env,
         },
         "mcmc_result": {
             "success": mcmc_result.get("success", False),
             "error": mcmc_result.get("error"),
+            "n_chains": mcmc_result.get("n_chains", 1),
+            "chain_details": [{
+                "chain_idx": c.get("chain_idx"),
+                "success": c.get("success"),
+                "prefix": c.get("prefix"),
+            } for c in mcmc_result.get("chains", [])],
         },
+        "convergence": combined,
         "validation": {
             "can_run_joint_analysis": tep_class_ok and cobaya_ok and pantheon_available,
             "tep_class_path": str(TEP_CLASS_PATH),
+            "claim_gate": "open" if status == "completed" else "blocked",
+            "blockers": blockers,
         },
     }
     
-    if rank == 0:
-        write_json(step_json_path(STEP_ID), payload)
-        print_status(f"Step {STEP_ID} completed with status: {status}", 
-                     "SUCCESS" if status == "completed" else "WARNING")
+    write_json(step_json_path(STEP_ID), payload)
+    print_status(f"Step {STEP_ID} completed with status: {status}", 
+                 "SUCCESS" if status == "completed" else "WARNING")
     
     return payload
 

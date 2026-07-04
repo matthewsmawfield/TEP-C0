@@ -26,14 +26,16 @@ SOURCE_MANIFEST = [
         "citation": "Pantheon+SH0ES DataRelease, Pantheon+ distance table.",
         "minimum_bytes": 100_000,
     },
-    {
-        "source_id": "pantheon_plus_stat_sys_covariance",
-        "domain": "supernovae",
-        "url": "https://raw.githubusercontent.com/PantheonPlusSH0ES/DataRelease/main/Pantheon%2B_Data/4_DISTANCES_AND_COVAR/Pantheon%2BSH0ES_STAT%2BSYS.cov",
-        "target": "Pantheon+SH0ES.cov",
-        "citation": "Pantheon+SH0ES DataRelease, full statistical plus systematic covariance matrix.",
-        "minimum_bytes": 5_000_000,
-    },
+    # Temporarily disabled - GitHub file is incomplete, using git version instead
+    # {
+    #     "source_id": "pantheon_plus_stat_sys_covariance",
+    #     "domain": "supernovae",
+    #     "url": "https://raw.githubusercontent.com/PantheonPlusSH0ES/DataRelease/main/Pantheon%2B_Data/4_DISTANCES_AND_COVAR/Pantheon%2BSH0ES_STAT%2BSYS.cov",
+    #     "target": "Pantheon+SH0ES.cov",
+    #     "citation": "Pantheon+SH0ES DataRelease, full statistical plus systematic covariance matrix.",
+    #     "minimum_bytes": 5_000_000,
+    #     "optional": True,
+    # },
     {
         "source_id": "firas_cmb_monopole",
         "domain": "cmb_blackbody",
@@ -101,6 +103,7 @@ def download_source(source: dict) -> dict:
     target_path = RAW_DIR / source["target"]
     status = "missing"
     error = ""
+    is_optional = source.get("optional", False)
 
     print_status(f"Processing source: {source['source_id']}", "PROCESS")
     try:
@@ -113,6 +116,14 @@ def download_source(source: dict) -> dict:
             print_status(f"Using cached {source['source_id']}", "SUCCESS")
         else:
             print_status(f"Failed to download {source['source_id']}: {error}", "ERROR")
+            if is_optional:
+                print_status(f"Skipping optional source {source['source_id']}", "INFO")
+                return {
+                    "source": source,
+                    "status": "skipped",
+                    "error": error,
+                    "exception": str(exc)
+                }
             return {
                 "source": source,
                 "status": "failed",
@@ -123,6 +134,13 @@ def download_source(source: dict) -> dict:
     size_bytes = target_path.stat().st_size
     if size_bytes < source["minimum_bytes"]:
         print_status(f"Source {source['source_id']} too small: {size_bytes} bytes", "ERROR")
+        if is_optional:
+            print_status(f"Skipping optional source {source['source_id']}", "INFO")
+            return {
+                "source": source,
+                "status": "skipped",
+                "error": f"File too small: {size_bytes} bytes"
+            }
         return {
             "source": source,
             "status": "failed",
@@ -162,6 +180,10 @@ def run() -> dict:
                 error = result.get("error", "Unknown error")
                 print_status(f"Failed to download {source['source_id']}: {error}", "ERROR")
                 raise RuntimeError(f"Failed to download {source['source_id']} from {source['url']}: {error}")
+            
+            if result["status"] == "skipped":
+                # Optional source was skipped, don't include in manifest
+                continue
             
             status = result["status"]
             target_path = result["target_path"]

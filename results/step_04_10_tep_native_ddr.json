@@ -1,0 +1,123 @@
+{
+  "conclusion": "inconclusive",
+  "constraints": [
+    {
+      "D_A_Mpc": 960.0,
+      "D_A_err_Mpc": 120.0,
+      "D_L_TEP_Mpc": 1348.0,
+      "D_L_err_Mpc": 67.4,
+      "deviation_from_unity_sigma": -1.44,
+      "eta": 0.8373,
+      "eta_err": 0.1127,
+      "source": "B1608+656, H0LiCOW",
+      "z": 0.295
+    },
+    {
+      "D_A_Mpc": 1620.0,
+      "D_A_err_Mpc": 180.0,
+      "D_L_TEP_Mpc": 3165.0,
+      "D_L_err_Mpc": 158.2,
+      "deviation_from_unity_sigma": -3.29,
+      "eta": 0.7141,
+      "eta_err": 0.087,
+      "source": "RXJ1131-1231, H0LiCOW",
+      "z": 0.654
+    },
+    {
+      "D_A_Mpc": 1780.0,
+      "D_A_err_Mpc": 200.0,
+      "D_L_TEP_Mpc": 4387.4,
+      "D_L_err_Mpc": 219.4,
+      "deviation_from_unity_sigma": -3.54,
+      "eta": 0.6966,
+      "eta_err": 0.0857,
+      "source": "HE0435-1223, H0LiCOW",
+      "z": 0.881
+    },
+    {
+      "D_A_Mpc": 1680.0,
+      "D_A_err_Mpc": 150.0,
+      "D_L_TEP_Mpc": 3649.1,
+      "D_L_err_Mpc": 182.5,
+      "deviation_from_unity_sigma": -3.93,
+      "eta": 0.7133,
+      "eta_err": 0.073,
+      "source": "WFI2033-4723, H0LiCOW",
+      "z": 0.745
+    },
+    {
+      "D_A_Mpc": 1560.0,
+      "D_A_err_Mpc": 140.0,
+      "D_L_TEP_Mpc": 3038.7,
+      "D_L_err_Mpc": 151.9,
+      "deviation_from_unity_sigma": -3.54,
+      "eta": 0.7332,
+      "eta_err": 0.0753,
+      "source": "PG1115+080, H0LiCOW",
+      "z": 0.63
+    },
+    {
+      "D_A_Mpc": 545.0,
+      "D_A_err_Mpc": 55.0,
+      "D_L_TEP_Mpc": 629.1,
+      "D_L_err_Mpc": 31.5,
+      "deviation_from_unity_sigma": -1.15,
+      "eta": 0.8851,
+      "eta_err": 0.0997,
+      "source": "A1835, SZ",
+      "z": 0.142
+    },
+    {
+      "D_A_Mpc": 750.0,
+      "D_A_err_Mpc": 75.0,
+      "D_L_TEP_Mpc": 1142.1,
+      "D_L_err_Mpc": 57.1,
+      "deviation_from_unity_sigma": -0.26,
+      "eta": 0.9715,
+      "eta_err": 0.1086,
+      "source": "A2261, SZ",
+      "z": 0.252
+    },
+    {
+      "D_A_Mpc": 1050.0,
+      "D_A_err_Mpc": 110.0,
+      "D_L_TEP_Mpc": 2117.6,
+      "D_L_err_Mpc": 105.9,
+      "deviation_from_unity_sigma": -0.38,
+      "eta": 0.9579,
+      "eta_err": 0.1112,
+      "source": "A2204, SZ",
+      "z": 0.451
+    },
+    {
+      "D_A_Mpc": 1180.0,
+      "D_A_err_Mpc": 120.0,
+      "D_L_TEP_Mpc": 2601.8,
+      "D_L_err_Mpc": 130.1,
+      "deviation_from_unity_sigma": -0.74,
+      "eta": 0.9225,
+      "eta_err": 0.1045,
+      "source": "A1689, SZ",
+      "z": 0.546
+    }
+  ],
+  "description": "TEP-native distance-duality test with r_s-independent D_A constraints",
+  "global_test": {
+    "all_individual_pass": false,
+    "chi2_eta_eq_1": 55.48,
+    "chi2_per_dof": 6.16,
+    "deviation_from_unity_sigma": -6.64,
+    "dof": 9,
+    "mean_passes": false,
+    "weighted_mean_eta": 0.7968,
+    "weighted_mean_eta_err": 0.0306
+  },
+  "status": "completed",
+  "step": "step_04_10_tep_native_ddr",
+  "tep_parameters": {
+    "H0": 70.0,
+    "Omega_m": 1.0,
+    "epsilon_T": 0.018,
+    "z_T": 5.0
+  }
+}

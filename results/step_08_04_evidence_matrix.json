@@ -10,7 +10,7 @@
       "tep_explanation": "Projection of Temporal Shear gradients along the photon path."
     },
     {
-      "numerical_anchor": "Dimensionless distance comparison (H0_ref = 70.0 km/s/Mpc); M_TEP = -19.31696028237551 vs M_LCDM = -19.324050612383857",
+      "numerical_anchor": "Dimensionless distance comparison (H0_ref = 70.0 km/s/Mpc); M_TEP = -19.314663175538243 vs M_LCDM = -19.324050612383857",
       "observable": "SN 1a Distance-Redshift",
       "status": "validated",
       "tep_explanation": "TEP matter model incorporating matter-frame effects."
@@ -22,9 +22,9 @@
       "tep_explanation": "Resolution via temporal shear effects."
     },
     {
-      "numerical_anchor": "Tolman \u0394\u03c7\u00b2: -3647.74...",
+      "numerical_anchor": "Tolman \u0394\u03c7\u00b2: -1972.45...",
       "observable": "Distance Duality (Xi_T)",
-      "status": "Moderate",
+      "status": "Blocked",
       "tep_explanation": "Measurable residuals in high-z luminosity/angular diameter relations."
     },
     {

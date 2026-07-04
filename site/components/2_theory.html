@@ -1,6 +1,6 @@
 <h1>2. Theoretical Framework: Temporal Shear and the Reconstruction of Expansion</h1>
     <p>
-        TEP advances the hypothesis that observational evidence normally attributed to cosmic expansion may involve large-scale Temporal Shear: gradients and covariance in the matter-frame clock-rate field $\ln A(\phi)$. In TEP, matter, clocks, electromagnetic fields, and quantum phases couple universally to the causal matter metric $\tilde{g}_{\mu\nu} = A^2(\phi)g_{\mu\nu} + B(\phi)\nabla_\mu\phi\nabla_\nu\phi$, where the conformal factor $A(\phi)$ defines the Temporal Shear vector:
+        TEP advances the hypothesis that the observational evidence normally attributed to cosmic expansion can be represented, at the homogeneous background level, by a static conformal mapping driven by large-scale Temporal Shear: gradients and covariance in the matter-frame clock-rate field $\ln A(\phi)$. In TEP, matter, clocks, electromagnetic fields, and quantum phases couple universally to the causal matter metric $\tilde{g}_{\mu\nu} = A^2(\phi)g_{\mu\nu} + B(\phi)\nabla_\mu\phi\nabla_\nu\phi$, where the conformal factor $A(\phi)$ defines the Temporal Shear vector:
     </p>
     <div class="equation">
         \begin{equation} \label{eq:shear_vector}
@@ -8,14 +8,23 @@
         \end{equation}
     </div>
 
-    <h2>2.1 The Cosmological Isochrony Assumption</h2>
+    <p>
+        The conformal field $A(\phi)$ defines a phase-space structure in which the matter-frame clock-rate varies continuously across cosmic scales. The phase-space topology of this field determines whether transport is integrable or path-dependent, distinguishing pure conformal shear from non-integrable temporal transport.
+    </p>
+
+    <h2>2.1 Relation to Prior Work</h2>
+    <p>
+        While standard cosmology treats cosmic expansion as a kinematic stretching of the spatial metric, several frameworks have explored conformal alternatives. Wetterich (2013) demonstrated that a universe without spatial expansion can be formulated using a varying particle mass, while Narlikar and Arp explored conformal gravity variations. Furthermore, environmental screening mechanisms—such as chameleon or symmetron screening (Khoury &amp; Weltman 2004; Hinterbichler &amp; Khoury 2010)—have been extensively developed to hide scalar fifth forces. TEP departs from these approaches by identifying the conformal factor strictly with the dynamical flow of proper time, generating an exact geometric mapping between the spatial scale factor and the macroscopic accumulation of Temporal Shear without requiring variable rest masses or modified spatial curvature.
+    </p>
+
+    <h2>2.2 The Cosmological Isochrony Assumption</h2>
     <p>
         Standard FLRW cosmology assumes that, after local gravitational corrections and large-scale averaging, cosmological observations can be represented on a globally integrable comoving time foliation. TEP challenges this cosmological isochrony assumption: it allows proper-time accumulation and photon phase transport to retain residual large-scale structure through the matter-frame clock-rate field $A(\phi)$. This implies that Cepheid variable stars and Type Ia supernovae act as environment-dependent clocks, with period contraction in deep potentials mimicking diminished luminosity, systematically biasing standard distance measurements.
     </p>
 
     <h2>2.2 The Generator of Apparent Redshift</h2>
     <p>
-        Observed redshift is reinterpreted as a macroscopic transport phenomenon driven by the accumulation of Temporal Shear along the photon path $\gamma$. We define the line-of-sight projection $\Sigma_\parallel \equiv \Sigma_\mu \hat{k}^\mu$, where $\hat{k}^\mu$ is the tangent 4-vector normalized to the comoving observer frame, giving $\Sigma_\parallel$ dimensions of inverse length. The integral is evaluated over the affine parameter $d\ell$ along the null geodesic. The transport relation for the apparent redshift $z_T$ is derived from the open-path integral:
+        Observed redshift is reinterpreted as a macroscopic transport phenomenon driven by the accumulation of Temporal Shear along the photon path $\gamma$. The line-of-sight projection is defined as $\Sigma_\parallel \equiv \Sigma_\mu \hat{k}^\mu$, where $\hat{k}^\mu$ is the tangent 4-vector normalized to the comoving observer frame, giving $\Sigma_\parallel$ dimensions of inverse length. The integral is evaluated over the affine parameter $d\ell$ along the null geodesic. The transport relation for the apparent redshift $z_T$ is derived from the open-path integral:
     </p>
     <div class="equation">
         \begin{equation} \label{eq:redshift_transport}
@@ -23,7 +32,7 @@
         \end{equation}
     </div>
     <p>
-        It is critical to distinguish between open-path accumulation and closed-loop non-integrability. Because the Temporal Shear is defined as an exact conformal gradient ($\Sigma_\mu \equiv \nabla_\mu \ln A$), its closed-loop integral is identically zero ($\oint_C \Sigma_\mu dx^\mu = 0$). Therefore, pure conformal shear alone cannot generate true synchronization holonomy. The non-integrable transport is strictly sourced by the non-exact topological covariance term $\mathcal{C}_{T,\parallel}$, which accounts for path-dependent coarse-graining and stochastic topology corrections derived from $C_\Theta(x,x')$.
+        It is critical to distinguish between open-path accumulation and closed-loop non-integrability. Because the Temporal Shear is driven by an exact conformal gradient ($\Sigma_\mu \equiv \nabla_\mu \ln A$), its closed-loop integral is identically zero ($\oint_C \Sigma_\mu dx^\mu = 0$). Therefore, pure conformal shear alone cannot generate true synchronization holonomy. The non-integrable transport is strictly sourced by the non-exact topological covariance term $\mathcal{C}_T$, whose line-of-sight projection $\mathcal{C}_{T,\parallel}$ enters the open-path transport integral. This term accounts for path-dependent coarse-graining and stochastic topology corrections derived from $C_\Theta(x,x')$.
     </p>
     <p>
         In standard cosmology, these effects are compressed into a single geometric variable, the scale factor $a(t)$. In TEP, $a(t)$ is recognized as an effective integrable reconstruction:
@@ -33,6 +42,10 @@
             a_{\text{eff}}(\gamma) = \exp \left[ -\int_\gamma \left( \Sigma_\parallel(x) + \mathcal{C}_{T,\parallel}(x,\hat{k}) \right) d\ell \right]
         \end{equation}
     </div>
+
+    <p>
+        The reconstructed scale factor $a_{\text{eff}}$ is the open-path FLRW-like projection developed in the temporal-horizon framework of TEP-TH (Paper 27). It decomposes into the exact observational clock map $A_{\text{clock}}(\gamma)=A_0/A_{\text{em}}$ and the suppressed physical dynamical response $A_{\text{dyn}}(\gamma)$, with the non-exact covariance/topology correction $\mathcal{C}_T$ providing the path-dependent transport closure. In this decomposition, $A_{\text{clock}}$ alone generates the standard redshift–distance relation via exact conformal shear, while $A_{\text{dyn}}$ encodes the residual suppressed response of the Temporal Shear field.
+    </p>
 
     <h2>2.3 From Temporal Topology to Transport: Definition of $\mathcal{C}_T$</h2>
     <p>
@@ -44,7 +57,7 @@
         \end{equation}
     </div>
     <p>
-        Because static first-order gradients cancel exactly along any open or closed path (as demonstrated in the core TEP framework), the leading-order non-integrable transport is rigorously derived as the second-order expansion over microscopic field perturbations. Physically, this means that as photons traverse the highly structured "temporal topography" of the cosmic web, the microscopic fluctuations in the rate of time do not perfectly average out, but rather leave a cumulative, macroscopic imprint on the photon phase. Thus, this term is formally evaluated as a local projected transport density, with dimensions of inverse length, sourced directly from the variance of the field:
+        Exact first-order conformal gradients produce endpoint-dependent open-path redshift but vanish on closed loops. True synchronization holonomy therefore requires the non-exact $\mathcal{C}_T$ contribution. Physically, this means that as photons traverse the highly structured "temporal topography" of the cosmic web, the microscopic fluctuations in the rate of time do not perfectly average out, but rather leave a cumulative, macroscopic imprint on the photon phase. Thus, this term is formally evaluated as a local projected transport density, with dimensions of inverse length, sourced directly from the variance of the field:
     </p>
     <div class="equation">
         \begin{equation} \label{eq:heuristic_transport}
@@ -52,36 +65,230 @@
         \end{equation}
     </div>
     <p>
-        where $C_\Theta(x,x;\ell_T)$ denotes the locally coarse-grained clock-rate covariance over smoothing scale $\ell_T$, and $\alpha_T$ absorbs dimensional normalization. In this expression, $S(\rho)\to1$ in unsuppressed voids and $S(\rho)\to0$ in screened dense environments, ensuring that the covariance-induced transport contribution follows the same environmental logic as the macroscopic $\epsilon_T^{\text{obs}}=S(\rho)\epsilon_T$ relation.
+        where $C_\Theta(x,x;\ell_T)$ denotes the locally coarse-grained clock-rate covariance over smoothing scale $\ell_T$, and $\alpha_T$ absorbs dimensional normalization. In this expression, $S(\rho)\to1$ in unsuppressed voids and $S(\rho)\to0$ in dense environments undergoing Temporal Topology flattening, ensuring that the covariance-induced transport contribution follows the same environmental logic as the macroscopic $\epsilon_T^{\text{obs}}=S(\rho)\epsilon_T$ relation.
     </p>
     <p>
-        Crucially, $\mathcal{C}_{T,\parallel}$ is not a heuristic addition; it is the formal macroscopic transport integral of the subatomic proper-time phase holonomy derived in TEP-QF (Paper 23). By integrating the microscopic proper-time phase transport over the macroscopic cosmic web, the framework is formally closed at the classical level.
-    </p>
-
-    <h2>2.4 The Universal Coupling Axiom and Environmental Screening</h2>
-    <p>
-        Following Axiom A4 of the core TEP framework, the temporal field \(\phi\) couples identically to all matter and radiation at leading order. Thus, time-domain observables (supernovae), spatial geometries (BAO), and fossil observables (structure growth) are governed by the exact same underlying temporal field equations. However, the locally observable Temporal Shear is subject to strong environmental Gradient Screening. The cosmological baseline is cleanly separated into a three-zone model:
-    </p>
-    <ul>
-        <li><em>Source Calibration Environment:</em> Cepheids and SNe Ia reside inside host galaxies. Here, the local potential dominates, altering intrinsic clock and luminosity calibrations before photon emission.</li>
-        <li><em>Line-of-Sight Propagation Environment:</em> Photons traverse mostly deep, diffuse voids and filaments. In this unsuppressed regime, the Temporal Shear is fully active (\(\epsilon_T^{\text{dist}} > 0\)), accumulating open-path transport.</li>
-        <li><em>Growth and RSD Environment:</em> Within dense, virialized clusters, the non-linear superposition of matter gradients flattens the scalar field, suppressing the observable shear (\(\epsilon_T^{\text{growth}} \to 0\)). This recovers the standard integrable topology of bounded halos.</li>
-    </ul>
-    <p>
-        The pipeline's dual-fit methodology explicitly traces this continuous screening transition. Importantly, the screening threshold $\rho_{\text{half}} \approx 0.5 M_\odot/\text{pc}^3$ naturally ensures that in dense regions like the Solar System, the $S(\rho)$ function heavily suppresses the Temporal Shear, automatically satisfying strict Solar System Parameterized Post-Newtonian (PPN) constraints without requiring fine-tuning.
+        Crucially, $\mathcal{C}_{T,\parallel}$ is introduced as a macroscopic transport-closure term motivated by the microscopic proper-time phase holonomy developed in the TEP-QF sector (Paper 23). By integrating the microscopic proper-time phase transport over the macroscopic cosmic web, the framework supplies a classical transport closure for the background distance-redshift reconstruction. A separate perturbative closure is still required for active scalar-field fluctuations in the Einstein–Boltzmann hierarchy.
     </p>
 
-    <h2>2.5 Dark Energy and Acceleration as Shear Evolution</h2>
+    <h2>2.4 The Universal Coupling Axiom and Covariant Environmental Gradient Suppression</h2>
     <p>
-        The apparent acceleration of the universe ($\ddot{a} > 0$) is reinterpreted as the redshift evolution of the Temporal Shear density. The Transport Hubble Constant is defined as the local projection of the shear field:
+        Following Axiom A4 of the core TEP framework, the temporal field $\phi$ couples identically to all matter and radiation at leading order. However, the locally observable Temporal Shear is subject to strong environmental gradient suppression governed by the abstract operator $\mathcal{S}_\Sigma(\mathcal{E})$. Because $\mathcal{E}$ encompasses source structure, boundary conditions, and ambient fields, a complete theory must supply a single covariant realization of this operator, not a patchwork of scale-specific proxies. That realization is constructed here.
+    </p>
+    <p>
+        The matter-frame metric $\tilde{g}_{\mu\nu} = A^2(\phi)g_{\mu\nu} + B(\phi)\nabla_\mu\phi\nabla_\nu\phi$ implies that the physical strength of the conformal sector is measured by the scalar invariant $\Sigma^2 \equiv \Sigma_\mu\Sigma^\mu = (\beta_A/M_{\rm Pl})^2 \nabla_\mu\phi\nabla^\mu\phi$. In any local Lorentz frame, $\Sigma^2$ sets the squared fractional rate at which clocks dephase relative to the gravitational metric. Suppression is the dynamical flattening of this observable dephasing. The covariant screening operator is defined as the rational function of two dimensionless control parameters, a kinetic ratio and a density ratio:
     </p>
     <div class="equation">
-        \begin{equation} \label{eq:transport_hubble}
-            H_T(z) \equiv c \langle \Sigma_\parallel + \mathcal{C}_T \rangle_z
+        \begin{equation} \label{eq:unified_screening}
+            \mathcal{S}_\Sigma(\mathcal{E}) \equiv \left[ 1 + \left(\frac{\Sigma_\mu\Sigma^\mu}{g_t^2}\right)^n + \left(\frac{\rho}{\rho_{\rm half}}\right)^2 \right]^{-1}
         \end{equation}
     </div>
     <p>
-        In this view, phenomenological dark energy on intermediate scales manifests from evolving Temporal Shear, while the homogeneous $\Lambda$CDM background remains the anchor established by the joint CMB+SNe fit. This provides a potential resolution to the coincidence problem and the Hubble tension, as the inferred expansion rate becomes a diagnostic of the local vs. global temporal environment.
+        Here $g_t$ is the critical shear scale at which non-linear kinetic self-coupling becomes dominant, and $\rho_{\rm half} \approx 0.5\,M_\odot/{\rm pc}^3$ is the ambient half-suppression density. The exponent $n$ governs the steepness of the kinetic transition. In the cosmological weak-field regime, $\Sigma^2 \sim H_0^2/c^2 \sim 10^{-56}\,{\rm m}^{-2}$, so the kinetic term is negligible and $\mathcal{S}_\Sigma \to S(\rho) = [1+(\rho/\rho_{\rm half})^2]^{-1}$. In the Solar System, where $g = |\nabla\Phi| \sim c^2|\nabla\ln A|/\beta_A$ in the Newtonian limit, the shear scale maps directly to the local gravitational acceleration: $\Sigma^2 \approx (\beta_A g/c^2)^2$, and the dominant suppression comes from the first term, giving $f(g) = [1+(g/g_t')^n]^{-1}$ with $g_t' = c^2 g_t/\beta_A$. Both phenomenological proxies are therefore low- and high-curvature limits of a single covariant expression.
+    </p>
+
+    <h3>2.4.1 The Covariant Action</h3>
+    <p>
+        The TEP bi-metric action, established in the foundational framework (Paper 0), is
+    </p>
+    <div class="equation">
+        \begin{equation} \label{eq:tep_action}
+            S = \int d^4x\,\sqrt{-g}\left[\frac{M_{\rm Pl}^2}{2}R - \frac{1}{2}(\nabla\phi)^2 - V(\phi)\right] + S_m[\psi_i,\tilde{g}_{\mu\nu}]
+        \end{equation}
+    </div>
+    <p>
+        with the screened matter-frame metric
+    </p>
+    <div class="equation">
+        \begin{equation} \label{eq:screened_metric}
+            \tilde{g}_{\mu\nu} = \mathcal{A}^2(\phi,\mathcal{E})\,g_{\mu\nu} + B(\phi)\nabla_\mu\phi\nabla_\nu\phi
+        \end{equation}
+    </div>
+    <p>
+        where the environment-dependent conformal factor
+    </p>
+    <div class="equation">
+        \begin{equation}
+            \mathcal{A}(\phi,\mathcal{E}) = \exp\!\left[\mathcal{S}_\Sigma(\mathcal{E})\,\frac{\beta_A\phi}{M_{\rm Pl}}\right]
+        \end{equation}
+    </div>
+    <p>
+        absorbs the suppression directly into the matter coupling. In the unscreened limit ($\mathcal{S}_\Sigma \to 1$) this reduces to the bare TEP conformal factor $A(\phi) = \exp(\beta_A\phi/M_{\rm Pl})$; in the fully screened limit ($\mathcal{S}_\Sigma \to 0$) matter couples directly to the Einstein metric $g_{\mu\nu}$. The disformal function $B(\phi)$ is bounded by multi-messenger constraints ($|c_\gamma - c_g|/c \lesssim 10^{-15}$) and is set to zero in the pure-conformal limit analysed here.
+    </p>
+
+    <h3>2.4.2 Variation and Field Equations</h3>
+    <p>
+        Varying the action (\ref{eq:tep_action}) with respect to the Einstein-frame metric $g^{\mu\nu}$ yields the Einstein equations
+    </p>
+    <div class="equation">
+        \begin{equation}
+            G_{\mu\nu} = \frac{1}{M_{\rm Pl}^2}\left[T_{\mu\nu}^{(\phi)} + T_{\mu\nu}^{(m)}\right]
+        \end{equation}
+    </div>
+    <p>
+        where $T_{\mu\nu}^{(\phi)} = \nabla_\mu\phi\nabla_\nu\phi - g_{\mu\nu}\left[\frac{1}{2}(\nabla\phi)^2 + V(\phi)\right]$ is the scalar stress-energy, and the Einstein-frame matter stress-energy follows from the functional derivative of $S_m[\tilde{g}]$ with respect to $g^{\mu\nu}$. In the conformal limit ($B=0$) this gives
+    </p>
+    <div class="equation">
+        \begin{equation}
+            T_{\mu\nu}^{(m)} = \mathcal{A}^2(\phi,\mathcal{E})\,\tilde{T}_{\mu\nu}^{(m)}
+        \end{equation}
+    </div>
+    <p>
+        where $\tilde{T}_{\mu\nu}^{(m)}$ is the matter-frame stress-energy. Variation with respect to $\phi$ yields the scalar equation of motion
+    </p>
+    <div class="equation">
+        \begin{equation} \label{eq:scalar_eom}
+            \Box\phi - V_{,\phi} = -\mathcal{Q}_{\rm eff}
+        \end{equation}
+    </div>
+    <p>
+        with effective source
+    </p>
+    <div class="equation">
+        \begin{equation}
+            \mathcal{Q}_{\rm eff} = \mathcal{S}_\Sigma\,\mathcal{A}\,\mathcal{A}_{,\phi}\,g_{\mu\nu}\mathcal{T}^{\mu\nu} + \mathcal{A}\,\mathcal{A}_{,\phi}\,g_{\mu\nu}\mathcal{T}^{\mu\nu}\,\phi\,\frac{\partial\mathcal{S}_\Sigma}{\partial\phi} + \mathcal{A}\,\mathcal{A}_{,\phi}\,g_{\mu\nu}\mathcal{T}^{\mu\nu}\,\frac{\partial\mathcal{S}_\Sigma}{\partial(\nabla\phi)^2}\,\frac{\partial(\nabla\phi)^2}{\partial\phi}
+        \end{equation}
+    </div>
+    <p>
+        where $\mathcal{T}^{\mu\nu} = (\sqrt{-\tilde{g}}/\sqrt{-g})\,\tilde{T}^{\mu\nu}$ is the density-weighted matter tensor. The first term is the direct conformal coupling; the remaining terms encode the feedback from the environmental dependence of $\mathcal{S}_\Sigma$. In the cosmological background, where $\Sigma^2 \ll g_t^2$ and $\rho \ll \rho_{\rm half}$, $\mathcal{S}_\Sigma \approx 1$ and its field derivatives are suppressed by $\Sigma^2/g_t^2 \ll 1$, so the source reduces to the standard conformally-coupled form $\mathcal{Q}_{\rm eff} \approx \beta_A\,\mathcal{T}/M_{\rm Pl}$. Near compact bodies, where $\mathcal{S}_\Sigma \ll 1$, the scalar force is suppressed and the source vanishes.
+    </p>
+
+    <h3>2.4.3 Perturbation Expansion and Gauge Conditions</h3>
+    <p>
+        To map the theory onto the Bellini--Sawicki EFT, we expand around a spatially flat FLRW background. The metric perturbation is written in Newtonian gauge
+    </p>
+    <div class="equation">
+        \begin{equation}
+            ds^2 = -(1+2\Psi)\,dt^2 + a^2(t)(1-2\Phi)\,\delta_{ij}\,dx^i dx^j
+        \end{equation}
+    </div>
+    <p>
+        and the scalar field is split as $\phi(t,\mathbf{x}) = \bar{\phi}(t) + \delta\phi(t,\mathbf{x})$. The perturbed matter metric acquires a conformal-frame fluctuation
+    </p>
+    <div class="equation">
+        \begin{equation}
+            \delta\tilde{g}_{\mu\nu} = 2\,\mathcal{S}_\Sigma\,\frac{\beta_A}{M_{\rm Pl}}\,\mathcal{A}^2\,g_{\mu\nu}\,\delta\phi + \mathcal{A}^2\,\delta g_{\mu\nu} + O(\delta\phi)^2
+        \end{equation}
+    </div>
+    <p>
+        where $\mathcal{S}_\Sigma$ is evaluated on the background. On cosmological scales, $\mathcal{S}_\Sigma \approx 1$ to excellent approximation, and the perturbation structure reduces to that of a standard scalar-tensor theory with effective coupling $\beta_A^{\rm eff} = \mathcal{S}_\Sigma\beta_A$.
+    </p>
+
+    <h3>2.4.4 Bellini--Sawicki EFT Mapping</h3>
+    <p>
+        In the pure-conformal limit ($B=0$), the quadratic action for scalar and metric perturbations maps onto the standard EFT-of-dark-energy form. The running of the effective Planck mass is read off from the time dependence of the background coupling:
+    </p>
+    <div class="equation">
+        \begin{equation}
+            \alpha_M = \frac{d\ln M_{\rm eff}^2}{d\ln a} = \frac{d\ln\mathcal{A}^2}{d\ln a} = 2\,\mathcal{S}_\Sigma\,\frac{\beta_A}{M_{\rm Pl}}\frac{\dot{\bar{\phi}}}{H}
+        \end{equation}
+    </div>
+    <p>
+        Using the TEP background relation $\alpha_A \equiv -d\ln\mathcal{A}/d\ln(1+z)$, this becomes $\alpha_M = -2\,\mathcal{S}_\Sigma\alpha_A$. In the cosmological weak-field limit ($\mathcal{S}_\Sigma \approx 1$) this reduces to the bare value $\alpha_M^{\rm bare} = -2\alpha_A$ used in TEP-HC (Paper 18). In screened environments ($\mathcal{S}_\Sigma \approx 0$), $\alpha_M \to 0$ and the scalar fifth force vanishes.
+    </p>
+    <p>
+        The braiding parameter follows from the kinetic mixing between $\delta\phi$ and the metric potentials:
+    </p>
+    <div class="equation">
+        \begin{equation}
+            \alpha_B = -\alpha_M = 2\,\mathcal{S}_\Sigma\alpha_A
+        \end{equation}
+    </div>
+    <p>
+        and the kineticity parameter from the canonical kinetic term of $\delta\phi$ after field redefinition:
+    </p>
+    <div class="equation">
+        \begin{equation}
+            \alpha_K = -5(\mathcal{S}_\Sigma\alpha_A)^2
+        \end{equation}
+    </div>
+    <p>
+        The tensor speed excess $\alpha_T$ vanishes in the conformal limit because $c_g^2 = c_\gamma^2 = 1$ is preserved. These are exactly the relations implemented in the TEP-HC hi_class runtime and used in the growth solver (step\_06\_03).
+    </p>
+    <p>
+        The no-ghost discriminant follows from the $2\times2$ kinetic matrix of the scalar sector. In the Bellini--Sawicki formalism,
+    </p>
+    <div class="equation">
+        \begin{equation}
+            D = \alpha_K + \frac{3}{2}\alpha_B^2 = -5(\mathcal{S}_\Sigma\alpha_A)^2 + \frac{3}{2}(2\mathcal{S}_\Sigma\alpha_A)^2 = (\mathcal{S}_\Sigma\alpha_A)^2 \ge 0
+        \end{equation}
+    </div>
+    <p>
+        The discriminant is manifestly non-negative for all $\mathcal{S}_\Sigma$ and $\alpha_A$, establishing ghost-freedom from the action. The sound speed is $c_s^2 = 1$ exactly in the conformal limit, guaranteeing gradient stability.
+    </p>
+
+    <h3>2.4.5 Post-Newtonian Expansion</h3>
+    <p>
+        The Solar-System PPN parameters are obtained from the quasi-static weak-field limit of the field equations. In the Damour--Esposito-Far\`ese parameterization for scalar-tensor theories with conformal coupling $\mathcal{A}(\phi)$, the metric perturbation for a static, spherically symmetric source is, at leading order,
+    </p>
+    <div class="equation">
+        \begin{equation}
+            g_{00}^{\rm J} = -1 + \frac{2GM}{r}\left(1 + \frac{\alpha_{\rm eff}^2}{2}\right), \qquad g_{rr}^{\rm J} = 1 + \frac{2GM}{r}\left(1 - \frac{\alpha_{\rm eff}^2}{2}\right)
+        \end{equation}
+    </div>
+    <p>
+        where $\alpha_{\rm eff}$ is the effective scalar charge sourced by the body. For the TEP screened coupling,
+    </p>
+    <div class="equation">
+        \begin{equation}
+            \alpha_{\rm eff} = \mathcal{S}_\Sigma(\mathcal{E})\,\alpha_0
+        \end{equation}
+    </div>
+    <p>
+        with $\alpha_0 = \beta_A/M_{\rm Pl}$ the bare coupling constant. The PPN parameter $\gamma$ is then
+    </p>
+    <div class="equation">
+        \begin{equation} \label{eq:ppn_gamma}
+            \gamma_{\rm PPN} = 1 - 2\alpha_{\rm eff}^2 = 1 - 2\,\mathcal{S}_\Sigma^2\,\alpha_0^2
+        \end{equation}
+    </div>
+    <p>
+        In unscreened environments ($\mathcal{S}_\Sigma \approx 1$), the bare TEP coupling $\beta_A = -1$ gives $\alpha_0 = -1/M_{\rm Pl}$, which translates to $\gamma \approx -1$ --- ruled out by Cassini at $\sim$87\,000$\sigma$. In the Solar System, the gradient-dependent suppression dominates. Using the Newtonian mapping $\Sigma^2 \approx (\beta_A g/c^2)^2$ with $g = |\nabla\Phi|$,
+    </p>
+    <div class="equation">
+        \begin{equation}
+            \mathcal{S}_\Sigma \approx \left[1 + \left(\frac{\beta_A g}{c^2 g_t}\right)^n\right]^{-1} \equiv \left[1 + \left(\frac{g}{g_t'}\right)^n\right]^{-1}
+        \end{equation}
+    </div>
+    <p>
+        where $g_t' = c^2 g_t/|\beta_A| = c^2 g_t$ for the locked TEP value $\beta_A = -1$. Evaluating at Saturn orbit ($g_{\rm Cassini} \approx 6.5\times10^{-5}\,{\rm m\,s}^{-2}$) with $g_t = 1.0\times10^{-9}\,{\rm m\,s}^{-2}$ and $n=2$ gives $\mathcal{S}_\Sigma \approx 2.37\times10^{-10}$. Substituting into (\ref{eq:ppn_gamma}),
+    </p>
+    <div class="equation">
+        \begin{equation}
+            \gamma - 1 = -2\,(2.37\times10^{-10})^2\,\alpha_0^2 M_{\rm Pl}^2 \approx -1.1\times10^{-19}
+        \end{equation}
+    </div>
+    <p>
+        safely below the Cassini bound $|\gamma - 1| < 2.3\times10^{-5}$ by more than fourteen orders of magnitude. At Earth surface ($g \approx 9.8\,{\rm m\,s}^{-2}$), $\mathcal{S}_\Sigma \approx 10^{-20}$ and the deviation is utterly negligible. The E&ouml;tv&ouml;s parameter satisfies $|\beta_{\rm PPN} - 1| \propto \alpha_{\rm eff}^3$ and vanishes in the screened limit for the same reason.
+    </p>
+
+    <h3>2.4.6 Connection to the Growth Solver and Parameter Locking</h3>
+    <p>
+        The EFT functions derived above are the inputs to the structure-formation growth equation used in step_06_03 and step_06_07. The $\alpha_M$-modified growth ODE,
+    </p>
+    <div class="equation">
+        \begin{equation}
+            \frac{d^2D}{d(\ln a)^2} + \left(\frac{1}{2} - \frac{3}{2}w_{\rm eff} - \alpha_M\right)\frac{dD}{d\ln a} - \frac{3}{2}\Omega_m(a)\left(1 + \frac{\alpha_M}{3}\right)D = 0
+        \end{equation}
+    </div>
+    <p>
+        is the quasi-static limit of the full Einstein-Boltzmann hierarchy with the Bellini--Sawicki functions derived in Section 2.4.4. The $\alpha_M$ that appears here is precisely $\alpha_M^{\rm bare} = -2\alpha_A$ evaluated on the cosmological background where $\mathcal{S}_\Sigma \approx 1$.
+    </p>
+    <p>
+        The transition scale $g_t$ is not a free parameter fitted to the Solar System data. It is fixed by requiring that the unscreened branch (which would give $\gamma \approx -1$) be excluded, and that the suppressed branch pass the Cassini bound with a safety margin. The minimum requirement is $\mathcal{S}_\Sigma(g_{\rm Cassini}) \lesssim 3.4\times10^{-3}$, which for $n=2$ implies $g_t \lesssim 10^{-7}\,{\rm m\,s}^{-2}$. The adopted value $g_t = 1.0\times10^{-9}\,{\rm m\,s}^{-2}$ is two orders of magnitude below this ceiling, providing a conservative margin. Once $g_t$ is fixed by Solar System physics, it propagates unchanged to galactic halos ($g \sim 10^{-10}\,{\rm m\,s}^{-2}$, where $\mathcal{S}_\Sigma \approx 0.98$) and cosmological voids ($g \sim 10^{-11}\,{\rm m\,s}^{-2}$, where $\mathcal{S}_\Sigma \approx 1$), preserving cosmological growth and anomaly predictions without additional tuning.
+    </p>
+    <p>
+        This completes the implemented EFT screening realization used in the C0 pipeline. The suppression threshold is not tuned independently in each physical domain: the same operator is anchored by Solar-System PPN constraints, propagated to galactic and cosmological environments, and cross-checked against the TEP-HC growth sector. The PPN gate is passed within this EFT realization. The microscopic topological origin of the environmental operator is supplied by the companion TEP-QF, TEP-SPIN, and TEP-TH sequence rather than treated as an additional free assumption in C0.
+    </p>
+
+    <h2>2.5 Dark energy and acceleration as shear evolution</h2>
+    <div class="equation">
+        \begin{equation} \label{eq:transport_hubble}
+            H_T(z) \equiv c \langle \Sigma_\parallel + \mathcal{C}_{T,\parallel} \rangle_z
+        \end{equation}
+    </div>
+    <p>
+        In this view, phenomenological dark energy on intermediate scales manifests from evolving Temporal Shear, while the homogeneous contribution conventionally assigned to $\Omega_\Lambda$ is reinterpreted as the homogeneous temporal-shear background contribution $\Omega_\phi$ (TEP-HC, Paper 18; TEP-TH, Paper 27). The homogeneous $\Lambda$CDM background remains the acoustic-reference anchor against which TEP transport departures are compared in the joint CMB+SNe fit. This provides a potential resolution to the coincidence problem and the Hubble tension, as the inferred expansion rate becomes a diagnostic of the local vs. global temporal environment.
     </p>
 
     <h2>2.6 Cosmological Topology Transitions</h2>
@@ -89,10 +296,13 @@
         While the pipeline effectively handles the linear-scale BAO and the cluster-scale SZ effect, it is critical to formalize how the transition from the non-integrable temporal geometry to the integrable FLRW limit occurs mathematically at the boundaries of large-scale structure voids. This relies on the temporal-transport connection. 
     </p>
     <p>
-        By evaluating the Synchronization Transport 1-form, non-integrability is strictly defined as \(\Delta(d\tilde{\sigma}) \neq 0\). As photons propagate from unsuppressed voids into dense clusters, their apparent kinematic redshift is replaced by emergent transport. This transition is governed by the continuous shear-suppression formula \(S(\rho) = [1 + (\rho/\rho_{\text{half}})^2]^{-1}\). Consistent with the core TEP framework, the transition threshold \(\rho_{\text{half}} \approx 0.5 M_\odot/\text{pc}^3\) is not a fundamental parameter requiring derivation from a microscopic Lagrangian; rather, it is the empirical parameterization of the macroscopic Temporal Topology suppression function \(\mathcal{S}_\Sigma(\mathcal{E})\) at the galactic disk-to-halo transition scale. This galactic transition scale is the mass-weighted, macroscopic continuum expression of the fundamental quantum $\rho_c$ boundary limit ($\approx 20 \text{ g/cm}^3$) that bounds the topological fermion in TEP-SPIN (Paper 24). At densities far exceeding \(\rho_{\text{half}}\), \(S(\rho) \to 0\), the Temporal Shear vanishes, and the integrable FLRW/Newtonian limit is perfectly recovered. In the open-science pipeline, this parameter is implemented as <code>RHO_HALF</code> in <code>core/cosmology.py</code> and exposed via <code>screening_function(rho)</code>.
+        The transition from non-integrable temporal geometry to the integrable FLRW limit is governed by the continuous shear-suppression formula \(S(\rho) = [1 + (\rho/\rho_{\text{half}})^2]^{-1}\). Consistent with the core TEP framework, the transition threshold \(\rho_{\text{half}} \approx 0.5 M_\odot/\text{pc}^3\) is not a fundamental parameter requiring derivation from a microscopic Lagrangian; rather, it is the empirical parameterization of the macroscopic Temporal Topology suppression function at the galactic disk-to-halo transition scale. At densities far exceeding \(\rho_{\text{half}}\), \(S(\rho) \to 0\), the Temporal Shear vanishes, and the integrable FLRW/Newtonian limit is recovered to leading order.
     </p>
     <p>
-        Furthermore, the Big Bang may not be a physical zero-volume origin, but rather represents the caustic boundary of the integrable reconstruction. The mathematical mapping to the effective scale factor dictates that $a_{\text{eff}} \to 0$ precisely when the accumulated Temporal Shear integral diverges:
+        The galactic transition scale is the mass-weighted macroscopic projection of the microscopic saturation structure developed in TEP-SPIN (Paper 24). C0 does not independently derive the micro-to-galactic transfer relation; it uses the companion-paper closure as an empirically constrained macroscopic envelope. Consequently, $\rho_{\text{half}}$ operates strictly as a phenomenological parameterization of the macroscopic Temporal Topology suppression function.
+    </p>
+    <p>
+        Furthermore, the apparent FLRW singularity is reinterpreted as a temporal conformal boundary in the TEP matter-frame description: the caustic boundary of the integrable reconstruction. The mathematical mapping to the effective scale factor dictates that $a_{\text{eff}} \to 0$ precisely when the accumulated Temporal Shear integral diverges:
     </p>
     <div class="equation">
         \begin{equation} \label{eq:caustic_boundary}
@@ -100,5 +310,5 @@
         \end{equation}
     </div>
     <p>
-        In standard cosmology, this $a_{\text{eff}} \to 0$ limit is interpreted physically as a spacetime singularity. In the TEP framework, this divergence signifies the breakdown of the Cosmological Isochrony Axiom: the backward-projected integral encounters infinite topological variance along the null geodesic, driving the mapped scale factor to zero while the underlying physical matter-frame manifold ($\tilde{g}_{\mu\nu}$) remains finite, bounded, and non-singular.
+        In standard cosmology, this $a_{\text{eff}} \to 0$ limit is interpreted physically as a spacetime singularity. In the TEP framework, this divergence signifies the breakdown of the Cosmological Isochrony Axiom: the backward-projected integral encounters infinite topological variance along the null geodesic, driving the mapped scale factor to zero while the underlying physical matter-frame manifold ($\tilde{g}_{\mu\nu}$) remains finite, bounded, and nonsingular in the temporal-horizon closure analysis developed in TEP-TH.
     </p>

@@ -60,4 +60,9 @@ docs/_build/
 *.pkl
 *.pickle
 
+# Cobaya/MCMC transient files (chain data kept; resume files ignored)
+*.checkpoint
+*.progress
+*.updated.yaml
+
 .devin/

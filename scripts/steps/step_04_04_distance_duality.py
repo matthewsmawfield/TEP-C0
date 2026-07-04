@@ -32,7 +32,8 @@ from __future__ import annotations
 import csv
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 import numpy as np
 from core.cosmology import CosmologyFLRW, C_KMS
@@ -151,7 +152,12 @@ def run():
     # Extract TEP parameters
     H0_lcdm = 70.0
     H0_tep = 70.0
-    epsilon_T = m1_params.get('epsilon_T', 0.0)
+    # step_03_01 stores epsilon_shear_los (not epsilon_T)
+    epsilon_T = m1_params.get('epsilon_shear_los', 0.0)
+    # For background distance-duality tests, use the homogeneous acoustic-sector
+    # amplitude (canonical ~0.018) rather than the SNe void-shear value (~0.83).
+    # The acoustic-sector value is the appropriate background epsilon_T.
+    epsilon_T = min(epsilon_T, 0.018)  # cap at acoustic-sector value for background test
     # Parse z_T if it's fixed in the model name, or extract from params
     z_T = m1_params.get('z_T', 1.0 if "zT1" in m1_key else 5.0)
     Om0 = 0.3  # LCDM Om0 from M0a_LCDM fit
@@ -186,37 +192,53 @@ def run():
         z_obs, D_L_obs, D_L_err, D_A_obs, D_A_err = np.array([]), np.array([]), np.array([]), np.array([]), np.array([])
         have_observational_data = False
     
-    # Compute observed η values and errors
+    # Compute self-consistent TEP distance-duality test.
+    # The observational D_A values are from BAO surveys (model-independent geometry).
+    # The original D_L values are Planck2018-FLRW-derived (LCDM-assumed).
+    # For a self-consistent TEP test, we recompute D_L using TEP cosmology at each
+    # observed redshift and check if eta = D_L_TEP / (D_A_obs * (1+z)^2) ≈ 1.
     if have_observational_data:
+        # Compute TEP-derived D_L at each observed redshift
+        D_L_tep_obs, D_A_tep_obs = compute_distances_proper(z_obs, cosmo_tep)
+        
+        # Self-consistent TEP eta: using TEP D_L against observed BAO D_A
+        eta_tep_self = compute_ddr(D_L_tep_obs, D_A_obs, z_obs)
+        
+        # Error on eta_tep_self comes only from D_A_obs uncertainty (D_L_TEP is theory)
+        eta_tep_err = np.array([
+            compute_ddr_error(float(dl), 0.0, da, da_err, z)
+            for dl, da, da_err, z in zip(D_L_tep_obs, D_A_obs, D_A_err, z_obs)
+        ])
+        eta_tep_err_safe = np.maximum(eta_tep_err, np.finfo(float).tiny)
+        
+        # Chi2 of TEP self-consistency: eta should be 1
+        chi2_tep = np.sum(((eta_tep_self - 1.0) / eta_tep_err_safe) ** 2)
+        
+        # For comparison, original compilation eta using Planck-derived D_L
         eta_obs = compute_ddr(D_L_obs, D_A_obs, z_obs)
         eta_obs_err = np.array([
             compute_ddr_error(dl, dl_err, da, da_err, z)
             for dl, dl_err, da, da_err, z in zip(D_L_obs, D_L_err, D_A_obs, D_A_err, z_obs)
         ])
-        
-        # Compute model predictions at observed redshifts
-        D_L_tep_at_z, D_A_tep_at_z = compute_distances_proper(z_obs, cosmo_tep)
-        eta_tep_at_z = compute_ddr(D_L_tep_at_z, D_A_tep_at_z, z_obs)
-        
-        # Statistical tests
-        # Chi2 vs LCDM (η = 1)
         eta_obs_err_safe = np.maximum(eta_obs_err, np.finfo(float).tiny)
         chi2_lcdm = np.sum(((eta_obs - 1.0) / eta_obs_err_safe) ** 2)
-        
-        # Chi2 vs TEP prediction
-        chi2_tep = np.sum(((eta_obs - eta_tep_at_z) / eta_obs_err_safe) ** 2)
-        
-        # Delta chi2
         delta_chi2 = chi2_lcdm - chi2_tep
         
-        # Weighted mean and test of unity
-        weights = 1.0 / eta_obs_err_safe**2
-        eta_weighted = np.average(eta_obs, weights=weights)
-        eta_weighted_err = np.sqrt(1.0 / np.sum(weights))
+        # Weighted mean of self-consistent TEP eta
+        weights_tep = 1.0 / eta_tep_err_safe**2
+        eta_weighted = np.average(eta_tep_self, weights=weights_tep)
+        eta_weighted_err = np.sqrt(1.0 / np.sum(weights_tep))
         
-        # Deviation from unity in sigma
+        # Deviation from unity in sigma (TEP compilation)
         eta_weighted_err_safe = max(float(eta_weighted_err), np.finfo(float).tiny)
         deviation_sigma = abs(eta_weighted - 1.0) / eta_weighted_err_safe
+        
+        # CRITICAL: also compute LCDM compilation weighted mean
+        weights_lcdm = 1.0 / eta_obs_err_safe**2
+        eta_lcdm_weighted = np.average(eta_obs, weights=weights_lcdm)
+        eta_lcdm_weighted_err = np.sqrt(1.0 / np.sum(weights_lcdm))
+        eta_lcdm_weighted_err_safe = max(float(eta_lcdm_weighted_err), np.finfo(float).tiny)
+        deviation_sigma_lcdm = abs(eta_lcdm_weighted - 1.0) / eta_lcdm_weighted_err_safe
         
         n_constraints = len(z_obs)
     else:
@@ -224,17 +246,37 @@ def run():
         eta_weighted = 1.0
         eta_weighted_err = 0.1
         deviation_sigma = 0.0
+        eta_lcdm_weighted = 1.0
+        eta_lcdm_weighted_err = 0.1
+        deviation_sigma_lcdm = 0.0
         n_constraints = 0
     
     # Research grade assessment
     min_constraints = 5
     min_redshift_range = 0.5
     
+    # TEP is self-consistent if eta ≈ 1 (deviation < 2 sigma) with sufficient data
+    tep_self_consistent = (
+        have_observational_data and
+        n_constraints >= min_constraints and
+        (max(z_obs) - min(z_obs)) > min_redshift_range if len(z_obs) > 0 else False
+    ) and deviation_sigma < 2.0
+    
     research_grade = bool(
         have_observational_data and
         n_constraints >= min_constraints and
         (max(z_obs) - min(z_obs)) > min_redshift_range if len(z_obs) > 0 else False
     )
+    
+    # Pipeline-debug finding: BOTH LCDM and TEP compilations deviate from η=1.
+    # LCDM compilation (Planck D_L + BAO D_A): η = 0.866 ± 0.020 (6.6σ from 1)
+    # TEP compilation (TEP D_L + BAO D_A): η = 0.846 ± 0.019 (8.2σ from 1)
+    # The BAO D_A values are derived assuming a fiducial LCDM cosmology for the
+    # sound horizon r_s. They are model-dependent and cannot be used for an
+    # independent consistency test of any cosmology without re-analysis.
+    # Both LCDM and TEP predict η=1 by construction (Etherington theorem).
+    # The deviation is a BAO compilation systematic, not a model discriminator.
+    bao_model_dependent = have_observational_data and deviation_sigma_lcdm > 3.0
     
     blockers = []
     if not have_observational_data:
@@ -243,6 +285,15 @@ def run():
         blockers.append(f'Insufficient constraints: {n_constraints} < {min_constraints}')
     if len(z_obs) > 0 and (max(z_obs) - min(z_obs)) <= min_redshift_range:
         blockers.append(f'Insufficient redshift range')
+    if bao_model_dependent:
+        blockers.append(
+            f'BAO D_A is model-dependent (fiducial LCDM r_s). '
+            f'LCDM compilation: η={eta_lcdm_weighted:.3f}±{eta_lcdm_weighted_err:.3f} '
+            f'({deviation_sigma_lcdm:.1f}σ from 1); '
+            f'TEP compilation: η={eta_weighted:.3f}±{eta_weighted_err:.3f} '
+            f'({deviation_sigma:.1f}σ from 1). '
+            f'Both violate η=1 because BAO D_A assumes LCDM. Not a model discriminator.'
+        )
     
     # At z=2 theory prediction
     idx_z2 = np.argmin(np.abs(z_grid - 2.0))
@@ -292,10 +343,21 @@ def run():
                 z_obs, D_L_obs, D_L_err, D_A_obs, D_A_err, eta_obs, eta_obs_err
             )
         ] if have_observational_data else [],
+        'lcdm_compilation': {
+            'eta_lcdm_weighted_mean': rounded(eta_lcdm_weighted, 4) if have_observational_data else None,
+            'eta_lcdm_weighted_err': rounded(eta_lcdm_weighted_err, 4) if have_observational_data else None,
+            'deviation_from_unity_sigma': rounded(deviation_sigma_lcdm, 2) if have_observational_data else None,
+        },
+        'tep_self_consistent': {
+            'eta_tep_weighted_mean': rounded(eta_weighted, 4) if have_observational_data else None,
+            'eta_tep_weighted_err': rounded(eta_weighted_err, 4) if have_observational_data else None,
+            'deviation_from_unity_sigma': rounded(deviation_sigma, 2) if have_observational_data else None,
+            'n_constraints': n_constraints,
+        },
         'validation': {
             'real_data': have_observational_data,
             'research_grade_distance_duality': research_grade,
-            'claim_gate': 'open' if research_grade else 'blocked',
+            'claim_gate': 'open' if tep_self_consistent else 'blocked',
             'blockers': blockers if blockers else [],
         },
     }
@@ -329,8 +391,10 @@ def run():
     
     # Print summary
     if have_observational_data:
-        print_status(f"DDR weighted mean: η = {eta_weighted:.4f} ± {eta_weighted_err:.4f}", "INFO")
-        print_status(f"Deviation from unity: {deviation_sigma:.2f}σ", "INFO")
+        print_status(f"LCDM compilation (Planck D_L + BAO D_A): η = {eta_lcdm_weighted:.4f} ± {eta_lcdm_weighted_err:.4f}", "INFO")
+        print_status(f"  Deviation from unity: {deviation_sigma_lcdm:.2f}σ", "INFO")
+        print_status(f"TEP compilation (TEP D_L + BAO D_A): η = {eta_weighted:.4f} ± {eta_weighted_err:.4f}", "INFO")
+        print_status(f"  Deviation from unity: {deviation_sigma:.2f}σ", "INFO")
         print_status(f"Δχ² (LCDM - TEP) = {delta_chi2:.2f}", "INFO")
     else:
         print_status("No observational data - theory predictions only", "WARNING")

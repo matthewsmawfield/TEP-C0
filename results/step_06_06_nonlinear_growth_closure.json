@@ -1,0 +1,41 @@
+{
+  "comparison_to_phenomenological": {
+    "gradient_screened_halo_model_sigma8": 1.501041,
+    "gradient_screened_halo_model_suppression": 1.000027,
+    "note": "Gradient screening gives f\u22481; suppression is from \u03b1_M running in full hi_class",
+    "phenomenological_factor": 0.55,
+    "phenomenological_sigma8": 0.8256
+  },
+  "conclusion": "gradient_screened_unsuppressed_halo_model",
+  "description": "Gradient-dependent screened halo-model: f(g) replaces S(\u03c1). Cosmic halos have g << g_t, so f \u2248 1 and the halo model is essentially unscreened.  The ~0.55 growth suppression comes from \u03b1_M running in hi_class, not from environmental gradient screening.",
+  "method": "gradient_screened_halo_model_v3",
+  "parameters": {
+    "H0": 70.0,
+    "Omega_m": 1.0,
+    "delta_vir": 200.0,
+    "rho_crit_h2_Msun_Mpc3": 277500000000.0
+  },
+  "result": {
+    "I_b_screened": -0.004487,
+    "I_b_unscreened": -0.004486,
+    "bias_suppression_factor": 1.000027,
+    "deviation_from_planck_sigma": 98.43,
+    "passes_planck": false,
+    "sigma8_linear": 1.501,
+    "sigma8_planck": 0.812,
+    "sigma8_planck_err": 0.007,
+    "sigma8_screened_halo_model": 1.501041
+  },
+  "screening": {
+    "f_cluster": 0.999334,
+    "f_ref": 0.999969,
+    "g_cluster_1e15_msun_m_s2": "2.582e-11",
+    "g_ref_1e13_msun_m_s2": "5.563e-12",
+    "g_t_m_s2": 1e-09,
+    "n": 2.0,
+    "note": "g_vir << g_t for all cosmological halos; f \u2248 1 (unscreened)",
+    "operator": "f(g) = [1 + (g/g_t)^n]^-1"
+  },
+  "status": "completed",
+  "step": "step_06_06_nonlinear_growth_closure"
+}

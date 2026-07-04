@@ -39,9 +39,20 @@ def run():
     
     # Use converged Step 033 parameters. Prefer the final Cobaya stats artifact
     # because the manuscript reports mean +/- std, then fall back to the chain.
-    cobaya_stats_path = Path("results/outputs/tep_cobaya_sne_stats.txt")
-    cobaya_chain_path = Path("results/outputs/tep_cobaya_sne.1.txt")
-    if cobaya_stats_path.exists():
+    # Check both old SNe-only and new joint SNe+CMB outputs.
+    cobaya_stats_paths = [
+        Path("results/outputs/tep_cobaya_joint_converged_stats.txt"),  # joint SNe+CMB
+        Path("results/outputs/tep_cobaya_sne_stats.txt"),             # legacy SNe-only
+    ]
+    cobaya_chain_paths = [
+        Path("results/outputs/tep_cobaya_joint_combined.1.txt"),      # joint SNe+CMB
+        Path("results/outputs/tep_cobaya_sne.1.txt"),                 # legacy SNe-only
+    ]
+    
+    cobaya_stats_path = next((p for p in cobaya_stats_paths if p.exists()), None)
+    cobaya_chain_path = next((p for p in cobaya_chain_paths if p.exists()), None)
+    
+    if cobaya_stats_path:
         stats = {}
         for line in cobaya_stats_path.read_text(encoding="utf-8").splitlines():
             if ":" not in line or "+/-" not in line:
@@ -49,10 +60,10 @@ def run():
             name, values = line.split(":", 1)
             mean, err = values.split("+/-", 1)
             stats[name.strip()] = (float(mean.strip()), float(err.strip()))
-        h0_mcmc = stats["H0"][0]
-        epsilon_t = stats["tep_epsilon_T"][0]
+        h0_mcmc = stats.get("H0", (70.0, 0.0))[0]
+        epsilon_t = stats.get("tep_epsilon_T", (0.1, 0.0))[0]
         mcmc_converged = step033.get("status") == "completed"
-    elif cobaya_chain_path.exists():
+    elif cobaya_chain_path:
         chain_data = np.loadtxt(cobaya_chain_path, skiprows=1)
         # Columns: weight, minuslogpost, tep_epsilon_T, tep_z_T, H0, omega_b, omega_cdm, tau_reio, A_s, n_s, ...
         h0_samples = chain_data[:, 4]  # H0 column

@@ -1,0 +1,69 @@
+[15:52:06] [INFO] 
+[15:52:06] [INFO] ================================================================================
+[15:52:06] [INFO]    Starting step_03_05_analyze_cobaya
+[15:52:06] [INFO] ================================================================================
+[15:52:06] [INFO] 
+[15:52:06] [PROCESS] Loading chains from results/outputs/tep_cobaya_joint_final...
+results/outputs/tep_cobaya_joint_final.1.txt
+Removed 0.3 as burn in
+WARNING:root:outlier fraction 0.002380952380952381 
+[15:52:06] [SUCCESS] Chains loaded successfully.
+WARNING:root:auto bandwidth for tep_epsilon_T very small or failed (h=0.00037391618225317584,N_eff=179.7613346536112). Using fallback (h=0.042295475050827966)
+WARNING:root:auto bandwidth for tep_z_T very small or failed (h=0.0004353236583265332,N_eff=167.40950337974337). Using fallback (h=0.0016978241057435072)
+WARNING:root:auto bandwidth for H0 very small or failed (h=0.00042812409966639503,N_eff=171.6832299123361). Using fallback (h=0.014646655060741429)
+WARNING:root:auto bandwidth for omega_b very small or failed (h=0.0003190160651329008,N_eff=180.32178822777058). Using fallback (h=0.011412963018788802)
+WARNING:root:auto bandwidth for omega_cdm very small or failed (h=0.0003309917003121419,N_eff=170.2611885353619). Using fallback (h=0.02754007077733612)
+WARNING:root:auto bandwidth for tau_reio very small or failed (h=0.0003468780260604508,N_eff=177.36549537936907). Using fallback (h=0.009507877034795744)
+WARNING:root:auto bandwidth for logA very small or failed (h=0.000327849017741063,N_eff=169.69729342962046). Using fallback (h=0.012596717703234811)
+WARNING:root:auto bandwidth for n_s very small or failed (h=0.0003226151115152457,N_eff=144.8171276015752). Using fallback (h=0.008262733548254854)
+WARNING:root:auto bandwidth for A_s very small or failed (h=0.0003471888167535453,N_eff=169.69443716463473). Using fallback (h=0.012650673682291932)
+
+--- Parameter Constraints (68% limits) ---
+tep_epsilon_T: -0.0005 +/- 0.0001
+tep_z_T: 10039.2591 +/- 60.9561
+H0: 67.3907 +/- 0.0405
+omega_b: 0.0228 +/- 0.0001
+omega_cdm: 0.1180 +/- 0.0004
+tau_reio: 0.0892 +/- 0.0023
+logA: 3.1045 +/- 0.0023
+n_s: 0.9733 +/- 0.0021
+--------------------------------------------
+
+[15:52:06] [PROCESS] Generating triangle plot...
+WARNING:root:auto bandwidth for tep_epsilon_T very small or failed (h=0.00037391618225317584,N_eff=179.7613346536112). Using fallback (h=0.042295475050827966)
+WARNING:root:auto bandwidth for tep_z_T very small or failed (h=0.0004353236583265332,N_eff=167.40950337974337). Using fallback (h=0.0016978241057435072)
+WARNING:root:auto bandwidth for H0 very small or failed (h=0.00042812409966639503,N_eff=171.6832299123361). Using fallback (h=0.014646655060741429)
+WARNING:root:auto bandwidth for omega_b very small or failed (h=0.0003190160651329008,N_eff=180.32178822777058). Using fallback (h=0.011412963018788802)
+WARNING:root:auto bandwidth for omega_cdm very small or failed (h=0.0003309917003121419,N_eff=170.2611885353619). Using fallback (h=0.02754007077733612)
+WARNING:root:auto bandwidth for tau_reio very small or failed (h=0.0003468780260604508,N_eff=177.36549537936907). Using fallback (h=0.009507877034795744)
+WARNING:root:auto bandwidth for logA very small or failed (h=0.000327849017741063,N_eff=169.69729342962046). Using fallback (h=0.012596717703234811)
+WARNING:root:auto bandwidth for n_s very small or failed (h=0.0003226151115152457,N_eff=144.8171276015752). Using fallback (h=0.008262733548254854)
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_epsilon_T, tep_z_T
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_epsilon_T, H0
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_epsilon_T, omega_b
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_epsilon_T, omega_cdm
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_epsilon_T, tau_reio
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_epsilon_T, logA
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_epsilon_T, n_s
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_z_T, H0
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_z_T, omega_b
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_z_T, omega_cdm
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_z_T, logA
+WARNING:root:fine_bins_2D not large enough for optimal density: tep_z_T, n_s
+WARNING:root:fine_bins_2D not large enough for optimal density: H0, omega_b
+WARNING:root:fine_bins_2D not large enough for optimal density: H0, omega_cdm
+WARNING:root:fine_bins_2D not large enough for optimal density: H0, logA
+WARNING:root:fine_bins_2D not large enough for optimal density: H0, n_s
+WARNING:root:fine_bins_2D not large enough for optimal density: omega_b, omega_cdm
+WARNING:root:fine_bins_2D not large enough for optimal density: omega_b, tau_reio
+WARNING:root:fine_bins_2D not large enough for optimal density: omega_b, logA
+WARNING:root:fine_bins_2D not large enough for optimal density: omega_b, n_s
+WARNING:root:fine_bins_2D not large enough for optimal density: omega_cdm, tau_reio
+WARNING:root:fine_bins_2D not large enough for optimal density: omega_cdm, logA
+WARNING:root:fine_bins_2D not large enough for optimal density: omega_cdm, n_s
+WARNING:root:fine_bins_2D not large enough for optimal density: tau_reio, logA
+WARNING:root:fine_bins_2D not large enough for optimal density: tau_reio, n_s
+WARNING:root:fine_bins_2D not large enough for optimal density: logA, n_s
+[15:52:11] [SUCCESS] Plot saved to results/figures/step_03_05_analyze_cobaya_triangle.png
+[15:52:11] [INFO] NOTE: This is a joint SNe+CMB background/acoustic MCMC diagnostic. tep_epsilon_T here is the homogeneous acoustic-sector amplitude, distinct from epsilon_shear_los fitted to SNe alone. H0 boundary behaviour is separately stress-tested.
+[15:52:11] [SUCCESS] Summary stats saved to results/outputs/tep_cobaya_joint_converged_stats.txt

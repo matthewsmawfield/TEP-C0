@@ -14,18 +14,48 @@ class DevServer {
     this.liveServerProcess = null;
     this.watcherReady = false;
     this.watcherRestarting = false;
+    this.port = 51815; // Unique port for TEP-C0
+  }
+
+  async killPortProcess() {
+    return new Promise((resolve) => {
+      const lsof = spawn("lsof", ["-ti", `:${this.port}`]);
+      let pid = "";
+      lsof.stdout.on("data", (data) => {
+        pid += data.toString();
+      });
+      lsof.on("close", (code) => {
+        if (code === 0 && pid.trim()) {
+          const pids = pid.trim().split("\n").filter(Boolean);
+          console.log(`🔪 Killing process(es) on port ${this.port}: ${pids.join(", ")}`);
+          pids.forEach((p) => {
+            try {
+              process.kill(Number(p), "SIGKILL");
+            } catch (e) {
+              // ignore
+            }
+          });
+          setTimeout(resolve, 500);
+        } else {
+          resolve();
+        }
+      });
+    });
   }
 
   async startLiveServer() {
     console.log("🚀 Starting Python HTTP server...");
 
-    // Kill any existing live server process
+    // Kill any existing live server process from this session
     if (this.liveServerProcess) {
       this.liveServerProcess.kill();
     }
 
+    // Kill any process using our port (from previous sessions, etc.)
+    await this.killPortProcess();
+
     // Start Python HTTP server serving the dist directory
-    this.liveServerProcess = spawn("python3", ["-m", "http.server", "8347"], {
+    this.liveServerProcess = spawn("python3", ["-m", "http.server", String(this.port)], {
       stdio: "pipe",
       cwd: path.join(__dirname, "dist"),
     });
@@ -184,7 +214,7 @@ class DevServer {
     console.log("   • figures/*.png");
     console.log("   • data/*.json");
     console.log("   • public/*");
-    console.log("\n🌐 Server running at: http://localhost:8347");
+    console.log(`\n🌐 Server running at: http://localhost:${this.port}`);
     console.log("� The page will auto-reload when you make changes!");
     console.log("📝 Markdown will be auto-generated after each build!");
     console.log("💡 If auto-reload doesn't work, run: npm run build");

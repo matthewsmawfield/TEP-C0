@@ -1,10 +1,10 @@
-[20:52:39] [INFO] 
-[20:52:39] [INFO] ================================================================================
-[20:52:39] [INFO]    Starting step_07_04_gw_sirens
-[20:52:39] [INFO] ================================================================================
-[20:52:39] [INFO] 
-[20:52:39] [INFO] Planned GW siren tests:
-[20:52:39] [INFO]   test_1_h0_tension: Plan
-[20:52:39] [INFO]   test_2_ddr_independent: Plan
-[20:52:39] [INFO]   test_3_high_z_gw: Future
-[20:52:39] [SUCCESS] Step step_07_04_gw_sirens completed (planning)
+[09:56:54] [INFO] 
+[09:56:54] [INFO] ================================================================================
+[09:56:54] [INFO]    Starting step_07_04_gw_sirens
+[09:56:54] [INFO] ================================================================================
+[09:56:54] [INFO] 
+[09:56:54] [INFO] Planned GW siren tests:
+[09:56:54] [INFO]   test_1_h0_tension: Plan
+[09:56:54] [INFO]   test_2_ddr_independent: Plan
+[09:56:54] [INFO]   test_3_high_z_gw: Future
+[09:56:54] [SUCCESS] Step step_07_04_gw_sirens completed (planning)

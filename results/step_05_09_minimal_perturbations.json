@@ -1,0 +1,34 @@
+{
+  "acoustic_peak_shift_percent": 0.0,
+  "chi2_proxy_per_dof": 1.9572771044100009e-16,
+  "chi2_proxy_vs_Planck": 3.910639654611182e-13,
+  "description": "Minimal active-perturbation closure diagnostic",
+  "eft_alpha_B_range": [
+    -1.1445128669055653e-05,
+    6.561689449170793e-06
+  ],
+  "eft_alpha_K_range": [
+    -1.6373871281404954e-10,
+    -0.0
+  ],
+  "eft_alpha_M_range": [
+    -6.561689449170793e-06,
+    1.1445128669055653e-05
+  ],
+  "first_peak_tep0_ell": 244,
+  "first_peak_tep_ell": 244,
+  "gradient_stability_pass": true,
+  "interpretation": "Minimal active-perturbation closure: no-ghost and gradient stability verified. Spectra comparison uses TEP(\u03b5_T=0) as the baseline to isolate the actual perturbation effect from numerical-noise contamination between standard CLASS and tep_mode code paths. The zero-limit sanity check confirms TEP(\u03b5_T=0) agrees with LCDM to sub-percent precision.",
+  "max_EE_residual_percent": 0.0,
+  "max_TE_residual_percent": 0.0,
+  "max_TT_residual_percent": 0.0,
+  "mean_EE_residual_percent": 0.0,
+  "mean_TE_residual_percent": 0.0,
+  "mean_TT_residual_percent": 0.0,
+  "no_ghost_pass": true,
+  "status": "completed",
+  "step": "step_05_09_minimal_perturbations",
+  "timestamp": 1781962812,
+  "zero_limit_sanity_max_residual_percent": 0.0,
+  "zero_limit_sanity_passed": true
+}

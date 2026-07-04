@@ -32,6 +32,7 @@ def run() -> dict:
         ingestion = read_json(step_json_path("step_01_02_data_ingestion"))
         mcmc = read_json(step_json_path("step_03_02_independent_mcmc"))
         comparison = read_json(step_json_path("step_03_01_three_model_comparison"))
+        gate_registry = read_json(step_json_path("step_08_05_gate_registry"))
     except FileNotFoundError as e:
         print_status(f"Missing dependency: {e}", "ERROR")
         raise
@@ -76,7 +77,11 @@ def run() -> dict:
             "audit_status": "SUCCESS" if audit_success and research_grade_open else audit["metrics"]["audit_status"],
             "pass_rate": audit["metrics"]["pass_rate"],
             "research_grade_claim_gate": "open" if research_grade_open else "blocked",
-            "claim_blockers": comparison_validation.get("blockers", []),
+            "claim_blockers": [
+                f"{step}: {entry.get('blocked_reason', 'Blocked')}"
+                for step, entry in gate_registry.get("evidence_summary", {}).items()
+                if entry.get("gate_status") == "blocked"
+            ],
         },
         "reconstruction_metrics": {
             "transport_recovery_error": transport["metrics"]["max_reconstruction_error_z"],

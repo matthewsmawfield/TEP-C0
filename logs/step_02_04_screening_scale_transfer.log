@@ -1,0 +1,11 @@
+[01:51:07] [INFO] 
+[01:51:07] [INFO] ================================================================================
+[01:51:07] [INFO]    Starting step_02_04_screening_scale_transfer
+[01:51:07] [INFO] ================================================================================
+[01:51:07] [INFO] 
+[01:51:07] [INFO] Micro critical density: 20.0 g/cm^3 = 2.96e+23 M_sun/pc^3
+[01:51:07] [INFO] Galactic threshold density: 0.5 M_sun/pc^3
+[01:51:07] [INFO] Dimensionless ratio E = rho_half / rho_c = 1.69e-24
+[01:51:07] [INFO] Coarse-graining length: 100.0 pc
+[01:51:07] [INFO] Renormalization factor: 1.69e-26
+[01:51:07] [SUCCESS] Step step_02_04_screening_scale_transfer completed

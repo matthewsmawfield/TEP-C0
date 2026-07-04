@@ -1,10 +1,10 @@
-[20:52:39] [INFO] 
-[20:52:39] [INFO] ================================================================================
-[20:52:39] [INFO]    Starting step_07_05_weak_lensing_plan
-[20:52:39] [INFO] ================================================================================
-[20:52:39] [INFO] 
-[20:52:39] [INFO] Planned weak lensing tests:
-[20:52:39] [INFO]   test_1_shear_power: High priority
-[20:52:39] [INFO]   test_2_cross_correlation: Medium priority
-[20:52:39] [INFO]   test_3_growth_rate: High priority
-[20:52:39] [SUCCESS] Step step_07_05_weak_lensing_plan completed (planning)
+[09:56:54] [INFO] 
+[09:56:54] [INFO] ================================================================================
+[09:56:54] [INFO]    Starting step_07_05_weak_lensing_plan
+[09:56:54] [INFO] ================================================================================
+[09:56:54] [INFO] 
+[09:56:54] [INFO] Planned weak lensing tests:
+[09:56:54] [INFO]   test_1_shear_power: High priority
+[09:56:54] [INFO]   test_2_cross_correlation: Medium priority
+[09:56:54] [INFO]   test_3_growth_rate: High priority
+[09:56:54] [SUCCESS] Step step_07_05_weak_lensing_plan completed (planning)

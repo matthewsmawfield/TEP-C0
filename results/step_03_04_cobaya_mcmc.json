@@ -1,21 +1,92 @@
 {
   "cobaya_available": true,
   "config": {
-    "max_samples": 500000,
-    "output_prefix": "results/outputs/tep_cobaya_sne"
+    "max_samples": 150000,
+    "n_chains": 4,
+    "output_prefix": "results/outputs/tep_cobaya_joint_final"
   },
-  "description": "Cobaya-based TEP inference with TEP-CLASS v2.0",
+  "convergence": {
+    "Rminus1": 0.027562851286768275,
+    "Rminus1_per_param": [
+      0.027562851286768275,
+      0.017501226041510165,
+      0.0005221348005335358,
+      0.0012557281890939187,
+      0.0005371594816308001,
+      0.0019771117855222897,
+      0.0033326173647256763,
+      0.0020242029316013266,
+      0.0024796210195285884,
+      8.991558731974436e-05,
+      1.5377792462745177e-05,
+      0.00042270909760344644,
+      6.451054140410584e-05,
+      9.696506053735732e-05,
+      0.00041194082003337407,
+      1.969842859561588e-05,
+      2.675702970322824e-05,
+      5.768870344313726e-06,
+      9.682916521080998e-05,
+      0.00029582152720419863,
+      0.0005457970884956698,
+      4.348563139822126e-05,
+      0.000347081786409964,
+      9.096270429620468e-05,
+      6.53384226965148e-05,
+      5.698875573600937e-05,
+      3.3350191552594666e-05,
+      4.215275736907387e-06,
+      1.5913043145632244e-05,
+      0.003292382664571436,
+      0.00040123629699495567,
+      3.1705422844696685e-05,
+      3.478670917411719e-05,
+      6.9800652511275985e-06,
+      0.0010094144360657253,
+      0.0003075932898013445,
+      0.002245158396753988,
+      0.0007551729406354291,
+      0.0017305641317846288
+    ],
+    "converged": true,
+    "n_chains_loaded": 4
+  },
+  "description": "Cobaya-based TEP inference with TEP-CLASS v2.0 (multi-chain)",
   "mcmc_result": {
-    "error": "Could not find random point giving finite posterior after 100000 tries",
-    "success": false
+    "chain_details": [
+      {
+        "chain_idx": 0,
+        "prefix": "results/outputs/tep_cobaya_joint_chain0",
+        "success": true
+      },
+      {
+        "chain_idx": 1,
+        "prefix": "results/outputs/tep_cobaya_joint_chain1",
+        "success": true
+      },
+      {
+        "chain_idx": 2,
+        "prefix": "results/outputs/tep_cobaya_joint_chain2",
+        "success": true
+      },
+      {
+        "chain_idx": 3,
+        "prefix": "results/outputs/tep_cobaya_joint_chain3",
+        "success": true
+      }
+    ],
+    "error": null,
+    "n_chains": 4,
+    "success": true
   },
   "pantheon_data_available": true,
-  "status": "skipped",
+  "status": "completed",
   "step": "step_03_04_cobaya_mcmc",
   "tep_class_available": true,
   "validation": {
+    "blockers": [],
     "can_run_joint_analysis": true,
+    "claim_gate": "open",
     "tep_class_path": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/external/class"
-  },
-  "reason": "TEP-CLASS configuration issue: Could not find random point giving finite posterior"
+  }
 }

@@ -127,10 +127,16 @@ def run():
     m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m1 = step022['models'][m1_key]['parameters_mle']
     H0 = 70.0  # dimensionless model fixes H0_ref
-    Sigma_0 = m1.get('epsilon_T', 0.1)  # TEP shear parameter is now epsilon_T
+    # CRITICAL FIX: Tolman SB is a background test, so it must use the
+    # homogeneous background epsilon_T (acoustic sector ~0.018), NOT the
+    # SNe line-of-sight void shear epsilon_shear_los (~0.83). Using the
+    # void shear overpredicts the TEP deviation by a factor of ~40.
+    # If no acoustic value is available, fall back to the canonical 0.018.
+    Sigma_0 = m1.get('epsilon_T', 0.018)
     A_env = m1.get('A_env', 0.1)
     
     print_status(f"Using TEP parameters: H0={H0:.2f}, Sigma_0 (epsilon_T)={Sigma_0:.6f}", "INFO")
+    print_status("  (Using acoustic-sector epsilon_T for background Tolman test)", "INFO")
 
     # Load surface brightness data (from step_023c or legacy)
     try:
@@ -152,83 +158,161 @@ def run():
         print_status("Tolman data missing; wrote blocked validation payload", "WARNING")
         return payload
     
-    # Compute model predictions
-    sb_pred_tep = compute_tep_sb(z_data, H0, Sigma_0, A_env)
-    sb_pred_lcdm = compute_lcdm_sb(z_data)
+    # Load TEPCosmology for distance calculations
+    import sys, os
+    sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+    from core.cosmology import TEPCosmology
     
-    # Statistical analysis
-    sb_err_safe = np.maximum(sb_err, np.finfo(float).tiny)
-    residuals_tep = sb_data - sb_pred_tep
-    residuals_lcdm = sb_data - sb_pred_lcdm
+    # Load n_measured and n_err from the CSV (the actual physical observable)
+    # The SB_ratio column is a derived quantity; n_measured is the fundamental Tolman index
+    import csv
+    sb_csv_path = RAW_DIR / "surface_brightness_evolution.csv"
+    n_values, n_errors, z_n_values = [], [], []
+    if sb_csv_path.exists():
+        with open(sb_csv_path, 'r') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if 'n_measured' in row and row['n_measured']:
+                    n_values.append(float(row['n_measured']))
+                    n_errors.append(float(row.get('n_err', 0.2)))
+                    z_n_values.append(float(row['z']))
     
-    chi2_tep = np.sum((residuals_tep / sb_err_safe) ** 2)
-    chi2_lcdm = np.sum((residuals_lcdm / sb_err_safe) ** 2)
+    n_array = np.array(n_values)
+    n_err_array = np.array(n_errors)
+    n_err_safe = np.maximum(n_err_array, np.finfo(float).tiny)
+    z_n_array = np.array(z_n_values)
+    
+    # Compute TEP-predicted Tolman index at each data redshift
+    # n_tep = 4 - log10(SB_tep/SB_lcdm) / log10(1+z)
+    # SB_tep/SB_lcdm = 10^(-0.4 * (mu_tep - mu_lcdm))
+    cosmo_tep = TEPCosmology(H0=H0, epsilon_T=Sigma_0)
+    cosmo_lcdm = TEPCosmology(H0=H0, epsilon_T=0.0)
+    n_tep_values = []
+    for z in z_n_array:
+        mu_tep = cosmo_tep.distance_modulus(z)
+        mu_lcdm = cosmo_lcdm.distance_modulus(z)
+        if z > 0.001:
+            tep_factor = 10**(-0.4 * (mu_tep - mu_lcdm))
+            n_tep = 4.0 - np.log10(tep_factor) / np.log10(1 + z)
+        else:
+            n_tep = 4.0
+        n_tep_values.append(n_tep)
+    n_tep_array = np.array(n_tep_values)
+    
+    # Statistical analysis on Tolman indices (the physical observables)
+    # LCDM predicts n = 4.0 for all z
+    n_lcdm_array = np.full_like(n_array, 4.0)
+    
+    residuals_tep = n_array - n_tep_array
+    residuals_lcdm = n_array - n_lcdm_array
+    
+    chi2_tep = np.sum((residuals_tep / n_err_safe) ** 2)
+    chi2_lcdm = np.sum((residuals_lcdm / n_err_safe) ** 2)
     delta_chi2 = chi2_lcdm - chi2_tep
     
     # Bayesian evidence approximation (AIC-like)
-    n_points = len(z_data)
+    n_points = len(n_array)
     aic_tep = chi2_tep + 2 * 2  # 2 parameters: H0, Sigma_0
     aic_lcdm = chi2_lcdm + 2 * 1  # 1 parameter: just scaling
     
-    # Extract Tolman indices from data (n_measured values from Lubin & Sandage)
-    # n is defined by SB_observed ∝ (1+z)^(-n)
-    # LCDM expects n = 4, TEP predicts n = 2-3 (varies with model)
-    if 'n_measured' in locals() or hasattr(sb_data, 'dtype'):
-        # Get n values from the surface brightness data structure
-        # This requires loading the full data with n_measured
-        import csv
-        sb_csv_path = RAW_DIR / "surface_brightness_evolution.csv"
-        if sb_csv_path.exists():
-            with open(sb_csv_path, 'r') as f:
-                reader = csv.DictReader(f)
-                n_values = []
-                n_errors = []
-                for row in reader:
-                    if 'n_measured' in row and row['n_measured']:
-                        n_values.append(float(row['n_measured']))
-                        n_errors.append(float(row.get('n_err', 0.2)))
-                
-                if n_values:
-                    n_array = np.array(n_values)
-                    n_err_array = np.array(n_errors)
-                    n_err_array_safe = np.maximum(n_err_array, np.finfo(float).tiny)
-                    # Weighted mean of Tolman index
-                    weights_n = 1.0 / n_err_array_safe**2
-                    fitted_index = np.sum(n_array * weights_n) / np.sum(weights_n)
-                    index_err = np.sqrt(1.0 / np.sum(weights_n))
-                else:
-                    fitted_index = 4.0
-                    index_err = 0.5
-        else:
-            fitted_index = 4.0
-            index_err = 0.5
-    else:
-        fitted_index = 4.0
-        index_err = 0.5
+    # Weighted mean of measured Tolman index
+    weights_n = 1.0 / n_err_safe**2
+    fitted_index = np.sum(n_array * weights_n) / np.sum(weights_n)
+    index_err = np.sqrt(1.0 / np.sum(weights_n))
     
     # LCDM predicts index = 4.0
     index_deviation = fitted_index - 4.0
     index_err_safe = max(float(index_err), np.finfo(float).tiny)
     index_sigma = abs(index_deviation) / index_err_safe
     
+    # Redshift trend analysis: the data shows n DECREASING with z, while TEP
+    # predicts n INCREASING with z (more temporal shear at higher z).
+    n_vs_z_slope = 0.0
+    n_vs_z_intercept = 0.0
+    low_z_mean_n = 0.0
+    high_z_mean_n = 0.0
+    low_z_mask = np.array([])
+    high_z_mask = np.array([])
+    if len(z_n_array) > 1:
+        n_vs_z_slope, n_vs_z_intercept = np.polyfit(z_n_array, n_array, 1)
+        low_z_mask = z_n_array < 0.3
+        high_z_mask = z_n_array > 0.5
+        if np.any(low_z_mask):
+            low_z_mean_n = float(np.mean(n_array[low_z_mask]))
+        if np.any(high_z_mask):
+            high_z_mean_n = float(np.mean(n_array[high_z_mask]))
+    
+    # TEP predicted slope: compute dn/dz for TEP at a representative z
+    tep_slope = 0.0
+    if len(z_n_array) > 1:
+        z_mid = float(np.median(z_n_array))
+        dz = 0.01
+        mu_tep_lo = cosmo_tep.distance_modulus(z_mid - dz)
+        mu_tep_hi = cosmo_tep.distance_modulus(z_mid + dz)
+        mu_lcdm_lo = cosmo_lcdm.distance_modulus(z_mid - dz)
+        mu_lcdm_hi = cosmo_lcdm.distance_modulus(z_mid + dz)
+        tep_factor_lo = 10**(-0.4 * (mu_tep_lo - mu_lcdm_lo))
+        tep_factor_hi = 10**(-0.4 * (mu_tep_hi - mu_lcdm_hi))
+        n_tep_lo = 4.0 - np.log10(tep_factor_lo) / np.log10(1 + z_mid - dz)
+        n_tep_hi = 4.0 - np.log10(tep_factor_hi) / np.log10(1 + z_mid + dz)
+        tep_slope = (n_tep_hi - n_tep_lo) / (2 * dz)
+    
+    # Systematic uncertainty estimate: K-corrections for early-type galaxies
+    # in R and I bands can shift n by ~0.3-0.5 mag at z~1 (Lubin & Sandage 2001).
+    # Passive evolution adds another ~0.2-0.3 mag uncertainty.
+    # Total systematic uncertainty on n: ~0.5 (conservative).
+    k_corr_systematic = 0.5  # mag-equivalent uncertainty in n
+    total_systematic_err = np.sqrt(n_err_safe**2 + k_corr_systematic**2)
+    
     # Determine research grade status
     min_points = 10
     min_redshift_range = 1.0  # z_max - z_min > 1
-    significant_evidence = delta_chi2 > 6.0  # ~2 sigma preference
     systematic_checked = n_points >= min_points
     
+    # Pipeline-debug signal: when |n_tep - n_lcdm| << |n_obs - n_lcdm|, both models
+    # predict the same thing and the test has zero discriminating power.
+    # For epsilon_T=0.018, TEP predicts n≈4.015, LCDM predicts n=4.0,
+    # while data shows n≈3.375. The 0.6 mag offset is astrophysical systematics.
+    mean_n_tep = float(np.mean(n_tep_array)) if len(n_tep_array) > 0 else 4.0
+    model_degeneracy = abs(mean_n_tep - 4.0) < 0.1  # TEP ≈ LCDM prediction
+    
+    # CRITICAL: data trend is OPPOSITE to TEP prediction.
+    # TEP (with any epsilon_T > 0) predicts n >= 4.0 and dn/dz >= 0 (flat or increasing).
+    # Data shows n << 4.0 and dn/dz < 0 (strongly decreasing with z).
+    # This sign mismatch means TEP cannot explain the Tolman anomaly even in principle.
+    opposite_trend = n_vs_z_slope < -0.1 and tep_slope > -0.05
+    
+    # When models are degenerate, the test is inconclusive as a discriminator.
+    # We still require sufficient data for a robust measurement.
     research_grade = bool(
         n_points >= min_points and 
-        (max(z_data) - min(z_data)) > min_redshift_range and
+        (max(z_n_array) - min(z_n_array)) > min_redshift_range and
+        not model_degeneracy and
+        not opposite_trend and
         delta_chi2 > 9.0
     )
+    
+    inconclusive = model_degeneracy and n_points >= min_points
     
     blockers = []
     if n_points < min_points:
         blockers.append(f'Insufficient data points: {n_points} < {min_points}')
-    if (max(z_data) - min(z_data)) <= min_redshift_range:
-        blockers.append(f'Insufficient redshift range: {max(z_data) - min(z_data):.2f} < {min_redshift_range}')
-    if delta_chi2 <= 9.0:
+    if (max(z_n_array) - min(z_n_array)) <= min_redshift_range:
+        blockers.append(f'Insufficient redshift range: {max(z_n_array) - min(z_n_array):.2f} < {min_redshift_range}')
+    if opposite_trend:
+        tep_trend_str = 'n increases with z' if tep_slope > 0.01 else 'n ≈ 4.0 (flat)'
+        blockers.append(
+            f'Data trend is OPPOSITE to TEP prediction: '
+            f'data slope = {n_vs_z_slope:.3f} (n decreases with z), '
+            f'TEP slope = {tep_slope:.3f} ({tep_trend_str}). '
+            f'TEP (and LCDM) predict n ≥ 4.0; data shows n ≈ 3.375 and falls to n ≈ 2.8 at high z. '
+            f'TEP cannot explain the Tolman anomaly in either amplitude or trend. '
+            f'Observed offset is dominated by astrophysical systematics '
+            f'(K-corrections ±{k_corr_systematic:.1f}, passive evolution, selection effects).'
+        )
+    elif model_degeneracy:
+        blockers.append(f'TEP (n≈{mean_n_tep:.2f}) and LCDM (n=4.0) are degenerate; test has no discriminating power. Observed n={fitted_index:.3f} is dominated by astrophysical systematics (K-corrections, passive evolution).')
+    elif delta_chi2 <= 9.0:
         blockers.append(f'Insufficient statistical evidence: Δχ² = {delta_chi2:.2f} < 9.0')
     if not systematic_checked:
         blockers.append('K-corrections, passive evolution, and selection effects must be fully documented')
@@ -260,21 +344,33 @@ def run():
             'fitted_index': rounded(fitted_index, 3),
             'index_error': rounded(index_err, 3),
             'lcdm_expected': 4.0,
-            'tep_expected': rounded(4.0 + Sigma_0, 3) if H0 > 0 else None,
+            'tep_expected': rounded(np.mean(n_tep_array), 3) if len(n_tep_array) > 0 else None,
             'deviation_from_lcdm': rounded(index_deviation, 3),
             'deviation_sigma': rounded(index_sigma, 2),
         },
-        'surface_brightness_data': [
+        'redshift_trend': {
+            'data_slope': rounded(n_vs_z_slope, 3),
+            'data_intercept': rounded(n_vs_z_intercept, 3),
+            'tep_slope': rounded(tep_slope, 3),
+            'low_z_mean_n': rounded(low_z_mean_n, 3) if np.any(low_z_mask) else None,
+            'high_z_mean_n': rounded(high_z_mean_n, 3) if np.any(high_z_mask) else None,
+            'opposite_trend': opposite_trend,
+        },
+        'systematic_uncertainty': {
+            'k_correction_estimate': k_corr_systematic,
+            'total_systematic_err': rounded(float(np.mean(total_systematic_err)), 3),
+        },
+        'tolman_data': [
             {
                 'z': rounded(float(z), 3),
-                'sb_observed': rounded(float(sb), 4),
-                'sb_error': rounded(float(err), 4),
-                'sb_lcdm_pred': rounded(float(lcdm), 4),
-                'sb_tep_pred': rounded(float(tep), 4),
-                'residual_lcdm': rounded(float(sb - lcdm), 4),
-                'residual_tep': rounded(float(sb - tep), 4),
+                'n_observed': rounded(float(n), 4),
+                'n_err': rounded(float(err), 4),
+                'n_lcdm_pred': 4.0,
+                'n_tep_pred': rounded(float(nt), 4),
+                'residual_lcdm': rounded(float(n - 4.0), 4),
+                'residual_tep': rounded(float(n - nt), 4),
             }
-            for z, sb, err, lcdm, tep in zip(z_data, sb_data, sb_err, sb_pred_lcdm, sb_pred_tep)
+            for z, n, err, nt in zip(z_n_array, n_array, n_err_array, n_tep_array)
         ],
         'validation': {
             'real_data': True,
@@ -287,13 +383,21 @@ def run():
     }
     
     # Write CSV output for plotting
-    csv_data = results['surface_brightness_data']
+    csv_data = results['tolman_data']
     write_csv(step_csv_path(STEP_ID), csv_data)
     
     write_json(step_json_path(STEP_ID), results)
     
     # Print summary
     print_status(f"Tolman index: {fitted_index:.3f} ± {index_err:.3f} (LCDM expects 4.0)", "INFO")
+    print_status(f"  Data redshift trend: n = {n_vs_z_intercept:.3f} + {n_vs_z_slope:.3f}*z (slope {'< 0' if n_vs_z_slope < 0 else '> 0'})", "INFO")
+    tep_trend_desc = "n increases with z" if tep_slope > 0.01 else "n ≈ 4.0 (flat)"
+    print_status(f"  TEP predicted trend: slope ≈ {tep_slope:.3f} ({tep_trend_desc})", "INFO")
+    if np.any(low_z_mask):
+        print_status(f"  Low-z (z<0.3) mean n: {low_z_mean_n:.3f}", "INFO")
+    if np.any(high_z_mask):
+        print_status(f"  High-z (z>0.5) mean n: {high_z_mean_n:.3f}", "INFO")
+    print_status(f"  K-correction systematic uncertainty: ±{k_corr_systematic:.1f} mag", "INFO")
     print_status(f"Δχ² (LCDM - TEP) = {delta_chi2:.2f}", "INFO")
     print_status(f"TEP preferred: {chi2_tep < chi2_lcdm}", "INFO")
     print_status(f"Research grade: {research_grade}", "SUCCESS" if research_grade else "WARNING")

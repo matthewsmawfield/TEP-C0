@@ -7,11 +7,12 @@ authors:
 title: 'Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion'
 type: article
 version: v0.1 (Athens)
-date-released: 2026-06-07
-doi: 10.5281/zenodo.20370144
+date-released: 2026-07-03
+doi: 10.5281/zenodo.20370143
 url: https://mlsmawfield.com/tep/c0
 license: CC-BY-4.0
-abstract: "This paper develops the cosmological extension of the Temporal Equivalence Principle (TEP): the hypothesis that observational evidence normally interpreted as cosmic expansion may involve large-scale Temporal Shear. Utilizing a dual-domain Bayesian synthesis of Pantheon+ supernovae and Planck 2018 acoustic anchors, the analysis demonstrates that standard cosmological expansion can be reconstructed from accumulated Temporal Shear and Temporal Topology along cosmological lines of sight."
+abstract: |
+  This paper presents a direct empirical challenge to the necessity of primitive cosmic expansion. In the Temporal Equivalence Principle framework, observed redshift is reconstructed as conformal proper-time transport rather than as stretching of a spatial scale factor. Using 1,701 Pantheon+ Type Ia supernovae with the full covariance matrix, a pure conformal reconstruction exactly reproduces the Lambda CDM homogeneous distance-modulus relation. The conservative physical no-Lambda temporal-shear branch with fixed z_T=5 improves the standardized supernova likelihood by Delta chi^2 ~ -3.4 relative to baseline Lambda CDM and achieves a Bayes factor of BF ~ 4.6 (substantial evidence). The framework is formally closed from the temporal-horizon background down to linear mode evolution through the exact Bellini-Sawicki EFT mapping implemented in TEP-HC (Paper 18), which natively yields sigma_8 ~ 0.825 in agreement with Planck.
 keywords:
 - Temporal Equivalence Principle
 - Temporal Shear

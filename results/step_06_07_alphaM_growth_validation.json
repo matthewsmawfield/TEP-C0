@@ -1,0 +1,92 @@
+{
+  "conclusion": {
+    "alpha_M_explains_0_55_suppression": false,
+    "alpha_M_percent_effect_eds": 0.84,
+    "alpha_M_percent_effect_lcdm": 0.33,
+    "reason": "alpha_M running yields only a percent-level modification around any background, not the ~45% suppression required to reconcile EdS (sigma_8 ~ 1.5) with Planck (sigma_8 ~ 0.838).",
+    "required_suppression_percent": 44.2,
+    "tep_hc_reference": {
+      "note": "TEP-HC hi_class on LCDM-like background with small active TEP modifications gives sigma_8 ~ 0.857 +/- 0.016, demonstrating perturbative safety.",
+      "sigma_8": 0.857,
+      "sigma_8_err": 0.016
+    }
+  },
+  "description": "alpha_M-modified growth ODE validation: rules out alpha_M as source of 0.55 suppression",
+  "diagnostics": {
+    "alpha_M_at_z": [
+      {
+        "alpha_M_eps006": -0.0,
+        "alpha_M_eps018": -0.0,
+        "z": 0.0
+      },
+      {
+        "alpha_M_eps006": 0.009537,
+        "alpha_M_eps018": 0.028612,
+        "z": 0.5
+      },
+      {
+        "alpha_M_eps006": 0.007101,
+        "alpha_M_eps018": 0.021302,
+        "z": 1.0
+      },
+      {
+        "alpha_M_eps006": 0.002742,
+        "alpha_M_eps018": 0.008225,
+        "z": 2.0
+      },
+      {
+        "alpha_M_eps006": -0.005077,
+        "alpha_M_eps018": -0.015232,
+        "z": 5.0
+      }
+    ]
+  },
+  "scenarios": {
+    "eds_no_lambda": {
+      "H0": 70.0,
+      "Omega_L": 0.0,
+      "Omega_m": 1.0,
+      "epsilon_T": 0.0,
+      "growth_factor_z1": 0.5,
+      "sigma_8": 1.501
+    },
+    "eds_plus_tep_alphaM": {
+      "H0": 70.0,
+      "Omega_L": 0.0,
+      "Omega_m": 1.0,
+      "alpha_M_percent_effect": 0.84,
+      "epsilon_T": 0.018,
+      "growth_factor_z1": 0.4958,
+      "n_T": 1.0,
+      "ratio_vs_eds_at_z1": 0.9916,
+      "sigma_8": 1.488,
+      "z_T": 5.0
+    },
+    "lcdm_baseline": {
+      "H0": 67.36,
+      "Omega_L": 0.685,
+      "Omega_m": 0.315,
+      "epsilon_T": 0.0,
+      "growth_factor_z1": 0.6076,
+      "sigma_8": 0.838
+    },
+    "lcdm_plus_tep_alphaM": {
+      "H0": 67.36,
+      "Omega_L": 0.685,
+      "Omega_m": 0.315,
+      "alpha_M_percent_effect": 0.33,
+      "epsilon_T": 0.006,
+      "growth_factor_z1": 0.6056,
+      "n_T": 1.0,
+      "ratio_vs_lcdm_at_z1": 0.9967,
+      "sigma_8": 0.835,
+      "z_T": 5.0
+    }
+  },
+  "status": "completed",
+  "step": "step_06_07_alphaM_growth_validation",
+  "validation": {
+    "alphaM_rules_out_0_55_suppression": true,
+    "pass": true
+  }
+}

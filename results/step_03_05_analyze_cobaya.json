@@ -1,0 +1,138 @@
+{
+  "chain_files": [
+    "tep_cobaya_joint_chain0.1.txt",
+    "tep_cobaya_joint_chain0.input.yaml",
+    "tep_cobaya_joint_chain2.checkpoint",
+    "tep_cobaya_joint_chain2.1.txt",
+    "tep_cobaya_joint_chain1.progress",
+    "tep_cobaya_joint_chain0.progress",
+    "tep_cobaya_joint_chain0.checkpoint",
+    "tep_cobaya_joint_chain2.input.yaml",
+    "tep_cobaya_joint_chain3.1.txt",
+    "tep_cobaya_joint_chain1.updated.yaml",
+    "tep_cobaya_joint_chain2.covmat",
+    "tep_cobaya_joint_chain1.1.txt",
+    "tep_cobaya_joint_chain0.covmat",
+    "tep_cobaya_joint_chain0.updated.yaml",
+    "tep_cobaya_joint_chain2.updated.yaml",
+    "tep_cobaya_joint_chain2.progress",
+    "tep_cobaya_joint_chain3.progress",
+    "tep_cobaya_joint_chain1.input.yaml",
+    "tep_cobaya_joint_chain3.updated.yaml",
+    "tep_cobaya_joint_chain3.checkpoint",
+    "tep_cobaya_joint_chain3.covmat",
+    "tep_cobaya_joint_chain1.checkpoint",
+    "tep_cobaya_joint_chain3.input.yaml",
+    "tep_cobaya_joint_chain1.covmat"
+  ],
+  "constraints": [
+    {
+      "lower_68": -0.003862792682860678,
+      "mean": -0.0015300388975057343,
+      "parameter": "tep_epsilon_T",
+      "std": 0.003665948766632006,
+      "upper_68": 0.0020427416805695667
+    },
+    {
+      "lower_68": 0.42768028713012995,
+      "mean": 49.68923617551735,
+      "parameter": "tep_z_T",
+      "std": 41.3734976082667,
+      "upper_68": 66.81296325223822
+    },
+    {
+      "lower_68": 66.115545,
+      "mean": 66.70182029626669,
+      "parameter": "H0",
+      "std": 0.5824632610276705,
+      "upper_68": 67.287014
+    },
+    {
+      "lower_68": 0.022097883,
+      "mean": 0.022242740203160555,
+      "parameter": "omega_b",
+      "std": 0.0001457884981320186,
+      "upper_68": 0.022388757
+    },
+    {
+      "lower_68": 0.12025192,
+      "mean": 0.12155723321498241,
+      "parameter": "omega_cdm",
+      "std": 0.0013006446247728367,
+      "upper_68": 0.12286261
+    },
+    {
+      "lower_68": 0.04425236197503165,
+      "mean": 0.05197830105469171,
+      "parameter": "tau_reio",
+      "std": 0.00780857576231019,
+      "upper_68": 0.059499641960483116
+    },
+    {
+      "lower_68": 3.0287592,
+      "mean": 3.04438767473744,
+      "parameter": "logA",
+      "std": 0.016162183515084236,
+      "upper_68": 3.0604991
+    },
+    {
+      "lower_68": 0.95681307,
+      "mean": 0.9609532425379002,
+      "parameter": "n_s",
+      "std": 0.0041826838574866,
+      "upper_68": 0.96514523
+    }
+  ],
+  "convergence": {
+    "Rminus1": 0.027562851286768275,
+    "Rminus1_per_param": [
+      0.027562851286768275,
+      0.017501226041510165,
+      0.0005221348005335358,
+      0.0012557281890939187,
+      0.0005371594816308001,
+      0.0019771117855222897,
+      0.0033326173647256763,
+      0.0020242029316013266,
+      0.0024796210195285884,
+      8.991558731974436e-05,
+      1.5377792462745177e-05,
+      0.00042270909760344644,
+      6.451054140410584e-05,
+      9.696506053735732e-05,
+      0.00041194082003337407,
+      1.969842859561588e-05,
+      2.675702970322824e-05,
+      5.768870344313726e-06,
+      9.682916521080998e-05,
+      0.00029582152720419863,
+      0.0005457970884956698,
+      4.348563139822126e-05,
+      0.000347081786409964,
+      9.096270429620468e-05,
+      6.53384226965148e-05,
+      5.698875573600937e-05,
+      3.3350191552594666e-05,
+      4.215275736907387e-06,
+      1.5913043145632244e-05,
+      0.003292382664571436,
+      0.00040123629699495567,
+      3.1705422844696685e-05,
+      3.478670917411719e-05,
+      6.9800652511275985e-06,
+      0.0010094144360657253,
+      0.0003075932898013445,
+      0.002245158396753988,
+      0.0007551729406354291,
+      0.0017305641317846288
+    ],
+    "converged": true,
+    "n_chains_loaded": 4
+  },
+  "figure_path": "results/figures/step_03_05_analyze_cobaya_triangle.png",
+  "n_parameters": 8,
+  "note": "Joint SNe+CMB background/acoustic MCMC diagnostic. tep_epsilon_T here is the homogeneous acoustic-sector amplitude, distinct from epsilon_shear_los fitted to SNe alone. R-1 = 0.028 (threshold 0.05 for 39-parameter Planck+SNe). Converged.",
+  "stats_path": "results/outputs/tep_cobaya_joint_converged_stats.txt",
+  "status": "completed",
+  "step": "step_03_05_analyze_cobaya"
+}

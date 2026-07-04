@@ -1,41 +1,41 @@
-[17:27:56] [INFO] 
-[17:27:56] [INFO] ================================================================================
-[17:27:56] [INFO]    Starting step_02_03_physics_implementation
-[17:27:56] [INFO] ================================================================================
-[17:27:56] [INFO] 
-[17:27:56] [PROCESS] Running structure growth validation...
-[17:27:56] [PROCESS] Validating TEP perturbations...
-[17:27:56] [PROCESS] Validating static metric...
-[17:27:56] [PROCESS] Running replacement claim validation suite...
-[17:27:56] [PROCESS] Fitting full TEP cosmology to Pantheon+ data...
-[17:27:56] [WARNING] step_03_01 results not found, falling back to None
-[17:27:56] [PROCESS] Running final validation suite...
-[17:27:56] [INFO] Final validation tests implemented and passed: 3/3
-[17:27:56] [INFO] ======================================================================
-[17:27:56] [INFO] 
-[17:27:56] [INFO] ================================================================================
-[17:27:56] [INFO]    GATE STATUS SUMMARY
-[17:27:56] [INFO] ================================================================================
-[17:27:56] [INFO] 
-[17:27:56] [INFO] ======================================================================
-[17:27:56] [INFO] ✅ INFRASTRUCTURE            [PASSED]
-[17:27:56] [INFO] ✅ ZERO LIMIT                [PASSED]
-[17:27:56] [INFO] ✅ PRESERVATION              [PASSED]
-[17:27:56] [INFO] ❌ MODEL COMPARISON          [PENDING]
-[17:27:56] [INFO] ⚠️ REPLACEMENT               [PARTIAL]
-[17:27:56] [INFO] ======================================================================
-[17:27:56] [INFO] ======================================================================
-[17:27:56] [INFO] 
-[17:27:56] [INFO] ================================================================================
-[17:27:56] [INFO]    FINAL GATE STATUS
-[17:27:56] [INFO] ================================================================================
-[17:27:56] [INFO] 
-[17:27:56] [INFO] ======================================================================
-[17:27:56] [SUCCESS] ✅ Infrastructure gate       [PASSED]
-[17:27:56] [SUCCESS] ✅ Zero-limit gate          [PASSED]
-[17:27:56] [SUCCESS] ✅ Preservation gate         [PASSED]
-[17:27:56] [WARNING] ❌ Model-comparison gate    [PENDING]
-[17:27:56] [WARNING] ⚠️ Replacement gate        [PARTIAL]
-[17:27:56] [INFO] ======================================================================
-[17:27:56] [WARNING] TEP-COSMO pipeline validated; replacement claim not yet established
-[17:27:56] [INFO] Detailed results in: results/step_02_03_physics_implementation.json
+[01:51:07] [INFO] 
+[01:51:07] [INFO] ================================================================================
+[01:51:07] [INFO]    Starting step_02_03_physics_implementation
+[01:51:07] [INFO] ================================================================================
+[01:51:07] [INFO] 
+[01:51:07] [PROCESS] Running structure growth validation...
+[01:51:07] [PROCESS] Validating TEP perturbations...
+[01:51:07] [PROCESS] Validating static metric...
+[01:51:07] [PROCESS] Running replacement claim validation suite...
+[01:51:07] [PROCESS] Fitting full TEP cosmology to Pantheon+ data...
+[01:51:07] [WARNING] step_03_01 results not found, falling back to None
+[01:51:07] [PROCESS] Running final validation suite...
+[01:51:07] [INFO] Final validation tests implemented and passed: 3/3
+[01:51:07] [INFO] ======================================================================
+[01:51:07] [INFO] 
+[01:51:07] [INFO] ================================================================================
+[01:51:07] [INFO]    GATE STATUS SUMMARY
+[01:51:07] [INFO] ================================================================================
+[01:51:07] [INFO] 
+[01:51:07] [INFO] ======================================================================
+[01:51:07] [INFO] ✅ INFRASTRUCTURE            [PASSED]
+[01:51:07] [INFO] ✅ ZERO LIMIT                [PASSED]
+[01:51:07] [INFO] ✅ PRESERVATION              [PASSED]
+[01:51:07] [INFO] ❌ MODEL COMPARISON          [PENDING]
+[01:51:07] [INFO] ⚠️ REPLACEMENT               [PARTIAL]
+[01:51:07] [INFO] ======================================================================
+[01:51:07] [INFO] ======================================================================
+[01:51:07] [INFO] 
+[01:51:07] [INFO] ================================================================================
+[01:51:07] [INFO]    FINAL GATE STATUS
+[01:51:07] [INFO] ================================================================================
+[01:51:07] [INFO] 
+[01:51:07] [INFO] ======================================================================
+[01:51:07] [SUCCESS] ✅ Infrastructure gate       [PASSED]
+[01:51:07] [SUCCESS] ✅ Zero-limit gate          [PASSED]
+[01:51:07] [SUCCESS] ✅ Preservation gate         [PASSED]
+[01:51:07] [WARNING] ❌ Model-comparison gate    [PENDING]
+[01:51:07] [WARNING] ⚠️ Replacement gate        [PARTIAL]
+[01:51:07] [INFO] ======================================================================
+[01:51:07] [WARNING] TEP-COSMO pipeline validated; replacement claim not yet established
+[01:51:07] [INFO] Detailed results in: results/step_02_03_physics_implementation.json

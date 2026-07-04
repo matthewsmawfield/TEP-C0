@@ -1,0 +1,20 @@
+{
+  "allowed_parameter_range": {
+    "E_max": 1.6919480593296485e-23,
+    "E_min": 1.6919480593296486e-25,
+    "coarse_graining_max_pc": 1000.0,
+    "coarse_graining_min_pc": 10.0
+  },
+  "coarse_graining_length_cm": 3.086e+20,
+  "coarse_graining_length_pc": 100.0,
+  "description": "Micro-to-galactic screening scale transfer",
+  "dimensionless_density_variable_E": 1.6919480593296486e-24,
+  "interpretation": "The micro-to-galactic screening relation is not an arbitrary second scale; it is the coarse-grained projection of the same saturation law under astrophysical averaging.",
+  "renormalization_factor": 1.6919480593296486e-26,
+  "rho_c_micro_Msun_pc3": 2.9551734596279536e+23,
+  "rho_c_micro_g_cm3": 20.0,
+  "rho_half_galactic_Msun_pc3": 0.5,
+  "status": "completed",
+  "step": "step_02_04_screening_scale_transfer",
+  "timestamp": 1781916667
+}

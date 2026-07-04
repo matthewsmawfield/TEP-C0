@@ -92,12 +92,17 @@
     }
   ],
   "description": "Distance-duality relation test with observational constraints",
+  "lcdm_compilation": {
+    "deviation_from_unity_sigma": 6.63,
+    "eta_lcdm_weighted_err": 0.0202,
+    "eta_lcdm_weighted_mean": 0.8662
+  },
   "model_parameters": {
     "H0_lcdm": 70.0,
     "H0_tep": 70.0,
     "Om0": 0.3,
-    "epsilon_T": 0.858539,
-    "z_T": 10.0
+    "epsilon_T": 0.018,
+    "z_T": 136.568
   },
   "observational_data": {
     "have_data": true,
@@ -109,22 +114,30 @@
   },
   "statistical_results": {
     "chi2_lcdm": 101.75,
-    "chi2_tep": 101.75,
-    "delta_chi2": 0.0,
-    "deviation_from_unity_sigma": 6.63,
-    "eta_weighted_err": 0.0202,
-    "eta_weighted_mean": 0.8662
+    "chi2_tep": 126.93,
+    "delta_chi2": -25.18,
+    "deviation_from_unity_sigma": 8.21,
+    "eta_weighted_err": 0.0187,
+    "eta_weighted_mean": 0.8463
   },
   "status": "completed",
   "step": "step_04_04_distance_duality",
+  "tep_self_consistent": {
+    "deviation_from_unity_sigma": 8.21,
+    "eta_tep_weighted_err": 0.0187,
+    "eta_tep_weighted_mean": 0.8463,
+    "n_constraints": 10
+  },
   "theory_predictions": {
     "delta_eta_theory": 0.0,
     "eta_lcdm_at_z2": 1.0,
     "eta_tep_at_z2": 1.0
   },
   "validation": {
-    "blockers": [],
-    "claim_gate": "open",
+    "blockers": [
+      "BAO D_A is model-dependent (fiducial LCDM r_s). LCDM compilation: \u03b7=0.866\u00b10.020 (6.6\u03c3 from 1); TEP compilation: \u03b7=0.846\u00b10.019 (8.2\u03c3 from 1). Both violate \u03b7=1 because BAO D_A assumes LCDM. Not a model discriminator."
+    ],
+    "claim_gate": "blocked",
     "real_data": true,
     "research_grade_distance_duality": true
   }

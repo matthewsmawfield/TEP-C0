@@ -1,16 +1,16 @@
-[17:27:52] [INFO] 
-[17:27:52] [INFO] ================================================================================
-[17:27:52] [INFO]    Starting step_01_04_download_sb
-[17:27:52] [INFO] ================================================================================
-[17:27:52] [INFO] 
-[17:27:52] [PROCESS] Processing source: lubin_sandage_2001_full
-[17:27:54] [SUCCESS] Downloaded lubin_sandage_2001_full
-[17:27:54] [PROCESS] Processing source: sandage_2010
-[17:27:55] [SUCCESS] Downloaded sandage_2010
-[17:27:55] [PROCESS] Processing source: pahre_1996
-[17:27:56] [SUCCESS] Downloaded pahre_1996
-[17:27:56] [INFO] Generated 19 measurements from lubin_sandage_2001_full
-[17:27:56] [INFO] Generated 4 measurements from sandage_2010
-[17:27:56] [INFO] Generated 1 measurements from pahre_1996
-[17:27:56] [SUCCESS] Data quality check passed: 48 points over z_range=1.27
-[17:27:56] [SUCCESS] Step step_01_04_download_sb completed: 48 data points
+[01:51:06] [INFO] 
+[01:51:06] [INFO] ================================================================================
+[01:51:06] [INFO]    Starting step_01_04_download_sb
+[01:51:06] [INFO] ================================================================================
+[01:51:06] [INFO] 
+[01:51:06] [PROCESS] Processing source: lubin_sandage_2001_full
+[01:51:06] [SUCCESS] Downloaded lubin_sandage_2001_full
+[01:51:06] [PROCESS] Processing source: sandage_2010
+[01:51:07] [SUCCESS] Downloaded sandage_2010
+[01:51:07] [PROCESS] Processing source: pahre_1996
+[01:51:07] [SUCCESS] Downloaded pahre_1996
+[01:51:07] [INFO] Generated 19 measurements from lubin_sandage_2001_full
+[01:51:07] [INFO] Generated 4 measurements from sandage_2010
+[01:51:07] [INFO] Generated 1 measurements from pahre_1996
+[01:51:07] [SUCCESS] Data quality check passed: 48 points over z_range=1.27
+[01:51:07] [SUCCESS] Step step_01_04_download_sb completed: 48 data points

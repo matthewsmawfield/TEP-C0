@@ -20,7 +20,7 @@ This step evaluates the late-universe kinematics against SNe data ONLY.
 It explicitly enforces the exact Jordan-frame geometry of the TEP model: a
 pure matter-only Einstein-de Sitter background (Omega_m = 1.0, Omega_Lambda = 0.0).
 This demonstrates that the unscreened Temporal Shear fully reproduces the apparent
-acceleration (yielding epsilon_T ~ 0.27) without dark energy.
+acceleration (yielding epsilon_shear_los ~ 0.27) without dark energy.
 Contrast this with the Joint MCMC (step_03_04), which allows Omega_Lambda to float
 in order to prove that the early universe (CMB) remains screened from the effect.
 """
@@ -445,7 +445,7 @@ class ModelTEP:
     """TEP-modified cosmological model with dimensionless distance parameterization.
     
     Uses single nuisance intercept M instead of degenerate (H0, MB) pair.
-    Parameters: (epsilon_T, M) for M1 or (M,) for M2
+    Parameters: (epsilon_shear_los, M) for M1 or (M,) for M2
     where M = M_B - 5*log10(H0/70)
     """
 
@@ -457,24 +457,24 @@ class ModelTEP:
         
         if pure_shear:
             # Pure temporal shear using StaticCosmology.
-            # Only parameter is the absolute magnitude nuisance intercept.
-            self.param_names = ['M']
-            self.n_params = 1
-            self.bounds = [(-21.0, -16.0)]
-            self.latex_names = [r'\mathcal{M}']
+            # Parameters: (Om0, M) to map the isomorphic conformal field
+            self.param_names = ['Om0', 'M']
+            self.n_params = 2
+            self.bounds = [(0.05, 0.5), (-21.0, -16.0)]
+            self.latex_names = [r'\Omega_m', r'\mathcal{M}']
         else:
             # M1: No-Λ Temporal Shear Reconstruction
             if free_z_T:
-                self.param_names = ['epsilon_T', 'z_T', 'M']
+                self.param_names = ['epsilon_shear_los', 'z_T', 'M']
                 self.n_params = 3
-                self.bounds = [(0.0, 1.0), (0.1, 10.0), (-21.0, -16.0)]
-                self.latex_names = [r'\epsilon_T', r'z_T', r'\mathcal{M}']
+                self.bounds = [(0.0, 2.0), (0.1, 150.0), (-21.0, -16.0)]
+                self.latex_names = [r'\epsilon_{\mathrm{shear}}^{\mathrm{los}}', r'z_T', r'\mathcal{M}']
                 self.z_T = None
             else:
-                self.param_names = ['epsilon_T', 'M']
+                self.param_names = ['epsilon_shear_los', 'M']
                 self.n_params = 2
-                self.bounds = [(0.0, 1.0), (-21.0, -16.0)]
-                self.latex_names = [r'\epsilon_T', r'\mathcal{M}']
+                self.bounds = [(0.0, 2.0), (-21.0, -16.0)]
+                self.latex_names = [r'\epsilon_{\mathrm{shear}}^{\mathrm{los}}', r'\mathcal{M}']
                 self.z_T = 5.0
 
     def predict(self, z: np.ndarray, params: Dict, data: PantheonData = None) -> np.ndarray:
@@ -482,14 +482,15 @@ class ModelTEP:
 
         if self.pure_shear:
             from scripts.utils.static_metric import StaticCosmology
-            # Enforce local Hubble law implicitly by removing Sigma_0 modifier
-            tep_cosmo = StaticCosmology(H0=self.H0_ref)
+            Om0 = params['Om0']
+            Omega_L = 1.0 - Om0
+            tep_cosmo = StaticCosmology(H0=self.H0_ref, Omega_m=Om0, Omega_L=Omega_L)
             mu_ref = tep_cosmo.distance_modulus(z)
             return mu_ref + M
         else:
-            epsilon_T = params['epsilon_T']
+            epsilon_shear_los = params['epsilon_shear_los']
             z_T = params.get('z_T', self.z_T) if self.free_z_T else self.z_T
-            tep_cosmo = TEPCosmology(H0=self.H0_ref, Omega_m=1.0, epsilon_T=epsilon_T, z_T=z_T)
+            tep_cosmo = TEPCosmology(H0=self.H0_ref, Omega_m=1.0, epsilon_T=epsilon_shear_los, z_T=z_T)
             mu_ref = tep_cosmo.distance_modulus(z)
             return mu_ref + M
     
@@ -536,7 +537,7 @@ class ModelCPL:
     def __init__(self):
         self.param_names = ['Om0', 'w0', 'wa', 'M']
         self.n_params = 4
-        self.bounds = [(0.05, 0.5), (-2.0, 0.0), (-2.0, 2.0), (-21.0, -16.0)]
+        self.bounds = [(0.05, 0.5), (-2.0, 0.0), (-5.0, 5.0), (-21.0, -16.0)]
         self.latex_names = [r'\Omega_m', r'w_0', r'w_a', r'\mathcal{M}']
         self.H0_ref = 70.0
         
@@ -1062,6 +1063,13 @@ def run() -> dict:
         
         results['models'][m_id] = model_payload
         
+        # Progressive save to prevent data loss on crash
+        try:
+            write_json(step_json_path(STEP_ID), results)
+            print_status(f"Progressively saved results after {m_id}", "INFO")
+        except Exception as e:
+            print_status(f"Failed progressive save: {e}", "WARNING")
+        
         # Cross-validation evaluation (if enabled)
         if run_cv_flag:
             print_status(f"Evaluating {m_id} on test set", "PROCESS")
@@ -1186,7 +1194,7 @@ def run() -> dict:
         mle, logl, _ = fit_mle(m1_zt, data)
         zt_results[f"z_T_{z_t_val}"] = {
             "log_likelihood": float(logl),
-            "epsilon_T": float(mle['epsilon_T']),
+            "epsilon_shear_los": float(mle['epsilon_shear_los']),
             "M": float(mle['M'])
         }
     results['z_T_sensitivity'] = zt_results
@@ -1221,9 +1229,11 @@ def run() -> dict:
         print_status(f"Running Stochastic Null Injection Test (N={n_stochastic})", "PROCESS")
         stochastic_results = []
         rng = np.random.default_rng(int(os.getenv("TEP_NULL_SEED", "42")))
+        # Apply microscopic ridge term to prevent 'not symmetric positive-semidefinite' warnings
+        ridge_cov = data.cov + np.eye(len(data.cov)) * 1e-10
         for _ in range(n_stochastic):
             # Generate noisy mock mb from covariance
-            noise = rng.multivariate_normal(np.zeros(len(data.z)), data.cov)
+            noise = rng.multivariate_normal(np.zeros(len(data.z)), ridge_cov)
             stoch_mb = mock_mb + noise
             stoch_data = PantheonData()
             stoch_data.z = data.z
@@ -1248,7 +1258,7 @@ def run() -> dict:
         print_status("Running Positive and Negative TEP Injection Tests", "PROCESS")
         from core.cosmology import TEPCosmology
         
-        # Positive TEP injection (epsilon_T = 0.23, z_T = 5.0)
+        # Positive TEP injection (epsilon_shear_los = 0.23, z_T = 5.0)
         mock_tep_pos = TEPCosmology(H0=70, Omega_m=1.0, epsilon_T=0.23, z_T=5.0)
         mock_mb_pos = mock_tep_pos.distance_modulus(data.z) + m0_best['M']
         
@@ -1263,7 +1273,7 @@ def run() -> dict:
         m1_mock_pos = ModelTEP(pure_shear=False)
         m1_mock_pos_mle, m1_mock_pos_logl, _ = fit_mle(m1_mock_pos, pos_data)
         
-        # Wrong-sign TEP injection (epsilon_T = -0.23)
+        # Wrong-sign TEP injection (epsilon_shear_los = -0.23)
         mock_tep_neg = TEPCosmology(H0=70, Omega_m=1.0, epsilon_T=-0.23, z_T=5.0)
         mock_mb_neg = mock_tep_neg.distance_modulus(data.z) + m0_best['M']
         
@@ -1276,7 +1286,7 @@ def run() -> dict:
         neg_data.cov_logdet = data.cov_logdet
         
         m1_mock_neg = ModelTEP(pure_shear=False)
-        # Allow negative epsilon_T for this specific test
+        # Allow negative epsilon_shear_los for this specific test
         m1_mock_neg.bounds[0] = (-1.0, 1.0)
         m1_mock_neg_mle, m1_mock_neg_logl, _ = fit_mle(m1_mock_neg, neg_data)
         
@@ -1284,15 +1294,15 @@ def run() -> dict:
         m0_mock_neg_mle, m0_mock_neg_logl, _ = fit_mle(m0_mock_neg, neg_data)
         
         results['positive_injection_test'] = {
-            'injected_epsilon_T': 0.23,
-            'recovered_epsilon_T': float(m1_mock_pos_mle.get('epsilon_T', 0.0)),
-            'passed': abs(float(m1_mock_pos_mle.get('epsilon_T', 0.0)) - 0.23) < 0.05
+            'injected_epsilon_shear_los': 0.23,
+            'recovered_epsilon_shear_los': float(m1_mock_pos_mle.get('epsilon_shear_los', 0.0)),
+            'passed': abs(float(m1_mock_pos_mle.get('epsilon_shear_los', 0.0)) - 0.23) < 0.05
         }
         
         results['negative_injection_test'] = {
-            'injected_epsilon_T': -0.23,
-            'recovered_epsilon_T': float(m1_mock_neg_mle.get('epsilon_T', 0.0)),
-            'passed': float(m1_mock_neg_mle.get('epsilon_T', 0.0)) < 0.0
+            'injected_epsilon_shear_los': -0.23,
+            'recovered_epsilon_shear_los': float(m1_mock_neg_mle.get('epsilon_shear_los', 0.0)),
+            'passed': float(m1_mock_neg_mle.get('epsilon_shear_los', 0.0)) < 0.0
         }
 
         # D4. Expanded Prior Sensitivity Test
@@ -1307,7 +1317,7 @@ def run() -> dict:
             prior_nlive = int(os.getenv("TEP_PRIOR_SENS_NLIVE", str(RESEARCH_GRADE_NLIVE_MIN)))
             prior_dlogz = float(os.getenv("TEP_PRIOR_SENS_DLOGZ", str(RESEARCH_GRADE_DLOGZ_MAX)))
             
-            # Variants for M1_NoLambda (epsilon_T)
+            # Variants for M1_NoLambda (epsilon_shear_los)
             m1_variants = [
                 (0.0, 0.1),
                 (0.0, 0.3),
@@ -1323,7 +1333,7 @@ def run() -> dict:
                     m1_model = ModelTEP(pure_shear=False)
                     m1_model.bounds = [list(b) for b in base_m1.bounds]
                     m1_model.bounds[0] = (low, high)
-                    print_status(f"  M1 testing prior epsilon_T: [{low}, {high}]", "INFO")
+                    print_status(f"  M1 testing prior epsilon_shear_los: [{low}, {high}]", "INFO")
                     # Use performance-controlled nlive/dlogz
                     sens_results = run_nested_evidence(m1_model, data, nlive=prior_nlive, dlogz=prior_dlogz)
                     prior_sensitivity[f"M1_prior_{low}_{high}"] = sens_results['log_evidence']

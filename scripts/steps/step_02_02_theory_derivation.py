@@ -79,8 +79,10 @@ def load_sne_fit_results() -> Dict[str, Any]:
     for key in ("M1_free_zT", "M1_NoLambda_zT5", "M1_NoLambda_zT1"):
         m = models.get(key, {})
         mle = m.get("parameters_mle")
-        if mle and "epsilon_T" in mle:
+        if mle and "epsilon_shear_los" in mle:
             payload = {"variant": key, **mle}
+            # Map epsilon_shear_los -> epsilon_T for downstream consistency
+            payload["epsilon_T"] = payload.pop("epsilon_shear_los")
             # z_T may be fixed (5.0 or 1.0) when not in the MLE dict.
             if "z_T" not in payload:
                 if "zT5" in key:

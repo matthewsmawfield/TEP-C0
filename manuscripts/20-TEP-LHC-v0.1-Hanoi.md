@@ -56,6 +56,8 @@ The structure of this paper is as follows: Section 2 presents the TEP theoretica
 
 In standard General Relativity, proper time is a passive parameter—the integrated path length of a worldline through a pre-existing metric tensor. The Temporal Equivalence Principle (TEP) reformulates this by elevating proper time to a dynamical scalar field, ϕ(x^μ), which acts as an active physical medium.
 
+**Screening projection notice.** Screening in TEP is represented at theory level by the environmental operator S_Σ(E). Quantities such as ρ_T, R_T(M), S_⊕(r), compactness Φ/c^2, local stellar density, thermal epoch, coherence length, proximity, and boundary geometry are domain-specific projections of E, not independent screening mechanisms and not interchangeable universal thresholds.
+
 A central axiom of TEP is that the coupling between matter and the temporal field is not strictly proportional to mass, but is governed by a non-linear proximity screening mechanism. The interaction strength is mediated by a coupling parameter κ(ξ) that asymptotically saturates at a critical proximity scale, observationally proxied by the saturation scale:
 
 \begin{equation}
@@ -148,7 +150,7 @@ Where L_0 is the initial luminosity and λ_0 is the classical decay constant dri
 
 ## 4.1 Claim Ladder
 
-The pipeline now reports an explicit claim status. The current status is *null_with_secondary_lead*: No configured primary analysis currently satisfies the candidate gates. The CMS quality-filtered L0 test is nominally significant (p=0.027), but it is secondary and is not replicated by the primary lambda_fit test.
+The pipeline now reports an explicit claim status. The current status is **null_with_secondary_lead**: No configured primary analysis currently satisfies the candidate gates. The CMS quality-filtered L0 test is nominally significant (p=0.027), but it is secondary and is not replicated by the primary lambda_fit test.
 
 The ladder is: null (no robust primary evidence), candidate (a primary test survives initial gates), strong candidate (candidate plus wrong-period and replication controls), and proof candidate (independent source/era/outcome replication).
 
@@ -233,7 +235,7 @@ The current public CMS analysis is limited by detector/source systematics and by
 
 ## 6.1 Summary of Findings
 
-The current TEP-LHC pipeline does not support a proof claim or a primary fill-level candidate. It produces a transparent *null_with_secondary_lead* status: No configured primary analysis currently satisfies the candidate gates. The CMS quality-filtered L0 test is nominally significant (p=0.027), but it is secondary and is not replicated by the primary lambda_fit test.
+The current TEP-LHC pipeline does not support a proof claim or a primary fill-level candidate. It produces a transparent **null_with_secondary_lead** status: No configured primary analysis currently satisfies the candidate gates. The CMS quality-filtered L0 test is nominally significant (p=0.027), but it is secondary and is not replicated by the primary lambda_fit test.
 
 - CMS/IP5 time-resolved and fill-level tests are mostly null under robust controls.
 

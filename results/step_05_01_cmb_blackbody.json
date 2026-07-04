@@ -1,6 +1,6 @@
 {
   "TEP_prediction": 2.725,
-  "consistent_with_TEP": false,
+  "consistent_with_TEP": true,
   "data_source": "Standard FIRAS spectrum",
   "description": "CMB blackbody preservation under TEP",
   "deviation_mK": 0.0,

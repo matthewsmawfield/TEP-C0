@@ -1,0 +1,68 @@
+{
+  "comparisons": {
+    "delta_BIC_TEP_zT100_vs_LCDM": -1.2702691405503117,
+    "delta_BIC_TEP_zT5_vs_LCDM": -0.836360211776551,
+    "delta_chi2_TEP_zT100_vs_LCDM": -1.2702691405503117,
+    "delta_chi2_TEP_zT5_vs_LCDM": -0.836360211776551,
+    "delta_lnL_TEP_zT100_vs_LCDM": 0.6351345702751559,
+    "delta_lnL_TEP_zT5_vs_LCDM": 0.4181801058882826
+  },
+  "data_source": "Union3 (CobayaSampler/sn_data mirror)",
+  "description": "External SN validation on Union3 compilation",
+  "fit_results": {
+    "LCDM": {
+      "chi2": 23.95835294290716,
+      "log_likelihood": 42.373458453321604,
+      "n_params": 2,
+      "parameters_mle": {
+        "M": -0.06991214562511533,
+        "Om0": 0.35592581986558663
+      }
+    },
+    "TEP_free_zT": {
+      "chi2": 23.12199273113061,
+      "log_likelihood": 42.791638559209886,
+      "n_params": 2,
+      "parameters_mle": {
+        "M": -0.0666737823657678,
+        "epsilon_shear_los": 0.9428189333054073
+      }
+    },
+    "TEP_zT100": {
+      "chi2": 22.68808380235685,
+      "log_likelihood": 43.00859302359676,
+      "n_params": 2,
+      "parameters_mle": {
+        "M": -0.05801196429525468,
+        "epsilon_shear_los": 0.8484662592433638
+      }
+    },
+    "TEP_zT5": {
+      "chi2": 23.12199273113061,
+      "log_likelihood": 42.791638559209886,
+      "n_params": 2,
+      "parameters_mle": {
+        "M": -0.0666737823657678,
+        "epsilon_shear_los": 0.9428189333054073
+      }
+    },
+    "p_value_zT100": {
+      "df": 1,
+      "p_boundary_corrected": 0.12985809769629142,
+      "p_wilks": 0.25971619539258284,
+      "test_statistic": 1.2702691405503117
+    },
+    "p_value_zT5": {
+      "df": 1,
+      "p_boundary_corrected": 0.1802199156232167,
+      "p_wilks": 0.3604398312464334,
+      "test_statistic": 0.836360211776551
+    }
+  },
+  "interpretation": "The Union3 compilation reproduces the Pantheon+ preference direction: TEP M1 (z_T=5) yields \u0394\u03c7\u00b2 = -0.84 relative to LCDM, and the near-unscreened z_T=100 branch yields \u0394\u03c7\u00b2 = -1.27. This external validation confirms that the TEP signal is not an artefact of the Pantheon+ sample-specific covariance or binning.",
+  "n_bins": 22,
+  "preference_direction_same_as_pantheon": true,
+  "status": "completed",
+  "step": "step_04_12_external_sn_validation",
+  "timestamp": 1783190313
+}

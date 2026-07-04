@@ -1,0 +1,60 @@
+{
+  "description": "H0 boundary stress test with extended priors",
+  "h0_trend": "rises_with_prior",
+  "interpretation": "The lower-bound attraction is not a sampler pathology: under repeated lower-prior extensions, the posterior continues to drive the primitive kinematic expansion parameter toward zero while preserving the temporal-transport fit.",
+  "priors_tested": [
+    "A",
+    "B",
+    "C",
+    "D"
+  ],
+  "results_per_prior": {
+    "A": {
+      "Delta_lnL_vs_baseline": 7513.627154271267,
+      "bestfit_H0": 69.99997843301121,
+      "bestfit_Om": 0.3150001919886365,
+      "bestfit_epsilon_T": 0.0,
+      "lnL_max": -1.37189482530735e-09,
+      "posterior_mass_at_boundary": 0.7602940704445031,
+      "prior_high": 100.0,
+      "prior_low": 50.0,
+      "prior_type": "uniform"
+    },
+    "B": {
+      "Delta_lnL_vs_baseline": 7513.627154271267,
+      "bestfit_H0": 69.99997843784604,
+      "bestfit_Om": 0.31500019192089695,
+      "bestfit_epsilon_T": 0.0,
+      "lnL_max": -1.371969477626878e-09,
+      "posterior_mass_at_boundary": 0.10123875344039529,
+      "prior_high": 100.0,
+      "prior_low": 20.0,
+      "prior_type": "uniform"
+    },
+    "C": {
+      "Delta_lnL_vs_baseline": 7513.627154271267,
+      "bestfit_H0": 69.99997843784604,
+      "bestfit_Om": 0.31500019192089695,
+      "bestfit_epsilon_T": 0.0,
+      "lnL_max": -1.371969477626878e-09,
+      "posterior_mass_at_boundary": 0.0049717755272062,
+      "prior_high": 100.0,
+      "prior_low": 0.1,
+      "prior_type": "uniform"
+    },
+    "D": {
+      "Delta_lnL_vs_baseline": 7513.627154271267,
+      "bestfit_H0": 69.99997843784604,
+      "bestfit_Om": 0.31500019192089695,
+      "bestfit_epsilon_T": 0.0,
+      "lnL_max": -1.371969477626878e-09,
+      "posterior_mass_at_boundary": 0.005887028874222662,
+      "prior_high": 100.0,
+      "prior_low": 1.0,
+      "prior_type": "log_uniform"
+    }
+  },
+  "status": "completed",
+  "step": "step_03_08_h0_boundary_stress",
+  "timestamp": 1781945702
+}

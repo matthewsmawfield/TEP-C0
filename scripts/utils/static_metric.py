@@ -39,26 +39,40 @@ class StaticCosmology:
         self.Omega_L = Omega_L
         
     def comoving_distance(self, z):
-        """Physical path distance in pure temporal shear model."""
-        z_arr = np.atleast_1d(z)
+        """Physical path distance in true conformal isomorphic model."""
+        z_arr = np.atleast_1d(np.asarray(z, dtype=float))
         c = 299792.458
-        d = c * np.log1p(z_arr) / self.H0
-        return d if len(d) > 1 else d[0]
+        
+        max_z = float(np.max(z_arr)) if z_arr.size > 0 else 0.0
+        if max_z <= 0.0:
+            distances = np.zeros_like(z_arr)
+            return float(distances[0]) if np.isscalar(z) else distances
+
+        # Vectorised trapezoidal integration on a fine redshift grid
+        from scipy.integrate import cumulative_trapezoid
+        grid = np.linspace(0.0, max_z, 2000)
+        integrand = 1.0 / np.sqrt(self.Omega_m * (1.0 + grid)**3 + self.Omega_L)
+        cumulative = cumulative_trapezoid(integrand, grid, initial=0.0)
+        
+        distances = np.interp(z_arr, grid, cumulative) * (c / self.H0)
+        return float(distances[0]) if np.isscalar(z) else distances
 
     def angular_diameter_distance(self, z):
-        """Angular diameter distance in static non-expanding metric."""
-        # Without spatial expansion, objects do not artificially appear larger
-        return self.comoving_distance(z)
+        """Angular diameter distance in static conformal metric."""
+        # True conformal mapping preserves Etherington duality: D_A = r / (1+z)
+        d_c = self.comoving_distance(z)
+        z_arr = np.atleast_1d(z)
+        d_a = d_c / (1.0 + z_arr)
+        return d_a if len(d_a) > 1 else d_a[0]
 
     def luminosity_distance(self, z):
-        """Luminosity distance in pure temporal shear model.
+        """Luminosity distance in static conformal metric.
         
-        Assumes photon energy redshifts by (1+z) and arrival rate 
-        slows by (1+z), yielding D_L = d * (1+z).
+        Preserves Etherington duality: D_L = D_A * (1+z)^2 = d_c * (1+z)
         """
-        d = self.comoving_distance(z)
+        d_c = self.comoving_distance(z)
         z_arr = np.atleast_1d(z)
-        d_l = d * (1 + z_arr)
+        d_l = d_c * (1.0 + z_arr)
         return d_l if len(d_l) > 1 else d_l[0]
         
     def time_dilation_factor(self, z):
@@ -70,17 +84,15 @@ class StaticCosmology:
         
     def distance_duality_eta(self, z):
         """Distance duality eta parameter D_L = D_A * (1+z)^2 * eta."""
-        # D_L = d * (1+z), D_A = d
-        # So D_L / (D_A * (1+z)^2) = 1 / (1+z)
+        # In a true conformal mapping, Etherington duality holds exactly (eta = 1)
         z_arr = np.atleast_1d(z)
-        eta = 1.0 / (1.0 + z_arr)
+        eta = np.ones_like(z_arr)
         return eta if len(eta) > 1 else eta[0]
         
     def tolman_exponent(self):
         """Tolman surface brightness exponent alpha, where SB ~ (1+z)^-alpha."""
-        # In this static metric, SB decreases by (1+z)^-2
-        # (one factor for energy, one for arrival rate, no solid angle effect from expansion)
-        return 2.0
+        # In true conformal isomorphic metric, SB decreases by (1+z)^-4
+        return 4.0
         
     def distance_modulus(self, z):
         """Distance modulus for static metric."""

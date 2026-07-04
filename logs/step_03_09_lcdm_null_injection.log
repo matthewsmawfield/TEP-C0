@@ -1,0 +1,16 @@
+[09:55:02] [INFO] 
+[09:55:02] [INFO] ================================================================================
+[09:55:02] [INFO]    Starting step_03_09_lcdm_null_injection
+[09:55:02] [INFO] ================================================================================
+[09:55:02] [INFO] 
+[09:55:02] [INFO] Loaded 1701 SNe with full covariance
+[09:55:04] [INFO]   Seed 0: Δχ²=2.28, BF_proxy=0.32
+[09:55:20] [INFO]   Seed 8: Δχ²=0.50, BF_proxy=0.78
+[09:55:35] [INFO]   Seed 16: Δχ²=-0.20, BF_proxy=1.10
+[09:55:52] [INFO]   Seed 24: Δχ²=0.05, BF_proxy=0.98
+[09:56:05] [INFO] Null injection summary:
+[09:56:05] [INFO]   Median Δχ² (TEP-LCDM): 0.29
+[09:56:05] [INFO]   BF > 30 count: 0 / 32
+[09:56:05] [INFO]   False positive rate: 0.000
+[09:56:05] [INFO]   p(observed Δχ² < -7.5 | LCDM): 0.000
+[09:56:05] [SUCCESS] Step step_03_09_lcdm_null_injection completed

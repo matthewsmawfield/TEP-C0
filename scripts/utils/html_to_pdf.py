@@ -225,20 +225,38 @@ class HTMLToPDFConverter:
                 logger.warning(
                     "Could not verify content loading, proceeding anyway")
 
+            # Wait for MathJax to finish typesetting
+            try:
+                # Wait for MathJax to load
+                await page.wait_for_function(
+                    """() => typeof MathJax !== 'undefined' && MathJax.startup && MathJax.startup.document""",
+                    timeout=30000
+                )
+                # Then wait for math elements to be rendered (mjx-container is the output wrapper)
+                await page.wait_for_function(
+                    """() => document.querySelectorAll('mjx-container').length > 0""",
+                    timeout=30000
+                )
+                # Final pause to let any remaining math finish
+                await page.wait_for_timeout(2000)
+                logger.info("MathJax typesetting complete")
+            except Exception:
+                logger.warning("Could not verify MathJax completion, proceeding anyway")
+
             # Wait specifically for images to load
             try:
                 await page.wait_for_function(
                     """() => {
                         const images = document.querySelectorAll('img');
                         if (images.length === 0) return true;
-                        return Array.from(images).every(img => 
-                            img.complete && img.naturalHeight !== 0
+                        return Array.from(images).every(img =>
+                            img.complete && (img.naturalHeight !== 0 || img.naturalWidth !== 0 || img.src === '')
                         );
                     }""",
                     timeout=15000
                 )
                 logger.info("All images loaded successfully")
-            except TimeoutError:
+            except Exception:
                 logger.warning(
                     "Could not verify all images loaded, proceeding anyway")
                 # Log how many images we found

@@ -9,6 +9,17 @@ function loadJsonIfExists(path) {
     return JSON.parse(fs.readFileSync(path, 'utf8'));
 }
 
+function loadSharedSnippet(path) {
+    if (typeof require === 'undefined') {
+        return null;
+    }
+    const fs = require('fs');
+    if (!fs.existsSync(path)) {
+        return null;
+    }
+    return fs.readFileSync(path, 'utf8').trim();
+}
+
 function createManuscriptContext() {
     if (typeof require === 'undefined') {
         return {};
@@ -16,10 +27,16 @@ function createManuscriptContext() {
     const path = require('path');
     const summaryPath = path.join(__dirname, '..', 'results', 'tep_c0_summary.json');
     const summary = loadJsonIfExists(summaryPath) || {};
+
+    // Load shared corpus snippets from core/
+    const screeningNoticePath = path.join(__dirname, '..', 'core', 'screening_projection_notice.html');
+    const screeningNotice = loadSharedSnippet(screeningNoticePath);
+
     return {
         ...summary.placeholders,
         evidence_gates: summary.evidence_gates || [],
-        pipeline: summary.pipeline || {}
+        pipeline: summary.pipeline || {},
+        SCREENING_PROJECTION_NOTICE: screeningNotice || '<!-- screening_projection_notice.html not found -->'
     };
 }
 

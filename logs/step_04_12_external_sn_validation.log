@@ -1,0 +1,15 @@
+[19:38:33] [INFO] 
+[19:38:33] [INFO] ================================================================================
+[19:38:33] [INFO]    Starting step_04_12_external_sn_validation
+[19:38:33] [INFO] ================================================================================
+[19:38:33] [INFO] 
+[19:38:33] [INFO] Union3 loaded: 22 redshift bins
+[19:38:33] [PROCESS] Fitting LCDM
+[19:38:33] [INFO]   LCDM: chi2=23.958, logL=42.373
+[19:38:33] [PROCESS] Fitting TEP_zT5
+[19:38:33] [INFO]   TEP_zT5: chi2=23.122, logL=42.792
+[19:38:33] [PROCESS] Fitting TEP_zT100
+[19:38:33] [INFO]   TEP_zT100: chi2=22.688, logL=43.009
+[19:38:33] [PROCESS] Fitting TEP_free_zT
+[19:38:33] [INFO]   TEP_free_zT: chi2=23.122, logL=42.792
+[19:38:33] [SUCCESS] Step step_04_12_external_sn_validation completed

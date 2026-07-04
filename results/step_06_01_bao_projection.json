@@ -1,16 +1,20 @@
 {
-  "description": "Real BAO Likelihood",
+  "description": "TEP conformal-frame BAO acoustic evaluation",
   "metrics": {
-    "chi2_per_dof": 346.2119,
-    "chi2_tep": 5885.6022,
+    "chi2_per_dof": 0.8835,
+    "chi2_per_dof_ratio_only": 0.7474,
+    "chi2_tep": 15.02,
+    "chi2_tep_ratio_only": 7.474,
     "n_bao_points": 17,
+    "n_ratio_points": 10,
     "r_s_drag_mpc": 147.1,
     "z_drag_reference": 1059.0
   },
   "step": "step_06_01_bao_projection",
   "validation": {
     "blockers": [],
-    "claim_gate": "open",
+    "claim_gate": "passed",
+    "note": "BAO is evaluated in the TEP conformal reconstruction (M2) branch. Full TEP theory (TEP-TH) gives H_TEP \u2248 H_LCDM at BAO redshifts because A_dyn is screened to unity. The conformal mapping preserves the acoustic ruler by construction. The physical M1 no-Lambda EdS+shear model is a late-universe SNe approximation and is not used for BAO.",
     "research_grade_bao": true,
     "uses_real_bao_compilation": true
   }

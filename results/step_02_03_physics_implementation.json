@@ -121,7 +121,7 @@
           {
             "deviation_from_unity_lcdm": 0.0,
             "eta_lcdm": 1.0,
-            "eta_static": 0.9999999999999999,
+            "eta_static": 1.0,
             "z": 0.4
           },
           {
@@ -133,7 +133,7 @@
           {
             "deviation_from_unity_lcdm": 0.0,
             "eta_lcdm": 1.0,
-            "eta_static": 0.9999999999999999,
+            "eta_static": 1.0,
             "z": 0.6
           },
           {
@@ -233,10 +233,10 @@
       "research_grade": false,
       "status": "validated",
       "validation": {
-        "chi2_per_dof": 0.5023947412931052,
+        "chi2_per_dof": 0.7058127493433658,
         "competitive_with_lcdm": true,
         "model_comparison": {
-          "delta_bic_static_vs_lcdm": -351.8215355043026,
+          "delta_bic_static_vs_lcdm": -7.434847875211517,
           "lcdm_baseline": {
             "aic": 1198.9409846383178,
             "bic": 1209.8106803887417,
@@ -247,10 +247,10 @@
           },
           "preferred_model": "static",
           "static_metric": {
-            "aic": 852.5542970092272,
-            "bic": 857.9891448844392,
-            "chi2": 850.5542970092272,
-            "chi2_per_dof": 0.5023947412931052,
+            "aic": 1196.9409846383182,
+            "bic": 1202.3758325135302,
+            "chi2": 1194.9409846383182,
+            "chi2_per_dof": 0.7058127493433658,
             "dof": 1693,
             "n_params": 1
           }
@@ -262,14 +262,14 @@
         "validated": true,
         "z1_distance_comparison": {
           "FLRW_Mpc": 6607.657633248642,
-          "Static_Mpc": 5937.151343309594,
-          "difference_percent": -10.147412701365925
+          "Static_Mpc": 6607.657633248658,
+          "difference_percent": 2.477565506653526e-13
         }
       },
       "z1_distance_comparison": {
         "FLRW_Mpc": 6607.657633248642,
-        "Static_Mpc": 5937.151343309594,
-        "difference_percent": -10.147412701365925
+        "Static_Mpc": 6607.657633248658,
+        "difference_percent": 2.477565506653526e-13
       }
     },
     "structure_growth": {

@@ -1,0 +1,25 @@
+{
+  "bf_proxy_distribution": {
+    "max": 2.0062232305553866,
+    "mean": 0.896571030878324,
+    "median": 0.8672427374889329,
+    "min": 0.31989264350760493,
+    "std": 0.3537495066252001
+  },
+  "delta_chi2_distribution": {
+    "max": 2.2795396570322737,
+    "mean": 0.37152578607516773,
+    "median": 0.2854923333009083,
+    "min": -1.3925079295636351,
+    "std": 0.7939099728962142
+  },
+  "description": "LCDM null injection: mock Pantheon+ from LCDM best-fit",
+  "false_positive_rate_TEP_BF_gt_30": 0.0,
+  "interpretation": "Under LCDM null injection, the TEP M1 Bayes factor observed in real Pantheon+ (BF ~ 30) occurs in only 0.0% of synthetic realizations.",
+  "median_Delta_chi2_under_LCDM": 0.2854923333009083,
+  "n_injections": 32,
+  "p_value_observed_Delta_chi2": 0.0,
+  "status": "completed",
+  "step": "step_03_09_lcdm_null_injection",
+  "timestamp": 1781945765
+}

@@ -1,8 +1,8 @@
-[17:27:56] [INFO] 
-[17:27:56] [INFO] ================================================================================
-[17:27:56] [INFO]    Starting step_02_02_theory_derivation
-[17:27:56] [INFO] ================================================================================
-[17:27:56] [INFO] 
-[17:27:56] [WARNING] No empirical screening fit found.
-[17:27:56] [WARNING] Theory derivation not run; missing empirical inputs.
-[17:27:56] [WARNING] Step step_02_02_theory_derivation blocked
+[01:51:07] [INFO] 
+[01:51:07] [INFO] ================================================================================
+[01:51:07] [INFO]    Starting step_02_02_theory_derivation
+[01:51:07] [INFO] ================================================================================
+[01:51:07] [INFO] 
+[01:51:07] [WARNING] No empirical screening fit found.
+[01:51:07] [WARNING] Theory derivation not run; missing empirical inputs.
+[01:51:07] [WARNING] Step step_02_02_theory_derivation blocked

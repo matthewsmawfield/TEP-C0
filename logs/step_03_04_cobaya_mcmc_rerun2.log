@@ -1,0 +1,38 @@
+[15:38:53] [INFO] 
+[15:38:53] [INFO] ================================================================================
+[15:38:53] [INFO]    Starting step_03_04_cobaya_mcmc
+[15:38:53] [INFO] ================================================================================
+[15:38:53] [INFO] 
+[15:38:54] [SUCCESS] TEP-CLASS: TEP-CLASS v2.0 available
+[15:38:54] [SUCCESS] Cobaya: Cobaya 3.6.2 available
+[15:38:54] [SUCCESS] Pantheon+ data: 1701 SNe loaded
+[15:38:54] [PROCESS] Running TEP sanity check...
+[15:38:54] [SUCCESS] TEP sanity check passed: dL(eps=0)=9302.66, dL(eps=0.2)=10122.32
+[15:38:54] [PROCESS] Running Cobaya MCMC (max_samples=3000)...
+--- Logging error ---
+Traceback (most recent call last):
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/logging/__init__.py", line 1154, in emit
+    stream.write(msg + self.terminator)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: I/O operation on closed file.
+Call stack:
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_04_cobaya_mcmc.py", line 459, in <module>
+    run()
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_04_cobaya_mcmc.py", line 415, in run
+    mcmc_result = run_cobaya_mcmc(config)
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_04_cobaya_mcmc.py", line 331, in run_cobaya_mcmc
+    samples = load_samples(config["output"])
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/cobaya/output.py", line 889, in load_samples
+    collections = output.load_collections(
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/cobaya/output.py", line 403, in load_collections
+    SampleCollection(
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/cobaya/collection.py", line 270, in __init__
+    self._out_load(skip=onload_skip)
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/cobaya/collection.py", line 1256, in _out_load
+    self._get_driver("_load")(**kwargs)
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/cobaya/collection.py", line 1280, in _load__txt
+    self.log.info(
+Message: "Loaded %d sample points from '%s'"
+Arguments: (3000, 'results/outputs/tep_cobaya_joint_final.1.txt')
+[15:51:51] [SUCCESS] Cobaya MCMC completed successfully
+[15:51:51] [SUCCESS] Step step_03_04_cobaya_mcmc completed with status: completed

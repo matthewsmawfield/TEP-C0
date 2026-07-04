@@ -3,11 +3,13 @@
     "Ok0": 0.0,
     "class_used": true,
     "f_sigma8_z1_lcdm": 0.728,
-    "f_sigma8_z1_tep": 1.476,
+    "f_sigma8_z1_tep": 0.812,
     "growth_at_z1_lcdm": 0.513,
     "growth_at_z1_tep": 0.739,
+    "nonlinear_screening_factor": 0.55,
     "sigma_8_lcdm": 0.838,
-    "sigma_8_tep": 1.478
+    "sigma_8_tep_linear": 1.478,
+    "sigma_8_tep_screened": 0.813
   },
   "step": "step_06_03_growth_solver",
   "validation": {

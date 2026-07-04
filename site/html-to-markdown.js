@@ -12,7 +12,33 @@ class HTMLToMarkdownConverter {
             .replace(/&gt;/g, '>')
             .replace(/&nbsp;/g, ' ')
             .replace(/&ndash;/g, '-')
-            .replace(/&mdash;/g, '-');
+            .replace(/&mdash;/g, '-')
+            .replace(/&Sigma;/g, 'Σ')
+            .replace(/&sigma;/g, 'σ')
+            .replace(/&oplus;/g, '⊕')
+            .replace(/&Epsilon;/g, 'Ε')
+            .replace(/&epsilon;/g, 'ε')
+            .replace(/&Phi;/g, 'Φ')
+            .replace(/&phi;/g, 'φ')
+            .replace(/&radic;/g, '√')
+            .replace(/&times;/g, '×')
+            .replace(/&plusmn;/g, '±')
+            .replace(/&infin;/g, '∞')
+            .replace(/&alpha;/g, 'α')
+            .replace(/&beta;/g, 'β')
+            .replace(/&gamma;/g, 'γ')
+            .replace(/&delta;/g, 'δ')
+            .replace(/&eta;/g, 'η')
+            .replace(/&theta;/g, 'θ')
+            .replace(/&lambda;/g, 'λ')
+            .replace(/&mu;/g, 'μ')
+            .replace(/&nu;/g, 'ν')
+            .replace(/&pi;/g, 'π')
+            .replace(/&rho;/g, 'ρ')
+            .replace(/&tau;/g, 'τ')
+            .replace(/&chi;/g, 'χ')
+            .replace(/&omega;/g, 'ω')
+            .replace(/&Omega;/g, 'Ω');
     }
 
     cleanInline(html) {
@@ -20,7 +46,9 @@ class HTMLToMarkdownConverter {
             .replace(/<(strong|b)[^>]*>([\s\S]*?)<\/(strong|b)>/gi, '**$2**')
             .replace(/<(em|i)[^>]*>([\s\S]*?)<\/(em|i)>/gi, '*$2*')
             .replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, '`$1`')
-            .replace(/<\/?[a-zA-Z][^>]*>/g, '')
+            .replace(/<sub[^>]*>([\s\S]*?)<\/sub>/gi, '<sub>$1</sub>')
+            .replace(/<sup[^>]*>([\s\S]*?)<\/sup>/gi, '<sup>$1</sup>')
+            .replace(/<\/?(?!sub|sup)[a-zA-Z][^>]*>/g, '')
             .replace(/\s+/g, ' ')
             .trim();
     }
@@ -66,7 +94,9 @@ class HTMLToMarkdownConverter {
             .replace(/<code[^>]*>([\s\S]*?)<\/code>/gi, '`$1`')
             .replace(/<\/?div[^>]*>/gi, '\n')
             .replace(/<\/?section[^>]*>/gi, '\n')
-            .replace(/<\/?[a-zA-Z][^>]*>/g, '')
+            .replace(/<sub[^>]*>([\s\S]*?)<\/sub>/gi, '<sub>$1</sub>')
+            .replace(/<sup[^>]*>([\s\S]*?)<\/sup>/gi, '<sup>$1</sup>')
+            .replace(/<\/?(?!sub|sup)[a-zA-Z][^>]*>/g, '')
             .replace(/^[ \t]+/gm, '') // Remove leading indentation
             .replace(/[ \t]+$/gm, '')
             .replace(/\n{3,}/g, '\n\n')
@@ -84,7 +114,8 @@ class HTMLToMarkdownConverter {
 
         const header = `# ${manifest.title}\n**${manifest.author}**\nVersion: ${manifest.version}\nFirst published: ${manifest.first_published} - Last updated: ${manifest.date}\nDOI: ${manifest.doi}\n\n---\n\n`;
         const markdown = header + this.htmlToMarkdown(body) + '\n';
-        const outputPath = path.join(__dirname, '..', '26-TEP-C0-v0.1-Athens.md');
+        const versionOnly = manifest.version.replace(/\s*\([^)]+\)/, '');
+        const outputPath = path.join(__dirname, '..', `26-TEP-C0-${versionOnly}-${manifest.codename}.md`);
         fs.writeFileSync(outputPath, markdown, 'utf8');
         console.log(`Markdown saved to: ${outputPath}`);
     }

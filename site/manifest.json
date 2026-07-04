@@ -2,10 +2,17 @@
   "title": "Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion",
   "author": "Matthew Lukin Smawfield",
   "version": "v0.1 (Athens)",
-  "date": "7 June 2026",
-  "first_published": "7 June 2026",
-  "doi": "10.5281/zenodo.20370144",
+  "codename": "Athens",
+  "date": "3 July 2026",
+  "first_published": "3 July 2026",
+  "doi": "10.5281/zenodo.20370143",
   "sections": [
+    {
+      "id": "section-parameter-dictionary",
+      "title": "Unified TEP Parameter Dictionary",
+      "file": "9a_parameter_dictionary.html",
+      "order": 9.5
+    },
     {
       "id": "section-abstract",
       "title": "Abstract",
@@ -45,25 +52,31 @@
     {
       "id": "section-discussion",
       "title": "Discussion",
-      "file": "7_discussion.html",
+      "file": "6_discussion.html",
       "order": 7
+    },
+    {
+      "id": "section-falsifiable-predictions",
+      "title": "Falsifiable Predictions",
+      "file": "6a_falsifiable_predictions.html",
+      "order": 7.5
     },
     {
       "id": "section-conclusion",
       "title": "Conclusion",
-      "file": "8_conclusion.html",
+      "file": "7_conclusion.html",
       "order": 8
     },
     {
       "id": "section-references",
       "title": "References",
-      "file": "9_references.html",
+      "file": "8_references.html",
       "order": 9
     },
     {
       "id": "section-reproducibility",
       "title": "Data Availability and Reproducibility",
-      "file": "10_reproducibility.html",
+      "file": "9_reproducibility.html",
       "order": 10
     }
   ]

@@ -163,12 +163,16 @@ def pair_with_highz_sne(
     try:
         pantheon_file = Path("data/raw/pantheon_lcparams.txt")
         if pantheon_file.exists():
-            sne_data = np.genfromtxt(
-                pantheon_file,
-                names=True,
-                dtype=None,
-                encoding="utf-8", invalid_raise=False,
-            )
+            import warnings
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore", np.VisibleDeprecationWarning)
+                warnings.simplefilter("ignore", UserWarning)
+                sne_data = np.genfromtxt(
+                    pantheon_file,
+                    names=True,
+                    dtype=None,
+                    encoding="utf-8", invalid_raise=False,
+                )
             
             for bao in bao_data:
                 z_bao = bao["z"]

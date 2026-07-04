@@ -10,7 +10,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from c0_common import ensure_dirs, step_json_path, write_json
 from step_05_03_cmb_boltzmann import run as run_step017

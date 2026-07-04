@@ -1,16 +1,14 @@
-[17:27:50] [INFO] 
-[17:27:50] [INFO] ================================================================================
-[17:27:50] [INFO]    Starting step_01_02_data_ingestion
-[17:27:50] [INFO] ================================================================================
-[17:27:50] [INFO] 
-[17:27:50] [PROCESS] Ingesting Pantheon+ distances
-[17:27:50] [SUCCESS] Ingested Pantheon+ distances to data/processed/tep_c0_pantheon_plus_distances.csv
-[17:27:50] [PROCESS] Ingesting Pantheon+ full covariance
-[17:27:50] [SUCCESS] Ingested Pantheon+ full covariance to data/processed/tep_c0_pantheon_plus_covariance_manifest.csv
-[17:27:50] [PROCESS] Ingesting FIRAS CMB monopole
-[17:27:50] [SUCCESS] Ingested FIRAS CMB monopole to data/processed/tep_c0_firas_monopole_spectrum.csv
-[17:27:50] [PROCESS] Ingesting BAO compilation
-[17:27:50] [SUCCESS] Ingested BAO compilation to data/processed/tep_c0_bao_uncorrelated_compilation.csv
-[17:27:50] [PROCESS] Ingesting BBN abundance review
-[17:27:50] [SUCCESS] Ingested BBN abundance review to data/processed/tep_c0_bbn_abundance_registry.csv
-[17:27:50] [SUCCESS] Step step_01_02_data_ingestion completed successfully
+[01:51:05] [INFO] 
+[01:51:05] [INFO] ================================================================================
+[01:51:05] [INFO]    Starting step_01_02_data_ingestion
+[01:51:05] [INFO] ================================================================================
+[01:51:05] [INFO] 
+[01:51:05] [PROCESS] Ingesting Pantheon+ distances
+[01:51:05] [SUCCESS] Ingested Pantheon+ distances to data/processed/tep_c0_pantheon_plus_distances.csv
+[01:51:05] [PROCESS] Ingesting FIRAS CMB monopole
+[01:51:05] [SUCCESS] Ingested FIRAS CMB monopole to data/processed/tep_c0_firas_monopole_spectrum.csv
+[01:51:05] [PROCESS] Ingesting BAO compilation
+[01:51:05] [SUCCESS] Ingested BAO compilation to data/processed/tep_c0_bao_uncorrelated_compilation.csv
+[01:51:05] [PROCESS] Ingesting BBN abundance review
+[01:51:05] [SUCCESS] Ingested BBN abundance review to data/processed/tep_c0_bbn_abundance_registry.csv
+[01:51:05] [SUCCESS] Step step_01_02_data_ingestion completed successfully

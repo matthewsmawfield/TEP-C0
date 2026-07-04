@@ -63,6 +63,7 @@ def compute_growth_class(Om0, epsilon_T=0.1, z_T=3.0, use_tep=False):
     }
     
     if use_tep:
+        params['tep_mode'] = 1
         params['tep_epsilon_T'] = epsilon_T
         params['tep_z_T'] = z_T
         params['tep_n_T'] = 1.0
@@ -119,7 +120,13 @@ def run():
     m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m1 = step022['models'][m1_key]['parameters_mle']
     Om0 = 1.0  # M1_NoLambda is matter-only (no Lambda); Om0 is fixed, not fitted
-    epsilon_T = m1.get('epsilon_T', 0.1)
+    
+    # For structure growth, use the acoustic-sector epsilon (homogeneous background),
+    # NOT the unscreened line-of-sight SNe void value.
+    # The acoustic-sector epsilon_T^hom ~ 0.018 is appropriate for large-scale structure
+    # where the density is close to the cosmic mean (minimal screening).
+    # The SNe epsilon_shear_los ~ 0.83 applies only to unscreened void regions.
+    epsilon_T = 0.018  # Acoustic-sector amplitude from CMB preservation
 
     # Try to use CLASS for proper growth calculation
     class_available = False
@@ -140,7 +147,16 @@ def run():
         f_lcdm = lcdm_results['f']
         f_tep = tep_results['f']
         sigma_8_lcdm = lcdm_results['sigma_8']
-        sigma_8_tep = tep_results['sigma_8']
+        sigma_8_tep_linear = tep_results['sigma_8']
+
+        # Report raw CLASS output without phenomenological suppression.
+        # The old 0.55 nonlinear_screening_factor was a placeholder, not a
+        # first-principles prediction, and has been removed.  Full nonlinear
+        # closure of matter-only TEP growth remains an open theoretical target.
+        nonlinear_screening_factor = None
+        sigma_8_tep = sigma_8_tep_linear
+        print_status(f"TEP linear sigma_8 = {sigma_8_tep_linear:.3f} (raw CLASS, no placeholder suppression)", "INFO")
+        
         research_grade = True
         blockers = []
         claim_gate = 'open'
@@ -169,12 +185,14 @@ def run():
         'step': STEP_ID,
         'metrics': {
             'Ok0': 0.0,
-            'sigma_8_tep': rounded(sigma_8_tep, 3),
+            'sigma_8_tep_linear': rounded(sigma_8_tep_linear, 3) if class_available else None,
+            'sigma_8_tep_screened': None,  # placeholder removed; see step_06_07_alphaM for first-principles validation
             'sigma_8_lcdm': rounded(sigma_8_lcdm, 3),
             'growth_at_z1_lcdm': rounded(np.interp(1.0, z_grid, D_lcdm), 3),
             'growth_at_z1_tep': rounded(np.interp(1.0, z_grid, D_tep), 3),
             'f_sigma8_z1_lcdm': rounded(np.interp(1.0, z_grid, f_lcdm) * sigma_8_lcdm, 3),
             'f_sigma8_z1_tep': rounded(np.interp(1.0, z_grid, f_tep) * sigma_8_tep, 3),
+            'nonlinear_screening_factor': None,  # removed: was a phenomenological placeholder, not first-principles
             'class_used': class_available
         },
         'validation': {

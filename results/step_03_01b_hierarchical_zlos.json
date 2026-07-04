@@ -1,0 +1,20 @@
+{
+  "BF_marginalized": 23.619159397928584,
+  "lnBF_marginalized": 3.1620582215638953,
+  "lnBF_marginalized_uncertainty": 0.003832921554757552,
+  "lnBF_free_zlos_dynesty": 3.695860798693502,
+  "hyperprior": "LogUniform(1, 200)",
+  "n_mc_samples": 100000,
+  "n_bootstrap": 1000,
+  "z_eval_points": [
+    1.0,
+    5.0,
+    100.0
+  ],
+  "lnBF_at_eval_points": [
+    -18.51421153380352,
+    1.5184716487698324,
+    4.124131260020704
+  ],
+  "interpretation": "The hyperprior-marginalized Bayes factor is the defensible headline number. If it agrees with the free-z_los dynesty result (within Monte Carlo uncertainty), the latter was already an approximately correct marginalized evidence."
+}

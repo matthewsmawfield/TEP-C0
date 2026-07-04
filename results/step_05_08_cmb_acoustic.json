@@ -1,14 +1,28 @@
 {
-  "consistency": {},
+  "consistency": {
+    "lcdm_sigma": 2.643
+  },
   "description": "CMB acoustic-scale diagnostic from CLASS LCDM reference",
-  "predictions": {},
-  "status": "blocked",
+  "predictions": {
+    "delta_l_A_percent": 12.3,
+    "l_A_reference": 301.5286,
+    "l_A_tep": 338.6137,
+    "planck_l_A_error": 0.2,
+    "planck_l_A_reference": 301.0,
+    "rs_rec_class_mpc": 144.508,
+    "theta_s_100_class": 1.04188894,
+    "theta_s_100_tep": 0.92778068,
+    "z_rec_class": 1088.7507,
+    "z_rec_tep": 1089.5555
+  },
+  "status": "completed",
   "step": "step_05_08_cmb_acoustic",
   "validation": {
-    "blockers": [
-      "Step 017 did not provide a CLASS LCDM reference spectrum.",
-      "Install TEP-CLASS v2.1+ to enable CMB acoustic comparison."
-    ],
-    "claim_gate": "blocked"
+    "blockers": [],
+    "claim_gate": "open",
+    "class_reference_available": true,
+    "note": "TEP-CLASS provides TEP and LCDM spectra for acoustic comparison",
+    "research_grade_cmb_acoustic": true,
+    "tep_spectra_available": true
   }
 }
