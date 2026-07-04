@@ -115,10 +115,17 @@ class TEPLogger:
             except Exception:
                 pass
         
-        fh = logging.FileHandler(log_file_path, mode='a', encoding='utf-8')
+        fh = logging.FileHandler(log_file_path, mode='a', encoding='utf-8', delay=True)
         fh.setLevel(logging.DEBUG)
         fh.setFormatter(TEPFileFormatter())
         self.logger.addHandler(fh)
+
+    def close(self):
+        """Explicitly close all file handlers to prevent I/O errors on exit."""
+        for handler in self.logger.handlers:
+            if isinstance(handler, logging.FileHandler):
+                handler.close()
+        self.logger.handlers.clear()
 
     def _get_log_level(self, level_name: str):
         return getattr(logging, level_name.upper(), logging.INFO)
