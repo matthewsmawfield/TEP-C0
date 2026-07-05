@@ -224,9 +224,9 @@ def run() -> dict:
     ax_top.plot(ell, Dl_lcdm, color=CLR_LCDM, lw=1.0, alpha=0.7,
                 label=r'$\Lambda$CDM')
     ax_top.plot(ell, Dl_tep0, ':', color=CLR_TEP0, lw=1.5,
-                label='TEP $\epsilon_T=0$ (zero-limit)')
+                label=r'TEP $\epsilon_T=0$ (zero-limit)')
     ax_top.plot(ell, Dl_tep, '--', color=CLR_TEP, lw=1.8,
-                label='TEP $\epsilon_T=6.7\times10^{-6}$')
+                label=r'TEP $\epsilon_T=6.7\times10^{-6}$')
     ax_top.set_ylabel(r'$D_\ell^{TT} = \ell(\ell+1)C_\ell^{TT}/(2\pi)$  [$\mu$K$^2$]')
     ax_top.set_title('TEP Minimal Conformal Perturbations (Isolated from Code-Path Noise)')
     ax_top.legend(loc='upper right', fontsize=9)

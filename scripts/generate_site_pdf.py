@@ -236,6 +236,11 @@ async def generate_pdf(quality: str = 'high', wait_time: float = 5.0, skip_build
     print(f"\n📄 Generating PDF from: {html_file}")
     print(f"   Quality: {quality}")
     print(f"   Wait time: {wait_time}s (for MathJax rendering)")
+    
+    # Increase wait time for MathJax to ensure proper rendering
+    if wait_time < 10:
+        print("   ⚠️  Increasing wait time to 10s for better MathJax rendering")
+        wait_time = 10
 
     async with HTMLToPDFConverter() as converter:
         success = await converter.convert_file(

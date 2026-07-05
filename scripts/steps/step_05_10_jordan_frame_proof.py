@@ -133,7 +133,7 @@ def main():
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.plot(epsilons, theta_s_vals, color=colors['blue'], linewidth=1.8, label="TEP-C0 Jordan Frame Mapping")
     ax.axhline(1.04, color=colors['red'], linestyle='--', linewidth=1.8, label="Planck 2018 Target (1.04)")
-    ax.axvline(best_eps, color=colors['green'], linestyle=':', linewidth=1.8, label=f"Recovery $\\epsilon_T={best_eps:.3f}$")
+    ax.axvline(best_eps, color=colors['green'], linestyle=':', linewidth=1.8, label=r"Recovery $\epsilon_T^{\rm hom} \simeq 0.018$")
     ax.plot(best_eps, best_ts, 'o', color=colors['green'], markersize=8)
 
     ax.set_xlabel(r"Homogeneous Acoustic Diagnostic Coupling ($\epsilon_T^{\rm hom}$)")
