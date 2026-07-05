@@ -65,4 +65,7 @@ docs/_build/
 *.progress
 *.updated.yaml
 
+# Large MCMC output files
+results/outputs/*.txt
+
 .devin/
