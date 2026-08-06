@@ -396,7 +396,7 @@ The standard relativistic quantum framework is recovered as the screened limit o
 
 - Smawfield, M. L. (2026). *Temporal Equivalence Principle: A Topological Fermion Model for Spin and the g−2 Anomaly*. Preprint v0.1 (Paris). Zenodo (Paper 24)
 
-- Smawfield, M. L. (2026). *Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion*. Preprint v0.1 (Athens). Zenodo. DOI: 10.5281/zenodo.20370143 (Paper 26)
+- Smawfield, M. L. (2026). *Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion*. Preprint v0.1 (Athens). Zenodo. DOI: 10.5281/zenodo.20370144 (Paper 26)
 
 - Einstein, A. (1949). *Autobiographical Notes*. In P. A. Schilpp (Ed.), *Albert Einstein: Philosopher-Scientist*. Open Court.
 
