@@ -1,1 +1,7 @@
-v0.1 (Athens) - First version - 5 July 2026
+v0.2 (Athens) — 2026-08-08 — Cosmic expansion as temporal transport: no dark energy, no primordial singularity
+
+- Redshift reconstructed as conformal proper-time transport (1+z = A_0/A_em), not spatial scale-factor stretching
+- Apparent dark energy replaced by kinetic energy density of Temporal Shear field (Ω_φ)
+- Pantheon+ analysis: no-Λ temporal-shear branch improves over ΛCDM (BF ≈ 4.6 conservative, 61.8 fixed benchmark)
+- a→0 limit re-expressed as A_clock→0: temporal-horizon boundary, not zero-volume spatial singularity
+- Cross-paper consistency: aligned with TEP-TH (Paper 27) temporal-horizon closure and TEP-HC (Paper 18) acoustic preservation

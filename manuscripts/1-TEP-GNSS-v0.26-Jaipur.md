@@ -5396,7 +5396,7 @@ Petit, G. & Luzum, B. (2010). IERS Conventions (2010). *IERS Technical Note* No.
 Ray, J., et al. (2008). IGS polar motion measurement accuracy. *Geophysical Research Letters*, 35(3), L03303.
 Rosenband, T., et al. (2008). Frequency ratio of Al+ and Hg+ single-ion optical clocks; metrology at the 17th decimal place. *Science*, 319(5871), 1808-1812.
 Senior, K. L., et al. (2008). Characterization of periodic variations in the GPS satellite clocks. *GPS Solutions*, 12(3), 211-225.
-Smawfield, M. L. (2025). *Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed*. Preprint v0.8 (Jakarta). Zenodo. DOI: [10.5281/zenodo.16921911](https://doi.org/10.5281/zenodo.16921911) (Paper 0)
+Smawfield, M. L. (2025). *Temporal Equivalence Principle: Dynamic Time & Emergent Light Speed*. Preprint v0.10 (Jakarta). Zenodo. DOI: [10.5281/zenodo.16921911](https://doi.org/10.5281/zenodo.16921911) (Paper 0)
 Smawfield, M. L. (2025). *Global Time Echoes: Distance-Structured Correlations in GNSS Clocks*. Preprint v0.25 (Jaipur). Zenodo. DOI: [10.5281/zenodo.17127229](https://doi.org/10.5281/zenodo.17127229) (Paper 1 — this work)
 Smawfield, M. L. (2025). *Global Time Echoes: 25-Year Analysis of CODE Precise Clock Products*. Preprint v0.18 (Cairo). Zenodo. DOI: [10.5281/zenodo.17517141](https://doi.org/10.5281/zenodo.17517141) (Paper 2)
 Smawfield, M. L. (2025). *Global Time Echoes: Raw RINEX Consistency Test*. Preprint v0.5 (Kathmandu). Zenodo. DOI: [10.5281/zenodo.17860166](https://doi.org/10.5281/zenodo.17860166) (Paper 3)

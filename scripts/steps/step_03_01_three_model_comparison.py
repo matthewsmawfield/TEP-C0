@@ -461,7 +461,7 @@ class ModelTEP:
             # Parameters: (Om0, M) to map the isomorphic conformal field
             self.param_names = ['Om0', 'M']
             self.n_params = 2
-            self.bounds = [(0.05, 0.5), (-21.0, -16.0)]
+            self.bounds = [(0.05, 0.9), (-21.0, -16.0)]
             self.latex_names = [r'\Omega_m', r'\mathcal{M}']
         else:
             # M1: No-Λ Temporal Shear Reconstruction
@@ -1612,6 +1612,8 @@ def run() -> dict:
     
     for m_id, payload in results['models'].items():
         print_status(f"\n{m_id}:", "INFO")
+        print_status(f"  fitted params: {payload.get('parameters_mle', 'N/A')}", "INFO")
+        print_status(f"  k (n_params): {payload.get('n_params', 'N/A')}", "INFO")
         print_status(f"  log L (MLE): {payload.get('log_likelihood_mle', 'N/A'):.2f}", "INFO")
         print_status(f"  chi2/dof: {payload.get('chi2_red_mle', 'N/A'):.2f}", "INFO")
         print_status(f"  AIC: {payload.get('aic', 'N/A'):.2f}", "INFO")

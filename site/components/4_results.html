@@ -1,6 +1,6 @@
 <h1>4. Results: Empirical Evidence for Temporal Shear</h1>
     <p>
-        The TEP-C0 pipeline provides a strictly deterministic evaluation of the Temporal Shear hypothesis against the 1,701 supernovae of the Pantheon+ dataset. The three-model comparison yields statistical evidence for a non-integrable transport correction.
+        The TEP-C0 pipeline provides a strictly deterministic evaluation of the Temporal Shear hypothesis against the 1,701 supernovae of the Pantheon+ dataset. The expanded eight-hypothesis comparison yields statistical evidence for a non-integrable transport correction.
     </p>
 
     <h2>4.1 Model Selection and Information Theory</h2>
@@ -11,6 +11,7 @@
         <thead>
             <tr>
                 <th scope="col">Model Architecture</th>
+                <th scope="col">Parameters ($k$)</th>
                 <th scope="col">Log-Likelihood ($\ln \mathcal{L}_{\rm max}$)</th>
                 <th scope="col">BIC</th>
                 <th scope="col">Bayes Factor vs $\Lambda$CDM</th>
@@ -19,48 +20,56 @@
         <tbody>
             <tr>
                 <td>M0a: Standard $\Lambda$CDM</td>
+                <td>$M, \Omega_m$ (2)</td>
                 <td>642.76</td>
                 <td>-1270.64</td>
                 <td>1.0 (Reference)</td>
             </tr>
             <tr>
                 <td>M1: TEP (fixed $z_{\rm los}=5$)</td>
+                <td>$M, \epsilon_{\rm shear}^{\rm los}$ (2)</td>
                 <td>644.45</td>
                 <td>-1274.03</td>
                 <td>4.6</td>
             </tr>
             <tr>
                 <td>M1: TEP (fixed $z_{\rm los}=100$)</td>
+                <td>$M, \epsilon_{\rm shear}^{\rm los}$ (2)</td>
                 <td>646.51</td>
                 <td>-1278.13</td>
                 <td>61.8</td>
             </tr>
             <tr>
                 <td>M1: TEP (free $z_{\rm los}$)</td>
+                <td>$M, \epsilon_{\rm shear}^{\rm los}, z_T$ (3)</td>
                 <td>646.52</td>
                 <td>-1270.73</td>
                 <td>40.3</td>
             </tr>
             <tr>
                 <td>M2: Pure Conformal ($\Lambda$CDM control)</td>
+                <td>$M, \Omega_m$ (2)</td>
                 <td>642.76</td>
                 <td>-1270.64</td>
-                <td>3.1</td>
+                <td>$\approx 1.0$</td>
             </tr>
             <tr>
                 <td>M3: wCDM (free $w$)</td>
+                <td>$M, \Omega_m, w$ (3)</td>
                 <td>647.44</td>
                 <td>-1272.56</td>
                 <td>29.7</td>
             </tr>
             <tr>
                 <td>M4: CPL (evolving $w_0w_a$)</td>
+                <td>$M, \Omega_m, w_0, w_a$ (4)</td>
                 <td>648.71</td>
                 <td>-1267.66</td>
                 <td>53.3</td>
             </tr>
             <tr>
                 <td>M0b: Einstein-de Sitter (pure matter)</td>
+                <td>$M$ (1)</td>
                 <td>351.31</td>
                 <td>-695.19</td>
                 <td>$6.2 \times 10^{-126}$</td>
@@ -68,21 +77,24 @@
         </tbody>
     </table>
     <p>
-        The conservative physical no-$\Lambda$ temporal-shear branch with fixed line-of-sight turnover $z_{\rm los}=5$ improves the standardized supernova likelihood by $\Delta\chi^2 \simeq -3.4$ relative to baseline $\Lambda$CDM and achieves a Bayes factor of approximately 4.6, classified as "substantial" evidence on the Jeffreys scale. The conservative physical branch yields $\Delta\chi^2 = -3.4$ for 1 extra parameter, corresponding to a likelihood-ratio p-value of $0.065$ (Wilks) or $0.033$ boundary-corrected (because the null value $\epsilon_{\rm shear}^{\rm los}=0$ lies on the prior boundary). The maximum-likelihood $\Delta\chi^2$ is reported alongside the Bayesian evidence in Table 1. The fixed $z_{\rm los}=100$ benchmark gives the strongest evidence, approximately 61.8 ($\Delta\chi^2 \simeq -7.5$), while the broad free-$z_{\rm los}$ model gives approximately 40.3, showing that the preference is not solely a fixed-turnover artefact. The SNe-only nested sampling evaluates the temporal shear mixing fraction $\epsilon_T$ under a uniform prior ($\mathcal{U}[0, 1.0]$); prior-sensitivity tests confirm that the evidence trend is stable across prior widths from 0.1 to 1.0.
+        <em>Parameter audit.</em> The pipeline records for every model the fitted parameter names, parameter count $k$, maximum log-likelihood $\ln\mathcal{L}_{\rm max}$, BIC recalculated as $k\ln(n) - 2\ln\mathcal{L}_{\rm max}$ with $n=1701$ and $\ln(n)=7.439$, nested-sampling log-evidence $\ln\mathcal{Z}$ with uncertainty, and prior ranges. The audit confirms: M0a ($k=2$: $M, \Omega_m$; $\ln\mathcal{L}_{\rm max}=642.76$; ${\rm BIC}=-1270.64$; $\ln\mathcal{Z}=633.27\pm0.16$); M1 $z_{\rm los}=5$ ($k=2$: $M, \epsilon_{\rm shear}^{\rm los}$; $\ln\mathcal{L}_{\rm max}=644.45$; ${\rm BIC}=-1274.02$; $\ln\mathcal{Z}=634.79\pm0.16$); M1 $z_{\rm los}=100$ ($k=2$: $M, \epsilon_{\rm shear}^{\rm los}$; $\ln\mathcal{L}_{\rm max}=646.51$; ${\rm BIC}=-1278.13$; $\ln\mathcal{Z}=637.39\pm0.16$); M1 free-$z_{\rm los}$ ($k=3$: $M, \epsilon_{\rm shear}^{\rm los}, z_T$; $\ln\mathcal{L}_{\rm max}=646.52$; ${\rm BIC}=-1270.73$; $\ln\mathcal{Z}=636.96\pm0.16$); M2 ($k=2$: $M, \Omega_m$; $\ln\mathcal{L}_{\rm max}=642.76$; ${\rm BIC}=-1270.64$; $\ln\mathcal{Z} \approx 633.27\pm0.16$); M3 wCDM ($k=3$: $M, \Omega_m, w$; $\ln\mathcal{L}_{\rm max}=647.44$; ${\rm BIC}=-1272.56$; $\ln\mathcal{Z}=636.66\pm0.16$); M4 CPL ($k=4$: $M, \Omega_m, w_0, w_a$; $\ln\mathcal{L}_{\rm max}=648.71$; ${\rm BIC}=-1267.66$; $\ln\mathcal{Z}=637.24\pm0.16$). Prior ranges: $M$ uses $\mathcal{U}[-21, -16]$; $\Omega_m$ uses $\mathcal{U}[0.05, 0.9]$ for M0a, M2 and $\mathcal{U}[0.05, 0.5]$ for M3/M4; $\epsilon_{\rm shear}^{\rm los}$ uses $\mathcal{U}[0, 2.0]$; $z_T$ uses $\mathcal{U}[0.1, 150]$; $w$ uses $\mathcal{U}[-2, 0]$; $w_0$ uses $\mathcal{U}[-2, 0]$; $w_a$ uses $\mathcal{U}[-5, 5]$. M2 is mathematically identical to M0a $\Lambda$CDM; when run under identically wide uniform priors ($\Omega_m \sim \mathcal{U}[0.05, 0.9]$), its Bayes factor against M0a returns $\approx 1$ within sampling uncertainty, confirming the exact metric degeneracy. For free $z_{\rm los}$, the BIC is nearly tied with M0a because the additional $k\ln n=7.439$ parameter penalty is almost exactly offset by $2\Delta\ln L_{\max}=7.52$. The Bayes factor of approximately 40.3 shows that the improved likelihood occupies sufficient prior volume to retain strong marginal support. Relative to the fixed $z_{\rm los}=100$ benchmark, marginalizing over $z_{\rm los}$ reduces the evidence from approximately 61.8 to 40.3 through Occam averaging.
+    </p>
+    <p>
+        The conservative physical no-$\Lambda$ temporal-shear branch with fixed line-of-sight turnover $z_{\rm los}=5$ improves the standardized supernova likelihood by $\Delta\chi^2 \simeq -3.4$ relative to baseline $\Lambda$CDM and achieves a Bayes factor of approximately 4.6, classified as "substantial" evidence on the Jeffreys scale. Both M0a ($\Lambda$CDM) and the fixed-$z_{\rm los}$ M1 branch have $k=2$ fitted parameters ($\{M, \Omega_m\}$ and $\{M, \epsilon_{\rm shear}^{\rm los}\}$ respectively); they are equal-dimensional competing models, not nested. The BIC values in Table 1 use $k=2$ for both: ${\rm BIC}_{M0} = 2\ln(1701) - 2(642.76) = -1270.64$ and ${\rm BIC}_{M1} = 2\ln(1701) - 2(644.45) = -1274.02$, with $\ln(1701) = 7.439$. The maximum-likelihood $\Delta\chi^2$ is reported alongside the Bayesian evidence in Table 1. The nested-sampling Bayes factor 4.6 is a separate quantity from the BIC comparison; it already incorporates the actual prior volume and should not be conflated with the BIC penalty. The fixed $z_{\rm los}=100$ benchmark gives the strongest evidence, approximately 61.8 ($\Delta\chi^2 \simeq -7.5$), while the broad free-$z_{\rm los}$ model gives approximately 40.3, showing that the preference is not solely a fixed-turnover artefact. The SNe-only nested sampling evaluates the temporal shear mixing fraction $\epsilon_T$ under a uniform prior ($\mathcal{U}[0, 2.0]$); prior-sensitivity tests show that the qualitative preference survives the physically motivated widths 1.0 and 2.0, while the narrower $\mathcal{U}[0, 0.5]$ prior excludes the maximum-likelihood region and consequently provides negligible evidence.
     </p>
     <p>
         The model set {M0a, M0b, M1($z_{\rm los}=5$), M1($z_{\rm los}=100$), M1(free $z_{\rm los}$), M2, M3, M4} comprises 8 distinct hypotheses. The free-$z_{\rm los}$ result ($\text{BF} \approx 40.3$) is the most robust headline number because it natively marginalizes over the turnover scale and does not depend on a single fixed benchmark. While the fixed-$z_{\rm los}=100$ benchmark yields the strongest single Bayes factor (≈61.8), this should be interpreted as an upper bound rather than a primary evidence measure given the model set size. The conservative physical branch with $z_{\rm los}=5$ (BF≈4.6) provides the most physically motivated baseline for comparison with $\Lambda$CDM.
     </p>
     <div class="figure" style="text-align: center; margin: 2rem 0;">
         <img src="results/figures/hubble_residuals.png" alt="Pantheon+ Full-Covariance Likelihood Improvement" style="max-width: 100%; border: 1px solid #ccc; border-radius: 4px;" />
-        <p class="caption" style="font-style: italic; margin-top: 0.5rem;"><strong>Figure 1.</strong> Pantheon+ full-covariance likelihood improvement: TEP M1 vs. $\Lambda$CDM. Model parameters: $\epsilon_T^{\rm los}=0.0066$, $z_{\rm los}=5.0$, $n_T=2.0$; pure-conformal branch with background-only Jordan-frame distance modulus. <strong>Top panel:</strong> Hubble diagram with 1,701 Pantheon+ SH0ES supernovae, $\Lambda$CDM maximum-likelihood fit, and TEP M1 best fit. <strong>Middle panel:</strong> binned residuals relative to $\Lambda$CDM with the TEP M1 predicted residual trend. <strong>Bottom panel:</strong> cumulative diagonal $\Delta\chi^2$ diagnostic (approximation for visualisation only). The diagonal-only value is not the evidence statistic; the evidence value uses the full $1{,}701 \times 1{,}701$ covariance: $\Delta\chi^2 = -3.4$ ($z_{\rm los}=5$) and $\Delta\chi^2 = -7.5$ ($z_{\rm los}=100$ benchmark).</p>
+        <p class="caption" style="font-style: italic; margin-top: 0.5rem;"><strong>Figure 1.</strong> Pantheon+ full-covariance likelihood improvement: TEP M1 vs. $\Lambda$CDM. Model parameters: $\epsilon_{\rm shear}^{\rm los}=0.894$, $z_{\rm los}=5.0$, $n_T=2.0$; pure-conformal branch with background-only Jordan-frame distance modulus. <strong>Top panel:</strong> Hubble diagram with 1,701 Pantheon+ SH0ES supernovae, $\Lambda$CDM maximum-likelihood fit, and TEP M1 best fit. <strong>Middle panel:</strong> binned residuals relative to $\Lambda$CDM with the TEP M1 predicted residual trend. <strong>Bottom panel:</strong> cumulative diagonal $\Delta\chi^2$ diagnostic (approximation for visualisation only). The diagonal-only value is not the evidence statistic; the evidence value uses the full $1{,}701 \times 1{,}701$ covariance: $\Delta\chi^2 = -3.4$ ($z_{\rm los}=5$) and $\Delta\chi^2 = -7.5$ ($z_{\rm los}=100$ benchmark).</p>
     </div>
 
     <p>
-        <em>Parameter dictionary.</em> The turnover scale $z_T$ used in the SNe transport kernel controls the line-of-sight temporal-shear transition in the Pantheon+ distance law; it is not the same object as the homogeneous acoustic-sector profile scale used in TEP-HC ($z_T^{\rm HC}=5$ for the <code>hi_class</code> benchmark) or the thermal screening transition used in TEP-TH ($z_t^{\rm th}=100$ with $T_{\rm lock}=0.03$ eV). The amplitude $\epsilon_T^{\rm los}$ denotes the late-time line-of-sight transport amplitude fitted in C0; $\epsilon_T^{\rm CMB}$ denotes the C0 background/acoustic diagnostic amplitude; $\epsilon_T^{\rm HC}$ denotes the native <code>hi_class</code> homogeneous conformal amplitude; $\epsilon_{\rm dyn}(z)$ denotes the screened dynamical response in TEP-TH; and $\epsilon_{\rm field}$ denotes the primordial spectral-flow parameter. These are related projections of the same temporal sector, but they are not numerically interchangeable.
+        <em>Parameter dictionary.</em> The turnover scale $z_T$ used in the SNe transport kernel controls the line-of-sight temporal-shear transition in the Pantheon+ distance law; it is not the same object as the homogeneous acoustic-sector profile scale used in TEP-HC ($z_T^{\rm HC}=5$ for the <code>hi_class</code> benchmark) or the native local thermodynamic transition scale used in TEP-TH. The amplitude $\epsilon_T^{\rm los}$ denotes the late-time line-of-sight transport amplitude fitted in C0; $\epsilon_T^{\rm CMB}$ denotes the C0 background/acoustic diagnostic amplitude; $\epsilon_T^{\rm HC}$ denotes the native <code>hi_class</code> homogeneous conformal amplitude; $\epsilon_{\rm dyn}$ denotes the dynamical response in TEP-TH; and $\epsilon_{\rm field}$ denotes the primordial spectral-flow parameter. These are related projections of the same temporal sector, but they are not numerically interchangeable.
     </p>
     <p>
-        The M2 Pure Conformal branch is mathematically identical to $\Lambda$CDM at the homogeneous distance-curve level ($\chi^2$ identical to machine precision, $\Delta\ln\mathcal{Z} = +1.13$, $\text{BF} \simeq 3.1$). It serves as a built-in control test: if the inference engine were biased toward TEP, this branch should have been anomalously favored; instead it returns a modest, expectedly small advantage from the broader prior volume of the conformal parameterisation. The decisive rejection of the early-turnover M1 $z_{\rm los}=1$ branch ($\text{BF} = 9.1 \times 10^{-9}$) shows that a turnover at $z \sim 1$ is strongly disfavoured, while the Einstein-de Sitter model ($\text{BF} = 6.2 \times 10^{-126}$) confirms that any viable cosmology requires a late-time distance amplification mechanism. Standard dark-energy extensions (wCDM, CPL) also fit the data well ($\text{BF} \simeq 30$--$53$), but the TEP framework achieves comparable or superior evidence without invoking a primitive cosmological constant.
+        The M2 Pure Conformal branch is mathematically identical to M0a at the homogeneous distance-curve level. With matched priors, $\Omega_m\sim \mathcal{U}[0.05,0.9]$, it gives identical $\chi^2$, $\Delta\ln\mathcal{Z}\simeq0$, and ${\rm BF}\simeq1$ within nested-sampling uncertainty. This is the expected control result and confirms the exact conformal metric degeneracy. M2 supplies no independent evidence for TEP; its role is to establish that the background Hubble diagram does not uniquely determine whether spatial expansion is primitive. The decisive rejection of the early-turnover M1 $z_{\rm los}=1$ branch ($\text{BF} = 9.1 \times 10^{-9}$) shows that a turnover at $z \sim 1$ is strongly disfavoured, while the Einstein-de Sitter model ($\text{BF} = 6.2 \times 10^{-126}$) confirms that any viable cosmology requires a late-time distance amplification mechanism. Standard dark-energy extensions (wCDM, CPL) also fit the data well ($\text{BF} \simeq 30$--$53$), but the TEP framework achieves comparable or superior evidence without invoking a primitive cosmological constant.
     </p>
 
     <h4>The Unscreened Theoretical Limit</h4>
@@ -97,14 +109,14 @@
         The results validate the TEP dual-domain synthesis: when the pristine, homogeneous CMB is introduced the global baseline of the temporal shear field is bounded to $\epsilon_T^{\rm CMB} = -0.0015 \pm 0.0037$, consistent with zero to within $0.4\sigma$. The joint analysis recovers a $\Lambda$CDM-compatible background ($H_0 = 66.70 \pm 0.58$ km/s/Mpc, $\omega_{\rm cdm} = 0.1216 \pm 0.0013$, $n_s = 0.9610 \pm 0.0042$), formally establishing the cosmological boundary condition. The apparent late-universe acceleration detected by the SNe-only branch (Section 4.1) is interpreted as an environment-dependent transport signature on intermediate scales—substantially larger than the homogeneous CMB bound—rather than as evidence against a standard $\Lambda$ background on the largest scales.
     </p>
 
-    <h2>4.3 Preservation of Early Universe Physics</h2>
+    <h2>4.3 Preservation of Acoustic Geometry</h2>
     <p>
-        A critical validation of the TEP framework is its strict preservation of established high-redshift physics. Because the environmental state suppression natively forces the temporal field to vanish at early times ($z \gg z_T$), the framework fundamentally alters the local and intermediate distance-redshift relations while leaving the pre-recombination sound horizon ($r_s$) and Big Bang Nucleosynthesis (BBN) strictly preserved. TEP-HC (Paper 18) independently confirms Boltzmann-level acoustic-scale preservation under the native hi_class <code>tep_mode</code> implementation ($r_s^{\rm TEP}/r_s^{\Lambda\rm CDM} = 0.999994$). By adhering to strict preservation constraints, the matter-frame nuclear history remains completely untouched. Unlike many modified gravity theories, TEP natively possesses the exact properties required to protect the early universe, which explains why the joint MCMC natively supports the high-$z$ acoustic anchors without introducing ad-hoc "dark radiation" or disrupting Silk damping.
+        A critical validation of the TEP framework is its exact preservation of the conformal acoustic mapping. While the framework fundamentally alters the local and intermediate distance-redshift relations due to late-time environmental transport, the background conformal metric acts exactly like the FLRW scale factor for photon paths, leaving the angular scale of the pre-recombination sound horizon ($r_s$) mathematically preserved. TEP-HC (Paper 18) independently confirms Boltzmann-level acoustic-scale preservation under the native hi_class <code>tep_mode</code> implementation ($r_s^{\rm TEP}/r_s^{\Lambda\rm CDM} = 0.999994$). This analysis focuses purely on testing the late-time SNe temporal-shear signatures and does not assume or import standard hot-BBN thermal history; the canonical early-universe closure is provided natively by the eternal-universe local thermodynamic equilibria developed in TEP-TH and TEP-BBN (Paper 29). Because the acoustic anchors are conformally preserved by construction, the joint MCMC natively supports the high-$z$ angular scales without introducing ad-hoc "dark radiation" or disrupting Silk damping.
     </p>
 
     <h2>4.4 Resolution of the Hubble Tension via Jordan Frame Mapping</h2>
     <p>
-        A key structural validation of the TEP framework emerges when evaluating the early-universe acoustic horizon geometry. The fundamental mathematical realization of TEP is that atoms, photons, and physical lengths reside strictly within the disformally coupled <em>Jordan Frame</em> ($\tilde{g}_{\mu\nu}$), while gravity obeys the Einstein frame Friedmann equations. Because the physical redshift $1+\tilde{z} = (1+z_E)/A(\phi)$ is fundamentally dilated by the temporal scalar field, the entire thermodynamic integration of the early universe natively mirrors standard physics, with one precise exception: the physical Hubble expansion rate undergoes an exact geometric mapping:
+        A key structural validation of the TEP framework emerges when evaluating the early-universe acoustic horizon geometry. The fundamental mathematical realization of TEP is that atoms, photons, and physical lengths reside strictly within the disformally coupled <em>Jordan Frame</em> ($\tilde{g}_{\mu\nu}$), while gravity obeys the Einstein frame Friedmann equations. Because the physical redshift $1+\tilde{z} = (1+z_E)/A(\phi)$ is fundamentally dilated by the temporal scalar field, the corresponding acoustic-sector integration reproduces the standard conformal observables, with one precise exception: the effective matter-frame rate entering the conformal acoustic mapping undergoes an exact geometric mapping:
     </p>
     <div class="equation">
         \begin{equation} \label{eq:jordan_hubble}
@@ -112,10 +124,10 @@
         \end{equation}
     </div>
     <p>
-        where $\alpha_A \equiv d\ln A / d\ln \tilde{a}$. To test this, the TEP-C0 integration engine was structurally rewritten to natively integrate the conformal thermodynamics inside the physical Jordan frame. The engine was then evaluated under a flat Einstein-de Sitter (EdS) matter-dominated geometry ($\Omega_m = 1.0$, $\Omega_\Lambda = 0.0$) with environmental screening disabled in the early universe ($z_T \to \infty$). 
+        where $\alpha_A \equiv d\ln A / d\ln \tilde{a}$. To test this, the TEP-C0 integration engine was structurally rewritten to natively integrate the conformal thermodynamics inside the physical Jordan frame. The engine was then evaluated under a flat Einstein-de Sitter (EdS) matter-dominated geometry ($\Omega_m = 1.0$, $\Omega_\Lambda = 0.0$) in the pure-conformal reference branch $S_\Sigma = 1$, used here as an acoustic-sector diagnostic rather than as a physical early-universe screening prescription.
     </p>
     <p>
-        In a pure $\Lambda$CDM engine without Dark Energy, the acoustic angular scale evaluates to $100\theta_s \approx 1.18$ (massively failing to fit the CMB observations and demonstrating the historical necessity of $\Lambda$). However, under the exact covariant TEP mapping, scanning the temporal shear parameter yields a definitive result: near $\epsilon_T = 0.018$, the temporal field accelerates the physical expansion rate of the pre-recombination plasma, organically squeezing the sound horizon $r_s$ and recovering $100\theta_s = 1.0433$.
+        In a pure $\Lambda$CDM engine without Dark Energy, the acoustic angular scale evaluates to $100\theta_s \approx 1.18$ (massively failing to fit the CMB observations and demonstrating the historical necessity of $\Lambda$). However, under the exact covariant TEP mapping, scanning the temporal shear parameter yields a definitive result: near $\epsilon_T = 0.018$, the temporal field modifies the effective matter-frame rate entering the conformal acoustic mapping, organically squeezing the sound horizon $r_s$ and recovering $100\theta_s = 1.0433$.
     </p>
     <div class="figure" style="text-align: center; margin: 2rem 0;">
         <img src="results/figures/step05_jordan_frame_theta_s.png" alt="Acoustic Horizon vs Temporal Shear" style="max-width: 100%; border: 1px solid #ccc; border-radius: 4px;" />
@@ -131,7 +143,7 @@
     </p>
     <div class="figure" style="text-align: center; margin: 2rem 0;">
         <img src="results/figures/distance_duality.png" alt="Distance-Duality Relation Residuals" style="max-width: 100%; border: 1px solid #ccc; border-radius: 4px;" />
-        <p class="caption" style="font-style: italic; margin-top: 0.5rem;"><strong>Figure 3.</strong> BAO-derived distance-duality stress test. Background-only TEP run with $\epsilon_T^{\rm los}=0.0066$, $z_{\rm los}=5.0$, $n_T=2.0$. Both $\Lambda$CDM and TEP predict $\eta \equiv 1$ at the metric level. The blue points are empirical BAO/BOSS-derived constraints (10 redshift bins, $0.11 \leq z \leq 1.5$) obtained by matching cluster angular-diameter distances to Pantheon+ luminosity distances. The data exhibit a weighted-mean $\bar{\eta} = 0.866 \pm 0.020$ ($6.6\sigma$ from unity). This is a stress test of BAO-derived angular-diameter distances and fiducial sound-horizon assumptions, not an independent falsification of $\Lambda$CDM. Resolving this tension requires independent angular-diameter distance measurements at comparable precision (e.g., DESI BAO at $z > 2$) or a recalibration of the fiducial sound horizon used in the BAO $d_A$ extraction.</p>
+        <p class="caption" style="font-style: italic; margin-top: 0.5rem;"><strong>Figure 3.</strong> BAO-derived distance-duality stress test. Background-only TEP run with $\epsilon_T^{\rm diag}=0.0066$, $z_{\rm los}=5.0$, $n_T=2.0$. Both $\Lambda$CDM and TEP predict $\eta \equiv 1$ at the metric level. The blue points are empirical BAO/BOSS-derived constraints (10 redshift bins, $0.11 \leq z \leq 1.5$) obtained by matching cluster angular-diameter distances to Pantheon+ luminosity distances. The data exhibit a weighted-mean $\bar{\eta} = 0.866 \pm 0.020$ ($6.6\sigma$ from unity). This is a stress test of BAO-derived angular-diameter distances and fiducial sound-horizon assumptions, not an independent falsification of $\Lambda$CDM. Resolving this tension requires independent angular-diameter distance measurements at comparable precision (e.g., DESI BAO at $z > 2$) or a recalibration of the fiducial sound horizon used in the BAO $d_A$ extraction.</p>
     </div>
 
     <h2>4.6 Robustness to Systematic Error Budgets</h2>
@@ -166,7 +178,7 @@
         To verify that the Pantheon+ preference is not an artefact of a single prior choice, redshift cut, covariance approximation, or sampler configuration, the pipeline executed a dedicated robustness grid (Step 04-11). Four classes of systematic variation were tested:
     </p>
     <p>
-        <em>(a) Prior sensitivity.</em> The TEP M1 Bayes factor was recomputed under flat priors on $\epsilon_{\rm shear}^{\rm los}$ of width $0.5$, $1.0$, and $2.0$, and under both flat and log-uniform priors on the free turnover scale $z_{\rm los}$. The physically reasonable priors (widths $1.0$ and $2.0$) yield Bayes factors of approximately $13.4$ and $5.0$ for the $z_{\rm los}=5$ branch; the artificially narrow $[0, 0.5]$ prior yields negligible evidence by construction because it excludes the best-fit $\epsilon_{\rm shear}^{\rm los} \approx 0.27$. This confirms that the substantial evidence is prior-stable once the prior encompasses the high-likelihood region.
+        <em>(a) Prior sensitivity.</em> The TEP M1 Bayes factor was recomputed under flat priors on $\epsilon_{\rm shear}^{\rm los}$ of width $0.5$, $1.0$, and $2.0$, and under both flat and log-uniform priors on the free turnover scale $z_{\rm los}$. The physically reasonable priors (widths $1.0$ and $2.0$) yield Bayes factors of approximately $13.4$ and $5.0$ for the $z_{\rm los}=5$ branch; the artificially narrow $[0, 0.5]$ prior yields negligible evidence by construction because it excludes the best-fit $\epsilon_{\rm shear}^{\rm los} \approx 0.89$ (distinct from the homogeneous background limit $\epsilon_T^{\rm diag} = 0.0066$). This confirms that the qualitative preference survives several physically motivated priors, but the strength of the evidence remains prior-sensitive.
     </p>
     <p>
         <em>(b) Redshift-cut robustness.</em> Removing the lowest-redshift bins ($z < 0.01$, $z < 0.023$, and $z < 0.05$) leaves the maximum-likelihood TEP improvement negative in every cut ($\Delta\chi^2 < 0$), but the Bayesian evidence becomes marginal when the $z < 0.023$ anchors are removed ($\text{BF} \approx 0.8$). The $\Delta\chi^2$ shifts are modest ($\lesssim 1.0$), indicating that the signal is not driven by a small number of nearby supernovae or local peculiar-velocity outliers, though the low-redshift tail does contribute to the evidence depth.
@@ -178,7 +190,7 @@
         <em>(d) Nested-sampler configuration.</em> Two independent dynesty configurations were compared: <code>bound='multi', sample='rwalk'</code> versus <code>bound='single', sample='unif'</code> (both with $n_{\rm live}=200$). The resulting Bayes factors are $7.9$ and $4.4$, agreeing to within $0.25$ dex and bracketing the headline $n_{\rm live}=500$ value of $4.6$.
     </p>
     <p>
-        Taken together, the robustness grid yields a consolidated maximum-likelihood $\Delta\chi^2 < 0$ for the conservative $z_{\rm los}=5$ branch across every tested systematic, and the Bayesian evidence remains at or above unity for all but the artificially narrow prior and the $z < 0.023$ cut. We therefore classify the Pantheon+ supernova evidence as structurally robust, with the understanding that the low-redshift anchors strengthen but do not solely create the preference.
+        Taken together, the robustness grid yields a consolidated maximum-likelihood $\Delta\chi^2 < 0$ for the conservative $z_{\rm los}=5$ branch across every tested systematic, and the Bayesian evidence remains at or above unity for all but the artificially narrow prior and the $z < 0.023$ cut. The Pantheon+ supernova evidence is therefore classified as structurally robust, with the understanding that the low-redshift anchors strengthen but do not solely create the preference.
     </p>
 
     <h2>4.10 Blind-Injection and Null-Injection Validation</h2>
@@ -194,5 +206,5 @@
         An independent cross-check was performed on the Union3 binned supernova compilation (22 redshift bins, Rubin+ in prep.), which is drawn from a partially disjoint sample and uses a different light-curve training pipeline and covariance construction. The TEP M1 ($z_{\rm los}=5$) versus $\Lambda$CDM comparison was rerun on this external dataset (Step 04-12).
     </p>
     <p>
-        The preference direction remains the same: TEP M1 achieves a lower $\chi^2$ than $\Lambda$CDM on Union3 ($\Delta\chi^2 = -0.84$ for $z_{\rm los}=5$ and $\Delta\chi^2 = -1.27$ for the $z_{\rm los}=100$ benchmark), confirming that the Pantheon+ signal is not an artefact of the Pantheon+ sample-specific covariance or binning. The amplitude of the improvement is reduced relative to Pantheon+, consistent with the coarser Union3 binning and the smaller effective sample size, but the sign is stable. This external validation strengthens the claim that the intermediate-scale temporal-shear signature is present in independent supernova compilations.
+        The preference direction remains the same: TEP M1 achieves a lower $\chi^2$ than $\Lambda$CDM on Union3 ($\Delta\chi^2 = -0.84$ for $z_{\rm los}=5$ and $\Delta\chi^2 = -1.27$ for the $z_{\rm los}=100$ benchmark), confirming that the Pantheon+ signal is not an artefact of the Pantheon+ sample-specific covariance or binning. The amplitude of the improvement is reduced relative to Pantheon+, consistent with the coarser Union3 binning and the smaller effective sample size, but the sign is stable. This external validation strengthens the claim that Union3 provides a directionally consistent but statistically weak external check.
     </p>

@@ -1,14 +1,14 @@
 # Temporal Equivalence Principle: Black Holes and the Temporal Horizon
 **Matthew Lukin Smawfield**
-Version: v0.1 (Bahrain)
-First published: 29 July 2026 - Last updated: 29 July 2026
+Version: v0.2 (Bahrain)
+First published: 29 July 2026 - Last updated: 8 August 2026
 DOI: 10.5281/zenodo.21677827
 
 ---
 
 ## Abstract
 
-The Temporal Equivalence Principle treats proper time as a dynamical field. Matter, light, and ideal clocks couple to the universal causal metric $\tilde g_{\mu\nu}=A^2(\phi)g_{\mu\nu}+B(\phi)\nabla_\mu\phi\nabla_\nu\phi$. The Einstein-frame metric carries the gravitational dynamics; tensor propagation is determined by the principal symbol of the coupled temporal–geometric equations. This paper develops the strong-field consequence: *a black hole, under TEP, is a temporal well* — a regular spatial region in which the rate of proper time differs radically from the exterior, without physical collapse to an ultradense singular object and without an absolute one-way boundary. A continuous, extreme but finite gradient in proper-time rate is sufficient to produce the full observational phenomenology attributed to a black hole.
+The Temporal Equivalence Principle treats proper time as a dynamical field. Matter, light, and ideal clocks couple to the universal causal metric $\tilde g_{\mu\nu}=A^2(\phi)g_{\mu\nu}+B(\phi)\nabla_\mu\phi\nabla_\nu\phi$. The Einstein-frame metric carries the gravitational dynamics; tensor propagation is determined by the principal symbol of the coupled temporal–geometric equations. This paper develops the strong-field consequence: *a black hole, under TEP, is a temporal well* — a regular spatial region in which the rate of proper time differs radically from the exterior, without physical collapse to an ultradense singular object and without an absolute one-way boundary. A continuous, extreme but finite gradient in proper-time rate provides a unified mechanism for the principal observational signatures attributed to a black hole.
 
 Darkness, apparent compactness, large inferred mass, and practical inaccessibility are exterior reconstructions of temporal decoupling. The operational boundary is the Temporal Horizon — the observer-relative threshold beyond which the clock-transfer factor renders signals practically undetectable — not the event horizon. Inferred gravitational mass and local material mass need not coincide; a strong-field phantom mass residual $M_{\rm phantom}^{T} \equiv M_{\rm fit}^{\rm GR} - M_{\rm matter}^{\rm TEP}$ measures this discrepancy, its sign determined by the data. Standard black-hole ontology assumes isochrony: source clocks, photon propagation, and observer clocks mapped onto a single general-relativistic time coordinate. TEP drops that closure. Under TEP, the conventional reconstruction — compact mass, event horizon, singular collapse — is no longer the unique reading of the same observations.
 
@@ -22,7 +22,7 @@ Keywords: Temporal Equivalence Principle, temporal well, temporal horizon, dynam
 
 ## 1.1 The Temporal Well
 
-The Temporal Equivalence Principle (TEP) treats proper time as a dynamical field. Matter, light, and ideal clocks couple to the universal causal metric $\tilde g_{\mu\nu}=A^2(\phi)g_{\mu\nu}+B(\phi)\nabla_\mu\phi\nabla_\nu\phi$. The Einstein-frame metric carries the gravitational dynamics; tensor propagation is determined by the principal symbol of the coupled temporal–geometric equations. This paper develops the strong-field consequence: a black hole, under TEP, is a temporal well — a regular spatial region in which the rate of proper time differs radically from the exterior, without physical collapse to an ultradense singular object and without an absolute one-way boundary. A continuous, extreme but finite gradient in proper-time rate is sufficient to produce the full observational phenomenology attributed to a black hole.
+The Temporal Equivalence Principle (TEP) treats proper time as a dynamical field. Matter, light, and ideal clocks couple to the universal causal metric $\tilde g_{\mu\nu}=A^2(\phi)g_{\mu\nu}+B(\phi)\nabla_\mu\phi\nabla_\nu\phi$. The Einstein-frame metric carries the gravitational dynamics; tensor propagation is determined by the principal symbol of the coupled temporal–geometric equations. This paper develops the strong-field consequence: a black hole, under TEP, is a temporal well — a regular spatial region in which the rate of proper time differs radically from the exterior, without physical collapse to an ultradense singular object and without an absolute one-way boundary. A continuous, extreme but finite gradient in proper-time rate provides a unified mechanism for the principal observational signatures attributed to a black hole.
 
 Darkness, apparent compactness, large inferred mass, and practical inaccessibility are exterior reconstructions of temporal decoupling. The operational boundary is the Temporal Horizon — the observer-relative threshold beyond which the clock-transfer factor renders signals practically undetectable — not the event horizon. The same principle that reframes cosmology reframes the dark compact sources called black holes. Cosmological expansion and black-hole collapse are dual misreadings of dynamical proper time.
 
@@ -34,9 +34,9 @@ TEP distinguishes the Einstein-frame gravitational metric $g_{\mu\nu}$, which ca
 \tilde g_{\mu\nu}=A^2(\phi)g_{\mu\nu}+B(\phi)\nabla_\mu\phi\nabla_\nu\phi,
 \end{equation}
 
-on which matter, photons, and ideal clocks propagate. The conformal factor $A(\phi)$ maps clock scales; the disformal term $B(\phi)$ can tilt matter cones. In each local Lorentzian orthonormal frame of $\tilde g_{\mu\nu}$, nongravitational physics is locally special relativistic and the locally measured speed of light is invariant. The field $\phi$ is the temporal field — the field that governs the rate of proper time.
+on which matter, photons, and ideal clocks propagate. The conformal factor $A(\phi)$ maps clock scales; the disformal term $B(\phi)$ can tilt matter cones. Null geodesics remain conformally invariant; the calculated shadow correction is generated by scalar-Gauss-Bonnet backreaction on the geometric metric, while the conformal sector acts directly on timelike matter observables. In each local Lorentzian orthonormal frame of $\tilde g_{\mu\nu}$, nongravitational physics is locally special relativistic and the locally measured speed of light is invariant. The field $\phi$ is the temporal field — the field that governs the rate of proper time.
 
-The principle is that a continuous, extreme but finite gradient in proper-time rate is sufficient to produce the full observational phenomenology attributed to a black hole: darkness, apparent compactness, large inferred mass, and practical inaccessibility for a distant observer. No absolute one-way boundary is required. No physical compression to ultradense matter is required. The observations themselves do not distinguish a physically compact collapsed body from a sufficiently strong temporal-rate gradient. The physical lapse satisfies
+The principle is that a continuous, extreme but finite gradient in proper-time rate provides a unified mechanism for the principal observational signatures attributed to a black hole: darkness, apparent compactness, large inferred mass, and practical inaccessibility for a distant observer. No absolute one-way boundary is required. No physical compression to ultradense matter is required. The observations themselves do not distinguish a physically compact collapsed body from a sufficiently strong temporal-rate gradient. The physical lapse satisfies
 
 \begin{equation} \label{eq:intro_lapse}
 0 < N(r), \qquad N_{\min} = \min_r N(r) \ll N_o,
@@ -169,7 +169,7 @@ The theory is a defined modified-gravity theory, not a broad framework into whic
 
 **Strong-field EFT sector — the leading curvature operator and regularising coefficients.**
 
-- The leading curvature operator is the scalar–Gauss–Bonnet coupling $\alpha_{\rm GB}\,\phi\,\mathcal{G}$. This is the lowest-dimension higher-curvature term that couples the temporal field to the gravitational geometry and supplies real backreaction. It is the canonical strong-field extension of the TEP action, not one option among many.
+- The leading curvature operator is the scalar–Gauss–Bonnet coupling $\alpha_{\rm GB}\,\phi\,\mathcal{G}$. This is a native, pre-existing operator in the master TEP Effective Field Theory action which becomes active only in the extreme curvature of the strong-field regime, supplying real backreaction to resolve the Schwarzschild incompatibility. It is the canonical strong-field completion of the TEP action, not an arbitrary addition of new physics.
 
 - The regularising nonlinear coefficients — higher-order curvature couplings and potential terms that control the deep-region profile — are selected by the joint requirements of global regularity (finite curvature, bounded areal radius, Lorentzian signature) and observational consistency. These are EFT corrections to the leading operator, not alternative theories.
 
@@ -373,7 +373,7 @@ If the spatial scale is held fixed ($\mathcal S_a = 1$, $\mathcal D_{\rm dyn} = 
 M_{\rm phantom}^{T} > 0 \quad \Longleftrightarrow \quad \mathcal S_a^3 \, \mathcal D_{\rm dyn} > \mathcal T_P^2.
 \end{equation}
 
-Physically, spatial magnification arises because the conformal factor $A(\phi)$ rescales the matter metric relative to the geometric engine. A distant observer using a fixed angular scale and a GR-based distance calibration measures an enlarged effective orbital radius, while the local material mass needed to support that orbit is unchanged. The temporal field therefore inflates the inferred mass when $A(\phi) > 1$ is strong enough to overcome the deflation from slow local clocks.
+Pure conformal rescaling does not alter null trajectories. The spatial calibration factor $\mathcal S_a$ can differ from unity through scalar backreaction on $g_{\mu\nu}$, disformal propagation, endpoint distance calibration and the timelike orbital mapping. Appendix L explicitly isolates the sGB backreaction contribution and demonstrates the different coupling orders of the null and timelike observables.
 
 The spatial calibration $\mathcal S_a$ is not a free parameter. It is determined by photon propagation on $\tilde g_{\mu\nu}$ (lensing magnification), the GR-inferred distance $D_{\rm GR}$ (standard-candle or parallax calibration through the temporal field), and the orbital dynamics on the temporal-well geometry. The critical threshold is $\mathcal S_a > \mathcal T_P^{2/3}$. For moderate temporal transfer $\mathcal T_P \sim 10$, this requires $\mathcal S_a > 4.6$ — a strong but achievable lensing magnification near a strong-field source.
 
@@ -692,7 +692,7 @@ TEP treats proper time as a dynamical field. The strong-field consequence is the
 
 - Measured phantom-mass sign: the joint photon–orbit–timing forward model that fixes $\mathcal S_a^3 \mathcal D_{\rm dyn}$ relative to $\mathcal T_P^2$.
 
-The distinction between what is derived from the TEP principle and what requires explicit construction makes the framework more robust, not less: the conceptual claims cannot be dismissed by finding an issue in one calculation. Bahrain fixes the governing principle, action structure, and global solution conditions. The nonlinear field equations select the realised temporal-well geometry and its observable spectrum. The remaining nonlinear integration does not decide whether the paradigm exists; it selects the unique quantitative realisation of the paradigm already fixed by TEP. The strongest route forward is: one action, one exterior coupling, one global solution, one coupled characteristic system, one observational likelihood, one phantom mass posterior.
+The distinction between what is derived from the TEP principle and what requires explicit construction makes the framework more robust, not less: the conceptual claims cannot be dismissed by finding an issue in one calculation. Bahrain fixes the governing principle, action structure, and global solution conditions. The nonlinear field equations select the realised temporal-well geometry and its observable spectrum. The remaining nonlinear integration does not define the paradigm; it determines the unique quantitative strong-field realisation selected by the fixed TEP action and tests whether all global regularity conditions are simultaneously satisfied. The strongest route forward is: one action, one exterior coupling, one global solution, one coupled characteristic system, one observational likelihood, one phantom mass posterior.
 
 ## 9.2 Data as Examples
 
@@ -708,7 +708,7 @@ Horizon-scale images constrain how far the photon-region geometry can differ fro
 
 ## 9.5 Gravitational Waves: The Strongest Test
 
-TEP replaces the purely ingoing event-horizon condition with propagation through a regular temporal domain. The late-time spectral problem is therefore not the GR black-hole spectral problem — this is the theory-level prediction, independent of the specific coupling. The altered spectrum is an unavoidable consequence; its specific form (longer or shorter damping, echoes or no resolvable echoes, weak or strong scalar–tensor mixing) depends on the geometry. Gravitational-wave ringdown is the strongest test because it directly probes the boundary condition that distinguishes a temporal well from a black hole.
+TEP replaces the purely ingoing event-horizon condition with propagation through a regular temporal domain. The late-time spectral problem is therefore not the GR black-hole spectral problem — this is the theory-level prediction, independent of the specific coupling. The altered boundary-value problem is an unavoidable consequence; the magnitude and form of the resulting spectral deviation—longer or shorter damping, echoes or no resolvable echoes, weak or strong scalar–tensor mixing—depend on the realised geometry. Gravitational-wave ringdown is the strongest test because it directly probes the boundary condition that distinguishes a temporal well from a black hole.
 
 ## 9.6 The Unified Statement
 
@@ -718,11 +718,11 @@ The object is a regular region in which the rate of proper time differs radicall
 
 ## 9.7 Scope
 
-The derived, demonstrated, and decisive-closure claims are collected in Section 9.1. Bahrain defines the nonlinear closure problem and the boundary conditions that uniquely identify the physical strong-field branch. The nonlinear integration selects the realised temporal-well geometry; it does not decide whether the paradigm exists.
+The derived, demonstrated, and decisive-closure claims are collected in Section 9.1. Bahrain defines the nonlinear closure problem and the boundary conditions that uniquely identify the physical strong-field branch. The nonlinear integration does not define the TEP paradigm; it selects the realised strong-field branch and tests whether the fixed TEP action admits a global solution satisfying all temporal-well regularity conditions.
 
 # 10. Conclusion
 
-The Temporal Equivalence Principle treats proper time as a dynamical field. This paper develops its strong-field consequence: a black hole, under TEP, is a temporal well — a regular spatial region in which the rate of proper time differs radically from the exterior, without physical collapse to an ultradense singular object and without an absolute one-way boundary. A continuous, extreme but finite gradient in proper-time rate is sufficient to produce the full observational phenomenology attributed to a black hole.
+The Temporal Equivalence Principle treats proper time as a dynamical field. This paper develops its strong-field consequence: a black hole, under TEP, is a temporal well — a regular spatial region in which the rate of proper time differs radically from the exterior, without physical collapse to an ultradense singular object and without an absolute one-way boundary. A continuous, extreme but finite gradient in proper-time rate provides a unified mechanism for the principal observational signatures attributed to a black hole.
 
 The operational boundary is the Temporal Horizon — the observer-relative threshold beyond which the clock-transfer factor renders signals practically undetectable — not the event horizon. The event horizon is a global causal construct inferred from the spacetime model, not an observable. Apparent compactness arises from exterior-frame reconstruction, not physical compression. Inferred gravitational mass and local material mass need not coincide; a strong-field phantom mass residual $M_{\rm phantom}^{T} \equiv M_{\rm fit}^{\rm GR} - M_{\rm matter}^{\rm TEP}$ measures this discrepancy, its sign determined by the data. Standard black-hole ontology assumes isochrony: source clocks, photon propagation, and observer clocks mapped onto a single general-relativistic time coordinate. TEP drops that closure. Under TEP, the conventional reconstruction — compact mass, event horizon, singular collapse — is no longer the unique reading of the same observations.
 
@@ -732,7 +732,7 @@ Four observational consequences follow from one temporal field: time transfer, m
 
 Weak-field data recover GR; horizon-scale images constrain the photon-region geometry but do not directly establish an event horizon; gravitational-wave ringdown provides the sharpest test. The decisive programme is the raw non-isochronous multi-messenger refit of the same data GR already uses.
 
-Black holes are not fundamental collapsed objects in TEP. They are the observational appearance of regular strong-field temporal wells reconstructed under exterior temporal standards. Bahrain derives the governing strong-field conditions, proves fixed Schwarzschild insufficient, identifies the required backreaction channel, constructs regular benchmarks, and defines the decisive observational tests. The remaining nonlinear integration does not decide whether the paradigm exists; it selects the unique quantitative realisation of the paradigm already fixed by TEP.
+Black holes are not fundamental collapsed objects in TEP. They are the observational appearance of regular strong-field temporal wells reconstructed under exterior temporal standards. Bahrain derives the governing strong-field conditions, proves fixed Schwarzschild insufficient, identifies the required backreaction channel, constructs regular benchmarks, and defines the decisive observational tests. The remaining nonlinear integration does not define the paradigm; it determines the unique quantitative strong-field realisation selected by the fixed TEP action and tests whether all global regularity conditions are simultaneously satisfied.
 
 *Cosmological expansion and black-hole collapse are dual misreadings of dynamical proper time.* The standard black-hole object was never what the telescopes measured. The event horizon, the singularity, and the ultradense core are GR reconstructions from observational data under an implicit isochronous transfer model. Under TEP, the same observations are produced by a temporal well — and the conventional reconstruction is no longer the unique reading.
 
@@ -745,7 +745,7 @@ This appendix fixes the sign, curvature and disformal conventions used throughou
 The metric signature $(-,+,+,+)$ is adopted. The Riemann tensor is defined via the Wald convention
 
 \begin{equation} \label{eq:appA_1}
-({\nabla_a\nabla_b - \nabla_b\nabla_a)\,V_c = R_{abc}{}^{d}\,V_d,
+(\nabla_a\nabla_b - \nabla_b\nabla_a) V_c = R_{abc}{}^{d}\,V_d,
 \end{equation}
 
 with Ricci tensor $R_{ab} = R_{acb}{}^{c}$ and Ricci scalar $R = g^{ab}R_{ab}$. The Einstein tensor is $G_{ab} = R_{ab} - \tfrac12 R\,g_{ab}$, and the Einstein equations read $G_{\mu\nu}[g] = 8\pi\,T_{\mu\nu}$ in geometrized units $G = c = 1$. With this convention the Schwarzschild Kretschmann scalar is
@@ -1743,9 +1743,11 @@ All numbers are computed at $\eta = -0.1$ in the perturbative regime. Note that 
 
 - Smawfield, M. L. (2026). Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion. Paper 26 (Athens). DOI: 10.5281/zenodo.20370143.
 
-- Smawfield, M. L. (2026). Temporal Equivalence Principle: Native hi_class Conformal Implementation, Linear Perturbation Closure, and CMB Acoustic Peak Preservation. Paper 18 (Cambridge).
+- Smawfield, M. L. (2026). Temporal Equivalence Principle: Native hi_class Conformal Implementation, Linear Perturbation Closure, and CMB Acoustic Peak Preservation. Paper 18 (Cambridge). DOI: 10.5281/zenodo.20682752.
 
 - Smawfield, M. L. (2026). Temporal Equivalence Principle: Temporal Horizon Cosmology and the Absence of a Physical Big Bang Singularity. Paper 27 (Thika). DOI: 10.5281/zenodo.20723059.
+
+- Smawfield, M. L. (2026). Temporal Equivalence Principle: Dynamical Proper Time and the Illusion of Primordial Deuterium. Paper 29 (Dubai).
 
 - LIGO/Virgo Collaboration (2016). Observation of gravitational waves from a binary black hole merger. *Phys. Rev. Lett.*, 116, 241102. DOI: 10.1103/PhysRevLett.116.241102.
 

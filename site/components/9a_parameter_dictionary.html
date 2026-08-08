@@ -22,9 +22,9 @@
         </tr>
         <tr>
             <td>$A_{\rm dyn}(z)$</td>
-            <td>Dynamically screened shear response: $\left(1+z/z_t\right)^{-\epsilon_{\rm eff}(z)}$</td>
+            <td>Dynamical shear response: $\left(1+z/z_t\right)^{-\epsilon_t}$</td>
             <td>TEP-TH</td>
-            <td>Screened to unity at $z\gtrsim z_t$</td>
+            <td>Modifies late-time evolution</td>
         </tr>
         <tr>
             <td>$\alpha_A$</td>
@@ -42,7 +42,7 @@
             <td>$\epsilon_T^{\rm los}$</td>
             <td>Late-time line-of-sight transport amplitude (C0 supernova fit)</td>
             <td>TEP-C0</td>
-            <td>$\mathcal{U}[0, 1.0]$ (prior); posterior peaked near $\sim 0.89$</td>
+            <td>$\mathcal{U}[0, 2.0]$ (prior); posterior peaked near $\sim 0.89$</td>
         </tr>
         <tr>
             <td>$\epsilon_T^{\rm CMB}$</td>
@@ -54,13 +54,13 @@
             <td>$\epsilon_T^{\rm HC}$</td>
             <td>Native hi_class homogeneous conformal amplitude</td>
             <td>TEP-HC</td>
-            <td>$0.0056\pm0.0043$</td>
+            <td>$0.00602\pm0.00493$</td>
         </tr>
         <tr>
-            <td>$\epsilon_{\rm dyn}(z)$, $\epsilon_{\rm eff}(z)$</td>
-            <td>Screened dynamical temporal-horizon response</td>
+            <td>$\epsilon_{\rm dyn}$</td>
+            <td>Dynamical temporal-horizon response</td>
             <td>TEP-TH</td>
-            <td>Screened to $\sim10^{-12}$ at BBN, $\sim10^{-2}$ at recombination</td>
+            <td>Determined by late-time shear</td>
         </tr>
         <tr>
             <td>$\epsilon_{\rm field}$</td>
@@ -79,18 +79,6 @@
             <td>Homogeneous/acoustic hi_class profile scale</td>
             <td>TEP-HC</td>
             <td>Fitted jointly with $\epsilon_T$</td>
-        </tr>
-        <tr>
-            <td>$z_t^{\rm th}$</td>
-            <td>TH thermal-screening transition redshift</td>
-            <td>TEP-TH</td>
-            <td>$100$ (from $T_{\rm lock}=0.03$ eV)</td>
-        </tr>
-        <tr>
-            <td>$T_{\rm lock}$</td>
-            <td>Thermal screening scale: $T_{\rm lock}=T_0(1+z_t)$</td>
-            <td>TEP-TH</td>
-            <td>$0.03$ eV</td>
         </tr>
         <tr>
             <td>$p$</td>
@@ -132,7 +120,7 @@
             <td>$S_8$</td>
             <td>$\sigma_8\sqrt{\Omega_m/0.3}$ (TEP-HC joint MCMC)</td>
             <td>TEP-HC</td>
-            <td>$0.870\pm0.028$</td>
+            <td>$0.867\pm0.026$</td>
         </tr>
         <tr>
             <td>$\sigma_8^{\rm HC}$</td>
@@ -144,5 +132,5 @@
 </table>
 
 <p style="font-size:0.9em; color:#666; margin-top:1em;">
-    <strong>Note:</strong> Parameters with superscript labels ($^{\rm los}$, $^{\rm HC}$, $^{\rm th}$) are related projections of the same temporal sector but are not numerically interchangeable. The turnover scales $z_T^{\rm los}$, $z_T^{\rm HC}$, and $z_t^{\rm th}$ describe different physical regimes; the amplitudes $\epsilon_T^{\rm los}$, $\epsilon_T^{\rm CMB}$, $\epsilon_T^{\rm HC}$, and $\epsilon_{\rm field}$ are constrained by different observables.
+    <strong>Note:</strong> Parameters with superscript labels ($^{\rm los}$, $^{\rm HC}$) are related projections of the same temporal sector but are not numerically interchangeable. The turnover scales $z_T^{\rm los}$ and $z_T^{\rm HC}$ describe different physical regimes; the amplitudes $\epsilon_T^{\rm los}$, $\epsilon_T^{\rm CMB}$, $\epsilon_T^{\rm HC}$, and $\epsilon_{\rm field}$ are constrained by different observables.
 </p>
