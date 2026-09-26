@@ -28,7 +28,7 @@
   "no_ghost_pass": true,
   "status": "completed",
   "step": "step_05_09_minimal_perturbations",
-  "timestamp": 1781962812,
+  "timestamp": 1790452972,
   "zero_limit_sanity_max_residual_percent": 0.0,
   "zero_limit_sanity_passed": true
 }

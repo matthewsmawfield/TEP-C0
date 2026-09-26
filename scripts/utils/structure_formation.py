@@ -21,6 +21,18 @@ from __future__ import annotations
 import numpy as np
 from scipy.integrate import solve_ivp
 
+import sys
+from pathlib import Path
+
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from core.cosmology import (
+    alpha_A_native as _core_alpha_A_native,
+    f_T_suppression as _core_f_T_suppression,
+)
+
 # ============================================================================
 # Gradient-dependent screening (TEP v3)
 # ============================================================================
@@ -128,24 +140,16 @@ def mean_field_growth_screening(z: float, g_t: float = G_T_DEFAULT, n: float = N
 
 def _f_T_suppression(z, z_T, n_T):
     """TEP early-universe suppression S(z) = exp(-(z/z_T)^n_T)."""
-    return np.exp(-(z / z_T) ** n_T)
+    return _core_f_T_suppression(z, z_T, n_T)
 
 
 def _alpha_A_native(z, epsilon_T, z_T, n_T):
     """Jordan-frame coupling α_A = d ln A / d ln a_J.
 
-    Matches TEP-HC core/cosmology.py::alpha_A_native.
+    Delegates to the canonical core.cosmology.alpha_A_native (v0.14,
+    uncapped evaluation); identical algebra, extended to arrays.
     """
-    if epsilon_T == 0.0:
-        return 0.0
-    if z <= 0.0:
-        return 0.0
-    S = _f_T_suppression(z, z_T, n_T)
-    # dS/dz = -S * n_T * (z/z_T)^(n_T-1) / z_T  for z <= z_T * 10
-    dS = 0.0
-    if z <= z_T * 10.0 and z > 1e-10:
-        dS = -S * n_T * (z / z_T) ** (n_T - 1.0) / z_T
-    return -epsilon_T * (S + (1.0 + z) * np.log(1.0 + z) * dS)
+    return _core_alpha_A_native(z, epsilon_T, z_T, n_T)
 
 
 def alpha_M_tep(z, epsilon_T, z_T, n_T):
