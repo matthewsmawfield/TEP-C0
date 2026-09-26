@@ -30,13 +30,13 @@
             <td>$\alpha_A$</td>
             <td>Temporal-shear conformal amplitude in Jordan-frame notation</td>
             <td>TEP-HC</td>
-            <td>$-0.0028$ (Planck best-fit)</td>
+            <td>$-0.0028$ (TEP MCMC posterior)</td>
         </tr>
         <tr>
             <td>$\alpha_M$, $\alpha_B$, $\alpha_K$, $\alpha_T$</td>
-            <td>Runtime Bellini–Sawicki EFT functions: $\alpha_M=-2\alpha_A$, $\alpha_B=2\alpha_A$, $\alpha_K=-5\alpha_A^2$, $\alpha_T=0$</td>
+            <td>Adopted runtime Jordan-frame Bellini–Sawicki EFT functions: $\alpha_M=-2\mathcal{S}_\Sigma\alpha_A$, $\alpha_B=2\mathcal{S}_\Sigma\alpha_A$, $\alpha_K=-5(\mathcal{S}_\Sigma\alpha_A)^2$, $\alpha_T=0$</td>
             <td>TEP-HC</td>
-            <td>Derived from $\alpha_A$</td>
+            <td>Adopted closure evaluated from $\alpha_A$</td>
         </tr>
         <tr>
             <td>$\epsilon_T^{\rm los}$</td>
@@ -54,7 +54,7 @@
             <td>$\epsilon_T^{\rm HC}$</td>
             <td>Native hi_class homogeneous conformal amplitude</td>
             <td>TEP-HC</td>
-            <td>$0.00602\pm0.00493$</td>
+            <td>$0.00547\pm0.00429$</td>
         </tr>
         <tr>
             <td>$\epsilon_{\rm dyn}$</td>
@@ -66,7 +66,7 @@
             <td>$\epsilon_{\rm field}$</td>
             <td>Primordial spectral-flow parameter constrained by $n_s$</td>
             <td>TEP-TH</td>
-            <td>$0.0175$ (from $n_s=0.965$)</td>
+            <td>$0.01755$ (from $n_s=0.9649$)</td>
         </tr>
         <tr>
             <td>$z_T^{\rm los}$</td>
@@ -102,13 +102,13 @@
             <td>$r(k_{\rm pivot})$</td>
             <td>Native tensor-to-scalar ratio at Planck pivot</td>
             <td>TEP-TH</td>
-            <td>$9\times10^{-6}$</td>
+            <td>$1.9\times10^{-9}$</td>
         </tr>
         <tr>
             <td>$r_{\rm max}$</td>
             <td>Maximum tensor-to-scalar ratio across transition profile</td>
             <td>TEP-TH</td>
-            <td>$6.26\times10^{-4}$</td>
+            <td>$5.2\times10^{-7}$ (fiducial $p=0.1$); $6.1\times10^{-5}$ over all tested profiles $0\lt p\le1$</td>
         </tr>
         <tr>
             <td>$H_0$</td>
@@ -117,10 +117,28 @@
             <td>$66.70\pm0.58$ km s$^{-1}$ Mpc$^{-1}$</td>
         </tr>
         <tr>
+            <td>$\rho_T$</td>
+            <td>Material Temporal-Topology saturation scale; anchors the clock-amplitude sector $S_A$ through $R_T(M)=(3M/4\pi\rho_T)^{1/3}$, surface factor $S=(\bar\rho/\rho_T)^{1/3}$</td>
+            <td>TEP / TEP-UCD</td>
+            <td>$\approx 20$ g cm$^{-3}$ ($S_\oplus\approx0.65$; $R_T(M_\oplus)\approx4{,}146$ km)</td>
+        </tr>
+        <tr>
+            <td>$\rho_{\rm half}$</td>
+            <td>Ambient half-suppression density of the shear-sector operator $\mathcal{S}_\Sigma(\mathcal E)$; density argument is the coarse-grained environmental mean, not material density</td>
+            <td>TEP-C0</td>
+            <td>$\approx 0.5\,M_\odot\,{\rm pc}^{-3}\approx3.4\times10^{-23}$ g cm$^{-3}$</td>
+        </tr>
+        <tr>
+            <td>$g_t \equiv a_t/c^2$</td>
+            <td>Critical shear scale of the kinetic channel of $\mathcal{S}_\Sigma(\mathcal E)$; Newtonian limit maps to local acceleration $a_t$</td>
+            <td>TEP-C0</td>
+            <td>$a_t\approx3.4\times10^{-10}$ m s$^{-2}$ ($\sim cH_0/2$)</td>
+        </tr>
+        <tr>
             <td>$S_8$</td>
             <td>$\sigma_8\sqrt{\Omega_m/0.3}$ (TEP-HC joint MCMC)</td>
             <td>TEP-HC</td>
-            <td>$0.867\pm0.026$</td>
+            <td>$0.868\pm0.025$</td>
         </tr>
         <tr>
             <td>$\sigma_8^{\rm HC}$</td>
@@ -132,5 +150,5 @@
 </table>
 
 <p style="font-size:0.9em; color:#666; margin-top:1em;">
-    <strong>Note:</strong> Parameters with superscript labels ($^{\rm los}$, $^{\rm HC}$) are related projections of the same temporal sector but are not numerically interchangeable. The turnover scales $z_T^{\rm los}$ and $z_T^{\rm HC}$ describe different physical regimes; the amplitudes $\epsilon_T^{\rm los}$, $\epsilon_T^{\rm CMB}$, $\epsilon_T^{\rm HC}$, and $\epsilon_{\rm field}$ are constrained by different observables.
+    <strong>Note:</strong> Parameters with superscript labels ($^{\rm los}$, $^{\rm HC}$) are related projections of the same temporal sector but are not numerically interchangeable. The turnover scales $z_T^{\rm los}$ and $z_T^{\rm HC}$ describe different physical regimes; the amplitudes $\epsilon_T^{\rm los}$, $\epsilon_T^{\rm CMB}$, $\epsilon_T^{\rm HC}$, and $\epsilon_{\rm field}$ are constrained by different observables. Two cases are the same functional rather than related projections: the EdS-diagnostic $\epsilon_T^{\rm hom} = 0.018$ of §4.4 and the joint-fit $\epsilon_T^{\rm CMB} = -0.0015 \pm 0.0037$ both set the patched-CLASS <code>tep_epsilon_T</code> parameter and differ only in the background branch — EdS ($\Omega_\Lambda = 0$) versus the $\Lambda$CDM-compatible branch selected by Pantheon+ + Planck. Their $5.3\sigma$ separation (Step 05-11) records that the no-$\Lambda$ acoustic recovery is a counterfactual existence proof, not a property of the joint-fit cosmology.
 </p>
