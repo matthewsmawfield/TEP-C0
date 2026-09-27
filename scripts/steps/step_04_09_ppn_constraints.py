@@ -6,10 +6,10 @@ Equivalence Principle and verifies compliance with Solar System tests.
 
 The module evaluates three screening prescriptions:
 
-1. Unscreened (β_A = -1): ruled out by Cassini at ~87 000σ.
+1. Unscreened (β_A = -1): ruled out by Cassini at ~58 000σ.
 2. Lorentzian source-screening S(ρ) = [1+(ρ/ρ_T)²]⁻¹ (old C0 ansatz):
    suppresses the scalar source in dense environments, but leaves the
-   Solar System exterior unscreened → γ ≈ 0.66 (~15 000σ).
+   Solar System exterior unscreened → γ - 1 ≈ -0.44 (~19 000σ).
 3. Gradient-dependent screening f(g) = [1+(g/g_t)^n]⁻¹ where g = |∇Φ|:
    suppresses the effective conformal coupling in regions of STEEP
    potential gradient (Solar System, Earth surface, stellar interiors)
@@ -117,8 +117,19 @@ def lorentzian_screening_factor(rho: float | np.ndarray, rho_t: float = 20.0) ->
 
 
 def compute_ppn_gamma(beta_eff: float) -> float:
-    """PPN γ = 1 - 2 β_eff² for constant conformal coupling."""
-    return 1.0 - 2.0 * beta_eff ** 2
+    """PPN γ using the exact Damour–Esposito-Farèse cross-term expression.
+
+    γ - 1 = -2 α_0 α_eff / (1 + α_0 α_eff)
+
+    linear in the screened source charge α_eff = S_Σ α_0, since the photon
+    probe is unscreened. With the DEF normalization α_0 = √2 β_A and
+    β_eff = β_A S_Σ, the product is α_0 α_eff = 2 β_A β_eff = 2 β_A² S_Σ.
+
+    At β_eff = -1 (unscreened, S_Σ = 1): γ - 1 = -4/3, γ = -1/3,
+    ruled out by Cassini at ~58,000σ.
+    """
+    alpha0_alpha_eff = 2.0 * BETA_A * beta_eff
+    return 1.0 - 2.0 * alpha0_alpha_eff / (1.0 + alpha0_alpha_eff)
 
 
 def compute_ppn_beta() -> float:

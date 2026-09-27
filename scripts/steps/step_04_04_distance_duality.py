@@ -357,7 +357,7 @@ def run():
         'validation': {
             'real_data': have_observational_data,
             'research_grade_distance_duality': research_grade,
-            'claim_gate': 'open' if tep_self_consistent else 'blocked',
+            'claim_gate': 'non_discriminating' if bao_model_dependent else ('open' if tep_self_consistent else 'blocked'),
             'blockers': blockers if blockers else [],
         },
     }

@@ -1,29 +1,29 @@
-[17:09:56] [INFO] 
-[17:09:56] [INFO] ================================================================================
-[17:09:56] [INFO]    Starting step_06_07_alphaM_growth_validation
-[17:09:56] [INFO] ================================================================================
-[17:09:56] [INFO] 
-[17:09:57] [PROCESS] Scenario 1: LCDM baseline
-[17:09:57] [INFO]   sigma_8(z=0) = 0.838
-[17:09:57] [PROCESS] Scenario 2: LCDM + TEP alpha_M (eps=0.006)
-[17:09:57] [INFO]   sigma_8(z=0) = 0.835  (ratio vs LCDM at z=1: 0.9967)
-[17:09:57] [PROCESS] Scenario 3: EdS no-Lambda
-[17:09:57] [INFO]   sigma_8(z=0) = 1.501  (standard linear-theory value for matter-only)
-[17:09:57] [PROCESS] Scenario 4: EdS + TEP alpha_M (eps=0.018)
-[17:09:57] [INFO]   sigma_8(z=0) = 1.488  (ratio vs EdS at z=1: 0.9916)
-[17:09:57] [PROCESS] alpha_M(z) diagnostics
-[17:09:57] [INFO]   z=0.0: alpha_M(eps=0.006)=-0.000000, alpha_M(eps=0.018)=-0.000000
-[17:09:57] [INFO]   z=0.5: alpha_M(eps=0.006)=0.009537, alpha_M(eps=0.018)=0.028612
-[17:09:57] [INFO]   z=1.0: alpha_M(eps=0.006)=0.007101, alpha_M(eps=0.018)=0.021302
-[17:09:57] [INFO]   z=2.0: alpha_M(eps=0.006)=0.002742, alpha_M(eps=0.018)=0.008225
-[17:09:57] [INFO]   z=5.0: alpha_M(eps=0.006)=-0.005077, alpha_M(eps=0.018)=-0.015232
-[17:09:57] [INFO] alpha_M effect on LCDM: 0.33%
-[17:09:57] [INFO] alpha_M effect on EdS:  0.84%
-[17:09:57] [INFO] Required suppression EdS->Planck: 44.2%
-[17:09:57] [SUCCESS] alpha_M does NOT explain the 0.55 suppression factor: PASS
-[17:09:57] [SUCCESS] Results written to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/step_06_07_alphaM_growth_validation.json
-[17:09:57] [INFO] 
-[17:09:57] [INFO] ================================================================================
-[17:09:57] [INFO]    step_06_07_alphaM_growth_validation complete
-[17:09:57] [INFO] ================================================================================
-[17:09:57] [INFO] 
+[21:03:28] [INFO] 
+[21:03:28] [INFO] ================================================================================
+[21:03:28] [INFO]    Starting step_06_07_alphaM_growth_validation
+[21:03:28] [INFO] ================================================================================
+[21:03:28] [INFO] 
+[21:03:28] [PROCESS] Scenario 1: LCDM baseline
+[21:03:28] [INFO]   sigma_8(z=0) = 0.838
+[21:03:28] [PROCESS] Scenario 2: LCDM + TEP alpha_M (eps=0.006)
+[21:03:28] [INFO]   sigma_8(z=0) = 0.835  (ratio vs LCDM at z=1: 0.9967)
+[21:03:28] [PROCESS] Scenario 3: EdS no-Lambda
+[21:03:28] [INFO]   sigma_8(z=0) = 1.501  (standard linear-theory value for matter-only)
+[21:03:28] [PROCESS] Scenario 4: EdS + TEP alpha_M (eps=0.018)
+[21:03:28] [INFO]   sigma_8(z=0) = 1.488  (ratio vs EdS at z=1: 0.9916)
+[21:03:28] [PROCESS] alpha_M(z) diagnostics
+[21:03:28] [INFO]   z=0.0: alpha_M(eps=0.006)=-0.000000, alpha_M(eps=0.018)=-0.000000
+[21:03:28] [INFO]   z=0.5: alpha_M(eps=0.006)=0.009537, alpha_M(eps=0.018)=0.028612
+[21:03:28] [INFO]   z=1.0: alpha_M(eps=0.006)=0.007101, alpha_M(eps=0.018)=0.021302
+[21:03:28] [INFO]   z=2.0: alpha_M(eps=0.006)=0.002742, alpha_M(eps=0.018)=0.008225
+[21:03:28] [INFO]   z=5.0: alpha_M(eps=0.006)=-0.005077, alpha_M(eps=0.018)=-0.015232
+[21:03:28] [INFO] alpha_M effect on LCDM: 0.33%
+[21:03:28] [INFO] alpha_M effect on EdS:  0.84%
+[21:03:28] [INFO] Required suppression EdS->Planck: 44.2%
+[21:03:28] [SUCCESS] alpha_M does NOT explain the 0.55 suppression factor: PASS
+[21:03:28] [SUCCESS] Results written to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/step_06_07_alphaM_growth_validation.json
+[21:03:28] [INFO] 
+[21:03:28] [INFO] ================================================================================
+[21:03:28] [INFO]    step_06_07_alphaM_growth_validation complete
+[21:03:28] [INFO] ================================================================================
+[21:03:28] [INFO] 

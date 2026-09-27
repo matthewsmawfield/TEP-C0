@@ -1,11 +1,14 @@
-[09:56:32] [INFO] 
-[09:56:32] [INFO] ================================================================================
-[09:56:32] [INFO]    Starting step_04_01_sn_time_dilation
-[09:56:32] [INFO] ================================================================================
-[09:56:32] [INFO] 
-[09:56:32] [INFO] Parameters: H0=70.00, epsilon_T=0.000, z_T=136.56755735056186
-[09:56:32] [INFO] Loaded 1701 SN stretch measurements
-[09:56:32] [PROCESS] Computing TEP time dilation predictions
-[09:56:32] [INFO] Chi2 TEP: 174194.5 (reduced: 102.588)
-[09:56:32] [INFO] Chi2 LCDM: 174194.5 (reduced: 102.588)
-[09:56:32] [SUCCESS] Step step_04_01_sn_time_dilation completed successfully
+[04:54:01] [INFO] 
+[04:54:01] [INFO] ================================================================================
+[04:54:01] [INFO]    Starting step_04_01_sn_time_dilation
+[04:54:01] [INFO] ================================================================================
+[04:54:01] [INFO] 
+[04:54:01] [INFO] Parameters: H0=70.00, epsilon_T=0.826, z_T=136.56755735056186
+[04:54:01] [INFO] Loaded 1701 SN stretch measurements
+[04:54:01] [PROCESS] Computing TEP time dilation predictions
+[04:54:01] [INFO] Symmetric regression x1 = a + b*ln(td):
+[04:54:01] [INFO]   TEP:   a=-0.4048+-0.0028 b=0.9920+-0.0164  chi2=150571.3 (reduced 88.624)
+[04:54:01] [INFO]   LCDM:  a=-0.4018+-0.0028 b=1.6822+-0.0281  chi2=150639.2 (reduced 88.663)
+[04:54:01] [INFO]   delta chi2 (LCDM - TEP) = 67.9
+[04:54:01] [INFO]   Raw zero-parameter reference: TEP 177961.0, LCDM 174194.5 (normalisation-dominated, not a model comparison)
+[04:54:01] [SUCCESS] Step step_04_01_sn_time_dilation completed successfully

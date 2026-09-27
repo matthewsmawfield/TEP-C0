@@ -1,7 +1,8 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "codename": "Athens",
   "description": "Paper 26: Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion",
-  "date": "2026-08-08",
-  "paper": "26"
+  "date": "2026-09-16",
+  "paper": "26",
+  "previous_version": "0.2"
 }

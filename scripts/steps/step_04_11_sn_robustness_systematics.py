@@ -455,8 +455,9 @@ def run() -> dict:
     print_status("(a) Prior sensitivity tests", "PROCESS")
     prior_results = {}
 
-    # M1 z_T=5 with different epsilon bounds
-    for eps_low, eps_high in [(0.0, 0.5), (0.0, 1.0), (0.0, 2.0)]:
+    # M1 z_T=5 with different epsilon bounds; the (-1.0, 1.0) entry is the
+    # symmetric control that admits the opposite-sign transport branch.
+    for eps_low, eps_high in [(0.0, 0.5), (0.0, 1.0), (0.0, 2.0), (-1.0, 1.0)]:
         tag = f"eps_{eps_low}_{eps_high}"
         print_status(f"  Testing epsilon prior [{eps_low}, {eps_high}] (z_T=5)", "INFO")
         m1 = ModelTEP(z_T=5.0, eps_bounds=(eps_low, eps_high))

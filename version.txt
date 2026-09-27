@@ -1,4 +1,4 @@
-v0.2 (Athens) — 2026-08-08 — Cosmic expansion as temporal transport: no dark energy, no primordial singularity
+v0.3 (Athens) — 2026-09-16 — Cosmic expansion as temporal transport: no dark energy, no primordial singularity
 
 - Redshift reconstructed as conformal proper-time transport (1+z = A_0/A_em), not spatial scale-factor stretching
 - Apparent dark energy replaced by kinetic energy density of Temporal Shear field (Ω_φ)

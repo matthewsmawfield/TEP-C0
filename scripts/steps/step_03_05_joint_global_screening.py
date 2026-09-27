@@ -96,10 +96,11 @@ def log_likelihood(theta):
     # --- PPN constraint ---
     # g_t = 10^log10_g_t
     g_t = 10.0 ** log10_g_t
-    # Simplified PPN model: gamma deviates from 1 when g_t exceeds threshold
-    # If unscreened, gamma = 1.0 exactly.
-    # We model unscreened deviation as proportional to g_t / g_solar
-    # where g_solar ~ 1e-5 m/s^2.
+    # Simplified PPN likelihood penalty: gamma deviates from 1 when the
+    # screening threshold g_t exceeds the solar-system gradient g_solar.
+    # (Fully unscreened TEP would give gamma-1 = -4/3 under the canonical
+    # linear source-charge map; this heuristic penalizes the overshoot
+    # smoothly rather than imposing a hard cut.)
     g_solar = 1e-5
     if g_t > g_solar:
         # If screening threshold is above solar system gradient, unscreened

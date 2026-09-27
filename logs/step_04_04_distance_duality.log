@@ -1,18 +1,18 @@
-[22:38:42] [INFO] 
-[22:38:42] [INFO] ================================================================================
-[22:38:42] [INFO]    Starting step_04_04_distance_duality
-[22:38:42] [INFO] ================================================================================
-[22:38:42] [INFO] 
-[22:38:42] [PROCESS] Loading fitted TEP model
-[22:38:42] [INFO] Parameters: LCDM H0=70.00, TEP H0=70.00, epsilon_T=0.018000, z_T=136.56755735056186
-[22:38:42] [PROCESS] Computing theoretical distance-duality relation
-[22:38:42] [PROCESS] Loading DDR observational constraints
-[22:38:42] [INFO] Loaded 10 DDR constraints
-[22:38:42] [INFO] LCDM compilation (Planck D_L + BAO D_A): η = 0.8662 ± 0.0202
-[22:38:42] [INFO]   Deviation from unity: 6.63σ
-[22:38:42] [INFO] TEP compilation (TEP D_L + BAO D_A): η = 0.8463 ± 0.0187
-[22:38:42] [INFO]   Deviation from unity: 8.21σ
-[22:38:42] [INFO] Δχ² (LCDM - TEP) = -25.18
-[22:38:42] [INFO] TEP η(z=2) prediction: 1.0000
-[22:38:42] [SUCCESS] Research grade: True
-[22:38:42] [SUCCESS] Step step_04_04_distance_duality completed successfully
+[19:11:00] [INFO] 
+[19:11:00] [INFO] ================================================================================
+[19:11:00] [INFO]    Starting step_04_04_distance_duality
+[19:11:00] [INFO] ================================================================================
+[19:11:00] [INFO] 
+[19:11:00] [PROCESS] Loading fitted TEP model
+[19:11:00] [INFO] Parameters: LCDM H0=70.00, TEP H0=70.00, epsilon_T=0.018000, z_T=136.56755735056186
+[19:11:00] [PROCESS] Computing theoretical distance-duality relation
+[19:11:00] [PROCESS] Loading DDR observational constraints
+[19:11:00] [INFO] Loaded 10 DDR constraints
+[19:11:00] [INFO] LCDM compilation (Planck D_L + BAO D_A): η = 0.8662 ± 0.0202
+[19:11:00] [INFO]   Deviation from unity: 6.63σ
+[19:11:00] [INFO] TEP compilation (TEP D_L + BAO D_A): η = 0.8463 ± 0.0187
+[19:11:00] [INFO]   Deviation from unity: 8.21σ
+[19:11:00] [INFO] Δχ² (LCDM - TEP) = -25.18
+[19:11:00] [INFO] TEP η(z=2) prediction: 1.0000
+[19:11:00] [SUCCESS] Research grade: True
+[19:11:00] [SUCCESS] Step step_04_04_distance_duality completed successfully

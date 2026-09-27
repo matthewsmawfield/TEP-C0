@@ -1,8 +1,8 @@
 environment,description,g_m_s2,screening_factor,beta_eff,gamma,gamma_deviation_sigma,ppn_test_environment,passes_cassini
 solar_surface,"Sun surface, r=R_sun",274.2084034394405,0.0,-0.0,1.0,0.0,False,
-solar_wind_saturn,"Saturn orbit (~9.5 AU), Cassini path",6.570928358165676e-05,0.0,-0.0,1.0,0.0,True,True
-solar_wind_earth,Earth orbit (1 AU),0.005930262843244523,0.0,-0.0,1.0,0.0,True,True
-mercury_orbit,Mercury orbit (~0.39 AU),0.03898923631324473,0.0,-0.0,1.0,0.0,True,True
+solar_wind_saturn,"Saturn orbit (~9.5 AU), Cassini path",6.570928358165676e-05,0.0,-0.0,0.9999999991,-0.0,True,True
+solar_wind_earth,Earth orbit (1 AU),0.005930262843244523,0.0,-0.0,1.0,-0.0,True,True
+mercury_orbit,Mercury orbit (~0.39 AU),0.03898923631324473,0.0,-0.0,1.0,-0.0,True,True
 earth_surface,"Earth surface, r=R_earth",9.820302293385645,0.0,-0.0,1.0,0.0,False,
-galactic_halo,Galactic halo virial radius,3.5e-10,0.890869,-0.890869,-0.5872937138,-69012.77,False,
-wide_binary,Wide binary / deep MOND regime,1.2e-10,0.985804,-0.985804,-0.9436206948,-84505.25,False,
+galactic_halo,Galactic halo virial radius,3.5e-10,0.890869,-0.890869,-0.2810248199,-55696.73,False,
+wide_binary,Wide binary / deep MOND regime,1.2e-10,0.985804,-0.985804,-0.3269639066,-57694.08,False,

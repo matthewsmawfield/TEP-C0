@@ -1,16 +1,16 @@
-[01:51:02] [INFO] 
-[01:51:02] [INFO] ================================================================================
-[01:51:02] [INFO]    Starting step_01_01_data_download
-[01:51:02] [INFO] ================================================================================
-[01:51:02] [INFO] 
-[01:51:02] [INFO] Downloading 4 sources in parallel
-[01:51:02] [PROCESS] Processing source: pantheon_plus_distances
-[01:51:02] [PROCESS] Processing source: firas_cmb_monopole
-[01:51:02] [PROCESS] Processing source: bao_uncorrelated_compilation
-[01:51:02] [PROCESS] Processing source: bbn_open_review
-[01:51:03] [SUCCESS] Downloaded bao_uncorrelated_compilation
-[01:51:03] [SUCCESS] Downloaded pantheon_plus_distances
-[01:51:03] [SUCCESS] Downloaded firas_cmb_monopole
-[01:51:04] [INFO] Download progress: 73.6% (1.0MB/1.4MB)
-[01:51:04] [SUCCESS] Downloaded bbn_open_review
-[01:51:04] [SUCCESS] Step step_01_01_data_download completed successfully
+[04:51:58] [INFO] 
+[04:51:58] [INFO] ================================================================================
+[04:51:58] [INFO]    Starting step_01_01_data_download
+[04:51:58] [INFO] ================================================================================
+[04:51:58] [INFO] 
+[04:51:58] [INFO] Downloading 4 sources in parallel
+[04:51:58] [PROCESS] Processing source: pantheon_plus_distances
+[04:51:58] [PROCESS] Processing source: firas_cmb_monopole
+[04:51:58] [PROCESS] Processing source: bao_uncorrelated_compilation
+[04:51:58] [PROCESS] Processing source: bbn_open_review
+[04:51:59] [SUCCESS] Downloaded bao_uncorrelated_compilation
+[04:51:59] [SUCCESS] Downloaded firas_cmb_monopole
+[04:52:00] [SUCCESS] Downloaded pantheon_plus_distances
+[04:52:01] [INFO] Download progress: 71.1% (1.0MB/1.4MB)
+[04:52:01] [SUCCESS] Downloaded bbn_open_review
+[04:52:01] [SUCCESS] Step step_01_01_data_download completed successfully

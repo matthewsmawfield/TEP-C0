@@ -64,6 +64,7 @@ PIPELINE_STEPS = [
     ("step_05_08_cmb_acoustic", "Cmb acoustic", ["step_05_03_cmb_boltzmann"]),
     ("step_05_09_minimal_perturbations", "Minimal perturbations", []),
     ("step_05_10_jordan_frame_proof", "Jordan frame proof", []),
+    ("step_05_11_acoustic_gate_consistency", "Acoustic gate consistency", ["step_05_10_jordan_frame_proof", "step_03_05_analyze_cobaya"]),
     ("step_06_01_bao_projection", "Bao projection", ["step_03_01_three_model_comparison"]),
     ("step_06_02_bao_likelihood", "Bao likelihood", ["step_03_01_three_model_comparison"]),
     ("step_06_03_growth_solver", "Growth solver", ["step_03_01_three_model_comparison"]),

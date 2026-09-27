@@ -2,9 +2,11 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20370143.svg)](https://doi.org/10.5281/zenodo.20370143)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
-**Status:** In Development
+**Status:** Preprint
+**Version:** v0.3 (Athens)  
+**First published:** 5 July 2026 · **Last updated:** 16 September 2026
 **DOI:** [10.5281/zenodo.20370143](https://doi.org/10.5281/zenodo.20370143)
 
 ## Abstract
@@ -244,7 +246,7 @@ If using this pipeline, please cite:
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file.
+CC-BY-4.0 - see [LICENSE](LICENSE) file.
 
 ## Status
 

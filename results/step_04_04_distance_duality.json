@@ -137,7 +137,7 @@
     "blockers": [
       "BAO D_A is model-dependent (fiducial LCDM r_s). LCDM compilation: \u03b7=0.866\u00b10.020 (6.6\u03c3 from 1); TEP compilation: \u03b7=0.846\u00b10.019 (8.2\u03c3 from 1). Both violate \u03b7=1 because BAO D_A assumes LCDM. Not a model discriminator."
     ],
-    "claim_gate": "blocked",
+    "claim_gate": "non_discriminating",
     "real_data": true,
     "research_grade_distance_duality": true
   }

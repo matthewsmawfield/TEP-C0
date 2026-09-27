@@ -54,9 +54,9 @@
     {
       "processed_bytes": 1333,
       "processed_path": "data/processed/tep_c0_bbn_abundance_registry.csv",
-      "processed_sha256": "9603d168f2df13c0cb8eaad59e232fa05d8f34090c58b81a3be74cd5da1fbbe2",
+      "processed_sha256": "461feb49022870bead645bd3493a9839b340c0c734023e1f211707bfaf7198c5",
       "raw_path": "data/raw/bbn_frontiers_2020_review.html",
-      "raw_sha256": "01029ffb899686002d1f2b7d31c68235fb7690f2bc165f5bad1e043f68465315",
+      "raw_sha256": "ca5721a1914425ccd2e6e4cf69029eefebf8aaaa316cf70546962564cc64421f",
       "source_id": "bbn_open_review"
     }
   ],

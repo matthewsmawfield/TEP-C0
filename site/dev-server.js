@@ -14,7 +14,7 @@ class DevServer {
     this.liveServerProcess = null;
     this.watcherReady = false;
     this.watcherRestarting = false;
-    this.port = 51815; // Unique port for TEP-C0
+    this.port = 55526; // Unique port for TEP-C0 (Paper 26)
   }
 
   async killPortProcess() {

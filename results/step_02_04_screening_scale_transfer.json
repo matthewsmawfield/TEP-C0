@@ -1,20 +1,186 @@
 {
-  "allowed_parameter_range": {
-    "E_max": 1.6919480593296485e-23,
-    "E_min": 1.6919480593296486e-25,
-    "coarse_graining_max_pc": 1000.0,
-    "coarse_graining_min_pc": 10.0
+  "R_T_earth_km": 4146.406844580469,
+  "R_T_within_measured_band": true,
+  "cassini": {
+    "S_Sigma_saturn": 2.73609467447481e-11,
+    "passes": true,
+    "required_max": 5.8e-06
   },
-  "coarse_graining_length_cm": 3.086e+20,
-  "coarse_graining_length_pc": 100.0,
-  "description": "Micro-to-galactic screening scale transfer",
-  "dimensionless_density_variable_E": 1.6919480593296486e-24,
-  "interpretation": "The micro-to-galactic screening relation is not an arbitrary second scale; it is the coarse-grained projection of the same saturation law under astrophysical averaging.",
-  "renormalization_factor": 1.6919480593296486e-26,
-  "rho_c_micro_Msun_pc3": 2.9551734596279536e+23,
-  "rho_c_micro_g_cm3": 20.0,
-  "rho_half_galactic_Msun_pc3": 0.5,
+  "category_error_check": {
+    "evaluation": "ambient-density channel at Earth's MATERIAL density 5.51 g/cm^3",
+    "result_S": 3.7696355717939005e-47,
+    "verdict": "out-of-domain substitution: the density argument of S_Sigma is the coarse-grained environmental mean of the region, not the material density of an embedded body (Paper 0 Section 7: projections are not interchangeable). The correct ambient inputs give S_Sigma ~ 1e-21 via the gradient channel; the body's own material density enters the S_A sector through S_geom = 0.65 instead."
+  },
+  "compton_bridge_quartic": {
+    "ISM": {
+      "lambda_C_cm": 3.086e+18,
+      "lambda_C_km": 30860000000000.0,
+      "lambda_C_pc": 1.0,
+      "rho_g_cm3": 1.7e-24
+    },
+    "cosmic_mean": {
+      "lambda_C_cm": 2.3202007619442754e+20,
+      "lambda_C_km": 2320200761944275.5,
+      "lambda_C_pc": 75.18472981024871,
+      "rho_g_cm3": 4e-30
+    },
+    "rho_T_material": {
+      "lambda_C_cm": 13568616368.280155,
+      "lambda_C_km": 135686.16368280156,
+      "lambda_C_pc": 4.396829672158184e-09,
+      "rho_g_cm3": 20.0
+    },
+    "rho_half_galactic": {
+      "lambda_C_cm": 1.1387939067596873e+18,
+      "lambda_C_km": 11387939067596.873,
+      "lambda_C_pc": 0.3690194124302292,
+      "rho_g_cm3": 3.382994426883083e-23
+    },
+    "solar_interior": {
+      "lambda_C_cm": 6931839138.361761,
+      "lambda_C_km": 69318.3913836176,
+      "lambda_C_pc": 2.2462213669351137e-09,
+      "rho_g_cm3": 150.0
+    },
+    "void": {
+      "lambda_C_cm": 1.1368921204804233e+19,
+      "lambda_C_km": 113689212048042.33,
+      "lambda_C_pc": 3.684031498640387,
+      "rho_g_cm3": 3.4e-26
+    },
+    "white_dwarf": {
+      "lambda_C_cm": 368308913.0287767,
+      "lambda_C_km": 3683.089130287767,
+      "lambda_C_pc": 1.1934831919273386e-10,
+      "rho_g_cm3": 1000000.0
+    }
+  },
+  "description": "Two-sector screening evaluation: rho_T (material saturation, S_A geometric sector) and rho_half (ambient half-suppression, S_Sigma density channel) parameterize different response projections of one scalar configuration",
+  "earth_two_sector": {
+    "S_A_geometric_sector": 0.6506896034271621,
+    "S_Sigma_shear_sector": 1.201212434834745e-21,
+    "reading": "S_Sigma(Earth) ~ 1e-21: shear/source-charge sector screened, as Cassini, LLR and Eoetvoes require. S_A(Earth) ~ 0.65: clock-amplitude sector at the geometric transition \u2014 the channel in which the GNSS clock-covariance signal is detected (Papers 1/14/33). The two are distinct projections of one scalar configuration; the ~24-order separation of rho_T and rho_half is the physical hierarchy between solid-matter and cosmic ambient densities, not an inconsistency."
+  },
+  "environments_S_Sigma": {
+    "cosmic_mean": {
+      "S_Sigma": 0.9991356957648954,
+      "density_term": 1.3980329842582535e-14,
+      "g_m_s2": 1e-11,
+      "kinetic_term": 0.0008650519031141867,
+      "note": "homogeneous background: S_Sigma -> 1",
+      "rho_ambient_g_cm3": 4e-30,
+      "shear_ratio_g_over_a_t": 0.02941176470588235
+    },
+    "cosmic_void": {
+      "S_Sigma": 0.9991346874323721,
+      "density_term": 1.010078831126588e-06,
+      "g_m_s2": 1e-11,
+      "kinetic_term": 0.0008650519031141867,
+      "note": "ambient density and shear both below thresholds",
+      "rho_ambient_g_cm3": 3.4e-26,
+      "shear_ratio_g_over_a_t": 0.02941176470588235
+    },
+    "earth_orbit_1AU": {
+      "S_Sigma": 3.287368938913507e-15,
+      "density_term": 0.0873770615161408,
+      "g_m_s2": 0.00593,
+      "kinetic_term": 304194636678200.75,
+      "note": "Solar acceleration at 1 AU",
+      "rho_ambient_g_cm3": 1e-23,
+      "shear_ratio_g_over_a_t": 17441176.470588237
+    },
+    "earth_surface": {
+      "S_Sigma": 1.201212434834745e-21,
+      "density_term": 0.0873770615161408,
+      "g_m_s2": 9.81,
+      "kinetic_term": 8.32492214532872e+20,
+      "note": "body surface; density channel ~unsuppressed, gradient channel dominates",
+      "rho_ambient_g_cm3": 1e-23,
+      "shear_ratio_g_over_a_t": 28852941176.47059
+    },
+    "galactic_disk": {
+      "S_Sigma": 0.47068403908794787,
+      "density_term": 1.0,
+      "g_m_s2": 1.2e-10,
+      "kinetic_term": 0.12456747404844289,
+      "note": "halo/disk habitat: BOTH channels transitional",
+      "rho_ambient_g_cm3": 3.382994426883083e-23,
+      "shear_ratio_g_over_a_t": 0.3529411764705882
+    },
+    "saturn_orbit_9p5AU": {
+      "S_Sigma": 2.73609467447481e-11,
+      "density_term": 0.0873770615161408,
+      "g_m_s2": 6.5e-05,
+      "kinetic_term": 36548442906.57439,
+      "note": "Cassini conjunction environment",
+      "rho_ambient_g_cm3": 1e-23,
+      "shear_ratio_g_over_a_t": 191176.47058823527
+    },
+    "solar_surface": {
+      "S_Sigma": 1.5397730299962706e-24,
+      "density_term": 0.0873770615161408,
+      "g_m_s2": 274.0,
+      "kinetic_term": 6.494463667820068e+23,
+      "note": "deep heliospheric gradient",
+      "rho_ambient_g_cm3": 1e-23,
+      "shear_ratio_g_over_a_t": 805882352941.1764
+    },
+    "wide_binary": {
+      "S_Sigma": 0.47068403908794787,
+      "density_term": 1.0,
+      "g_m_s2": 1.2e-10,
+      "kinetic_term": 0.12456747404844289,
+      "note": "deep-MOND acceleration regime",
+      "rho_ambient_g_cm3": 3.382994426883083e-23,
+      "shear_ratio_g_over_a_t": 0.3529411764705882
+    }
+  },
+  "geometric_S_A_factors": {
+    "earth": {
+      "S_geom": 0.6506896034271621,
+      "regime": "transitional (S_A clock channel active)",
+      "rho_bar_g_cm3": 5.51
+    },
+    "moon": {
+      "S_geom": 0.5506878446387353,
+      "regime": "transitional (S_A clock channel active)",
+      "rho_bar_g_cm3": 3.34
+    },
+    "neutron_star": {
+      "S_geom": 27144.17616594905,
+      "regime": "saturated interior (S_A suppressed)",
+      "rho_bar_g_cm3": 400000000000000.0
+    },
+    "sun": {
+      "S_geom": 0.4131074612832676,
+      "regime": "transitional (S_A clock channel active)",
+      "rho_bar_g_cm3": 1.41
+    },
+    "ucd_compact": {
+      "S_geom": 7.937005259840997,
+      "regime": "saturated interior (S_A suppressed)",
+      "rho_bar_g_cm3": 10000.0
+    },
+    "white_dwarf": {
+      "S_geom": 36.84031498640386,
+      "regime": "saturated interior (S_A suppressed)",
+      "rho_bar_g_cm3": 1000000.0
+    }
+  },
+  "interpretation": "The GNSS clock-covariance signal lives in the S_A (clock-amplitude) sector at the geometric transition S ~ 0.65, while the shear sector is screened to S_Sigma ~ 1e-21 at Earth's surface by the gradient channel of the same covariant operator. No contradiction: different response functionals, one field configuration.",
+  "lambda_T_measured_km": [
+    3330.0,
+    4549.0
+  ],
+  "scales": {
+    "a_t_m_s2": 3.4e-10,
+    "hierarchy_rho_T_over_rho_half": 5.9119222429304944e+23,
+    "n": 2.0,
+    "rho_T_g_cm3": 20.0,
+    "rho_half_Msun_pc3": 0.5,
+    "rho_half_g_cm3": 3.382994426883083e-23
+  },
   "status": "completed",
   "step": "step_02_04_screening_scale_transfer",
-  "timestamp": 1781916667
+  "timestamp": 1790192745
 }

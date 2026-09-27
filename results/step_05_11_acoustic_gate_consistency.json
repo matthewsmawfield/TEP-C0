@@ -1,0 +1,23 @@
+{
+  "step": "step_05_11_acoustic_gate_consistency",
+  "description": "Consistency of the EdS acoustic-scale recovery amplitude with the joint-fit homogeneous shear bound; both are the same tep_epsilon_T functional of the patched-CLASS engine evaluated on different background branches",
+  "eds_diagnostic_branch": {
+    "source": "step_05_10_jordan_frame_proof.json",
+    "background": "Einstein-de Sitter (Omega_m=1.0, Omega_Lambda=0.0)",
+    "epsilon_T_hom": 0.018000000000000002,
+    "100_theta_s": 1.0433048454728124,
+    "role": "counterfactual existence proof: the acoustic scale does not mathematically require Lambda under the TEP Jordan-frame mapping"
+  },
+  "physical_joint_fit_branch": {
+    "source": "step_03_05_analyze_cobaya.json",
+    "epsilon_T_cmb_mean": -0.0015300388975057343,
+    "epsilon_T_cmb_std": 0.003665948766632006,
+    "role": "homogeneous acoustic-sector amplitude measured on the LambdaCDM-compatible background selected by Pantheon+ + Planck TTTEEE"
+  },
+  "same_functional": true,
+  "functional_note": "Both runs set the identical patched-CLASS parameter tep_epsilon_T; the amplitudes are the same functional of the same field evaluated on different background branches and therefore cannot be realized simultaneously on a single background.",
+  "branch_tension_sigma": 5.327417304701846,
+  "gate_classification": "counterfactual_existence_proof_on_eds_branch",
+  "physical_branch_acoustic_safety": "supplied by conformal preservation (TEP-HC hi_class Boltzmann closure, r_s^TEP / r_s^LCDM = 0.999994), not by the EdS-diagnostic amplitude",
+  "open_item": "A full Planck TTTEEE confrontation of the no-Lambda homogeneous-shear branch (not only theta_s) is required to promote the matter-only acoustic recovery beyond an existence proof; this depends on the temporal-horizon closure developed in TEP-TH."
+}

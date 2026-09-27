@@ -25,7 +25,7 @@
                 <td>No primitive $\Lambda$ required</td>
                 <td>Passed at SNe late-time level</td>
                 <td>No-$\Lambda$ TEP beats $\Lambda$CDM with same covariance and no host-mass nuisance</td>
-                <td>BF = 4.6 ($z_{\rm los}=5$, conservative); BF = 61.8 ($z_{\rm los}=100$ benchmark); BF = 40.3 (free $z_{\rm los}$)</td>
+                <td>BF = 4.2 ($z_{\rm los}=5$, conservative admissible branch; identical-model control $\Delta\ln\mathcal{Z}=-0.29$, prior range 5.0–13.4, BF $\approx0.8$ without the $z<0.023$ anchors); BF = 35.8 ($z_{\rm los}=100$ shape benchmark — transport active on all sightlines); BF = 33.1 (free $z_{\rm los}$, best fit $z_{\rm los}\simeq137$, same benchmark class)</td>
             </tr>
             <tr>
                 <td>$\Lambda$CDM null injection falsification</td>
@@ -41,9 +41,9 @@
             </tr>
             <tr>
                 <td>Matter-frame acoustic proof</td>
-                <td>Passed</td>
+                <td>Counterfactual existence proof on the EdS diagnostic branch</td>
                 <td>CMB acoustic scale preserved in matter-only EdS background</td>
-                <td>$100\theta_s = 1.0433$ at $\epsilon_T = 0.018$ (0.3% of Planck)</td>
+                <td>$100\theta_s = 1.0433$ at $\epsilon_T^{\rm hom} = 0.018$ (0.3% of Planck). The required amplitude is the same <code>tep_epsilon_T</code> functional bounded to $-0.0015 \pm 0.0037$ by the joint fit ($5.3\sigma$ separation, Step 05-11): the EdS branch demonstrates that $\theta_s$ does not mathematically require $\Lambda$, not that the physical background is matter-only. The physical branch passes acoustic safety via conformal preservation (TEP-HC).</td>
             </tr>
             <tr>
                 <td>Big Bang as temporal horizon</td>
@@ -61,7 +61,7 @@
                 <td>CMB acoustic safety</td>
                 <td>Passed at background/acoustic level</td>
                 <td>$r_s^{\rm TEP}/r_s^{\Lambda{\rm CDM}}\approx1$</td>
-                <td>TEP-HC (Paper 18): $0.999994$ at Boltzmann level; C0: matter-frame proof gives $100\theta_s = 1.0433$ at $\epsilon_T = 0.018$ (0.3% of Planck), independent existence proof</td>
+                <td>TEP-HC (Paper 18): $0.999994$ at Boltzmann level — the operative physical-branch gate; C0: matter-frame EdS diagnostic gives $100\theta_s = 1.0433$ at $\epsilon_T^{\rm hom} = 0.018$ (0.3% of Planck), a counterfactual existence proof on a branch the joint fit excludes ($5.3\sigma$, Step 05-11)</td>
             </tr>
             <tr>
                 <td>Linear pure-conformal scalar perturbation safety</td>
@@ -91,11 +91,11 @@
                 <td>Growth amplitude</td>
                 <td>Passed in TEP-HC; imported by C0</td>
                 <td>TEP-HC hi_class Boltzmann closure: $\sigma_8 = 0.825 \pm 0.016$; Planck: $0.811 \pm 0.006$.</td>
-                <td>TEP-HC (Paper 18) derives this from the full hi_class SMG EFT solver with runtime Bellini-Sawicki mappings ($\alpha_M = -2\alpha_A$, $\alpha_B = 2\alpha_A$). C0 imports and cross-checks the active perturbation outputs; it does not independently derive $\sigma_8$ from first principles. Full non-linear matter-only structure formation is not a C0 claim.</td>
+                <td>TEP-HC (Paper 18) evaluates this using the full hi_class SMG EFT solver with the adopted runtime Jordan-frame Bellini-Sawicki mapping ($\alpha_M = -2\alpha_A$, $\alpha_B = 2\alpha_A$). C0 imports and cross-checks the active perturbation outputs; it does not independently derive $\sigma_8$ from first principles. Full non-linear matter-only structure formation is not a C0 claim.</td>
             </tr>
             <tr>
                 <td>Distance duality</td>
-                <td>Blocked</td>
+                <td>Non-discriminating</td>
                 <td>$\Lambda$CDM compilation $\eta = 0.866 \pm 0.020$ (6.6$\sigma$); TEP compilation $\eta = 0.846 \pm 0.019$ (8.2$\sigma$)</td>
                 <td>Both compilations violate $\eta=1$ because the BAO $D_A$ values assume a fiducial $\Lambda$CDM sound horizon $r_s$. Not a model discriminator. TEP-native re-analysis with $r_s$-independent $D_A$ probes (Step 04-10, 9 points) gives $\eta = 0.797 \pm 0.031$ ($-6.6\sigma$), but sample is small and systematics dominate; inconclusive.</td>
             </tr>
@@ -103,7 +103,7 @@
                 <td>Solar System PPN</td>
                 <td>Passed within the implemented EFT screening realization</td>
                 <td>Cassini: $\gamma = 1.000000 \pm 0.000023$</td>
-                <td>Unsuppressed TEP predicts $\gamma = -1$ (ruled out $\sim$87 000$\sigma$). Lorentzian source-suppression leaves $\sim$1 700$\sigma$ gap. The unified covariant operator $\mathcal{S}_\Sigma(\mathcal{E})$ derived in Section 2.4 reduces to gradient-dependent suppression $f(g) = [1+(g/g_t)^n]^{-1}$ in the Solar System, with $g = |\nabla\Phi|$, $g_t = 1.0 \times 10^{-9}$ m s$^{-2}$, $n = 2$.  Heliosphere suppression ($\mathcal{S}_\Sigma \approx 0$ at $g \sim 10^{-5}$ m s$^{-2}$) gives $\gamma = 1.000000$, safely below Cassini. Earth surface is strongly suppressed (Eötvös satisfied). Galactic halos and wide binaries ($g \sim 10^{-10}$ m s$^{-2}$) retain $\sim$98% of their unsuppressed temporal shear, preserving growth and anomaly predictions.  Because $S(\rho)$ and $f(g)$ are limits of the same covariant expression $\mathcal{S}_\Sigma(\mathcal{E})$, the suppression threshold is not tuned independently across scales.  The Bellini--Sawicki EFT mapping used by C0 is implemented in Section 2.4 and cross-checked against the PPN and TEP-HC growth gates.</td>
+                <td>Unsuppressed TEP predicts $\gamma - 1 = -4/3$ (ruled out $\sim$58 000$\sigma$). Lorentzian source-suppression leaves a $\sim$19 200$\sigma$ gap (Step 04-09). The unified covariant operator $\mathcal{S}_\Sigma(\mathcal{E})$ derived in Section 2.5 reduces to gradient-dependent suppression $f(g) = [1+(g/g_t)^n]^{-1}$ in the Solar System, with $g = |\nabla\Phi|$, $g_t \approx 3.4 \times 10^{-10}$ m s$^{-2}$ (the cosmological horizon scale $cH_0/2$, matching the SPARC-derived $g_{\rm TEP} \approx 5 \times 10^{-10}$ m s$^{-2}$), $n = 2$.  Heliosphere suppression ($\mathcal{S}_\Sigma \approx 0$ at $g \sim 10^{-5}$ m s$^{-2}$) gives $\gamma = 1.000000$, safely below Cassini. Earth surface is strongly suppressed (Eötvös satisfied). Galactic halos and wide binaries ($g \sim 10^{-10}$ m s$^{-2}$) retain $\sim$98% of their unsuppressed temporal shear, preserving growth and anomaly predictions.  Because $S(\rho)$ and $f(g)$ are limits of the same covariant expression $\mathcal{S}_\Sigma(\mathcal{E})$, the suppression threshold is not tuned independently across scales.  The suppressed shear sector at Earth ($\mathcal{S}_\Sigma \approx 10^{-21}$) coexists with the transitional clock-amplitude sector ($S_\oplus \approx 0.65$) that carries the GNSS signal, the two being distinct projections of one configuration.  The microscopic derivation remains open in Paper 0 (v0.14); the quartic density-dependent-mass completion $V = \lambda\phi^4/4$ is retained as a candidate realization.  The adopted Jordan-frame Bellini--Sawicki EFT mapping used by C0 is implemented in Section 2.5 and cross-checked against the PPN and TEP-HC growth gates.</td>
             </tr>
             <tr>
                 <td>Tolman surface brightness</td>
@@ -118,13 +118,13 @@
         The empirical findings and their interpretations form a strict hierarchy of evidence:
     </p>
     <ul>
-        <li><strong>No Primitive Expansion Required by the Tested Background Data:</strong> The exact conformal reconstruction M2 proves that the Pantheon+ homogeneous distance-redshift relation does not uniquely require primitive expansion of the spatial metric. The physical no-$\Lambda$ temporal-shear branch M1 with $z_{\rm los}=5$ improves the Pantheon+ likelihood by $\Delta\chi^2\simeq-3.4$ relative to baseline $\Lambda$CDM using the same 1,701-supernova covariance structure and no fitted host-mass-step nuisance parameter. The expansion interpretation is therefore underdetermined by the SNe background data; the temporal-transport distance law is observationally degenerate with $\Lambda$CDM at the background level, and modestly preferred (BF approximately 4.6) for the physically motivated $z_{\rm los}=5$ model.</li>
+        <li><strong>No Primitive Expansion Required by the Tested Background Data:</strong> The exact conformal reconstruction M2 demonstrates that the Pantheon+ homogeneous distance-redshift relation does not uniquely require primitive expansion of the spatial metric. The physical no-$\Lambda$ temporal-shear branch M1 with $z_{\rm los}=5$ improves the Pantheon+ likelihood by $\Delta\chi^2\simeq-3.4$ relative to baseline $\Lambda$CDM using the same 1,701-supernova covariance structure and no fitted host-mass-step nuisance parameter. The expansion interpretation is therefore underdetermined by the SNe background data; the temporal-transport distance law is observationally degenerate with $\Lambda$CDM at the background level, and modestly preferred (BF approximately 4.2, reported with the demonstrated identical-model noise floor $|\Delta\ln\mathcal{Z}|\lesssim0.3$, prior sensitivity 5.0–13.4, and the $z<0.023$ removal qualifier BF $\approx0.8$) for the physically motivated $z_{\rm los}=5$ model.</li>
         <li><strong>No primitive dark energy required in the tested late-time sector (interpretive claim):</strong> The M1 branch achieves a comparable standardized-supernova fit with $\Omega_\Lambda=0$, replacing vacuum-energy acceleration with temporal-shear transport in the late-time distance-redshift relation. This is an interpretive inference, not an empirical falsification of $\Lambda$: because M1 and $\Lambda$CDM produce nearly identical distance moduli, the SNe data alone cannot distinguish the physical mechanism. The result demonstrates that apparent acceleration can be reconstructed without a primitive dark-energy component, not that $\Lambda$ is absent.</li>
         <li><strong>No Physical Big Bang Singularity in the Conformal Reconstruction:</strong> In the TEP mapping, the limit conventionally written as $a\to0$ is re-expressed as $A_{\text{clock}}\to0$: a TEP temporal-horizon boundary of observational clock transport, not a zero-volume spatial singularity. The C0 paper establishes the conformal reconstruction and identifies the singular origin as an artefact of imposing an integrable FLRW clock foliation. The temporal-horizon background and linear-mode closure are supplied by companion papers TEP-TH and TEP-HC; C0 imports and cross-checks the TEP-HC linear-growth output while focusing on the empirical supernova-sector test. The nonsingular temporal-horizon boundary conditions for the hot early thermal sector are developed in TEP-TH (Paper 27).</li>
         <li><strong>Particle Dark Matter (Corpus Implication):</strong> Although the current pipeline focuses on the cosmological background and macroscopic bounds, the broader TEP corpus develops the claim that local gradients of this same temporal field modify effective gravitational potentials. This provides the theoretical foundation for replacing particle dark matter with geometric temporal shear in galactic and cluster environments.</li>
     </ul>
     <p>
-        The reproducible pipeline provides a robust, formally closed supernova-sector Bayesian framework demonstrating that conformal transport is a viable alternative to the standard expanding universe in the tested background sector. TEP-HC (Paper 18) has established that the linear perturbation sector is formally closed through the exact Bellini-Sawicki EFT mapping, yielding $\sigma_8 \approx 0.825$ in agreement with Planck and weak-lensing measurements. The conformal-frame Hubble friction and scale-dependent fifth-force screening are derived directly from the TEP covariant action and implemented without phenomenological suppression factors. Non-linear structure formation is not a C0 claim. Host-environment reconstruction across the full multi-probe dataset is a corpus-level target beyond the SNe-only scope of C0. The nonsingular temporal-horizon boundary conditions for the hot early thermal sector are developed in TEP-TH (Paper 27). By asserting that time itself is a dynamical field, the framework provides a testable path forward for precision cosmology.
+        The reproducible pipeline provides a robust supernova-sector Bayesian framework demonstrating that conformal transport is a viable alternative to the standard expanding universe in the tested background sector. TEP-HC (Paper 18) has established that the linear perturbation sector is closed through the adopted Jordan-frame Bellini-Sawicki EFT mapping, yielding $\sigma_8 \approx 0.825$ in agreement with Planck and weak-lensing measurements. The conformal-frame Hubble friction and scale-dependent Temporal Shear screening are derived directly from the TEP covariant action and implemented without phenomenological suppression factors. Non-linear structure formation is not a C0 claim. Host-environment reconstruction across the full multi-probe dataset is a corpus-level target beyond the SNe-only scope of C0. The nonsingular temporal-horizon boundary conditions for the hot early thermal sector are developed in TEP-TH (Paper 27). By asserting that time itself is a dynamical field, the framework provides a testable path forward for precision cosmology.
     </p>
 
     <h2>Acknowledgments and Disclosures</h2>
