@@ -5,7 +5,9 @@ Mini-analysis comparing four models for the Pantheon+ host-mass step:
 
 1. LCDM no mass step
 2. LCDM fitted mass step
-3. TEP locked mass step (alpha_log = -7.66e-3 fixed)
+3. TEP locked mass step (canonical nested clock-rate prediction:
+   kappa_SN * Delta_X with X = S_env * S_A * sigma^2 / c^2, no fitted
+   amplitude; retired logarithmic ansatz removed)
 4. TEP fitted residual environmental term
 
 Outputs:
@@ -42,7 +44,6 @@ from core.cosmology import CosmologyFLRW, TEPCosmology
 
 STEP_ID = "step_04_08_host_mass_step_prediction"
 
-ALPHA_LOG = -7.66e-3  # Locked lab-scale coupling
 HOST_MASS_THRESHOLD = 10.0  # log(M*/Msun)
 
 
@@ -163,55 +164,88 @@ def run() -> dict:
     chi2_2 = res2.fun
     gamma_fitted = float(res2.x[2])
 
-    # --- Model 3: TEP locked mass step ---
-    # Compute predicted offset from scalar field solver using realistic
-    # galaxy parameters instead of the hand-waved ln(100) mass ratio.
-    from core.scalar_field import solve_scalar_field_cylinder
-    from core.screening import screening_factor
+    # --- Model 3: TEP locked mass step (canonical nested clock-rate prediction) ---
+    # Per Rule 22 the SN clock rate is the nested total: ambient
+    # environmental baseline + screened host well.  The corpus's derived
+    # environmental coordinate (Paper 11 convention) is
+    #     X = S_env * sigma^2 / c^2,
+    # where sigma^2 = G M / (2 R_eff) is the host virial depth and S_env
+    # is the ambient (group-halo) screening factor encoding the nested
+    # baseline difference between environments.  The amplitude-sector
+    # projection
+    #     S_A = min[1, (sigma / sigma_T)^{2/3}],   sigma_T = 65 km/s
+    # (Paper 0 amplitude sector S_A = min[1,(rho/rho_T)^{1/3}] evaluated
+    # on the depth proxy sigma^2; sigma_T selected at 65 km/s by the
+    # TEP-H0 step_52 model comparison) suppresses the response for
+    # shallow hosts.  The magnitude offset follows from the response-
+    # sector coefficient kappa_SN; because both ladder channels respond
+    # to the same nested field, the frozen Cepheid-equivalent value
+    # kappa_equiv = 3.69e5 mag (TEP-H0 step_44 redshift-only channel,
+    # canonical sigma_v = 250 km/s convention) is adopted with no fitted
+    # nuisance parameter.
     from core import constants as tep_const
 
-    def galaxy_density_g_cm3(log_mass_solar, r_eff_kpc):
-        """Estimate average stellar density from total mass and effective radius."""
+    KAPPA_SN = 3.69e5          # mag; frozen kappa_Cep-equivalent benchmark
+    SIGMA_T_SA = 65.0          # km/s; amplitude-sector scale (step_52)
+
+    def host_sigma_kms(log_mass_solar, r_eff_kpc):
+        """Virial depth coordinate sigma^2 = G M / (2 R_eff)."""
         mass_kg = 10.0 ** log_mass_solar * tep_const.M_SUN
-        r_eff_m = r_eff_kpc * 1000.0 * tep_const.MPC_TO_M / 1e6  # kpc -> m
-        # Assume spherical volume ~ 4/3 pi r_eff^3 for order-of-magnitude estimate
-        vol_m3 = (4.0 / 3.0) * np.pi * r_eff_m ** 3
-        rho_kg_m3 = mass_kg / vol_m3
-        return rho_kg_m3 / 1000.0  # kg/m^3 -> g/cm^3
+        r_eff_m = r_eff_kpc * tep_const.MPC_TO_M / 1e3  # kpc -> m
+        return np.sqrt(tep_const.G_NEWTON * mass_kg / (2.0 * r_eff_m)) / 1e3
 
-    # Typical high-mass host: logM ~ 11.0, r_eff ~ 5 kpc
-    rho_high = galaxy_density_g_cm3(11.0, 5.0)
-    # Typical low-mass host: logM ~ 9.5, r_eff ~ 2 kpc
-    rho_low = galaxy_density_g_cm3(9.5, 2.0)
+    def S_A_of_sigma(sigma_kms):
+        """Amplitude-sector response on the depth proxy."""
+        return min(1.0, (sigma_kms / SIGMA_T_SA) ** (2.0 / 3.0))
 
-    # Include screening at galactic densities
-    screen_high = screening_factor(rho_high, tep_const.RHO_T)
-    screen_low = screening_factor(rho_low, tep_const.RHO_T)
+    def S_env_group(n_mb):
+        """Ambient group-halo screening (TEP-H0 convention, N_crit=10,
+        gamma=1.2); encodes the nested environmental baseline."""
+        return 1.0 / (1.0 + (n_mb / 10.0) ** 1.2)
 
-    phi_high, _ = solve_scalar_field_cylinder(
-        total_mass_kg=10.0 ** 11.0 * tep_const.M_SUN,
-        radius_m=5.0 * 1000.0 * tep_const.MPC_TO_M / 1e6,
-        height_m=5.0 * 1000.0 * tep_const.MPC_TO_M / 1e6,
-        density_g_cm3=rho_high,
-    )
-    phi_low, _ = solve_scalar_field_cylinder(
-        total_mass_kg=10.0 ** 9.5 * tep_const.M_SUN,
-        radius_m=2.0 * 1000.0 * tep_const.MPC_TO_M / 1e6,
-        height_m=2.0 * 1000.0 * tep_const.MPC_TO_M / 1e6,
-        density_g_cm3=rho_low,
-    )
+    # Representative host classes
+    sigma_high = host_sigma_kms(11.0, 5.0)   # massive host ~ 207 km/s
+    sigma_low = host_sigma_kms(9.5, 2.0)     # low-mass host ~ 58 km/s
 
-    # Clock-rate ratio A(phi_high)/A(phi_low) = exp(beta_A * (phi_high - phi_low))
-    # Magnitude shift: Delta_mu = -2.5 * log10(A_high / A_low)
-    #                  = -2.5 * beta_A * (phi_high - phi_low) / ln(10)
-    #                  = -1.0857 * beta_A * (phi_high - phi_low)
-    # With beta_A = -1.0 (from constants), and phi_high < phi_low (higher density -> more negative phi):
-    # Delta_mu ~ -1.0857 * (-1.0) * (negative) = negative (high-mass hosts brighter)
+    # Ambient nesting: massive hosts preferentially occupy group/cluster
+    # environments.  Fiducial Tully-group richness values are adopted for
+    # the two classes; the isolated-depth bound (S_env = 1) is reported
+    # alongside as the upper envelope.
+    senv_high = S_env_group(8.0)
+    senv_low = S_env_group(2.0)
+    sa_high = S_A_of_sigma(sigma_high)
+    sa_low = S_A_of_sigma(sigma_low)
+
+    c2 = (tep_const.C_LIGHT / 1e3) ** 2   # (km/s)^2, sigma coordinate
+
+    X_high = senv_high * sa_high * sigma_high ** 2 / c2
+    X_low = senv_low * sa_low * sigma_low ** 2 / c2
+    X_high_iso = sigma_high ** 2 / c2
+    X_low_iso = sigma_low ** 2 / c2
+
+    delta_X_nested = X_high - X_low
+    delta_X_isolated = X_high_iso - X_low_iso
+
+    # Locked prediction: magnitude offset of the high-mass class.
+    # Paper 11's convention is Delta_mu = -kappa * X, so kappa > 0
+    # makes high-X hosts appear brighter.
+    predicted_offset = -KAPPA_SN * delta_X_nested
+    predicted_offset_isolated = -KAPPA_SN * delta_X_isolated
+
+    # Raw conformal clock channel for honesty: Delta_u = Delta X on the
+    # unscreened depth coordinate gives the same high-X-brighter sign.
     beta_A = tep_const.BETA_A
-    predicted_offset = -1.0857 * beta_A * (phi_high - phi_low)
-    print_status(f"TEP predicted mass-step offset: {predicted_offset:.4f} mag", "INFO")
-    print_status(f"  (phi_high={phi_high:.4f}, phi_low={phi_low:.4f}, "
-                 f"screen_high={screen_high:.4f}, screen_low={screen_low:.4f})", "INFO")
+    delta_mu_clock = float(-1.0857 * abs(beta_A) * delta_X_isolated)
+
+    # Data-implied response coefficient for cross-channel comparison
+    # (filled after the LCDM fit below)
+    print_status(f"Canonical nested-rate prediction: {predicted_offset:.4f} mag "
+                 f"(isolated bound {predicted_offset_isolated:.4f} mag)", "INFO")
+    print_status(f"  sigma_high={sigma_high:.1f} km/s, sigma_low={sigma_low:.1f} km/s; "
+                 f"S_env=({senv_high:.2f},{senv_low:.2f}), S_A=({sa_high:.3f},{sa_low:.3f}); "
+                 f"Delta_X={delta_X_nested:.3e}", "INFO")
+    print_status(f"  raw conformal clock channel: {delta_mu_clock:.2e} mag "
+                 f"(response amplification kappa ~ {KAPPA_SN:.2e})", "INFO")
 
     # Use LCDM best-fit Om for TEP to isolate the mass-step comparison
     om_lcdm_mle = float(res1.x[0])
@@ -255,6 +289,15 @@ def run() -> dict:
     # Observed mass step from fitted LCDM
     observed_mass_step = gamma_fitted
 
+    # Data-implied response coefficient: the SN-channel equivalent of
+    # kappa_Cep, recovered from the fitted residual on the same nested
+    # coordinate.  Cross-channel consistency with the Cepheid sector
+    # (kappa ~ few x 10^5 mag) is the falsifiable content of the locked
+    # prediction.
+    kappa_SN_implied = float(
+        -observed_mass_step / delta_X_nested if delta_X_nested != 0 else np.nan
+    )
+
     # Residual after TEP locked correction
     residual_after_tep = gamma_residual
 
@@ -272,10 +315,23 @@ def run() -> dict:
         "description": "Host mass step prediction mini-analysis",
         "status": "completed",
         "n_sne": int(n),
-        "alpha_log": float(ALPHA_LOG),
         "host_mass_threshold": float(HOST_MASS_THRESHOLD),
         "observed_mass_step": float(observed_mass_step),
         "TEP_predicted_mass_step": float(predicted_offset),
+        "TEP_predicted_mass_step_isolated_bound": float(predicted_offset_isolated),
+        "kappa_SN_frozen": float(KAPPA_SN),
+        "kappa_SN_implied_by_data": kappa_SN_implied,
+        "delta_X_nested": float(delta_X_nested),
+        "delta_X_isolated": float(delta_X_isolated),
+        "delta_mu_clock_raw": delta_mu_clock,
+        "host_coordinates": {
+            "sigma_high_kms": float(sigma_high),
+            "sigma_low_kms": float(sigma_low),
+            "S_env_high": float(senv_high),
+            "S_env_low": float(senv_low),
+            "S_A_high": float(sa_high),
+            "S_A_low": float(sa_low),
+        },
         "residual_after_TEP_correction": float(residual_after_tep),
         "models": {
             "LCDM_no_step": {"chi2": float(chi2_1), "k": 2, "aic": aic1, "bic": bic1},
@@ -290,11 +346,19 @@ def run() -> dict:
         "delta_chi2_tep_locked_vs_lcdm_no_step": delta_chi2_tep_locked_vs_lcdm_no_step,
         "delta_chi2_tep_locked_vs_lcdm_fitted": delta_chi2_tep_locked_vs_lcdm_fitted,
         "interpretation": (
-            "The locked TEP mass-step prediction removes most of the observed host-mass residual "
-            "without fitting a new nuisance parameter."
-            if abs(residual_after_tep) < abs(observed_mass_step) * 0.5 else
-            "The TEP locked prediction captures part of the host-mass effect; residual indicates "
-            "additional environmental physics not yet included."
+            "Under the Paper 11 convention Delta_mu = -kappa X, the "
+            "canonical nested clock-rate prediction has the established "
+            "massive-host-brighter sign and literature-step order "
+            "(~0.04-0.05 mag), but it overshoots the post-correction "
+            "residual in this m_b_corr mini-analysis. The frozen "
+            "kappa_SN = kappa_Cep-equiv = 3.69e5 mag is a cross-channel "
+            "transfer, while the data-implied kappa_SN on this corrected "
+            "product is reported separately and is opposite signed. The "
+            "raw conformal clock ratio contributes only ~5e-7 mag, so "
+            "the step is carried by the response sector, consistent "
+            "with the Paper 0 amplitude/screening split. This step is "
+            "therefore a channel-consistency diagnostic, not an "
+            "independent confirmation of the host-mass correction."
         ),
         "timestamp": int(time.time()),
     }

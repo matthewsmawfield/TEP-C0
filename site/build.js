@@ -49,7 +49,7 @@
 
         index = index.replace(
             /<section id="abstract"[\s\S]*?<section id="reproducibility" data-component="9_reproducibility\.html"><\/section>/,
-            components
+            () => components
         );
         index = index.replace('<script src="build.js"></script>', '<script>window.__STATIC_MANUSCRIPT__ = true;</script>');
 
@@ -91,7 +91,7 @@
         copyResults(path.join(siteDir, '..', 'results'), distDir, fs, path);
         copyDataArtifacts(path.join(siteDir, '..'), distDir, fs, path);
 
-        for (const file of ['CITATION.cff', 'CITATION.bib', 'README.md', 'LICENSE', 'VERSION.json']) {
+        for (const file of ['CITATION.cff', 'CITATION.bib', 'citation.json', 'codemeta.json', 'README.md', 'LICENSE', 'VERSION.json']) {
             const src = path.join(siteDir, '..', file);
             if (fs.existsSync(src)) {
                 fs.copyFileSync(src, path.join(distDir, file));
@@ -167,6 +167,7 @@
             }
             const entries = fs.readdirSync(src);
             for (const entry of entries) {
+                if (entry === '.DS_Store') continue;
                 copyRecursiveSync(path.join(src, entry), path.join(dest, entry), fs, path);
             }
         } else {

@@ -221,12 +221,12 @@
     },
     {
       "check": "statistical matching: BF standard",
-      "detail": "BF_M1_zT5 = 4.57 (ln=1.52) in step_03_01 JSON",
+      "detail": "BF_M1_zT5 = 4.21 (ln=1.44) in step_03_01 JSON",
       "status": "pass"
     },
     {
       "check": "statistical matching: BF unscreened",
-      "detail": "BF_M1_zT100 = 61.81 (ln=4.12) in step_03_01 JSON",
+      "detail": "BF_M1_zT100 = 35.75 (ln=3.58) in step_03_01 JSON",
       "status": "pass"
     }
   ],

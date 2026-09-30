@@ -1,0 +1,10 @@
+[18:29:29] [INFO] 
+[18:29:29] [INFO] ================================================================================
+[18:29:29] [INFO]    Starting step_03_11_sn_luminosity_drift_profile: Pantheon+ Drift Profile Likelihood
+[18:29:29] [INFO] ================================================================================
+[18:29:29] [INFO] 
+[18:29:29] [INFO] Loaded 1701 SNe Ia with covariance (1701, 1701)
+[18:29:29] [PROCESS] Computing profile likelihood across eps in [-0.25, 0.40]...
+[18:29:30] [SUCCESS] Best-fit eps = -0.150, 1-sigma: [-0.216, -0.088], 3-sigma: eps < 0.034
+[18:29:30] [INFO] eps = 1.0 test on M1 NoLambda: Delta chi2 = 1064.0
+[18:29:30] [SUCCESS] Saved results to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/step_03_11_sn_luminosity_drift_profile.json

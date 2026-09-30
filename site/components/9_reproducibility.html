@@ -717,7 +717,7 @@ pip install -r requirements.txt
 python scripts/run_pipeline.py
 
 # 4. Results will be in:
-#    - results/outputs/   (JSON/CSV data)
+#    - results/            (JSON/CSV data)
 #    - results/figures/   (PNG/PDF plots)
 #    - logs/              (Detailed execution logs)
 </pre>
@@ -780,17 +780,17 @@ python scripts/run_pipeline.py --steps step_04_04_distance_duality step_04_05_dd
 
     <h4>Key Analysis Outputs</h4>
     <ul>
-        <li><code>results/outputs/step_03_01_three_model_comparison.json</code> — Nested sampling posteriors and evidence for all models (M0a_LCDM, M0b_EdS, M1 variants, M2_PureConformal_Control, M3_wCDM, M4_CPL)</li>
-        <li><code>results/outputs/step_03_04_cobaya_mcmc.1.txt</code> — Cobaya MCMC chain for joint SNe+CMB analysis</li>
-        <li><code>results/outputs/step_04_04_distance_duality.json</code> — DDR weighted mean and deviation from unity</li>
-        <li><code>results/outputs/step_04_05_ddr_threeway.json</code> — Three-way BAO/SZ/SGL probe comparison</li>
-        <li><code>results/outputs/step_04_11_sn_robustness_systematics.json</code> — Prior, redshift-cut, covariance, and sampler robustness grid for TEP M1</li>
-        <li><code>results/outputs/step_04_12_external_sn_validation.json</code> — External validation on Union3 binned compilation</li>
-        <li><code>results/outputs/step_05_07_bbn_preservation.json</code> — Historical AlterBBN compatibility baseline — superseded; not part of canonical TEP thermodynamics</li>
-        <li><code>results/outputs/step_05_09_minimal_perturbations.json</code> — diagnostic minimal-closure perturbation checks; authoritative active-sector closure is documented in TEP-HC</li>
-        <li><code>results/outputs/step_06_04_growth_validation.json</code> — Growth factor and sigma_8 consistency check</li>
-        <li><code>results/outputs/step_08_04_evidence_matrix.json</code> — Explanatory evidence matrix across all observables</li>
-        <li><code>results/outputs/step_08_06_claim_audit.json</code> — Automated claim consistency check report</li>
+        <li><code>results/step_03_01_three_model_comparison.json</code> — Nested sampling posteriors and evidence for all models (M0a_LCDM, M0b_EdS, M1 variants, M2_PureConformal_Control, M3_wCDM, M4_CPL)</li>
+        <li><code>results/step_03_04_cobaya_mcmc.1.txt</code> — Cobaya MCMC chain for joint SNe+CMB analysis</li>
+        <li><code>results/step_04_04_distance_duality.json</code> — DDR weighted mean and deviation from unity</li>
+        <li><code>results/step_04_05_ddr_threeway.json</code> — Three-way BAO/SZ/SGL probe comparison</li>
+        <li><code>results/step_04_11_sn_robustness_systematics.json</code> — Prior, redshift-cut, covariance, and sampler robustness grid for TEP M1</li>
+        <li><code>results/step_04_12_external_sn_validation.json</code> — External validation on Union3 binned compilation</li>
+        <li><code>results/step_05_07_bbn_preservation.json</code> — Historical AlterBBN compatibility baseline — superseded; not part of canonical TEP thermodynamics</li>
+        <li><code>results/step_05_09_minimal_perturbations.json</code> — diagnostic minimal-closure perturbation checks; authoritative active-sector closure is documented in TEP-HC</li>
+        <li><code>results/step_06_04_growth_validation.json</code> — Growth factor and sigma_8 consistency check</li>
+        <li><code>results/step_08_04_evidence_matrix.json</code> — Explanatory evidence matrix across all observables</li>
+        <li><code>results/step_08_06_claim_audit.json</code> — Automated claim consistency check report</li>
     </ul>
 
     <h4>Log Files</h4>
@@ -859,7 +859,7 @@ python scripts/run_pipeline.py --steps step_04_04_distance_duality step_04_05_dd
 
     <div class="figure" style="text-align: center; margin: 2rem 0;">
         <img src="results/figures/step_03_05_analyze_cobaya_triangle.png" alt="Joint SNe+CMB Background/Acoustic MCMC Diagnostic" style="max-width: 95%; border: 1px solid #ccc; border-radius: 4px;" />
-        <p class="caption" style="font-style: italic; margin-top: 0.5rem;">Figure A1: Joint SNe+CMB Background/Acoustic MCMC Diagnostic. This triangle plot shows the joint posterior from the Cobaya MCMC, including the homogeneous acoustic-sector amplitude $\epsilon_T^{\rm CMB}$. This is a diagnostic figure, not the SNe-only M1 evidence result. The $H_0$ boundary behaviour is separately stress-tested (Section 4.4.3). The $\epsilon_T$ shown here is the homogeneous acoustic-sector amplitude, distinct from the line-of-sight $\epsilon_{\rm shear}^{\rm los}$ fitted to supernovae.</p>
+        <p class="caption" style="font-style: italic; margin-top: 0.5rem;">Figure A1: Joint SNe+CMB Background/Acoustic MCMC Diagnostic. This triangle plot shows the joint posterior from the Cobaya MCMC, including the homogeneous acoustic-sector amplitude $\epsilon_T^{\rm CMB}$. This is a diagnostic figure, not the SNe-only M1 evidence result. The $H_0$ boundary behaviour is separately stress-tested (Section 4.2). The $\epsilon_T$ shown here is the homogeneous acoustic-sector amplitude, distinct from the line-of-sight $\epsilon_{\rm shear}^{\rm los}$ fitted to supernovae.</p>
     </div>
 
     <div class="figure" style="text-align: center; margin: 2rem 0;">

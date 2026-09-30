@@ -1,15 +1,16 @@
-[12:11:50] [INFO] 
-[12:11:50] [INFO] ================================================================================
-[12:11:50] [INFO]    Starting step_04_08_host_mass_step_prediction
-[12:11:50] [INFO] ================================================================================
-[12:11:50] [INFO] 
-[12:11:51] [INFO] Loaded 1700 SNe with host masses
-[12:11:51] [INFO] High-mass hosts (logM>10.0): 912
-[12:11:54] [INFO] TEP predicted mass-step offset: -0.0053 mag
-[12:11:54] [INFO]   (phi_high=0.4347, phi_low=0.4396, screen_high=1.0000, screen_low=1.0000)
-[12:11:56] [INFO] Observed mass step (LCDM fitted): 0.0072 mag
-[12:11:56] [INFO] TEP predicted mass step: -0.0053 mag
-[12:11:56] [INFO] Residual after TEP locked correction: 0.0124 mag
-[12:11:56] [INFO] Δχ² TEP_locked vs LCDM_no_step: -1.29
-[12:11:56] [INFO] Δχ² TEP_locked vs LCDM_fitted: -1.87
-[12:11:56] [SUCCESS] Step step_04_08_host_mass_step_prediction completed
+[17:09:53] [INFO] 
+[17:09:53] [INFO] ================================================================================
+[17:09:53] [INFO]    Starting step_04_08_host_mass_step_prediction
+[17:09:53] [INFO] ================================================================================
+[17:09:53] [INFO] 
+[17:09:53] [INFO] Loaded 1700 SNe with host masses
+[17:09:53] [INFO] High-mass hosts (logM>10.0): 912
+[17:09:55] [INFO] Canonical nested-rate prediction: -0.0887 mag (isolated bound -0.1626 mag)
+[17:09:55] [INFO]   sigma_high=207.4 km/s, sigma_low=58.3 km/s; S_env=(0.57,0.87), S_A=(1.000,0.930); Delta_X=2.404e-07
+[17:09:55] [INFO]   raw conformal clock channel: -4.78e-07 mag (response amplification kappa ~ 3.69e+05)
+[17:09:56] [INFO] Observed mass step (LCDM fitted): 0.0072 mag
+[17:09:56] [INFO] TEP predicted mass step: -0.0887 mag
+[17:09:56] [INFO] Residual after TEP locked correction: 0.0958 mag
+[17:09:56] [INFO] Δχ² TEP_locked vs LCDM_no_step: -105.32
+[17:09:56] [INFO] Δχ² TEP_locked vs LCDM_fitted: -105.91
+[17:09:56] [SUCCESS] Step step_04_08_host_mass_step_prediction completed

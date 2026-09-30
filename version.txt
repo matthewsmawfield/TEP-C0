@@ -5,3 +5,4 @@ v0.3 (Athens) — 2026-09-16 — Cosmic expansion as temporal transport: no dark
 - Pantheon+ analysis: no-Λ temporal-shear branch improves over ΛCDM (BF ≈ 4.6 conservative, 61.8 fixed benchmark)
 - a→0 limit re-expressed as A_clock→0: temporal-horizon boundary, not zero-volume spatial singularity
 - Cross-paper consistency: aligned with TEP-TH (Paper 27) temporal-horizon closure and TEP-HC (Paper 18) acoustic preservation
+- Labelled the displayed action as the canonical low-kinetic benchmark; expanded the EFT/perturbation mapping and Paper-18 cross-check wording

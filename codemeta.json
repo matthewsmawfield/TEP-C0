@@ -1,0 +1,44 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": [
+    "ScholarlyArticle",
+    "SoftwareSourceCode"
+  ],
+  "identifier": "https://doi.org/10.5281/zenodo.20370143",
+  "doi": "10.5281/zenodo.20370143",
+  "name": "Temporal Equivalence Principle: A Covariant Alternative to Cosmic Expansion",
+  "description": "This paper presents a direct empirical challenge to the necessity of primitive cosmic expansion. In the Temporal Equivalence Principle framework, observed redshift is reconstructed as conformal proper-time transport, $1+z=A_0/A_{\\text{em}}$ rather than as stretching of a spatial scale factor. Standard cosmology interprets observational redshift and luminosity distance scaling as evidence of a stretching spatial metric, parameterized by the Friedmann-Lemaître-Robertson-Walker (FLRW) scale factor $a(t)$. The observational role played by the FLRW scale factor is mapped, within the TEP conformal-frame construction, onto the temporal clock-rate field $A(\\phi)$. In the tested late-time background sector, the perceived acceleration normally attributed to dark energy, $\\Lambda$, is reconstructed as the kinetic energy density of the Temporal Shear field, $\\Omega_\\phi$.",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Matthew Lukin",
+      "familyName": "Smawfield",
+      "@id": "https://orcid.org/0009-0003-8219-3159"
+    }
+  ],
+  "datePublished": "2026-07-05",
+  "dateModified": "2026-09-30",
+  "version": "0.3 (Athens)",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "codeRepository": "https://github.com/matthewsmawfield/TEP-C0",
+  "url": "https://mlsmawfield.com/tep/c0/",
+  "keywords": [
+    "Temporal Equivalence Principle",
+    "Temporal Shear",
+    "Temporal Topology",
+    "proper time",
+    "conformal metric",
+    "disformal metric",
+    "synchronization holonomy",
+    "clock-sector gravity",
+    "scalar-tensor theory",
+    "TEP",
+    "Temporal Cosmology",
+    "Cosmic Redshift",
+    "FLRW",
+    "Proper-Time Transport"
+  ],
+  "developmentStatus": "active",
+  "runtimePlatform": "Python",
+  "applicationCategory": "Scientific/Research"
+}

@@ -1,11 +1,24 @@
 {
-  "TEP_predicted_mass_step": -0.00530066974074707,
-  "alpha_log": -0.00766,
-  "delta_chi2_tep_locked_vs_lcdm_fitted": -1.8736914975961554,
-  "delta_chi2_tep_locked_vs_lcdm_no_step": -1.2851282385563536,
+  "TEP_predicted_mass_step": -0.0887031849335241,
+  "TEP_predicted_mass_step_isolated_bound": -0.16262674174410943,
+  "delta_X_isolated": 4.4072287735531015e-07,
+  "delta_X_nested": 2.403880350502008e-07,
+  "delta_chi2_tep_locked_vs_lcdm_fitted": -105.9098987964262,
+  "delta_chi2_tep_locked_vs_lcdm_no_step": -105.3213355373864,
+  "delta_mu_clock_raw": -4.784928279446602e-07,
   "description": "Host mass step prediction mini-analysis",
+  "host_coordinates": {
+    "S_A_high": 1.0,
+    "S_A_low": 0.9301703796873043,
+    "S_env_high": 0.5665459169008369,
+    "S_env_low": 0.8733960595416025,
+    "sigma_high_kms": 207.38966539809985,
+    "sigma_low_kms": 58.311889635375266
+  },
   "host_mass_threshold": 10.0,
-  "interpretation": "The TEP locked prediction captures part of the host-mass effect; residual indicates additional environmental physics not yet included.",
+  "interpretation": "Under the Paper 11 convention Delta_mu = -kappa X, the canonical nested clock-rate prediction has the established massive-host-brighter sign and literature-step order (~0.04-0.05 mag), but it overshoots the post-correction residual in this m_b_corr mini-analysis. The frozen kappa_SN = kappa_Cep-equiv = 3.69e5 mag is a cross-channel transfer, while the data-implied kappa_SN on this corrected product is reported separately and is opposite signed. The raw conformal clock ratio contributes only ~5e-7 mag, so the step is carried by the response sector, consistent with the Paper 0 amplitude/screening split. This step is therefore a channel-consistency diagnostic, not an independent confirmation of the host-mass correction.",
+  "kappa_SN_frozen": 369000.0,
+  "kappa_SN_implied_by_data": -29921.142925208074,
   "models": {
     "LCDM_fitted_step": {
       "aic": 1994.407551631668,
@@ -21,25 +34,25 @@
       "k": 2
     },
     "TEP_fitted_residual": {
-      "aic": 1994.5082830883455,
-      "bic": 2010.8234336784783,
-      "chi2": 1988.5082830883455,
-      "epsilon_shear": 0.00017461326520386178,
-      "gamma_residual": 0.012406804063853591,
+      "aic": 1994.5082830824927,
+      "bic": 2010.8234336726255,
+      "chi2": 1988.5082830824927,
+      "epsilon_shear": 0.00017238739541251702,
+      "gamma_residual": 0.09580939555600021,
       "k": 3
     },
     "TEP_locked_step": {
-      "aic": 1994.281243129264,
-      "bic": 2005.1580101893528,
-      "chi2": 1990.281243129264,
+      "aic": 2098.317450428094,
+      "bic": 2109.194217488183,
+      "chi2": 2094.317450428094,
       "epsilon_shear": 0.0,
       "k": 2
     }
   },
   "n_sne": 1700,
   "observed_mass_step": 0.0071926847542469865,
-  "residual_after_TEP_correction": 0.012406804063853591,
+  "residual_after_TEP_correction": 0.09580939555600021,
   "status": "completed",
   "step": "step_04_08_host_mass_step_prediction",
-  "timestamp": 1782213116
+  "timestamp": 1790784596
 }

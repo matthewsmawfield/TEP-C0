@@ -42,5 +42,5 @@ artifact existence: step_07_01_mixed_forecast,pass,json exists
 artifact existence: step_08_01_expansion_falsifier,pass,json exists
 artifact existence: step_08_04_evidence_matrix,pass,json exists
 statistical matching: H0,pass,H0 = 66.70 +/- 5.83e-01 from Cobaya stats
-statistical matching: BF standard,pass,BF_M1_zT5 = 4.57 (ln=1.52) in step_03_01 JSON
-statistical matching: BF unscreened,pass,BF_M1_zT100 = 61.81 (ln=4.12) in step_03_01 JSON
+statistical matching: BF standard,pass,BF_M1_zT5 = 4.21 (ln=1.44) in step_03_01 JSON
+statistical matching: BF unscreened,pass,BF_M1_zT100 = 35.75 (ln=3.58) in step_03_01 JSON
