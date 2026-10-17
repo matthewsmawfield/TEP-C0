@@ -33,16 +33,23 @@ class CMBRun:
 
 
 def _import_classy(tep: bool = False):
-    """Import classy, preferring TEP-CLASS build when tep=True."""
-    if tep:
-        tep_build = Path(__file__).resolve().parents[2] / "external" / "class" / "python" / "build"
-        if tep_build.exists():
-            sys.path.insert(0, str(tep_build))
-            try:
-                from classy import Class
-                return Class, str(tep_build)
-            except ImportError:
-                pass
+    """Import classy, preferring the built patched-CLASS engine.
+
+    The repo build supplies both branches: with tep_mode disabled it is a
+    vanilla CLASS (step_03_04 sanity-checks eps=0 -> standard d_L), so it is
+    a valid LCDM reference when no system classy is installed.
+    """
+    tep_build = (
+        Path(__file__).resolve().parents[2] / "external" / "class" / "build"
+        / "lib.macosx-11.1-arm64-cpython-313"
+    )
+    if tep_build.exists():
+        sys.path.insert(0, str(tep_build))
+        try:
+            from classy import Class
+            return Class, str(tep_build)
+        except ImportError:
+            pass
     try:
         from classy import Class
         return Class, "system"
@@ -95,7 +102,10 @@ def _run_class(Class, params: dict, lmax: int = 2500):
             pk.append(float(c.pk(ki, 0.0)))
         except Exception:
             pk.append(np.nan)
-    matter_power = [{"k_h_Mpc": float(ki), "P_k": float(pi)} for ki, pi in zip(k, pk)]
+    matter_power = [
+        {"k_h_Mpc": float(ki), "P_k": float(pi)}
+        for ki, pi in zip(k, pk) if np.isfinite(pi)
+    ]
 
     c.struct_cleanup()
     c.empty()
@@ -115,7 +125,7 @@ def _run_class(Class, params: dict, lmax: int = 2500):
 def resolve_cmb(
     epsilon_t: float = 0.0,
     z_t: float = 5.0,
-    n_t: float = 1.0,
+    n_t: float = 2.0,
     lmax: int = 2500,
 ) -> CMBRun:
     """Resolve CMB spectra for TEP cosmology.
@@ -147,6 +157,11 @@ def resolve_cmb(
     tep_zero = None
     if tep_available:
         try:
+            # Omega_Lambda=0 / Omega_k=0 match the joint-chain convention
+            # (step_03_04). Under tep_mode an unset Omega_Lambda leaves the budget
+            # open; the engine fills the remainder with curvature
+            # (Omega_k = 1 - Omega_tot), a degenerate closed branch — so
+            # the no-Lambda branch must be requested explicitly.
             tep_ref = _run_class(
                 Class_tep,
                 {
@@ -154,6 +169,8 @@ def resolve_cmb(
                     "tep_epsilon_T": epsilon_t,
                     "tep_z_T": z_t,
                     "tep_n_T": n_t,
+                    "Omega_Lambda": 0.0,
+                    "Omega_k": 0.0,
                 },
                 lmax=lmax,
             )
@@ -171,6 +188,8 @@ def resolve_cmb(
                         "tep_epsilon_T": 0.0,
                         "tep_z_T": z_t,
                         "tep_n_T": n_t,
+                        "Omega_Lambda": 0.0,
+                        "Omega_k": 0.0,
                     },
                     lmax=lmax,
                 )
@@ -193,7 +212,8 @@ def resolve_cmb(
         "class_available": True,
         "tep_class_available": tep_available,
         "local_class_source_tep_patch_present": source_tep == str(
-            Path(__file__).resolve().parents[2] / "external" / "class" / "python" / "build"
+            Path(__file__).resolve().parents[2] / "external" / "class" / "build"
+            / "lib.macosx-11.1-arm64-cpython-313"
         ),
         "tep_zero_limit_ok": zero_limit_ok,
         "research_grade_cmb": research_grade,

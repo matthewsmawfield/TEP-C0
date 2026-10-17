@@ -144,7 +144,7 @@ def create_cobaya_config(
             "latex": r"z_T",
         },
         "tep_n_T": {
-            "value": 1.0,
+            "value": 2.0,
             "latex": r"n_T",
         },
         # LCDM parameters — TEP no-Lambda branch.
@@ -249,12 +249,12 @@ def sanity_check_tep_active() -> bool:
         from classy import Class
         
         cosmo1 = Class()
-        cosmo1.set({'tep_mode': 'yes', 'tep_epsilon_T': 0.0, 'tep_z_T': 3.0, 'output': 'tCl,lCl,mPk'})
+        cosmo1.set({'tep_mode': 'yes', 'tep_epsilon_T': 0.0, 'tep_z_T': 3.0, 'Omega_Lambda': 0.0, 'output': 'tCl,lCl,mPk'})
         cosmo1.compute()
         d1 = cosmo1.luminosity_distance(1.0)
         
         cosmo2 = Class()
-        cosmo2.set({'tep_mode': 'yes', 'tep_epsilon_T': 0.2, 'tep_z_T': 3.0, 'output': 'tCl,lCl,mPk'})
+        cosmo2.set({'tep_mode': 'yes', 'tep_epsilon_T': 0.2, 'tep_z_T': 3.0, 'Omega_Lambda': 0.0, 'output': 'tCl,lCl,mPk'})
         cosmo2.compute()
         d2 = cosmo2.luminosity_distance(1.0)
         

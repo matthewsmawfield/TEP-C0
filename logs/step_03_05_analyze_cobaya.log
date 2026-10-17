@@ -1,11 +1,11 @@
-[12:27:14] [INFO] 
-[12:27:14] [INFO] ================================================================================
-[12:27:14] [INFO]    Starting step_03_05_analyze_cobaya
-[12:27:14] [INFO] ================================================================================
-[12:27:14] [INFO] 
-[12:27:14] [PROCESS] Loading chains from results/outputs/tep_cobaya_joint_combined...
-[12:27:14] [SUCCESS] Chains loaded successfully.
-[12:27:18] [PROCESS] Generating triangle plot...
-[12:27:25] [SUCCESS] Plot saved to results/figures/step_03_05_analyze_cobaya_triangle.png
-[12:27:25] [INFO] NOTE: This is a joint SNe+CMB background/acoustic MCMC diagnostic. tep_epsilon_T here is the homogeneous acoustic-sector amplitude, distinct from epsilon_shear_los fitted to SNe alone. H0 boundary behaviour is separately stress-tested.
-[12:27:25] [SUCCESS] Summary stats saved to results/outputs/tep_cobaya_joint_converged_stats.txt
+[01:02:49] [INFO] 
+[01:02:49] [INFO] ================================================================================
+[01:02:49] [INFO]    Starting step_03_05_analyze_cobaya
+[01:02:49] [INFO] ================================================================================
+[01:02:49] [INFO] 
+[01:02:49] [PROCESS] Loading chains from results/outputs/tep_cobaya_joint_combined...
+[01:02:49] [SUCCESS] Chains loaded successfully.
+[01:02:52] [PROCESS] Generating triangle plot...
+[01:02:56] [SUCCESS] Plot saved to results/figures/step_03_05_analyze_cobaya_triangle.png
+[01:02:56] [INFO] NOTE: This is a joint SNe+CMB background/acoustic MCMC diagnostic. tep_epsilon_T here is the homogeneous acoustic-sector amplitude, distinct from epsilon_shear_los fitted to SNe alone. H0 boundary behaviour is separately stress-tested.
+[01:02:56] [SUCCESS] Summary stats saved to results/outputs/tep_cobaya_joint_converged_stats.txt

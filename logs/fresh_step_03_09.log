@@ -1,0 +1,30 @@
+[01:00:47] [INFO] 
+[01:00:47] [INFO] ================================================================================
+[01:00:47] [INFO]    Starting step_03_09_lcdm_null_injection
+[01:00:47] [INFO] ================================================================================
+[01:00:47] [INFO] 
+[01:00:47] [INFO] Loaded 1701 SNe with full covariance
+[01:00:47] [INFO] Observed: Δχ²=-3.81, BF_proxy=6.71
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_09_lcdm_null_injection.py:104: RuntimeWarning: divide by zero encountered in matmul
+  noise = L @ rng.standard_normal(len(z))
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_09_lcdm_null_injection.py:104: RuntimeWarning: overflow encountered in matmul
+  noise = L @ rng.standard_normal(len(z))
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_09_lcdm_null_injection.py:104: RuntimeWarning: invalid value encountered in matmul
+  noise = L @ rng.standard_normal(len(z))
+[01:00:47] [INFO]   Seed 0: Δχ²=8.59, BF_proxy=0.01
+[01:00:49] [INFO]   Seed 20: Δχ²=1.57, BF_proxy=0.46
+[01:00:50] [INFO]   Seed 40: Δχ²=5.72, BF_proxy=0.06
+[01:00:52] [INFO]   Seed 60: Δχ²=-3.30, BF_proxy=5.20
+[01:00:53] [INFO]   Seed 80: Δχ²=1.11, BF_proxy=0.57
+[01:00:55] [INFO]   Seed 100: Δχ²=5.97, BF_proxy=0.05
+[01:00:56] [INFO]   Seed 120: Δχ²=6.60, BF_proxy=0.04
+[01:00:58] [INFO]   Seed 140: Δχ²=1.40, BF_proxy=0.50
+[01:00:59] [INFO]   Seed 160: Δχ²=0.68, BF_proxy=0.71
+[01:01:01] [INFO]   Seed 180: Δχ²=-1.33, BF_proxy=1.95
+[01:01:02] [INFO] Null injection summary:
+[01:01:02] [INFO]   Median Δχ² (TEP-LCDM): 2.51
+[01:01:02] [INFO]   Mocks at least as extreme as observed: 3 / 200
+[01:01:02] [INFO]   False positive rate: 0.015
+[01:01:02] [INFO]   p(observed Δχ² <= -3.81 | LCDM): 0.015
+[01:01:02] [SUCCESS] Step step_03_09_lcdm_null_injection completed
+{'step': 'step_03_09_lcdm_null_injection', 'description': 'LCDM null injection: mock Pantheon+ from LCDM best-fit', 'status': 'completed', 'n_injections': 200, 'observer_convention': 'Observed brightness minus zHEL/zHD observer factor; mocks generated and fitted in that same frame', 'null_parameters': {'Om0': 0.3623684044834239, 'M': -19.33928052524433}, 'bf_proxy_scope': 'BIC proxy, not an integrated Bayes factor', 'observed_delta_chi2': -3.805908772061457, 'observed_bf_proxy': 6.70567636274851, 'false_positive_rate_as_extreme_as_observed': 0.015, 'median_Delta_chi2_under_LCDM': 2.5094623607691346, 'p_value_observed_Delta_chi2': 0.015, 'bf_proxy_distribution': {'mean': 0.8950877925617544, 'median': 0.285152933124035, 'std': 2.229947927071948, 'min': 0.00111673874361989, 'max': 22.848689608772933}, 'delta_chi2_distribution': {'mean': 2.8682941121847976, 'median': 2.5094623607691346, 'std': 3.483656386577189, 'min': -6.257787536316982, 'max': 13.594685354742069}, 'interpretation': 'Under LCDM null injection, a TEP M1 improvement at least as large as the observed Δχ² = -3.81 occurs in 3 of 200 synthetic realizations (1.5%).', 'timestamp': 1791849662}

@@ -1,0 +1,7 @@
+[DR2] SN: LCDM chi2=1386.40, M1 chi2=1385.98, M1n chi2=1385.93, Native chi2=1385.81
+[DR2] SN+BAO: LCDM chi2=1399.84, M1 chi2=1394.87, M1n chi2=1393.38, Native chi2=1392.62
+[DR2] SN+BAO+CMB: LCDM chi2=1400.88, M1 chi2=1513.61, M1n chi2=1406.91, Native chi2=1392.82
+[DR1] SN: LCDM chi2=1386.40, M1 chi2=1385.98, M1n chi2=1385.93, Native chi2=1385.81
+[DR1] SN+BAO: LCDM chi2=1401.90, M1 chi2=1397.45, M1n chi2=1397.34, Native chi2=1396.99
+[DR1] SN+BAO+CMB: LCDM chi2=1403.36, M1 chi2=1468.59, M1n chi2=1406.72, Native chi2=1397.09
+wrote /sessions/rcw-0135ccmmghi7dk8pjf2sgw9j/mnt/TEP-C0/results/step_03_14_single_background_joint_fit.json

@@ -32,7 +32,7 @@ params:
     proposal: 2.0
     latex: z_T
   tep_n_T:
-    value: 1.0
+    value: 2.0
     latex: n_T
   Omega_Lambda:
     value: 0.0

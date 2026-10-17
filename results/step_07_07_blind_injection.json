@@ -1,13 +1,17 @@
 {
-  "description": "Blind injection recovery validation",
+  "description": "Blind injection recovery validation (M1 line-of-sight shear)",
   "injected_parameters": {
-    "Sigma_0": 0.001
+    "epsilon_shear_los_negative": -0.23,
+    "epsilon_shear_los_positive": 0.23
   },
-  "interpretation": "Injection recovery: 0.0% error on Sigma_0",
+  "interpretation": "Injection recovery: 3.635e-05% (positive) and 2.488e-05% (negative) error on epsilon_shear_los (M1 mock refits on the current observer likelihood)",
   "recovered_parameters": {
-    "Sigma_0": 0.001
+    "epsilon_shear_los_negative": -0.23,
+    "epsilon_shear_los_positive": 0.23
   },
-  "recovery_error_percent": 0.0,
+  "recovery_error_percent": 3.635332890996794e-05,
+  "recovery_error_percent_negative": 2.4878719857182236e-05,
+  "recovery_error_percent_positive": 3.635332890996794e-05,
   "recovery_successful": true,
   "step": "step_07_07_blind_injection"
 }

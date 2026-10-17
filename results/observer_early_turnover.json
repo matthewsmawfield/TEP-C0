@@ -1,0 +1,13 @@
+{
+  "chi2": 1780.7506779042221,
+  "logZ": 737.7038422123451,
+  "logZ_error": 7.031328747273016e-09,
+  "parameters": {
+    "epsilon_shear_los": 1.0135174999102317,
+    "M": -19.34151327780354
+  },
+  "k": 2,
+  "method": "bounded Gaussian intercept integral and adaptive shape quadrature",
+  "BF_vs_LCDM": 9.172066461566769e-07,
+  "delta_chi2_vs_LCDM": 27.84851340145792
+}

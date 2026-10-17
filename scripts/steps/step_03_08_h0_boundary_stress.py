@@ -43,8 +43,8 @@ from core.cosmology import CosmologyFLRW, TEPCosmology
 
 STEP_ID = "step_03_08_h0_boundary_stress"
 
-# Load upstream results for baseline
-BASELINE_JSON = RESULTS_DIR / "step_03_04_cobaya_mcmc.json"
+# Load upstream results for baseline (joint-chain constraints)
+BASELINE_JSON = RESULTS_DIR / "step_03_05_analyze_cobaya.json"
 
 # Prior definitions
 PRIORS = {
@@ -56,10 +56,17 @@ PRIORS = {
 
 
 def load_baseline() -> dict:
-    if BASELINE_JSON.exists():
-        with open(BASELINE_JSON) as f:
-            return json.load(f)
-    return {}
+    """Extract joint-chain best-fit baseline from step_03_05 constraints."""
+    if not BASELINE_JSON.exists():
+        return {}
+    with open(BASELINE_JSON) as f:
+        d = json.load(f)
+    out = {}
+    for c in d.get("constraints", []):
+        out[c.get("parameter")] = c.get("mean")
+    return {"bestfit": {"H0": out.get("H0", 66.7),
+                        "epsilon_T": out.get("tep_epsilon_T", 0.0),
+                        "Omega_m": 0.315}}
 
 
 def approximate_joint_lnL(H0: float, Om: float, epsilon_T: float, z_T: float = 5.0) -> float:
@@ -118,19 +125,14 @@ def run() -> dict:
         best_H0, best_Om, best_eps = res.x
         best_lnL = -res.fun
 
-        # Estimate posterior mass near boundary via Gaussian approximation
-        # Use Hessian diagonal as variance proxy
-        posterior_mass_at_boundary = 0.0
-        if hasattr(res, "hess_inv"):
-            try:
-                h_diag = np.diag(res.hess_inv.todense()) if hasattr(res.hess_inv, "todense") else np.diag(res.hess_inv)
-                sigma_H0 = float(np.sqrt(max(h_diag[0], 1e-6)))
-                # P(H0 < prior_low + 2*sigma) under Gaussian posterior
-                from scipy.stats import norm
-                boundary = prior["low"] + 2.0 * sigma_H0
-                posterior_mass_at_boundary = float(norm.cdf((boundary - best_H0) / sigma_H0))
-            except Exception:
-                posterior_mass_at_boundary = 0.0
+        # Boundary diagnostic: is the optimum within a small fraction of the
+        # lower prior edge? The L-BFGS-B inverse-Hessian is degenerate for
+        # interior optima, so proximity is measured directly.
+        span = prior["high"] - prior["low"]
+        posterior_mass_at_boundary = (
+            float(np.clip(1.0 - (best_H0 - prior["low"]) / (0.1 * span), 0.0, 1.0))
+            if span > 0 else 0.0
+        )
 
         delta_lnL = best_lnL - approximate_joint_lnL(baseline_H0, baseline_Om, baseline_eps)
 
@@ -153,7 +155,11 @@ def run() -> dict:
 
     # Check consistency: under repeated lower-prior extensions, does H0 stay low?
     h0_values = [results[k]["bestfit_H0"] for k in PRIORS]
-    h0_trend = "stable_low" if max(h0_values) < 60.0 else "rises_with_prior"
+    h0_spread = max(h0_values) - min(h0_values)
+    h0_trend = (
+        "stable_interior" if h0_spread < 1.0
+        else ("stable_low" if max(h0_values) < 60.0 else "rises_with_prior")
+    )
 
     payload = {
         "step": STEP_ID,
@@ -163,10 +169,12 @@ def run() -> dict:
         "results_per_prior": results,
         "h0_trend": h0_trend,
         "interpretation": (
-            "The lower-bound attraction is not a sampler pathology: "
-            "under repeated lower-prior extensions, the posterior continues to drive "
-            "the primitive kinematic expansion parameter toward zero while preserving "
-            "the temporal-transport fit."
+            "Under progressive lower-prior extension the proxy optimum remains at "
+            "the interior point H0=70 (the fiducial of the analytic likelihood); "
+            "no lower-bound attraction is detected. The proxy is insensitive to "
+            "the true joint-chain preference by construction (the TEP kernel "
+            "returns to the LCDM distance law at epsilon_T=0), so boundary "
+            "attraction cannot be inferred from this diagnostic alone."
         ),
         "timestamp": int(time.time()),
     }

@@ -1,0 +1,27 @@
+[TITLE] Starting step_04_06_screening_fit
+[INFO] Total data points: 45
+[INFO]   BAO: 10
+[INFO]   SZ:  20
+[INFO]   SGL: 15
+[INFO] Fitting TEP screening model...
+[SUCCESS] Fit successful
+[INFO]   χ² = 10.27
+[INFO]   ndof = 39
+[INFO]   χ²/ndof = 0.26
+[INFO] 
+Best-fit parameters:
+[INFO]   BAO: η_0=1.295, β=-0.742
+[INFO]   SZ:  η_0=1.226, β=+0.181
+[INFO]   SGL: η_0=0.853, β=+1.930
+[INFO] 
+Probe baseline differences:
+[INFO]   |η_0_BAO - η_0_SZ|  = 0.069
+[INFO]   |η_0_BAO - η_0_SGL| = 0.442
+[INFO]   |η_0_SZ  - η_0_SGL| = 0.373
+[INFO] 
+Physical interpretation (data-driven):
+[INFO]   • BAO: η_0=1.295 (above unity), β=-0.742
+[INFO]   • SZ: η_0=1.226 (above unity), β=+0.181
+[INFO]   • SGL: η_0=0.853 (below unity), β=+1.930
+[SUCCESS] Step step_04_06_screening_fit completed
+{'step': 'step_04_06_screening_fit', 'description': 'TEP probe-dependent screening model fit to DDR data', 'status': 'completed', 'model': {'formula': 'η_probe(z) = η_0 × (1+z)^β', 'name': 'Two-parameter empirical DDR anomaly per probe', 'note': 'Earlier (η_0 + (1-η_0)(z/(z+z_c))^α) form forced η→1 at high z and η_0 ≤ 1, incompatible with SZ/SGL data (η ≳ 1.2). The power-law form admits η>1, η<1, rising and falling trends, and is therefore the empirically minimal parameterisation that can fit all three probes.'}, 'parameters': {'BAO': {'eta_0': 1.2948853073076252, 'beta': -0.741538396390553}, 'SZ': {'eta_0': 1.2263271364685038, 'beta': 0.1811895268012964}, 'SGL': {'eta_0': 0.8529588057714156, 'beta': 1.9297977125553472}}, 'fit_quality': {'chi2': 10.265291672017858, 'n_dof': 39, 'chi2_per_dof': 0.26321260697481685, 'success': True}, 'predictions': {'redshifts': [0.1, 0.5, 1.0, 2.0], 'BAO': [1.2065269794139475, 0.9586340995819874, 0.7744725025114663, 0.5733602396337238], 'SZ': [1.2476887510618666, 1.3198124792721717, 1.390432213712296, 1.496427611089279], 'SGL': [1.0251975656183454, 1.8652994666584477, 3.2497881756710076, 7.106824045681487]}, 'probe_differences': {'delta_eta0_BAO_vs_SZ': 0.06855817083912141, 'delta_eta0_BAO_vs_SGL': 0.4419265015362096, 'delta_eta0_SZ_vs_SGL': 0.3733683306970882}, 'interpretation': {'physical_scale_BAO': '~100 Mpc (linear regime)', 'physical_scale_SZ': '~5 Mpc (cluster gas)', 'physical_scale_SGL': '~5 Mpc (cluster potential)', 'ordering_by_anomaly_magnitude': ['BAO', 'SZ', 'SGL'], 'implication': 'Probe-dependent Etherington anomaly: SZ and SGL exhibit η>1 at low z (D_L exceeds the metric prediction) while BAO declines through unity into η<1 by z~1.5. Within TEP this is the line-of-sight signature of environment-dependent screening; under ΛCDM it must be absorbed into systematics.'}, 'data_usage': {'n_BAO': 10, 'n_SZ': 20, 'n_SGL': 15, 'sz_skipped_reason': None, 'sgl_skipped_reason': None}, 'validation': {'claim_gate': 'open', 'research_grade': True, 'note': None}, 'timestamp': 1791850153}

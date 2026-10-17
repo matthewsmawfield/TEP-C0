@@ -1,0 +1,5 @@
+[TITLE] Starting step_05_05_cmb_consistency
+[INFO] Using epsilon_T=-0.00153 from step_05_03 (joint-fit acoustic amplitude)
+[INFO] Zero-limit max relative difference: 0.000e+00
+[INFO] Zero-limit OK: True
+[SUCCESS] Step step_05_05_cmb_consistency completed: research_grade=True

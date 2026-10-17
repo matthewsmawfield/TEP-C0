@@ -1,0 +1,111 @@
+{
+  "n": 1829,
+  "z_range": [
+    0.02509,
+    1.12132
+  ],
+  "variants": {
+    "covtot": {
+      "models": {
+        "LCDM": {
+          "mle": {
+            "Om0": 0.349852939362712,
+            "M": 0.02116260986586537
+          },
+          "chi2": 1640.3053812191279
+        },
+        "TEP_zT5": {
+          "mle": {
+            "epsilon_shear_los": 0.8921361728704651,
+            "M": 0.0310815967376519
+          },
+          "chi2": 1639.6947492937852,
+          "delta_chi2": -0.6106319253426591
+        },
+        "TEP_zT100": {
+          "mle": {
+            "epsilon_shear_los": 0.8832251709396932,
+            "M": 0.03222679414682064
+          },
+          "chi2": 1640.2144043782503,
+          "delta_chi2": -0.09097684087760172
+        }
+      },
+      "delta_chi2_zT5": -0.6106319253426591,
+      "delta_chi2_zT100": -0.09097684087760172,
+      "eps_mle_zT5": 0.8921361728704651,
+      "localization": {
+        "z_lt_0p1": {
+          "n": 197,
+          "dchi2": -1.687091083724141
+        },
+        "z_0p1_0p3": {
+          "n": 206,
+          "dchi2": -0.9520648172730262
+        },
+        "z_0p3_0p7": {
+          "n": 1167,
+          "dchi2": -1.2597164103445948
+        },
+        "z_gt_0p7": {
+          "n": 259,
+          "dchi2": 3.2882403859993588
+        }
+      }
+    },
+    "diag_only": {
+      "models": {
+        "LCDM": {
+          "mle": {
+            "Om0": 0.3607074052574355,
+            "M": 0.028160701546821782
+          },
+          "chi2": 1687.9268259569005
+        },
+        "TEP_zT5": {
+          "mle": {
+            "epsilon_shear_los": 0.8693405125739944,
+            "M": 0.03834847710826157
+          },
+          "chi2": 1686.3904134540865,
+          "delta_chi2": -1.5364125028140734
+        },
+        "TEP_zT100": {
+          "mle": {
+            "epsilon_shear_los": 0.860513380421945,
+            "M": 0.03950052285994268
+          },
+          "chi2": 1686.9472339033837,
+          "delta_chi2": -0.9795920535168534
+        }
+      },
+      "delta_chi2_zT5": -1.5364125028140734,
+      "delta_chi2_zT100": -0.9795920535168534,
+      "eps_mle_zT5": 0.8693405125739944,
+      "localization": {
+        "z_lt_0p1": {
+          "n": 197,
+          "dchi2": -1.5670181373872083
+        },
+        "z_0p1_0p3": {
+          "n": 206,
+          "dchi2": -1.030512752037822
+        },
+        "z_0p3_0p7": {
+          "n": 1167,
+          "dchi2": -1.906975033810113
+        },
+        "z_gt_0p7": {
+          "n": 259,
+          "dchi2": 2.9680934204208995
+        }
+      }
+    }
+  },
+  "degeneracy_diagnostic": {
+    "rms_dmu_mag_vs_LCDM_om035": 0.019833503840662226,
+    "max_abs_dmu_mag": 0.04661667044628004,
+    "note": "eps_hat ~ 0.87-0.9 across Pantheon+/Union3/DESY5 is the near-degeneracy direction: the TEP point that best impersonates flat-LCDM. Any LCDM-consistent catalog returns this amplitude trivially; the discriminating information is in delta_chi2/BF, not the amplitude."
+  },
+  "interpretation": "Independent-catalog consistency check. DES-SN5YR prefers the TEP direction at delta_chi2 = -0.61 (covtot) / -1.54 (diag-only), with epsilon_MLE = 0.892 -- numerically consistent with Pantheon+ (0.874) and Union3 (0.856). The preference is weaker than Pantheon+'s -3.8 because DES-SN5YR (a) contains no Cepheid-anchor calibrator block, (b) is already an excellent LCDM fit (chi2/dof 0.898), and (c) is dominated by high-z objects where both frames converge. The localization mirrors Pantheon+: gains in the low-z/intermediate blocks, a small loss at z>0.7. Caveat: the epsilon~0.87-0.9 cross-catalog stability is a degeneracy-direction rediscovery (rms distance-modulus difference vs LCDM is ~0.02 mag, an order below typical MUERR), so it does NOT constitute independent replication -- only delta_chi2/BF discriminates, and those are small here. Verdict: direction replicates; significance does not, consistent with a calibrator-free catalog having little power over the near-degenerate direction."
+}

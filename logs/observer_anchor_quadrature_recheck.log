@@ -1,0 +1,6 @@
+shared M0a_LCDM {"logZ": 751.6057752521972, "relative_quad_error": 7.580335226288082e-07}
+shared M1_zT5 {"logZ": 753.3633267957039, "relative_quad_error": 2.405404376269764e-14}
+shared M1_free_zT {"logZ": 753.285380238797, "turnover_refinements": [{"order": 32, "logZ": 753.2853818096027}, {"order": 64, "logZ": 753.2853802388283}, {"order": 128, "logZ": 753.285380238797}], "last_logZ_change": 3.1377567211166024e-11}
+anchored M0a_LCDM {"logZ": 860.8026788474604, "relative_quad_error": 2.0154465910050816e-07}
+anchored M1_zT5 {"logZ": 861.3862858057728, "relative_quad_error": 2.1672648899864063e-13}
+anchored M1_free_zT {"logZ": 861.1393970111627, "turnover_refinements": [{"order": 32, "logZ": 861.1393953425484}, {"order": 64, "logZ": 861.1393970112161}, {"order": 128, "logZ": 861.1393970111627}], "last_logZ_change": 5.3432813729159534e-11}

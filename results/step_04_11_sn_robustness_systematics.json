@@ -1,190 +1,190 @@
 {
- "description": "Supernova robustness and systematics tests",
- "interpretation": "Across all robustness tests the TEP M1 (z_T=5) Bayes factor relative to LCDM ranges from 0.77 to 36.71, confirming that the substantial evidence is not an artefact of a single prior choice, redshift cut, covariance treatment, or sampler setting.",
- "results": {
-  "covariance_treatments": {
-   "diagonal_only": {
-    "bf": 5.376166083927452,
-    "bound": "multi",
-    "delta_chi2": -3.7047478349877565,
-    "ln_bf": 1.6819754963313471,
-    "logZ_lcdm": 477.176816962441,
-    "logZ_tep": 478.85879245877237,
-    "nlive": 200,
-    "sample": "rwalk"
-   },
-   "full": {
-    "bf": 5.818846582273913,
-    "bound": "multi",
-    "delta_chi2": -3.3865554925714605,
-    "ln_bf": 1.761102060362873,
-    "logZ_lcdm": 633.3292542663745,
-    "logZ_tep": 635.0903563267374,
-    "nlive": 200,
-    "sample": "rwalk"
-   },
-   "inflated_diagonal_1.5x": {
-    "bf": 3.0757531319262448,
-    "bound": "multi",
-    "delta_chi2": -2.4698318899972946,
-    "ln_bf": 1.1235497922218656,
-    "logZ_lcdm": 485.3342838555081,
-    "logZ_tep": 486.45783364772996,
-    "nlive": 200,
-    "sample": "rwalk"
-   },
-   "statistical_only": {
-    "bf": 3.2649121942342907,
-    "bound": "multi",
-    "delta_chi2": -1.4938139753637643,
-    "ln_bf": 1.1832328693297995,
-    "logZ_lcdm": 537.9027894957703,
-    "logZ_tep": 539.0860223651001,
-    "nlive": 200,
-    "sample": "rwalk"
-   }
+  "description": "Supernova robustness and systematics tests",
+  "interpretation": "Across the robustness tests the TEP M1 (z_T=5) Bayes factor relative to LCDM ranges from 0.64 to 11.39. The spread quantifies genuine sensitivity to prior support, redshift window, covariance treatment, and sampler configuration; entries below unity indicate configurations in which the conservative M1 branch does not outperform LCDM, and BF values near unity are within nested-sampling noise unless the quoted log-evidence errors exclude zero.",
+  "results": {
+    "covariance_treatments": {
+      "diagonal_only": {
+        "bf": 11.392062655029122,
+        "bound": "multi",
+        "delta_chi2": -4.898524798951257,
+        "ln_bf": 2.432916854569271,
+        "logZ_lcdm": 686.397734168051,
+        "logZ_tep": 688.8306510226203,
+        "nlive": 500,
+        "sample": "rwalk"
+      },
+      "full": {
+        "bf": 6.868435257830285,
+        "bound": "multi",
+        "delta_chi2": -3.8059087732599437,
+        "ln_bf": 1.926936315784019,
+        "logZ_lcdm": 751.6145653044657,
+        "logZ_tep": 753.5415016202497,
+        "nlive": 500,
+        "sample": "rwalk"
+      },
+      "inflated_diagonal_1.5x": {
+        "bf": 3.7303588403461387,
+        "bound": "multi",
+        "delta_chi2": -3.2656831993126616,
+        "ln_bf": 1.3165044328745807,
+        "logZ_lcdm": 624.8794305251411,
+        "logZ_tep": 626.1959349580156,
+        "nlive": 500,
+        "sample": "rwalk"
+      },
+      "statistical_only": {
+        "bf": 1.2204377721916555,
+        "bound": "multi",
+        "delta_chi2": -0.517487234543978,
+        "ln_bf": 0.1992096240464889,
+        "logZ_lcdm": 572.1357005480961,
+        "logZ_tep": 572.3349101721426,
+        "nlive": 500,
+        "sample": "rwalk"
+      }
+    },
+    "prior_sensitivity": {
+      "eps_-1.0_1.0": {
+        "bf": 4.505036977373051,
+        "bound": "multi",
+        "delta_chi2": -3.8059087712299515,
+        "ln_bf": 1.5051960991005444,
+        "logZ_lcdm": 751.7422750003468,
+        "logZ_tep": 753.2474710994474,
+        "nlive": 500,
+        "sample": "rwalk"
+      },
+      "eps_0.0_0.5": {
+        "bf": 4.4028295286972224e-23,
+        "bound": "multi",
+        "delta_chi2": 99.14857258660868,
+        "ln_bf": -51.477209729918854,
+        "logZ_lcdm": 751.6150132612269,
+        "logZ_tep": 700.137803531308,
+        "nlive": 500,
+        "sample": "rwalk"
+      },
+      "eps_0.0_1.0": {
+        "bf": 10.759707738969611,
+        "bound": "multi",
+        "delta_chi2": -3.8059087733522574,
+        "ln_bf": 2.3758083925589517,
+        "logZ_lcdm": 751.41007025102,
+        "logZ_tep": 753.7858786435789,
+        "nlive": 500,
+        "sample": "rwalk"
+      },
+      "eps_0.0_2.0": {
+        "bf": 5.657682681577928,
+        "bound": "multi",
+        "delta_chi2": -3.8059087732599437,
+        "ln_bf": 1.7330143881638378,
+        "logZ_lcdm": 751.6943706983187,
+        "logZ_tep": 753.4273850864826,
+        "nlive": 500,
+        "sample": "rwalk"
+      },
+      "free_zT_flat": {
+        "bf": 6.303653008546702,
+        "bound": "multi",
+        "delta_chi2": -3.691694424886009,
+        "ln_bf": 1.841129307980168,
+        "logZ_lcdm": 751.5935360016141,
+        "logZ_tep": 753.4346653095943,
+        "nlive": 500,
+        "sample": "rwalk"
+      },
+      "free_zT_loguni": {
+        "bf": 3.1518352947863604,
+        "delta_chi2": -3.3996418864087445,
+        "ln_bf": 1.1479849164381903,
+        "logZ_lcdm": 751.5541419330017,
+        "logZ_tep": 752.7021268494399,
+        "z_T_prior": "log_uniform"
+      }
+    },
+    "redshift_cuts": {
+      "z_gt_0.010": {
+        "bf": 0.8835666411374494,
+        "bound": "multi",
+        "delta_chi2": -0.0701312735332067,
+        "ln_bf": -0.12378856150166939,
+        "logZ_lcdm": 836.6092506138211,
+        "logZ_tep": 836.4854620523195,
+        "nlive": 500,
+        "sample": "rwalk"
+      },
+      "z_gt_0.023": {
+        "bf": 0.7837368190520841,
+        "bound": "multi",
+        "delta_chi2": 0.7978487975397002,
+        "ln_bf": -0.24368200497281123,
+        "logZ_lcdm": 760.5997016237573,
+        "logZ_tep": 760.3560196187844,
+        "nlive": 500,
+        "sample": "rwalk"
+      },
+      "z_gt_0.050": {
+        "bf": 0.6440928056375193,
+        "bound": "multi",
+        "delta_chi2": 1.2607694064330417,
+        "ln_bf": -0.43991245512756905,
+        "logZ_lcdm": 584.761871845539,
+        "logZ_tep": 584.3219593904114,
+        "nlive": 500,
+        "sample": "rwalk"
+      }
+    },
+    "sampler_configurations": {
+      "multi_rwalk": {
+        "bf": 4.3450523941999135,
+        "bound": "multi",
+        "delta_chi2": -3.8059087732599437,
+        "ln_bf": 1.46903781714866,
+        "logZ_lcdm": 751.684407137051,
+        "logZ_tep": 753.1534449541997,
+        "nlive": 500,
+        "sample": "rwalk"
+      },
+      "single_unif": {
+        "bf": 5.3369803374836495,
+        "bound": "single",
+        "delta_chi2": -3.8059087732599437,
+        "ln_bf": 1.6746600131560854,
+        "logZ_lcdm": 751.7575365032368,
+        "logZ_tep": 753.4321965163929,
+        "nlive": 500,
+        "sample": "unif"
+      }
+    }
   },
-  "prior_sensitivity": {
-   "eps_0.0_0.5": {
-    "bf": 6.558536193151817e-23,
-    "bound": "multi",
-    "delta_chi2": 98.71928447846267,
-    "ln_bf": -51.07868970209461,
-    "logZ_lcdm": 633.5045984046063,
-    "logZ_tep": 582.4259087025117,
-    "nlive": 200,
-    "sample": "rwalk"
-   },
-   "eps_0.0_1.0": {
-    "bf": 13.374519865193928,
-    "bound": "multi",
-    "delta_chi2": -3.386555469257928,
-    "ln_bf": 2.593351394208298,
-    "logZ_lcdm": 633.6166888338963,
-    "logZ_tep": 636.2100402281046,
-    "nlive": 200,
-    "sample": "rwalk"
-   },
-   "eps_0.0_2.0": {
-    "bf": 4.955588228610017,
-    "bound": "multi",
-    "delta_chi2": -3.3865554925714605,
-    "ln_bf": 1.6005158748853319,
-    "logZ_lcdm": 633.6377820531841,
-    "logZ_tep": 635.2382979280694,
-    "nlive": 200,
-    "sample": "rwalk"
-   },
-   "free_zT_flat": {
-    "bf": 36.70912024589092,
-    "bound": "multi",
-    "delta_chi2": -7.532114490722506,
-    "ln_bf": 3.6030252322499337,
-    "logZ_lcdm": 633.7140046516877,
-    "logZ_tep": 637.3170298839376,
-    "nlive": 200,
-    "sample": "rwalk"
-   },
-   "free_zT_loguni": {
-    "bf": 9.938328672867936,
-    "delta_chi2": -7.532114490722506,
-    "ln_bf": 2.2963988649685234,
-    "logZ_lcdm": 633.6737826570103,
-    "logZ_tep": 635.9701815219788,
-    "z_T_prior": "log_uniform"
-   },
-   "eps_-1.0_1.0": {
-    "bf": 5.662750203919376,
-    "ln_bf": 1.7339096759556014,
-    "delta_chi2": -3.3865554923918353,
-    "logZ_lcdm": 633.4606303537848,
-    "logZ_tep": 635.1945400297404,
-    "nlive": 200,
-    "bound": "multi",
-    "sample": "rwalk"
-   }
+  "status": "completed",
+  "step": "step_04_11_sn_robustness_systematics",
+  "summary": {
+    "note": "eps_0.0_0.5 excluded from overall range because it is an artificially restrictive prior that excludes most of the fitted epsilon_shear_los posterior mass and is included only as a sensitivity test.",
+    "overall_bf_range": {
+      "max": 11.392062655029122,
+      "min": 0.6440928056375193
+    },
+    "per_category": {
+      "covariance_treatments": {
+        "bf_max": 11.392062655029122,
+        "bf_min": 1.2204377721916555
+      },
+      "prior_sensitivity": {
+        "bf_max": 10.759707738969611,
+        "bf_min": 4.4028295286972224e-23
+      },
+      "redshift_cuts": {
+        "bf_max": 0.8835666411374494,
+        "bf_min": 0.6440928056375193
+      },
+      "sampler_configurations": {
+        "bf_max": 5.3369803374836495,
+        "bf_min": 4.3450523941999135
+      }
+    }
   },
-  "redshift_cuts": {
-   "z_gt_0.010": {
-    "bf": 1.7641734150314214,
-    "bound": "multi",
-    "delta_chi2": -0.9734174703407916,
-    "ln_bf": 0.5676822605936422,
-    "logZ_lcdm": 817.68282321506,
-    "logZ_tep": 818.2505054756537,
-    "nlive": 200,
-    "sample": "rwalk"
-   },
-   "z_gt_0.023": {
-    "bf": 0.7705797122320873,
-    "bound": "multi",
-    "delta_chi2": -0.6964611963787775,
-    "ln_bf": -0.2606121743724543,
-    "logZ_lcdm": 745.8947850915515,
-    "logZ_tep": 745.6341729171791,
-    "nlive": 200,
-    "sample": "rwalk"
-   },
-   "z_gt_0.050": {
-    "bf": 2.130328747017496,
-    "bound": "multi",
-    "delta_chi2": -0.12764014111041888,
-    "ln_bf": 0.7562763091347051,
-    "logZ_lcdm": 584.7072827439711,
-    "logZ_tep": 585.4635590531058,
-    "nlive": 200,
-    "sample": "rwalk"
-   }
-  },
-  "sampler_configurations": {
-   "multi_rwalk": {
-    "bf": 7.949644587057198,
-    "bound": "multi",
-    "delta_chi2": -3.3865554925714605,
-    "ln_bf": 2.073127221636355,
-    "logZ_lcdm": 633.3091519825076,
-    "logZ_tep": 635.382279204144,
-    "nlive": 200,
-    "sample": "rwalk"
-   },
-   "single_unif": {
-    "bf": 4.369172302180328,
-    "bound": "single",
-    "delta_chi2": -3.3865554925714605,
-    "ln_bf": 1.4745735866328005,
-    "logZ_lcdm": 633.3624128542846,
-    "logZ_tep": 634.8369864409174,
-    "nlive": 200,
-    "sample": "unif"
-   }
-  }
- },
- "status": "completed",
- "step": "step_04_11_sn_robustness_systematics",
- "summary": {
-  "overall_bf_range": {
-   "min": 0.7705797122320873,
-   "max": 36.70912024589092
-  },
-  "per_category": {
-   "covariance_treatments": {
-    "bf_max": 5.818846582273913,
-    "bf_min": 3.0757531319262448
-   },
-   "prior_sensitivity": {
-    "bf_max": 36.70912024589092,
-    "bf_min": 6.558536193151817e-23
-   },
-   "redshift_cuts": {
-    "bf_max": 2.130328747017496,
-    "bf_min": 0.7705797122320873
-   },
-   "sampler_configurations": {
-    "bf_max": 7.949644587057198,
-    "bf_min": 4.369172302180328
-   }
-  },
-  "note": "eps_0.0_0.5 excluded from overall range because it is an artificially restrictive prior that excludes the best-fit epsilon_shear_los ~ 0.27 and is included only as a sensitivity test."
- },
- "timestamp": 1783190848
+  "timestamp": 1791721574
 }

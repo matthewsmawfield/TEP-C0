@@ -1,0 +1,202 @@
+{
+  "sz_xray": {
+    "n": 20,
+    "objects": [
+      {
+        "name": "Abell 2204",
+        "z": 0.152,
+        "eta_normalized": 1.023697447953425
+      },
+      {
+        "name": "Abell 1689",
+        "z": 0.183,
+        "eta_normalized": 0.9937438822203436
+      },
+      {
+        "name": "Abell 1835",
+        "z": 0.252,
+        "eta_normalized": 1.0638806461746662
+      },
+      {
+        "name": "RXJ 1347",
+        "z": 0.451,
+        "eta_normalized": 0.9434137989100712
+      },
+      {
+        "name": "Abell 1914",
+        "z": 0.171,
+        "eta_normalized": 1.0029666284657472
+      },
+      {
+        "name": "Abell 2163",
+        "z": 0.203,
+        "eta_normalized": 1.0063539573845066
+      },
+      {
+        "name": "Abell 2261",
+        "z": 0.224,
+        "eta_normalized": 1.017672991990951
+      },
+      {
+        "name": "Abell 2390",
+        "z": 0.228,
+        "eta_normalized": 1.0223015538401474
+      },
+      {
+        "name": "Abell 2537",
+        "z": 0.295,
+        "eta_normalized": 1.062268932600077
+      },
+      {
+        "name": "Abell 2631",
+        "z": 0.278,
+        "eta_normalized": 1.0598617479333476
+      },
+      {
+        "name": "Abell 2667",
+        "z": 0.226,
+        "eta_normalized": 1.0190998970144935
+      },
+      {
+        "name": "Abell 2697",
+        "z": 0.232,
+        "eta_normalized": 1.026719972285502
+      },
+      {
+        "name": "Abell 2744",
+        "z": 0.308,
+        "eta_normalized": 1.0613497523690971
+      },
+      {
+        "name": "Abell 2813",
+        "z": 0.292,
+        "eta_normalized": 1.062965788349277
+      },
+      {
+        "name": "Abell 3112",
+        "z": 0.075,
+        "eta_normalized": 1.0214994233326626
+      },
+      {
+        "name": "Abell 3158",
+        "z": 0.06,
+        "eta_normalized": 1.0151195924113565
+      },
+      {
+        "name": "Abell 3266",
+        "z": 0.118,
+        "eta_normalized": 0.9876021964327362
+      },
+      {
+        "name": "Abell 3376",
+        "z": 0.046,
+        "eta_normalized": 0.9824581803240742
+      },
+      {
+        "name": "Abell 3404",
+        "z": 0.042,
+        "eta_normalized": 0.9686385582565687
+      },
+      {
+        "name": "Abell 3497",
+        "z": 0.14,
+        "eta_normalized": 1.019625649109038
+      }
+    ],
+    "eps_dev_from_reciprocity": 0.09915165507105428,
+    "eps_dev_err": 0.3311992225847343,
+    "eps_dev_sigma": 0.299371641929767,
+    "logC_calibration": 1.2477606610965584,
+    "chi2_flat_shape": 1.3093968176412993,
+    "chi2_flat_per_dof": 0.07274426764673886,
+    "rms_eta_normalized": 0.03240881139782546
+  },
+  "strong_lensing": {
+    "n": 15,
+    "objects": [
+      {
+        "name": "SDSS J0037-0945",
+        "z": 0.196,
+        "eta_normalized": 1.4604266405483075
+      },
+      {
+        "name": "SDSS J0121-1000",
+        "z": 0.213,
+        "eta_normalized": 1.4872784632442224
+      },
+      {
+        "name": "SDSS J0152-1002",
+        "z": 0.235,
+        "eta_normalized": 1.5066949943388983
+      },
+      {
+        "name": "SDSS J0201-0959",
+        "z": 0.198,
+        "eta_normalized": 1.4309116374877304
+      },
+      {
+        "name": "SDSS J0237-0941",
+        "z": 0.245,
+        "eta_normalized": 1.5152659591381983
+      },
+      {
+        "name": "SDSS J0321-0913",
+        "z": 0.152,
+        "eta_normalized": 1.2753286568684363
+      },
+      {
+        "name": "SDSS J0405-0858",
+        "z": 0.221,
+        "eta_normalized": 1.489229299175065
+      },
+      {
+        "name": "SDSS J0439-0838",
+        "z": 0.185,
+        "eta_normalized": 1.4362834123510215
+      },
+      {
+        "name": "SDSS J0505-0805",
+        "z": 0.202,
+        "eta_normalized": 1.4401684396467362
+      },
+      {
+        "name": "SDSS J0538-0735",
+        "z": 0.178,
+        "eta_normalized": 1.3654853616197247
+      },
+      {
+        "name": "SDSS J0601-0701",
+        "z": 0.231,
+        "eta_normalized": 1.5001982599012906
+      },
+      {
+        "name": "SDSS J0636-0634",
+        "z": 0.195,
+        "eta_normalized": 1.4406745780061203
+      },
+      {
+        "name": "SDSS J0701-0558",
+        "z": 0.208,
+        "eta_normalized": 1.4467690112649747
+      },
+      {
+        "name": "SDSS J0725-0518",
+        "z": 0.187,
+        "eta_normalized": 1.4344713733800494
+      },
+      {
+        "name": "SDSS J0745-0500",
+        "z": 0.214,
+        "eta_normalized": 1.4657936363427964
+      }
+    ],
+    "eps_dev_from_reciprocity": 1.9851999586121565,
+    "eps_dev_err": 1.8711037540369158,
+    "eps_dev_sigma": 1.0609780213037774,
+    "logC_calibration": 1.0740234478412134,
+    "chi2_flat_shape": 0.20609209836672074,
+    "chi2_flat_per_dof": 0.015853238335901597,
+    "rms_eta_normalized": 0.058719279292604724
+  },
+  "note": "eta is H0-independent (both distances scale as 1/H0). The SN interpolant is a non-parametric local weighted fit to mu(z); no cosmology enters either side. eta~1 certifies Etherington reciprocity in the EM sector -- expected under both GR and TEP; the prior ~8sigma deviation came from mixing Planck-derived D_L with BAO D_A and is a compilation artifact."
+}

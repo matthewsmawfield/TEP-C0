@@ -38,7 +38,7 @@ from c0_common import (
 STEP_ID = "step_05_10_tephc_spectra_crosscheck"
 
 # TEP-HC results path (relative to TEP-C0 root)
-TEP_HC_RESULTS = Path("/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/results/04_cmb_spectra.json")
+TEP_HC_RESULTS = Path(__file__).resolve().parents[3] / "TEP-HC" / "results" / "04_cmb_spectra.json"
 
 
 def load_tephc_spectra():
@@ -123,7 +123,7 @@ def run():
     payload = {
         "step": STEP_ID,
         "status": "completed",
-        "description": "Cross-check TEP-HC CMB power spectra and acoustic scale against LCDM baseline",
+        "description": "Import TEP-HC sound-horizon and angular-anchor scalars against the LCDM baseline",
         "tephc_source": str(TEP_HC_RESULTS),
         "residuals_percent": {
             "max_TT": None,
@@ -136,12 +136,13 @@ def run():
             "theta_s_frac_shift": rounded(theta_s_frac_shift, 6) if theta_s_frac_shift else None,
         },
         "pass_criteria": {
-            "acoustic_scale_preserved_to_0_1pct": acoustic_pass,
+            "sound_horizon_preserved_to_0_1pct": acoustic_pass,
+            "criterion_scope": "Applies to r_s ratio; theta_s shift is reported separately",
         },
         "validation": {
             "pass": all_pass,
             "tephc_available": True,
-            "note": "C0 independently verifies consistency with TEP-HC spectral outputs (TT + acoustic scale) but does not replace the full TEP-HC perturbation derivation. TE/EE cross-checks are not available in the TEP-HC output file.",
+            "note": "This importer checks the sound-horizon scalar only. Direct TT/TE/EE residuals are not evaluated here; native spectrum and perturbation validation are supplied by the separate HC calculations.",
         },
     }
 

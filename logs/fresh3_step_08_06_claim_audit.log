@@ -1,0 +1,7 @@
+[TITLE] Starting step_08_06_claim_audit
+[PROCESS] Reading manuscript components and README
+[PROCESS] Checking required guardrails
+[PROCESS] Auditing step consistency
+[PROCESS] Auditing statistical values
+[PROCESS] Auditing Bayes Factors
+[SUCCESS] Audit completed with 0 failures

@@ -1,20 +1,340 @@
-[04:52:02] [INFO] 
-[04:52:02] [INFO] ================================================================================
-[04:52:02] [INFO]    Starting step_03_01_three_model_comparison - RESEARCH GRADE
-[04:52:02] [INFO] ================================================================================
-[04:52:02] [INFO] 
-[04:52:02] [INFO] Loaded 1701 SNe from data/raw/pantheon_plus_shoes.dat
-[04:52:02] [INFO] Covariance source: full_covariance_file_filtered
-[04:52:02] [INFO] Data SHA-256: 1cb0fc379ef066af...
-[04:52:02] [INFO] Cov SHA-256: abf806d966485e64...
-[04:52:02] [INFO] Computational budget: nlive=500, dlogz=0.1, run_mcmc=True, mcmc_walkers=64, mcmc_steps=40000, mcmc_burn_in=5000, run_cross_validation=False
-[04:52:02] [INFO] 
+[08:12:38] [INFO] 
+[08:12:38] [INFO] ================================================================================
+[08:12:38] [INFO]    Starting step_03_01_three_model_comparison - RESEARCH GRADE
+[08:12:38] [INFO] ================================================================================
+[08:12:38] [INFO] 
+[08:12:38] [INFO] Loaded 1701 SNe from data/raw/pantheon_plus_shoes.dat
+[08:12:38] [INFO] Covariance source: full_covariance_file_filtered
+[08:12:38] [INFO] Data SHA-256: 1cb0fc379ef066af...
+[08:12:38] [INFO] Cov SHA-256: abf806d966485e64...
+[08:12:38] [INFO] Computational budget: nlive=500, dlogz=0.1, run_mcmc=True, mcmc_walkers=64, mcmc_steps=40000, mcmc_burn_in=5000, run_cross_validation=False
+[08:12:38] [INFO] 
 ==================================================
-[04:52:02] [INFO] 
-[04:52:02] [INFO] ================================================================================
-[04:52:02] [INFO]    Fitting M0a_LCDM
-[04:52:02] [INFO] ================================================================================
-[04:52:02] [INFO] 
-[04:52:02] [PROCESS] Maximum likelihood fitting...
-[04:52:02] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
-[04:52:02] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[08:12:38] [INFO] 
+[08:12:38] [INFO] ================================================================================
+[08:12:38] [INFO]    Fitting M0a_LCDM
+[08:12:38] [INFO] ================================================================================
+[08:12:38] [INFO] 
+[08:12:38] [PROCESS] Maximum likelihood fitting...
+[08:12:38] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[08:12:38] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[08:13:36] [PROCESS] MCMC sampling for convergence diagnostics...
+[08:45:40] [INFO] Progressively saved results after M0a_LCDM
+[08:45:40] [INFO] 
+==================================================
+[08:45:40] [INFO] 
+[08:45:40] [INFO] ================================================================================
+[08:45:40] [INFO]    Fitting M0b_EdS
+[08:45:40] [INFO] ================================================================================
+[08:45:40] [INFO] 
+[08:45:40] [PROCESS] Maximum likelihood fitting...
+[08:45:40] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[08:45:40] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[08:46:25] [PROCESS] MCMC sampling for convergence diagnostics...
+[09:11:34] [INFO] Progressively saved results after M0b_EdS
+[09:11:34] [INFO] 
+==================================================
+[09:11:34] [INFO] 
+[09:11:34] [INFO] ================================================================================
+[09:11:34] [INFO]    Fitting M1_NoLambda_zT5
+[09:11:34] [INFO] ================================================================================
+[09:11:34] [INFO] 
+[09:11:34] [INFO]   Set z_T = 5.0 for M1_NoLambda_zT5
+[09:11:34] [PROCESS] Maximum likelihood fitting...
+[09:11:34] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[09:11:34] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[09:12:40] [PROCESS] MCMC sampling for convergence diagnostics...
+[09:37:59] [INFO] Progressively saved results after M1_NoLambda_zT5
+[09:37:59] [INFO] 
+==================================================
+[09:37:59] [INFO] 
+[09:37:59] [INFO] ================================================================================
+[09:37:59] [INFO]    Fitting M1_NoLambda_zT1
+[09:37:59] [INFO] ================================================================================
+[09:37:59] [INFO] 
+[09:37:59] [INFO]   Set z_T = 1.0 for M1_NoLambda_zT1
+[09:37:59] [PROCESS] Maximum likelihood fitting...
+[09:37:59] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[09:37:59] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[09:39:03] [PROCESS] MCMC sampling for convergence diagnostics...
+[10:05:20] [INFO] Progressively saved results after M1_NoLambda_zT1
+[10:05:20] [INFO] 
+==================================================
+[10:05:20] [INFO] 
+[10:05:20] [INFO] ================================================================================
+[10:05:20] [INFO]    Fitting M1_Unscreened_zT100
+[10:05:20] [INFO] ================================================================================
+[10:05:20] [INFO] 
+[10:05:20] [INFO]   Set z_T = 100.0 for M1_Unscreened_zT100
+[10:05:20] [PROCESS] Maximum likelihood fitting...
+[10:05:20] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[10:05:20] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[10:06:32] [PROCESS] MCMC sampling for convergence diagnostics...
+[10:35:43] [INFO] Progressively saved results after M1_Unscreened_zT100
+[10:35:43] [INFO] 
+==================================================
+[10:35:43] [INFO] 
+[10:35:43] [INFO] ================================================================================
+[10:35:43] [INFO]    Fitting M1_free_zT
+[10:35:43] [INFO] ================================================================================
+[10:35:43] [INFO] 
+[10:35:43] [PROCESS] Maximum likelihood fitting...
+[10:35:44] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[10:35:44] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[10:36:42] [PROCESS] MCMC sampling for convergence diagnostics...
+[10:36:42] [INFO] Using enhanced MCMC for M1_free_zT: 64 walkers, 40000 steps, 10000 burn-in
+[10:54:23] [INFO] Progressively saved results after M1_free_zT
+[10:54:23] [INFO] 
+==================================================
+[10:54:23] [INFO] 
+[10:54:23] [INFO] ================================================================================
+[10:54:23] [INFO]    Fitting M2_PureShear
+[10:54:23] [INFO] ================================================================================
+[10:54:23] [INFO] 
+[10:54:23] [PROCESS] Maximum likelihood fitting...
+[10:54:23] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[10:54:23] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[10:55:33] [PROCESS] MCMC sampling for convergence diagnostics...
+[11:20:15] [INFO] Progressively saved results after M2_PureShear
+[11:20:15] [INFO] 
+==================================================
+[11:20:15] [INFO] 
+[11:20:15] [INFO] ================================================================================
+[11:20:15] [INFO]    Fitting M3_wCDM
+[11:20:15] [INFO] ================================================================================
+[11:20:15] [INFO] 
+[11:20:15] [PROCESS] Maximum likelihood fitting...
+[11:20:15] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[11:20:15] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[11:21:24] [PROCESS] MCMC sampling for convergence diagnostics...
+[12:28:21] [INFO] Progressively saved results after M3_wCDM
+[12:28:21] [INFO] 
+==================================================
+[12:28:21] [INFO] 
+[12:28:21] [INFO] ================================================================================
+[12:28:21] [INFO]    Fitting M4_CPL
+[12:28:21] [INFO] ================================================================================
+[12:28:21] [INFO] 
+[12:28:21] [PROCESS] Maximum likelihood fitting...
+[12:28:22] [PROCESS] Nested sampling with dynesty (nlive=500, dlogz=0.1)...
+[12:28:22] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:29:54] [PROCESS] MCMC sampling for convergence diagnostics...
+[12:54:26] [INFO] Progressively saved results after M4_CPL
+[12:54:26] [INFO] 
+[12:54:26] [INFO] ================================================================================
+[12:54:26] [INFO]    
+Model Comparison (vs ΛCDM):
+[12:54:26] [INFO] ================================================================================
+[12:54:26] [INFO] 
+[12:54:26] [INFO]   M0b_EdS:
+[12:54:26] [INFO]     ln(BF) vs LCDM = -315.24, BF = 1.23e-137 (Decisive (favors LCDM))
+[12:54:26] [INFO]     ΔBIC vs LCDM = 628.40
+[12:54:26] [INFO]     Δχ² vs LCDM = 635.83
+[12:54:26] [INFO]     p-value (Wilks) = 0.0000
+[12:54:26] [INFO]     p-value (boundary-corrected) = 0.0000
+[12:54:26] [INFO]     ln(BF) vs EdS = 0.00
+[12:54:26] [INFO]     ΔBIC vs EdS = 0.00
+[12:54:26] [INFO]   M1_NoLambda_zT5:
+[12:54:26] [INFO]     ln(BF) vs LCDM = 1.37, BF = 3.95e+00 (Substantial)
+[12:54:26] [INFO]     ΔBIC vs LCDM = -3.81
+[12:54:26] [INFO]     Δχ² vs LCDM = -3.81
+[12:54:26] [INFO]     p-value (Wilks) = 0.0511
+[12:54:26] [INFO]     p-value (boundary-corrected) = 0.0255
+[12:54:26] [INFO]     ln(BF) vs EdS = 316.62
+[12:54:26] [INFO]     ΔBIC vs EdS = -632.20
+[12:54:26] [INFO]   M1_NoLambda_zT1:
+[12:54:26] [INFO]     ln(BF) vs LCDM = -14.45, BF = 5.30e-07 (Decisive (favors LCDM))
+[12:54:26] [INFO]     ΔBIC vs LCDM = 27.85
+[12:54:26] [INFO]     Δχ² vs LCDM = 27.85
+[12:54:26] [INFO]     p-value (Wilks) = 0.0000
+[12:54:26] [INFO]     p-value (boundary-corrected) = 0.0000
+[12:54:26] [INFO]     ln(BF) vs EdS = 300.79
+[12:54:26] [INFO]     ΔBIC vs EdS = -600.55
+[12:54:26] [INFO]   M1_Unscreened_zT100:
+[12:54:26] [INFO]     ln(BF) vs LCDM = 1.48, BF = 4.38e+00 (Substantial)
+[12:54:26] [INFO]     ΔBIC vs LCDM = -3.69
+[12:54:26] [INFO]     Δχ² vs LCDM = -3.69
+[12:54:26] [INFO]     p-value (Wilks) = 0.0547
+[12:54:26] [INFO]     p-value (boundary-corrected) = 0.0274
+[12:54:26] [INFO]     ln(BF) vs EdS = 316.72
+[12:54:26] [INFO]     ΔBIC vs EdS = -632.09
+[12:54:26] [INFO]   M1_free_zT:
+[12:54:26] [INFO]     ln(BF) vs LCDM = 1.41, BF = 4.08e+00 (Substantial)
+[12:54:26] [INFO]     ΔBIC vs LCDM = 3.63
+[12:54:26] [INFO]     Δχ² vs LCDM = -3.81
+[12:54:26] [INFO]     p-value (Wilks) = 0.0510
+[12:54:26] [INFO]     p-value (boundary-corrected) = 0.0255
+[12:54:26] [INFO]     ln(BF) vs EdS = 316.65
+[12:54:26] [INFO]     ΔBIC vs EdS = -624.76
+[12:54:26] [INFO]   M2_PureShear:
+[12:54:26] [INFO]     ln(BF) vs LCDM = -0.29, BF = 7.52e-01 (Weak (favors LCDM))
+[12:54:26] [INFO]     ΔBIC vs LCDM = -0.00
+[12:54:26] [INFO]     Δχ² vs LCDM = -0.00
+[12:54:26] [INFO]     p-value (Wilks) = 1.0000
+[12:54:26] [INFO]     p-value (boundary-corrected) = 0.5000
+[12:54:26] [INFO]     ln(BF) vs EdS = 314.96
+[12:54:26] [INFO]     ΔBIC vs EdS = -628.40
+[12:54:26] [INFO]   M3_wCDM:
+[12:54:26] [INFO]     ln(BF) vs LCDM = 0.95, BF = 2.59e+00 (Weak)
+[12:54:26] [INFO]     ΔBIC vs LCDM = 3.05
+[12:54:26] [INFO]     Δχ² vs LCDM = -4.39
+[12:54:26] [INFO]     p-value (Wilks) = 0.0361
+[12:54:26] [INFO]     p-value (boundary-corrected) = 0.0180
+[12:54:26] [INFO]     ln(BF) vs EdS = 316.19
+[12:54:26] [INFO]     ΔBIC vs EdS = -625.35
+[12:54:26] [INFO]   M4_CPL:
+[12:54:26] [INFO]     ln(BF) vs LCDM = 0.80, BF = 2.22e+00 (Weak)
+[12:54:26] [INFO]     ΔBIC vs LCDM = 8.41
+[12:54:26] [INFO]     Δχ² vs LCDM = -6.47
+[12:54:26] [INFO]     p-value (Wilks) = 0.0110
+[12:54:26] [INFO]     p-value (boundary-corrected) = 0.0055
+[12:54:26] [INFO]     ln(BF) vs EdS = 316.04
+[12:54:26] [INFO]     ΔBIC vs EdS = -619.98
+[12:54:26] [PROCESS] Running z_T sensitivity grid for M1_NoLambda
+[12:54:27] [PROCESS] Running Null Injection Test (Mock LCDM data)
+[12:54:28] [PROCESS] Running Stochastic Null Injection Test (N=200)
+[12:55:52] [PROCESS] Running Positive and Negative TEP Injection Tests
+[12:55:53] [PROCESS] Running Expanded Prior Sensitivity Test
+[12:55:53] [INFO]   M1 testing prior epsilon_shear_los: [0.0, 0.1]
+[12:55:53] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:57:22] [INFO]   M1 testing prior epsilon_shear_los: [0.0, 0.3]
+[12:57:22] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:58:38] [INFO]   M1 testing prior epsilon_shear_los: [0.0, 0.5]
+[12:58:38] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:59:52] [INFO]   M1 testing prior epsilon_shear_los: [0.0, 1.0]
+[12:59:52] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:01:01] [PROCESS] Running Static M2 Sanity Check
+[13:01:01] [INFO] 
+======================================================================
+[13:01:01] [INFO] 
+[13:01:01] [INFO] ================================================================================
+[13:01:01] [INFO]    RESEARCH GRADE SUMMARY
+[13:01:01] [INFO] ================================================================================
+[13:01:01] [INFO] 
+[13:01:01] [INFO] ======================================================================
+[13:01:01] [INFO] Tier: Research Grade
+[13:01:01] [SUCCESS] Infrastructure Gate: open
+[13:01:01] [SUCCESS] Model Comparison Gate: open
+[13:01:01] [INFO] Replacement Gate: blocked
+[13:01:01] [INFO] 
+[13:01:01] [INFO] ================================================================================
+[13:01:01] [INFO]    Allowed Claim: No-Λ Temporal Shear is evidence-preferred over ΛCDM in Pantheon+.
+[13:01:01] [INFO] ================================================================================
+[13:01:01] [INFO] 
+[13:01:01] [INFO] 
+M0a_LCDM:
+[13:01:01] [INFO]   fitted params: {'Om0': np.float64(0.36236843935113366), 'M': np.float64(-19.339280514387653)}
+[13:01:01] [INFO]   k (n_params): 2
+[13:01:01] [INFO]   log L (MLE): 760.81
+[13:01:01] [INFO]   chi2/dof: 1.03
+[13:01:01] [INFO]   AIC: -1517.62
+[13:01:01] [INFO]   BIC: -1506.74
+[13:01:01] [INFO]   log Z: 751.88 ± 0.16
+[13:01:01] [INFO]   ensemble split-Rhat: [1.0003927824715702, 1.0004090382132236]
+[13:01:01] [INFO]   MCMC converged: True
+[13:01:01] [INFO]   ΔBIC (vs EdS): -628.40
+[13:01:01] [INFO]   Δχ² (vs EdS): -635.83
+[13:01:01] [INFO] 
+M0b_EdS:
+[13:01:01] [INFO]   fitted params: {'M': np.float64(-19.175318070767467)}
+[13:01:01] [INFO]   k (n_params): 1
+[13:01:01] [INFO]   log L (MLE): 442.89
+[13:01:01] [INFO]   chi2/dof: 1.41
+[13:01:01] [INFO]   AIC: -883.78
+[13:01:01] [INFO]   BIC: -878.34
+[13:01:01] [INFO]   log Z: 436.64 ± 0.13
+[13:01:01] [INFO]   ensemble split-Rhat: [1.0003448944697753]
+[13:01:01] [INFO]   MCMC converged: True
+[13:01:01] [INFO] 
+M1_NoLambda_zT5:
+[13:01:01] [INFO]   fitted params: {'epsilon_shear_los': np.float64(0.870796510154591), 'M': np.float64(-19.331443165354038)}
+[13:01:01] [INFO]   k (n_params): 2
+[13:01:01] [INFO]   log L (MLE): 762.71
+[13:01:01] [INFO]   chi2/dof: 1.03
+[13:01:01] [INFO]   AIC: -1521.42
+[13:01:01] [INFO]   BIC: -1510.55
+[13:01:01] [INFO]   log Z: 753.26 ± 0.16
+[13:01:01] [INFO]   ensemble split-Rhat: [1.0003633797989897, 1.0004622683399815]
+[13:01:01] [INFO]   MCMC converged: True
+[13:01:01] [INFO]   ΔBIC (vs EdS): -632.20
+[13:01:01] [INFO]   Δχ² (vs EdS): -639.64
+[13:01:01] [INFO] 
+M1_NoLambda_zT1:
+[13:01:01] [INFO]   fitted params: {'epsilon_shear_los': np.float64(1.0135178254017903), 'M': np.float64(-19.3415133329402)}
+[13:01:01] [INFO]   k (n_params): 2
+[13:01:01] [INFO]   log L (MLE): 746.88
+[13:01:01] [INFO]   chi2/dof: 1.05
+[13:01:01] [INFO]   AIC: -1489.77
+[13:01:01] [INFO]   BIC: -1478.89
+[13:01:01] [INFO]   log Z: 737.43 ± 0.16
+[13:01:01] [INFO]   ensemble split-Rhat: [1.000410876217693, 1.0003959529058166]
+[13:01:01] [INFO]   MCMC converged: True
+[13:01:01] [INFO]   ΔBIC (vs EdS): -600.55
+[13:01:01] [INFO]   Δχ² (vs EdS): -607.99
+[13:01:01] [INFO] 
+M1_Unscreened_zT100:
+[13:01:01] [INFO]   fitted params: {'epsilon_shear_los': np.float64(0.8620086985900776), 'M': np.float64(-19.330584774233436)}
+[13:01:01] [INFO]   k (n_params): 2
+[13:01:01] [INFO]   log L (MLE): 762.65
+[13:01:01] [INFO]   chi2/dof: 1.03
+[13:01:01] [INFO]   AIC: -1521.31
+[13:01:01] [INFO]   BIC: -1510.43
+[13:01:01] [INFO]   log Z: 753.36 ± 0.16
+[13:01:01] [INFO]   ensemble split-Rhat: [1.000408870125239, 1.0004491114948628]
+[13:01:01] [INFO]   MCMC converged: True
+[13:01:01] [INFO]   ΔBIC (vs EdS): -632.09
+[13:01:01] [INFO]   Δχ² (vs EdS): -639.53
+[13:01:01] [INFO] 
+M1_free_zT:
+[13:01:01] [INFO]   fitted params: {'epsilon_shear_los': np.float64(0.8699697776754289), 'z_T': np.float64(5.258496844056493), 'M': np.float64(-19.331363987219014)}
+[13:01:01] [INFO]   k (n_params): 3
+[13:01:01] [INFO]   log L (MLE): 762.71
+[13:01:01] [INFO]   chi2/dof: 1.03
+[13:01:01] [INFO]   AIC: -1519.42
+[13:01:01] [INFO]   BIC: -1503.11
+[13:01:01] [INFO]   log Z: 753.29 ± 0.16
+[13:01:01] [INFO]   ensemble split-Rhat: [1.0001740082845136, 1.0001994339321274, 1.0001908417807848]
+[13:01:01] [INFO]   MCMC converged: True
+[13:01:01] [INFO]   ΔBIC (vs EdS): -624.76
+[13:01:01] [INFO]   Δχ² (vs EdS): -639.64
+[13:01:01] [INFO] 
+M2_PureShear:
+[13:01:01] [INFO]   fitted params: {'Om0': np.float64(0.3623684150397056), 'M': np.float64(-19.339280522350123)}
+[13:01:01] [INFO]   k (n_params): 2
+[13:01:01] [INFO]   log L (MLE): 760.81
+[13:01:01] [INFO]   chi2/dof: 1.03
+[13:01:01] [INFO]   AIC: -1517.62
+[13:01:01] [INFO]   BIC: -1506.74
+[13:01:01] [INFO]   log Z: 751.60 ± 0.16
+[13:01:01] [INFO]   ensemble split-Rhat: [1.000414119979018, 1.000464086901496]
+[13:01:01] [INFO]   MCMC converged: True
+[13:01:01] [INFO]   ΔBIC (vs EdS): -628.40
+[13:01:01] [INFO]   Δχ² (vs EdS): -635.83
+[13:01:01] [INFO] 
+M3_wCDM:
+[13:01:01] [INFO]   fitted params: {'Om0': np.float64(0.20551084427744834), 'w': np.float64(-0.6949208147261806), 'M': np.float64(-19.32895123571148)}
+[13:01:01] [INFO]   k (n_params): 3
+[13:01:01] [INFO]   log L (MLE): 763.00
+[13:01:01] [INFO]   chi2/dof: 1.03
+[13:01:01] [INFO]   AIC: -1520.01
+[13:01:01] [INFO]   BIC: -1503.69
+[13:01:01] [INFO]   log Z: 752.83 ± 0.17
+[13:01:01] [INFO]   ensemble split-Rhat: [1.000293901978158, 1.000326251358069, 1.0002379732174091]
+[13:01:01] [INFO]   MCMC converged: True
+[13:01:01] [INFO]   ΔBIC (vs EdS): -625.35
+[13:01:01] [INFO]   Δχ² (vs EdS): -640.23
+[13:01:01] [INFO] 
+M4_CPL:
+[13:01:01] [INFO]   fitted params: {'Om0': np.float64(0.45340576416496636), 'w0': np.float64(-0.6313675665062312), 'wa': np.float64(-5.0), 'M': np.float64(-19.315349567841096)}
+[13:01:01] [INFO]   k (n_params): 4
+[13:01:01] [INFO]   log L (MLE): 764.04
+[13:01:01] [INFO]   chi2/dof: 1.03
+[13:01:01] [INFO]   AIC: -1520.08
+[13:01:01] [INFO]   BIC: -1498.33
+[13:01:01] [INFO]   log Z: 752.68 ± 0.17
+[13:01:01] [INFO]   ensemble split-Rhat: [1.0021332113035266, 1.000422951885492, 1.0010965320573055, 1.0003758361084207]
+[13:01:01] [INFO]   MCMC converged: True
+[13:01:01] [INFO]   ΔBIC (vs EdS): -619.98
+[13:01:01] [INFO]   Δχ² (vs EdS): -642.30
+[13:01:01] [SUCCESS] 
+step_03_01_three_model_comparison completed

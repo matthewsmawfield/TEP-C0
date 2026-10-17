@@ -1,0 +1,14 @@
+[TITLE] Starting step_04_03_tolman_sb
+[INFO] Using TEP parameters: H0=70.00, Sigma_0 (epsilon_T)=0.018000
+[INFO]   (Using acoustic-sector epsilon_T for background Tolman test)
+[INFO] Loaded 48 surface brightness measurements
+[INFO] Tolman index: 3.375 ± 0.027 (LCDM expects 4.0)
+[INFO]   Data redshift trend: n = 3.675 + -1.027*z (slope < 0)
+[INFO]   TEP predicted trend: slope ≈ 0.000 (n ≈ 4.0 (flat))
+[INFO]   Low-z (z<0.3) mean n: 3.650
+[INFO]   High-z (z>0.5) mean n: 2.843
+[INFO]   K-correction systematic uncertainty: ±0.5 mag
+[INFO] Δχ² (LCDM - TEP) = -30.85
+[INFO] TEP preferred: False
+[SUCCESS] Research grade: True
+[SUCCESS] Step step_04_03_tolman_sb completed

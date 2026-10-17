@@ -1,7 +1,7 @@
 {
   "confidence": "Blocked",
   "description": "Expansion falsifier using DDR and Tolman tests",
-  "distance_duality_deviation": 6.63,
+  "distance_duality_deviation": 8.21,
   "expansion_hypothesis": {
     "ddr_must_be": 1.0,
     "tolman_xi_must_be": 1.0
@@ -9,5 +9,5 @@
   "interpretation": "DDR and Tolman sectors are currently blocked as clean discriminators. DDR compilation mixes inconsistent D_L/D_A sources. Tolman is dominated by galaxy-evolution systematics. A self-consistent TEP-derived compilation and evolution-corrected Tolman analysis are required before these tests can discriminate.",
   "step": "step_08_01_expansion_falsifier",
   "tep_hypothesis_favored": false,
-  "tolman_delta_chi2": -1972.45
+  "tolman_delta_chi2": -30.85
 }

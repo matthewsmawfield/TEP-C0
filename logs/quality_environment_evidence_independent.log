@@ -1,0 +1,20 @@
+scripts/verify_environment_profile_fit.py:26: RuntimeWarning: divide by zero encountered in matmul
+  eps=theta[0];w=np.exp(theta[1:]@coords)
+scripts/verify_environment_profile_fit.py:26: RuntimeWarning: overflow encountered in matmul
+  eps=theta[0];w=np.exp(theta[1:]@coords)
+scripts/verify_environment_profile_fit.py:26: RuntimeWarning: invalid value encountered in matmul
+  eps=theta[0];w=np.exp(theta[1:]@coords)
+scripts/verify_environment_profile_fit.py:48: RuntimeWarning: divide by zero encountered in matmul
+  w=np.exp(best.x[1:]@coords);direct=fit.chi2_given_w(best.x[0],M,w)
+scripts/verify_environment_profile_fit.py:48: RuntimeWarning: overflow encountered in matmul
+  w=np.exp(best.x[1:]@coords);direct=fit.chi2_given_w(best.x[0],M,w)
+scripts/verify_environment_profile_fit.py:48: RuntimeWarning: invalid value encountered in matmul
+  w=np.exp(best.x[1:]@coords);direct=fit.chi2_given_w(best.x[0],M,w)
+quality {'chi2': 1727.1268087821813, 'parameters': [0.872061109684388, 0.3059236775433784, 0.25926811779128084, 0.04536034019057959, -19.329244544467148], 'success': True, 'message': 'CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH', 'analytic_gradient_relative_error': 1.5402667621159246e-08, 'direct_likelihood_error': 2.1373125491663814e-11, 'n_starts': 16, 'n_successful_starts': 16}
+environment_quality {'chi2': 1717.9965926221582, 'parameters': [0.8708190674872169, 0.2807859053074618, -0.21834417634152176, 0.2978128992650977, 0.2922704883281602, 0.04720180410883572, -19.32886113993643], 'success': True, 'message': 'CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH', 'analytic_gradient_relative_error': 1.5402667621159246e-08, 'direct_likelihood_error': 2.0463630789890885e-11, 'n_starts': 16, 'n_successful_starts': 16}
+Gain 9.13021616002311
+{'model': 'quality', 'seed': 101, 'n': 16384, 'logZ': -879.6785699921165, 'importance_ESS': 14042.23005425006, 'prior_accepted_samples': 16376, 'posterior_scales': [0.038373996654284884, 0.09237283276599431, 0.08143707314088007, 0.0967094014095454]}
+{'model': 'quality', 'seed': 202, 'n': 16384, 'logZ': -879.6787288429119, 'importance_ESS': 14040.796652879202, 'prior_accepted_samples': 16375, 'posterior_scales': [0.038373996654284884, 0.09237283276599431, 0.08143707314088007, 0.0967094014095454]}
+{'model': 'environment_quality', 'seed': 101, 'n': 16384, 'logZ': -879.015622883277, 'importance_ESS': 12937.443224776454, 'prior_accepted_samples': 16352, 'posterior_scales': [0.0385068641752494, 0.12471037521639791, 0.1039385603240241, 0.09229938345837077, 0.08227710165912115, 0.09658742102592609]}
+{'model': 'environment_quality', 'seed': 202, 'n': 16384, 'logZ': -879.015830791259, 'importance_ESS': 12959.208231908433, 'prior_accepted_samples': 16351, 'posterior_scales': [0.0385068641752494, 0.12471037521639791, 0.1039385603240241, 0.09229938345837077, 0.08227710165912115, 0.09658742102592609]}
+[{'seed': 101, 'BF_environment_extension_vs_quality': 1.9405027885250807}, {'seed': 202, 'BF_environment_extension_vs_quality': 1.9404075952528261}]

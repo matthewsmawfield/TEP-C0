@@ -55,7 +55,10 @@ def load_pantheon_data():
     import pandas as pd
     df = pd.read_csv(pantheon_file, sep=r'\s+', comment='#')
 
-    z_raw = df["zCMB"].values if "zCMB" in df.columns else df["zHD"].values
+    # zHD is the corpus-standard Pantheon+ Hubble-diagram redshift
+    # (peculiar-velocity corrected); the covariance's VPEC terms are
+    # defined for that convention.
+    z_raw = df["zHD"].values if "zHD" in df.columns else df["zCMB"].values
     mb_raw = df['m_b_corr'].values if 'm_b_corr' in df.columns else df['mB'].values
 
     # Survey identifier: use 'SURVEY' or 'survey' column if present
@@ -65,10 +68,19 @@ def load_pantheon_data():
             survey_col = df[col].values
             break
 
+    calibrator_raw = (
+        df['IS_CALIBRATOR'].values if 'IS_CALIBRATOR' in df.columns else None
+    )
+
     valid = np.isfinite(z_raw) & np.isfinite(mb_raw) & (z_raw > 0.001) & (z_raw < 3.0)
     z = z_raw[valid]
-    mb = mb_raw[valid]
+    zhel = df["zHEL"].values[valid]
+    if not np.all(np.isfinite(zhel)) or np.any(zhel <= -1):
+        raise ValueError("Invalid observer redshift")
+    # Fit brightness in the distance-redshift frame; released data unchanged.
+    mb = mb_raw[valid] - 5.0 * np.log10((1.0 + zhel) / (1.0 + z))
     survey = survey_col[valid] if survey_col is not None else np.full(len(z), "UNKNOWN")
+    is_calibrator = calibrator_raw[valid].astype(bool) if calibrator_raw is not None else None
 
     # Load covariance
     cov_candidates = [
@@ -87,12 +99,12 @@ def load_pantheon_data():
         cov_full = cov_flat.reshape(n_raw, n_raw)
     elif cov_flat.size == int(np.sum(valid)) ** 2:
         cov_full = cov_flat.reshape(int(np.sum(valid)), int(np.sum(valid)))
-        return z, mb, survey, cov_full
+        return z, mb, survey, is_calibrator, cov_full
     else:
         raise ValueError(f"Covariance size mismatch: {cov_flat.size}")
 
     cov = cov_full[np.ix_(valid, valid)]
-    return z, mb, survey, cov
+    return z, mb, survey, is_calibrator, cov
 
 
 def fit_models(z: np.ndarray, mb: np.ndarray, cov: np.ndarray) -> dict:
@@ -148,7 +160,7 @@ def run() -> dict:
     ensure_dirs()
 
     try:
-        z_all, mb_all, survey_all, cov_all = load_pantheon_data()
+        z_all, mb_all, survey_all, is_calibrator, cov_all = load_pantheon_data()
     except FileNotFoundError as e:
         payload = {
             "step": STEP_ID,
@@ -176,8 +188,13 @@ def run() -> dict:
     if len(unique_surveys) > 1 and unique_surveys[0] != "UNKNOWN":
         for surv in unique_surveys:
             subsets[f"no_{surv}"] = survey_all != surv
-        # SH0ES anchors: typically low-z Cepheid-calibrated SNe
+        # SH0ES anchors: the z>0.023 proxy removes the 77 Cepheid
+        # calibrators plus ~250 additional low-z Hubble-flow SNe.
         subsets["no_SH0ES"] = z_all > 0.023  # proxy: remove very local anchors
+        if is_calibrator is not None:
+            # Exact anchor removal: drops only the 77 IS_CALIBRATOR
+            # Cepheid-anchored SNe, retaining the rest of the low-z flow.
+            subsets["no_calibrators"] = ~is_calibrator
 
     results = {}
     for name, mask in subsets.items():
@@ -198,12 +215,32 @@ def run() -> dict:
             "INFO",
         )
 
-    # Robustness summary
+    # Robustness summary. Sign alone is not a robustness metric: a
+    # subset with |delta_chi2| ~ 0.1 is statistically consistent with no
+    # preference. The classification therefore combines sign
+    # persistence with the magnitude of the residual improvement and
+    # reports where the full-sample signal is carried.
     delta_chi2_values = [r["delta_chi2"] for r in results.values() if "delta_chi2" in r]
     all_negative = all(d < 0 for d in delta_chi2_values) if delta_chi2_values else False
     majority_negative = (sum(d < 0 for d in delta_chi2_values) / len(delta_chi2_values)) > 0.5 if delta_chi2_values else False
 
-    robustness = "strong" if all_negative else "moderate" if majority_negative else "weak"
+    # Per-subset improvement large enough to matter at MLE level.
+    # With one additional fitted parameter, |Delta chi2| ~ 1 is within
+    # fit-level noise; a nontrivial residual preference requires
+    # delta_chi2 < -2.
+    nontrivial = {name: r["delta_chi2"] < -2.0 for name, r in results.items() if "delta_chi2" in r}
+    n_nontrivial = sum(nontrivial.values())
+    total = len(nontrivial)
+    full_dchi2 = results.get("all", {}).get("delta_chi2", None)
+
+    if all_negative and n_nontrivial >= max(1, int(0.75 * total)):
+        robustness = "strong"
+    elif all_negative:
+        robustness = "marginal"
+    elif majority_negative:
+        robustness = "mixed"
+    else:
+        robustness = "weak"
 
     payload = {
         "step": STEP_ID,
@@ -214,13 +251,20 @@ def run() -> dict:
         "robustness_assessment": robustness,
         "all_subsets_prefer_tep": bool(all_negative),
         "majority_prefer_tep": bool(majority_negative),
+        "nontrivial_subsets": nontrivial,
+        "n_nontrivial": int(n_nontrivial),
+        "n_subsets": int(total),
+        "full_sample_delta_chi2": full_dchi2,
         "interpretation": (
-            "The TEP preference is not localized to a single survey, calibration subset, "
-            "or redshift cut; the sign of the M1 improvement persists under leave-one-survey-out "
-            "and redshift-window robustness tests."
+            f"The M1-vs-LCDM improvement is nontrivial (Delta chi2 < -2) in "
+            f"{n_nontrivial} of {total} subsets (full sample Delta chi2 = "
+            f"{full_dchi2:+.2f}). Redshift-window and leave-one-out tests "
+            f"localise where the full-sample preference is carried; subsets "
+            f"with |Delta chi2| ~ 0 are consistent with no preference rather "
+            f"than independent confirmation."
             if majority_negative else
-            "Subset tests reveal heterogeneity; some subsets favor LCDM, indicating where the "
-            "physics signal originates."
+            "Subset tests reveal heterogeneity; several subsets favor LCDM, "
+            "indicating where the preference originates."
         ),
         "timestamp": int(time.time()),
     }

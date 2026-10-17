@@ -1,0 +1,14 @@
+[01:11:32] [INFO] 
+[01:11:32] [INFO] ================================================================================
+[01:11:32] [INFO]    Starting step_04_01_sn_time_dilation
+[01:11:32] [INFO] ================================================================================
+[01:11:32] [INFO] 
+[01:11:32] [INFO] Parameters: H0=70.00, epsilon_T=0.870, z_T=5.262579331041082
+[01:11:33] [INFO] Loaded 1701 SN stretch measurements
+[01:11:33] [PROCESS] Computing TEP time dilation predictions
+[01:11:33] [INFO] Symmetric regression x1 = a + b*ln(td):
+[01:11:33] [INFO]   TEP:   a=-0.4056+-0.0028 b=0.9786+-0.0162  chi2=150550.0 (reduced 88.611)
+[01:11:33] [INFO]   LCDM:  a=-0.4022+-0.0028 b=1.6847+-0.0282  chi2=150629.7 (reduced 88.658)
+[01:11:33] [INFO]   delta chi2 (LCDM - TEP) = 79.7
+[01:11:33] [INFO]   Raw zero-parameter reference: TEP 178194.3, LCDM 174204.8 (normalisation-dominated, not a model comparison)
+[01:11:33] [SUCCESS] Step step_04_01_sn_time_dilation completed successfully

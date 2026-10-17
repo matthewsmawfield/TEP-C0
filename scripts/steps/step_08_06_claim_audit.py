@@ -11,6 +11,8 @@ import numpy as np
 from c0_common import PROJECT_ROOT, TEPLogger, ensure_dirs, print_status, read_json, rel, set_step_logger, step_csv_path, step_json_path, write_csv, write_json, rounded
 
 
+from c0_common import load_model_comparison
+
 STEP_ID = "step_08_06_claim_audit"
 AUDITED_STEPS = [
     "step_01_01_data_download",
@@ -167,9 +169,9 @@ def run() -> dict:
             })
 
     print_status("Auditing Bayes Factors", "PROCESS")
-    bf_file = PROJECT_ROOT / "results" / "step_03_01_three_model_comparison.json"
+    bf_file = PROJECT_ROOT / "results" / "current_model_comparison.json"
     if bf_file.exists():
-        bf_data = read_json(bf_file)
+        bf_data = load_model_comparison()
         bayes = bf_data.get("bayes_factors", {})
         bf_m1_zT5 = bayes.get("BF_M1_NoLambda_zT5_vs_M0a_LCDM")
         bf_m1_zT100 = bayes.get("BF_M1_Unscreened_zT100_vs_M0a_LCDM")
@@ -215,7 +217,7 @@ def run() -> dict:
 
     payload = {
         "step": STEP_ID,
-        "description": "Full audit of manuscript claims and pipeline integrity.",
+        "description": "Documentary presence, artifact existence and selected statistical consistency audit.",
         "metrics": {
             "audit_status": "SUCCESS" if failed_checks == 0 else "WARNING",
             "total_checks": total_checks,
@@ -223,6 +225,7 @@ def run() -> dict:
             "pass_count": pass_count,
             "pass_rate": rounded(pass_rate, 4),
         },
+        "scope": "These checks establish documentary/artifact integrity; pass_rate is not a cosmological evidence score or closure certification.",
         "findings": findings,
         "artifacts": {
             "csv": rel(step_csv_path(STEP_ID)),

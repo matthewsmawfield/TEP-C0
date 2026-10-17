@@ -1,0 +1,11 @@
+[01:28:59] [INFO] 
+[01:28:59] [INFO] ================================================================================
+[01:28:59] [INFO]    Starting step_08_06_claim_audit
+[01:28:59] [INFO] ================================================================================
+[01:28:59] [INFO] 
+[01:28:59] [PROCESS] Reading manuscript components and README
+[01:28:59] [PROCESS] Checking required guardrails
+[01:28:59] [PROCESS] Auditing step consistency
+[01:28:59] [PROCESS] Auditing statistical values
+[01:28:59] [PROCESS] Auditing Bayes Factors
+[01:28:59] [SUCCESS] Audit completed with 0 failures

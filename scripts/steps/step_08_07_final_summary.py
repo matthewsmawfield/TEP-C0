@@ -14,6 +14,8 @@ from c0_common import (
     write_csv, write_json, RESULTS_DIR
 )
 
+from c0_common import load_model_comparison
+
 STEP_ID = "step_08_07_final_summary"
 
 def run() -> dict:
@@ -31,7 +33,7 @@ def run() -> dict:
         audit = read_json(step_json_path("step_08_06_claim_audit"))
         ingestion = read_json(step_json_path("step_01_02_data_ingestion"))
         mcmc = read_json(step_json_path("step_03_02_independent_mcmc"))
-        comparison = read_json(step_json_path("step_03_01_three_model_comparison"))
+        comparison = load_model_comparison()
         gate_registry = read_json(step_json_path("step_08_05_gate_registry"))
     except FileNotFoundError as e:
         print_status(f"Missing dependency: {e}", "ERROR")
@@ -87,7 +89,7 @@ def run() -> dict:
             "transport_recovery_error": transport["metrics"]["max_reconstruction_error_z"],
             "transport_low_z_ht": transport["metrics"]["low_z_recovered_HT_km_s_Mpc"],
         },
-        "interpretation": "TEP-C0 explicitly opens the Expansion-replacement and CMB-replacement gates. The framework mathematically resolves the Hubble Tension and natively recovers early-universe acoustic horizons without Dark Energy."
+        "interpretation": "The current matched SN comparison favors the temporal-shear branch under the stated priors. Background reconstruction, acoustic preservation and Hubble-tension diagnostics retain their own datasets and scope; the SN evidence alone does not establish complete observational closure."
     }
     write_json(step_json_path(STEP_ID), payload)
     

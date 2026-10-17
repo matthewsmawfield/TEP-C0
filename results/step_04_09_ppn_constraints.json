@@ -17,7 +17,7 @@
     "cassini_gate": {
       "beta_eff": -0.0,
       "g_saturn_orbit_m_s2": 6.570928358165676e-05,
-      "gamma": 0.9999999991,
+      "gamma": 0.9999999999,
       "passes_cassini": true,
       "screening_factor": 0.0
     },
@@ -39,7 +39,7 @@
         "description": "Saturn orbit (~9.5 AU), Cassini path",
         "environment": "solar_wind_saturn",
         "g_m_s2": 6.570928358165676e-05,
-        "gamma": 0.9999999991,
+        "gamma": 0.9999999999,
         "gamma_deviation_sigma": -0.0,
         "passes_cassini": true,
         "ppn_test_environment": true,
@@ -79,38 +79,38 @@
         "screening_factor": 0.0
       },
       {
-        "beta_eff": -0.890869,
+        "beta_eff": -0.485578,
         "description": "Galactic halo virial radius",
         "environment": "galactic_halo",
         "g_m_s2": 3.5e-10,
-        "gamma": -0.2810248199,
-        "gamma_deviation_sigma": -55696.73,
+        "gamma": 0.0146325361,
+        "gamma_deviation_sigma": -42842.06,
         "passes_cassini": null,
         "ppn_test_environment": false,
-        "screening_factor": 0.890869
+        "screening_factor": 0.485578
       },
       {
-        "beta_eff": -0.985804,
+        "beta_eff": -0.889258,
         "description": "Wide binary / deep MOND regime",
         "environment": "wide_binary",
         "g_m_s2": 1.2e-10,
-        "gamma": -0.3269639066,
-        "gamma_deviation_sigma": -57694.08,
+        "gamma": -0.2801911194,
+        "gamma_deviation_sigma": -55660.48,
         "passes_cassini": null,
         "ppn_test_environment": false,
-        "screening_factor": 0.985804
+        "screening_factor": 0.889258
       }
     ],
-    "g_t_m_s2": 1e-09,
+    "g_t_m_s2": 3.400464162104563e-10,
     "model": "f(g) = [1 + (g/g_t)^n]\u207b\u00b9 where g = |\u2207\u03a6|",
     "note": "Phenomenological parameterization of TEP environmental screening factor S_Sigma(E) tracking local Newtonian acceleration",
     "ppn_test_passes_cassini": true,
     "steepness_n": 2.0,
     "wide_binary_gate": {
-      "beta_eff": -0.985804,
-      "coupling_active_fraction": 0.9858,
+      "beta_eff": -0.889258,
+      "coupling_active_fraction": 0.8893,
       "g_wide_binary_m_s2": 1.2e-10,
-      "screening_factor": 0.985804
+      "screening_factor": 0.889258
     }
   },
   "lorentzian_source_screening": {

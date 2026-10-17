@@ -151,10 +151,20 @@ def check_no_synthetic_flags():
         if 'fake_data' in content.lower():
             issues.append(f"{py_file}: fake_data found")
             
-        # Ignore "placeholder" if it's explicitly raising an error or in a comment guardrail
+        # Ignore "placeholder" if it's explicitly raising an error, in a comment/docstring, or setting None
         lines = content.split('\n')
+        in_doc = False
         for i, line in enumerate(lines):
-            if 'placeholder' in line.lower() and 'notimplementederror' not in line.lower() and not line.strip().startswith('#'):
+            s = line.strip()
+            if s.count('"""') % 2 == 1 or s.count("'''") % 2 == 1:
+                in_doc = not in_doc
+            code_part = line.split('#')[0].lower()
+            if (
+                not in_doc
+                and 'placeholder' in code_part
+                and 'notimplementederror' not in code_part
+                and 'no placeholder' not in code_part
+            ):
                 issues.append(f"{py_file}:{i+1} placeholder found")
         if 'TODO' in content and 'data' in content.lower():
             issues.append(f"{py_file}: TODO related to data")

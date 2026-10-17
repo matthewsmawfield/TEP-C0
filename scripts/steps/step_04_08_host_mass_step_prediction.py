@@ -61,7 +61,7 @@ def load_pantheon_with_mass():
     import pandas as pd
     df = pd.read_csv(pantheon_file, sep=r'\s+', comment='#')
 
-    z_raw = df["zCMB"].values if "zCMB" in df.columns else df["zHD"].values
+    z_raw = df["zHD"].values if "zHD" in df.columns else df["zCMB"].values
     mb_raw = df['m_b_corr'].values if 'm_b_corr' in df.columns else df['mB'].values
 
     # Host mass column
@@ -74,9 +74,9 @@ def load_pantheon_with_mass():
     if host_mass is None:
         raise FileNotFoundError("No host mass column found in Pantheon+ data")
 
-    # Filter valid data: remove NaN, Inf, and sentinel values (-999 = missing host mass)
+    # Filter valid data: remove NaN, Inf, and sentinel values (-999 or placeholder 2.000 = missing host mass)
     valid = (np.isfinite(z_raw) & np.isfinite(mb_raw) & np.isfinite(host_mass)
-             & (host_mass > 0.0) & (z_raw > 0.001) & (z_raw < 3.0))
+             & (host_mass > 5.0) & (z_raw > 0.001) & (z_raw < 3.0))
     z = z_raw[valid]
     mb = mb_raw[valid]
     host_mass = host_mass[valid]
@@ -182,7 +182,12 @@ def run() -> dict:
     # to the same nested field, the frozen Cepheid-equivalent value
     # kappa_equiv = 3.69e5 mag (TEP-H0 step_44 redshift-only channel,
     # canonical sigma_v = 250 km/s convention) is adopted with no fitted
-    # nuisance parameter.
+    # nuisance parameter.  PROVENANCE NOTE: the current step_44 output
+    # returns kappa_Cep = 7.5e5+/-3.4e5 (joint) and 1.2e6 (redshift-only
+    # channel), and step_50 gives 4.4e5+/-4.1e5, so the frozen 3.69e5 is
+    # a stale benchmark rather than a current sharp prediction; the
+    # direct SN-channel fit (audit_env_response_kappa) returns
+    # kappa_SN ~ 3.2e4, an order of magnitude smaller.
     from core import constants as tep_const
 
     KAPPA_SN = 3.69e5          # mag; frozen kappa_Cep-equivalent benchmark
@@ -353,12 +358,24 @@ def run() -> dict:
             "residual in this m_b_corr mini-analysis. The frozen "
             "kappa_SN = kappa_Cep-equiv = 3.69e5 mag is a cross-channel "
             "transfer, while the data-implied kappa_SN on this corrected "
-            "product is reported separately and is opposite signed. The "
-            "raw conformal clock ratio contributes only ~5e-7 mag, so "
-            "the step is carried by the response sector, consistent "
-            "with the Paper 0 amplitude/screening split. This step is "
-            "therefore a channel-consistency diagnostic, not an "
-            "independent confirmation of the host-mass correction."
+            "product is reported separately and is opposite signed — "
+            "a two-point binary-step estimate on the released vector, "
+            "which is unpinned (residual step +0.006 mag is consistent "
+            "with zero). The correctly posed continuous-X generalized-"
+            "least-squares fit on the raw standardization columns "
+            "(scripts/steps/audit_env_response_kappa.py, "
+            "results/outputs/audit_env_response_kappa.json) instead "
+            "returns kappa_SN = +3.2e4 +/- 1.1e4 mag (2.9 sigma, "
+            "predicted deep-well-brighter direction), replicated on "
+            "DES-Dovekie at +8.9e4 +/- 2.3e4 (3.9 sigma). The binary "
+            "implied-kappa below is retained as a diagnostic record; "
+            "the continuous-coordinate GLS estimate is the authoritative "
+            "SN-channel measurement. The raw conformal clock ratio "
+            "contributes only ~5e-7 mag, so the step is carried by the "
+            "response sector, consistent with the Paper 0 "
+            "amplitude/screening split. This step is therefore a "
+            "channel-consistency diagnostic, not an independent "
+            "confirmation of the host-mass correction."
         ),
         "timestamp": int(time.time()),
     }

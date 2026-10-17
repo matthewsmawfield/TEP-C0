@@ -1,0 +1,11 @@
+[TITLE] Starting step_06_04_growth_validation
+[INFO] Growth calculations use ε_T=0.00000 (baseline LCDM for independent fit)
+[INFO] SNe distance ε_T=0.87357 (compensates for distance bias, not used for growth)
+[INFO] Imported TEP-HC authoritative growth: σ₈=0.8244
+[INFO] TEP sigma_8 (Planck baseline) = 0.8229, dev = 1.5σ
+[INFO] TEP sigma_8 (EdS background) = 1.4776, dev = 91.2σ
+[INFO] TEP-HC authoritative σ₈=0.8244, dev=1.7σ from Planck
+[INFO] Mean-field gradient screening: g_char(z=0) = 7.06e-12 m/s^2, f = 0.999570
+[INFO]   Cosmic halos are unscreened by f(g) (g << g_t)
+[INFO] TEP sigma_8 (gradient-screened, f=0.9996) = 0.8240, dev = 1.7σ
+[SUCCESS] Step step_06_04_growth_validation completed: research_grade=True

@@ -1,0 +1,84 @@
+{
+  "conventions": {
+    "redshift_column": "zHD",
+    "observer_redshift_column": "zHEL",
+    "luminosity_distance": "(1+zHEL) chi(z_distance)",
+    "n_calibrators": 77,
+    "anchored_residual_calibrator": "m_b - CEPH_DIST - M",
+    "anchored_residual_field": "m_b - mu_model(z) - M",
+    "anchored_covariance": "supplied full Pantheon+SH0ES covariance, without additional diagonal inflation",
+    "nested_nlive": 200,
+    "nested_dlogz": 0.3
+  },
+  "method": "exact bounded Gaussian intercept integral; adaptive shape quadrature; refined turnover quadrature",
+  "runs": {
+    "shared": {
+      "M0a_LCDM": {
+        "logZ": 751.6057752521972,
+        "relative_quad_error": 7.580335226288082e-07,
+        "dlnZ_vs_LCDM": 0.0,
+        "BF_vs_LCDM": 1.0
+      },
+      "M1_zT5": {
+        "logZ": 753.3633267957039,
+        "relative_quad_error": 2.405404376269764e-14,
+        "dlnZ_vs_LCDM": 1.757551543506679,
+        "BF_vs_LCDM": 5.7982233027158365
+      },
+      "M1_free_zT": {
+        "logZ": 753.285380238797,
+        "turnover_refinements": [
+          {
+            "order": 32,
+            "logZ": 753.2853818096027
+          },
+          {
+            "order": 64,
+            "logZ": 753.2853802388283
+          },
+          {
+            "order": 128,
+            "logZ": 753.285380238797
+          }
+        ],
+        "last_logZ_change": 3.1377567211166024e-11,
+        "dlnZ_vs_LCDM": 1.6796049865997702,
+        "BF_vs_LCDM": 5.363436923167422
+      }
+    },
+    "anchored": {
+      "M0a_LCDM": {
+        "logZ": 860.8026788474604,
+        "relative_quad_error": 2.0154465910050816e-07,
+        "dlnZ_vs_LCDM": 0.0,
+        "BF_vs_LCDM": 1.0
+      },
+      "M1_zT5": {
+        "logZ": 861.3862858057728,
+        "relative_quad_error": 2.1672648899864063e-13,
+        "dlnZ_vs_LCDM": 0.5836069583124299,
+        "BF_vs_LCDM": 1.7924922292081127
+      },
+      "M1_free_zT": {
+        "logZ": 861.1393970111627,
+        "turnover_refinements": [
+          {
+            "order": 32,
+            "logZ": 861.1393953425484
+          },
+          {
+            "order": 64,
+            "logZ": 861.1393970112161
+          },
+          {
+            "order": 128,
+            "logZ": 861.1393970111627
+          }
+        ],
+        "last_logZ_change": 5.3432813729159534e-11,
+        "dlnZ_vs_LCDM": 0.33671816370235774,
+        "BF_vs_LCDM": 1.400344340253164
+      }
+    }
+  }
+}

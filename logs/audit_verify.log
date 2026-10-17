@@ -1,0 +1,31 @@
+[23:19:22] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] corrected/full/M0a: chi2=1752.52 logZ=751.846+/-0.159 (78s)
+[23:20:40] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] corrected/full/M1_zT5: chi2=1749.07 logZ=753.387+/-0.161 (74s)
+[23:21:54] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] corrected/full/M1_free_zT: chi2=1749.22 logZ=753.314+/-0.160 (62s)
+[23:22:56] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] corrected/z_gt_0.023/M0a: chi2=1210.04 logZ=760.601+/-0.158 (44s)
+[23:23:41] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] corrected/z_gt_0.023/M1_zT5: chi2=1210.99 logZ=760.110+/-0.159 (47s)
+[23:24:28] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] corrected/no_calibrators/M0a: chi2=1456.98 logZ=813.205+/-0.157 (62s)
+[23:25:31] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] corrected/no_calibrators/M1_zT5: chi2=1456.56 logZ=813.239+/-0.159 (51s)
+[checkpoint] wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/audit_corrected_evidence.json
+[23:26:22] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] zcmb_iso/full/M0a: chi2=1989.00 logZ=633.405+/-0.161 (51s)
+[23:27:13] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] zcmb_iso/full/M1_zT5: chi2=1981.79 logZ=637.130+/-0.160 (48s)
+[checkpoint] wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/audit_corrected_evidence.json
+[23:28:01] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] nt1_iso/full/M0a: chi2=1752.52 logZ=751.896+/-0.159 (48s)
+[23:28:50] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] nt1_iso/full/M1_zT5: chi2=1751.11 logZ=752.424+/-0.160 (49s)
+[checkpoint] wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/audit_corrected_evidence.json
+[23:29:38] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] legacy/full/M0a: chi2=1989.00 logZ=633.595+/-0.159 (48s)
+[23:30:26] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] legacy/full/M1_zT5: chi2=1985.62 logZ=634.990+/-0.162 (68s)
+[checkpoint] wrote /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/audit_corrected_evidence.json
+all done

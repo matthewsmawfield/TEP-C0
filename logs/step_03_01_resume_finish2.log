@@ -1,0 +1,263 @@
+[16:47:22] [INFO] 
+[16:47:22] [INFO] ================================================================================
+[16:47:22] [INFO]    Starting step_03_01_three_model_comparison - RESEARCH GRADE
+[16:47:22] [INFO] ================================================================================
+[16:47:22] [INFO] 
+[16:47:24] [INFO] Loaded 1701 SNe from data/raw/pantheon_plus_shoes.dat
+[16:47:24] [INFO] Covariance source: full_covariance_file_filtered
+[16:47:24] [INFO] Data SHA-256: 1cb0fc379ef066af...
+[16:47:24] [INFO] Cov SHA-256: abf806d966485e64...
+[16:47:24] [INFO] Computational budget: nlive=500, dlogz=0.1, run_mcmc=False, mcmc_walkers=64, mcmc_steps=40000, mcmc_burn_in=5000, run_cross_validation=False
+[16:47:24] [INFO] 
+==================================================
+[16:47:24] [INFO] Reusing saved payload for M0a_LCDM (resume mode)
+[16:47:24] [INFO] 
+==================================================
+[16:47:24] [INFO] Reusing saved payload for M0b_EdS (resume mode)
+[16:47:24] [INFO] 
+==================================================
+[16:47:24] [INFO] Reusing saved payload for M1_NoLambda_zT5 (resume mode)
+[16:47:24] [INFO] 
+==================================================
+[16:47:24] [INFO] Reusing saved payload for M1_NoLambda_zT1 (resume mode)
+[16:47:24] [INFO] 
+==================================================
+[16:47:24] [INFO] Reusing saved payload for M1_Unscreened_zT100 (resume mode)
+[16:47:24] [INFO] 
+==================================================
+[16:47:24] [INFO] Reusing saved payload for M1_free_zT (resume mode)
+[16:47:24] [INFO] 
+==================================================
+[16:47:24] [INFO] Reusing saved payload for M2_PureShear (resume mode)
+[16:47:24] [INFO] 
+==================================================
+[16:47:24] [INFO] Reusing saved payload for M3_wCDM (resume mode)
+[16:47:24] [INFO] 
+==================================================
+[16:47:24] [INFO] Reusing saved payload for M4_CPL (resume mode)
+[16:47:24] [INFO] 
+[16:47:24] [INFO] ================================================================================
+[16:47:24] [INFO]    
+Model Comparison (vs ΛCDM):
+[16:47:24] [INFO] ================================================================================
+[16:47:24] [INFO] 
+[16:47:24] [INFO]   M0b_EdS:
+[16:47:24] [INFO]     ln(BF) vs LCDM = -316.65, BF = 3.04e-138 (Decisive (favors LCDM))
+[16:47:24] [INFO]     ΔBIC vs LCDM = 632.04
+[16:47:24] [INFO]     Δχ² vs LCDM = 639.48
+[16:47:24] [INFO]     p-value (Wilks) = 0.0000
+[16:47:24] [INFO]     p-value (boundary-corrected) = 0.0000
+[16:47:24] [INFO]     ln(BF) vs EdS = 0.00
+[16:47:24] [INFO]     ΔBIC vs EdS = 0.00
+[16:47:24] [INFO]   M1_NoLambda_zT5:
+[16:47:24] [INFO]     ln(BF) vs LCDM = 1.87, BF = 6.49e+00 (Substantial)
+[16:47:24] [INFO]     ΔBIC vs LCDM = -3.45
+[16:47:24] [INFO]     Δχ² vs LCDM = -3.45
+[16:47:24] [INFO]     p-value (Wilks) = 0.0633
+[16:47:24] [INFO]     p-value (boundary-corrected) = 0.0316
+[16:47:24] [INFO]     ln(BF) vs EdS = 318.52
+[16:47:24] [INFO]     ΔBIC vs EdS = -635.49
+[16:47:24] [INFO]   M1_NoLambda_zT1:
+[16:47:24] [INFO]     ln(BF) vs LCDM = -13.56, BF = 1.29e-06 (Decisive (favors LCDM))
+[16:47:24] [INFO]     ΔBIC vs LCDM = 27.69
+[16:47:24] [INFO]     Δχ² vs LCDM = 27.69
+[16:47:24] [INFO]     p-value (Wilks) = 0.0000
+[16:47:24] [INFO]     p-value (boundary-corrected) = 0.0000
+[16:47:24] [INFO]     ln(BF) vs EdS = 303.08
+[16:47:24] [INFO]     ΔBIC vs EdS = -604.35
+[16:47:24] [INFO]   M1_Unscreened_zT100:
+[16:47:24] [INFO]     ln(BF) vs LCDM = 1.48, BF = 4.39e+00 (Substantial)
+[16:47:24] [INFO]     ΔBIC vs LCDM = -3.30
+[16:47:24] [INFO]     Δχ² vs LCDM = -3.30
+[16:47:24] [INFO]     p-value (Wilks) = 0.0693
+[16:47:24] [INFO]     p-value (boundary-corrected) = 0.0346
+[16:47:24] [INFO]     ln(BF) vs EdS = 318.12
+[16:47:24] [INFO]     ΔBIC vs EdS = -635.34
+[16:47:24] [INFO]   M1_free_zT:
+[16:47:24] [INFO]     ln(BF) vs LCDM = 1.64, BF = 5.17e+00 (Substantial)
+[16:47:24] [INFO]     ΔBIC vs LCDM = 4.14
+[16:47:24] [INFO]     Δχ² vs LCDM = -3.30
+[16:47:24] [INFO]     p-value (Wilks) = 0.0693
+[16:47:24] [INFO]     p-value (boundary-corrected) = 0.0346
+[16:47:24] [INFO]     ln(BF) vs EdS = 318.29
+[16:47:24] [INFO]     ΔBIC vs EdS = -627.91
+[16:47:24] [INFO]   M2_PureShear:
+[16:47:24] [INFO]     ln(BF) vs LCDM = 0.20, BF = 1.22e+00 (Weak)
+[16:47:24] [INFO]     ΔBIC vs LCDM = 0.00
+[16:47:24] [INFO]     Δχ² vs LCDM = 0.00
+[16:47:24] [INFO]     p-value (Wilks) = 1.0000
+[16:47:24] [INFO]     p-value (boundary-corrected) = 0.5000
+[16:47:24] [INFO]     ln(BF) vs EdS = 316.84
+[16:47:24] [INFO]     ΔBIC vs EdS = -632.04
+[16:47:24] [INFO]   M3_wCDM:
+[16:47:24] [INFO]     ln(BF) vs LCDM = 1.27, BF = 3.57e+00 (Substantial)
+[16:47:24] [INFO]     ΔBIC vs LCDM = 3.38
+[16:47:24] [INFO]     Δχ² vs LCDM = -4.06
+[16:47:24] [INFO]     p-value (Wilks) = 0.0439
+[16:47:24] [INFO]     p-value (boundary-corrected) = 0.0219
+[16:47:24] [INFO]     ln(BF) vs EdS = 317.92
+[16:47:24] [INFO]     ΔBIC vs EdS = -628.67
+[16:47:24] [INFO]   M4_CPL:
+[16:47:24] [INFO]     ln(BF) vs LCDM = 0.99, BF = 2.70e+00 (Weak)
+[16:47:24] [INFO]     ΔBIC vs LCDM = 9.02
+[16:47:24] [INFO]     Δχ² vs LCDM = -5.86
+[16:47:24] [INFO]     p-value (Wilks) = 0.0155
+[16:47:24] [INFO]     p-value (boundary-corrected) = 0.0077
+[16:47:24] [INFO]     ln(BF) vs EdS = 317.64
+[16:47:24] [INFO]     ΔBIC vs EdS = -623.03
+[16:47:24] [PROCESS] Running z_T sensitivity grid for M1_NoLambda
+[16:47:27] [PROCESS] Running Null Injection Test (Mock LCDM data)
+[16:47:28] [PROCESS] Running Stochastic Null Injection Test (N=200)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_01_three_model_comparison.py:1291: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  noise = rng.multivariate_normal(np.zeros(len(data.z)), ridge_cov)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_01_three_model_comparison.py:1291: RuntimeWarning: divide by zero encountered in matmul
+  noise = rng.multivariate_normal(np.zeros(len(data.z)), ridge_cov)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_01_three_model_comparison.py:1291: RuntimeWarning: overflow encountered in matmul
+  noise = rng.multivariate_normal(np.zeros(len(data.z)), ridge_cov)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_01_three_model_comparison.py:1291: RuntimeWarning: invalid value encountered in matmul
+  noise = rng.multivariate_normal(np.zeros(len(data.z)), ridge_cov)
+[17:00:18] [PROCESS] Running Positive and Negative TEP Injection Tests
+[17:00:20] [PROCESS] Running Expanded Prior Sensitivity Test
+[17:00:20] [INFO]   M1 testing prior epsilon_shear_los: [0.0, 0.1]
+[17:00:20] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[17:05:01] [INFO]   M1 testing prior epsilon_shear_los: [0.0, 0.3]
+[17:05:01] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[17:10:01] [INFO]   M1 testing prior epsilon_shear_los: [0.0, 0.5]
+[17:10:01] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[17:15:00] [INFO]   M1 testing prior epsilon_shear_los: [0.0, 1.0]
+[17:15:00] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[17:19:26] [PROCESS] Running Static M2 Sanity Check
+[17:19:26] [INFO] 
+======================================================================
+[17:19:26] [INFO] 
+[17:19:26] [INFO] ================================================================================
+[17:19:26] [INFO]    RESEARCH GRADE SUMMARY
+[17:19:26] [INFO] ================================================================================
+[17:19:26] [INFO] 
+[17:19:26] [INFO] ======================================================================
+[17:19:26] [INFO] Tier: Research Grade
+[17:19:26] [SUCCESS] Infrastructure Gate: open
+[17:19:26] [SUCCESS] Model Comparison Gate: open
+[17:19:26] [SUCCESS] Replacement Gate: open
+[17:19:26] [INFO] 
+[17:19:26] [INFO] ================================================================================
+[17:19:26] [INFO]    Allowed Claim: Pure Temporal Shear is preferred in Pantheon+.
+[17:19:26] [INFO] ================================================================================
+[17:19:26] [INFO] 
+[17:19:26] [INFO] 
+M0a_LCDM:
+[17:19:26] [INFO]   fitted params: {'M': -19.33935146362162, 'Om0': 0.3612049791988382}
+[17:19:26] [INFO]   k (n_params): 2
+[17:19:26] [INFO]   log L (MLE): 761.00
+[17:19:26] [INFO]   chi2/dof: 1.03
+[17:19:26] [INFO]   AIC: -1518.00
+[17:19:26] [INFO]   BIC: -1507.12
+[17:19:26] [INFO]   log Z: 751.58 ± 0.16
+[17:19:26] [INFO]   ensemble split-Rhat: [1.0004014183148515, 1.0004260133829135]
+[17:19:26] [INFO]   MCMC converged: True
+[17:19:26] [INFO]   ΔBIC (vs EdS): -632.04
+[17:19:26] [INFO]   Δχ² (vs EdS): -639.48
+[17:19:26] [INFO] 
+M0b_EdS:
+[17:19:26] [INFO]   fitted params: {'M': -19.17502269111028}
+[17:19:26] [INFO]   k (n_params): 1
+[17:19:26] [INFO]   log L (MLE): 441.26
+[17:19:26] [INFO]   chi2/dof: 1.41
+[17:19:26] [INFO]   AIC: -880.52
+[17:19:26] [INFO]   BIC: -875.08
+[17:19:26] [INFO]   log Z: 434.93 ± 0.13
+[17:19:26] [INFO]   ensemble split-Rhat: [1.0004100321043445]
+[17:19:26] [INFO]   MCMC converged: True
+[17:19:26] [INFO] 
+M1_NoLambda_zT5:
+[17:19:26] [INFO]   fitted params: {'M': -19.331609913021715, 'epsilon_shear_los': 0.8735737701811535}
+[17:19:26] [INFO]   k (n_params): 2
+[17:19:26] [INFO]   log L (MLE): 762.73
+[17:19:26] [INFO]   chi2/dof: 1.03
+[17:19:26] [INFO]   AIC: -1521.45
+[17:19:26] [INFO]   BIC: -1510.57
+[17:19:26] [INFO]   log Z: 753.45 ± 0.16
+[17:19:26] [INFO]   ensemble split-Rhat: [1.0004787096309729, 1.0005571127932382]
+[17:19:26] [INFO]   MCMC converged: True
+[17:19:26] [INFO]   ΔBIC (vs EdS): -635.49
+[17:19:26] [INFO]   Δχ² (vs EdS): -642.93
+[17:19:26] [INFO] 
+M1_NoLambda_zT1:
+[17:19:26] [INFO]   fitted params: {'M': -19.341802679748245, 'epsilon_shear_los': 1.0173349806143077}
+[17:19:26] [INFO]   k (n_params): 2
+[17:19:26] [INFO]   log L (MLE): 747.15
+[17:19:26] [INFO]   chi2/dof: 1.05
+[17:19:26] [INFO]   AIC: -1490.31
+[17:19:26] [INFO]   BIC: -1479.43
+[17:19:26] [INFO]   log Z: 738.02 ± 0.16
+[17:19:26] [INFO]   ensemble split-Rhat: [1.000449704519875, 1.0004594498439485]
+[17:19:26] [INFO]   MCMC converged: True
+[17:19:26] [INFO]   ΔBIC (vs EdS): -604.35
+[17:19:26] [INFO]   Δχ² (vs EdS): -611.79
+[17:19:26] [INFO] 
+M1_Unscreened_zT100:
+[17:19:26] [INFO]   fitted params: {'M': -19.330745245319072, 'epsilon_shear_los': 0.8647365997958376}
+[17:19:26] [INFO]   k (n_params): 2
+[17:19:26] [INFO]   log L (MLE): 762.65
+[17:19:26] [INFO]   chi2/dof: 1.03
+[17:19:26] [INFO]   AIC: -1521.30
+[17:19:26] [INFO]   BIC: -1510.42
+[17:19:26] [INFO]   log Z: 753.06 ± 0.16
+[17:19:26] [INFO]   ensemble split-Rhat: [1.0004521640890172, 1.000456778296605]
+[17:19:26] [INFO]   MCMC converged: True
+[17:19:26] [INFO]   ΔBIC (vs EdS): -635.34
+[17:19:26] [INFO]   Δχ² (vs EdS): -642.78
+[17:19:26] [INFO] 
+M1_free_zT:
+[17:19:26] [INFO]   fitted params: {'M': -19.33074711312447, 'epsilon_shear_los': 0.8647554811810026, 'z_T': 73.7054889740632}
+[17:19:26] [INFO]   k (n_params): 3
+[17:19:26] [INFO]   log L (MLE): 762.65
+[17:19:26] [INFO]   chi2/dof: 1.03
+[17:19:26] [INFO]   AIC: -1519.30
+[17:19:26] [INFO]   BIC: -1502.98
+[17:19:26] [INFO]   log Z: 753.22 ± 0.16
+[17:19:26] [INFO]   ensemble split-Rhat: [1.0003043959353088, 1.0002054043157478, 1.0003034290732356]
+[17:19:26] [INFO]   MCMC converged: True
+[17:19:26] [INFO]   ΔBIC (vs EdS): -627.91
+[17:19:26] [INFO]   Δχ² (vs EdS): -642.78
+[17:19:26] [INFO] 
+M2_PureShear:
+[17:19:26] [INFO]   fitted params: {'M': -19.33935145994361, 'Om0': 0.36120499118588345}
+[17:19:26] [INFO]   k (n_params): 2
+[17:19:26] [INFO]   log L (MLE): 761.00
+[17:19:26] [INFO]   chi2/dof: 1.03
+[17:19:26] [INFO]   AIC: -1518.00
+[17:19:26] [INFO]   BIC: -1507.12
+[17:19:26] [INFO]   log Z: 751.78 ± 0.16
+[17:19:26] [INFO]   ensemble split-Rhat: [1.0005129182682149, 1.0004689665385593]
+[17:19:26] [INFO]   MCMC converged: True
+[17:19:26] [INFO]   ΔBIC (vs EdS): -632.04
+[17:19:26] [INFO]   Δχ² (vs EdS): -639.48
+[17:19:26] [INFO] 
+M3_wCDM:
+[17:19:26] [INFO]   fitted params: {'M': -19.32935552838687, 'Om0': 0.21170451374903668, 'w': -0.7052606657892077}
+[17:19:26] [INFO]   k (n_params): 3
+[17:19:26] [INFO]   log L (MLE): 763.03
+[17:19:26] [INFO]   chi2/dof: 1.03
+[17:19:26] [INFO]   AIC: -1520.06
+[17:19:26] [INFO]   BIC: -1503.75
+[17:19:26] [INFO]   log Z: 752.85 ± 0.17
+[17:19:26] [INFO]   ensemble split-Rhat: [1.000368267922389, 1.0004173834743328, 1.0002975077185239]
+[17:19:26] [INFO]   MCMC converged: True
+[17:19:26] [INFO]   ΔBIC (vs EdS): -628.67
+[17:19:26] [INFO]   Δχ² (vs EdS): -643.55
+[17:19:26] [INFO] 
+M4_CPL:
+[17:19:26] [INFO]   fitted params: {'M': -19.31596412385218, 'Om0': 0.4546133348309, 'w0': -0.6433923880063253, 'wa': -5.0}
+[17:19:26] [INFO]   k (n_params): 4
+[17:19:26] [INFO]   log L (MLE): 763.93
+[17:19:26] [INFO]   chi2/dof: 1.03
+[17:19:26] [INFO]   AIC: -1519.86
+[17:19:26] [INFO]   BIC: -1498.11
+[17:19:26] [INFO]   log Z: 752.57 ± 0.17
+[17:19:26] [INFO]   ensemble split-Rhat: [1.001757495666586, 1.0004507518273535, 1.0009222024233808, 1.0003568859937262]
+[17:19:26] [INFO]   MCMC converged: True
+[17:19:26] [INFO]   ΔBIC (vs EdS): -623.03
+[17:19:26] [INFO]   Δχ² (vs EdS): -645.34
+[17:19:26] [SUCCESS] 
+step_03_01_three_model_comparison completed

@@ -19,6 +19,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import numpy as np
 
 from c0_common import TEPLogger, set_step_logger, ensure_dirs, print_status, read_json, step_json_path, write_json, RESULTS_DIR
+from c0_common import load_model_comparison
 
 STEP_ID = "step_02_03_physics_implementation"
 
@@ -39,8 +40,14 @@ def _load_cmb_scale_epsilon_t(default: float = 0.0) -> float:
     value) if the Cobaya stats file is unavailable so that the perturbation
     diagnostic is conservative rather than silently wrong.
     """
-    stats_path = Path("results/outputs/tep_cobaya_sne_stats.txt")
-    if not stats_path.exists():
+    # Prefer the joint Pantheon+ + Planck converged stats (the analysis the
+    # manuscript quotes); fall back to the legacy SNe-only stats file.
+    stats_candidates = [
+        Path("results/outputs/tep_cobaya_joint_converged_stats.txt"),
+        Path("results/outputs/tep_cobaya_sne_stats.txt"),
+    ]
+    stats_path = next((p for p in stats_candidates if p.exists()), None)
+    if stats_path is None:
         return float(default)
     try:
         for line in stats_path.read_text().splitlines():
@@ -620,38 +627,46 @@ def run() -> dict:
     # re-fitting with the broken TEPCosmologyFitter (which used diagonal
     # errors, different redshift column, and different parameterization).
     try:
-        step022_path = RESULTS_DIR / "step_03_01_three_model_comparison.json"
-        if step022_path.exists():
-            step022 = read_json(step022_path)
+        if (RESULTS_DIR / "current_model_comparison.json").exists():
+            step022 = load_model_comparison()
             models = step022.get("models", {})
             m0 = models.get("M0a_LCDM", {})
             # Use M1_NoLambda_zT5 as the canonical TEP variant (best BIC)
             m1 = models.get("M1_NoLambda_zT5", {})
             
-            lcdm_bic = m0.get("bic", 0.0)
-            tep_bic = m1.get("bic", 0.0)
+            lcdm_bic = m0.get("bic", m0.get("BIC", 0.0))
+            tep_bic = m1.get("bic", m1.get("BIC", 0.0))
             delta_bic = tep_bic - lcdm_bic
+            n_data = step022.get("data", {}).get("n_supernovae", 0)
+            def _chi2_red(rec):
+                chi2 = rec.get("chi2_mle", rec.get("chi2", 0.0))
+                k = rec.get("k", 0)
+                return chi2 / (n_data - k) if n_data and chi2 else 0.0
+            def _aic(rec):
+                k = rec.get("k", 0)
+                ll = rec.get("log_likelihood_mle", rec.get("log_likelihood", 0.0))
+                return 2 * k - 2 * ll if ll else 0.0
             
             tep_comparison = {
                 "status": "completed",
                 "lcdm": {
                     "parameters": m0.get("parameters_mle", {}),
-                    "chi2": m0.get("chi2_mle", 0.0),
-                    "chi2_per_dof": m0.get("chi2_red_mle", 0.0),
+                    "chi2": m0.get("chi2_mle", m0.get("chi2", 0.0)),
+                    "chi2_per_dof": m0.get("chi2_red_mle", _chi2_red(m0)),
                     "bic": lcdm_bic,
-                    "aic": m0.get("aic", 0.0),
+                    "aic": m0.get("aic", _aic(m0)),
                 },
                 "tep": {
                     "parameters": m1.get("parameters_mle", {}),
-                    "chi2": m1.get("chi2_mle", 0.0),
-                    "chi2_per_dof": m1.get("chi2_red_mle", 0.0),
+                    "chi2": m1.get("chi2_mle", m1.get("chi2", 0.0)),
+                    "chi2_per_dof": m1.get("chi2_red_mle", _chi2_red(m1)),
                     "bic": tep_bic,
-                    "aic": m1.get("aic", 0.0),
+                    "aic": m1.get("aic", _aic(m1)),
                 },
                 "delta_bic_tep_vs_lcdm": float(delta_bic),
                 "tep_competitive": bool(delta_bic < 2.0),
                 "best_model": "tep" if delta_bic < 0.0 else "lcdm",
-                "data_source": "step_03_01_three_model_comparison.json",
+                "data_source": "current_model_comparison.json",
                 "note": "Research-grade results from full-covariance nested sampling",
             }
             

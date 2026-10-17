@@ -1,0 +1,32 @@
+[01:00:45] [PROCESS] step_03_13_raw_standardization_drift: raw-standardization joint drift profile
+[01:00:46] [INFO]   1701 SNe on the joint raw/fitted mask
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_13_raw_standardization_drift.py:113: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_13_raw_standardization_drift.py:113: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_13_raw_standardization_drift.py:113: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_13_raw_standardization_drift.py:122: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_13_raw_standardization_drift.py:122: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_13_raw_standardization_drift.py:122: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+[01:00:46] [INFO]   eps_int=-0.25: chi2_raw=1749.83 (a=+0.149 b=+2.995 g=+0.007) chi2_fixed=1752.45
+[01:00:46] [INFO]   eps_int=-0.20: chi2_raw=1748.65 (a=+0.149 b=+2.992 g=+0.007) chi2_fixed=1751.32
+[01:00:46] [INFO]   eps_int=-0.15: chi2_raw=1747.61 (a=+0.149 b=+2.993 g=+0.007) chi2_fixed=1750.26
+[01:00:46] [INFO]   eps_int=-0.10: chi2_raw=1746.70 (a=+0.150 b=+2.995 g=+0.007) chi2_fixed=1749.34
+[01:00:46] [INFO]   eps_int=-0.05: chi2_raw=1746.22 (a=+0.150 b=+2.996 g=+0.007) chi2_fixed=1748.85
+[01:00:46] [INFO]   eps_int=+0.00: chi2_raw=1746.48 (a=+0.150 b=+2.998 g=+0.007) chi2_fixed=1749.10
+[01:00:46] [INFO]   eps_int=+0.05: chi2_raw=1747.81 (a=+0.150 b=+3.000 g=+0.007) chi2_fixed=1750.42
+[01:00:46] [INFO]   eps_int=+0.10: chi2_raw=1750.58 (a=+0.150 b=+3.001 g=+0.006) chi2_fixed=1753.18
+[01:00:46] [INFO]   eps_int=+0.15: chi2_raw=1755.19 (a=+0.150 b=+3.003 g=+0.006) chi2_fixed=1757.77
+[01:00:46] [INFO]   eps_int=+0.20: chi2_raw=1762.03 (a=+0.150 b=+3.004 g=+0.006) chi2_fixed=1764.61
+[01:00:46] [INFO]   eps_int=+0.25: chi2_raw=1771.55 (a=+0.151 b=+3.006 g=+0.006) chi2_fixed=1774.13
+[01:00:46] [INFO]   eps_int=+0.30: chi2_raw=1795.58 (a=+0.149 b=+2.977 g=+0.005) chi2_fixed=1798.62
+[01:00:46] [INFO]   eps_int=+0.35: chi2_raw=1868.84 (a=+0.148 b=+2.934 g=+0.004) chi2_fixed=1873.66
+[01:00:46] [INFO]   eps_int=+0.40: chi2_raw=1993.69 (a=+0.146 b=+2.891 g=+0.002) chi2_fixed=2001.59
+[01:00:47] [SUCCESS]   free-standardization: eps_best=-0.05 3sig< 0.150 dchi2(eps=1)=5770
+[01:00:47] [SUCCESS]   fixed-standardization: eps_best=-0.05 3sig< 0.150 dchi2(eps=1)=5914
+[01:00:47] [SUCCESS]   bound shift (raw - fixed) = +0.000
+[01:00:47] [SUCCESS] step_03_13_raw_standardization_drift complete

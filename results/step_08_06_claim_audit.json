@@ -2,7 +2,7 @@
   "artifacts": {
     "csv": "results/step_08_06_claim_audit.csv"
   },
-  "description": "Full audit of manuscript claims and pipeline integrity.",
+  "description": "Documentary presence, artifact existence and selected statistical consistency audit.",
   "findings": [
     {
       "check": "required guardrail: source datasets",
@@ -221,12 +221,12 @@
     },
     {
       "check": "statistical matching: BF standard",
-      "detail": "BF_M1_zT5 = 4.21 (ln=1.44) in step_03_01 JSON",
+      "detail": "BF_M1_zT5 = 5.80 (ln=1.76) in step_03_01 JSON",
       "status": "pass"
     },
     {
       "check": "statistical matching: BF unscreened",
-      "detail": "BF_M1_zT100 = 35.75 (ln=3.58) in step_03_01 JSON",
+      "detail": "BF_M1_zT100 = 5.42 (ln=1.69) in step_03_01 JSON",
       "status": "pass"
     }
   ],
@@ -237,5 +237,6 @@
     "pass_rate": 1.0,
     "total_checks": 45
   },
+  "scope": "These checks establish documentary/artifact integrity; pass_rate is not a cosmological evidence score or closure certification.",
   "step": "step_08_06_claim_audit"
 }

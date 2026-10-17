@@ -59,7 +59,9 @@ def compute_theta_s(epsilon_T):
         'tep_mode': 'yes',
         'tep_epsilon_T': epsilon_T,
         'tep_z_T': 1000000.0, # Disable screening at early times
-        'tep_n_T': 2.0
+        'tep_n_T': 2.0,
+        'Omega_Lambda': 0.0, # Explicit no-Lambda branch (matches chain convention)
+        'Omega_k': 0.0,
     })
     
     try:

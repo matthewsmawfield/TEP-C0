@@ -11,26 +11,26 @@
     "step_03_08_h0_boundary_stress": {
       "completed": true,
       "gate_status": "passed",
-      "interpretation": "The lower-bound attraction is not a sampler pathology: under repeated lower-prior extensions, the po...",
+      "interpretation": "Under progressive lower-prior extension the proxy optimum remains at the interior point H0=70 (the f...",
       "key_finding": "N/A"
     },
     "step_03_09_lcdm_null_injection": {
       "completed": true,
       "gate_status": "passed",
-      "interpretation": "Under LCDM null injection, the TEP M1 Bayes factor observed in real Pantheon+ (BF ~ 30) occurs in on...",
+      "interpretation": "Under LCDM null injection, a TEP M1 improvement at least as large as the observed \u0394\u03c7\u00b2 = -3.81 occurs...",
       "key_finding": "N/A"
     },
     "step_03_10_pantheon_subset_robustness": {
       "completed": true,
       "gate_status": "passed",
-      "interpretation": "The TEP preference is not localized to a single survey, calibration subset, or redshift cut; the sig...",
+      "interpretation": "The M1-vs-LCDM improvement is nontrivial (Delta chi2 < -2) in 20 of 28 subsets (full sample Delta ch...",
       "key_finding": "N/A"
     },
     "step_04_01_sn_time_dilation": {
       "completed": true,
       "gate_status": "passed",
       "interpretation": "Internal consistency check - SALT2 x1 as diagnostic proxy for temporal shear effects...",
-      "key_finding": "Diagnostic consistency: SALT2 x1 correlates with TEP path enhancement"
+      "key_finding": "At matched two-parameter normalisation freedom, the rest-frame TEP path factor improves the stretch-redshift regression over the generic ln(1+z) trend by delta_chi2; both branches carry reduced chi2 ~ 89 because the x1 population has intrinsic scatter beyond the tabulated errors - the comparison is a relative shape diagnostic, not an absolute validation"
     },
     "step_04_03_tolman_sb": {
       "completed": true,
@@ -47,7 +47,7 @@
     "step_04_08_host_mass_step_prediction": {
       "completed": true,
       "gate_status": "passed",
-      "interpretation": "The TEP locked prediction captures part of the host-mass effect; residual indicates additional envir...",
+      "interpretation": "Under the Paper 11 convention Delta_mu = -kappa X, the canonical nested clock-rate prediction has th...",
       "key_finding": "N/A"
     },
     "step_04_09_ppn_constraints": {
@@ -65,13 +65,13 @@
     "step_04_11_sn_robustness_systematics": {
       "completed": true,
       "gate_status": "passed",
-      "interpretation": "Across all robustness tests the TEP M1 (z_T=5) Bayes factor relative to LCDM ranges from 0.77 to 36....",
+      "interpretation": "Across the robustness tests the TEP M1 (z_T=5) Bayes factor relative to LCDM ranges from 0.64 to 11....",
       "key_finding": "N/A"
     },
     "step_04_12_external_sn_validation": {
       "completed": true,
       "gate_status": "passed",
-      "interpretation": "The Union3 compilation reproduces the Pantheon+ preference direction: TEP M1 (z_T=5) yields \u0394\u03c7\u00b2 = -0...",
+      "interpretation": "The Union3 compilation reproduces the Pantheon+ preference direction: TEP M1 (z_T=5) yields \u0394\u03c7\u00b2 = -1...",
       "key_finding": "N/A"
     },
     "step_05_08_cmb_acoustic": {
@@ -83,7 +83,7 @@
     "step_05_09_minimal_perturbations": {
       "completed": true,
       "gate_status": "passed",
-      "interpretation": "Minimal active-perturbation closure: no-ghost and gradient stability verified. Spectra comparison us...",
+      "interpretation": "Canonical EFT benchmark coefficient checks pass; CLASS background-response spectra are compared. Spe...",
       "key_finding": "N/A"
     },
     "step_05_10_jordan_frame_proof": {
@@ -119,7 +119,7 @@
     "step_07_02_redshift_drift": {
       "completed": true,
       "gate_status": "passed",
-      "interpretation": "TEP predicts z_drift(z=2) = 2e-12 yr^-1; relative difference to LCDM is reported where the LCDM deno...",
+      "interpretation": "TEP predicts z_drift(z=2) = -2.92823e-07 yr^-1; relative difference to LCDM is reported where the LC...",
       "key_finding": "Redshift drift predictions differ from LCDM, testable with next-generation cosmic chronometers"
     }
   },

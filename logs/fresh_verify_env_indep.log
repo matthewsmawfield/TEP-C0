@@ -1,0 +1,34 @@
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:26: RuntimeWarning: divide by zero encountered in matmul
+  ones=solve_triangular(fit.L,np.ones(len(z)),lower=True,check_finite=False);W=float(ones@ones);sigma=1/np.sqrt(W)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:26: RuntimeWarning: overflow encountered in matmul
+  ones=solve_triangular(fit.L,np.ones(len(z)),lower=True,check_finite=False);W=float(ones@ones);sigma=1/np.sqrt(W)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:26: RuntimeWarning: invalid value encountered in matmul
+  ones=solve_triangular(fit.L,np.ones(len(z)),lower=True,check_finite=False);W=float(ones@ones);sigma=1/np.sqrt(W)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:31: RuntimeWarning: divide by zero encountered in matmul
+  mh=(ones@y)/W
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:31: RuntimeWarning: overflow encountered in matmul
+  mh=(ones@y)/W
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:31: RuntimeWarning: invalid value encountered in matmul
+  mh=(ones@y)/W
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:31: RuntimeWarning: divide by zero encountered in matmul
+  mh=(ones@y)/W
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:31: RuntimeWarning: overflow encountered in matmul
+  mh=(ones@y)/W
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:31: RuntimeWarning: invalid value encountered in matmul
+  mh=(ones@y)/W
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:31: RuntimeWarning: divide by zero encountered in matmul
+  mh=(ones@y)/W
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:31: RuntimeWarning: overflow encountered in matmul
+  mh=(ones@y)/W
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:31: RuntimeWarning: invalid value encountered in matmul
+  mh=(ones@y)/W
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:62: RuntimeWarning: divide by zero encountered in matmul
+  samples=x+(norm.ppf(u[:,:3])@chol.T)/np.sqrt(chi2.ppf(u[:,3],5)/5)[:,None]
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:62: RuntimeWarning: overflow encountered in matmul
+  samples=x+(norm.ppf(u[:,:3])@chol.T)/np.sqrt(chi2.ppf(u[:,3],5)/5)[:,None]
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_evidence_independent.py:62: RuntimeWarning: invalid value encountered in matmul
+  samples=x+(norm.ppf(u[:,:3])@chol.T)/np.sqrt(chi2.ppf(u[:,3],5)/5)[:,None]
+{'seed': 101, 'n': 16384, 'prior_width': 1.0, 'logZ': -884.1131759822389, 'BF_vs_LCDM': 4.6680242771142435, 'importance_ESS': 14581.197733646748}
+{'seed': 101, 'n': 16384, 'prior_width': 4.0, 'logZ': -886.8857647044783, 'BF_vs_LCDM': 0.2917515173197376, 'importance_ESS': 14581.197733656694}
+{'seed': 202, 'n': 16384, 'prior_width': 1.0, 'logZ': -884.1127968589386, 'BF_vs_LCDM': 4.669794369404305, 'importance_ESS': 14586.352836846052}
+{'seed': 202, 'n': 16384, 'prior_width': 4.0, 'logZ': -886.8853855811783, 'BF_vs_LCDM': 0.29186214808780003, 'importance_ESS': 14586.352836849368}

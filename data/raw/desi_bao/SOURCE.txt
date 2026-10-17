@@ -1,0 +1,4 @@
+Source: https://github.com/CobayaSampler/bao_data (official DESI Gaussian BAO compressions)
+DR2: desi_gaussian_bao_ALL_GCcomb_* (DESI DR2, arXiv:2503.14738)
+DR1: desi_2024_gaussian_bao_ALL_GCcomb_* (DESI 2024 III/VI, arXiv:2404.03002)
+Fetched 2026-10-17.

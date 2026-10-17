@@ -1,16 +1,16 @@
-[17:09:53] [INFO] 
-[17:09:53] [INFO] ================================================================================
-[17:09:53] [INFO]    Starting step_04_08_host_mass_step_prediction
-[17:09:53] [INFO] ================================================================================
-[17:09:53] [INFO] 
-[17:09:53] [INFO] Loaded 1700 SNe with host masses
-[17:09:53] [INFO] High-mass hosts (logM>10.0): 912
-[17:09:55] [INFO] Canonical nested-rate prediction: -0.0887 mag (isolated bound -0.1626 mag)
-[17:09:55] [INFO]   sigma_high=207.4 km/s, sigma_low=58.3 km/s; S_env=(0.57,0.87), S_A=(1.000,0.930); Delta_X=2.404e-07
-[17:09:55] [INFO]   raw conformal clock channel: -4.78e-07 mag (response amplification kappa ~ 3.69e+05)
-[17:09:56] [INFO] Observed mass step (LCDM fitted): 0.0072 mag
-[17:09:56] [INFO] TEP predicted mass step: -0.0887 mag
-[17:09:56] [INFO] Residual after TEP locked correction: 0.0958 mag
-[17:09:56] [INFO] Δχ² TEP_locked vs LCDM_no_step: -105.32
-[17:09:56] [INFO] Δχ² TEP_locked vs LCDM_fitted: -105.91
-[17:09:56] [SUCCESS] Step step_04_08_host_mass_step_prediction completed
+[22:38:00] [INFO] 
+[22:38:00] [INFO] ================================================================================
+[22:38:00] [INFO]    Starting step_04_08_host_mass_step_prediction
+[22:38:00] [INFO] ================================================================================
+[22:38:00] [INFO] 
+[22:38:01] [INFO] Loaded 1698 SNe with host masses
+[22:38:01] [INFO] High-mass hosts (logM>10.0): 912
+[22:38:03] [INFO] Canonical nested-rate prediction: -0.0887 mag (isolated bound -0.1626 mag)
+[22:38:03] [INFO]   sigma_high=207.4 km/s, sigma_low=58.3 km/s; S_env=(0.57,0.87), S_A=(1.000,0.930); Delta_X=2.404e-07
+[22:38:03] [INFO]   raw conformal clock channel: -4.78e-07 mag (response amplification kappa ~ 3.69e+05)
+[22:38:06] [INFO] Observed mass step (LCDM fitted): 0.0066 mag
+[22:38:06] [INFO] TEP predicted mass step: -0.0887 mag
+[22:38:06] [INFO] Residual after TEP locked correction: 0.0953 mag
+[22:38:06] [INFO] Δχ² TEP_locked vs LCDM_no_step: -103.94
+[22:38:06] [INFO] Δχ² TEP_locked vs LCDM_fitted: -104.43
+[22:38:06] [SUCCESS] Step step_04_08_host_mass_step_prediction completed

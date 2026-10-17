@@ -1,14 +1,11 @@
-[15:46:52] [INFO] 
-[15:46:52] [INFO] ================================================================================
-[15:46:52] [INFO]    Starting step_03_04_cobaya_mcmc
-[15:46:52] [INFO] ================================================================================
-[15:46:52] [INFO] 
-[15:46:52] [SUCCESS] TEP-CLASS: TEP-CLASS v2.0 available
-[15:46:52] [SUCCESS] Cobaya: Cobaya 3.6.2 available
-[15:46:53] [SUCCESS] Pantheon+ data: 1701 SNe loaded
-[15:46:53] [PROCESS] Running TEP sanity check...
-[15:46:54] [SUCCESS] TEP sanity check passed: dL(eps=0)=9302.66, dL(eps=0.2)=10122.32
-[15:46:54] [PROCESS] No MPI detected. Spawning 4 parallel chains via multiprocessing...
-[00:57:26] [PROCESS] All 4 chains finished. Computing combined convergence...
-[00:57:27] [ERROR] Cobaya MCMC finished but did NOT converge (R-1 = 0.03 >> 0.02, 4 chains)
-[00:57:27] [WARNING] Step step_03_04_cobaya_mcmc completed with status: blocked
+[00:22:06] [INFO] 
+[00:22:06] [INFO] ================================================================================
+[00:22:06] [INFO]    Starting step_03_04_cobaya_mcmc
+[00:22:06] [INFO] ================================================================================
+[00:22:06] [INFO] 
+[00:22:06] [SUCCESS] TEP-CLASS: TEP-CLASS v2.0 available
+[00:22:06] [SUCCESS] Cobaya: Cobaya 3.6.2 available
+[00:22:07] [SUCCESS] Pantheon+ data: 1701 SNe loaded
+[00:22:07] [PROCESS] Running TEP sanity check...
+[00:22:07] [SUCCESS] TEP sanity check passed: dL(eps=0)=9302.66, dL(eps=0.2)=10122.32
+[00:22:07] [PROCESS] No MPI detected. Spawning 4 parallel chains via multiprocessing...

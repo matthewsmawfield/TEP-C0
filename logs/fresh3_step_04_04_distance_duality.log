@@ -1,0 +1,18 @@
+[01:09:12] [INFO] 
+[01:09:12] [INFO] ================================================================================
+[01:09:12] [INFO]    Starting step_04_04_distance_duality
+[01:09:12] [INFO] ================================================================================
+[01:09:12] [INFO] 
+[01:09:12] [PROCESS] Loading fitted TEP model
+[01:09:12] [INFO] Parameters: LCDM H0=70.00, TEP H0=70.00, epsilon_T=0.018000, z_T=4.925082344687226
+[01:09:12] [PROCESS] Computing theoretical distance-duality relation
+[01:09:12] [PROCESS] Loading DDR observational constraints
+[01:09:12] [INFO] Loaded 10 DDR constraints
+[01:09:12] [INFO] LCDM compilation (Planck D_L + BAO D_A): η = 0.8662 ± 0.0202
+[01:09:12] [INFO]   Deviation from unity: 6.63σ
+[01:09:12] [INFO] TEP compilation (TEP D_L + BAO D_A): η = 0.8462 ± 0.0187
+[01:09:12] [INFO]   Deviation from unity: 8.21σ
+[01:09:12] [INFO] Δχ² (LCDM - TEP) = -25.28
+[01:09:12] [INFO] TEP η(z=2) prediction: 1.0000
+[01:09:12] [SUCCESS] Research grade: True
+[01:09:12] [SUCCESS] Step step_04_04_distance_duality completed successfully

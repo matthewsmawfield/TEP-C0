@@ -1,0 +1,99 @@
+{
+  "n": 1820,
+  "n_dropped": 0,
+  "n_lowmass": 594,
+  "w_sa_range": [
+    0.45016458535986376,
+    1.0
+  ],
+  "frac_w_lt_0p5": 0.001098901098901099,
+  "models": {
+    "LCDM": {
+      "chi2": 1631.7671987157557,
+      "mle": {
+        "Om0": 0.3287333032799363,
+        "M": 0.007551133756375445
+      }
+    },
+    "E0_uniform": {
+      "chi2": 1631.484804184579,
+      "dchi2_vs_LCDM": -0.2823945311768057,
+      "theta": [
+        0.9352824745032078,
+        0.017288680478075438
+      ]
+    },
+    "E1_binary_mass_gate": {
+      "chi2": 1631.1660371295634,
+      "dchi2_vs_LCDM": -0.6011615861923474,
+      "theta": [
+        0.9384184741943786,
+        -0.01786182828777275,
+        0.017566365659189478
+      ]
+    },
+    "E2_continuous_mass_gate": {
+      "chi2": 1626.3692771768963,
+      "dchi2_vs_LCDM": -5.397921538859464,
+      "theta": [
+        0.9486489313740127,
+        -0.018394660525577557,
+        0.017186357680409662
+      ]
+    },
+    "E3_logistic_depth_gate": {
+      "chi2": 1615.4535796468747,
+      "dchi2_vs_LCDM": -16.313619068881053,
+      "theta": [
+        0.9982959705405786,
+        0.46177404001069566,
+        11.5,
+        0.016943147339586694
+      ]
+    },
+    "E4_locked_SA_prediction": {
+      "chi2": 1633.886196436084,
+      "dchi2_vs_LCDM": 2.1189977203282524,
+      "theta": [
+        0.9283293684569967,
+        0.021120125153082404
+      ]
+    }
+  },
+  "resid_by_mass_tercile": {
+    "low": {
+      "n": 607,
+      "mass_range": [
+        6.908,
+        10.017
+      ],
+      "mean_resid_TEP": 0.07028294471036858,
+      "mean_resid_LCDM": 0.06902292561441992
+    },
+    "mid": {
+      "n": 606,
+      "mass_range": [
+        10.017,
+        10.679666666666666
+      ],
+      "mean_resid_TEP": 0.0617783155223473,
+      "mean_resid_LCDM": 0.06145651899528452
+    },
+    "high": {
+      "n": 607,
+      "mass_range": [
+        10.679666666666666,
+        11.898
+      ],
+      "mean_resid_TEP": 0.013492404125134229,
+      "mean_resid_LCDM": 0.014534713614627222
+    }
+  },
+  "weight_mass_correlations": {
+    "corr_w_locked_sa_vs_mass": 0.5066277127303069,
+    "corr_w_e3_fitted_vs_mass": -0.8795174146673853,
+    "frac_w_sa_gt_0p9": 0.971978021978022,
+    "frac_w_sa_gt_0p99": 0.9423076923076923
+  },
+  "interpretation": "Independent-catalog environmental test. If the locked screening weights again lose to the uniform kernel, the Pantheon+ wing result is confirmed as catalog-independent structure; if the mass gates gain here, the wing's adverse reading is sample-dependent. Residual-by-mass-tercile records the environmental direction directly."
+}

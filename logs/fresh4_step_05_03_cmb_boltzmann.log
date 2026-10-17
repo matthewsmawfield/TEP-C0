@@ -1,0 +1,8 @@
+[01:11:36] [INFO] 
+[01:11:36] [INFO] ================================================================================
+[01:11:36] [INFO]    Starting step_05_03_cmb_boltzmann
+[01:11:36] [INFO] ================================================================================
+[01:11:36] [INFO] 
+[01:11:37] [SUCCESS] CLASS LCDM reference spectrum completed
+[01:11:37] [SUCCESS] TEP CLASS spectrum completed
+{'step': 'step_05_03_cmb_boltzmann', 'tier': 'Resolver', 'validation': {'class_available': True, 'tep_class_available': True, 'local_class_source_tep_patch_present': True, 'tep_zero_limit_ok': True, 'research_grade_cmb': True, 'status': 'completed', 'reason': '', 'blockers': []}}

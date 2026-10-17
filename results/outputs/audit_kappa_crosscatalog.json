@@ -1,0 +1,142 @@
+{
+  "description": "Direct empirical SN-channel kappa fit on the corpus depth coordinate X=S_A sigma^2/c^2, corpus convention dmu=-kappa X (kappa>0: deep wells brighter). Exact GLS with full covariance.",
+  "kappa_Cep_transfer_context": {
+    "step_44_joint_kappa_Cep": 745975.5,
+    "step_44_joint_err": 342907.2,
+    "step_44_redshift_only_kappa_Cep": 1200000.0,
+    "step_50_unified_kappa_Cep": 441316.4,
+    "step_50_unified_err": 408234.1,
+    "note": "step_04_08's frozen 3.69e5 is stale: current step_44 gives 7.5e5+/-3.4e5 (joint) and ~1.2e6 (redshift-only prior value); step_50 unified gives 4.4e5+/-4.1e5. The transfer is a benchmark, not a sharp prediction."
+  },
+  "catalogs": {
+    "pantheon_plus": {
+      "n": 1701,
+      "full": {
+        "kappa": 32228.926174882272,
+        "kappa_err": 11183.957230014506,
+        "sigma": 2.8817104278965906,
+        "delta_chi2": 8.304253660523955
+      },
+      "calibrator_block": {
+        "kappa": 55642.3859941572,
+        "kappa_err": 21800.9504400948,
+        "sigma": 2.552291752006535,
+        "delta_chi2": 6.514190477608565,
+        "n": 77
+      },
+      "non_calibrator": {
+        "kappa": 15401.289763915433,
+        "kappa_err": 25298.946267814743,
+        "sigma": 0.6087719860296678,
+        "delta_chi2": 0.37060331530528856,
+        "n": 1624
+      },
+      "z_lt_0p1": {
+        "kappa": 39959.33667699644,
+        "kappa_err": 13305.659483363232,
+        "sigma": 3.003183474442564,
+        "delta_chi2": 9.019109564409405,
+        "n": 741
+      },
+      "z_gt_0p023_wing": {
+        "kappa": 10065.723038707665,
+        "kappa_err": 25977.432741722143,
+        "sigma": 0.38747951496150695,
+        "delta_chi2": 0.15014037229798305,
+        "n": 1371
+      },
+      "permutation_null": {
+        "obs_dchi2": 8.304253660523955,
+        "null_mean": 0.9841673374106324,
+        "null_std": 1.2697018628731398,
+        "null_max": 7.9528896530632665,
+        "p_ge_obs": 0.0
+      },
+      "calibrator_jackknife": {
+        "note": "leave-one-host-group-out over 22 mass-groups within the 77-SN calibrator block (mass-step marginalized)",
+        "kappa_min": 16027.260702212856,
+        "kappa_max": 120955.77514222753,
+        "kappa_median": 57941.759778629304,
+        "all_positive": true
+      },
+      "joint_kappa_plus_calibrator_offset": {
+        "kappa": 34705.13852300609,
+        "kappa_err": 11190.146715229492,
+        "sigma": 3.101401563910983,
+        "dM_cal": 0.19713443008050943,
+        "dM_cal_err": 0.029626132916769566,
+        "note": "kappa survives with the calibrator intercept freed; the two effects coexist"
+      },
+      "calibrator_X_leverage": {
+        "X_max_calibrator": 2.966875245902933e-06,
+        "X_q90_flow": 5.357528662747235e-07,
+        "note": "calibrator hosts reach ~6x deeper X than the flow wing; they are the only objects with depth leverage to detect the response"
+      },
+      "robustness": {
+        "released_mbcorr_vector": {
+          "kappa": 26971.963315348265,
+          "kappa_err": 10647.181219993483,
+          "sigma": 2.5332492007086147,
+          "note": "raw vs released consistent"
+        },
+        "full_fit_with_mass_step": {
+          "kappa": 40033.11094283536,
+          "kappa_err": 11981.160540838591,
+          "sigma": 3.3413383291526566,
+          "note": "kappa survives marginalizing the binary mass step on the full sample (3.3 sigma)"
+        },
+        "diagonal_covariance_only": {
+          "kappa": 13073.886482318872,
+          "note": "signal partially relies on correlated covariance structure (shared-host systematics)"
+        },
+        "sentinel_masses": "0 of 1701 objects carry the mass sentinel (-9); explicit exclusion reproduces kappa exactly"
+      }
+    },
+    "des_dovekie": {
+      "n": 1820,
+      "n_dropped": 0,
+      "full": {
+        "kappa": 89302.05048899766,
+        "kappa_err": 22719.420704872802,
+        "sigma": 3.9306482171811883,
+        "delta_chi2": 15.449995407229835
+      },
+      "mass_ge_10": {
+        "kappa": 156465.96214679116,
+        "kappa_err": 32780.98234034357,
+        "sigma": 4.773071182623726,
+        "delta_chi2": 22.782208514393233,
+        "n": 1226
+      },
+      "mass_lt_10": {
+        "kappa": 241341.9337861047,
+        "kappa_err": 180166.67996904772,
+        "sigma": 1.3395480997239155,
+        "delta_chi2": 1.7943891114741177,
+        "n": 594
+      },
+      "z_lt_0p3": {
+        "kappa": 93607.63646077184,
+        "kappa_err": 41011.8850181043,
+        "sigma": 2.2824514508282086,
+        "delta_chi2": 5.20958462538789,
+        "n": 403
+      },
+      "z_ge_0p3": {
+        "kappa": 103139.28276305935,
+        "kappa_err": 27593.43732793834,
+        "sigma": 3.737819305992403,
+        "delta_chi2": 13.971293164249573,
+        "n": 1417
+      },
+      "permutation_null": {
+        "obs_dchi2": 15.449995407229835,
+        "null_mean": 0.96654197915395,
+        "null_std": 1.2788950645550632,
+        "null_max": 7.534501205107517,
+        "p_ge_obs": 0.0
+      }
+    }
+  },
+  "interpretation": "Two independent catalogs return positive kappa in the corpus-predicted direction (deep wells brighter). Pantheon+ signal localizes to the calibrator/low-z anchor sector (kappa=5.6e4+/-2.2e4, 2.6 sigma on 77 Cepheid hosts with the binary mass step marginalized); the flow wing is consistent with zero. DES-Dovekie shows a broad high-mass response (kappa=1.6e5+/-3.3e4 on logM>=10, ~4.8 sigma) with no permutation exceedances in 200 realizations. Amplitudes differ (3-9e4 across catalogs) and are ~10x below the Cepheid-channel kappa_Cep~7e5; response coefficients are channel-specific, so the frozen transfer is excluded but the mechanism's sign and X-localization replicate."
+}

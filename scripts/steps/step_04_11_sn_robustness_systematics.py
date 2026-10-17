@@ -60,6 +60,7 @@ LOG_LIKELIHOOD_FLOOR = -1.0e6
 class PantheonData:
     def __init__(self):
         self.z: Optional[np.ndarray] = None
+        self.zhel: Optional[np.ndarray] = None
         self.mb: Optional[np.ndarray] = None
         self.dmb: Optional[np.ndarray] = None
         self.cov: Optional[np.ndarray] = None
@@ -79,7 +80,9 @@ class PantheonData:
         import pandas as pd
         df = pd.read_csv(pantheon_file, sep=r'\s+', comment='#')
 
-        z_raw = df["zCMB"].values if "zCMB" in df.columns else df["zHD"].values
+        # zHD is the corpus-standard Hubble-diagram redshift
+        # (peculiar-velocity corrected, matching the covariance convention).
+        z_raw = df["zHD"].values if "zHD" in df.columns else df["zCMB"].values
         if 'm_b_corr' in df.columns:
             mb_raw = df['m_b_corr'].values
             dmb_raw = df['m_b_corr_err_DIAG'].values if 'm_b_corr_err_DIAG' in df.columns else np.full(len(mb_raw), 0.15)
@@ -91,6 +94,9 @@ class PantheonData:
 
         valid = np.isfinite(z_raw) & np.isfinite(mb_raw) & (z_raw > 0.001) & (z_raw < 3.0)
         self.z = z_raw[valid]
+        self.zhel = df["zHEL"].values[valid]
+        if not np.all(np.isfinite(self.zhel)) or np.any(self.zhel <= -1):
+            raise ValueError("Invalid observer redshift")
         self.mb = mb_raw[valid]
         self.dmb = dmb_raw[valid]
 
@@ -115,6 +121,14 @@ class PantheonData:
         self.cov_cholesky = cholesky(self.cov, lower=True, check_finite=False)
         self.cov_logdet = float(2.0 * np.sum(np.log(np.diag(self.cov_cholesky))))
         return True
+
+    @property
+    def observer_correction(self):
+        if self.zhel is None:
+            return np.zeros_like(self.z)
+        if self.zhel.shape != self.z.shape:
+            raise ValueError("Observer redshifts do not match selected rows")
+        return 5.0 * np.log10((1.0 + self.zhel) / (1.0 + self.z))
 
     def gaussian_loglike(self, residuals: np.ndarray) -> float:
         if self.cov_cholesky is None or self.cov_logdet is None:
@@ -152,7 +166,7 @@ class ModelLCDM:
 
     def log_likelihood(self, params: np.ndarray, data: PantheonData) -> float:
         params_dict = dict(zip(self.param_names, params))
-        residuals = data.mb - self.predict(data.z, params_dict)
+        residuals = data.mb - self.predict(data.z, params_dict) - data.observer_correction
         try:
             return data.gaussian_loglike(residuals)
         except Exception:
@@ -175,7 +189,7 @@ class ModelTEP:
 
     def log_likelihood(self, params: np.ndarray, data: PantheonData) -> float:
         params_dict = dict(zip(self.param_names, params))
-        residuals = data.mb - self.predict(data.z, params_dict)
+        residuals = data.mb - self.predict(data.z, params_dict) - data.observer_correction
         try:
             return data.gaussian_loglike(residuals)
         except Exception:
@@ -200,7 +214,7 @@ class ModelTEPFreeZT:
 
     def log_likelihood(self, params: np.ndarray, data: PantheonData) -> float:
         params_dict = dict(zip(self.param_names, params))
-        residuals = data.mb - self.predict(data.z, params_dict)
+        residuals = data.mb - self.predict(data.z, params_dict) - data.observer_correction
         try:
             return data.gaussian_loglike(residuals)
         except Exception:
@@ -334,6 +348,7 @@ def run_nested_evidence_logzT(model: ModelTEPFreeZT, data: PantheonData, nlive: 
 def make_diagonal_data(data: PantheonData) -> PantheonData:
     d = PantheonData()
     d.z = data.z.copy()
+    d.zhel = None if data.zhel is None else data.zhel.copy()
     d.mb = data.mb.copy()
     d.dmb = data.dmb.copy()
     d.cov = np.diag(np.diag(data.cov))
@@ -345,6 +360,7 @@ def make_diagonal_data(data: PantheonData) -> PantheonData:
 def make_inflated_diagonal_data(data: PantheonData, factor: float = 1.5) -> PantheonData:
     d = PantheonData()
     d.z = data.z.copy()
+    d.zhel = None if data.zhel is None else data.zhel.copy()
     d.mb = data.mb.copy()
     d.dmb = data.dmb.copy()
     d.cov = np.diag(factor * np.diag(data.cov))
@@ -357,6 +373,7 @@ def make_statistical_only_data(data: PantheonData) -> PantheonData:
     """Approximate statistical-only covariance from diagonal errors."""
     d = PantheonData()
     d.z = data.z.copy()
+    d.zhel = None if data.zhel is None else data.zhel.copy()
     d.mb = data.mb.copy()
     d.dmb = data.dmb.copy()
     # Use dmb as the statistical uncertainty; ignore off-diagonal systematics
@@ -381,14 +398,14 @@ def compute_bayes_factor(model_tep, model_lcdm, data, nlive=200, dlogz=0.3,
     lcdm_mle, lcdm_logl = fit_mle(model_lcdm, data)
     tep_mle, tep_logl = fit_mle(model_tep, data)
 
-    chi2_lcdm = model_lcdm.chi2(data.mb - model_lcdm.predict(data.z, lcdm_mle), data) if hasattr(model_lcdm, 'chi2') else None
-    chi2_tep = model_tep.chi2(data.mb - model_tep.predict(data.z, tep_mle), data) if hasattr(model_tep, 'chi2') else None
+    chi2_lcdm = model_lcdm.chi2(data.mb - model_lcdm.predict(data.z, lcdm_mle) - data.observer_correction, data) if hasattr(model_lcdm, 'chi2') else None
+    chi2_tep = model_tep.chi2(data.mb - model_tep.predict(data.z, tep_mle) - data.observer_correction, data) if hasattr(model_tep, 'chi2') else None
 
     # Fallback chi2 via data object
     if chi2_lcdm is None:
-        chi2_lcdm = data.chi2(data.mb - model_lcdm.predict(data.z, lcdm_mle))
+        chi2_lcdm = data.chi2(data.mb - model_lcdm.predict(data.z, lcdm_mle) - data.observer_correction)
     if chi2_tep is None:
-        chi2_tep = data.chi2(data.mb - model_tep.predict(data.z, tep_mle))
+        chi2_tep = data.chi2(data.mb - model_tep.predict(data.z, tep_mle) - data.observer_correction)
 
     delta_chi2 = float(chi2_tep - chi2_lcdm)
 
@@ -446,8 +463,12 @@ def run() -> dict:
         print_status(f"Step blocked: {e}", "WARNING")
         return payload
 
-    nlive = int(os.getenv("TEP_ROBUST_NLIVE", "200"))
-    dlogz = float(os.getenv("TEP_ROBUST_DLOGZ", "0.3"))
+    # Research-grade evidence settings matching step_03_01. Bayes factors
+    # near unity require nlive>=500 and dlogz<=0.1 to be resolved; lower
+    # settings (e.g. TEP_ROBUST_NLIVE=200, TEP_ROBUST_DLOGZ=0.3) are for
+    # scoping only.
+    nlive = int(os.getenv("TEP_ROBUST_NLIVE", "500"))
+    dlogz = float(os.getenv("TEP_ROBUST_DLOGZ", "0.1"))
 
     results = {}
 
@@ -505,6 +526,7 @@ def run() -> dict:
 
         d_cut = PantheonData()
         d_cut.z = data_all.z[mask]
+        d_cut.zhel = data_all.zhel[mask]
         d_cut.mb = data_all.mb[mask]
         d_cut.dmb = data_all.dmb[mask]
         d_cut.cov = data_all.cov[np.ix_(mask, mask)]
@@ -587,13 +609,16 @@ def run() -> dict:
         "summary": {
             "overall_bf_range": {"min": overall_min, "max": overall_max},
             "per_category": summary,
-            "note": "eps_0.0_0.5 excluded from overall range because it is an artificially restrictive prior that excludes the best-fit epsilon_shear_los ~ 0.27 and is included only as a sensitivity test.",
+            "note": "eps_0.0_0.5 excluded from overall range because it is an artificially restrictive prior that excludes most of the fitted epsilon_shear_los posterior mass and is included only as a sensitivity test.",
         },
         "interpretation": (
-            f"Across all robustness tests the TEP M1 (z_T=5) Bayes factor relative to LCDM "
-            f"ranges from {overall_min:.2f} to {overall_max:.2f}, "
-            f"confirming that the substantial evidence is not an artefact of a single "
-            f"prior choice, redshift cut, covariance treatment, or sampler setting."
+            f"Across the robustness tests the TEP M1 (z_T=5) Bayes factor relative to LCDM "
+            f"ranges from {overall_min:.2f} to {overall_max:.2f}. The spread quantifies "
+            f"genuine sensitivity to prior support, redshift window, covariance treatment, "
+            f"and sampler configuration; entries below unity indicate configurations in "
+            f"which the conservative M1 branch does not outperform LCDM, and BF values "
+            f"near unity are within nested-sampling noise unless the quoted "
+            f"log-evidence errors exclude zero."
             if overall_min is not None else "Evidence range could not be computed."
         ),
         "timestamp": int(time.time()),

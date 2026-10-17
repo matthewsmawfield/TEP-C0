@@ -2,7 +2,8 @@
 """
 TEP-C0 Step 05-09: Minimal Perturbations
 ========================================
-Implements the active scalar perturbation closure (Part E).
+Checks the CLASS background-response spectra and canonical EFT benchmark.
+The full active scalar production closure is evaluated by TEP-HC.
 1. Defines tep_perturbations='minimal_conformal'
 2. Keeps B=0 (alpha_B = -alpha_M)
 3. Enforces alpha_T = 0
@@ -32,6 +33,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from core.cosmology import evaluate_tep_eft_sector, tep_alpha_M, tep_alpha_B, tep_alpha_K
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts" / "utils"))
+
+# TEP-CLASS build (patched engine providing tep_mode/tep_epsilon_T)
+import glob as _glob
+_class_build = Path(__file__).resolve().parents[2] / "external" / "class" / "build"
+_lib_dirs = _glob.glob(str(_class_build / "lib.*"))
+if _lib_dirs:
+    _tep_class_build = str(_lib_dirs[0])
+    if _tep_class_build not in sys.path:
+        sys.path.insert(0, _tep_class_build)
+
 from plot_style import apply_tep_style
 
 # Apply TEP manuscript style
@@ -77,12 +88,18 @@ def run_fiducial_spectra():
     # TEP with epsilon_T=0 — zero-limit sanity check.
     # This MUST match LCDM exactly; any difference is numerical noise from
     # the tep_mode code path, not physical TEP physics.
+    # Omega_Lambda=0 / Omega_k=0 match the joint-chain convention: under
+    # tep_mode an unset Omega_Lambda leaves the budget open; the patched
+    # engine fills the remainder with curvature (Omega_k = 1 - Omega_tot),
+    # producing a degenerate closed/matter-dominated branch (theta_s ~ 0.94).
     tep0_params = dict(common_params)
     tep0_params.update({
         'tep_mode': 'yes',
         'tep_epsilon_T': 0.0,
         'tep_z_T': 3.0,
-        'tep_n_T': 1.0,
+        'tep_n_T': 2.0,
+        'Omega_Lambda': 0.0,
+        'Omega_k': 0.0,
     })
     tep0 = Class()
     tep0.set(tep0_params)
@@ -97,7 +114,9 @@ def run_fiducial_spectra():
         'tep_mode': 'yes',
         'tep_epsilon_T': 6.7e-6,
         'tep_z_T': 3.0,
-        'tep_n_T': 1.0,
+        'tep_n_T': 2.0,
+        'Omega_Lambda': 0.0,
+        'Omega_k': 0.0,
     })
     tep = Class()
     tep.set(tep_params)
@@ -108,7 +127,7 @@ def run_fiducial_spectra():
 
 def _Dl(cl_arr, ell):
     """Convert raw C_l to D_l = ell(ell+1)C_l/(2*pi) in muK^2."""
-    return cl_arr * ell * (ell + 1) / (2 * np.pi)
+    return cl_arr * ell * (ell + 1) / (2 * np.pi) * (2.7255e6 ** 2)
 
 def find_first_peak(cl_arr, ell):
     """Find location of first acoustic peak in D_l space."""
@@ -130,14 +149,23 @@ def compute_residuals(cl_baseline, cl_tep, ell, lmax=2000):
         Dl_tep = _Dl(cl_tep[spec], ell)
         # Only use l <= lmax and where baseline has significant signal
         mask = (ell <= lmax) & (np.abs(Dl_base) > 1e-6)
-        if np.sum(mask) == 0:
-            residuals[f'max_{spec}_residual_percent'] = 0.0
-            residuals[f'mean_{spec}_residual_percent'] = 0.0
-            continue
+        if not np.any(mask):
+            raise ValueError(f'No valid {spec} multipoles above the spectrum threshold')
+        residuals[f'{spec}_multipoles_used'] = int(np.sum(mask))
         rel_res = np.zeros_like(Dl_base)
         rel_res[mask] = np.abs(Dl_tep[mask] - Dl_base[mask]) / np.abs(Dl_base[mask])
         residuals[f'max_{spec}_residual_percent'] = float(np.max(rel_res[mask]) * 100)
         residuals[f'mean_{spec}_residual_percent'] = float(np.mean(rel_res[mask]) * 100)
+    # TE crosses zero: normalize its change by the auto-spectrum scale
+    # rather than interpreting a divergent relative-to-TE percentage.
+    tt = _Dl(cl_baseline['tt'], ell)
+    ee = _Dl(cl_baseline['ee'], ell)
+    scale = np.sqrt(np.abs(tt * ee))
+    mask = (ell >= 2) & (ell <= lmax) & (scale > 1e-6)
+    if not np.any(mask):
+        raise ValueError('No valid TE auto-spectrum normalization')
+    delta_te = _Dl(cl_tep['te']-cl_baseline['te'], ell)
+    residuals['max_te_auto_normalized_percent'] = float(np.max(np.abs(delta_te[mask])/scale[mask])*100)
     return residuals
 
 def run() -> dict:
@@ -152,7 +180,7 @@ def run() -> dict:
     from core.cosmology import alpha_A_native
     for z in z_arr:
         try:
-            alpha_A_vals.append(alpha_A_native(z, epsilon_T=6.7e-6, z_T=3.0, n_T=1.0))
+            alpha_A_vals.append(alpha_A_native(z, epsilon_T=6.7e-6, z_T=5.0, n_T=2.0))
         except Exception:
             alpha_A_vals.append(0.0)
     alpha_A_vals = np.array(alpha_A_vals)
@@ -267,11 +295,16 @@ def run() -> dict:
     zero_limit_mask = (ell > 2) & (ell <= 2000) & (np.abs(Dl_lcdm) > 1e-3)
     zero_limit_rel = np.zeros_like(Dl_lcdm)
     zero_limit_rel[zero_limit_mask] = np.abs(Dl_tep0[zero_limit_mask] - Dl_lcdm[zero_limit_mask]) / np.abs(Dl_lcdm[zero_limit_mask])
-    zero_limit_max = float(np.max(zero_limit_rel[zero_limit_mask]) * 100) if np.any(zero_limit_mask) else 0.0
+    if not np.any(zero_limit_mask):
+        raise ValueError('Zero-limit spectrum comparison has no usable multipoles')
+    zero_limit_max = float(np.max(zero_limit_rel[zero_limit_mask]) * 100)
 
     payload = {
         "step": STEP_ID,
-        "description": "Minimal active-perturbation closure diagnostic",
+        "description": "CLASS background-response and canonical EFT diagnostic",
+        "spectrum_units": "microkelvin_squared",
+        "active_scalar_solver": False,
+        "multipoles_used": {spec: residuals[f"{spec}_multipoles_used"] for spec in ("tt", "te", "ee")},
         "status": "completed",
         "no_ghost_pass": ghost_free,
         "gradient_stability_pass": grad_free,
@@ -280,6 +313,9 @@ def run() -> dict:
         "max_EE_residual_percent": residuals['max_ee_residual_percent'],
         "mean_TT_residual_percent": residuals['mean_tt_residual_percent'],
         "mean_TE_residual_percent": residuals['mean_te_residual_percent'],
+        "max_TE_auto_normalized_percent": residuals['max_te_auto_normalized_percent'],
+        "TE_auto_normalization": "abs(delta_D_TE)/sqrt(abs(D_TT*D_EE))",
+        "TE_relative_max_zero_crossing_sensitive": True,
         "mean_EE_residual_percent": residuals['mean_ee_residual_percent'],
         "acoustic_peak_shift_percent": acoustic_shift,
         "chi2_proxy_vs_Planck": chi2_proxy,
@@ -292,7 +328,7 @@ def run() -> dict:
         "eft_alpha_B_range": [float(np.min(eft_sector['alpha_B'])), float(np.max(eft_sector['alpha_B']))],
         "eft_alpha_K_range": [float(np.min(eft_sector['alpha_K'])), float(np.max(eft_sector['alpha_K']))],
         "interpretation": (
-            "Minimal active-perturbation closure: no-ghost and gradient stability verified. "
+            "Canonical EFT benchmark coefficient checks pass; CLASS background-response spectra are compared. "
             "Spectra comparison uses TEP(ε_T=0) as the baseline to isolate the actual perturbation "
             "effect from numerical-noise contamination between standard CLASS and tep_mode code paths. "
             "The zero-limit sanity check confirms TEP(ε_T=0) agrees with LCDM to sub-percent precision."

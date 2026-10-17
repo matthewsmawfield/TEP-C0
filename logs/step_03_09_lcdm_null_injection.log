@@ -1,16 +1,23 @@
-[09:55:02] [INFO] 
-[09:55:02] [INFO] ================================================================================
-[09:55:02] [INFO]    Starting step_03_09_lcdm_null_injection
-[09:55:02] [INFO] ================================================================================
-[09:55:02] [INFO] 
-[09:55:02] [INFO] Loaded 1701 SNe with full covariance
-[09:55:04] [INFO]   Seed 0: Δχ²=2.28, BF_proxy=0.32
-[09:55:20] [INFO]   Seed 8: Δχ²=0.50, BF_proxy=0.78
-[09:55:35] [INFO]   Seed 16: Δχ²=-0.20, BF_proxy=1.10
-[09:55:52] [INFO]   Seed 24: Δχ²=0.05, BF_proxy=0.98
-[09:56:05] [INFO] Null injection summary:
-[09:56:05] [INFO]   Median Δχ² (TEP-LCDM): 0.29
-[09:56:05] [INFO]   BF > 30 count: 0 / 32
-[09:56:05] [INFO]   False positive rate: 0.000
-[09:56:05] [INFO]   p(observed Δχ² < -7.5 | LCDM): 0.000
-[09:56:05] [SUCCESS] Step step_03_09_lcdm_null_injection completed
+[15:22:23] [INFO] 
+[15:22:23] [INFO] ================================================================================
+[15:22:23] [INFO]    Starting step_03_09_lcdm_null_injection
+[15:22:23] [INFO] ================================================================================
+[15:22:23] [INFO] 
+[15:22:24] [INFO] Loaded 1701 SNe with full covariance
+[15:22:24] [INFO] Observed: Δχ²=-3.81, BF_proxy=6.71
+[15:22:24] [INFO]   Seed 0: Δχ²=8.59, BF_proxy=0.01
+[15:22:26] [INFO]   Seed 20: Δχ²=1.57, BF_proxy=0.46
+[15:22:27] [INFO]   Seed 40: Δχ²=5.72, BF_proxy=0.06
+[15:22:29] [INFO]   Seed 60: Δχ²=-3.30, BF_proxy=5.20
+[15:22:30] [INFO]   Seed 80: Δχ²=1.11, BF_proxy=0.57
+[15:22:32] [INFO]   Seed 100: Δχ²=5.97, BF_proxy=0.05
+[15:22:33] [INFO]   Seed 120: Δχ²=6.60, BF_proxy=0.04
+[15:22:35] [INFO]   Seed 140: Δχ²=1.40, BF_proxy=0.50
+[15:22:37] [INFO]   Seed 160: Δχ²=0.68, BF_proxy=0.71
+[15:22:38] [INFO]   Seed 180: Δχ²=-1.33, BF_proxy=1.95
+[15:22:40] [INFO] Null injection summary:
+[15:22:40] [INFO]   Median Δχ² (TEP-LCDM): 2.51
+[15:22:40] [INFO]   Mocks at least as extreme as observed: 3 / 200
+[15:22:40] [INFO]   False positive rate: 0.015
+[15:22:40] [INFO]   p(observed Δχ² <= -3.81 | LCDM): 0.020
+[15:22:40] [SUCCESS] Step step_03_09_lcdm_null_injection completed

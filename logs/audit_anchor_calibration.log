@@ -1,0 +1,166 @@
+[setup] N=1701, calibrators=77, z<=0.023 removed=330
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchor_calibration.py:146: RuntimeWarning: divide by zero encountered in matmul
+  mb_sim = mu_tep + L @ g
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchor_calibration.py:146: RuntimeWarning: overflow encountered in matmul
+  mb_sim = mu_tep + L @ g
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchor_calibration.py:146: RuntimeWarning: invalid value encountered in matmul
+  mb_sim = mu_tep + L @ g
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchor_calibration.py:151: RuntimeWarning: divide by zero encountered in matmul
+  mb_sim = mu_gr + L @ g
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchor_calibration.py:151: RuntimeWarning: overflow encountered in matmul
+  mb_sim = mu_gr + L @ g
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchor_calibration.py:151: RuntimeWarning: invalid value encountered in matmul
+  mb_sim = mu_gr + L @ g
+[run] 144 nested-sampling evals, nlive=500
+[12:09:03] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:09:04] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:09:05] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:09:07] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:15:23] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:15:48] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:17:14] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:17:45] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:23:18] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:23:23] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:26:46] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:26:48] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:30:40] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:31:06] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:32:48] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:32:51] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:33:11] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:33:13] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:34:20] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:34:20] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:34:25] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:34:27] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:35:37] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:35:46] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:35:52] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:35:53] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:36:47] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:37:12] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:37:15] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:37:20] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:37:55] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:38:35] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:38:44] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:38:46] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:39:07] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:39:55] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:40:08] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:40:22] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:40:42] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:41:15] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:41:51] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:42:07] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:42:32] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:42:36] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:43:17] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:43:45] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:43:54] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:44:10] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:45:07] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:45:25] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:45:35] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:45:53] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:47:12] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:47:24] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:47:35] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:47:38] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:48:38] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:48:55] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:49:22] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:49:23] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:50:00] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:50:10] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:50:39] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:50:58] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:51:54] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:52:01] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:52:07] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:52:48] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:53:51] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:53:52] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:53:52] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:54:18] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:54:56] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:55:01] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:55:31] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:55:50] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:56:09] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:56:26] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:56:33] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:57:19] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:57:25] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:57:27] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:57:41] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:58:38] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:58:40] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:59:00] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:59:19] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[12:59:51] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:00:12] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:00:42] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:00:58] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:01:30] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:01:51] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:01:56] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:02:08] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:03:00] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:03:13] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:03:13] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:03:23] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:04:12] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:04:25] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:04:55] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:05:02] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:05:40] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:05:49] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:06:40] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:06:45] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:07:15] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:07:28] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:07:53] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:07:57] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:09:04] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:09:19] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:09:23] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:09:24] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:10:51] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:10:52] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:11:01] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:11:12] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:12:17] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:12:36] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:12:49] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:12:51] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:14:01] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:14:07] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:14:46] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:14:46] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:15:56] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:16:06] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:16:13] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:16:15] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:17:40] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:17:56] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:18:00] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:18:09] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:19:12] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:19:38] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:19:58] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:20:06] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:21:00] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:21:03] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:21:47] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:21:54] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[13:22:51] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] 4498s -> /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/audit_anchor_calibration.json
+  rand77_remove_random_noncal            BF med=5.28  [4.75,6.91]  frac>1=1.00
+  rand330_remove_random_nonanchor        BF med=4.84  [2.28,8.82]  frac>1=1.00
+  randlow77_remove_random_lowz_noncal    BF med=4.49  [3.72,4.85]  frac>1=1.00
+  injTEP_full                            BF med=2.80  [0.68,11.29]  frac>1=0.75
+  injTEP_zcut                            BF med=5.04  [0.95,10.51]  frac>1=0.83
+  injGR_full                             BF med=0.32  [0.15,2.08]  frac>1=0.33
+  injGR_zcut                             BF med=0.54  [0.15,2.07]  frac>1=0.33

@@ -5,7 +5,7 @@
     "alpha_SZ": 0.1811895268012964,
     "definition": "alpha_probe = beta_probe (step_04_06 empirical power-law)",
     "input_parameters": {
-      "epsilon_T": 0.8255806089891183
+      "epsilon_T": 0.8707961608975863
     }
   },
   "description": "Data-calibrated TEP screening derivation. epsilon_T and z_T are taken from step_03_01; per-probe k_probe, S_probe and alpha_probe are extracted from step_04_06. No hand-tuned coefficients.",
@@ -16,9 +16,9 @@
     "hubble_tension": "Reconciled via environment-dependent screening of epsilon_T"
   },
   "input_parameters": {
-    "epsilon_T": 0.8255806089891183,
-    "sne_fit_variant": "M1_free_zT",
-    "z_T": 136.56755735056186
+    "epsilon_T": 0.8707961608975863,
+    "sne_fit_variant": "M1_NoLambda_zT5",
+    "z_T": 5.0
   },
   "predictions": {
     "S_vs_z": {
@@ -179,14 +179,14 @@
       "z_c_definition": "z_c_probe = exp(1/|beta_probe|) - 1 (e-folding from step_04_06)"
     },
     "environment_couplings_k": {
-      "BAO": 0.3571853603353128,
-      "SGL": -0.1781064049077278,
-      "SZ": 0.2741429897991789,
+      "BAO": 0.33863873148414864,
+      "SGL": -0.16885834002416764,
+      "SZ": 0.2599082846612618,
       "definition": "k_probe = (eta_0_probe - 1) / epsilon_T"
     },
     "inputs": {
-      "epsilon_T": 0.8255806089891183,
-      "z_T": 136.56755735056186
+      "epsilon_T": 0.8707961608975863,
+      "z_T": 5.0
     },
     "physical_interpretation": {
       "epsilon_T": "Universal TEP coupling amplitude (Pantheon+ M1 fit, step_03_01)",

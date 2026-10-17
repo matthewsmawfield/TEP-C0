@@ -10,15 +10,13 @@ from __future__ import annotations
 from pathlib import Path
 import numpy as np
 from c0_common import TEPLogger, ensure_dirs, print_status, read_json, rounded, set_step_logger, step_csv_path, step_json_path, write_csv, write_json
+from c0_common import load_model_comparison
 
 STEP_ID = "step_07_01_mixed_forecast"
 
 
 def load_step022_results() -> dict:
-    results_file = Path("results/step_03_01_three_model_comparison.json")
-    if not results_file.exists():
-        raise FileNotFoundError("step_022 results not found. Run step_022 first.")
-    return read_json(results_file)
+    return load_model_comparison()
 
 
 def compute_ft_evolution(z: np.ndarray, ft: float, z_transition: float = 0.5) -> np.ndarray:
@@ -40,7 +38,10 @@ def run():
     step022 = load_step022_results()
     m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m1_params = step022['models'][m1_key]['parameters_mle']
-    ft = m1_params.get('ft', m1_params.get('epsilon_T', 0.1))  # epsilon_T is the TEP coupling parameter
+    # The M1 parameter dict carries 'epsilon_shear_los' (the fitted line-of-
+    # sight transport amplitude); 'ft' and 'epsilon_T' keys do not exist and
+    # previously fell through to a hardcoded 0.1.
+    ft = m1_params.get('epsilon_shear_los', 0.0)
     
     z_grid = np.linspace(0.0, 3.0, 100)
     ft_evolution = compute_ft_evolution(z_grid, ft)

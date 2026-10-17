@@ -1,24 +1,32 @@
-[09:56:50] [INFO] 
-[09:56:50] [INFO] ================================================================================
-[09:56:50] [INFO]    Starting step_06_05_growth_rsd
-[09:56:50] [INFO] ================================================================================
-[09:56:50] [INFO] 
-[09:56:50] [INFO] TEP-CLASS available for growth calculations
-[09:56:50] [INFO] SNe distance parameters: ε_T_dist=0.00000, Om0_dist=1.000 (compensates for distance bias)
-[09:56:50] [INFO] Growth parameters: ε_T_growth=0.00000, Om0_growth=0.300 (independent fit)
-[09:56:50] [INFO] z=0.07: obs=0.423±0.055, LCDM=0.447, TEP=0.447
-[09:56:51] [INFO] z=0.22: obs=0.420±0.070, LCDM=0.474, TEP=0.474
-[09:56:51] [INFO] z=0.38: obs=0.497±0.045, LCDM=0.485, TEP=0.485
-[09:56:52] [INFO] z=0.41: obs=0.450±0.040, LCDM=0.485, TEP=0.485
-[09:56:52] [INFO] z=0.51: obs=0.458±0.038, LCDM=0.484, TEP=0.484
-[09:56:52] [INFO] z=0.60: obs=0.430±0.040, LCDM=0.480, TEP=0.480
-[09:56:53] [INFO] z=0.61: obs=0.436±0.034, LCDM=0.480, TEP=0.480
-[09:56:53] [INFO] z=0.78: obs=0.380±0.040, LCDM=0.467, TEP=0.467
-[09:56:53] [INFO] z=0.85: obs=0.459±0.047, LCDM=0.460, TEP=0.460
-[09:56:54] [INFO] z=1.40: obs=0.482±0.116, LCDM=0.399, TEP=0.399
-[09:56:54] [INFO] z=1.48: obs=0.397±0.081, LCDM=0.390, TEP=0.390
-[09:56:54] [INFO] 
-ΛCDM: χ² = 10.60, χ²/ndof = 0.96
-[09:56:54] [INFO] TEP:  χ² = 10.60, χ²/ndof = 0.96
-[09:56:54] [INFO] Δχ² = 0.00 (marginal)
-[09:56:54] [SUCCESS] Step step_06_05_growth_rsd completed
+[01:28:54] [INFO] 
+[01:28:54] [INFO] ================================================================================
+[01:28:54] [INFO]    Starting step_06_05_growth_rsd
+[01:28:54] [INFO] ================================================================================
+[01:28:54] [INFO] 
+[01:28:55] [INFO] TEP-CLASS available for growth calculations
+[01:28:55] [INFO] SNe distance parameters: ε_T_dist=0.87080, Om0_dist=1.000 (compensates for distance bias)
+[01:28:55] [INFO] Growth parameters: ε_T_growth=0.01800, Om0_growth=1.000 (TEP acoustic sector)
+[01:28:55] [INFO] Joint branch: ε_T=-0.00153, Om0_eff=0.294 (tep_mode, Omega_Lambda=0)
+[01:28:55] [INFO] z=0.07: obs=0.423±0.055, LCDM=0.432, TEP_EdS=0.762, TEP_joint=0.427
+[01:28:55] [INFO] z=0.22: obs=0.420±0.070, LCDM=0.458, TEP_EdS=0.666, TEP_joint=0.454
+[01:28:56] [INFO] z=0.38: obs=0.497±0.045, LCDM=0.468, TEP_EdS=0.589, TEP_joint=0.465
+[01:28:56] [INFO] z=0.41: obs=0.450±0.040, LCDM=0.469, TEP_EdS=0.576, TEP_joint=0.466
+[01:28:56] [INFO] z=0.51: obs=0.458±0.038, LCDM=0.468, TEP_EdS=0.538, TEP_joint=0.466
+[01:28:57] [INFO] z=0.60: obs=0.430±0.040, LCDM=0.464, TEP_EdS=0.508, TEP_joint=0.462
+[01:28:57] [INFO] z=0.61: obs=0.436±0.034, LCDM=0.464, TEP_EdS=0.504, TEP_joint=0.462
+[01:28:57] [INFO] z=0.78: obs=0.380±0.040, LCDM=0.451, TEP_EdS=0.456, TEP_joint=0.450
+[01:28:58] [INFO] z=0.85: obs=0.459±0.047, LCDM=0.445, TEP_EdS=0.439, TEP_joint=0.444
+[01:28:58] [INFO] z=1.40: obs=0.482±0.116, LCDM=0.385, TEP_EdS=0.338, TEP_joint=0.386
+[01:28:58] [INFO] z=1.48: obs=0.397±0.081, LCDM=0.377, TEP_EdS=0.327, TEP_joint=0.377
+[01:28:58] [INFO] 
+ΛCDM: χ² = 6.45, χ²/ndof = 0.59
+[01:28:58] [INFO] TEP (EdS diagnostic):  χ² = 82.76, χ²/ndof = 7.52
+[01:28:58] [INFO] TEP (joint branch):  χ² = 6.11, χ²/ndof = 0.56
+[01:28:58] [INFO] Δχ² = 76.32 (significant)
+[01:28:58] [WARNING] 
+THEORETICAL TENSION IDENTIFIED:
+[01:28:58] [WARNING]   TEP acoustic sector: Om0 = 1.000, ε_T = 0.018
+[01:28:58] [WARNING]   RSD data prefers: Om0 ≈ 0.3 for maximal growth
+[01:28:58] [WARNING]   TEP fσ₈ predictions: differ from ΛCDM (physical consequence of EdS+TEP)
+[01:28:58] [WARNING]   Resolution paths: (1) Nonlinear screening S(ρ)→0 in clusters, (2) Joint SNe+RSD fit
+[01:28:58] [SUCCESS] Step step_06_05_growth_rsd completed

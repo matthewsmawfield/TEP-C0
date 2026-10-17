@@ -1,0 +1,125 @@
+{
+  "conventions": {
+    "sample_size": 1701,
+    "redshift": "zHD",
+    "observer_redshift": "zHEL",
+    "luminosity_distance": "(1+zHEL) chi(zHD)",
+    "exponent": 2,
+    "H0_reference": 70,
+    "M_prior": [
+      -21,
+      -16
+    ],
+    "covariance_sha256": "abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc"
+  },
+  "cuts": {
+    "z_above_0.01": {
+      "n": 1590,
+      "LCDM": {
+        "chi2": 1402.9191282618867,
+        "logZ": 836.59848645723,
+        "logZ_error": 1.6203792228559769e-12,
+        "parameters": {
+          "Om0": 0.3315757783330049,
+          "M": -19.351381473685944
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "TEP": {
+        "chi2": 1402.8489969881562,
+        "logZ": 836.5574944768476,
+        "logZ_error": 4.8463378462312075e-08,
+        "parameters": {
+          "epsilon_shear_los": 0.9409342728111285,
+          "M": -19.34559938674709
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "delta_chi2": -0.07013127373056705,
+      "BF_vs_LCDM": 0.9598368274412605
+    },
+    "z_above_0.023": {
+      "n": 1371,
+      "LCDM": {
+        "chi2": 1209.6956368085155,
+        "logZ": 760.8315425018397,
+        "logZ_error": 1.3883754108045624e-12,
+        "parameters": {
+          "Om0": 0.3279775094925229,
+          "M": -19.356497092929136
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "TEP": {
+        "chi2": 1210.4934856060704,
+        "logZ": 760.371066647947,
+        "logZ_error": 1.5424483837796554e-08,
+        "parameters": {
+          "epsilon_shear_los": 0.9490278079090121,
+          "M": -19.35069614198179
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "delta_chi2": 0.7978487975549342,
+      "BF_vs_LCDM": 0.6309833181884317
+    },
+    "z_above_0.05": {
+      "n": 1056,
+      "LCDM": {
+        "chi2": 922.5145023023643,
+        "logZ": 584.8112870150507,
+        "logZ_error": 5.1364848815674115e-08,
+        "parameters": {
+          "Om0": 0.3321639671420945,
+          "M": -19.354441596279106
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "TEP": {
+        "chi2": 923.7752735464021,
+        "logZ": 584.1534739300645,
+        "logZ_error": 1.203827796268214e-09,
+        "parameters": {
+          "epsilon_shear_los": 0.9262763019398773,
+          "M": -19.343820330855305
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "delta_chi2": 1.2607712440377554,
+      "BF_vs_LCDM": 0.5179828812823704
+    },
+    "remove_calibrators": {
+      "n": 1624,
+      "LCDM": {
+        "chi2": 1456.3484787979778,
+        "logZ": 813.2595777584821,
+        "logZ_error": 1.3504658781776568e-12,
+        "parameters": {
+          "Om0": 0.33427215823301654,
+          "M": -19.352214312424294
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "TEP": {
+        "chi2": 1455.7447961752205,
+        "logZ": 813.4784856427381,
+        "logZ_error": 4.611436404586319e-08,
+        "parameters": {
+          "epsilon_shear_los": 0.9343582432123165,
+          "M": -19.346143273276994
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "delta_chi2": -0.6036826227573329,
+      "BF_vs_LCDM": 1.244716613409479
+    }
+  }
+}

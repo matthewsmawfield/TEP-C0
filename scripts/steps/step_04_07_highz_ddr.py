@@ -35,6 +35,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).parent))
 
 from c0_common import TEPLogger, set_step_logger, ensure_dirs, print_status, step_json_path, write_json
+from c0_common import load_model_comparison
 
 STEP_ID = "step_04_07_highz_ddr"
 
@@ -230,7 +231,7 @@ def run() -> dict:
     
     # Load TEP parameters from step_022
     try:
-        step022 = json.loads(Path("results/step_03_01_three_model_comparison.json").read_text())
+        step022 = load_model_comparison()
         m1_key = "M1_free_zT"
         if m1_key not in step022.get("models", {}):
             m1_key = "M1_NoLambda_zT5"

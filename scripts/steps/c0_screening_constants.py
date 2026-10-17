@@ -1,0 +1,6 @@
+"""Locked master acceleration scale for C0 screening benchmarks."""
+C_M_S = 299792458.0
+H0_MASTER_S = 70.0e3 / 3.085677581e22
+BETA_A_MASTER = -1.0
+SCREENING_ACCELERATION_M_S2 = C_M_S * H0_MASTER_S / (2.0 * BETA_A_MASTER ** 2)
+SCREENING_GRADIENT_M_INV = SCREENING_ACCELERATION_M_S2 / C_M_S ** 2

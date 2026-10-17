@@ -1,0 +1,59 @@
+[16:45:01] [INFO] 
+[16:45:01] [INFO] ================================================================================
+[16:45:01] [INFO]    Starting step_03_01_three_model_comparison - RESEARCH GRADE
+[16:45:01] [INFO] ================================================================================
+[16:45:01] [INFO] 
+[16:45:03] [INFO] Loaded 1701 SNe from data/raw/pantheon_plus_shoes.dat
+[16:45:03] [INFO] Covariance source: full_covariance_file_filtered
+[16:45:03] [INFO] Data SHA-256: 1cb0fc379ef066af...
+[16:45:03] [INFO] Cov SHA-256: abf806d966485e64...
+[16:45:03] [INFO] Computational budget: nlive=500, dlogz=0.1, run_mcmc=False, mcmc_walkers=64, mcmc_steps=40000, mcmc_burn_in=5000, run_cross_validation=False
+[16:45:03] [INFO] 
+==================================================
+[16:45:03] [INFO] Reusing saved payload for M0a_LCDM (resume mode)
+[16:45:03] [INFO] 
+==================================================
+[16:45:03] [INFO] Reusing saved payload for M0b_EdS (resume mode)
+[16:45:03] [INFO] 
+==================================================
+[16:45:03] [INFO] Reusing saved payload for M1_NoLambda_zT5 (resume mode)
+[16:45:03] [INFO] 
+==================================================
+[16:45:03] [INFO] Reusing saved payload for M1_NoLambda_zT1 (resume mode)
+[16:45:03] [INFO] 
+==================================================
+[16:45:03] [INFO] Reusing saved payload for M1_Unscreened_zT100 (resume mode)
+[16:45:03] [INFO] 
+==================================================
+[16:45:03] [INFO] Reusing saved payload for M1_free_zT (resume mode)
+[16:45:03] [INFO] 
+==================================================
+[16:45:03] [INFO] Reusing saved payload for M2_PureShear (resume mode)
+[16:45:03] [INFO] 
+==================================================
+[16:45:03] [INFO] Reusing saved payload for M3_wCDM (resume mode)
+[16:45:03] [INFO] 
+==================================================
+[16:45:03] [INFO] Reusing saved payload for M4_CPL (resume mode)
+[16:45:03] [INFO] 
+[16:45:03] [INFO] ================================================================================
+[16:45:03] [INFO]    
+Model Comparison (vs ΛCDM):
+[16:45:03] [INFO] ================================================================================
+[16:45:03] [INFO] 
+[16:45:03] [INFO]   M0b_EdS:
+[16:45:03] [INFO]     ln(BF) vs LCDM = -316.65, BF = 3.04e-138 (Decisive (favors LCDM))
+[16:45:03] [INFO]     ΔBIC vs LCDM = 632.04
+[16:45:03] [INFO]     Δχ² vs LCDM = 639.48
+[16:45:03] [INFO]     p-value (Wilks) = 0.0000
+[16:45:03] [INFO]     p-value (boundary-corrected) = 0.0000
+[16:45:03] [INFO]     ln(BF) vs EdS = 0.00
+[16:45:03] [INFO]     ΔBIC vs EdS = 0.00
+Traceback (most recent call last):
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_01_three_model_comparison.py", line 1669, in <module>
+    run()
+    ~~~^^
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_01_three_model_comparison.py", line 1183, in run
+    for key, val in bayes_factors.items():
+                    ~~~~~~~~~~~~~~~~~~~^^
+RuntimeError: dictionary changed size during iteration

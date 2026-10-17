@@ -1,24 +1,19 @@
 #!/usr/bin/env python3
-"""Step 06-06: TEP Nonlinear Growth Closure (Halo-Model, Gradient-Screened v3)
+"""Step 06-06: TEP Nonlinear Growth Closure (Halo-Model, Gradient-Screened Benchmark)
 
-Replaces the old density-based S(ρ) screening with the gradient-dependent
-screening envelope f(g) = [1 + (g/g_t)^n]^-1, using the characteristic
-Newtonian acceleration at the virial radius of each halo.
+Evaluates the gradient-dependent screening envelope f(g) = [1 + (g/g_t)^n]^-1
+on the EdS acoustic-sector benchmark using the characteristic Newtonian
+acceleration at the virial radius of each halo (canonical threshold
+g_t = c H_0 / 2 ~= 3.4e-10 m/s^2 under strictly constant M_Pl in S_grav;
+the canonical two-branch scale-transition and window-weighted sigma_8
+decomposition are evaluated in Paper 18 Step 21 Part D).
 
-Key physical result:
-- Typical halos (M ~ 1e13 M_sun) have g_vir ~ 10^-11 m/s^2  <<  g_t = 1e-9
-- Cluster halos (M ~ 1e15 M_sun) have g_vir ~ 10^-10 m/s^2  <<  g_t
-- Even at the central scale radius (g_peak ~ c^2/4 * g_vir), g remains
-  below or comparable to g_t for most halos.
-- Therefore f(g_halo) ≈ 0.99-1.0: the halo model is essentially unscreened
-  by the gradient envelope on cosmological scales.
-- The observed ~0.55 suppression of sigma_8 comes from the α_M running
-  (evolving Planck mass) in the full hi_class perturbation equations,
-  not from environmental gradient screening.
-
-This correctly reflects the PPN-growth orthogonality: the gradient
-operator screens the Solar System (g ~ 10^-5 to 10^2) while leaving
-the cosmic web (g ~ 10^-11 to 10^-10) unscreened.
+Background status: the EdS acoustic-sector benchmark used here is the
+counterfactual matter-only branch (Step 05-11). The corpus's physical
+single-history background is the native Jordan-frame branch
+H = M(z) H_LCDM, which fits Pantheon+, DESI DR2 BAO and the Planck acoustic
+angle jointly (Step 03-14); this step remains a screening-envelope benchmark
+and does not define the physical background.
 """
 
 from __future__ import annotations
@@ -32,7 +27,7 @@ from scipy.integrate import quad
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from c0_common import (
-    RESULTS_DIR,
+    read_json,
     TEPLogger,
     ensure_dirs,
     print_status,
@@ -52,7 +47,6 @@ STEP_ID = "step_06_06_nonlinear_growth_closure"
 H0 = 70.0                           # km/s/Mpc
 OMEGA_M = 1.0
 OMEGA_L = 0.0
-SIGMA8_LINEAR_TEP = 1.501           # From step_06_04 (EdS, ε_T=0.018)
 SIGMA8_PLANCK = 0.812
 SIGMA8_PLANCK_ERR = 0.007
 
@@ -62,13 +56,13 @@ DELTA_VIR = 200.0                   # Overdensity for virialized halos
 
 
 def halo_mass_function_dn_dM(M: float, z: float = 0.0) -> float:
-    """Sheth-Tormen halo mass function (dn/dM in h⁴ M_sun⁻¹ Mpc⁻³).
+    """Assigned power-law mass-function surrogate in physical-mass coordinates.
 
     Returns the approximate number density of halos per unit mass.
     """
     # For simplicity, use a power-law approximation with exponential cutoff
     # dn/dM ∝ M^(-1.9) exp(-M/M_*) where M_* is the characteristic mass
-    M_star = 1e13  # M_sun/h, characteristic mass at z=0
+    M_star = 1e13  # physical M_sun, assigned characteristic mass at z=0
     norm = 1e-15
     return norm * (M / M_star) ** (-1.9) * np.exp(-M / M_star)
 
@@ -91,7 +85,8 @@ def halo_bias_ST(M: float, z: float = 0.0) -> float:
 # ============================================================================
 # Gradient-dependent screening (TEP v3)
 # ============================================================================
-G_T = 1.0e-9   # threshold acceleration, m/s^2
+from c0_screening_constants import SCREENING_ACCELERATION_M_S2
+G_T = SCREENING_ACCELERATION_M_S2  # master c H0/(2 beta_A^2), m/s^2
 N_SCREEN = 2.0
 
 
@@ -110,17 +105,16 @@ def halo_characteristic_acceleration(M_msun: float, z: float = 0.0,
     # Critical density at z=0 in h^2 M_sun / Mpc^3
     rho_crit_0 = 2.775e11
     Ez2 = (1.0 + z) ** 3
-    rho_crit_z = rho_crit_0 * Ez2
+    rho_crit_z = rho_crit_0 * (H0 / 100.0) ** 2 * Ez2
     rho_vir = delta_vir * rho_crit_z
-    R_vir = (3.0 * M_msun / (4.0 * np.pi * rho_vir)) ** (1.0 / 3.0)  # Mpc/h
+    R_vir = (3.0 * M_msun / (4.0 * np.pi * rho_vir)) ** (1.0 / 3.0)  # physical Mpc
 
     G = 6.67430e-11
     M_sun_kg = 1.98847e30
     Mpc_m = 3.08567758e22
-    h = H0 / 100.0
 
     M_kg = M_msun * M_sun_kg
-    R_m = R_vir * Mpc_m / h
+    R_m = R_vir * Mpc_m
     g_vir = G * M_kg / (R_m ** 2)
     return g_vir
 
@@ -140,28 +134,45 @@ def screened_halo_bias(M: float, z: float = 0.0) -> float:
     return 1.0 + (b_lin - 1.0) * f_g
 
 
-def compute_screened_sigma8() -> dict:
+def compute_screened_sigma8(sigma8_linear: float | None = None) -> dict:
     """Compute σ₈ from the screened halo-model power spectrum.
 
     Uses a simplified two-halo model where the nonlinear power is
     suppressed on small scales due to halo-scale screening.
     """
+    if sigma8_linear is None:
+        upstream = read_json(step_json_path("step_06_04_growth_validation"))
+        sigma8_linear = float(upstream["sigma_8"]["tep_eds"])
+    if not np.isfinite(sigma8_linear) or sigma8_linear <= 0:
+        raise ValueError("Current EdS diagnostic sigma8 must be finite and positive")
+
     # Integration limits (M_sun)
     M_min = 1e10
     M_max = 1e16
+
+    # Split at the declared bias-floor kink for controlled quadrature.
+    log_bias_floor = np.log(1e12 * ((1 - .5 * 1.686) * 25 / 1.686 ** 2) ** 3)
 
     # 1. Compute the unscreened 2-halo amplitude
     # I_b = ∫ dn/dM b(M) dM
     def integrand_bias(M):
         return halo_mass_function_dn_dM(M) * halo_bias_ST(M)
 
-    I_b_unscreened, _ = quad(integrand_bias, M_min, M_max, limit=100)
+    I_b_unscreened, err_unscreened = quad(
+        lambda logM: integrand_bias(np.exp(logM)) * np.exp(logM),
+        np.log(M_min), np.log(M_max), epsabs=1e-12, epsrel=1e-10, limit=100, points=[log_bias_floor])
 
     # 2. Compute the screened 2-halo amplitude
     def integrand_bias_screened(M):
         return halo_mass_function_dn_dM(M) * screened_halo_bias(M)
 
-    I_b_screened, _ = quad(integrand_bias_screened, M_min, M_max, limit=100)
+    I_b_screened, err_screened = quad(
+        lambda logM: integrand_bias_screened(np.exp(logM)) * np.exp(logM),
+        np.log(M_min), np.log(M_max), epsabs=1e-12, epsrel=1e-10, limit=100, points=[log_bias_floor])
+    if not (I_b_unscreened > 0 and I_b_screened > 0):
+        raise ValueError("Positive halo integrands require positive integrals")
+    if max(err_unscreened / I_b_unscreened, err_screened / I_b_screened) > 1e-8:
+        raise ValueError("Halo-mass quadrature did not converge")
 
     # 3. The ratio of screened to unscreened bias integrals gives
     #    the suppression of the 2-halo term.
@@ -174,7 +185,7 @@ def compute_screened_sigma8() -> dict:
     #    2-halo term is dominant.
     #
     #    A simple approximation: σ₈_screened ≈ σ₈_linear × bias_suppression
-    sigma8_screened = SIGMA8_LINEAR_TEP * bias_suppression
+    sigma8_screened = sigma8_linear * bias_suppression
 
     # 5. Compare to Planck
     deviation = abs(sigma8_screened - SIGMA8_PLANCK) / SIGMA8_PLANCK_ERR
@@ -183,7 +194,9 @@ def compute_screened_sigma8() -> dict:
         "I_b_unscreened": rounded(I_b_unscreened, 6),
         "I_b_screened": rounded(I_b_screened, 6),
         "bias_suppression_factor": rounded(bias_suppression, 6),
-        "sigma8_linear": SIGMA8_LINEAR_TEP,
+        "integration_coordinate": "ln(physical M/Msun), with Jacobian M",
+        "quadrature_relative_error_max": max(err_unscreened / I_b_unscreened, err_screened / I_b_screened),
+        "sigma8_linear": sigma8_linear,
         "sigma8_screened_halo_model": rounded(sigma8_screened, 6),
         "sigma8_planck": SIGMA8_PLANCK,
         "sigma8_planck_err": SIGMA8_PLANCK_ERR,
@@ -232,6 +245,8 @@ def run():
             "α_M running in hi_class, not from environmental gradient screening."
         ),
         "method": "gradient_screened_halo_model_v3",
+        "input_source": "step_06_04_growth_validation.json:sigma_8.tep_eds",
+        "scope": "Simplified assigned mass-function/bias surrogate for the EdS diagnostic; not a native nonlinear perturbation prediction",
         "screening": {
             "operator": "f(g) = [1 + (g/g_t)^n]^-1",
             "g_t_m_s2": G_T,
@@ -252,7 +267,7 @@ def run():
         "comparison_to_phenomenological": {
             "phenomenological_factor": 0.55,
             "gradient_screened_halo_model_suppression": result["bias_suppression_factor"],
-            "phenomenological_sigma8": rounded(SIGMA8_LINEAR_TEP * 0.55, 4),
+            "phenomenological_sigma8": rounded(result["sigma8_linear"] * 0.55, 4),
             "gradient_screened_halo_model_sigma8": result["sigma8_screened_halo_model"],
             "note": "Gradient screening gives f≈1; suppression is from α_M running in full hi_class",
         },
@@ -268,7 +283,7 @@ def run():
         "quantity": "sigma8_screened",
         "value": result["sigma8_screened_halo_model"],
         "unit": "dimensionless",
-        "note": "halo_model_first_principles",
+        "note": "conditional_simplified_halo_model",
     }])
 
     print_status(f"Results written to {step_json_path(STEP_ID)}", "SUCCESS")

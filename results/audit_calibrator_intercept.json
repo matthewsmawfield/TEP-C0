@@ -1,0 +1,43 @@
+{
+  "conventions": {
+    "distance_redshift": "zHD",
+    "observer_redshift": "zHEL",
+    "luminosity_distance": "(1+zHEL) chi(z_distance)"
+  },
+  "M0a_LCDM": {
+    "chi2_shared_M": 1752.9021682533098,
+    "params_shared": [
+      0.36238186453837445,
+      -19.339269775614206
+    ],
+    "chi2_cal_free_M": 1706.34554208524,
+    "params_cal_free": [
+      0.3456244922570695,
+      -19.347636801610875,
+      -19.143836372304087
+    ],
+    "delta_M_cal_minus_field": 0.20380042930678854,
+    "gain_from_cal_intercept_dchi2": -46.5566261680699
+  },
+  "M1_zT5": {
+    "chi2_shared_M": 1749.0962563314645,
+    "params_shared": [
+      0.8707706083041262,
+      -19.33143737143237
+    ],
+    "chi2_cal_free_M": 1704.9520806563196,
+    "params_cal_free": [
+      0.9091905278537846,
+      -19.340928712988397,
+      -19.142004194592786
+    ],
+    "delta_M_cal_minus_field": 0.19892451839561076,
+    "gain_from_cal_intercept_dchi2": -44.14417567514488
+  },
+  "comparison": {
+    "dchi2_TEP_minus_LCDM_shared_M": -3.805911921845336,
+    "dchi2_TEP_minus_LCDM_cal_free": -1.3934614289203182,
+    "n_calibrators": 77,
+    "interpretation": "Separate calibrator and field intercepts test block-offset sensitivity using the same observer factor and Cholesky likelihood as the main comparison. This is not an independent Cepheid-distance likelihood."
+  }
+}

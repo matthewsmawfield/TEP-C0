@@ -16,6 +16,7 @@ from __future__ import annotations
 from pathlib import Path
 import numpy as np
 from c0_common import RAW_DIR, TEPLogger, ensure_dirs, print_status, read_json, rounded, set_step_logger, step_csv_path, step_json_path, write_csv, write_json
+from c0_common import load_model_comparison
 
 STEP_ID = "step_04_03_tolman_sb"
 C_KMS = 299792.458
@@ -28,10 +29,7 @@ def load_step022_results():
     The observational surface brightness data (from step_023c) is independent of step_022 parameters,
     ensuring no circular dependency. This is a forward-propagating use of fitted parameters.
     """
-    results_file = step_json_path("step_03_01_three_model_comparison")
-    if not results_file.exists():
-        raise FileNotFoundError("step_022 results not found.")
-    return read_json(results_file)
+    return load_model_comparison()
 
 
 def load_step023c_results():
@@ -131,8 +129,15 @@ def run():
     # homogeneous background epsilon_T (acoustic sector ~0.018), NOT the
     # SNe line-of-sight void shear epsilon_shear_los (~0.83). Using the
     # void shear overpredicts the TEP deviation by a factor of ~40.
-    # If no acoustic value is available, fall back to the canonical 0.018.
-    Sigma_0 = m1.get('epsilon_T', 0.018)
+    # Source the acoustic amplitude from step_05_10's recovered value.
+    Sigma_0 = 0.018
+    _jf_path = Path("results/step_05_10_jordan_frame_proof.json")
+    if _jf_path.exists():
+        try:
+            _jf = json.loads(_jf_path.read_text())
+            Sigma_0 = float(_jf.get("best_fit", {}).get("epsilon_T", 0.018))
+        except Exception:
+            pass
     A_env = m1.get('A_env', 0.1)
     
     print_status(f"Using TEP parameters: H0={H0:.2f}, Sigma_0 (epsilon_T)={Sigma_0:.6f}", "INFO")

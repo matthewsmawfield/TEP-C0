@@ -43,6 +43,8 @@ from c0_common import (
     write_json,
 )
 
+from c0_common import load_model_comparison
+
 STEP_ID = "step_08_08_diagnostic_plots"
 FIG_DIR = Path("results/figures")
 
@@ -108,10 +110,10 @@ def _plot_hubble_residuals(fig_path: Path) -> dict:
     Produces a three-panel figure:
       - Panel A: Hubble diagram with data, ΛCDM, and TEP best fits.
       - Panel B: Binned residuals relative to ΛCDM, with TEP predicted trend.
-      - Panel C: Cumulative diagonal Δχ² contribution vs. redshift.
+      - Panel C: Cumulative full-covariance Δχ² contribution vs. redshift.
     """
     sne_path = Path("data/raw/pantheon_plus_shoes.dat")
-    fit_path = RESULTS_DIR / "step_03_01_three_model_comparison.json"
+    fit_path = RESULTS_DIR / "current_model_comparison.json"
     if not sne_path.exists():
         return {"status": "skipped", "reason": f"{sne_path} not found"}
     if not fit_path.exists():
@@ -122,8 +124,7 @@ def _plot_hubble_residuals(fig_path: Path) -> dict:
     except ImportError:
         return {"status": "skipped", "reason": "pandas not available"}
 
-    with open(fit_path) as f:
-        fit = json.load(f)
+    fit = load_model_comparison()
     models = fit.get("models", {})
     bayes = fit.get("bayes_factors", {})
     lcdm = models.get("M0a_LCDM", {}).get("parameters_mle")
@@ -146,13 +147,14 @@ def _plot_hubble_residuals(fig_path: Path) -> dict:
                 best_m1_key = k
         tep_m1 = models.get(best_m1_key, {}).get("parameters_mle") if best_m1_key else None
 
-    df = pd.read_csv(sne_path, sep=r"\s+", comment="#")
-    if not {"zHD", "MU_SH0ES", "MU_SH0ES_ERR_DIAG"}.issubset(df.columns):
-        return {"status": "skipped", "reason": "Pantheon+ columns not as expected"}
-    df = df[(df["zHD"] > 0) & (df["zHD"] <= 2.5)].copy()
-    z = df["zHD"].values.astype(float)
-    mu = df["MU_SH0ES"].values.astype(float)
-    mu_err = df["MU_SH0ES_ERR_DIAG"].values.astype(float)
+    from step_03_01_three_model_comparison import PantheonData
+    data = PantheonData()
+    assert data.load()
+    z = data.z
+    mu = data.mb
+    # Marginal errors are only display weights; the cumulative statistic
+    # below retains the full covariance.
+    mu_err = np.sqrt(np.diag(data.cov))
 
     colors = apply_tep_style()
     CLR_LCDM = colors['red']
@@ -165,7 +167,7 @@ def _plot_hubble_residuals(fig_path: Path) -> dict:
     H0 = 70.0
     Om0_lcdm = float(lcdm.get("Om0", 0.3))
     cosmo_lcdm = CosmologyFLRW(H0=H0, Om0=Om0_lcdm, Ode0=1.0 - Om0_lcdm)
-    mu_pred_lcdm = cosmo_lcdm.distance_modulus(z)
+    mu_pred_lcdm = cosmo_lcdm.distance_modulus(z) + float(lcdm["M"]) + data.observer_correction
     resid_lcdm = mu - mu_pred_lcdm
 
     # TEP M1 prediction using proper TEPCosmology
@@ -177,7 +179,7 @@ def _plot_hubble_residuals(fig_path: Path) -> dict:
         eps_shear = float(tep_m1.get("epsilon_shear_los", 0.0))
         z_T_val = float(tep_m1.get("z_T", 5.0))
         cosmo_tep = TEPCosmology(H0=H0, Omega_m=1.0, epsilon_T=eps_shear, z_T=z_T_val)
-        mu_pred_tep = cosmo_tep.distance_modulus(z)
+        mu_pred_tep = cosmo_tep.distance_modulus(z) + float(tep_m1["M"]) + data.observer_correction
         tep_curve = mu_pred_tep - mu_pred_lcdm
 
     # Binned residuals (20 redshift bins)
@@ -204,7 +206,7 @@ def _plot_hubble_residuals(fig_path: Path) -> dict:
 
     valid_bins = ~np.isnan(binned_resid_lcdm)
 
-    # Cumulative diagonal Δχ² (approximation for visualisation)
+    # Cumulative full-covariance Δχ² (approximation for visualisation)
     z_sorted_idx = np.argsort(z)
     z_s = z[z_sorted_idx]
     resid_lcdm_s = resid_lcdm[z_sorted_idx]
@@ -214,9 +216,16 @@ def _plot_hubble_residuals(fig_path: Path) -> dict:
     else:
         resid_tep_s = resid_lcdm_s.copy()
 
-    chi2_lcdm_cumulative = np.cumsum((resid_lcdm_s / mu_err_s) ** 2)
-    chi2_tep_cumulative = np.cumsum((resid_tep_s / mu_err_s) ** 2)
-    delta_chi2_cumulative = chi2_tep_cumulative - chi2_lcdm_cumulative
+    from scipy.linalg import cho_solve
+    precision_lcdm = cho_solve((data.cov_cholesky, True), resid_lcdm)
+    resid_tep = mu - mu_pred_tep if mu_pred_tep is not None else resid_lcdm.copy()
+    precision_tep = cho_solve((data.cov_cholesky, True), resid_tep)
+    # These row-order-invariant correlated contributions sum to the full
+    # covariance statistic; their cumulative sum is not a subset refit.
+    contribution = resid_tep*precision_tep - resid_lcdm*precision_lcdm
+    delta_chi2_cumulative = np.cumsum(contribution[z_sorted_idx])
+    expected_delta = models[best_m1_key]['delta_chi2_vs_LCDM']
+    assert np.isclose(delta_chi2_cumulative[-1], expected_delta, atol=1e-7)
 
     # Three-panel figure
     fig, (ax1, ax2, ax3) = plt.subplots(
@@ -235,7 +244,7 @@ def _plot_hubble_residuals(fig_path: Path) -> dict:
         ax1.plot(z[zsort], mu_pred_tep[zsort], color=CLR_TEP, linewidth=1.6,
                  linestyle="--",
                  label=rf"TEP M1 ($\epsilon_T^{{\rm los}}$={eps_shear:.3f}, $z_{{\rm los}}$={z_T_val:.1f})")
-    ax1.set_ylabel("Distance modulus μ")
+    ax1.set_ylabel("Corrected apparent magnitude")
     ax1.set_title("Pantheon+ Full-Covariance Likelihood Improvement: TEP M1 vs. ΛCDM")
     ax1.legend(loc="lower right")
 
@@ -251,25 +260,25 @@ def _plot_hubble_residuals(fig_path: Path) -> dict:
     if tep_curve is not None:
         ax2.plot(z[zsort], tep_curve[zsort], color=CLR_TEP, linewidth=1.8,
                  linestyle="--", label=r"TEP M1 $-$ $\Lambda$CDM predicted residual")
-    ax2.set_ylabel(r"$\mu_{\rm obs} - \mu_{\Lambda\rm CDM}$")
+    ax2.set_ylabel(r"$m_b - m_{b,\Lambda\rm CDM}$")
     ax2.legend(loc="upper left")
 
-    # Panel C: Cumulative diagonal Δχ² (approximation for visualisation ONLY)
+    # Panel C: Cumulative full-covariance Δχ² (approximation for visualisation ONLY)
     ax3.plot(z_s, delta_chi2_cumulative, color=CLR_TEP, linewidth=1.8,
-             label=r"Cumulative diagonal $\Delta\chi^2_{\rm TEP-\Lambda CDM}(<z)$")
+             label=r"Cumulative full-covariance $\Delta\chi^2_{\rm TEP-\Lambda CDM}(<z)$")
     ax3.axhline(0.0, color=CLR_LCDM, linewidth=1.2, linestyle="--")
     final_delta_chi2 = float(delta_chi2_cumulative[-1]) if len(delta_chi2_cumulative) else 0.0
     ax3.annotate(
-        r"Diagonal-only diagnostic: $\Delta\chi^2 = " + f"{final_delta_chi2:.1f}$",
+        r"Correlated cumulative sum: $\Delta\chi^2 = " + f"{final_delta_chi2:.1f}$",
         xy=(z_s[-1], final_delta_chi2),
         xytext=(z_s[-1] * 0.7, final_delta_chi2 + max(0.5, abs(final_delta_chi2)*0.15)),
         arrowprops=dict(arrowstyle="->", color=CLR_TEP, lw=1.5),
         fontsize=11,
     )
-    # Annotate full-covariance evidence result from nested sampling
+    # Annotate full-covariance evidence result from matched integration
     ax3.text(
         0.02, 0.95,
-        r"Evidence value uses full covariance: $\Delta\chi^2 = -3.4$ ($z_{\rm los}=5$)",
+        rf"Full covariance: $\Delta\chi^2 = {expected_delta:.2f}$ ($z_{{\rm los}}=5$)",
         transform=ax3.transAxes,
         verticalalignment='top',
         fontsize=11,

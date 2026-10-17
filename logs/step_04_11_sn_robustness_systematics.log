@@ -1,47 +1,50 @@
-[19:38:37] [INFO] 
-[19:38:37] [INFO] ================================================================================
-[19:38:37] [INFO]    Starting step_04_11_sn_robustness_systematics
-[19:38:37] [INFO] ================================================================================
-[19:38:37] [INFO] 
-[19:38:38] [PROCESS] (a) Prior sensitivity tests
-[19:38:38] [INFO]   Testing epsilon prior [0.0, 0.5] (z_T=5)
-[19:38:39] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:39:00] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:39:22] [INFO]   Testing epsilon prior [0.0, 1.0] (z_T=5)
-[19:39:22] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:39:46] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:40:04] [INFO]   Testing epsilon prior [0.0, 2.0] (z_T=5)
-[19:40:04] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:40:27] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:40:51] [INFO]   Testing free-z_T flat prior
-[19:40:52] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:41:12] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:41:31] [INFO]   Testing free-z_T log-uniform prior
-[19:41:31] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:42:21] [PROCESS] (b) Redshift-cut robustness tests
-[19:42:21] [INFO]   Fitting z_gt_0.010 (1588 SNe)
-[19:42:21] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:42:41] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:43:02] [INFO]   Fitting z_gt_0.023 (1367 SNe)
-[19:43:02] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:43:17] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:43:34] [INFO]   Fitting z_gt_0.050 (1053 SNe)
-[19:43:34] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:43:46] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:43:56] [PROCESS] (c) Covariance-matrix treatment tests
-[19:43:56] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:44:17] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:44:38] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:45:00] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:45:23] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:45:43] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:46:02] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:46:22] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:46:41] [PROCESS] (d) Nested-sampler configuration tests
-[19:46:41] [INFO]   dynesty bound=multi sample=rwalk
-[19:46:41] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:47:00] [INFO]   dynesty nlive=200 bound=multi sample=rwalk
-[19:47:17] [INFO]   dynesty bound=single sample=unif
-[19:47:18] [INFO]   dynesty nlive=200 bound=single sample=unif
-[19:47:23] [INFO]   dynesty nlive=200 bound=single sample=unif
-[19:47:28] [SUCCESS] Step step_04_11_sn_robustness_systematics completed
+[12:40:03] [INFO] 
+[12:40:03] [INFO] ================================================================================
+[12:40:03] [INFO]    Starting step_04_11_sn_robustness_systematics
+[12:40:03] [INFO] ================================================================================
+[12:40:03] [INFO] 
+[12:40:04] [PROCESS] (a) Prior sensitivity tests
+[12:40:04] [INFO]   Testing epsilon prior [0.0, 0.5] (z_T=5)
+[12:40:04] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:41:46] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:43:44] [INFO]   Testing epsilon prior [0.0, 1.0] (z_T=5)
+[12:43:44] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:45:31] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:47:22] [INFO]   Testing epsilon prior [0.0, 2.0] (z_T=5)
+[12:47:23] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:49:16] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:51:08] [INFO]   Testing epsilon prior [-1.0, 1.0] (z_T=5)
+[12:51:08] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:53:04] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:54:42] [INFO]   Testing free-z_T flat prior
+[12:54:43] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:56:12] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:57:37] [INFO]   Testing free-z_T log-uniform prior
+[12:57:38] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:01:00] [PROCESS] (b) Redshift-cut robustness tests
+[13:01:00] [INFO]   Fitting z_gt_0.010 (1590 SNe)
+[13:01:00] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:02:26] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:03:57] [INFO]   Fitting z_gt_0.023 (1371 SNe)
+[13:03:58] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:05:11] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:06:24] [INFO]   Fitting z_gt_0.050 (1056 SNe)
+[13:06:24] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:07:13] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:08:05] [PROCESS] (c) Covariance-matrix treatment tests
+[13:08:06] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:10:08] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:12:09] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:14:07] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:16:12] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:18:19] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:20:22] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:22:04] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:23:29] [PROCESS] (d) Nested-sampler configuration tests
+[13:23:29] [INFO]   dynesty bound=multi sample=rwalk
+[13:23:29] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:24:34] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:25:43] [INFO]   dynesty bound=single sample=unif
+[13:25:43] [INFO]   dynesty nlive=500 bound=single sample=unif
+[13:25:58] [INFO]   dynesty nlive=500 bound=single sample=unif
+[13:26:14] [SUCCESS] Step step_04_11_sn_robustness_systematics completed

@@ -10,11 +10,15 @@ from pathlib import Path
 import numpy as np
 from c0_common import TEPLogger, ensure_dirs, print_status, read_json, rounded, set_step_logger, step_json_path, write_json
 
+from c0_common import load_model_comparison
+
 STEP_ID = "step_08_05_gate_registry"
 
 
 def load_step_result(step_name: str) -> dict:
     """Load result from a previous step."""
+    if step_name == "step_03_01_three_model_comparison":
+        return load_model_comparison()
     result_file = Path(f"results/{step_name}.json")
     if result_file.exists():
         return read_json(result_file)

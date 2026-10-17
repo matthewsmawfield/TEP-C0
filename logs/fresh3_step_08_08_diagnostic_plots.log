@@ -1,0 +1,8 @@
+[01:09:18] [INFO] 
+[01:09:18] [INFO] ================================================================================
+[01:09:18] [INFO]    Starting step_08_08_diagnostic_plots
+[01:09:18] [INFO] ================================================================================
+[01:09:18] [INFO] 
+[01:09:18] [PROCESS] Generating distance-duality figure...
+[01:09:18] [PROCESS] Generating Hubble residuals figure...
+[01:09:20] [SUCCESS] Step step_08_08_diagnostic_plots: 2 figure(s) generated, 0 skipped

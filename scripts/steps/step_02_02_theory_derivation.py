@@ -43,6 +43,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).parent))
 
 from c0_common import (
+    load_model_comparison,
     TEPLogger,
     ensure_dirs,
     print_status,
@@ -66,17 +67,19 @@ def load_screening_fit_results() -> Dict[str, Any]:
 def load_sne_fit_results() -> Dict[str, Any]:
     """Load TEP M1 best-fit parameters from step_03_01.
 
-    Prefers the ``M1_free_zT`` variant (z_T is fitted). Falls back to
-    ``M1_NoLambda_zT5`` then ``M1_NoLambda_zT1`` when the free-z_T
-    variant is unavailable. Returns an empty dict if none is present.
+    Prefers the ``M1_NoLambda_zT5`` variant: the acoustic-anchored
+    conservative physical branch (fixed z_los=5). The ``M1_free_zT``
+    and ``M1_NoLambda_zT100`` variants are upper-envelope shape
+    benchmarks, not admissible physical branches, so they are not used
+    to calibrate downstream theory derivations. Falls back to
+    ``M1_free_zT`` then ``M1_NoLambda_zT1`` when the z_T=5 fit is
+    unavailable. Returns an empty dict if none is present.
     """
-    fit_path = Path("results/step_03_01_three_model_comparison.json")
-    if not fit_path.exists():
+    if not Path("results/current_model_comparison.json").exists():
         return {}
-    with open(fit_path) as f:
-        data = json.load(f)
+    data = load_model_comparison()
     models = data.get("models", {})
-    for key in ("M1_free_zT", "M1_NoLambda_zT5", "M1_NoLambda_zT1"):
+    for key in ("M1_NoLambda_zT5", "M1_free_zT", "M1_NoLambda_zT1"):
         m = models.get(key, {})
         mle = m.get("parameters_mle")
         if mle and "epsilon_shear_los" in mle:

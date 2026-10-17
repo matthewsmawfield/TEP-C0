@@ -1,0 +1,17 @@
+[22:37:54] [INFO] 
+[22:37:54] [INFO] ================================================================================
+[22:37:54] [INFO]    Production Joint Global Screening Inference
+[22:37:54] [INFO] ================================================================================
+[22:37:54] [INFO] 
+[22:37:54] [INFO] ============================================================
+[22:38:00] [PROCESS] Calibrating full-domain 2D Boltzmann acoustic response surface + CDM-free lensing via live hi_class calls...
+[22:38:07] [PROCESS] Running production coupled joint screening inference (marginalized lensing)...
+[22:41:25] [PROCESS] Running production coupled joint screening inference (profiled lensing)...
+[22:44:41] [SUCCESS] Results saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/step_03_05_joint_global_screening.json
+[22:44:41] [INFO]   epsilon_T: 0.8826 ± 0.0502
+[22:44:41] [INFO]   z_T: 4.2413 ± 1.1267
+[22:44:41] [INFO]   log10_g_t: -9.4678 ± 0.0350
+[22:44:41] [INFO]   log10_rho_half: -0.3031 ± 0.1509
+[22:44:41] [INFO] Log Evidence: -885.662 ± 0.099
+[22:44:41] [INFO] Max parameter correlation: 0.588
+[22:44:41] [SUCCESS] Production joint global screening inference complete.

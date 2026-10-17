@@ -1,0 +1,651 @@
+{
+  "completed_results": {
+    "G0_uniform": {
+      "chi2": 1749.0962557294206,
+      "delta_chi2_vs_lcdm": -3.80590877334771,
+      "k": 2
+    },
+    "G10_depth_robustness_audit": {
+      "ab_joint_hessian": {
+        "corr_ab": -0.03168248746446232,
+        "note": "marginal covariance from the full 7-param Hessian at the MLE (Delta chi2 = 2 * H^-1)",
+        "sigma_a": 0.12471477990122527,
+        "sigma_b": 0.10394052697006775
+      },
+      "ambient_coordinate_robustness": {
+        "ambient_weight_scan": {
+          "w_mass_0.25": {
+            "a_ambient": 0.35444259394674693,
+            "b_depth": -0.21501053734321302,
+            "env_attributable_chi2": 9.542578613058822
+          },
+          "w_mass_0.5": {
+            "a_ambient": 0.2807788494944003,
+            "b_depth": -0.21834747063891086,
+            "env_attributable_chi2": 9.130216143442794
+          },
+          "w_mass_0.75": {
+            "a_ambient": 0.18675478804724155,
+            "b_depth": -0.21916955754743384,
+            "env_attributable_chi2": 7.977238763335208
+          }
+        },
+        "aperture_dz_scan": {
+          "ap16Mpc_dz0.02": {
+            "a_ambient": 0.15150022729120385,
+            "b_depth": -0.21882214785444196,
+            "env_attributable_chi2": 6.437741995389388
+          },
+          "ap16Mpc_dz0.05": {
+            "a_ambient": 0.2043427656578815,
+            "b_depth": -0.2171453383427642,
+            "env_attributable_chi2": 8.430624062431434
+          },
+          "ap16Mpc_dz0.10": {
+            "a_ambient": 0.19721228929442336,
+            "b_depth": -0.21818364026273196,
+            "env_attributable_chi2": 8.112764089116126
+          },
+          "ap2Mpc_dz0.02": {
+            "a_ambient": 0.23921198111375533,
+            "b_depth": -0.21884531875140684,
+            "env_attributable_chi2": 7.377939760663594
+          },
+          "ap2Mpc_dz0.05": {
+            "a_ambient": 0.24221900991138692,
+            "b_depth": -0.2191604377431434,
+            "env_attributable_chi2": 7.86996414815485
+          },
+          "ap2Mpc_dz0.10": {
+            "a_ambient": 0.24442480381954304,
+            "b_depth": -0.22347550119255727,
+            "env_attributable_chi2": 8.505586965714883
+          },
+          "ap3Mpc_dz0.02": {
+            "a_ambient": 0.2807788494944003,
+            "b_depth": -0.21834747063891086,
+            "env_attributable_chi2": 9.130216143442794
+          },
+          "ap3Mpc_dz0.05": {
+            "a_ambient": 0.3490114134068478,
+            "b_depth": -0.22065161641912542,
+            "env_attributable_chi2": 13.236266943908959
+          },
+          "ap3Mpc_dz0.10": {
+            "a_ambient": 0.27374504376468944,
+            "b_depth": -0.22669023546940592,
+            "env_attributable_chi2": 10.418191918228786
+          },
+          "ap4Mpc_dz0.02": {
+            "a_ambient": 0.23153566346672375,
+            "b_depth": -0.21790295702860693,
+            "env_attributable_chi2": 7.910750314756569
+          },
+          "ap4Mpc_dz0.05": {
+            "a_ambient": 0.2958400856375857,
+            "b_depth": -0.22245880349199626,
+            "env_attributable_chi2": 11.50995727721147
+          },
+          "ap4Mpc_dz0.10": {
+            "a_ambient": 0.23861906325585336,
+            "b_depth": -0.22342421511860264,
+            "env_attributable_chi2": 9.40906572708218
+          },
+          "ap8Mpc_dz0.02": {
+            "a_ambient": 0.12539136266512876,
+            "b_depth": -0.21598085313050164,
+            "env_attributable_chi2": 5.539521100031379
+          },
+          "ap8Mpc_dz0.05": {
+            "a_ambient": 0.1971737634733761,
+            "b_depth": -0.21635205564557478,
+            "env_attributable_chi2": 8.064032465775654
+          },
+          "ap8Mpc_dz0.10": {
+            "a_ambient": 0.19818638153193668,
+            "b_depth": -0.2186226519274022,
+            "env_attributable_chi2": 8.218179431786666
+          }
+        },
+        "frac_zero_neighbours": 0.8442092886537331,
+        "note": "the fixed-aperture count is sparse by design (catalog density limit); attribution persists under every aperture, dz window, and mass:density weight tested"
+      },
+      "covariance_sensitivity": {
+        "cov_plus_10pct_diag": {
+          "a_ambient": 0.2766036774752537,
+          "b_depth": -0.22052478537045567,
+          "env_attributable_chi2": 8.157417592890852
+        },
+        "cov_scale_0p9": {
+          "a_ambient": 0.28078215563871844,
+          "b_depth": -0.21834080241960915,
+          "env_attributable_chi2": 10.14468457888529
+        },
+        "cov_scale_1p1": {
+          "a_ambient": 0.2807884367131348,
+          "b_depth": -0.2183438514200513,
+          "env_attributable_chi2": 8.30019650874533
+        },
+        "diag_only": {
+          "a_ambient": 0.1810902016059605,
+          "b_depth": -0.19748545768690934,
+          "env_attributable_chi2": 5.459569997906783
+        },
+        "nominal": {
+          "a_ambient": 0.2807788494944003,
+          "b_depth": -0.21834747063891086,
+          "env_attributable_chi2": 9.130216143442794
+        }
+      },
+      "held_out_validation": {
+        "coordinate_scope": "Outcome-free full-catalog coordinates; within-catalog parameter transfer, not external replication",
+        "note": "Strict parameter transfer with no nuisance refit and no shared physical events. Marginal held-out covariance is used. Positive pooled gain does not imply every fold or survey is positive; within-catalog validation",
+        "random_5fold_per_fold": [
+          3.890964843888696,
+          2.4301246136207055,
+          -0.047560809663650616,
+          1.343044090936644,
+          -2.9572142023960737
+        ],
+        "random_5fold_total": 4.659358536386321,
+        "random_partition_unit": "physical CID event; no train/test event overlap",
+        "survey_blocked": {
+          "IDSURVEY_1": {
+            "held_out_env_attributable_chi2": 4.757757354938917,
+            "n_held_out": 321
+          },
+          "IDSURVEY_10": {
+            "held_out_env_attributable_chi2": 4.808507099672056,
+            "n_held_out": 203
+          },
+          "IDSURVEY_15": {
+            "held_out_env_attributable_chi2": -1.8401770346836486,
+            "n_held_out": 269
+          }
+        }
+      },
+      "interaction_test": {
+        "c_interaction": -0.2603296661050411,
+        "extra_gain_chi2": 0.1454917140215457
+      },
+      "per_scheme_replication": {
+        "IDSURVEY_1": {
+          "a_ambient": 0.3233754890063096,
+          "b_depth": -0.15606419203879376,
+          "env_attributable_chi2": 1.8898901813949465,
+          "n": 321,
+          "n_depth": 288
+        },
+        "IDSURVEY_10": {
+          "a_ambient": 0.11148403850754911,
+          "b_depth": -0.2746979284220587,
+          "env_attributable_chi2": 3.0862298086715043,
+          "n": 203,
+          "n_depth": 174
+        },
+        "IDSURVEY_15": {
+          "a_ambient": 0.015194562685904165,
+          "b_depth": 3.2686455256608564,
+          "env_attributable_chi2": 0.0028771771625031306,
+          "n": 269,
+          "n_depth": 0,
+          "note": "x_depth has no coverage in this scheme (offset provenance unverified; neutral depth weight), so b_depth is unidentified and its fitted value carries no physical meaning"
+        }
+      },
+      "per_sightline_influence": {
+        "max_abs_single": 1.087608896463792,
+        "n_improved": 875,
+        "n_worsened": 826,
+        "top10_frac_of_total": 0.719963530235237,
+        "top10_sum": 6.5734226464437215,
+        "total": 9.13021614344265
+      },
+      "profile_chi2": {
+        "a_scan": {
+          "0.0": 4.962669087890845,
+          "0.1": 2.0761298176062155,
+          "0.2": 0.417644761827205,
+          "0.3": 0.023758795197863947,
+          "0.4": 0.9181971415214321,
+          "0.5": 3.111365118384583,
+          "0.6": 6.599769259236837
+        },
+        "b_scan": {
+          "-0.1": 1.3075876338625676,
+          "-0.2": 0.03119593879819149,
+          "-0.3": 0.6123715252067541,
+          "-0.4": 2.995784275799906,
+          "-0.5": 7.103860876407907,
+          "-0.6": 12.839825767839102,
+          "0.0": 4.472072970668933
+        },
+        "note": "dchi2 vs joint MLE; +-1-sigma where curve crosses +1"
+      },
+      "saturating_gate": {
+        "a": 0.10699810021288969,
+        "b": -0.09633105362850367,
+        "chi2": 1717.5487039606696,
+        "env_attributable_chi2": 9.578104821604029,
+        "note": "The bounded tanh coordinate retains positive environmental gain; this alternative fit alone does not establish a linear-response regime or exclude influential objects"
+      },
+      "scheme_audit": {
+        "angsep_distributions": {
+          "IDSURVEY_1": {
+            "median_arcsec": 1.539,
+            "n": 288,
+            "p5_p95_arcsec": [
+              0.1814,
+              5.442749999999999
+            ]
+          },
+          "IDSURVEY_10": {
+            "median_arcsec": 0.705,
+            "n": 174,
+            "p5_p95_arcsec": [
+              0.13,
+              3.1014999999999993
+            ]
+          },
+          "IDSURVEY_15": {
+            "median_arcsec": 20.0674,
+            "n": 250,
+            "p5_p95_arcsec": [
+              17.188385,
+              23.890295
+            ]
+          }
+        },
+        "excluded_from_depth": "IDSURVEY 15 (PS1MD): depth weight neutral under the specified selection; the ~20 arcsec column distribution has unverified offset provenance",
+        "ranking": "within-survey rank of -ln(r_proj/R_eff) per scheme; prevents cross-scheme contrast from masquerading as radial depth",
+        "survey_names_source": "official Pantheon+ release README"
+      },
+      "vpec_test": {
+        "c_vpec": 0.13012973714678877,
+        "extra_gain_on_g8": 0.694301339298363,
+        "n_valid": 1701,
+        "standalone_gain_chi2": 0.0032211721866133303
+      }
+    },
+    "G1_mass_rank_gate": {
+      "M": -19.332058476949037,
+      "a_by_zslice": {
+        "0.0-0.023": {
+          "a": 0.1965366065017746,
+          "gain": 5.684341886080802e-14,
+          "n": 330
+        },
+        "0.023-0.3": {
+          "a": 0.0801533980824895,
+          "gain": 0.34777565487331685,
+          "n": 877
+        },
+        "0.3-3.0": {
+          "a": 0.05027456974002457,
+          "gain": 0.2672798438575228,
+          "n": 494
+        }
+      },
+      "a_gate": 0.10008415949362308,
+      "chi2": 1747.2259978474467,
+      "delta_chi2_vs_lcdm": -5.676166655321595,
+      "epsilon_los": 0.8738354018622249,
+      "gain_vs_uniform_chi2": 1.8702578819738847,
+      "k": 3,
+      "perm_null_max": 8.402170195289955,
+      "perm_null_mean": 0.9833302129477973,
+      "perm_null_std": 1.3329038219006324,
+      "perm_p": 0.17940199335548174
+    },
+    "G2_density_rank_gate": {
+      "M": -19.33137930594566,
+      "a_by_zslice": {
+        "0.0-0.023": {
+          "a": 1.248794428329405,
+          "gain": 1.1368683772161603e-13,
+          "n": 330
+        },
+        "0.023-0.3": {
+          "a": 0.3418051446409678,
+          "gain": 1.272608146743778,
+          "n": 877
+        },
+        "0.3-3.0": {
+          "a": 0.0766453687350789,
+          "gain": 0.16686658721778258,
+          "n": 494
+        }
+      },
+      "a_gate": 0.16677484972523346,
+      "chi2": 1747.7192307368073,
+      "delta_chi2_vs_lcdm": -5.182933765961025,
+      "epsilon_los": 0.8704122984084399,
+      "gain_vs_uniform_chi2": 1.3770249926133147,
+      "k": 3,
+      "perm_null_max": 8.649052864921032,
+      "perm_null_mean": 0.8639452138239676,
+      "perm_null_std": 1.2288647861091235,
+      "perm_p": 0.2026578073089701
+    },
+    "G3_composite_X_gate": {
+      "M": -19.332034217367436,
+      "a_by_zslice": {
+        "0.0-0.023": {
+          "a": 1.5975141591003295,
+          "gain": 1.1368683772161603e-13,
+          "n": 330
+        },
+        "0.023-0.3": {
+          "a": 0.24115334143225783,
+          "gain": 0.9451331274904078,
+          "n": 877
+        },
+        "0.3-3.0": {
+          "a": 0.09900011742880598,
+          "gain": 0.37203320525179606,
+          "n": 494
+        }
+      },
+      "a_gate": 0.20377135433310142,
+      "chi2": 1746.3542975803186,
+      "delta_chi2_vs_lcdm": -6.547866922449657,
+      "epsilon_los": 0.873693297597036,
+      "gain_vs_uniform_chi2": 2.741958149101947,
+      "k": 3,
+      "perm_null_max": 12.196624272930876,
+      "perm_null_mean": 0.9660858715616518,
+      "perm_null_std": 1.3993949408217439,
+      "perm_p": 0.09966777408637874
+    },
+    "G4_calshift_composite": {
+      "a_gate": 0.20553721381494303,
+      "chi2_composite_shifted": 1715.302887401629,
+      "chi2_lcdm_shifted": 1720.8604632892109,
+      "chi2_uniform_shifted": 1718.1884113140868,
+      "delta_composite_vs_lcdm": -37.59927710113925,
+      "delta_composite_vs_lcdm_shifted": -5.557575887581834,
+      "delta_vs_lcdm": -34.713753188681494,
+      "delta_vs_lcdm_shifted": -2.672051975124077,
+      "kappa_cep_shift_mag": 0.09,
+      "shift_provenance": {
+        "calibrator_mean_depth_X": 2.9562658856200326e-07,
+        "implied_kappa_for_frozen_shift": 304438.1103803315,
+        "measured_offset_joint_fit": 0.19713443008050943,
+        "measured_offset_joint_fit_err": 0.029626132916769566,
+        "measured_offset_source": "audit_kappa_crosscatalog.json:joint_kappa_plus_calibrator_offset",
+        "predicted_shift_joint_kappa_745976": 0.22053019221583467,
+        "predicted_shift_redshift_only_kappa_1p2e6": 0.3547519062744039,
+        "predicted_shift_unified_kappa_441316": 0.13046486180846445
+      }
+    },
+    "G5_two_channel": {
+      "M": -19.331273727639406,
+      "a_ambient": 0.21329133899000946,
+      "angsep_z_min": 0.06654,
+      "b_radial_depth": -0.22584230110144907,
+      "chi2": 1741.6951873132443,
+      "delta_chi2_vs_lcdm": -11.206977189523968,
+      "epsilon_los": 0.8666425515071936,
+      "evidence": {
+        "narrow_prior_pm1": {
+          "BF_vs_lcdm": 4.995762788585755,
+          "BF_vs_uniform": 0.7589152734984729,
+          "lnZ": -884.1566315130366,
+          "lnZerr": 0.13604175667517693
+        },
+        "note": "theory predicts O(10%) modulation; the narrow prior brackets that expectation and is the physical comparison",
+        "wide_prior_pm4": {
+          "BF_vs_lcdm": 0.33781163175121226,
+          "BF_vs_uniform": 0.0513175700590084,
+          "lnZ": -886.8504884652667,
+          "lnZerr": 0.15081520314458358
+        }
+      },
+      "gain_vs_uniform_chi2": 7.401068416176258,
+      "k": 4,
+      "localization_method": "r_i*(C^-1 r)_i before minus after; sums to full delta chi2, invariant under row ordering but not a standalone subset refit",
+      "n_angsep": 462,
+      "permutation_null": {
+        "n_ambient_events_permutable": 1466,
+        "n_ambient_rows_permutable": 1556,
+        "n_depth_events_permutable": 1464,
+        "n_depth_rows_permutable": 1554,
+        "n_events": 1543,
+        "n_permutations": 1000,
+        "null_max": 14.886102264692454,
+        "null_mean": 2.2992883821787093,
+        "null_std": 2.09312492003669,
+        "p_value": 0.03596403596403597,
+        "stratification": "survey-composition x 20 redshift quantiles; depth additionally preserves measured-offset flags",
+        "unit": "physical CID event block"
+      },
+      "precision_localization": {
+        "bulk_0p023_1": 7.317629173298002,
+        "calibrators": 0.33509368180732757,
+        "lowz_field": -0.05427556160444971,
+        "z_gt_1": -0.19737887732409745
+      },
+      "z_projection_control": {
+        "joint_a_with_z": 0.21186014743927034,
+        "joint_c_z": 0.09279847356967427,
+        "joint_gain": 3.017041460102746,
+        "z_gate_gain": 0.1314210938942324
+      },
+      "z_slices": {
+        "0.0-0.023": {
+          "a_amb": -0.19179181753471938,
+          "b_depth": -2.184725207592927,
+          "gain": 1.1368683772161603e-13,
+          "n": 330,
+          "n_angsep": 0
+        },
+        "0.023-0.3": {
+          "a_amb": 0.2232778314588785,
+          "b_depth": -0.3597775628910488,
+          "gain": 7.194492981440931,
+          "n": 877,
+          "n_angsep": 317
+        },
+        "0.3-3.0": {
+          "a_amb": 0.1025187733093962,
+          "b_depth": -0.07822314461293393,
+          "gain": 0.5800898515898325,
+          "n": 494,
+          "n_angsep": 145
+        }
+      }
+    },
+    "G6_bandpass_control": {
+      "anchor_removed": {
+        "chi2_band": 1210.4045791283297,
+        "chi2_uniform": 1210.4934856060763,
+        "env_gate_gain_same_subset": 2.34729912514058,
+        "gain_vs_uniform": 0.08890647774660465,
+        "z_loc": 0.05083522381032903
+      },
+      "chi2_full": 1736.16856012783,
+      "delta_chi2_vs_lcdm": -16.733604374938295,
+      "epsilon": 0.8266513584766255,
+      "gain_vs_uniform_full": 12.927695601590585,
+      "k": 3,
+      "verdict": "band-pass gain collapses under anchor removal: the z-deformation is the calibrator-intercept structure in kernel form, not a resolved local screening; the environmental gate retains its gain on the same subset.",
+      "z_loc": 0.09181298390414086
+    },
+    "G7_fitprob_quality": {
+      "c_gate": 0.25859358610303246,
+      "chi2": 1737.7176945952424,
+      "delta_chi2_vs_lcdm": -15.184469907525909,
+      "gain_vs_uniform_chi2": 11.378561134178199,
+      "k": 3,
+      "note": "data-quality axis, not an environmental coordinate; the gate direction (+) means amplitude rises with light-curve fit quality, while the split test shows the TEP-vs-LCDM preference carried by the lower-quality half - the gate exploits amplitude-vs-quality structure rather than marking where the preference lives.",
+      "perm_p_survey_z_cell": 0.006622516556291391,
+      "split_delta_chi2": {
+        "high_fitprob": {
+          "delta_chi2_tep_lcdm": 0.49289025029872846,
+          "n": 851
+        },
+        "low_fitprob": {
+          "delta_chi2_tep_lcdm": -6.605786304496178,
+          "n": 850
+        }
+      }
+    },
+    "G8_quality_controlled_env": {
+      "anchor_removed_z_gt_0p023": {
+        "a_ambient": 0.24364267504028833,
+        "b_depth": -0.19995328798281864,
+        "env_attributable_chi2": 8.172288461290009
+      },
+      "channel_decomposition": {
+        "ambient_only_attributable": 4.6581480940876645,
+        "depth_only_attributable": 4.167554050073932,
+        "note": "Separate single-channel fits carry comparable gains over the same quality-only baseline; not independent detections"
+      },
+      "chi2_env_qual": 1717.9965926388309,
+      "chi2_qual_only": 1727.1268087822737,
+      "coefficients": {
+        "M": -19.32886106285173,
+        "a_ambient": 0.2807788494944003,
+        "b_depth": -0.21834747063891086,
+        "c_errdiag": 0.2922760111046517,
+        "c_fitchi2": 0.04720379283600765,
+        "c_fitprob": 0.29780807179410906,
+        "epsilon_los": 0.8708188594498788
+      },
+      "env_attributable_chi2": 9.130216143442794,
+      "env_permutation_null": {
+        "gaussian_z_vs_null": 2.8426554563010766,
+        "n_ambient_events_permutable": 1466,
+        "n_ambient_rows_permutable": 1556,
+        "n_depth_events_permutable": 1464,
+        "n_depth_rows_permutable": 1554,
+        "n_events": 1543,
+        "n_permutations": 1000,
+        "null_max": 19.94777627333883,
+        "null_mean": 2.6456385819131194,
+        "null_std": 2.281169020028739,
+        "p_value": 0.014985014985014986,
+        "quality_coordinates": "held fixed",
+        "stratification": "survey-composition x 20 redshift quantiles; depth additionally preserves measured-offset flags",
+        "unit": "physical CID event block"
+      },
+      "evidence": {
+        "BF_env_extension_vs_qual_only": 2.0132158471239188,
+        "BF_env_qual_vs_lcdm": 870.9949895205118,
+        "lnZ_env_qual": -878.9955853996294,
+        "lnZ_qual_only": -879.6953187671278,
+        "lnZerr_env_qual": 0.16102148916638126,
+        "lnZerr_qual": 0.14832549495942546,
+        "nlive": 800,
+        "prior": "gate params +-1 (theory-motivated O(10%) modulation)"
+      },
+      "gain_vs_uniform_chi2": 31.09966309058973,
+      "k_full": 7,
+      "k_qual": 5,
+      "leave_one_survey_out": {
+        "drop_IDSURVEY_1": {
+          "a_ambient": 0.23349622788590796,
+          "b_depth": -0.16913999963537463,
+          "env_attributable_chi2": 4.2164443671968,
+          "n": 1380
+        },
+        "drop_IDSURVEY_10": {
+          "a_ambient": 0.22978705806752447,
+          "b_depth": -0.15717319498297522,
+          "env_attributable_chi2": 4.037121228884871,
+          "n": 1498
+        },
+        "drop_IDSURVEY_15": {
+          "a_ambient": 0.29857910335656235,
+          "b_depth": -0.26699532987678226,
+          "env_attributable_chi2": 9.586570930401194,
+          "n": 1432
+        }
+      },
+      "localization_method": "r_i*(C^-1 r)_i before minus after; sums to full delta chi2, invariant under row ordering but not a standalone subset refit",
+      "model": "w = exp[a X_amb + b x_depth + c1 FITPROB + c2 errDIAG + c3 FITCHI2]; env-attributable = chi2(qual) - chi2(full)",
+      "note": "the environmental attribution survives explicit modelling of the light-curve-quality amplitude axes: the standalone gate slightly understates the environmental modulation because un-modeled quality structure competes with it.",
+      "precision_localization": {
+        "bulk_0p023_1": 8.700245634807112,
+        "calibrators": 0.5012253281680795,
+        "lowz_field": -0.07932009256663766,
+        "z_gt_1": 0.008065273034100526
+      },
+      "survey_offset_robustness": {
+        "a_ambient": 0.21574545949013138,
+        "b_depth": -0.2651955367385676,
+        "chi2_env_qual_plus_offsets": 1656.6188148147448,
+        "chi2_qual_plus_offsets": 1663.6216862815388,
+        "env_attributable_with_offsets": 7.002871466793977,
+        "n_survey_offsets": 19
+      }
+    },
+    "bulk_residual_correlation": {
+      "direction": "positive rho = fainter-than-kernel residual grows with environmental depth",
+      "legacy_row_null_draws": 300,
+      "legacy_row_null_perm_p": 0.15614617940199335,
+      "n": 1346,
+      "null_rho_std": 0.02716875537286442,
+      "perm_p": 0.23776223776223776,
+      "permutation_draws": 1000,
+      "permutation_null": {
+        "n_ambient_events_permutable": 1466,
+        "n_ambient_rows_permutable": 1556,
+        "n_depth_events_permutable": 1466,
+        "n_depth_rows_permutable": 1556,
+        "n_events": 1543,
+        "stratification": "survey-composition x 20 redshift quantiles; depth additionally preserves measured-offset flags",
+        "unit": "physical CID event block"
+      },
+      "scope": "secondary residual-coordinate diagnostic; not independent environmental confirmation",
+      "segment": "0.023 < z < 1.0",
+      "spearman_p_analytic": 0.10701637697778693,
+      "spearman_rho": 0.04395101260463367,
+      "whitening_method": "symmetric inverse square root of original lower-triangle covariance"
+    },
+    "cal_residual_correlation": {
+      "n": 77,
+      "spearman_p_analytic": 0.8401391733975564,
+      "spearman_rho": -0.023366668851886954
+    },
+    "evidence": {
+      "BF_G3_vs_E0": 0.13406140587398702,
+      "BF_G3_vs_lcdm": 0.8824950639922835,
+      "lnZ_E0_uniform_ref": -883.8807663760998,
+      "lnZ_G3_composite": -885.8902237073058,
+      "lnZ_lcdm_ref": -885.7652216239056,
+      "lnZerr": 0.13527624211061118,
+      "lnZerr_E0": 0.10476708882655111,
+      "lnZerr_lcdm": 0.10465558590307851,
+      "nlive": 800,
+      "reference_source": "same-run, same-integrator, same-sample"
+    },
+    "meta": {
+      "aperture_mpc": 3.0,
+      "brightness_convention": "m_b_corr minus 5 log10[(1+zHEL)/(1+zHD)]; equivalent to observer factor in predicted distance",
+      "composite": "mean[rank(HOST_LOGMASS), rank(local density)]",
+      "covariance": "full 1701x1701",
+      "density_counting_unit": "physical CID event; repeated light curves are one neighbour",
+      "distance_integration": "integrated cubic kernel in log(1+z), 2049 nodes",
+      "dz_window": 0.02,
+      "n_perm": 300,
+      "n_perm_headline": 1000,
+      "n_sne": 1701,
+      "n_unique_events": 1543,
+      "n_zslice": 20,
+      "nested_seed": 20261011,
+      "observer_redshift_column": "zHEL",
+      "redshift_column": "zHD",
+      "secondary_permutation_scope": "Measurement-row shuffles within redshift slices; diagnostic only. G5/G8 use physical-event blocks.",
+      "step_id": "step_03_12_env_composite_kernel"
+    }
+  },
+  "source_and_input_sha256": {
+    "core/cosmology.py": "25feec6bd6d8fe41760cb349bec04d80659b34e94dd3ea04452ca133f3889025",
+    "data/raw/Pantheon+SH0ES.cov": "abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc",
+    "data/raw/pantheon_plus_shoes.dat": "1cb0fc379ef066afdc2ffd1857681cc478024570d8a3eba284fb645775198cf8",
+    "scripts/steps/step_03_11_env_modulated_kernel.py": "60a2b517c33d24c0ec75a8787ab7d3372af6b51a77135c5e800820061809fa2d",
+    "scripts/steps/step_03_12_env_composite_kernel.py": "570d2b6316df04de680f5950a5e081e73328b23add368daa6ae69a90b2e99d99",
+    "scripts/utils/static_metric.py": "80ba4c352c3bac0d179c04e41b6cec9fb05cc72f7ac4e5d2464588a96ad78332"
+  },
+  "stage": "G10_robustness"
+}

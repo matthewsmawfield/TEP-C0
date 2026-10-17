@@ -16,6 +16,8 @@ import json
 from c0_common import TEPLogger, ensure_dirs, print_status, read_json, rounded, set_step_logger, step_json_path, write_json
 from step_03_01_three_model_comparison import ModelTEP, PantheonData
 
+from c0_common import load_model_comparison
+
 STEP_ID = "step_08_03_sensitivity_analysis"
 
 
@@ -26,10 +28,7 @@ def load_step022_results() -> dict:
     Sensitivity analysis is a diagnostic tool that explores parameter space around the best-fit values.
     No circular dependency - this is a post-fitting diagnostic, not a validation.
     """
-    results_file = Path("results/step_03_01_three_model_comparison.json")
-    if not results_file.exists():
-        raise FileNotFoundError("step_022 results not found. Run step_022 first.")
-    return json.loads(results_file.read_text())
+    return load_model_comparison()
 
 
 def compute_fisher_matrix(log_like_fn, params, step_sizes=None):
@@ -123,7 +122,18 @@ def run():
         data = PantheonData()
         data.load()
         sigma_from_full_covariance = True
-        m2 = step022['models']['M2_PureShear']['parameters_mle']
+        # M2_PureShear lives in the current step_03_01 model dict; the older
+        # audit_corrected_evidence.json all_models block is a legacy source.
+        # Fall back to M0a_LCDM, which is mathematically identical to M2 at
+        # the distance-curve level.
+        try:
+            m2 = step022['models']['M2_PureShear']['parameters_mle']
+        except KeyError:
+            try:
+                audit = read_json(Path("results/audit_corrected_evidence.json"))
+                m2 = audit['configs']['corrected']['all_models']['M2_PureShear']['mle']
+            except (FileNotFoundError, KeyError):
+                m2 = step022['models']['M0a_LCDM']['parameters_mle']
 
         param_names = model.param_names
         params = np.array([m2[name] for name in param_names], dtype=float)
@@ -165,7 +175,7 @@ def run():
                 name: rounded(np.divide(param_uncertainties[i], max(abs(params[i]), 1e-12)) * 100, 2)
                 for i, name in enumerate(param_names)
             },
-            'interpretation': f'Fisher matrix around the M2 likelihood gives log_Sigma_0 uncertainty ~{rounded(np.divide(param_uncertainties[0], max(abs(params[0]), 1e-12)) * 100, 1)}%.',
+            'interpretation': f'Fisher matrix around the M2 likelihood gives {param_names[0]} relative uncertainty ~{rounded(np.divide(param_uncertainties[0], max(abs(params[0]), 1e-12)) * 100, 1)}%.',
             'validation': {
                 'uses_step022_full_covariance_likelihood': True,
                 'uses_pseudo_inverse': True,

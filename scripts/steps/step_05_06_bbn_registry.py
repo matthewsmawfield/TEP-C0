@@ -9,15 +9,13 @@ from __future__ import annotations
 from pathlib import Path
 import numpy as np
 from c0_common import TEPLogger, ensure_dirs, print_status, read_json, rounded, set_step_logger, step_json_path, write_json
+from c0_common import load_model_comparison
 
 STEP_ID = "step_05_06_bbn_registry"
 
 
 def load_step022_results() -> dict:
-    results_file = Path("results/step_03_01_three_model_comparison.json")
-    if not results_file.exists():
-        raise FileNotFoundError("step_022 results not found. Run step_022 first.")
-    return read_json(results_file)
+    return load_model_comparison()
 
 
 def run():
@@ -29,15 +27,21 @@ def run():
     step022 = load_step022_results()
     m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m1 = step022['models'][m1_key]['parameters_mle']
-    Sigma_0 = m1.get('Sigma_0', 0.001)  # M1 has no Sigma_0; default fallback
-    
+    # M1 carries 'epsilon_shear_los' (line-of-sight amplitude ~0.87), not
+    # 'Sigma_0'. At z_BBN ~ 1e9 the kernel suppression exp[-(z/z_T)^2] is
+    # identically zero, so the naive correction to freeze-out vanishes.
+    Sigma_0 = float(m1.get('epsilon_shear_los', 0.0))
+
     # TEP predicts BBN occurs in matter frame
     # Standard BBN prediction: Y_p ~ 0.247, D/H ~ 2.6e-5
     Y_p_lcdm = 0.247
     D_H_lcdm = 2.6e-5
-    
-    # Small correction from TEP (time dilation during BBN)
-    correction = 1 - Sigma_0 * 0.01  # ~0.1% effect
+
+    # Kernel suppression at the BBN epoch: exp[-(1e9/z_T)^2] = 0, so the
+    # abundance correction is identically zero regardless of amplitude.
+    z_T = float(m1.get('z_T', 5.0))
+    suppression = np.exp(-(1.0e9 / z_T) ** 2) if z_T > 0 else 0.0
+    correction = 1 - Sigma_0 * 0.01 * suppression
     
     Y_p_tep = Y_p_lcdm * correction
     D_H_tep = D_H_lcdm * correction

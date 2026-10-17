@@ -1,0 +1,13 @@
+[01:28:54] [INFO] 
+[01:28:54] [INFO] ================================================================================
+[01:28:54] [INFO]    Starting step_04_05_ddr_threeway
+[01:28:54] [INFO] ================================================================================
+[01:28:54] [INFO] 
+[01:28:54] [INFO] BAO: η = 0.866 ± 0.020
+[01:28:54] [INFO] SZ:  η = 1.281 ± 0.034
+[01:28:54] [INFO] SGL: η = 1.223 ± 0.043
+[01:28:54] [INFO] SZ vs SGL: |Δη| = 0.059 (1.1σ)
+[01:28:54] [INFO] BAO vs SZ: |Δη| = 0.415 (10.6σ)
+[01:28:54] [SUCCESS] CRITICAL: SZ and SGL agree; BAO differs significantly
+[01:28:54] [SUCCESS] Step step_04_05_ddr_threeway completed
+{'step': 'step_04_05_ddr_threeway', 'description': 'Three-way comparison of DDR from BAO, SZ, and SGL methods', 'status': 'completed', 'methods': {'BAO': {'n_points': 10, 'eta_weighted': 0.8662755277611283, 'eta_weighted_err': 0.020171406513828538, 'physical_scale': '~100 Mpc', 'physics': 'linear density perturbations'}, 'SZ': {'n_points': 20, 'eta_weighted': 1.281147566574803, 'eta_weighted_err': 0.033689405562385574, 'physical_scale': '~5 Mpc', 'physics': 'intracluster hot gas'}, 'SGL': {'n_points': 15, 'eta_weighted': 1.2225661677500435, 'eta_weighted_err': 0.0426065527363399, 'physical_scale': '~5 Mpc', 'physics': 'cluster gravitational potential'}}, 'comparisons': {'SZ_vs_SGL': {'delta_eta': 0.058581398824759656, 'sigma': 1.0785171650120757, 'consistent': np.True_}, 'BAO_vs_SZ': {'delta_eta': 0.41487203881367485, 'sigma': 10.565534123289778, 'consistent': np.False_}, 'BAO_vs_SGL': {'delta_eta': 0.3562906399889152, 'significant': np.True_}}, 'critical_finding': {'found': True, 'description': 'SZ and SGL agree (cluster-scale physics); BAO differs (linear regime)', 'implication': 'Evidence for probe-dependent Etherington relation'}, 'validation': {'real_data': True, 'sz_blocked': False, 'sgl_blocked': False, 'sn_matching_required': True, 'blockers': []}, 'timestamp': 1791851334}

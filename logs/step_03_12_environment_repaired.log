@@ -1,0 +1,54 @@
+[00:04:12] [INFO] step_03_12_env_composite_kernel: composite environment-modulated kernel
+[00:04:12] [INFO] Loaded 1701 SNe (77 calibrators)
+[00:04:12] [INFO] LCDM chi2=1752.51 | uniform chi2=1748.96 (-3.55)
+[00:06:00] [INFO] G1_mass_rank_gate: chi2=1747.06 a=+0.101 gain=+1.90 p=0.176 slices={'0.0-0.023': -0.8847507615428198, '0.023-0.3': 0.08068961475485265, '0.3-3.0': 0.04920070655758143}
+Traceback (most recent call last):
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_12_env_composite_kernel.py", line 1390, in <module>
+    main()
+    ~~~~^^
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_12_env_composite_kernel.py", line 255, in main
+    null = perm_null(fit, coord, z, N_PERM)
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_12_env_composite_kernel.py", line 164, in perm_null
+    r1 = fit.fit(make_gate(fit, cp), [(-4.0, 4.0)])
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_11_env_modulated_kernel.py", line 246, in fit
+    res = minimize(objective, x0[:-1], method="L-BFGS-B",
+                   bounds=all_bounds[:-1])
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/optimize/_minimize.py", line 731, in minimize
+    res = _minimize_lbfgsb(fun, x0, args, jac, bounds,
+                           callback=callback, **options)
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/optimize/_lbfgsb_py.py", line 407, in _minimize_lbfgsb
+    f, g = func_and_grad(x)
+           ~~~~~~~~~~~~~^^^
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/optimize/_differentiable_functions.py", line 344, in fun_and_grad
+    self._update_grad()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/optimize/_differentiable_functions.py", line 306, in _update_grad
+    self.g = self._wrapped_grad(self.x, f0=self.f)
+             ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/optimize/_differentiable_functions.py", line 47, in wrapped1
+    return approx_derivative(
+        fun, x, f0=f0, **finite_diff_options
+    )
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/optimize/_numdiff.py", line 519, in approx_derivative
+    return _dense_difference(fun_wrapped, x0, f0, h,
+                             use_one_sided, method)
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/optimize/_numdiff.py", line 592, in _dense_difference
+    df = fun(x1) - f0
+         ~~~^^^^
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/optimize/_numdiff.py", line 470, in fun_wrapped
+    f = np.atleast_1d(fun(x, *args, **kwargs))
+                      ~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/optimize/_differentiable_functions.py", line 20, in wrapped
+    fx = fun(np.copy(x), *args)
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_11_env_modulated_kernel.py", line 232, in objective
+    return profiled(theta)[0]
+           ~~~~~~~~^^^^^^^
+  File "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/steps/step_03_11_env_modulated_kernel.py", line 224, in profiled
+    y = solve_triangular(self.L, self.mb - self.mu_model(eps, w),
+                         lower=True, check_finite=False)
+  File "/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/scipy/linalg/_basic.py", line 354, in solve_triangular
+    x, info = trtrs(a1, b1, overwrite_b=overwrite_b, lower=lower,
+              ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                    trans=trans, unitdiag=unit_diagonal)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

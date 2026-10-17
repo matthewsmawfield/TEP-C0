@@ -13,7 +13,6 @@ Research-grade requires:
 
 from __future__ import annotations
 
-import os
 import sys
 from pathlib import Path
 import numpy as np
@@ -21,6 +20,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from c0_common import (
+    load_model_comparison,
     TEPLogger, ensure_dirs, print_status, read_json,
     rounded, set_step_logger, step_json_path, write_json
 )
@@ -44,7 +44,8 @@ PLANCK_SIGMA8 = {"value": 0.8120, "err": 0.0073, "source": "Planck2018_TTTEEE_lo
 # ============================================================================
 # Gradient-dependent screening (TEP v3)
 # ============================================================================
-G_T = 1.0e-9   # threshold acceleration, m/s^2
+from c0_screening_constants import SCREENING_ACCELERATION_M_S2
+G_T = SCREENING_ACCELERATION_M_S2  # master c H0/(2 beta_A^2), m/s^2
 N_SCREEN = 2.0
 
 
@@ -59,7 +60,7 @@ def halo_characteristic_acceleration(M_msun: float, z: float = 0.0, h: float = 0
     """Characteristic Newtonian acceleration at the virial radius of a halo [m/s^2]."""
     rho_crit_0 = 2.775e11
     Ez2 = (1.0 + z) ** 3
-    rho_crit_z = rho_crit_0 * Ez2
+    rho_crit_z = rho_crit_0 * h ** 2 * Ez2
     rho_vir = delta_vir * rho_crit_z
     R_vir = (3.0 * M_msun / (4.0 * np.pi * rho_vir)) ** (1.0 / 3.0)
 
@@ -68,7 +69,7 @@ def halo_characteristic_acceleration(M_msun: float, z: float = 0.0, h: float = 0
     Mpc_m = 3.08567758e22
 
     M_kg = M_msun * M_sun_kg
-    R_m = R_vir * Mpc_m / h
+    R_m = R_vir * Mpc_m
     g_vir = G * M_kg / (R_m ** 2)
     return g_vir
 
@@ -103,7 +104,7 @@ FSIGMA8_DATA = [
 ]
 
 
-def run_class_growth(epsilon_T, z_T=5.0, n_T=1.0, use_eds=False):
+def run_class_growth(epsilon_T, z_T=5.0, n_T=2.0, use_eds=False):
     """Run CLASS with TEP for growth calculations.
 
     If use_eds=True, uses EdS background (Omega_m=1.0, h=0.7) matching
@@ -130,8 +131,13 @@ def run_class_growth(epsilon_T, z_T=5.0, n_T=1.0, use_eds=False):
         }
     else:
         params = dict(PLANCK_BASELINE)
+    # Omega_Lambda=0 / Omega_k=0 match the joint-chain convention: under
+    # tep_mode an unset Omega_Lambda leaves the budget open; the patched
+    # engine fills the remainder with curvature (Omega_k = 1 - Omega_tot),
+    # producing a degenerate closed/matter-dominated branch (theta_s ~ 0.94).
     params.update({"tep_mode": "yes", "tep_epsilon_T": float(epsilon_T),
-                   "tep_z_T": float(z_T), "tep_n_T": float(n_T)})
+                   "tep_z_T": float(z_T), "tep_n_T": float(n_T),
+                   "Omega_Lambda": 0.0, "Omega_k": 0.0})
     cosmo = Class()
     try:
         cosmo.set(params)
@@ -225,14 +231,18 @@ def run() -> dict:
     epsilon_T_growth = 0.0
     print_status(f"Growth calculations use ε_T={epsilon_T_growth:.5f} (baseline LCDM for independent fit)", "INFO")
     
-    # Document that SNe ε_T is for distance bias compensation
-    step017_path = step_json_path("step_05_03_cmb_boltzmann")
-    if step017_path.exists():
-        step017 = read_json(step017_path)
-        epsilon_T_dist = float(step017.get("parameters", {}).get("epsilon_T_mixed_mle", 0.28865))
+    # Document that SNe ε_T is for distance bias compensation.
+    # The line-of-sight amplitude is the M1 (z_los=5) MLE from step_03_01.
+    sne_path = PROJECT_ROOT / "results" / "current_model_comparison.json"
+    if sne_path.exists():
+        sne = load_model_comparison()
+        epsilon_T_dist = float(
+            sne.get("models", {}).get("M1_NoLambda_zT5", {})
+            .get("parameters_mle", {}).get("epsilon_shear_los", 0.8736)
+        )
         print_status(f"SNe distance ε_T={epsilon_T_dist:.5f} (compensates for distance bias, not used for growth)", "INFO")
     else:
-        epsilon_T_dist = 0.28865
+        epsilon_T_dist = 0.8736
         print_status(f"SNe distance ε_T={epsilon_T_dist:.5f} (default, not used for growth)", "INFO")
 
     # ------------------------------------------------------------------
@@ -272,13 +282,13 @@ def run() -> dict:
     epsilon_tep_c0 = 0.0
 
     # Planck-baseline background (Omega_m ~ 0.315) — the correct background for growth
-    tep_pb, err_tep_pb = run_class_growth(epsilon_tep_c0, z_T=5.0, n_T=1.0, use_eds=False)
+    tep_pb, err_tep_pb = run_class_growth(epsilon_tep_c0, z_T=5.0, n_T=2.0, use_eds=False)
     tep_pb_available = tep_pb is not None
     if not tep_pb_available:
         print_status(f"TEP growth run (Planck baseline) failed: {err_tep_pb}", "WARNING")
 
     # EdS background (Omega_m = 1.0) — diagnostic only, not canonical
-    tep_eds, err_tep_eds = run_class_growth(epsilon_tep_c0, z_T=5.0, n_T=1.0, use_eds=True)
+    tep_eds, err_tep_eds = run_class_growth(epsilon_tep_c0, z_T=5.0, n_T=2.0, use_eds=True)
     tep_eds_available = tep_eds is not None
     if not tep_eds_available:
         print_status(f"TEP growth run (EdS) failed: {err_tep_eds}", "WARNING")
@@ -336,8 +346,8 @@ def run() -> dict:
     # Mean-field gradient screening for growth
     # ------------------------------------------------------------------
     # Cosmic halos have g_vir ~ 10^-11 to 10^-10 m/s^2, far below
-    # g_t = 1.0e-9.  The mean-field gradient screening factor is
-    # therefore f(g) ≈ 0.99-1.0 on all cosmological scales.
+    # g_t = c H0/2 = 3.40e-10. Evaluate the reference halo
+    # explicitly; this is not a uniform all-halo response bound.
     # The observed ~0.55 growth suppression in TEP-HC comes from the
     # α_M running (evolving Planck mass) in the full hi_class
     # perturbation equations, not from environmental gradient screening.
@@ -345,7 +355,7 @@ def run() -> dict:
     z_screen = 0.0
     f_growth, g_char = mean_field_growth_screening(z_screen, h=0.7)
     print_status(f"Mean-field gradient screening: g_char(z=0) = {g_char:.2e} m/s^2, f = {f_growth:.6f}", "INFO")
-    print_status(f"  Cosmic halos are unscreened by f(g) (g << g_t)", "INFO")
+    print_status("  Reference halo is weakly suppressed by f(g)", "INFO")
 
     # Apply mean-field gradient screening (essentially no effect)
     screening_factor = f_growth
@@ -396,7 +406,7 @@ def run() -> dict:
         # with f(z=0)=1.0 normalization; the standard fσ8(z=0) ≈ Ω_m^0.55 × σ8 ≈ 0.42.
         # Use the z=0.5 value for mid-z RSD points and compute fσ8(z≈0) from
         # the standard growth rate for low-z points.
-        fs8_tep_z05 = float(tep_hc_growth["TEP_active_perturbations"]["fsigma8_z05"])
+        fs8_tep_z05 = float(tep_hc_growth["TEP_active_perturbations"].get("fsigma8_z05") or tep_hc_growth["TEP_active_perturbations"]["f_mean_times_sigma8_z05"])
         sigma8_tep_hc_val = float(tep_hc_growth["TEP_active_perturbations"]["sigma8"])
         omega_m = 0.315  # Planck baseline
         fs8_tep_z0 = omega_m**0.55 * sigma8_tep_hc_val  # standard f(z=0)×σ8
@@ -417,7 +427,7 @@ def run() -> dict:
                 "fs8_obs_err": pt["fs8_err"],
                 "fs8_tep": rounded(fs8_tep, 3),
                 "chi": rounded((fs8_tep - pt["fs8"]) / fs8_obs_err_safe, 2),
-                "source": "TEP-HC hi_class",
+                "source": "TEP-HC hi_class (z=0.5 value is the interval-mean f x sigma8; no local f(z) output)",
                 "ref": pt["ref"],
             })
     elif tep_available:
@@ -516,7 +526,7 @@ def run() -> dict:
             "deviation_percent_eds": rounded(sigma8_pct_eds, 1) if sigma8_pct_eds else None,
             "deviation_percent_unscreened": rounded(sigma8_pct, 1) if sigma8_pct else None,
             "deviation_percent_gradient_screened": rounded(sigma8_pct_screened, 1) if sigma8_pct_screened else None,
-            "note": "Authoritative growth result from TEP-HC (Paper 18) native hi_class with active SMG perturbations and Bellini-Sawicki mappings: σ₈=0.8242 vs Planck 0.812±0.007 (1.7σ). C0 cross-check uses TEP-CLASS with ε_T=0 (growth-appropriate) on Planck-baseline background. The EdS background (Ω_m=1.0) is a diagnostic, not the canonical TEP prediction — σ₈=1.501 is correct for a matter-only universe. The previous pipeline bug used ε_T=0.018 (acoustic diagnostic) and EdS as canonical, producing a spurious 94.4σ deviation."
+            "note": "Native TEP-HC perturbations supply the separately reported authoritative value. C0 cross-checks use epsilon_T=0 on Planck-baseline and EdS backgrounds. The EdS result is a conditional diagnostic, not the canonical TEP prediction. The gradient-screened value is a separate mean-field envelope approximation."
         },
         "growth_factor": growth_points,
         "fsigma8": {

@@ -17,11 +17,11 @@ covariance matrix from step 03_01, re-optimizing the TEP cosmological parameters
 (line-of-sight shear epsilon_shear_los and magnitude normalization M) at every eps.
 
 Key Results:
-- Full tracking (eps = 1.0) is excluded at Delta chi2 > 1000: a -2.3 mag intrinsic
-  brightening at z = 1 cannot be absorbed by adjusting the TEP distance-redshift relation.
-- The 3-sigma upper bound is eps < 0.034.
-- Consequence: source-galaxy cores are effectively pinned against the cosmological
-  ambient drift, confirming the standard-siren mass-map discriminant of Paper 0 / Paper 22.
+- On the fixed-z_T=5 M1 branch, full tracking (eps = 1.0) incurs
+  Delta chi2 about 801 under the stated Chandrasekhar luminosity prescription.
+- The interpolated 3-sigma upper bound is eps < 0.155 on this branch.
+- This SN Ia progenitor constraint does not by itself constrain BBH source
+  evolution or constitute a selection-corrected siren-population likelihood.
 
 Dependencies:
 - data/pantheon_plus/Pantheon+SH0ES.dat
@@ -84,13 +84,13 @@ def run() -> None:
                 return 1e10
             cosmo = TEPCosmology(H0=70.0, Omega_m=1.0, epsilon_T=eps_shear, z_T=5.0)
             mu = cosmo.distance_modulus(data.z) + M - 7.5 * eps_val * np.log10(1.0 + data.z)
-            res = data.mb - mu
+            res = data.mb - mu - data.observer_correction
             return -data.gaussian_loglike(res)
 
         res = minimize(obj, [0.8, -19.32], method="Nelder-Mead")
         cosmo = TEPCosmology(H0=70.0, Omega_m=1.0, epsilon_T=res.x[0], z_T=5.0)
         mu = cosmo.distance_modulus(data.z) + res.x[1] - 7.5 * eps_val * np.log10(1.0 + data.z)
-        c2 = float(data.chi2(data.mb - mu))
+        c2 = float(data.chi2(data.mb - mu - data.observer_correction))
         chi2_prof.append(c2)
         best_params_prof.append({"eps_shear": float(res.x[0]), "M": float(res.x[1])})
 
@@ -115,12 +115,12 @@ def run() -> None:
             return 1e10
         cosmo = TEPCosmology(H0=70.0, Omega_m=1.0, epsilon_T=eps_shear, z_T=5.0)
         mu = cosmo.distance_modulus(data.z) + M - 7.5 * 1.0 * np.log10(1.0 + data.z)
-        return -data.gaussian_loglike(data.mb - mu)
+        return -data.gaussian_loglike(data.mb - mu - data.observer_correction)
 
     res_m1_1 = minimize(obj_m1_eps1, [0.89, -19.32], method="Nelder-Mead")
     cosmo_eps1 = TEPCosmology(H0=70.0, Omega_m=1.0, epsilon_T=res_m1_1.x[0], z_T=5.0)
     mu_eps1 = cosmo_eps1.distance_modulus(data.z) + res_m1_1.x[1] - 7.5 * np.log10(1.0 + data.z)
-    chi2_m1_eps1 = float(data.chi2(data.mb - mu_eps1))
+    chi2_m1_eps1 = float(data.chi2(data.mb - mu_eps1 - data.observer_correction))
     delta_chi2_eps1 = float(chi2_m1_eps1 - np.min(chi2_prof))
 
     print_status(f"eps = 1.0 test on M1 NoLambda: Delta chi2 = {delta_chi2_eps1:.1f}", "INFO")
@@ -128,6 +128,8 @@ def run() -> None:
     out: Dict = {
         "step": STEP_ID,
         "dataset": "Pantheon+ (1,701 SNe Ia, full covariance matrix)",
+        "observer_redshift": "zHEL",
+        "distance_redshift": data.redshift_column_used,
         "question": "Does a flexible distance-redshift relation absorb the Chandrasekhar luminosity drift dm(z) = -7.5 eps log10(1+z)?",
         "profile_likelihood_M1": {
             "eps_grid": [float(x) for x in eps_grid],
@@ -143,16 +145,19 @@ def run() -> None:
                 "delta_chi2_vs_best": delta_chi2_eps1,
                 "best_shear_param": float(res_m1_1.x[0]),
                 "best_M": float(res_m1_1.x[1]),
-                "verdict": f"EXCLUDED at Delta chi2 = {delta_chi2_eps1:.1f} (>> 1000)"
+                "verdict": f"EXCLUDED at Delta chi2 = {delta_chi2_eps1:.1f} (>> 9, the 3-sigma threshold)"
             }
         },
         "verdict": (
-            "The supernova bound on the interior tracking fraction epsilon is model-independent and cannot be absorbed "
-            "by flexing the TEP distance-redshift relation. Full tracking (eps = 1.0, where G_loc ∝ (1+z)^-2 inside "
-            f"source galaxies) is excluded on the real Pantheon+ dataset at Delta chi2 = {delta_chi2_eps1:.1f} even when "
-            "allowing the cosmological distance relation and line-of-sight shear to completely re-optimize. The joint fit "
-            f"bounds positive tracking to eps < {e_3sig_hi:.3f} (3-sigma). Galactic cores hosting SNe Ia are effectively pinned "
-            "against the cosmic ambient drift, preserving the standard-siren mass-map discriminant."
+            "Conditional on the fixed-z_T=5 M1 NoLambda distance relation and the "
+            "Chandrasekhar luminosity prescription, Pantheon+ constrains the SN Ia "
+            "progenitor tracking fraction. Full tracking (eps = 1.0) incurs "
+            f"Delta chi2 = {delta_chi2_eps1:.1f} after re-optimizing the "
+            "nonnegative line-of-sight shear and magnitude intercept; the "
+            f"interpolated upper bound is eps < {e_3sig_hi:.3f} at Delta chi2 = 9. "
+            "No BBH population evolution, host-to-source transfer, or GW selection "
+            "function is fitted, so this is not a model-independent bound on "
+            "standard-siren source masses."
         )
     }
 

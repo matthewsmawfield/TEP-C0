@@ -11,7 +11,7 @@ Independent D_A sources used:
 
 These give D_A(z) directly from geometry, without assuming a fiducial
 r_s.  D_L(z) is recomputed using the TEP conformal distance law with
-the acoustic-sector parameters (ε_T = 0.018, z_T = 5).  A self-
+the fitted M1_zT5 late-time line-of-sight amplitude (z_T = 5).  A self-
 consistent TEP η(z) = D_L^TEP / [(1+z)² D_A^obs] is then tested
 against η = 1.
 
@@ -68,8 +68,8 @@ SZ_CLUSTER_DA = [
 INDEPENDENT_DA_CONSTRAINTS = STRONG_LENSING_DA + SZ_CLUSTER_DA
 
 
-def tep_luminosity_distance(z: float, epsilon_T: float = 0.018, z_T: float = 5.0, n_T: float = 2.0) -> float:
-    """TEP conformal luminosity distance in Mpc (acoustic-sector parameters)."""
+def tep_luminosity_distance(z: float, epsilon_T: float = 0.8707961608975863, z_T: float = 5.0, n_T: float = 2.0) -> float:
+    """TEP conformal luminosity distance in Mpc (using M1_zT5 zero-Lambda fitted epsilon_shear_los)."""
     from core.cosmology import TEPCosmology
     cosmo = TEPCosmology(H0=70.0, Omega_m=1.0, epsilon_T=epsilon_T, z_T=z_T, n_T=n_T)
     return float(cosmo.luminosity_distance(z))
@@ -91,7 +91,13 @@ def run():
     # ------------------------------------------------------------------
     print_status("Computing TEP-native D_L at independent D_A redshifts", "PROCESS")
 
-    epsilon_T = 0.018
+    import json
+    comp_path = RESULTS_DIR / "current_model_comparison.json"
+    if comp_path.exists():
+        comp = json.loads(comp_path.read_text())
+        epsilon_T = float(comp["models"]["M1_zT5"]["parameters"]["epsilon_shear_los"])
+    else:
+        epsilon_T = 0.8707961608975863
     z_T = 5.0
     rows = []
     eta_values = []

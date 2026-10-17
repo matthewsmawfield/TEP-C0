@@ -71,13 +71,13 @@ def chi2_against_registry(abundances: dict, registry_rows: list[dict]) -> dict[s
 
     # Map abundance keys to registry column names
     key_map = {
-        "Y_p": ("Y_p", 0.005),      # ~0.5% uncertainty
-        "D_H": ("D/H", 0.1),        # ~10% uncertainty
-        "He3_H": ("He3/H", 0.1),    # ~10% uncertainty
-        "Li7_H": ("Li7/H", 0.2),    # ~20% uncertainty
+        "Y_p": ("Y_p", "helium_4_mass_fraction_Yp", 0.005),      # ~0.5% uncertainty
+        "D_H": ("D/H", "deuterium_to_hydrogen_DH", 0.1),         # ~10% uncertainty
+        "He3_H": ("He3/H", "helium_3_to_hydrogen_He3H", 0.1),    # ~10% uncertainty
+        "Li7_H": ("Li7/H", "lithium_7_to_hydrogen_Li7H", 0.2),    # ~20% uncertainty
     }
 
-    for key, (reg_key, default_sigma_frac) in key_map.items():
+    for key, (reg_key, qty_key, default_sigma_frac) in key_map.items():
         val = abundances.get(key)
         if val is None:
             continue
@@ -86,12 +86,21 @@ def chi2_against_registry(abundances: dict, registry_rows: list[dict]) -> dict[s
         expected = None
         sigma = default_sigma_frac * val if val != 0 else default_sigma_frac
         for row in registry_rows:
-            if row.get("isotope") == reg_key or row.get("symbol") == key:
+            if (
+                row.get("isotope") == reg_key
+                or row.get("symbol") == key
+                or row.get("quantity") == qty_key
+            ):
                 try:
-                    expected = float(row.get("value", 0))
-                    sigma_val = row.get("uncertainty")
+                    raw_val = row.get("value", row.get("observed_value"))
+                    if raw_val is not None:
+                        expected = float(raw_val)
+                    sigma_val = row.get("uncertainty", row.get("observed_sigma"))
+                    pred_sig = row.get("prediction_sigma")
                     if sigma_val:
                         sigma = float(sigma_val)
+                        if pred_sig:
+                            sigma = (sigma ** 2 + float(pred_sig) ** 2) ** 0.5
                 except (ValueError, TypeError):
                     pass
                 break

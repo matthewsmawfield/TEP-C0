@@ -1,0 +1,15 @@
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_profile_fit.py:26: RuntimeWarning: divide by zero encountered in matmul
+  eps=theta[0];w=np.exp(theta[1:]@coords)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_profile_fit.py:26: RuntimeWarning: overflow encountered in matmul
+  eps=theta[0];w=np.exp(theta[1:]@coords)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_profile_fit.py:26: RuntimeWarning: invalid value encountered in matmul
+  eps=theta[0];w=np.exp(theta[1:]@coords)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_profile_fit.py:48: RuntimeWarning: divide by zero encountered in matmul
+  w=np.exp(best.x[1:]@coords);direct=fit.chi2_given_w(best.x[0],M,w)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_profile_fit.py:48: RuntimeWarning: overflow encountered in matmul
+  w=np.exp(best.x[1:]@coords);direct=fit.chi2_given_w(best.x[0],M,w)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_profile_fit.py:48: RuntimeWarning: invalid value encountered in matmul
+  w=np.exp(best.x[1:]@coords);direct=fit.chi2_given_w(best.x[0],M,w)
+quality {'chi2': 1727.1268087821813, 'parameters': [0.872061109684388, 0.3059236775433784, 0.25926811779128084, 0.04536034019057959, -19.329244544467148], 'success': True, 'message': 'CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH', 'analytic_gradient_relative_error': 1.5402667621159246e-08, 'direct_likelihood_error': 2.1373125491663814e-11, 'n_starts': 16, 'n_successful_starts': 16}
+environment_quality {'chi2': 1717.9965926221582, 'parameters': [0.8708190674872169, 0.2807859053074618, -0.21834417634152176, 0.2978128992650977, 0.2922704883281602, 0.04720180410883572, -19.32886113993643], 'success': True, 'message': 'CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH', 'analytic_gradient_relative_error': 1.5402667621159246e-08, 'direct_likelihood_error': 2.0463630789890885e-11, 'n_starts': 16, 'n_successful_starts': 16}
+Gain 9.13021616002311

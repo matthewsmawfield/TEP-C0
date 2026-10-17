@@ -1,9 +1,9 @@
-[21:02:51] [INFO] 
-[21:02:51] [INFO] ================================================================================
-[21:02:51] [INFO]    Starting step_05_09_minimal_perturbations
-[21:02:51] [INFO] ================================================================================
-[21:02:51] [INFO] 
-[21:02:51] [INFO] No-ghost stable: True
-[21:02:51] [INFO] Gradient stable: True
-[21:02:52] [SUCCESS] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/figures/step_05_09_minimal_perturbations.png
-[21:02:52] [SUCCESS] Step step_05_09_minimal_perturbations completed
+[23:39:46] [INFO] 
+[23:39:46] [INFO] ================================================================================
+[23:39:46] [INFO]    Starting step_05_09_minimal_perturbations
+[23:39:46] [INFO] ================================================================================
+[23:39:46] [INFO] 
+[23:39:46] [INFO] No-ghost stable: True
+[23:39:46] [INFO] Gradient stable: True
+[23:39:47] [SUCCESS] Figure saved to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/figures/step_05_09_minimal_perturbations.png
+[23:39:47] [SUCCESS] Step step_05_09_minimal_perturbations completed

@@ -9,6 +9,7 @@ from __future__ import annotations
 from pathlib import Path
 import numpy as np
 from c0_common import (
+    load_model_comparison,
     TEPLogger, ensure_dirs, print_status, read_json, 
     rounded, set_step_logger, step_json_path, write_json
 )
@@ -23,7 +24,7 @@ def run():
 
     # Load real results - use converged Step 033 Cobaya results
     try:
-        step022 = read_json(step_json_path("step_03_01_three_model_comparison"))
+        step022 = load_model_comparison()
         step033 = read_json(step_json_path("step_03_04_cobaya_mcmc"))
     except FileNotFoundError as e:
         print_status(f"Missing dependency: {e}", "ERROR")
@@ -74,7 +75,7 @@ def run():
     else:
         # Fallback to step022 values; dimensionless models have no fitted H0
         h0_mcmc = 70.0
-        epsilon_t = step022.get('models', {}).get(m1_key, {}).get('parameters_mle', {}).get('epsilon_T', 0.1)
+        epsilon_t = step022.get('models', {}).get(m1_key, {}).get('parameters_mle', {}).get('epsilon_shear_los', 0.1)
         mcmc_converged = False
     
     # Use Planck 2018 as independent reference for tension diagnostic

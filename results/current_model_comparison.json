@@ -1,0 +1,144 @@
+{
+  "sample_size": 1701,
+  "redshift": "zHD",
+  "observer_redshift": "zHEL",
+  "luminosity_distance": "(1+zHEL) chi(zHD)",
+  "exponent": 2,
+  "H0_reference": 70,
+  "M_prior": [
+    -21,
+    -16
+  ],
+  "covariance_sha256": "abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc",
+  "models": {
+    "M0a_LCDM": {
+      "chi2": 1752.9021645027642,
+      "logZ": 751.6057752521972,
+      "logZ_error": 1.383347728132312e-08,
+      "parameters": {
+        "Om0": 0.3623684044834239,
+        "M": -19.33928052524433
+      },
+      "k": 2,
+      "method": "bounded Gaussian intercept integral and adaptive shape quadrature",
+      "log_likelihood": 760.8086048982132,
+      "BIC": -1506.7392666116345,
+      "BF_vs_LCDM": 1.0,
+      "delta_chi2_vs_LCDM": 0.0
+    },
+    "M1_zT5": {
+      "chi2": 1749.096255729412,
+      "logZ": 753.3633267957042,
+      "logZ_error": 1.1745712996535153e-08,
+      "parameters": {
+        "epsilon_shear_los": 0.8707961608975863,
+        "M": -19.331443099283025
+      },
+      "k": 2,
+      "method": "bounded Gaussian intercept integral and adaptive shape quadrature",
+      "log_likelihood": 762.7115592848893,
+      "BIC": -1510.5451753849868,
+      "BF_vs_LCDM": 5.798223302717814,
+      "delta_chi2_vs_LCDM": -3.8059087733522574
+    },
+    "M1_zT100": {
+      "chi2": 1749.2110230492513,
+      "logZ": 753.2966705072234,
+      "logZ_error": 1.1261345281165114e-08,
+      "parameters": {
+        "epsilon_shear_los": 0.8620094171938436,
+        "M": -19.33058492446971
+      },
+      "k": 2,
+      "method": "bounded Gaussian intercept integral and adaptive shape quadrature",
+      "log_likelihood": 762.6541756249696,
+      "BIC": -1510.4304080651475,
+      "BF_vs_LCDM": 5.424334694927314,
+      "delta_chi2_vs_LCDM": -3.691141453512955
+    },
+    "M1_free_zT": {
+      "chi2": 1749.095029567301,
+      "logZ": 753.285380238797,
+      "logZ_error": 3.1377567211166024e-11,
+      "k": 3,
+      "parameters": {
+        "epsilon_shear_los": 0.8699473884275799,
+        "z_T": 5.262579331041082,
+        "M": -19.331361874728405
+      },
+      "method": "exact bounded Gaussian intercept integral; adaptive shape quadrature; refined turnover quadrature",
+      "log_likelihood": 762.7121723659448,
+      "BIC": -1503.107429954702,
+      "BF_vs_LCDM": 5.363436923167422,
+      "delta_chi2_vs_LCDM": -3.807134935463182
+    },
+    "M2_PureShear": {
+      "chi2": 1752.9021645027642,
+      "logZ": 751.6057752521972,
+      "logZ_error": 1.383347728132312e-08,
+      "parameters": {
+        "Om0": 0.3623684044834239,
+        "M": -19.33928052524433
+      },
+      "k": 2,
+      "method": "exact identity with M0a under identical priors",
+      "log_likelihood": 760.8086048982132,
+      "BIC": -1506.7392666116345,
+      "BF_vs_LCDM": 1.0,
+      "delta_chi2_vs_LCDM": 0.0
+    },
+    "M3_wCDM": {
+      "chi2": 1748.5096940793223,
+      "parameters": {
+        "Om0": 0.20547819362816827,
+        "w": -0.6948847732839587,
+        "M": -19.328951294514166
+      },
+      "k": 3,
+      "logZ": 752.7953363006294,
+      "logZ_error": 0.08934882947376546,
+      "method": "exact bounded intercept integral; nested shape sampling, 500 live points, dlogz=0.05, seed=20261011",
+      "log_likelihood": 763.0048401099341,
+      "BIC": -1503.6927654426806,
+      "BF_vs_LCDM": 3.28563865456226,
+      "delta_chi2_vs_LCDM": -4.392470423441864
+    },
+    "M4_CPL": {
+      "chi2": 1746.4350504686934,
+      "parameters": {
+        "Om0": 0.45340619564391743,
+        "w0": -0.6313699181579682,
+        "wa": -5.0,
+        "M": -19.31534968244314
+      },
+      "k": 4,
+      "logZ": 752.599848088191,
+      "logZ_error": 0.10101896960256883,
+      "method": "exact bounded intercept integral; nested shape sampling, 500 live points, dlogz=0.05, seed=20261011",
+      "log_likelihood": 764.0421619152486,
+      "BIC": -1498.3284374609136,
+      "BF_vs_LCDM": 2.702217780399727,
+      "delta_chi2_vs_LCDM": -6.467114034070846
+    },
+    "M0b_EdS": {
+      "chi2": 2388.7367295880554,
+      "parameters": {
+        "M": -19.17531806612446
+      },
+      "k": 1,
+      "logZ": 436.58623083863586,
+      "logZ_error": 0.0,
+      "method": "exact bounded Gaussian intercept integral",
+      "log_likelihood": 442.8913223555676,
+      "BIC": -878.3436731187393,
+      "BF_vs_LCDM": 1.5443657783515718e-137,
+      "delta_chi2_vs_LCDM": 635.8345650852912
+    }
+  },
+  "source_sha256": {
+    "core/cosmology.py": "9a4661ede098727d3f51d01cf6d88102046cb6b355d26121137efe772e61f8ae",
+    "scripts/utils/static_metric.py": "80ba4c352c3bac0d179c04e41b6cec9fb05cc72f7ac4e5d2464588a96ad78332",
+    "scripts/steps/step_03_01_three_model_comparison.py": "ae8e6f4da1ce7184b144907e15901a876e42d190afe2503920658dfbbb55ff80",
+    "scripts/steps/refresh_observer_comparison.py": "c16396692c72ec5790259015f322748debab7a924cda89e02ce45501b0df180d"
+  }
+}

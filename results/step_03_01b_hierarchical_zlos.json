@@ -1,20 +1,38 @@
 {
-  "BF_marginalized": 23.619159397928584,
-  "lnBF_marginalized": 3.1620582215638953,
-  "lnBF_marginalized_uncertainty": 0.003832921554757552,
-  "lnBF_free_zlos_dynesty": 3.695860798693502,
+  "conventions": {
+    "distance_redshift": "zHD",
+    "observer_redshift": "zHEL",
+    "n_sne": 1701,
+    "M_prior": [
+      -21.0,
+      -16.0
+    ],
+    "epsilon_prior": [
+      0.0,
+      2.0
+    ]
+  },
   "hyperprior": "LogUniform(1, 200)",
-  "n_mc_samples": 100000,
-  "n_bootstrap": 1000,
-  "z_eval_points": [
-    1.0,
-    5.0,
-    100.0
+  "method": "exact bounded intercept integral; adaptive amplitude and refined log-turnover quadrature",
+  "refinements": [
+    {
+      "order": 32,
+      "logZ": 753.1388073165742,
+      "BF_vs_LCDM": 4.632200681607735
+    },
+    {
+      "order": 64,
+      "logZ": 753.1388073165318,
+      "BF_vs_LCDM": 4.632200681411305
+    },
+    {
+      "order": 128,
+      "logZ": 753.1388073165318,
+      "BF_vs_LCDM": 4.632200681411305
+    }
   ],
-  "lnBF_at_eval_points": [
-    -18.51421153380352,
-    1.5184716487698324,
-    4.124131260020704
-  ],
-  "interpretation": "The hyperprior-marginalized Bayes factor is the defensible headline number. If it agrees with the free-z_los dynesty result (within Monte Carlo uncertainty), the latter was already an approximately correct marginalized evidence."
+  "last_logZ_change": 0.0,
+  "BF_marginalized": 4.632200681411305,
+  "lnBF_marginalized": 1.533032064334634,
+  "interpretation": "Prior sensitivity alternative; the primary free-turnover comparison retains Uniform(0.1,150)."
 }

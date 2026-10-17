@@ -1,8 +1,6 @@
-v0.3 (Athens) — 2026-09-16 — Cosmic expansion as temporal transport: no dark energy, no primordial singularity
+v0.4 (Athens) — 17 October 2026 — Joint global screening boundary, Pantheon+ prior-sensitivity grid, and per-sightline environmental gating
 
-- Redshift reconstructed as conformal proper-time transport (1+z = A_0/A_em), not spatial scale-factor stretching
-- Apparent dark energy replaced by kinetic energy density of Temporal Shear field (Ω_φ)
-- Pantheon+ analysis: no-Λ temporal-shear branch improves over ΛCDM (BF ≈ 4.6 conservative, 61.8 fixed benchmark)
-- a→0 limit re-expressed as A_clock→0: temporal-horizon boundary, not zero-volume spatial singularity
-- Cross-paper consistency: aligned with TEP-TH (Paper 27) temporal-horizon closure and TEP-HC (Paper 18) acoustic preservation
-- Labelled the displayed action as the canonical low-kinetic benchmark; expanded the EFT/perturbation mapping and Paper-18 cross-check wording
+- Recomputed the Pantheon+ model-comparison evidence across a prior-sensitivity grid (BF ~ 5.8 on the conservative z_los = 5 branch, 5.4 at z_los = 100 and broad free-z_los; 0.63 at z > 0.023), clarifying the uniform U[0.0, 1.2] joint global screening exploration prior and the [-0.05, 0.05] Cobaya background/acoustic MCMC interval
+- Added the per-sightline environmental gate (joint fit a = +0.213, b = -0.226; block-permutation p = 0.036) and evaluated the SN Ia progenitor luminosity-drift profile bound (epsilon < 0.150 at 3 sigma, Delta chi^2 = 805.8 at epsilon = 1, matching the deep-well host-assembly derivation epsilon_eff ~ 0.004)
+- Integrated the unified (3+1) ADM unstretched-space metric and two-branch PPN screening (|gamma_PPN - 1| = 4.32 x 10^-8 at 1.6 R_sun) across the theoretical and cosmological sections
+- Synchronized the shared core library and gate registry outputs

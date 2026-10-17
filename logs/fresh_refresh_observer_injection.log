@@ -1,0 +1,16 @@
+{
+  "scope": "Noiseless signed injection recovery of the specified inference model; not external validation of TEP",
+  "observer_convention": "Generated with observer factor and fitted with retained zHEL rows",
+  "positive_injection_test": {
+    "injected_epsilon_shear_los": 0.23,
+    "recovered_epsilon_shear_los": 0.22999991638734352,
+    "recovery_error_percent": 3.635332890996794e-05,
+    "passed": true
+  },
+  "negative_injection_test": {
+    "injected_epsilon_shear_los": -0.23,
+    "recovered_epsilon_shear_los": -0.22999994277894434,
+    "recovery_error_percent": 2.4878719857182236e-05,
+    "passed": true
+  }
+}

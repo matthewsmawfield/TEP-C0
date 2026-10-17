@@ -1,0 +1,35 @@
+[01:04:25] [INFO] 
+[01:04:25] [INFO] ================================================================================
+[01:04:25] [INFO]    Starting step_04_09_ppn_constraints
+[01:04:25] [INFO] ================================================================================
+[01:04:25] [INFO] 
+[01:04:25] [PROCESS] 1. Unscreened PPN parameters
+[01:04:25] [INFO]   γ = -0.333333, β = 1.000000
+[01:04:25] [WARNING]   Cassini deviation: 57971.0σ → ruled out
+[01:04:25] [PROCESS] 2. Lorentzian source-screening (old C0 ansatz)
+[01:04:25] [INFO]   Integrated Q_eff/M_sun ≈ 0.141248
+[01:04:25] [WARNING]   γ ≈ 0.5594590548, deviation = -19154.0σ
+[01:04:25] [WARNING]   → Gap: Lorentzian form does not suppress solar charge enough
+[01:04:25] [PROCESS] 3. Gradient-dependent screening f(g) = [1+(g/g_t)^n]⁻¹
+[01:04:25] [INFO]   Threshold acceleration g_t = 3.4e-10 m/s²
+[01:04:25] [INFO]   Steepness n = 2.0
+[01:04:25] [SUCCESS]   Cassini gate (g=6.57e-05 m/s²): f=2.68e-11, β_eff=-2.68e-11, γ=0.9999999999
+[01:04:25] [INFO]   Wide-binary gate (g=1.20e-10 m/s²): f=0.889258, β_eff=-0.889258 — coupling 88.9% active
+[01:04:25] [INFO]   solar_surface         : f=  1.54e-24, β_eff= -1.54e-24, γ=1.0000000000  [not PPN]
+[01:04:25] [SUCCESS]   solar_wind_saturn     : f=  2.68e-11, β_eff= -2.68e-11, γ=0.9999999999, dev=-0.00σ  [PPN test]
+[01:04:25] [SUCCESS]   solar_wind_earth      : f=  3.29e-15, β_eff= -3.29e-15, γ=1.0000000000, dev=-0.00σ  [PPN test]
+[01:04:25] [SUCCESS]   mercury_orbit         : f=  7.61e-17, β_eff= -7.61e-17, γ=1.0000000000, dev=-0.00σ  [PPN test]
+[01:04:25] [INFO]   earth_surface         : f=  1.20e-21, β_eff= -1.20e-21, γ=1.0000000000  [not PPN]
+[01:04:25] [INFO]   galactic_halo         : f=  4.86e-01, β_eff= -4.86e-01, γ=0.0146325361  [not PPN]
+[01:04:25] [INFO]   wide_binary           : f=  8.89e-01, β_eff= -8.89e-01, γ=-0.2801911194  [not PPN]
+[01:04:25] [SUCCESS]   PPN-test environments pass Cassini: True
+[01:04:25] [PROCESS] 4. Multi-scale consistency
+[01:04:25] [INFO]   Earth surface (g=9.8):    f=1.20e-21 — deeply screened, Eötvös bounds satisfied
+[01:04:25] [INFO]   Halo virial (g=3.50e-10): f=0.4856 — 48.6% active, growth coupling preserved
+[01:04:25] [INFO]   Wide binary (g=1.20e-10): f=0.8893 — 88.9% active, anomaly coupling preserved
+[01:04:25] [SUCCESS] Results written to /Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/step_04_09_ppn_constraints.json
+[01:04:25] [INFO] 
+[01:04:25] [INFO] ================================================================================
+[01:04:25] [INFO]    step_04_09_ppn_constraints complete
+[01:04:25] [INFO] ================================================================================
+[01:04:25] [INFO] 

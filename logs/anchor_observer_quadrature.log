@@ -1,0 +1,24 @@
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_anchored_quadrature.py:19: RuntimeWarning: divide by zero encountered in matmul
+  w = float(one @ one)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_anchored_quadrature.py:19: RuntimeWarning: overflow encountered in matmul
+  w = float(one @ one)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_anchored_quadrature.py:19: RuntimeWarning: invalid value encountered in matmul
+  w = float(one @ one)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_anchored_quadrature.py:27: RuntimeWarning: divide by zero encountered in matmul
+  offset = float(one @ y)/w
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_anchored_quadrature.py:27: RuntimeWarning: overflow encountered in matmul
+  offset = float(one @ y)/w
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_anchored_quadrature.py:27: RuntimeWarning: invalid value encountered in matmul
+  offset = float(one @ y)/w
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_anchored_quadrature.py:32: RuntimeWarning: divide by zero encountered in matmul
+  return norm - .5*float(yy @ yy)+.5*np.log(2*np.pi/w)-np.log(5.)+logprob
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_anchored_quadrature.py:32: RuntimeWarning: overflow encountered in matmul
+  return norm - .5*float(yy @ yy)+.5*np.log(2*np.pi/w)-np.log(5.)+logprob
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_anchored_quadrature.py:32: RuntimeWarning: invalid value encountered in matmul
+  return norm - .5*float(yy @ yy)+.5*np.log(2*np.pi/w)-np.log(5.)+logprob
+shared M0a_LCDM {"logZ": 751.6057752521972, "relative_quad_error": 7.580334915828981e-07}
+shared M1_zT5 {"logZ": 753.3633267957039, "relative_quad_error": 2.4054043677239684e-14}
+shared M1_free_zT {"logZ": 753.285380238797, "turnover_refinements": [{"order": 32, "logZ": 753.2853818096027}, {"order": 64, "logZ": 753.2853802388283}, {"order": 128, "logZ": 753.285380238797}], "last_logZ_change": 3.1377567211166024e-11}
+anchored M0a_LCDM {"logZ": 860.8026788474604, "relative_quad_error": 2.0154465463745136e-07}
+anchored M1_zT5 {"logZ": 861.3862858057728, "relative_quad_error": 2.1672652435540157e-13}
+anchored M1_free_zT {"logZ": 861.1393970111627, "turnover_refinements": [{"order": 32, "logZ": 861.1393953425484}, {"order": 64, "logZ": 861.1393970112161}, {"order": 128, "logZ": 861.1393970111627}], "last_logZ_change": 5.3432813729159534e-11}

@@ -1,0 +1,49 @@
+{
+  "scope": "Independent numerical check of G5 under the existing priors, not a new model or dataset",
+  "mode": [
+    0.8666430486041056,
+    0.21329253889578412,
+    -0.2258393279206349
+  ],
+  "posterior_scales": [
+    0.03819305663624741,
+    0.12188890914665411,
+    0.1048243127403922
+  ],
+  "reference_LCDM_logZ": -885.6539118974025,
+  "reference_relative_quadrature_error": 6.710656104901894e-09,
+  "checks": [
+    {
+      "seed": 101,
+      "n": 16384,
+      "prior_width": 1.0,
+      "logZ": -884.1131759822389,
+      "BF_vs_LCDM": 4.6680242771142435,
+      "importance_ESS": 14581.197733646748
+    },
+    {
+      "seed": 101,
+      "n": 16384,
+      "prior_width": 4.0,
+      "logZ": -886.8857647044783,
+      "BF_vs_LCDM": 0.2917515173197376,
+      "importance_ESS": 14581.197733656694
+    },
+    {
+      "seed": 202,
+      "n": 16384,
+      "prior_width": 1.0,
+      "logZ": -884.1127968589386,
+      "BF_vs_LCDM": 4.669794369404305,
+      "importance_ESS": 14586.352836846052
+    },
+    {
+      "seed": 202,
+      "n": 16384,
+      "prior_width": 4.0,
+      "logZ": -886.8853855811783,
+      "BF_vs_LCDM": 0.29186214808780003,
+      "importance_ESS": 14586.352836849368
+    }
+  ]
+}

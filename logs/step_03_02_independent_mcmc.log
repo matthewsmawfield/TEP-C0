@@ -1,7 +1,7 @@
-[04:39:29] [INFO] 
-[04:39:29] [INFO] ================================================================================
-[04:39:29] [INFO]    Starting step_03_02_independent_mcmc
-[04:39:29] [INFO] ================================================================================
-[04:39:29] [INFO] 
-[04:39:29] [PROCESS] Running mixed-model MCMC with 64 walkers, 20000 steps, burn-in 5000
-[04:48:43] [SUCCESS] MCMC diagnostic completed; converged=True
+[01:31:24] [INFO] 
+[01:31:24] [INFO] ================================================================================
+[01:31:24] [INFO]    Starting step_03_02_independent_mcmc
+[01:31:24] [INFO] ================================================================================
+[01:31:24] [INFO] 
+[01:31:25] [PROCESS] Running mixed-model MCMC with 64 walkers, 20000 steps, burn-in 5000
+[01:44:22] [SUCCESS] MCMC diagnostic completed; converged=True

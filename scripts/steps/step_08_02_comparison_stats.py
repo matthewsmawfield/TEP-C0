@@ -24,12 +24,14 @@ from c0_common import (
     write_json,
 )
 
+from c0_common import load_model_comparison
+
 STEP_ID = "step_08_02_comparison_stats"
 SOURCE_STEP = "step_03_01_three_model_comparison"
 
 
 def _parameter_count(model_payload: dict) -> int:
-    return len(model_payload.get("parameters_mle", {}))
+    return model_payload.get("k", len(model_payload.get("parameters_mle", {})))
 
 
 def run() -> dict:
@@ -38,11 +40,7 @@ def run() -> dict:
     print_status(f"Starting {STEP_ID}", "TITLE")
     ensure_dirs()
 
-    source_path = step_json_path(SOURCE_STEP)
-    if not source_path.exists():
-        raise FileNotFoundError(f"{SOURCE_STEP} results not found: {source_path}")
-
-    source = read_json(source_path)
+    source = load_model_comparison()
     n_data = source.get("data", {}).get("n_supernovae", source.get("n_supernovae"))
     if not n_data:
         raise RuntimeError(f"{SOURCE_STEP} did not report data.n_supernovae")
@@ -80,11 +78,12 @@ def run() -> dict:
 
     source_validation = source.get("validation", {})
     # research_grade_model_comparison flag. A model comparison is research grade
-    # if it uses real data, maintains strict provenance, and achieves MCMC convergence,
+    # if it uses real data, maintains strict provenance, and verifies its integration method,
     # regardless of whether the TEP model 'wins' or 'loses'.
     source_research_grade = (
         source_validation.get("research_grade_provenance") == True
-        and source_validation.get("mcmc_converged") == True
+        and (source_validation.get("evidence_numerically_verified") == True
+             or source_validation.get("mcmc_converged") == True)
         and evidence_available
     )
     blockers = [] if source_research_grade else source_validation.get("blockers", [
@@ -94,10 +93,12 @@ def run() -> dict:
     payload = {
         "step": STEP_ID,
         "source_step": SOURCE_STEP,
+        "source_file": source["source_file"],
         "model_statistics": rows,
         "validation": {
             "aic_bic_available": True,
-            "nested_sampling_evidence_available": evidence_available,
+            "bayesian_evidence_available": evidence_available,
+            "evidence_methods": {k: v.get("method") for k,v in source["models"].items()},
             "research_grade_model_comparison": source_research_grade,
             "claim_gate": "open" if source_research_grade else "blocked",
             "blockers": blockers if evidence_available else [

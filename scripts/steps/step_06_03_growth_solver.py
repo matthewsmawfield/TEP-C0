@@ -28,6 +28,7 @@ if str(TEP_CLASS_BUILD) not in sys.path:
     sys.path.insert(0, str(TEP_CLASS_BUILD))
 
 from c0_common import (
+    load_model_comparison,
     TEPLogger, ensure_dirs, print_status, read_json, 
     rounded, set_step_logger, step_json_path, step_csv_path, 
     write_csv, write_json
@@ -66,7 +67,11 @@ def compute_growth_class(Om0, epsilon_T=0.1, z_T=3.0, use_tep=False):
         params['tep_mode'] = 1
         params['tep_epsilon_T'] = epsilon_T
         params['tep_z_T'] = z_T
-        params['tep_n_T'] = 1.0
+        params['tep_n_T'] = 2.0
+        # Omega_Lambda=0 makes the no-Lambda branch explicit; under tep_mode
+        # an unset Omega_Lambda would be filled with curvature to close the
+        # budget anyway, so this only documents the convention.
+        params['Omega_Lambda'] = 0.0
     
     cosmo = Class()
     cosmo.set(params)
@@ -116,7 +121,7 @@ def run():
     print_status(f"Starting {STEP_ID}", "TITLE")
     ensure_dirs()
 
-    step022 = read_json(step_json_path("step_03_01_three_model_comparison"))
+    step022 = load_model_comparison()
     m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m1 = step022['models'][m1_key]['parameters_mle']
     Om0 = 1.0  # M1_NoLambda is matter-only (no Lambda); Om0 is fixed, not fitted
@@ -132,7 +137,7 @@ def run():
     class_available = False
     try:
         lcdm_results = compute_growth_class(0.3, use_tep=False)
-        tep_results = compute_growth_class(Om0, epsilon_T=epsilon_T, use_tep=True)
+        tep_results = compute_growth_class(Om0, epsilon_T=epsilon_T, z_T=5.0, use_tep=True)
         class_available = lcdm_results is not None and tep_results is not None
     except Exception as e:
         print_status(f"CLASS computation failed: {e}", "WARNING")

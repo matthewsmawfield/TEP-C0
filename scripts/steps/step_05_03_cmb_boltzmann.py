@@ -15,6 +15,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from c0_common import (
+    load_model_comparison,
     TEPLogger,
     ensure_dirs,
     print_status,
@@ -31,10 +32,7 @@ STEP_ID = "step_05_03_cmb_boltzmann"
 
 
 def load_step022() -> dict:
-    path = step_json_path("step_03_01_three_model_comparison")
-    if not path.exists():
-        raise FileNotFoundError("step_022 required")
-    return read_json(path)
+    return load_model_comparison()
 
 
 def load_joint_fit_constraint(parameter: str) -> dict:
@@ -69,7 +67,7 @@ def run() -> dict:
     cmb_run = resolve_cmb(
         epsilon_t=epsilon_t,
         z_t=z_t,
-        n_t=1.0,  # Power-law index, fixed in the joint chain
+        n_t=2.0,  # Canonical suppression exponent, fixed at 2.0 in the joint chain
         lmax=lmax,
     )
 
@@ -96,7 +94,7 @@ def run() -> dict:
             "tep_epsilon_T_source": "step_03_05_analyze_cobaya joint Pantheon+ + Planck TTTEEE posterior mean",
             "tep_z_T": rounded(z_t, 4),
             "tep_z_T_source": "step_03_05_analyze_cobaya joint posterior mean (unconstrained; spectrum insensitive at epsilon_T ~ 0)",
-            "tep_n_T": 1.0,
+            "tep_n_T": 2.0,
             "lmax": lmax,
         },
         "cmb_results": {

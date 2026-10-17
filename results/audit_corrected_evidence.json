@@ -1,0 +1,232 @@
+{
+  "description": "Audit rerun of step_03_01 evidence under corrected conventions",
+  "nlive": 500,
+  "dlogz": 0.1,
+  "configs": {
+    "corrected": {
+      "redshift_column": "zHD",
+      "n_T": 2.0,
+      "subsets": {
+        "full": {
+          "M0a_LCDM": {
+            "model": "corrected/full/M0a",
+            "n_sne": 1701,
+            "mle": {
+              "Om0": 0.3612049791988382,
+              "M": -19.33935146362162
+            },
+            "chi2_mle": 1752.518378513913,
+            "logZ": 751.8184305034058,
+            "logZ_err": 0.15929172905929515,
+            "ncall": 105619,
+            "runtime_s": 48.1
+          },
+          "M1_zT5": {
+            "model": "corrected/full/M1_zT5",
+            "n_sne": 1701,
+            "mle": {
+              "epsilon_shear_los": 0.8735737701811535,
+              "M": -19.331609913021715
+            },
+            "chi2_mle": 1749.068559637546,
+            "logZ": 753.2724368971462,
+            "logZ_err": 0.16180469809197556,
+            "ncall": 108969,
+            "runtime_s": 50.4
+          },
+          "M1_free_zT": {
+            "model": "corrected/full/M1_free_zT",
+            "n_sne": 1701,
+            "mle": {
+              "epsilon_shear_los": 0.8647554811810026,
+              "z_T": 73.7054889740632,
+              "M": -19.33074711312447
+            },
+            "chi2_mle": 1749.2177429920841,
+            "logZ": 752.9377201997022,
+            "logZ_err": 0.16356425398574398,
+            "ncall": 114982,
+            "runtime_s": 48.7
+          },
+          "BF_M1_zT5_vs_M0a": 4.280228490246799,
+          "dlnZ": 1.4540063937404284,
+          "delta_chi2_mle": -3.4498188763668622,
+          "BF_M1_free_zT_vs_M0a": 3.0626779989758726
+        },
+        "z_gt_0.023": {
+          "M0a_LCDM": {
+            "model": "corrected/z_gt_0.023/M0a",
+            "n_sne": 1371,
+            "mle": {
+              "Om0": 0.3272008181608322,
+              "M": -19.35645647365693
+            },
+            "chi2_mle": 1210.039762103122,
+            "logZ": 760.5917270391536,
+            "logZ_err": 0.15878380118933347,
+            "ncall": 104070,
+            "runtime_s": 32.9
+          },
+          "M1_zT5": {
+            "model": "corrected/z_gt_0.023/M1_zT5",
+            "n_sne": 1371,
+            "mle": {
+              "epsilon_shear_los": 0.9511486571449469,
+              "M": -19.35075945120664
+            },
+            "chi2_mle": 1210.9881510652726,
+            "logZ": 760.1719528638984,
+            "logZ_err": 0.15814581453912036,
+            "ncall": 103643,
+            "runtime_s": 31.9
+          },
+          "BF_M1_zT5_vs_M0a": 0.657195214000326,
+          "dlnZ": -0.41977417525527017,
+          "delta_chi2_mle": 0.9483889621506023
+        },
+        "no_calibrators": {
+          "M0a_LCDM": {
+            "model": "corrected/no_calibrators/M0a",
+            "n_sne": 1624,
+            "mle": {
+              "Om0": 0.3333185529810186,
+              "M": -19.352212103704495
+            },
+            "chi2_mle": 1456.9751284122265,
+            "logZ": 813.0318590139968,
+            "logZ_err": 0.15879449555483957,
+            "ncall": 106118,
+            "runtime_s": 44.5
+          },
+          "M1_zT5": {
+            "model": "corrected/no_calibrators/M1_zT5",
+            "n_sne": 1624,
+            "mle": {
+              "epsilon_shear_los": 0.9368192963500559,
+              "M": -19.346242104424068
+            },
+            "chi2_mle": 1456.5581381223856,
+            "logZ": 813.1874563527523,
+            "logZ_err": 0.15937521489213277,
+            "ncall": 106813,
+            "runtime_s": 47.0
+          },
+          "BF_M1_zT5_vs_M0a": 1.1683556568180087,
+          "dlnZ": 0.1555973387554559,
+          "delta_chi2_mle": -0.41699028984089637
+        }
+      }
+    },
+    "zcmb_iso": {
+      "redshift_column": "zCMB",
+      "n_T": 2.0,
+      "subsets": {
+        "full": {
+          "M0a_LCDM": {
+            "model": "zcmb_iso/full/M0a",
+            "n_sne": 1701,
+            "mle": {
+              "Om0": 0.38093496411581507,
+              "M": -19.324050612383857
+            },
+            "chi2_mle": 1989.002626426613,
+            "logZ": 633.6341234558098,
+            "logZ_err": 0.15882939971050938,
+            "ncall": 105070,
+            "runtime_s": 48.6
+          },
+          "M1_zT5": {
+            "model": "zcmb_iso/full/M1_zT5",
+            "n_sne": 1701,
+            "mle": {
+              "epsilon_shear_los": 0.8310676146259415,
+              "M": -19.315244340822353
+            },
+            "chi2_mle": 1981.786914170908,
+            "logZ": 636.8237283433302,
+            "logZ_err": 0.16230425080277328,
+            "ncall": 109081,
+            "runtime_s": 52.7
+          },
+          "BF_M1_zT5_vs_M0a": 24.278832677933245,
+          "dlnZ": 3.1896048875204315,
+          "delta_chi2_mle": -7.215712255705057
+        }
+      }
+    },
+    "nt1_iso": {
+      "redshift_column": "zHD",
+      "n_T": 1.0,
+      "subsets": {
+        "full": {
+          "M0a_LCDM": {
+            "model": "nt1_iso/full/M0a",
+            "n_sne": 1701,
+            "mle": {
+              "Om0": 0.3612049791988382,
+              "M": -19.33935146362162
+            },
+            "chi2_mle": 1752.518378513913,
+            "logZ": 751.6825524653373,
+            "logZ_err": 0.160563457319661,
+            "ncall": 107491,
+            "runtime_s": 50.5
+          },
+          "M1_zT5": {
+            "model": "nt1_iso/full/M1_zT5",
+            "n_sne": 1701,
+            "mle": {
+              "epsilon_shear_los": 0.941247719865647,
+              "M": -19.33609346470508
+            },
+            "chi2_mle": 1751.1086015335934,
+            "logZ": 752.4100040934318,
+            "logZ_err": 0.16032368068719902,
+            "ncall": 106980,
+            "runtime_s": 49.7
+          },
+          "BF_M1_zT5_vs_M0a": 2.0697992628254993,
+          "dlnZ": 0.7274516280945136,
+          "delta_chi2_mle": -1.4097769803195206
+        }
+      }
+    },
+    "legacy": {
+      "redshift_column": "zCMB",
+      "n_T": 1.0,
+      "subsets": {
+        "full": {
+          "M0a_LCDM": {
+            "model": "legacy/full/M0a",
+            "n_sne": 1701,
+            "mle": {
+              "Om0": 0.38093496411581507,
+              "M": -19.324050612383857
+            },
+            "chi2_mle": 1989.002626426613,
+            "logZ": 633.5159832072451,
+            "logZ_err": 0.15984376168119005,
+            "ncall": 105836,
+            "runtime_s": 55.3
+          },
+          "M1_zT5": {
+            "model": "legacy/full/M1_zT5",
+            "n_sne": 1701,
+            "mle": {
+              "epsilon_shear_los": 0.893997611380551,
+              "M": -19.31928282232876
+            },
+            "chi2_mle": 1985.6160709340415,
+            "logZ": 635.2624290574809,
+            "logZ_err": 0.15912972007197698,
+            "ncall": 106568,
+            "runtime_s": 49.4
+          },
+          "BF_M1_zT5_vs_M0a": 5.734186259254619,
+          "dlnZ": 1.746445850235773,
+          "delta_chi2_mle": -3.3865554925714605
+        }
+      }
+    }
+  }
+}

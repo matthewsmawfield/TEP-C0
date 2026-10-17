@@ -1,0 +1,30 @@
+scripts/verify_environment_profile_fit.py:26: RuntimeWarning: divide by zero encountered in matmul
+  eps=theta[0];w=np.exp(theta[1:]@coords)
+scripts/verify_environment_profile_fit.py:26: RuntimeWarning: overflow encountered in matmul
+  eps=theta[0];w=np.exp(theta[1:]@coords)
+scripts/verify_environment_profile_fit.py:26: RuntimeWarning: invalid value encountered in matmul
+  eps=theta[0];w=np.exp(theta[1:]@coords)
+scripts/verify_environment_profile_fit.py:48: RuntimeWarning: divide by zero encountered in matmul
+  w=np.exp(best.x[1:]@coords);direct=fit.chi2_given_w(best.x[0],M,w)
+scripts/verify_environment_profile_fit.py:48: RuntimeWarning: overflow encountered in matmul
+  w=np.exp(best.x[1:]@coords);direct=fit.chi2_given_w(best.x[0],M,w)
+scripts/verify_environment_profile_fit.py:48: RuntimeWarning: invalid value encountered in matmul
+  w=np.exp(best.x[1:]@coords);direct=fit.chi2_given_w(best.x[0],M,w)
+quality {'chi2': 1727.1268087821813, 'parameters': [0.872061109684388, 0.3059236775433784, 0.25926811779128084, 0.04536034019057959, -19.329244544467148], 'success': True, 'message': 'CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH', 'analytic_gradient_relative_error': 1.5402667621159246e-08, 'direct_likelihood_error': 2.1373125491663814e-11, 'n_starts': 16, 'n_successful_starts': 16}
+environment_quality {'chi2': 1717.9965926221582, 'parameters': [0.8708190674872169, 0.2807859053074618, -0.21834417634152176, 0.2978128992650977, 0.2922704883281602, 0.04720180410883572, -19.32886113993643], 'success': True, 'message': 'CONVERGENCE: REL_REDUCTION_OF_F_<=_FACTR*EPSMCH', 'analytic_gradient_relative_error': 1.5402667621159246e-08, 'direct_likelihood_error': 2.0463630789890885e-11, 'n_starts': 16, 'n_successful_starts': 16}
+Gain 9.13021616002311
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_survey_offsets.py:19: RuntimeWarning: divide by zero encountered in matmul
+  nuisance=solve_triangular(R,Q.T@residual,lower=False,check_finite=False)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_survey_offsets.py:19: RuntimeWarning: overflow encountered in matmul
+  nuisance=solve_triangular(R,Q.T@residual,lower=False,check_finite=False)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_survey_offsets.py:19: RuntimeWarning: invalid value encountered in matmul
+  nuisance=solve_triangular(R,Q.T@residual,lower=False,check_finite=False)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_survey_offsets.py:24: RuntimeWarning: divide by zero encountered in matmul
+  white=residual-white_design@nuisance
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_survey_offsets.py:24: RuntimeWarning: overflow encountered in matmul
+  white=residual-white_design@nuisance
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/verify_environment_survey_offsets.py:24: RuntimeWarning: invalid value encountered in matmul
+  white=residual-white_design@nuisance
+quality {'chi2': 1663.621670068631, 'parameters': [0.7159900803319336, 0.708845799435701, 0.30854321913824595, 0.2557446903714873], 'intercept': -19.330789114844066, 'survey_offsets': [0.08304840445705876, 0.01489542288199209, 0.0032622046208903126, 0.054736760522197246, 0.01391066853943446, 0.07055597316403073, 0.06310826189666754, 0.03605827637079516, 0.013424671314567278, -0.045430425026507126, -0.05920391510812377, 0.033242536206344875, -0.011802520250584729, 0.011387830822256244, 0.09157116313580738, 0.27426847804473775, 0.08560444755654872, 0.13813673919149666, -0.006269644516788768], 'success': True, 'gradient_relative_error': 4.129203213274098e-08, 'n_starts': 8}
+environment_quality {'chi2': 1656.6187942033298, 'parameters': [0.7134132401206889, 0.21578967178307917, -0.26503136182342263, 0.6859783443250597, 0.34211736292846634, 0.24952609079168336], 'intercept': -19.33030559801008, 'survey_offsets': [0.08198489936578802, 0.0144561620030419, 0.005088563998469947, 0.055090386902520445, 0.013970711922890532, 0.07065226164501306, 0.06319881901006882, 0.0356512314395596, 0.013232046238135052, -0.04516841135968018, -0.05951150276660893, 0.033277097906885336, -0.011756589539282668, 0.011348488058186536, 0.09027570433947583, 0.2686619930600089, 0.08728797104114558, 0.13778652673498115, -0.005812205036103439], 'success': True, 'gradient_relative_error': 3.4759929528422055e-08, 'n_starts': 8}
+Gain 7.002875865301121

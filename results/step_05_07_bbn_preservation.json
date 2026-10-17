@@ -87,7 +87,7 @@
     "H0_tep": 70.0,
     "Sigma_0": 0.0,
     "early_microphysical_coupling": 0.0,
-    "epsilon_T": 0.0,
+    "epsilon_T": 0.869947,
     "eta": "6.10e-10"
   },
   "posterior_fits": {
@@ -102,30 +102,30 @@
     "delta_chi2_lcdm_minus_naive_extrapolation": 0.0,
     "delta_chi2_lcdm_minus_tep": 0.0,
     "lcdm_chi2": {
-      "chi2": 0.0,
+      "chi2": 25.527422625820634,
       "chi2_terms": {
-        "D_H": 0.0,
-        "He3_H": 0.0,
-        "Li7_H": 0.0,
-        "Y_p": 0.0
+        "D_H": 0.28320224719101256,
+        "He3_H": 0.03453076923076927,
+        "Li7_H": 24.674291379310354,
+        "Y_p": 0.5353982300884993
       }
     },
     "tep_chi2": {
-      "chi2": 0.0,
+      "chi2": 25.527422625820634,
       "chi2_terms": {
-        "D_H": 0.0,
-        "He3_H": 0.0,
-        "Li7_H": 0.0,
-        "Y_p": 0.0
+        "D_H": 0.28320224719101256,
+        "He3_H": 0.03453076923076927,
+        "Li7_H": 24.674291379310354,
+        "Y_p": 0.5353982300884993
       }
     },
     "tep_naive_lowz_extrapolation_chi2": {
-      "chi2": 0.0,
+      "chi2": 25.527422625820634,
       "chi2_terms": {
-        "D_H": 0.0,
-        "He3_H": 0.0,
-        "Li7_H": 0.0,
-        "Y_p": 0.0
+        "D_H": 0.28320224719101256,
+        "He3_H": 0.03453076923076927,
+        "Li7_H": 24.674291379310354,
+        "Y_p": 0.5353982300884993
       }
     }
   },
@@ -146,7 +146,7 @@
   "tier": "NetworkResolver",
   "validation": {
     "abundance_covariance_active": true,
-    "bbn_lithium_tension_present": false,
+    "bbn_lithium_tension_present": true,
     "bbn_working": true,
     "blockers": [],
     "claim_gate": "open",

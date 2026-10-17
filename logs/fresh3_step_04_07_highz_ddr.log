@@ -1,0 +1,14 @@
+[TITLE] Starting step_04_07_highz_ddr
+[INFO] Loaded 3 high-z constraints
+[INFO] Using model D_L for z=2.33: D_L=18077 Mpc (η_TEP=0.926)
+[INFO] z=2.330: η = 0.926 ± 0.096 (TEP pred: 0.926)
+[INFO] Using model D_L for z=2.33: D_L=18101 Mpc (η_TEP=0.926)
+[INFO] z=2.334: η = 0.926 ± 0.096 (TEP pred: 0.926)
+[INFO] Using model D_L for z=2.23: D_L=16693 Mpc (η_TEP=0.923)
+[INFO] z=2.225: η = 0.923 ± 0.105 (TEP pred: 0.923)
+[INFO] TEP prediction at z=2.5: η = 0.931
+[INFO] ΛCDM prediction at z=2.5: η = 1.000
+[INFO] η at max z (2.33): 0.926 ± 0.096
+[INFO] Deviation from unity: -0.074σ
+[INFO] Consistent with unity: True
+[SUCCESS] Step step_04_07_highz_ddr completed

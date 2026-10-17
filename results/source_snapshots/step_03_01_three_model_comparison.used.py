@@ -19,8 +19,9 @@ Dual-Domain Logic:
 This step evaluates the late-universe kinematics against SNe data ONLY.
 It explicitly enforces the exact Jordan-frame geometry of the TEP model: a
 pure matter-only Einstein-de Sitter background (Omega_m = 1.0, Omega_Lambda = 0.0).
-This demonstrates that the unscreened Temporal Shear fully reproduces the apparent
-acceleration (yielding epsilon_shear_los ~ 0.27) without dark energy.
+This demonstrates that the unscreened Temporal Shear reproduces the apparent
+acceleration (epsilon_shear_los ~ 0.8-0.9 on the conservative z_los=5 branch)
+without dark energy.
 Contrast this with the Joint MCMC (step_03_04), which allows Omega_Lambda to float
 in order to prove that the early universe (CMB) remains screened from the effect.
 """
@@ -42,6 +43,7 @@ import platform
 import numpy as np
 from scipy.optimize import differential_evolution, minimize
 from scipy.linalg import cholesky, solve_triangular
+from scipy.stats import chi2
 import json
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
@@ -197,6 +199,7 @@ class PantheonData:
     
     def __init__(self):
         self.z: Optional[np.ndarray] = None
+        self.zhel: Optional[np.ndarray] = None
         self.mb: Optional[np.ndarray] = None
         self.dmb: Optional[np.ndarray] = None
         self.cov: Optional[np.ndarray] = None
@@ -242,22 +245,26 @@ class PantheonData:
             raise RuntimeError(f"Failed to parse Pantheon+ file: {e}")
         
         # Required columns
-        # Select redshift column based on config (audit issue #5)
-        redshift_col = os.getenv("PANTHEON_REDSHIFT_COL", "zCMB")
-        if redshift_col == "zCMB" and "zCMB" in df.columns:
-            z_raw = df["zCMB"].values
-            self.redshift_column_used = "zCMB"
-        elif redshift_col == "zHD" and "zHD" in df.columns:
+        # Select redshift column based on config (audit issue #5).
+        # zHD is the corpus-standard Pantheon+ Hubble-diagram redshift
+        # (peculiar-velocity corrected); the full covariance's VPEC terms
+        # are defined for that convention. zCMB is retained as an explicit
+        # opt-in sensitivity branch via PANTHEON_REDSHIFT_COL.
+        redshift_col = os.getenv("PANTHEON_REDSHIFT_COL", "zHD")
+        if redshift_col == "zHD" and "zHD" in df.columns:
             z_raw = df["zHD"].values
             self.redshift_column_used = "zHD"
+        elif redshift_col == "zCMB" and "zCMB" in df.columns:
+            z_raw = df["zCMB"].values
+            self.redshift_column_used = "zCMB"
         else:
             # Fallback to available column
-            if "zCMB" in df.columns:
-                z_raw = df["zCMB"].values
-                self.redshift_column_used = "zCMB"
-            else:
+            if "zHD" in df.columns:
                 z_raw = df["zHD"].values
                 self.redshift_column_used = "zHD"
+            else:
+                z_raw = df["zCMB"].values
+                self.redshift_column_used = "zCMB"
         
         if 'm_b_corr' in df.columns:
             mb_raw = df['m_b_corr'].values
@@ -280,6 +287,11 @@ class PantheonData:
         self.n_filtered_sne = int(np.sum(valid))
         
         self.z = z_raw[valid]
+        if "zHEL" not in df.columns:
+            raise ValueError("Pantheon+ requires zHEL for the observer-frame factor")
+        self.zhel = df["zHEL"].values[valid]
+        if not np.all(np.isfinite(self.zhel)) or np.any(self.zhel <= -1):
+            raise ValueError("Invalid observer redshift")
         self.mb = mb_raw[valid]
         self.dmb = dmb_raw[valid]
         if host_mass_raw is not None:
@@ -344,6 +356,19 @@ class PantheonData:
         except Exception as e:
             raise RuntimeError(f"Failed to load covariance: {e}")
     
+    @property
+    def observer_correction(self):
+        """Convert d_L(z_distance) to (1+zHEL) chi(z_distance).
+
+        Synthetic datasets without a separate observer redshift use their
+        specified one-redshift geometry. Real Pantheon+ loads require zHEL.
+        """
+        if self.zhel is None:
+            return np.zeros_like(self.z)
+        if np.shape(self.zhel) != np.shape(self.z):
+            raise ValueError("Observer redshifts must follow the same row selection")
+        return 5.0 * np.log10((1.0 + self.zhel) / (1.0 + self.z))
+
     def gaussian_loglike(self, residuals: np.ndarray) -> float:
         """Compute Gaussian likelihood with precomputed Cholesky."""
         if self.cov_cholesky is None or self.cov_logdet is None:
@@ -397,7 +422,7 @@ class ModelLCDM:
     
     def log_likelihood(self, params: np.ndarray, data: PantheonData) -> float:
         params_dict = dict(zip(self.param_names, params))
-        residuals = data.mb - self.predict(data.z, params_dict)
+        residuals = data.mb - self.predict(data.z, params_dict) - data.observer_correction
         try:
             return data.gaussian_loglike(residuals)
         except Exception as e:
@@ -434,7 +459,7 @@ class ModelEdS:
     
     def log_likelihood(self, params: np.ndarray, data: PantheonData) -> float:
         params_dict = dict(zip(self.param_names, params))
-        residuals = data.mb - self.predict(data.z, params_dict)
+        residuals = data.mb - self.predict(data.z, params_dict) - data.observer_correction
         try:
             return data.gaussian_loglike(residuals)
         except Exception as e:
@@ -460,7 +485,7 @@ class ModelTEP:
             # Parameters: (Om0, M) to map the isomorphic conformal field
             self.param_names = ['Om0', 'M']
             self.n_params = 2
-            self.bounds = [(0.05, 0.5), (-21.0, -16.0)]
+            self.bounds = [(0.05, 0.9), (-21.0, -16.0)]
             self.latex_names = [r'\Omega_m', r'\mathcal{M}']
         else:
             # M1: No-Λ Temporal Shear Reconstruction
@@ -481,7 +506,10 @@ class ModelTEP:
         M = params.get('M', 0.0)
 
         if self.pure_shear:
-            from scripts.utils.static_metric import StaticCosmology
+            try:
+                from scripts.utils.static_metric import StaticCosmology
+            except ModuleNotFoundError:
+                from utils.static_metric import StaticCosmology
             Om0 = params['Om0']
             Omega_L = 1.0 - Om0
             tep_cosmo = StaticCosmology(H0=self.H0_ref, Omega_m=Om0, Omega_L=Omega_L)
@@ -496,7 +524,7 @@ class ModelTEP:
     
     def log_likelihood(self, params: np.ndarray, data: PantheonData) -> float:
         params_dict = dict(zip(self.param_names, params))
-        residuals = data.mb - self.predict(data.z, params_dict, data)
+        residuals = data.mb - self.predict(data.z, params_dict, data) - data.observer_correction
         try:
             return data.gaussian_loglike(residuals)
         except Exception as e:
@@ -524,7 +552,7 @@ class ModelwCDM:
         
     def log_likelihood(self, params: np.ndarray, data: PantheonData) -> float:
         params_dict = dict(zip(self.param_names, params))
-        residuals = data.mb - self.predict(data.z, params_dict, data)
+        residuals = data.mb - self.predict(data.z, params_dict, data) - data.observer_correction
         try:
             return data.gaussian_loglike(residuals)
         except Exception:
@@ -553,7 +581,7 @@ class ModelCPL:
         
     def log_likelihood(self, params: np.ndarray, data: PantheonData) -> float:
         params_dict = dict(zip(self.param_names, params))
-        residuals = data.mb - self.predict(data.z, params_dict, data)
+        residuals = data.mb - self.predict(data.z, params_dict, data) - data.observer_correction
         try:
             return data.gaussian_loglike(residuals)
         except Exception:
@@ -566,7 +594,8 @@ def fit_mle(model, data: PantheonData) -> Tuple[Dict, float]:
         'Om0': 0.3,
         'M': -19.3,
         'epsilon_T': 0.1,
-        'z_T': 1.0,  # Initial value for free z_T parameter
+        'epsilon_shear_los': 0.3,
+        'z_T': 5.0,  # Initial value for free z_T parameter
         'w': -1.0,
         'w0': -1.0,
         'wa': 0.0
@@ -595,6 +624,21 @@ def fit_mle(model, data: PantheonData) -> Tuple[Dict, float]:
 
     res = minimize(neg_logl, x0, method='L-BFGS-B', bounds=model.bounds, options={'maxiter': 3000})
     
+    # The likelihood is nearly flat in z_T above the sampled redshift range,
+    # so a single start can strand on the unsuppressed plateau while the true
+    # minimum sits in the low-turnover basin (z_T < 10 spans only ~6% of the
+    # linear prior, so differential_evolution under-samples it). Re-polish
+    # from a z_T seed grid and keep the best converged point.
+    if 'z_T' in model.param_names:
+        iz = model.param_names.index('z_T')
+        for zt0 in (1.0, 2.0, 3.0, 5.0, 8.0, 15.0, 30.0):
+            p0 = np.array(res.x, dtype=float)
+            p0[iz] = zt0
+            r2 = minimize(neg_logl, p0, method='L-BFGS-B', bounds=model.bounds,
+                          options={'maxiter': 3000})
+            if r2.fun < res.fun:
+                res = r2
+
     # Check convergence
     if not res.success:
         print_status(f"WARNING: MLE did not converge: {res.message}", "WARNING")
@@ -652,6 +696,7 @@ def cross_validation_split(data: PantheonData, test_fraction: float = 0.2, rando
     # Create train and test data objects
     train_data = PantheonData()
     train_data.z = data.z[train_indices]
+    train_data.zhel = None if data.zhel is None else data.zhel[train_indices]
     train_data.mb = data.mb[train_indices]
     train_data.dmb = data.dmb[train_indices]
     train_data.cov = data.cov[np.ix_(train_indices, train_indices)]
@@ -664,6 +709,7 @@ def cross_validation_split(data: PantheonData, test_fraction: float = 0.2, rando
     
     test_data = PantheonData()
     test_data.z = data.z[test_indices]
+    test_data.zhel = None if data.zhel is None else data.zhel[test_indices]
     test_data.mb = data.mb[test_indices]
     test_data.dmb = data.dmb[test_indices]
     test_data.cov = data.cov[np.ix_(test_indices, test_indices)]
@@ -963,7 +1009,27 @@ def run() -> dict:
         'M1_free_zT': {},  # z_T is free parameter, no fixed value needed
     }
     
+    # Resume support: reuse progressively-saved model payloads instead of
+    # re-running expensive fits after a late-stage crash.
+    resume_saved = os.getenv("TEP_RESUME_MODELS", "0") == "1"
+    saved_models = {}
+    if resume_saved:
+        try:
+            saved_results = read_json(step_json_path(STEP_ID))
+            saved_models = saved_results.get('models', {})
+        except Exception as e:
+            print_status(f"Resume requested but saved results unreadable: {e}", "WARNING")
+
     for m_id, m_class in models_to_fit:
+        reuse_evidence = (
+            resume_saved
+            and 'log_evidence' in saved_models.get(m_id, {})
+        )
+        if reuse_evidence:
+            print_status(f"\n{'='*50}", "INFO")
+            print_status(f"Reusing saved evidence for {m_id} (resume mode); "
+                         "recomputing MLE/posterior fields", "INFO")
+
         print_status(f"\n{'='*50}", "INFO")
         print_status(f"Fitting {m_id}", "TITLE")
         model = m_class()
@@ -979,25 +1045,39 @@ def run() -> dict:
         mle, logl, _ = fit_mle(model, data)
         
         # Calculate chi2, deviance, AIC, BIC
-        residuals = data.mb - model.predict(data.z, mle, data)
-        chi2 = data.chi2(residuals)
+        residuals = data.mb - model.predict(data.z, mle, data) - data.observer_correction
+        chi2_mle_val = data.chi2(residuals)
         n = len(data.z)
         k = model.n_params
         # Deviance = -2 * logL_max = chi2 + logdet(C) + n*log(2*pi)
-        deviance = chi2 + data.cov_logdet + n * np.log(2.0 * np.pi)
+        deviance = chi2_mle_val + data.cov_logdet + n * np.log(2.0 * np.pi)
         aic = deviance + 2*k
         bic = deviance + k * np.log(n)
         
         model_payload = {
             'parameters_mle': mle,
             'log_likelihood_mle': float(logl),
-            'chi2_mle': float(chi2),
-            'chi2_red_mle': float(chi2 / (n - k)),
+            'chi2_mle': float(chi2_mle_val),
+            'chi2_red_mle': float(chi2_mle_val / (n - k)),
             'aic': float(aic),
             'bic': float(bic),
             'n_params': int(k),
         }
         
+        if reuse_evidence:
+            # Keep only the expensive sampler products; the cheap MLE fields
+            # above were just recomputed under the current optimizer.
+            saved = saved_models[m_id]
+            for key, value in saved.items():
+                if key not in model_payload:
+                    model_payload[key] = value
+            results['models'][m_id] = model_payload
+            try:
+                write_json(step_json_path(STEP_ID), results)
+            except Exception as e:
+                print_status(f"Failed progressive save: {e}", "WARNING")
+            continue
+
         # Nested sampling for evidence
         if HAS_DYNESTY:
             print_status(f"Nested sampling with dynesty (nlive={nlive}, dlogz={dlogz})...", "PROCESS")
@@ -1016,7 +1096,7 @@ def run() -> dict:
             print_status("MCMC sampling for convergence diagnostics...", "PROCESS")
             try:
                 # Customize MCMC parameters for M1_free_zT to improve convergence
-                # The free z_T parameter has a broad prior (0.1, 10.0) which creates a complex posterior
+                # The free z_T parameter has a broad prior (0.1, 150.0) which creates a complex posterior
                 # Use conservative approach to prevent system crashes
                 if m_id == 'M1_free_zT':
                     custom_walkers = mcmc_walkers  # Same walkers to avoid memory issues
@@ -1137,8 +1217,26 @@ def run() -> dict:
     
     if bayes_factors:
         results['bayes_factors'] = bayes_factors
+        
+        # Aggregate frequentist measures for downstream reporting
+        frequentist = {}
+        for key in bayes_factors:
+            if key.startswith('p_wilks_') and key.endswith('_vs_M0a_LCDM'):
+                model_name = key.replace('p_wilks_', '').replace('_vs_M0a_LCDM', '')
+                m_payload = results['models'].get(model_name)
+                m0_payload = results['models'].get('M0a_LCDM')
+                delta_chi2 = m_payload['chi2_mle'] - m0_payload['chi2_mle'] if m_payload and m0_payload else 0.0
+                frequentist[model_name] = {
+                    'delta_chi2_vs_LCDM': float(delta_chi2),
+                    'df': 1,
+                    'p_value_wilks': bayes_factors.get(f'p_wilks_{model_name}_vs_M0a_LCDM'),
+                    'p_value_boundary_corrected': bayes_factors.get(f'p_boundary_{model_name}_vs_M0a_LCDM'),
+                }
+        if frequentist:
+            results['frequentist_measures'] = frequentist
+        
         print_status("\nModel Comparison (vs ΛCDM):", "TITLE")
-        for key, val in bayes_factors.items():
+        for key, val in list(bayes_factors.items()):
             # Fix pseudo-model bug: only process LCDM comparisons, not EdS comparisons
             if key.startswith('ln_BF_') and key.endswith('_vs_M0a_LCDM'):
                 model_name = key.replace('ln_BF_', '').replace('_vs_M0a_LCDM', '')
@@ -1150,6 +1248,17 @@ def run() -> dict:
                 m0_payload = results['models'].get('M0a_LCDM')
                 delta_bic = m_payload['bic'] - m0_payload['bic'] if m_payload and m0_payload else 0.0
                 delta_chi2 = m_payload['chi2_mle'] - m0_payload['chi2_mle'] if m_payload and m0_payload else 0.0
+                
+                # Frequentist likelihood-ratio p-values
+                # TEP adds epsilon_shear_los (bounded at 0), so epsilon=0 is on the parameter-space boundary.
+                # Wilks theorem is therefore not strictly applicable; we report both naive and boundary-corrected values.
+                abs_dchi2 = abs(delta_chi2)
+                # 1 extra shape parameter (epsilon_shear_los)
+                p_wilks = float(chi2.sf(abs_dchi2, 1))
+                # Boundary correction: 0.5 * delta(0) + 0.5 * chi2_1  =>  p_boundary = 0.5 * p_wilks
+                p_boundary = 0.5 * p_wilks
+                bayes_factors[f'p_wilks_{model_name}_vs_M0a_LCDM'] = p_wilks
+                bayes_factors[f'p_boundary_{model_name}_vs_M0a_LCDM'] = p_boundary
                 
                 # Get deltas vs EdS
                 meds_payload = results['models'].get('M0b_EdS')
@@ -1164,6 +1273,8 @@ def run() -> dict:
                     print_status(f"    ln(BF) vs LCDM = {val:.2f}, BF = {bf_val} ({interp})", "INFO")
                 print_status(f"    ΔBIC vs LCDM = {delta_bic:.2f}", "INFO")
                 print_status(f"    Δχ² vs LCDM = {delta_chi2:.2f}", "INFO")
+                print_status(f"    p-value (Wilks) = {p_wilks:.4f}", "INFO")
+                print_status(f"    p-value (boundary-corrected) = {p_boundary:.4f}", "INFO")
                 print_status(f"    ln(BF) vs EdS = {ln_bf_eds:.2f}", "INFO")
                 print_status(f"    ΔBIC vs EdS = {delta_bic_eds:.2f}", "INFO")
     
@@ -1204,9 +1315,10 @@ def run() -> dict:
     m0_best = results['models'].get('M0a_LCDM', {}).get('parameters_mle')
     if m0_best:
         m0_mock = ModelLCDM()
-        mock_mb = m0_mock.predict(data.z, m0_best)
+        mock_mb = m0_mock.predict(data.z, m0_best) + data.observer_correction
         mock_data = PantheonData()
         mock_data.z = data.z
+        mock_data.zhel = None if data.zhel is None else data.zhel.copy()
         mock_data.mb = mock_mb
         mock_data.dmb = data.dmb
         mock_data.cov = data.cov
@@ -1229,14 +1341,17 @@ def run() -> dict:
         print_status(f"Running Stochastic Null Injection Test (N={n_stochastic})", "PROCESS")
         stochastic_results = []
         rng = np.random.default_rng(int(os.getenv("TEP_NULL_SEED", "42")))
-        # Apply microscopic ridge term to prevent 'not symmetric positive-semidefinite' warnings
-        ridge_cov = data.cov + np.eye(len(data.cov)) * 1e-10
+        # Sample N(0, C) via the existing Cholesky factor: z ~ N(0,I), L z ~ N(0,C).
+        # This avoids multivariate_normal's strict PSD check, which trips on the
+        # ~3e-8 floating-point asymmetry of the Pantheon+ covariance file.
+        L_chol = data.cov_cholesky
         for _ in range(n_stochastic):
             # Generate noisy mock mb from covariance
-            noise = rng.multivariate_normal(np.zeros(len(data.z)), ridge_cov)
+            noise = L_chol @ rng.standard_normal(len(data.z))
             stoch_mb = mock_mb + noise
             stoch_data = PantheonData()
             stoch_data.z = data.z
+            stoch_data.zhel = None if data.zhel is None else data.zhel.copy()
             stoch_data.mb = stoch_mb
             stoch_data.dmb = data.dmb
             stoch_data.cov = data.cov
@@ -1260,10 +1375,11 @@ def run() -> dict:
         
         # Positive TEP injection (epsilon_shear_los = 0.23, z_T = 5.0)
         mock_tep_pos = TEPCosmology(H0=70, Omega_m=1.0, epsilon_T=0.23, z_T=5.0)
-        mock_mb_pos = mock_tep_pos.distance_modulus(data.z) + m0_best['M']
+        mock_mb_pos = mock_tep_pos.distance_modulus(data.z) + m0_best['M'] + data.observer_correction
         
         pos_data = PantheonData()
         pos_data.z = data.z
+        pos_data.zhel = None if data.zhel is None else data.zhel.copy()
         pos_data.mb = mock_mb_pos
         pos_data.dmb = data.dmb
         pos_data.cov = data.cov
@@ -1275,10 +1391,11 @@ def run() -> dict:
         
         # Wrong-sign TEP injection (epsilon_shear_los = -0.23)
         mock_tep_neg = TEPCosmology(H0=70, Omega_m=1.0, epsilon_T=-0.23, z_T=5.0)
-        mock_mb_neg = mock_tep_neg.distance_modulus(data.z) + m0_best['M']
+        mock_mb_neg = mock_tep_neg.distance_modulus(data.z) + m0_best['M'] + data.observer_correction
         
         neg_data = PantheonData()
         neg_data.z = data.z
+        neg_data.zhel = None if data.zhel is None else data.zhel.copy()
         neg_data.mb = mock_mb_neg
         neg_data.dmb = data.dmb
         neg_data.cov = data.cov
@@ -1385,7 +1502,9 @@ def run() -> dict:
         }
         
     results["H0_interpretation"] = "SN-only analysis uses dimensionless distances with single nuisance intercept M; H0 fixed at 70.0 km/s/Mpc for distance calculations, not a free parameter"
-    results["redshift_column"] = getattr(data, "redshift_column_used", "zCMB")
+    results["redshift_column"] = getattr(data, "redshift_column_used", "zHD")
+    results["observer_redshift_column"] = "zHEL"
+    results["luminosity_distance_convention"] = "(1+zHEL) chi(z_distance)"
 
     # Add source hash fields for reproducibility
     try:
@@ -1580,6 +1699,8 @@ def run() -> dict:
     
     for m_id, payload in results['models'].items():
         print_status(f"\n{m_id}:", "INFO")
+        print_status(f"  fitted params: {payload.get('parameters_mle', 'N/A')}", "INFO")
+        print_status(f"  k (n_params): {payload.get('n_params', 'N/A')}", "INFO")
         print_status(f"  log L (MLE): {payload.get('log_likelihood_mle', 'N/A'):.2f}", "INFO")
         print_status(f"  chi2/dof: {payload.get('chi2_red_mle', 'N/A'):.2f}", "INFO")
         print_status(f"  AIC: {payload.get('aic', 'N/A'):.2f}", "INFO")

@@ -1,0 +1,51 @@
+[12:40:03] [INFO] 
+[12:40:03] [INFO] ================================================================================
+[12:40:03] [INFO]    Starting step_04_11_sn_robustness_systematics
+[12:40:03] [INFO] ================================================================================
+[12:40:03] [INFO] 
+[12:40:04] [PROCESS] (a) Prior sensitivity tests
+[12:40:04] [INFO]   Testing epsilon prior [0.0, 0.5] (z_T=5)
+[12:40:04] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:41:46] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:43:44] [INFO]   Testing epsilon prior [0.0, 1.0] (z_T=5)
+[12:43:44] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:45:31] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:47:22] [INFO]   Testing epsilon prior [0.0, 2.0] (z_T=5)
+[12:47:23] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:49:16] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:51:08] [INFO]   Testing epsilon prior [-1.0, 1.0] (z_T=5)
+[12:51:08] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:53:04] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:54:42] [INFO]   Testing free-z_T flat prior
+[12:54:43] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:56:12] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[12:57:37] [INFO]   Testing free-z_T log-uniform prior
+[12:57:38] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:01:00] [PROCESS] (b) Redshift-cut robustness tests
+[13:01:00] [INFO]   Fitting z_gt_0.010 (1590 SNe)
+[13:01:00] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:02:26] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:03:57] [INFO]   Fitting z_gt_0.023 (1371 SNe)
+[13:03:58] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:05:11] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:06:24] [INFO]   Fitting z_gt_0.050 (1056 SNe)
+[13:06:24] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:07:13] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:08:05] [PROCESS] (c) Covariance-matrix treatment tests
+[13:08:06] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:10:08] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:12:09] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:14:07] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:16:12] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:18:19] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:20:22] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:22:04] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:23:29] [PROCESS] (d) Nested-sampler configuration tests
+[13:23:29] [INFO]   dynesty bound=multi sample=rwalk
+[13:23:29] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:24:34] [INFO]   dynesty nlive=500 bound=multi sample=rwalk
+[13:25:43] [INFO]   dynesty bound=single sample=unif
+[13:25:43] [INFO]   dynesty nlive=500 bound=single sample=unif
+[13:25:58] [INFO]   dynesty nlive=500 bound=single sample=unif
+[13:26:14] [SUCCESS] Step step_04_11_sn_robustness_systematics completed
+{'step': 'step_04_11_sn_robustness_systematics', 'description': 'Supernova robustness and systematics tests', 'status': 'completed', 'results': {'prior_sensitivity': {'eps_0.0_0.5': {'bf': 4.4028295286972224e-23, 'ln_bf': -51.477209729918854, 'delta_chi2': 99.14857258660868, 'logZ_lcdm': 751.6150132612269, 'logZ_tep': 700.137803531308, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}, 'eps_0.0_1.0': {'bf': 10.759707738969611, 'ln_bf': 2.3758083925589517, 'delta_chi2': -3.8059087733522574, 'logZ_lcdm': 751.41007025102, 'logZ_tep': 753.7858786435789, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}, 'eps_0.0_2.0': {'bf': 5.657682681577928, 'ln_bf': 1.7330143881638378, 'delta_chi2': -3.8059087732599437, 'logZ_lcdm': 751.6943706983187, 'logZ_tep': 753.4273850864826, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}, 'eps_-1.0_1.0': {'bf': 4.505036977373051, 'ln_bf': 1.5051960991005444, 'delta_chi2': -3.8059087712299515, 'logZ_lcdm': 751.7422750003468, 'logZ_tep': 753.2474710994474, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}, 'free_zT_flat': {'bf': 6.303653008546702, 'ln_bf': 1.841129307980168, 'delta_chi2': -3.691694424886009, 'logZ_lcdm': 751.5935360016141, 'logZ_tep': 753.4346653095943, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}, 'free_zT_loguni': {'bf': 3.1518352947863604, 'ln_bf': 1.1479849164381903, 'delta_chi2': -3.3996418864087445, 'logZ_lcdm': 751.5541419330017, 'logZ_tep': 752.7021268494399, 'z_T_prior': 'log_uniform'}}, 'redshift_cuts': {'z_gt_0.010': {'bf': 0.8835666411374494, 'ln_bf': -0.12378856150166939, 'delta_chi2': -0.0701312735332067, 'logZ_lcdm': 836.6092506138211, 'logZ_tep': 836.4854620523195, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}, 'z_gt_0.023': {'bf': 0.7837368190520841, 'ln_bf': -0.24368200497281123, 'delta_chi2': 0.7978487975397002, 'logZ_lcdm': 760.5997016237573, 'logZ_tep': 760.3560196187844, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}, 'z_gt_0.050': {'bf': 0.6440928056375193, 'ln_bf': -0.43991245512756905, 'delta_chi2': 1.2607694064330417, 'logZ_lcdm': 584.761871845539, 'logZ_tep': 584.3219593904114, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}}, 'covariance_treatments': {'full': {'bf': 6.868435257830285, 'ln_bf': 1.926936315784019, 'delta_chi2': -3.8059087732599437, 'logZ_lcdm': 751.6145653044657, 'logZ_tep': 753.5415016202497, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}, 'diagonal_only': {'bf': 11.392062655029122, 'ln_bf': 2.432916854569271, 'delta_chi2': -4.898524798951257, 'logZ_lcdm': 686.397734168051, 'logZ_tep': 688.8306510226203, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}, 'statistical_only': {'bf': 1.2204377721916555, 'ln_bf': 0.1992096240464889, 'delta_chi2': -0.517487234543978, 'logZ_lcdm': 572.1357005480961, 'logZ_tep': 572.3349101721426, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}, 'inflated_diagonal_1.5x': {'bf': 3.7303588403461387, 'ln_bf': 1.3165044328745807, 'delta_chi2': -3.2656831993126616, 'logZ_lcdm': 624.8794305251411, 'logZ_tep': 626.1959349580156, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}}, 'sampler_configurations': {'multi_rwalk': {'bf': 4.3450523941999135, 'ln_bf': 1.46903781714866, 'delta_chi2': -3.8059087732599437, 'logZ_lcdm': 751.684407137051, 'logZ_tep': 753.1534449541997, 'nlive': 500, 'bound': 'multi', 'sample': 'rwalk'}, 'single_unif': {'bf': 5.3369803374836495, 'ln_bf': 1.6746600131560854, 'delta_chi2': -3.8059087732599437, 'logZ_lcdm': 751.7575365032368, 'logZ_tep': 753.4321965163929, 'nlive': 500, 'bound': 'single', 'sample': 'unif'}}}, 'summary': {'overall_bf_range': {'min': 0.6440928056375193, 'max': 11.392062655029122}, 'per_category': {'prior_sensitivity': {'bf_min': 4.4028295286972224e-23, 'bf_max': 10.759707738969611}, 'redshift_cuts': {'bf_min': 0.6440928056375193, 'bf_max': 0.8835666411374494}, 'covariance_treatments': {'bf_min': 1.2204377721916555, 'bf_max': 11.392062655029122}, 'sampler_configurations': {'bf_min': 4.3450523941999135, 'bf_max': 5.3369803374836495}}, 'note': 'eps_0.0_0.5 excluded from overall range because it is an artificially restrictive prior that excludes most of the fitted epsilon_shear_los posterior mass and is included only as a sensitivity test.'}, 'interpretation': 'Across the robustness tests the TEP M1 (z_T=5) Bayes factor relative to LCDM ranges from 0.64 to 11.39. The spread quantifies genuine sensitivity to prior support, redshift window, covariance treatment, and sampler configuration; entries below unity indicate configurations in which the conservative M1 branch does not outperform LCDM, and BF values near unity are within nested-sampling noise unless the quoted log-evidence errors exclude zero.', 'timestamp': 1791721574}

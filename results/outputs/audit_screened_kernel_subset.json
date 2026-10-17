@@ -1,0 +1,35 @@
+{
+  "z_cut": 0.023,
+  "n_subset": 1371,
+  "n_calibrators_kept": 0,
+  "n_missing_mass": 1,
+  "nlive": 500,
+  "models": {
+    "M0a_LCDM": {
+      "logZ": -613.8932516248925,
+      "logZ_err": 0.14393404695933473
+    },
+    "E0_uniform": {
+      "logZ": -614.530286293055,
+      "logZ_err": 0.14560793341010292,
+      "BF_vs_LCDM": 0.528858341640924
+    },
+    "E3_logistic_depth_gate": {
+      "logZ": -618.0707397050385,
+      "logZ_err": 0.16845045489294683,
+      "BF_vs_LCDM": 0.015336984496870262
+    },
+    "E4_locked_SA_prediction": {
+      "logZ": -635.2074680479199,
+      "logZ_err": 0.1453352328668327,
+      "BF_vs_LCDM": 5.538005993029359e-10
+    }
+  },
+  "summary": {
+    "BF_uniform_vs_LCDM": 0.528858341640924,
+    "BF_logistic_vs_LCDM": 0.015336984496870262,
+    "BF_locked_vs_LCDM": 5.538005993029359e-10,
+    "BF_logistic_vs_uniform": 0.029000175073883066,
+    "BF_locked_vs_uniform": 1.0471624548543978e-09
+  }
+}

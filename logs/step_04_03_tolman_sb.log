@@ -1,12 +1,18 @@
-[09:56:33] [INFO] 
-[09:56:33] [INFO] ================================================================================
-[09:56:33] [INFO]    Starting step_04_03_tolman_sb
-[09:56:33] [INFO] ================================================================================
-[09:56:33] [INFO] 
-[09:56:33] [INFO] Using TEP parameters: H0=70.00, Sigma_0 (epsilon_T)=0.825581
-[09:56:33] [INFO] Loaded 48 surface brightness measurements
-[09:56:33] [INFO] Tolman index: 3.375 ± 0.027 (LCDM expects 4.0)
-[09:56:33] [INFO] Δχ² (LCDM - TEP) = -1972.45
-[09:56:33] [INFO] TEP preferred: False
-[09:56:33] [WARNING] Research grade: False
-[09:56:33] [SUCCESS] Step step_04_03_tolman_sb completed
+[01:11:33] [INFO] 
+[01:11:33] [INFO] ================================================================================
+[01:11:33] [INFO]    Starting step_04_03_tolman_sb
+[01:11:33] [INFO] ================================================================================
+[01:11:33] [INFO] 
+[01:11:33] [INFO] Using TEP parameters: H0=70.00, Sigma_0 (epsilon_T)=0.018000
+[01:11:33] [INFO]   (Using acoustic-sector epsilon_T for background Tolman test)
+[01:11:33] [INFO] Loaded 48 surface brightness measurements
+[01:11:33] [INFO] Tolman index: 3.375 ± 0.027 (LCDM expects 4.0)
+[01:11:33] [INFO]   Data redshift trend: n = 3.675 + -1.027*z (slope < 0)
+[01:11:33] [INFO]   TEP predicted trend: slope ≈ 0.000 (n ≈ 4.0 (flat))
+[01:11:33] [INFO]   Low-z (z<0.3) mean n: 3.650
+[01:11:33] [INFO]   High-z (z>0.5) mean n: 2.843
+[01:11:33] [INFO]   K-correction systematic uncertainty: ±0.5 mag
+[01:11:33] [INFO] Δχ² (LCDM - TEP) = -30.85
+[01:11:33] [INFO] TEP preferred: False
+[01:11:33] [SUCCESS] Research grade: True
+[01:11:33] [SUCCESS] Step step_04_03_tolman_sb completed

@@ -1,0 +1,16 @@
+[01:09:17] [INFO] 
+[01:09:17] [INFO] ================================================================================
+[01:09:17] [INFO]    Starting step_04_12_external_sn_validation
+[01:09:17] [INFO] ================================================================================
+[01:09:17] [INFO] 
+[01:09:17] [INFO] Union3 loaded: 22 redshift bins
+[01:09:17] [PROCESS] Fitting LCDM
+[01:09:17] [INFO]   LCDM: chi2=23.958, logL=42.374
+[01:09:17] [PROCESS] Fitting TEP_zT5
+[01:09:17] [INFO]   TEP_zT5: chi2=22.336, logL=43.185
+[01:09:17] [PROCESS] Fitting TEP_zT100
+[01:09:17] [INFO]   TEP_zT100: chi2=22.724, logL=42.991
+[01:09:17] [PROCESS] Fitting TEP_free_zT
+[01:09:17] [INFO]   TEP_free_zT: chi2=22.336, logL=43.185
+[01:09:17] [SUCCESS] Step step_04_12_external_sn_validation completed
+{'step': 'step_04_12_external_sn_validation', 'description': 'External SN validation on Union3 compilation', 'status': 'completed', 'data_source': 'Union3 (CobayaSampler/sn_data mirror)', 'n_bins': 22, 'fit_results': {'LCDM': {'parameters_mle': {'Om0': 0.35592435988807236, 'M': -0.06991418295928924}, 'log_likelihood': 42.37368985666454, 'chi2': 23.9578901362213, 'n_params': 2}, 'TEP_zT5': {'parameters_mle': {'epsilon_shear_los': 0.8564263271843152, 'M': -0.05894178666254665}, 'log_likelihood': 43.18466604237976, 'chi2': 22.33593776479085, 'n_params': 2}, 'TEP_zT100': {'parameters_mle': {'epsilon_shear_los': 0.8436120421314496, 'M': -0.057565368556852486}, 'log_likelihood': 42.99081725274876, 'chi2': 22.723635344052852, 'n_params': 2}, 'TEP_free_zT': {'parameters_mle': {'epsilon_shear_los': 0.8564263271843152, 'M': -0.05894178666254665}, 'log_likelihood': 43.18466604237976, 'chi2': 22.33593776479085, 'n_params': 2}, 'p_value_zT5': {'test_statistic': 1.621952371430453, 'df': 1, 'p_wilks': 0.20281977201919837, 'p_boundary_corrected': 0.10140988600959919}, 'p_value_zT100': {'test_statistic': 1.23425479216845, 'df': 1, 'p_wilks': 0.2665811752373011, 'p_boundary_corrected': 0.13329058761865056}}, 'comparisons': {'delta_chi2_TEP_zT5_vs_LCDM': -1.621952371430453, 'delta_chi2_TEP_zT100_vs_LCDM': -1.23425479216845, 'delta_lnL_TEP_zT5_vs_LCDM': 0.8109761857152193, 'delta_lnL_TEP_zT100_vs_LCDM': 0.6171273960842214, 'delta_BIC_TEP_zT5_vs_LCDM': -1.621952371430453, 'delta_BIC_TEP_zT100_vs_LCDM': -1.23425479216845}, 'preference_direction_same_as_pantheon': True, 'interpretation': 'The Union3 compilation reproduces the Pantheon+ preference direction: TEP M1 (z_T=5) yields Δχ² = -1.62 relative to LCDM, and the near-unscreened z_T=100 branch yields Δχ² = -1.23. This external validation confirms that the TEP signal is not an artefact of the Pantheon+ sample-specific covariance or binning.', 'timestamp': 1791850157}

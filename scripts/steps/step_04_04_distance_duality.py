@@ -38,6 +38,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 import numpy as np
 from core.cosmology import CosmologyFLRW, C_KMS
 from c0_common import RAW_DIR, TEPLogger, ensure_dirs, print_status, read_json, rounded, set_step_logger, step_csv_path, step_json_path, write_csv, write_json
+from c0_common import load_model_comparison
 
 STEP_ID = "step_04_04_distance_duality"
 
@@ -49,10 +50,7 @@ def load_step022_results() -> dict:
     The observational DDR constraints (from step_023b) are independent of step_022 parameters
     (they use Planck 2018 cosmology for D_L computation), ensuring no circular dependency.
     """
-    results_file = step_json_path("step_03_01_three_model_comparison")
-    if not results_file.exists():
-        raise FileNotFoundError("step_022 results not found. Run step_022 first.")
-    return read_json(results_file)
+    return load_model_comparison()
 
 
 def load_step023b_results() -> dict:

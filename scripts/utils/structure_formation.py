@@ -207,7 +207,7 @@ class StructureFormation:
         Sigma_0: float = 0.0,
         epsilon_T: float = 0.0,
         z_T: float = 5.0,
-        n_T: float = 1.0,
+        n_T: float = 2.0,
         Om0: float = None,  # Alias for Omega_m (backward compatibility)
     ):
         self.H0 = H0

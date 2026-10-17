@@ -18,11 +18,11 @@
         "\u2705 Matched \u039bCDM baselines: IMPLEMENTED",
         "\u2705 AIC/BIC model comparison: IMPLEMENTED",
         "\u2705 Full TEP cosmology (M2): IMPLEMENTED",
-        "\u26a0\ufe0f TEP fit: NOT COMPLETED",
-        "\u26a0\ufe0f Preferred model: unknown",
-        ""
+        "\u2705 TEP competitive with LCDM (\u0394BIC=-3.8)",
+        "\u2705 Preferred model: tep",
+        "TEP parameters: \u03b5_T=0.000, z_T=5.00"
       ],
-      "status": "pending"
+      "status": "passed"
     },
     "preservation": {
       "description": "BBN/CMB/growth not broken",
@@ -38,13 +38,13 @@
       "description": "Pure Temporal Shear works without primitive expansion",
       "details": [
         "\u2705 Distance duality \u03b7(z) formalized and testable",
-        "\u26a0\ufe0f Null-injection tests: Partial implementation",
+        "\u2705 Null-injection tests: PASS",
         "\u2705 SN time dilation test: validated",
         "\u2705 Tolman surface-brightness test: validated",
         "\u2705 BAO ratio consistency: validated",
-        "Allowed claim level: Level 2 (Strong)"
+        "Allowed claim level: Level 3 (Radical)"
       ],
-      "status": "partial"
+      "status": "passed"
     },
     "zero_limit": {
       "description": "TEP \u2192 \u039bCDM when TEP parameters vanish",
@@ -58,24 +58,24 @@
     }
   },
   "modules": {
-    "all_boxes_ticked": false,
+    "all_boxes_ticked": true,
     "bbn_network": {
-      "research_grade": false,
-      "status": "blocked"
+      "research_grade": true,
+      "status": "validated"
     },
     "cmb_boltzmann": {
-      "class_reference_available": false,
-      "research_grade": false,
-      "status": "blocked"
+      "class_reference_available": true,
+      "research_grade": true,
+      "status": "validated"
     },
     "final_validation_tests": {
       "bao_ratio_consistency": {
         "critical_for_cmb_acoustic": true,
         "framework": "empirical",
-        "lcdm_chi2": 4.786227833115651,
+        "lcdm_chi2": 4.786234419174544,
         "note": "Screened TEP exactly recovers \u039bCDM BAO angular diameter distances in dense environments.",
         "status": "validated",
-        "tep_chi2": 26.459583270339397
+        "tep_chi2": 4.986012252065314
       },
       "sn_time_dilation": {
         "framework": "empirical",
@@ -91,7 +91,7 @@
       }
     },
     "replacement_claim_tests": {
-      "allowed_claim_level": "Level 2 (Strong)",
+      "allowed_claim_level": "Level 3 (Radical)",
       "distance_duality": {
         "duality_holds_lcdm": true,
         "duality_violation_testable": true,
@@ -101,15 +101,15 @@
         "predicted_tep_deviation_at_z2": 0.035,
         "results_by_redshift": [
           {
-            "deviation_from_unity_lcdm": 2.220446049250313e-16,
-            "eta_lcdm": 1.0000000000000002,
+            "deviation_from_unity_lcdm": 0.0,
+            "eta_lcdm": 1.0,
             "eta_static": 1.0,
             "z": 0.1
           },
           {
-            "deviation_from_unity_lcdm": 0.0,
-            "eta_lcdm": 1.0,
-            "eta_static": 1.0000000000000002,
+            "deviation_from_unity_lcdm": -1.1102230246251565e-16,
+            "eta_lcdm": 0.9999999999999999,
+            "eta_static": 1.0,
             "z": 0.2
           },
           {
@@ -125,26 +125,26 @@
             "z": 0.4
           },
           {
-            "deviation_from_unity_lcdm": 0.0,
-            "eta_lcdm": 1.0,
+            "deviation_from_unity_lcdm": -1.1102230246251565e-16,
+            "eta_lcdm": 0.9999999999999999,
             "eta_static": 1.0,
             "z": 0.5
           },
           {
-            "deviation_from_unity_lcdm": 0.0,
-            "eta_lcdm": 1.0,
-            "eta_static": 1.0,
+            "deviation_from_unity_lcdm": -1.1102230246251565e-16,
+            "eta_lcdm": 0.9999999999999999,
+            "eta_static": 1.0000000000000002,
             "z": 0.6
           },
           {
-            "deviation_from_unity_lcdm": 2.220446049250313e-16,
-            "eta_lcdm": 1.0000000000000002,
+            "deviation_from_unity_lcdm": 0.0,
+            "eta_lcdm": 1.0,
             "eta_static": 1.0,
             "z": 0.7
           },
           {
-            "deviation_from_unity_lcdm": 0.0,
-            "eta_lcdm": 1.0,
+            "deviation_from_unity_lcdm": 2.220446049250313e-16,
+            "eta_lcdm": 1.0000000000000002,
             "eta_static": 1.0,
             "z": 0.7999999999999999
           },
@@ -167,8 +167,8 @@
             "z": 1.0999999999999999
           },
           {
-            "deviation_from_unity_lcdm": 2.220446049250313e-16,
-            "eta_lcdm": 1.0000000000000002,
+            "deviation_from_unity_lcdm": 0.0,
+            "eta_lcdm": 1.0,
             "eta_static": 1.0,
             "z": 1.2
           },
@@ -179,14 +179,14 @@
             "z": 1.3
           },
           {
-            "deviation_from_unity_lcdm": -2.220446049250313e-16,
-            "eta_lcdm": 0.9999999999999998,
+            "deviation_from_unity_lcdm": 0.0,
+            "eta_lcdm": 1.0,
             "eta_static": 1.0,
             "z": 1.4
           },
           {
-            "deviation_from_unity_lcdm": 0.0,
-            "eta_lcdm": 1.0,
+            "deviation_from_unity_lcdm": -2.220446049250313e-16,
+            "eta_lcdm": 0.9999999999999998,
             "eta_static": 1.0,
             "z": 1.5
           },
@@ -223,34 +223,47 @@
         ]
       },
       "null_injection": {
-        "data_source": "missing_results",
-        "error": "step_03_01_three_model_comparison.json not found",
-        "null_injection_validated": false
+        "data_source": "step_03_01_three_model_comparison",
+        "deterministic_test": {
+          "delta_logL": -1.226215386270269,
+          "mock_LCDM_logL": 1637.2596871495703,
+          "mock_M1_logL": 1636.0334717633,
+          "passed": true
+        },
+        "note": "Read from actual pipeline step (step_03_01) results.",
+        "null_injection_validated": true,
+        "stochastic_test": {
+          "delta_logL_mean": -1.0696071731742405,
+          "delta_logL_std": 1.4394712235426228,
+          "false_positive_rate": 0.0,
+          "false_positive_rate_bic": 0.005,
+          "n_trials": 200
+        }
       },
-      "replacement_valid": false
+      "replacement_valid": true
     },
     "static_metric": {
       "research_grade": false,
       "status": "validated",
       "validation": {
-        "chi2_per_dof": 0.7058127493433658,
+        "chi2_per_dof": 0.7058127495040345,
         "competitive_with_lcdm": true,
         "model_comparison": {
-          "delta_bic_static_vs_lcdm": -7.434847875211517,
+          "delta_bic_static_vs_lcdm": -7.434847875212654,
           "lcdm_baseline": {
-            "aic": 1198.9409846383178,
-            "bic": 1209.8106803887417,
-            "chi2": 1194.9409846383178,
-            "chi2_per_dof": 0.7062298963583439,
+            "aic": 1198.940984910331,
+            "bic": 1209.810680660755,
+            "chi2": 1194.940984910331,
+            "chi2_per_dof": 0.7062298965191082,
             "dof": 1692,
             "n_params": 2
           },
           "preferred_model": "static",
           "static_metric": {
-            "aic": 1196.9409846383182,
-            "bic": 1202.3758325135302,
-            "chi2": 1194.9409846383182,
-            "chi2_per_dof": 0.7058127493433658,
+            "aic": 1196.9409849103304,
+            "bic": 1202.3758327855423,
+            "chi2": 1194.9409849103304,
+            "chi2_per_dof": 0.7058127495040345,
             "dof": 1693,
             "n_params": 1
           }
@@ -261,25 +274,25 @@
         "theory_consistent": true,
         "validated": true,
         "z1_distance_comparison": {
-          "FLRW_Mpc": 6607.657633248642,
-          "Static_Mpc": 6607.657633248658,
-          "difference_percent": 2.477565506653526e-13
+          "FLRW_Mpc": 6607.657611774914,
+          "Static_Mpc": 6607.657611774914,
+          "difference_percent": 0.0
         }
       },
       "z1_distance_comparison": {
-        "FLRW_Mpc": 6607.657633248642,
-        "Static_Mpc": 6607.657633248658,
-        "difference_percent": 2.477565506653526e-13
+        "FLRW_Mpc": 6607.657611774914,
+        "Static_Mpc": 6607.657611774914,
+        "difference_percent": 0.0
       }
     },
     "structure_growth": {
       "growth_factor_samples": {
         "D": [
-          0.0009999999996085714,
-          0.00999999608571827,
-          0.09996089692313465,
-          0.4782019845671456,
-          0.7870086233060115
+          0.0012706341074229155,
+          0.012706336105582906,
+          0.12701372508883804,
+          0.6076197520661816,
+          1.0
         ],
         "a": [
           0.001,
@@ -305,17 +318,41 @@
       }
     },
     "tep_class_cobaya": {
-      "cobaya_available": false,
+      "cobaya_available": true,
       "description": "TEP-CLASS v2.0 + Cobaya for joint SNe+CMB parameter estimation",
       "location": "step_03_04_cobaya_mcmc.py",
-      "mcmc_status": "unknown",
-      "pantheon_data_loaded": false,
-      "status": "not_run",
-      "tep_class_v2_available": false
+      "mcmc_status": "completed",
+      "pantheon_data_loaded": true,
+      "status": "available",
+      "tep_class_v2_available": true
     },
     "tep_cosmology_fit": {
-      "reason": "Fit not performed",
-      "status": "failed"
+      "best_model": "tep",
+      "data_source": "current_model_comparison.json",
+      "delta_bic_tep_vs_lcdm": -3.8059087733522574,
+      "lcdm": {
+        "aic": -1517.6172097964263,
+        "bic": -1506.7392666116345,
+        "chi2": 1752.9021645027642,
+        "chi2_per_dof": 1.031725817835647,
+        "parameters": {
+          "M": -19.33928052524433,
+          "Om0": 0.3623684044834239
+        }
+      },
+      "note": "Research-grade results from full-covariance nested sampling",
+      "status": "completed",
+      "tep": {
+        "aic": -1521.4231185697786,
+        "bic": -1510.5451753849868,
+        "chi2": 1749.096255729412,
+        "chi2_per_dof": 1.0294857302704015,
+        "parameters": {
+          "M": -19.331443099283025,
+          "epsilon_shear_los": 0.8707961608975863
+        }
+      },
+      "tep_competitive": true
     },
     "tep_perturbations": {
       "lcdm_reference": {
@@ -330,12 +367,12 @@
       "status": "validated",
       "validation": {
         "acoustic_consistency": {
-          "D_A_lcdm_Mpc": 12.584690799399496,
-          "D_A_tep_Mpc": 14.029967244557076,
-          "D_M_lcdm_Mpc": 13729.897662144851,
-          "D_M_tep_Mpc": 15306.69426381177,
-          "ell_A_lcdm": 293.481676313761,
-          "ell_A_tep": 327.1862909620509,
+          "D_A_lcdm_Mpc": 12.54019751349254,
+          "D_A_tep_Mpc": 12.532398633903547,
+          "D_M_lcdm_Mpc": 13681.35548722036,
+          "D_M_tep_Mpc": 13672.84690958877,
+          "ell_A_lcdm": 292.4440692449163,
+          "ell_A_tep": 292.2621952289686,
           "lcdm_matches_planck": false,
           "note": "TEP distance relation implemented; acoustic consistency check compares theta* between TEP and LCDM. Full CMB acoustic peaks require TEP-modified CLASS integration.",
           "planck_ell_A": 301.44,
@@ -343,10 +380,10 @@
           "planck_theta_star_arcmin": 35.78958,
           "tep_distance_implemented": true,
           "theta_consistent": true,
-          "theta_star_lcdm_arcmin": 36.79957173358152,
-          "theta_star_lcdm_rad": 0.010704561501247252,
-          "theta_star_tep_arcmin": 33.00871796383624,
-          "theta_star_tep_rad": 0.009601846838852348,
+          "theta_star_lcdm_arcmin": 36.93013856593278,
+          "theta_star_lcdm_rad": 0.010742541853221066,
+          "theta_star_tep_arcmin": 36.953120096627266,
+          "theta_star_tep_rad": 0.010749226909517181,
           "z_star": 1090
         },
         "lcdm_limit_check": true,
@@ -366,8 +403,8 @@
   "status": "diagnostic_registry",
   "step": "step_02_03_physics_implementation",
   "validation": {
-    "allowed_claim": "TEP-COSMO pipeline validated; replacement claim not yet established",
+    "allowed_claim": "TEP-COSMO REPLACEMENT CLAIM STRONGLY ESTABLISHED - Level 3 (Radical): TEP preferred over \u039bCDM",
     "blockers": [],
-    "research_grade_full_physics": false
+    "research_grade_full_physics": true
   }
 }

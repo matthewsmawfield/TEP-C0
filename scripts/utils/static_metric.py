@@ -40,22 +40,10 @@ class StaticCosmology:
         
     def comoving_distance(self, z):
         """Physical path distance in true conformal isomorphic model."""
-        z_arr = np.atleast_1d(np.asarray(z, dtype=float))
-        c = 299792.458
-        
-        max_z = float(np.max(z_arr)) if z_arr.size > 0 else 0.0
-        if max_z <= 0.0:
-            distances = np.zeros_like(z_arr)
-            return float(distances[0]) if np.isscalar(z) else distances
-
-        # Vectorised trapezoidal integration on a fine redshift grid
-        from scipy.integrate import cumulative_trapezoid
-        grid = np.linspace(0.0, max_z, 2000)
-        integrand = 1.0 / np.sqrt(self.Omega_m * (1.0 + grid)**3 + self.Omega_L)
-        cumulative = cumulative_trapezoid(integrand, grid, initial=0.0)
-        
-        distances = np.interp(z_arr, grid, cumulative) * (c / self.H0)
-        return float(distances[0]) if np.isscalar(z) else distances
+        from core.cosmology import _integrated_distance
+        return _integrated_distance(
+            z, lambda grid: 299792.458 / self.H0 /
+            np.sqrt(self.Omega_m * (1.0 + grid)**3 + self.Omega_L))
 
     def angular_diameter_distance(self, z):
         """Angular diameter distance in static conformal metric."""

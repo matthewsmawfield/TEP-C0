@@ -10,6 +10,7 @@ from __future__ import annotations
 from pathlib import Path
 import numpy as np
 from c0_common import TEPLogger, ensure_dirs, print_status, read_json, rounded, set_step_logger, step_csv_path, step_json_path, write_csv, write_json
+from c0_common import load_model_comparison
 
 STEP_ID = "step_07_02_redshift_drift"
 
@@ -23,10 +24,7 @@ def load_step022_results() -> dict:
     This is a forward-propagating use of fitted parameters for generating falsifiable predictions.
     No circular dependency - forecasts are independent of the data used to fit the parameters.
     """
-    results_file = step_json_path("step_03_01_three_model_comparison")
-    if not results_file.exists():
-        raise FileNotFoundError("step_022 results not found. Run step_022 first.")
-    return read_json(results_file)
+    return load_model_comparison()
 
 
 def compute_redshift_drift_lcdm(z, H0, Om0=0.3, Ok0=0.0):
@@ -60,7 +58,11 @@ def run():
     # Dimensionless-distance models fix H0_ref = 70.0; Sigma_0 is an M2 parameter
     H0_lcdm = 70.0
     H0_tep = 70.0
-    Sigma_0 = float(m1.get('Sigma_0', 0.0))  # M1 has no Sigma_0
+    # The transport amplitude for the drift forecast is the SNe-fitted
+    # line-of-sight shear amplitude (epsilon_shear_los ~ 0.87). The old
+    # 'Sigma_0' key does not exist in the M1 parameter dict; reading it
+    # silently produced Sigma_0=0 (TEP = LCDM, a vacuous forecast).
+    Sigma_0 = float(m1.get('epsilon_shear_los', 0.0))
     A_env = m1.get('A_env', 0.1)
 
     z_grid = np.linspace(0.0, 3.0, 100)

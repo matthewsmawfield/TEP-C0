@@ -10,7 +10,7 @@
         "fs8_obs_err": 0.046,
         "fs8_tep": 0.437,
         "ref": "Huterer+2017",
-        "source": "TEP-HC hi_class",
+        "source": "TEP-HC hi_class (z=0.5 value is the interval-mean f x sigma8; no local f(z) output)",
         "z": 0.02
       },
       {
@@ -19,7 +19,7 @@
         "fs8_obs_err": 0.08,
         "fs8_tep": 0.43,
         "ref": "Howlett+2015",
-        "source": "TEP-HC hi_class",
+        "source": "TEP-HC hi_class (z=0.5 value is the interval-mean f x sigma8; no local f(z) output)",
         "z": 0.15
       },
       {
@@ -28,7 +28,7 @@
         "fs8_obs_err": 0.06,
         "fs8_tep": 0.413,
         "ref": "Blake+2011",
-        "source": "TEP-HC hi_class",
+        "source": "TEP-HC hi_class (z=0.5 value is the interval-mean f x sigma8; no local f(z) output)",
         "z": 0.38
       },
       {
@@ -37,7 +37,7 @@
         "fs8_obs_err": 0.06,
         "fs8_tep": 0.413,
         "ref": "Blake+2012",
-        "source": "TEP-HC hi_class",
+        "source": "TEP-HC hi_class (z=0.5 value is the interval-mean f x sigma8; no local f(z) output)",
         "z": 0.6
       },
       {
@@ -46,7 +46,7 @@
         "fs8_obs_err": 0.06,
         "fs8_tep": 0.413,
         "ref": "Pezzotta+2017",
-        "source": "TEP-HC hi_class",
+        "source": "TEP-HC hi_class (z=0.5 value is the interval-mean f x sigma8; no local f(z) output)",
         "z": 0.86
       }
     ],
@@ -56,46 +56,46 @@
   "growth_factor": [
     {
       "D_lcdm": 0.7693,
-      "D_tep": 0.7674,
-      "ratio": 0.9976,
+      "D_tep": 0.7676,
+      "ratio": 0.9978,
       "source": "TEP-HC hi_class",
       "z": 0.5
     }
   ],
   "parameters": {
-    "epsilon_T_dist": 0.0,
+    "epsilon_T_dist": 0.870796,
     "epsilon_tep_c0": 0.0,
     "gradient_screening": {
-      "g_char_z0_m_s2": "5.563e-12",
-      "g_t_m_s2": 1e-09,
+      "g_char_z0_m_s2": "7.057e-12",
+      "g_t_m_s2": 3.400464162104563e-10,
       "n": 2.0,
       "note": "Cosmic halos have g_char << g_t; f \u2248 1 (unscreened). Growth suppression is from \u03b1_M running in hi_class, not environmental screening.",
       "operator": "f(g) = [1 + (g/g_t)^n]^-1"
     },
-    "screening_factor": 0.999969,
+    "screening_factor": 0.99957,
     "screening_mode": "mean_field_gradient_screening_v3",
     "tep_hc_imported": true
   },
   "sigma_8": {
-    "deviation_percent_eds": 81.9,
+    "deviation_percent_eds": 82.0,
     "deviation_percent_gradient_screened": 1.5,
     "deviation_percent_hc": 1.5,
-    "deviation_percent_pb": 28.7,
+    "deviation_percent_pb": 1.3,
     "deviation_percent_unscreened": 1.5,
-    "deviation_sigma_eds": 91.12,
-    "deviation_sigma_gradient_screened": 1.67,
-    "deviation_sigma_hc": 1.67,
-    "deviation_sigma_pb": 31.96,
-    "deviation_sigma_unscreened": 1.67,
+    "deviation_sigma_eds": 91.17,
+    "deviation_sigma_gradient_screened": 1.65,
+    "deviation_sigma_hc": 1.7,
+    "deviation_sigma_pb": 1.49,
+    "deviation_sigma_unscreened": 1.7,
     "lcdm": 0.8229,
-    "note": "Authoritative growth result from TEP-HC (Paper 18) native hi_class with active SMG perturbations and Bellini-Sawicki mappings: \u03c3\u2088=0.8242 vs Planck 0.812\u00b10.007 (1.7\u03c3). C0 cross-check uses TEP-CLASS with \u03b5_T=0 (growth-appropriate) on Planck-baseline background. The EdS background (\u03a9_m=1.0) is a diagnostic, not the canonical TEP prediction \u2014 \u03c3\u2088=1.501 is correct for a matter-only universe. The previous pipeline bug used \u03b5_T=0.018 (acoustic diagnostic) and EdS as canonical, producing a spurious 94.4\u03c3 deviation.",
+    "note": "Native TEP-HC perturbations supply the separately reported authoritative value. C0 cross-checks use epsilon_T=0 on Planck-baseline and EdS backgrounds. The EdS result is a conditional diagnostic, not the canonical TEP prediction. The gradient-screened value is a separate mean-field envelope approximation.",
     "planck": 0.812,
     "planck_err": 0.0073,
-    "tep_canonical": 0.8242,
-    "tep_eds": 1.4772,
-    "tep_gradient_screened": 0.8242,
-    "tep_hc_authoritative": 0.8242,
-    "tep_planck_baseline": 1.0453
+    "tep_canonical": 0.8244,
+    "tep_eds": 1.4776,
+    "tep_gradient_screened": 0.824,
+    "tep_hc_authoritative": 0.8244,
+    "tep_planck_baseline": 0.8229
   },
   "status": "completed",
   "step": "step_06_04_growth_validation",

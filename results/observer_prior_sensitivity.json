@@ -1,0 +1,46 @@
+{
+  "observer_convention": "zHD integral with zHEL observer factor",
+  "fixed_turnover": 5.0,
+  "magnitude_prior": [
+    -21.0,
+    -16.0
+  ],
+  "controls": [
+    {
+      "amplitude_prior": [
+        0.0,
+        0.5
+      ],
+      "logZ": 699.94477832419,
+      "BF_vs_LCDM": 3.663651072072624e-23,
+      "relative_quadrature_error": 3.0808748554462166e-11
+    },
+    {
+      "amplitude_prior": [
+        0.0,
+        1.0
+      ],
+      "logZ": 754.0560593205737,
+      "BF_vs_LCDM": 11.591639069666472,
+      "relative_quadrature_error": 1.1102299563400218e-14
+    },
+    {
+      "amplitude_prior": [
+        0.0,
+        2.0
+      ],
+      "logZ": 753.3633267957046,
+      "BF_vs_LCDM": 5.798223302719792,
+      "relative_quadrature_error": 4.853721418809996e-10
+    },
+    {
+      "amplitude_prior": [
+        -1.0,
+        1.0
+      ],
+      "logZ": 753.3629121400137,
+      "BF_vs_LCDM": 5.795819534832895,
+      "relative_quadrature_error": 1.1102299563400218e-14
+    }
+  ]
+}

@@ -10,6 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import numpy as np
 import pandas as pd
 from c0_common import (
+    load_model_comparison,
     TEPLogger, ensure_dirs, print_status, read_json, 
     rounded, set_step_logger, step_json_path, step_csv_path, 
     write_csv, write_json, PROCESSED_DIR
@@ -23,7 +24,7 @@ def run():
     print_status(f"Starting {STEP_ID}", "TITLE")
     ensure_dirs()
 
-    step022 = read_json(step_json_path("step_03_01_three_model_comparison"))
+    step022 = load_model_comparison()
     m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     m1 = step022['models'][m1_key]['parameters_mle']
     H0 = 70.0  # Dimensionless-distance models fix H0_ref; no H0 parameter in fit

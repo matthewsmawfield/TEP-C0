@@ -10,7 +10,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+/lib/
 lib64/
 parts/
 sdist/
@@ -67,6 +67,11 @@ docs/_build/
 
 # Large MCMC output files
 results/outputs/*.txt
+results/outputs/**/*.txt
+data/raw/DESY5/covsys_*.txt
 
 .devin/
 manuscripts/
+
+# Editor workspace state
+*.code-workspace

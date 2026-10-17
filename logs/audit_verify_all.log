@@ -1,0 +1,19 @@
+[23:35:24] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] M0a_LCDM: chi2=1752.52 logZ=751.775 (65s)
+[23:36:28] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] M0b_EdS: chi2=2392.00 logZ=434.703 (58s)
+[23:37:26] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] M1_NoLambda_zT5: chi2=1749.07 logZ=753.429 (105s)
+[23:39:11] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] M1_NoLambda_zT1: chi2=1780.21 logZ=737.857 (104s)
+[23:40:55] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] M1_Unscreened_zT100: chi2=1749.22 logZ=753.258 (107s)
+[23:42:42] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] M1_free_zT: chi2=1749.22 logZ=753.527 (88s)
+[23:44:10] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] M2_PureShear: chi2=1752.52 logZ=751.641 (112s)
+[23:46:02] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] M3_wCDM: chi2=1748.46 logZ=752.602 (122s)
+[23:48:05] [PROCESS] Starting dynesty with nlive=500, dlogz=0.1
+[done] M4_CPL: chi2=1746.66 logZ=752.508 (135s)
+done

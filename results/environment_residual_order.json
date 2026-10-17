@@ -1,0 +1,48 @@
+{
+  "scope": "Residual-coordinate diagnostic; not a replacement for fitted G5/G8 likelihood or evidence",
+  "released_covariance_max_asymmetry": 3.0000000000038676e-08,
+  "covariance_convention": "Symmetric matrix represented by original lower triangle; unchanged original likelihood",
+  "original_cholesky_spearman": 0.06222005378803957,
+  "row_permutation_checks": [
+    {
+      "seed": 1,
+      "cholesky_bulk_spearman": 0.03879798164698267,
+      "chi2": 1749.0962557294215
+    },
+    {
+      "seed": 2,
+      "cholesky_bulk_spearman": 0.04933079008298281,
+      "chi2": 1749.0962557294213
+    },
+    {
+      "seed": 3,
+      "cholesky_bulk_spearman": 0.046885834384187565,
+      "chi2": 1749.0962557294217
+    },
+    {
+      "seed": 4,
+      "cholesky_bulk_spearman": 0.040967542530804375,
+      "chi2": 1749.0962557294215
+    },
+    {
+      "seed": 5,
+      "cholesky_bulk_spearman": 0.04705599515373531,
+      "chi2": 1749.096255729422
+    }
+  ],
+  "symmetric_whitening_spearman": 0.04395101260463367,
+  "symmetric_whitening_permutation_error": 2.0474177908624824e-12,
+  "physical_event_permutation_p": 0.23776223776223776,
+  "permutation_draws": 1000,
+  "null_metadata": {
+    "unit": "physical CID event block",
+    "stratification": "survey-composition x 20 redshift quantiles; depth additionally preserves measured-offset flags",
+    "n_events": 1543,
+    "n_ambient_events_permutable": 1466,
+    "n_depth_events_permutable": 1466,
+    "n_ambient_rows_permutable": 1556,
+    "n_depth_rows_permutable": 1556
+  },
+  "legacy_row_null_cholesky_p": 0.046511627906976744,
+  "legacy_row_null_symmetric_p": 0.15614617940199335
+}

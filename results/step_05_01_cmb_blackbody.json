@@ -1,11 +1,11 @@
 {
   "TEP_prediction": 2.725,
   "consistent_with_TEP": true,
-  "data_source": "Standard FIRAS spectrum",
+  "data_source": "FIRAS",
   "description": "CMB blackbody preservation under TEP",
-  "deviation_mK": 0.0,
-  "interpretation": "CMB temperature 2.725\u00b10.0 K consistent with TEP prediction",
+  "deviation_mK": 0.02,
+  "interpretation": "CMB temperature 2.725\u00b10.0006 K consistent with TEP prediction",
   "step": "step_05_01_cmb_blackbody",
-  "temperature_error": 0.0,
+  "temperature_error": 0.0006,
   "temperature_fit": 2.725
 }

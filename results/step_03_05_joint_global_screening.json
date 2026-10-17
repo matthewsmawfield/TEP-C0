@@ -1,77 +1,128 @@
 {
-  "constraints": {
-    "BBN": "Gaussian(0.0, 0.001)",
-    "CMB": "Gaussian(0.0056, 0.0043)",
-    "PPN": "Cassini bound |gamma-1| < 2.3e-05"
-  },
   "correlation_matrix": [
     [
-      0.9999999999999999,
-      -0.028786957723697007,
-      -0.008910013759195362,
-      -0.008165337558981208,
-      -0.01177917228150201
-    ],
-    [
-      -0.028786957723697028,
       1.0,
-      0.015384486997763198,
-      -0.0019498077250630534,
-      0.010471473627679164
+      -0.19381585323237666,
+      -0.07313065700552748,
+      -0.5879402099519867
     ],
     [
-      -0.008910013759195357,
-      0.015384486997763198,
-      1.0000000000000002,
-      -0.01130626718788475,
-      -0.00710058815362298
-    ],
-    [
-      -0.008165337558981212,
-      -0.0019498077250630524,
-      -0.011306267187884751,
+      -0.1938158532323767,
       1.0,
-      0.010878066479426515
+      -0.002258594462601648,
+      0.002916567630425127
     ],
     [
-      -0.011779172281502008,
-      0.010471473627679168,
-      -0.007100588153622984,
-      0.010878066479426518,
-      1.0
+      -0.0731306570055275,
+      -0.002258594462601653,
+      1.0,
+      0.11592870218283642
+    ],
+    [
+      -0.5879402099519867,
+      0.0029165676304251285,
+      0.11592870218283638,
+      0.9999999999999999
     ]
   ],
-  "description": "Joint global screening fit: Pantheon+ \u00d7 CMB \u00d7 BBN \u00d7 PPN",
-  "interpretation": "This is a scoping run with Gaussian-approximated CMB/BBN likelihoods. A production version would call hi_class for each CMB evaluation. The correlation matrix reveals whether screening parameters are degenerate.",
-  "log_evidence": -1298.4524369121846,
-  "log_evidence_error": 0.08184254356523551,
-  "method": "dynesty DynamicNestedSampler",
-  "nlive": 500,
-  "parameters": {
-    "M": {
-      "mean": -19.166127598297074,
-      "prior": "U[-21, -16]",
-      "std": 0.003643183268565212
+  "description": "Production coupled multi-domain screening inference: Pantheon+ full-covariance SNe (coupled to host-disk screening rho_half) \u00d7 live unclamped hi_class Boltzmann CMB acoustic/TTTEEE & omega_cdm=0 Planck 2018 lensing marginalized over 0.15-dex sheet/filament structure-scale priors \u00d7 live-calibrated AlterBBN C nuclear network \u00d7 exact two-branch PPN Cassini & galactic screening",
+  "interpretation": "Production coupled joint inference across Pantheon+ SNe, unclamped live hi_class CMB Boltzmann acoustic transfer + omega_cdm=0 Planck 2018 lensing marginalized over the sheet/filament structure-scale priors (mode-centered 17x17 Gauss-Hermite, 9x9 vs 17x17 max diff 0.0092 lnL), AlterBBN C nuclear network abundances, and two-branch PPN/galactic screening converges with common-baseline log Z = -888.79 +/- 0.10 (peak-normalized log Z = -885.66; profiled-nuisance comparison log Z = -885.12 +/- 0.09, full 2D Occam penalty -3.66 = -3.13 peak + -0.54 shape). The posterior recovers epsilon_T = 0.8826 +/- 0.0502, z_T = 4.24 +/- 1.13, log10(g_t) = -9.4678 +/- 0.0350, and log10(rho_half/[M_sun/pc^3]) = -0.3031 +/- 0.1509 (rho_half = 0.498 M_sun/pc^3 = 3.368e-23 g/cm^3) with low cross-domain degeneracy (max |r| = 0.588), while live hi_class evaluation at the posterior mean confirms r_s^TEP / r_s^LCDM = 1.000000, CDM-free Planck 2018 9-bin lensing chi2 = 15.40, and Cassini PPN conjunction safety |gamma - 1|_(1.6 R_sun) = 4.325e-08 < 2.3e-5 (532x margin).",
+  "lensing_nuisance_marginalization": {
+    "treatment": "Mode-centered 2D Gauss-Hermite (17x17 verified against 9x9 to <= 0.0092 lnL) marginalization of the data-only Planck CMBMarged lensing chi2 over independent 0.15-dex Gaussian priors on the sheet and filament structure scales, evaluated against the common reference baseline lnL_lens_ref = -0.5 * chi2_lens_min shared with the profiled comparison run",
+    "common_reference_lnL_baseline": -7.716086347681175,
+    "lnL_lens_marg_peak": -10.841520156853239,
+    "peak_offset_marg_minus_profiled": -3.1254338091720637,
+    "gh_quadrature_convergence": {
+      "max_abs_diff_9x9_vs_17x17_posterior_band": 0.009238106995569595,
+      "max_abs_diff_9x9_vs_17x17_full_grid": 0.01502769467789733
     },
+    "log_evidence_marginalized": -888.7850725734738,
+    "log_evidence_marginalized_error": 0.09929309126969366,
+    "log_evidence_marginalized_peak_normalized": -885.6596387643018,
+    "log_evidence_profiled": -885.1220041106925,
+    "log_evidence_profiled_error": 0.0932823456015524,
+    "profiled_run_ncall": 230559,
+    "occam_penalty_marginalized_minus_profiled": -3.6630684627813253,
+    "shape_only_diff_peak_normalized": -0.5376346536093024,
+    "interpretation": "Both the marginalized and profiled runs subtract the identical parameter-independent reference constant lnL_lens_ref = -0.5 * chi2_lens_min, so log_evidence_marginalized - log_evidence_profiled is the unshifted full Occam prior-volume penalty of the 2D sheet/filament Gaussian prior."
+  },
+  "likelihood_engines": {
+    "BBN": "Direct AlterBBN C nuclear network (primary.x standard) response surface over delta_H/H + empirical light-element abundance registry (Y_p, D/H, 3He/H, 7Li/H)",
+    "CMB": "Unclamped [0.0, 0.500] 2D patched hi_class (classy) Boltzmann response surface (100*theta_s, rs_rec) + Planck 2018 TTTEEE + omega_cdm=0 CMBMarged 9-bin lensing likelihood marginalized over sheet/filament structure-scale priors",
+    "PPN_and_Galactic": "Exact two-branch kinetic solver c1*q*y^2 + q^2*y^3 = 1 at 1 AU and Cassini solar limb (1.6 R_sun) + SPARC/Gaia wide-binary transition g_t",
+    "SNe": "Pantheon+SH0ES 1701x1701 full covariance Cholesky profile likelihood coupled to host-disk screening S_host(rho_half)"
+  },
+  "live_solver_verification_at_posterior_mean": {
+    "live_hiclass_at_posterior_mean": {
+      "eps_hom_at_z15": 3.263750526272091e-06,
+      "100_theta_s": 1.0403727371617453,
+      "rs_rec_mpc": 144.54767985823852,
+      "rs_ratio_tep_over_lcdm": 0.9999999998482341,
+      "z_rec": 1088.7815981450087,
+      "sigma8": 0.8228045647118601,
+      "planck_2018_lensing_9bin_chi2_nocdm_tep": 15.402889828142879,
+      "planck_2018_lensing_lnL_marginalized_nocdm_tep": -10.82315190278955
+    },
+    "live_alterbbn_at_posterior_mean": {
+      "engine": "AlterBBN",
+      "delta_H_over_H_at_z50": 3.886172594223638e-61,
+      "Y_p": 0.2472,
+      "D_H": 2.456e-05,
+      "He3_H": 1.033e-05,
+      "Li7_H": 5.383e-10,
+      "delta_chi2_vs_lcdm_baseline": 0.0,
+      "registry_chi2_Yp_DH_He3": 0.8531312465102812,
+      "registry_chi2_all_4_isotopes": 25.527422625820634,
+      "registry_chi2": 0.8531312465102812
+    },
+    "two_branch_ppn_at_posterior_mean": {
+      "k_derived": 16.03,
+      "y_Cassini_limb_1p6Rsun": 2.1626608001707205e-08,
+      "y_Earth_orbit_1AU": 1.4672278843095176e-05,
+      "abs_gamma_minus_1_Cassini_limb": 4.32532141325738e-08,
+      "abs_gamma_minus_1_Cassini_limb_isotropic_benchmark": 8.65064282651476e-08,
+      "abs_gamma_minus_1_1AU_diagnostic": 2.93436966083925e-05,
+      "cassini_bound": 2.3e-05,
+      "cassini_safety_margin_factor": 531.7523902270839,
+      "passes_cassini": true
+    }
+  },
+  "log_evidence": -888.7850725734738,
+  "log_evidence_error": 0.09929309126969366,
+  "max_offdiagonal_correlation": 0.5879402099519867,
+  "parameters": {
     "epsilon_T": {
-      "mean": 0.0010245647862897136,
-      "prior": "U[-0.4, 0.4]",
-      "std": 0.0009719299542337672
+      "mean": 0.8826330465353405,
+      "prior": "U[0.0, 1.2]",
+      "std": 0.05022758402539446
     },
     "log10_g_t": {
-      "mean": -9.517382865452749,
-      "prior": "U[-11, -8] m/s^2",
-      "std": 0.8624949665167057
+      "mean": -9.467771644360612,
+      "prior": "U[-11.0, -8.0] m/s^2",
+      "std": 0.034960976419627636
     },
     "log10_rho_half": {
-      "mean": 0.4860259260900021,
-      "prior": "U[-1, 2] g/cm^3",
-      "std": 0.8582848002924234
+      "log10_rho_half_g_cm3": -22.472621878278876,
+      "mean": -0.30310661177176745,
+      "prior": "U[-1.0, 2.0] M_sun/pc^3",
+      "rho_half_Msun_pc3": 0.49761491414319253,
+      "rho_half_g_cm3": 3.368046832588502e-23,
+      "std": 0.15090587855092838,
+      "units": "log10(M_sun/pc^3)"
     },
     "z_T": {
-      "mean": 10.480763267309753,
-      "prior": "U[1, 20]",
-      "std": 5.456740901900187
+      "mean": 4.2413196683109975,
+      "prior": "U[1.0, 15.0]",
+      "std": 1.1267068167432546
     }
-  }
+  },
+  "sampler": {
+    "dlogz_target": 0.05,
+    "engine": "dynesty.DynamicNestedSampler",
+    "n_samples": 14230,
+    "ncall": 261145,
+    "nlive": 350
+  },
+  "status": "completed_production_joint_inference",
+  "step": "step_03_05_joint_global_screening"
 }

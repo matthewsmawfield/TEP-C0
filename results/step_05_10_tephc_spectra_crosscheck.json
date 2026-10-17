@@ -3,9 +3,10 @@
     "r_s_ratio": 0.999994089,
     "theta_s_frac_shift": 0.001851
   },
-  "description": "Cross-check TEP-HC CMB power spectra and acoustic scale against LCDM baseline",
+  "description": "Import TEP-HC sound-horizon and angular-anchor scalars against the LCDM baseline",
   "pass_criteria": {
-    "acoustic_scale_preserved_to_0_1pct": true
+    "criterion_scope": "Applies to r_s ratio; theta_s shift is reported separately",
+    "sound_horizon_preserved_to_0_1pct": true
   },
   "residuals_percent": {
     "max_EE": null,
@@ -17,7 +18,7 @@
   "step": "step_05_10_tephc_spectra_crosscheck",
   "tephc_source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-HC/results/04_cmb_spectra.json",
   "validation": {
-    "note": "C0 independently verifies consistency with TEP-HC spectral outputs (TT + acoustic scale) but does not replace the full TEP-HC perturbation derivation. TE/EE cross-checks are not available in the TEP-HC output file.",
+    "note": "This importer checks the sound-horizon scalar only. Direct TT/TE/EE residuals are not evaluated here; native spectrum and perturbation validation are supplied by the separate HC calculations.",
     "pass": true,
     "tephc_available": true
   }

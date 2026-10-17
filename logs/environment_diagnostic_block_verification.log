@@ -1,0 +1,32 @@
+[10:19:19] [INFO] bulk resid-X corr: rho=+0.044 perm_p=0.2378
+[10:19:19] [INFO] calibrator resid-X corr: rho=-0.023
+{
+  "bulk_residual_correlation": {
+    "segment": "0.023 < z < 1.0",
+    "n": 1346,
+    "spearman_rho": 0.04395101260463367,
+    "spearman_p_analytic": 0.10701637697778693,
+    "perm_p": 0.23776223776223776,
+    "permutation_draws": 1000,
+    "permutation_null": {
+      "unit": "physical CID event block",
+      "stratification": "survey-composition x 20 redshift quantiles; depth additionally preserves measured-offset flags",
+      "n_events": 1543,
+      "n_ambient_events_permutable": 1466,
+      "n_depth_events_permutable": 1466,
+      "n_ambient_rows_permutable": 1556,
+      "n_depth_rows_permutable": 1556
+    },
+    "legacy_row_null_perm_p": 0.15614617940199335,
+    "legacy_row_null_draws": 300,
+    "whitening_method": "symmetric inverse square root of original lower-triangle covariance",
+    "scope": "secondary residual-coordinate diagnostic; not independent environmental confirmation",
+    "null_rho_std": 0.02716875537286442,
+    "direction": "positive rho = fainter-than-kernel residual grows with environmental depth"
+  },
+  "cal_residual_correlation": {
+    "n": 77,
+    "spearman_rho": -0.023366668851886954,
+    "spearman_p_analytic": 0.8401391733975564
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "url": "https://raw.githubusercontent.com/PantheonPlusSH0ES/DataRelease/main/Pantheon%2B_Data/4_DISTANCES_AND_COVAR/Pantheon%2BSH0ES_STAT%2BSYS.cov",
+  "local_file": "data/raw/Pantheon+SH0ES.cov",
+  "local_sha256": "abf806d966485e64afdb359c87bffc0ecc00d05eff0a31ced66f247385df0fdc",
+  "github_blob_verification": {
+    "api": "https://api.github.com/repos/PantheonPlusSH0ES/DataRelease/contents/Pantheon%2B_Data/4_DISTANCES_AND_COVAR/Pantheon%2BSH0ES_STAT%2BSYS.cov",
+    "official_size": 33284960,
+    "local_size": 33284960,
+    "official_git_blob_sha": "d1a1498154e7ba826df14bdbef35ebcb7f5efba1",
+    "local_git_blob_sha": "d1a1498154e7ba826df14bdbef35ebcb7f5efba1",
+    "match": true
+  },
+  "raw_download_attempt": {
+    "status": "incomplete remote response; not used to assess file identity",
+    "received_bytes": 29370176,
+    "partial_response_sha256": "87818d2bcde648a579ab0d21fddbc4a75aff0c2016f26f566a4c89b61f90d497"
+  },
+  "official_local_identity_confirmed": true
+}

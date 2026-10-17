@@ -1,25 +1,33 @@
 {
   "bf_proxy_distribution": {
-    "max": 2.0062232305553866,
-    "mean": 0.896571030878324,
-    "median": 0.8672427374889329,
-    "min": 0.31989264350760493,
-    "std": 0.3537495066252001
+    "max": 22.848689608772933,
+    "mean": 0.8950877925617544,
+    "median": 0.285152933124035,
+    "min": 0.00111673874361989,
+    "std": 2.229947927071948
   },
+  "bf_proxy_scope": "BIC proxy, not an integrated Bayes factor",
   "delta_chi2_distribution": {
-    "max": 2.2795396570322737,
-    "mean": 0.37152578607516773,
-    "median": 0.2854923333009083,
-    "min": -1.3925079295636351,
-    "std": 0.7939099728962142
+    "max": 13.594685354742069,
+    "mean": 2.8682941121847976,
+    "median": 2.5094623607691346,
+    "min": -6.257787536316982,
+    "std": 3.483656386577189
   },
   "description": "LCDM null injection: mock Pantheon+ from LCDM best-fit",
-  "false_positive_rate_TEP_BF_gt_30": 0.0,
-  "interpretation": "Under LCDM null injection, the TEP M1 Bayes factor observed in real Pantheon+ (BF ~ 30) occurs in only 0.0% of synthetic realizations.",
-  "median_Delta_chi2_under_LCDM": 0.2854923333009083,
-  "n_injections": 32,
-  "p_value_observed_Delta_chi2": 0.0,
+  "false_positive_rate_as_extreme_as_observed": 0.015,
+  "interpretation": "Under LCDM null injection, a TEP M1 improvement at least as large as the observed \u0394\u03c7\u00b2 = -3.81 occurs in 3 of 200 synthetic realizations (1.5%).",
+  "median_Delta_chi2_under_LCDM": 2.5094623607691346,
+  "n_injections": 200,
+  "null_parameters": {
+    "M": -19.33928052524433,
+    "Om0": 0.3623684044834239
+  },
+  "observed_bf_proxy": 6.70567636274851,
+  "observed_delta_chi2": -3.805908772061457,
+  "observer_convention": "Observed brightness minus zHEL/zHD observer factor; mocks generated and fitted in that same frame",
+  "p_value_observed_Delta_chi2": 0.01990049751243781,
   "status": "completed",
   "step": "step_03_09_lcdm_null_injection",
-  "timestamp": 1781945765
+  "timestamp": 1791901360
 }

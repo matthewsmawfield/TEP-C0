@@ -1,6 +1,8 @@
 {
   "step": "step_03_11_sn_luminosity_drift_profile",
   "dataset": "Pantheon+ (1,701 SNe Ia, full covariance matrix)",
+  "observer_redshift": "zHEL",
+  "distance_redshift": "zHD",
   "question": "Does a flexible distance-redshift relation absorb the Chandrasekhar luminosity drift dm(z) = -7.5 eps log10(1+z)?",
   "profile_likelihood_M1": {
     "eps_grid": [
@@ -20,52 +22,52 @@
       0.4
     ],
     "chi2": [
-      1982.8054620401222,
-      1980.322732024491,
-      1980.1011214593623,
-      1980.6805456836162,
-      1982.3979155097636,
-      1985.6160712474652,
-      1990.7202157117176,
-      1998.1147301491126,
-      2008.2204073450944,
-      2021.4719937602636,
-      2038.3160161508454,
-      2059.2088413927813,
-      2084.614969152967,
-      2115.0055022068514
+      1752.4469419266588,
+      1751.3150124747895,
+      1750.2554607741154,
+      1749.3427734560582,
+      1748.8526479062562,
+      1749.0962565840296,
+      1750.41534228935,
+      1753.177900827371,
+      1757.7744847291146,
+      1764.6149544264836,
+      1774.1256297804068,
+      1786.7467673667625,
+      1802.9303498773538,
+      1823.1381212247354
     ],
     "delta_chi2": [
-      2.70434058075989,
-      0.22161056512868527,
+      3.5942940204026854,
+      2.462364568533303,
+      1.402812867859211,
+      0.49012554980208733,
       0.0,
-      0.5794242242538985,
-      2.2967940504013313,
-      5.514949788102967,
-      10.619094252355353,
-      18.0136086897503,
-      28.119285885732097,
-      41.37087230090128,
-      58.214894691483096,
-      79.10771993341905,
-      104.51384769360493,
-      134.90438074748909
+      0.243608677773409,
+      1.5626943830939126,
+      4.325252921114952,
+      8.921836822858495,
+      15.762306520227412,
+      25.272981874150673,
+      37.89411946050632,
+      54.07770197109767,
+      74.28547331847926
     ],
-    "best_fit_eps": -0.15,
+    "best_fit_eps": -0.04999999999999999,
     "one_sigma_interval": [
-      -0.2155155155155155,
-      -0.08798798798798799
+      -0.12767767767767768,
+      0.02847847847847851
     ],
-    "three_sigma_upper_bound": 0.033683683683683685
+    "three_sigma_upper_bound": 0.15015015015015015
   },
   "full_tracking_test_eps_1": {
     "M1_NoLambda": {
-      "chi2": 3044.1028184864144,
-      "delta_chi2_vs_best": 1064.0016970270522,
-      "best_shear_param": 6.626612058975908,
-      "best_M": -19.43881781695906,
-      "verdict": "EXCLUDED at Delta chi2 = 1064.0 (>> 1000)"
+      "chi2": 2554.681658179784,
+      "delta_chi2_vs_best": 805.8290102735277,
+      "best_shear_param": 6.336968423758556,
+      "best_M": -19.445179827568907,
+      "verdict": "EXCLUDED at Delta chi2 = 805.8 (>> 9, the 3-sigma threshold)"
     }
   },
-  "verdict": "The supernova bound on the interior tracking fraction epsilon is model-independent and cannot be absorbed by flexing the TEP distance-redshift relation. Full tracking (eps = 1.0, where G_loc \u221d (1+z)^-2 inside source galaxies) is excluded on the real Pantheon+ dataset at Delta chi2 = 1064.0 even when allowing the cosmological distance relation and line-of-sight shear to completely re-optimize. The joint fit bounds positive tracking to eps < 0.034 (3-sigma). Galactic cores hosting SNe Ia are effectively pinned against the cosmic ambient drift, preserving the standard-siren mass-map discriminant."
+  "verdict": "Conditional on the fixed-z_T=5 M1 NoLambda distance relation and the Chandrasekhar luminosity prescription, Pantheon+ constrains the SN Ia progenitor tracking fraction. Full tracking (eps = 1.0) incurs Delta chi2 = 805.8 after re-optimizing the nonnegative line-of-sight shear and magnitude intercept; the interpolated upper bound is eps < 0.150 at Delta chi2 = 9. No BBH population evolution, host-to-source transfer, or GW selection function is fitted, so this is not a model-independent bound on standard-siren source masses."
 }

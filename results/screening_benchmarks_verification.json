@@ -1,0 +1,39 @@
+{
+  "threshold_m_s2": 3.400464162104563e-10,
+  "virial_SI_max_relative_error": 6.782533038418581e-05,
+  "independent_log_mass_quadrature": [
+    {
+      "n_nodes": 128,
+      "integrals": [
+        2.756957118986174,
+        2.756992129369829
+      ],
+      "ratio": 1.0000126989220883
+    },
+    {
+      "n_nodes": 256,
+      "integrals": [
+        2.756957118986134,
+        2.7569921293697885
+      ],
+      "ratio": 1.000012698922088
+    }
+  ],
+  "production": {
+    "I_b_unscreened": 2.756957,
+    "I_b_screened": 2.756992,
+    "bias_suppression_factor": 1.000013,
+    "integration_coordinate": "ln(physical M/Msun), with Jacobian M",
+    "quadrature_relative_error_max": 1.7600632837973348e-11,
+    "sigma8_linear": 1.4776,
+    "sigma8_screened_halo_model": 1.477619,
+    "sigma8_planck": 0.812,
+    "sigma8_planck_err": 0.007,
+    "deviation_from_planck_sigma": 95.09,
+    "passes_planck": false
+  },
+  "cassini_envelope": 2.6780762613807445e-11,
+  "wide_binary_envelope": 0.8892576584744255,
+  "halo_envelope": 0.4855784872171328,
+  "scope": "Reduced screening envelope and simplified assigned EdS halo benchmark; native HC perturbation result unchanged"
+}

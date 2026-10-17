@@ -1,40 +1,40 @@
 {
   "description": "Independent mixed-TEP posterior diagnostic using full Pantheon+ covariance",
   "mcmc": {
-    "acceptance_fraction": 0.7152148437500001,
+    "acceptance_fraction": 0.71455078125,
     "autocorr_time_checked": true,
     "burn_in": 5000,
     "cpu_workers": 1,
     "gelman_rubin_checked": true,
-    "max_r_hat": 1.001050026727335,
-    "max_tau": 31.306904598007563,
+    "max_r_hat": 1.0012385274088018,
+    "max_tau": 32.44533590234992,
     "mp_context": "serial",
     "n_steps": 20000,
     "n_walkers": 64,
     "r_hat": [
-      1.0009088623415423,
-      1.001050026727335
+      1.0011916410245258,
+      1.0012385274088018
     ],
     "tau": [
-      30.895161185111647,
-      31.306904598007563
+      32.0559385131675,
+      32.44533590234992
     ]
   },
   "n_samples": 960000,
   "results": [
     {
-      "ci_16": 0.853961326387888,
-      "ci_84": 0.9346621737904739,
-      "median": 0.8941000352134169,
+      "ci_16": 0.8331549139950893,
+      "ci_84": 0.9090200889273711,
+      "median": 0.8710478877385603,
       "parameter": "epsilon_shear_los",
-      "std": 0.040581925895354656
+      "std": 0.0381487031587221
     },
     {
-      "ci_16": -19.326773519328537,
-      "ci_84": -19.31177624750443,
-      "median": -19.31927823291437,
+      "ci_16": -19.338833006661854,
+      "ci_84": -19.324068284548556,
+      "median": -19.331495063462093,
       "parameter": "M",
-      "std": 0.007530793645496865
+      "std": 0.007403058864934496
     }
   ],
   "step": "step_03_02_independent_mcmc",

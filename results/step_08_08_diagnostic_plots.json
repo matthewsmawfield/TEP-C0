@@ -3,7 +3,7 @@
     "distance_duality": {
       "deviation_from_unity_sigma": 8.21,
       "eta_weighted_err": 0.0187,
-      "eta_weighted_mean": 0.8463,
+      "eta_weighted_mean": 0.8462,
       "n_points": 10,
       "path": "results/figures/distance_duality.png",
       "source": "/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/results/step_04_04_distance_duality.json",
@@ -11,14 +11,14 @@
     },
     "hubble_residuals": {
       "best_m1_key": "M1_NoLambda_zT5",
-      "final_delta_chi2": -30.21232168418919,
-      "lcdm_Om0_mle": 0.38093496411581507,
+      "final_delta_chi2": -3.805908773352441,
+      "lcdm_Om0_mle": 0.3623684044834239,
       "n_sne": 1701,
       "path": "results/figures/hubble_residuals.png",
       "status": "ok",
       "tep_m1_params": {
-        "M": -19.31928282232876,
-        "epsilon_shear_los": 0.893997611380551
+        "M": -19.331443099283025,
+        "epsilon_shear_los": 0.8707961608975863
       }
     }
   },
@@ -29,7 +29,7 @@
   "skipped": {},
   "status": "completed",
   "step": "step_08_08_diagnostic_plots",
-  "timestamp": 1783191069,
+  "timestamp": 1791874348,
   "validation": {
     "claim_gate": "open",
     "note": "Diagnostic plots are generated only from real upstream artefacts. Synthetic image figures are forbidden.",

@@ -1,34 +1,44 @@
 {
+  "TE_auto_normalization": "abs(delta_D_TE)/sqrt(abs(D_TT*D_EE))",
+  "TE_relative_max_zero_crossing_sensitive": true,
   "acoustic_peak_shift_percent": 0.0,
-  "chi2_proxy_per_dof": 1.9572771044100009e-16,
-  "chi2_proxy_vs_Planck": 3.910639654611182e-13,
-  "description": "Minimal active-perturbation closure diagnostic",
+  "active_scalar_solver": false,
+  "chi2_proxy_per_dof": 8.641771436939015e-05,
+  "chi2_proxy_vs_Planck": 0.17266259331004152,
+  "description": "CLASS background-response and canonical EFT diagnostic",
   "eft_alpha_B_range": [
-    -1.1445128669055653e-05,
-    6.561689449170793e-06
+    -1.3316944871981149e-05,
+    1.7606206459278612e-05
   ],
   "eft_alpha_K_range": [
-    -1.6373871281404954e-10,
+    -3.874731323584299e-10,
     -0.0
   ],
   "eft_alpha_M_range": [
-    -6.561689449170793e-06,
-    1.1445128669055653e-05
+    -1.7606206459278612e-05,
+    1.3316944871981149e-05
   ],
-  "first_peak_tep0_ell": 244,
-  "first_peak_tep_ell": 244,
+  "first_peak_tep0_ell": 221,
+  "first_peak_tep_ell": 221,
   "gradient_stability_pass": true,
-  "interpretation": "Minimal active-perturbation closure: no-ghost and gradient stability verified. Spectra comparison uses TEP(\u03b5_T=0) as the baseline to isolate the actual perturbation effect from numerical-noise contamination between standard CLASS and tep_mode code paths. The zero-limit sanity check confirms TEP(\u03b5_T=0) agrees with LCDM to sub-percent precision.",
-  "max_EE_residual_percent": 0.0,
-  "max_TE_residual_percent": 0.0,
-  "max_TT_residual_percent": 0.0,
-  "mean_EE_residual_percent": 0.0,
-  "mean_TE_residual_percent": 0.0,
-  "mean_TT_residual_percent": 0.0,
+  "interpretation": "Canonical EFT benchmark coefficient checks pass; CLASS background-response spectra are compared. Spectra comparison uses TEP(\u03b5_T=0) as the baseline to isolate the actual perturbation effect from numerical-noise contamination between standard CLASS and tep_mode code paths. The zero-limit sanity check confirms TEP(\u03b5_T=0) agrees with LCDM to sub-percent precision.",
+  "max_EE_residual_percent": 0.12264623138957545,
+  "max_TE_auto_normalized_percent": 0.04647926034756139,
+  "max_TE_residual_percent": 250.93801195851236,
+  "max_TT_residual_percent": 0.03261687883017931,
+  "mean_EE_residual_percent": 0.01698639001716698,
+  "mean_TE_residual_percent": 0.3382599866783939,
+  "mean_TT_residual_percent": 0.006545340410311273,
+  "multipoles_used": {
+    "ee": 1999,
+    "te": 1999,
+    "tt": 1999
+  },
   "no_ghost_pass": true,
+  "spectrum_units": "microkelvin_squared",
   "status": "completed",
   "step": "step_05_09_minimal_perturbations",
-  "timestamp": 1790452972,
-  "zero_limit_sanity_max_residual_percent": 0.0,
+  "timestamp": 1791671987,
+  "zero_limit_sanity_max_residual_percent": 6.170919725122706e-10,
   "zero_limit_sanity_passed": true
 }

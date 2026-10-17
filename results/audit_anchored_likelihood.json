@@ -1,0 +1,90 @@
+{
+  "conventions": {
+    "redshift_column": "zHD",
+    "n_calibrators": 77,
+    "anchored_residual_calibrator": "m_b - MU_SH0ES - M",
+    "anchored_residual_field": "m_b - mu_model(z) - M",
+    "anchored_covariance": "full Pantheon+ cov + MU_SH0ES_ERR_DIAG^2 on calibrator diagonal",
+    "nested_nlive": 500,
+    "nested_dlogz": 0.1
+  },
+  "M0a_LCDM": {
+    "shared": {
+      "chi2": 1752.5183785140716,
+      "params": [
+        0.36120479873436306,
+        -19.339351543546833
+      ],
+      "logZ": 752.0739038334442,
+      "logZ_err": 0.15706629173490327
+    },
+    "anchored": {
+      "chi2": 1460.9637218107205,
+      "params": [
+        0.33610112490438887,
+        -19.35079884821021
+      ],
+      "logZ": 806.1643449958417,
+      "logZ_err": 0.15912882669388873
+    }
+  },
+  "M1_zT5": {
+    "shared": {
+      "chi2": 1749.0685596378066,
+      "params": [
+        0.8735742729232322,
+        -19.331609982713168
+      ],
+      "logZ": 753.2948794580548,
+      "logZ_err": 0.1618851577340935
+    },
+    "anchored": {
+      "chi2": 1460.1970554182756,
+      "params": [
+        0.9302049526440545,
+        -19.344628410517366
+      ],
+      "logZ": 806.4076559551845,
+      "logZ_err": 0.16037857194011007
+    }
+  },
+  "M1_free_zT": {
+    "shared": {
+      "chi2": 1749.2178248079808,
+      "params": [
+        0.8647510359097887,
+        75.9999999160309,
+        -19.330746530161235
+      ],
+      "logZ": 753.3995886200122,
+      "logZ_err": 0.15952765162031715
+    },
+    "anchored": {
+      "chi2": 1460.6750182271358,
+      "params": [
+        0.9204960692100764,
+        76.00000040816653,
+        -19.343657031176168
+      ],
+      "logZ": 806.3539959172274,
+      "logZ_err": 0.15613702820773365
+    }
+  },
+  "mle_comparison": {
+    "dchi2_TEP_zT5_vs_LCDM_shared": -3.449818876264999,
+    "dchi2_TEP_zT5_vs_LCDM_anchored": -0.766666392444904,
+    "dchi2_TEP_free_vs_LCDM_shared": -3.3005537060907955,
+    "dchi2_TEP_free_vs_LCDM_anchored": -0.28870358358472004
+  },
+  "evidence_comparison": {
+    "dlnZ_zT5_shared": 1.2209756246105599,
+    "dlnZ_zT5_anchored": 0.2433109593428071,
+    "dlnZ_free_shared": 1.3256847865679902,
+    "dlnZ_free_anchored": 0.18965092138569162,
+    "BF_zT5_shared": 3.390493969895329,
+    "BF_zT5_anchored": 1.2754651802730745,
+    "BF_free_shared": 3.7647625313044517,
+    "BF_free_anchored": 1.2088275481518622
+  },
+  "interpretation": "The anchored likelihood is the stricter construction: calibrator rows are measured against their own Cepheid distance moduli, so the block cannot tilt the shared intercept. The residual TEP advantage under anchoring is the field-plus-high-z transport preference without the calibrator-intercept contribution."
+}

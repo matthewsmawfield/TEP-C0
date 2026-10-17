@@ -1,20 +1,20 @@
 {
   "description": "Redshift drift forecast",
-  "interpretation": "TEP predicts z_drift(z=2) = 2e-12 yr^-1; relative difference to LCDM is reported where the LCDM denominator is non-zero.",
+  "interpretation": "TEP predicts z_drift(z=2) = -2.92823e-07 yr^-1; relative difference to LCDM is reported where the LCDM denominator is non-zero.",
   "key_finding": "Redshift drift predictions differ from LCDM, testable with next-generation cosmic chronometers",
   "lcdm_comparison": {
-    "difference_at_z2_percent": 0.0
+    "difference_at_z2_percent": -12210916.3
   },
   "model_parameters": {
     "H0_lcdm": 70.0,
     "H0_tep": 70.0,
     "Ok0": 0.0,
-    "Sigma_0": 0.0
+    "Sigma_0": 0.869947
   },
   "redshift_drift_predictions": {
     "units": "yr^-1",
     "z_drift_z0": 0.0,
-    "z_drift_z2": 2e-12
+    "z_drift_z2": -2.92823e-07
   },
   "step": "step_07_02_redshift_drift",
   "testability": {

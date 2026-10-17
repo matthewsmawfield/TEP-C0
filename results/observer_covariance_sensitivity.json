@@ -1,0 +1,110 @@
+{
+  "convention": "zHD distances and zHEL observer factor; unchanged priors",
+  "released_error_diagonal_scope": "m_b_corr_err_DIAG squared with zero-error full-diagonal fallback; not a supplied full statistical covariance",
+  "variants": {
+    "full": {
+      "LCDM": {
+        "chi2": 1752.9021645027642,
+        "logZ": 751.6057752521972,
+        "logZ_error": 1.383347728132312e-08,
+        "parameters": {
+          "Om0": 0.3623684044834239,
+          "M": -19.33928052524433
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "TEP": {
+        "chi2": 1749.096255729412,
+        "logZ": 753.3633267957042,
+        "logZ_error": 1.1745712996535153e-08,
+        "parameters": {
+          "epsilon_shear_los": 0.8707961608975863,
+          "M": -19.331443099283025
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "delta_chi2": -3.8059087733522574,
+      "BF_vs_LCDM": 5.798223302717814
+    },
+    "diagonal_only": {
+      "LCDM": {
+        "chi2": 1698.0148644809851,
+        "logZ": 686.3440509505842,
+        "logZ_error": 4.3634884589694884e-08,
+        "parameters": {
+          "Om0": 0.37213529149401986,
+          "M": -19.33245923484146
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "TEP": {
+        "chi2": 1693.1163396820273,
+        "logZ": 688.6188551348271,
+        "logZ_error": 7.068289330249941e-12,
+        "parameters": {
+          "epsilon_shear_los": 0.8637418545929609,
+          "M": -19.325876934979085
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "delta_chi2": -4.898524798957851,
+      "BF_vs_LCDM": 9.726014319223411
+    },
+    "released_error_diagonal": {
+      "LCDM": {
+        "chi2": 758.5343935211683,
+        "logZ": 572.1088332321954,
+        "logZ_error": 1.5010230242784018e-12,
+        "parameters": {
+          "Om0": 0.3519984467950537,
+          "M": -19.343486170136476
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "TEP": {
+        "chi2": 758.0169062866247,
+        "logZ": 572.2338822730513,
+        "logZ_error": 4.2639708246486835e-08,
+        "parameters": {
+          "epsilon_shear_los": 0.90624040756292,
+          "M": -19.33770594031753
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "delta_chi2": -0.517487234543637,
+      "BF_vs_LCDM": 1.133204024999542
+    },
+    "inflated_diagonal_1.5x": {
+      "LCDM": {
+        "chi2": 1132.0099096539898,
+        "logZ": 624.9039580648771,
+        "logZ_error": 9.53947693668421e-10,
+        "parameters": {
+          "Om0": 0.3721352882226104,
+          "M": -19.33245923584177
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "TEP": {
+        "chi2": 1128.744226454687,
+        "logZ": 626.3623084709327,
+        "logZ_error": 2.190291726759141e-11,
+        "parameters": {
+          "epsilon_shear_los": 0.8637418421654159,
+          "M": -19.325876932893866
+        },
+        "k": 2,
+        "method": "bounded Gaussian intercept integral and adaptive shape quadrature"
+      },
+      "delta_chi2": -3.2656831993028845,
+      "BF_vs_LCDM": 4.298862298965177
+    }
+  }
+}

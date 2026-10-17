@@ -1,5 +1,5 @@
 {
-  "interpretation": "TEP-C0 explicitly opens the Expansion-replacement and CMB-replacement gates. The framework mathematically resolves the Hubble Tension and natively recovers early-universe acoustic horizons without Dark Energy.",
+  "interpretation": "The current matched SN comparison favors the temporal-shear branch under the stated priors. Background reconstruction, acoustic preservation and Hubble-tension diagnostics retain their own datasets and scope; the SN evidence alone does not establish complete observational closure.",
   "reconstruction_metrics": {
     "transport_low_z_ht": 70.336803,
     "transport_recovery_error": 0.0

@@ -99,7 +99,7 @@ def run():
     print_status("Scenario 2: LCDM + TEP alpha_M (eps=0.006)", "PROCESS")
     sf_tep_lcdm = StructureFormation(
         H0=67.36, Omega_m=0.315, Omega_L=0.685,
-        sigma_8=PLANCK_SIGMA8, epsilon_T=0.006, z_T=5.0, n_T=1.0
+        sigma_8=PLANCK_SIGMA8, epsilon_T=0.006, z_T=5.0, n_T=2.0
     )
     D_tep_lcdm = sf_tep_lcdm.compute_growth_factor(a_grid)
     f_tep_lcdm = [sf_tep_lcdm.growth_rate(a) for a in a_grid]
@@ -134,7 +134,7 @@ def run():
     print_status("Scenario 4: EdS + TEP alpha_M (eps=0.018)", "PROCESS")
     sf_tep_eds = StructureFormation(
         H0=70.0, Omega_m=1.0, Omega_L=0.0,
-        sigma_8=PLANCK_SIGMA8, epsilon_T=0.018, z_T=5.0, n_T=1.0
+        sigma_8=PLANCK_SIGMA8, epsilon_T=0.018, z_T=5.0, n_T=2.0
     )
     D_tep_eds = sf_tep_eds.compute_growth_factor(a_grid)
     f_tep_eds = [sf_tep_eds.growth_rate(a) for a in a_grid]
@@ -149,8 +149,8 @@ def run():
     # ------------------------------------------------------------------
     print_status("alpha_M(z) diagnostics", "PROCESS")
     for z in [0.0, 0.5, 1.0, 2.0, 5.0]:
-        aM_low = alpha_M_tep(z, epsilon_T=0.006, z_T=5.0, n_T=1.0)
-        aM_high = alpha_M_tep(z, epsilon_T=0.018, z_T=5.0, n_T=1.0)
+        aM_low = alpha_M_tep(z, epsilon_T=0.006, z_T=5.0, n_T=2.0)
+        aM_high = alpha_M_tep(z, epsilon_T=0.018, z_T=5.0, n_T=2.0)
         print_status(f"  z={z:.1f}: alpha_M(eps=0.006)={aM_low:.6f}, alpha_M(eps=0.018)={aM_high:.6f}", "INFO")
 
     # ------------------------------------------------------------------
@@ -186,7 +186,7 @@ def run():
             },
             "lcdm_plus_tep_alphaM": {
                 "H0": 67.36, "Omega_m": 0.315, "Omega_L": 0.685,
-                "epsilon_T": 0.006, "z_T": 5.0, "n_T": 1.0,
+                "epsilon_T": 0.006, "z_T": 5.0, "n_T": 2.0,
                 "sigma_8": rounded(sigma8_tep_lcdm, 3),
                 "growth_factor_z1": rounded(float(D_tep_lcdm[z_grid == 1.0][0]) if any(z_grid == 1.0) else 0.513, 4),
                 "ratio_vs_lcdm_at_z1": rounded(ratio_tep_lcdm_at_z1, 4),
@@ -199,7 +199,7 @@ def run():
             },
             "eds_plus_tep_alphaM": {
                 "H0": 70.0, "Omega_m": 1.0, "Omega_L": 0.0,
-                "epsilon_T": 0.018, "z_T": 5.0, "n_T": 1.0,
+                "epsilon_T": 0.018, "z_T": 5.0, "n_T": 2.0,
                 "sigma_8": rounded(sigma8_tep_eds, 3),
                 "growth_factor_z1": rounded(float(D_tep_eds[z_grid == 1.0][0]) if any(z_grid == 1.0) else 0.5, 4),
                 "ratio_vs_eds_at_z1": rounded(ratio_tep_eds_at_z1, 4),

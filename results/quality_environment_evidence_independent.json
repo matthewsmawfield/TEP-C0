@@ -1,0 +1,89 @@
+{
+  "scope": "Same G8 likelihood and priors; independent bounded-intercept integral and importance estimator",
+  "priors": {
+    "epsilon": [
+      0,
+      2
+    ],
+    "all_gate_coefficients": [
+      -1,
+      1
+    ],
+    "magnitude": [
+      -21,
+      -16
+    ]
+  },
+  "checks": [
+    {
+      "model": "quality",
+      "seed": 101,
+      "n": 16384,
+      "logZ": -879.6785699921165,
+      "importance_ESS": 14042.23005425006,
+      "prior_accepted_samples": 16376,
+      "posterior_scales": [
+        0.038373996654284884,
+        0.09237283276599431,
+        0.08143707314088007,
+        0.0967094014095454
+      ]
+    },
+    {
+      "model": "quality",
+      "seed": 202,
+      "n": 16384,
+      "logZ": -879.6787288429119,
+      "importance_ESS": 14040.796652879202,
+      "prior_accepted_samples": 16375,
+      "posterior_scales": [
+        0.038373996654284884,
+        0.09237283276599431,
+        0.08143707314088007,
+        0.0967094014095454
+      ]
+    },
+    {
+      "model": "environment_quality",
+      "seed": 101,
+      "n": 16384,
+      "logZ": -879.015622883277,
+      "importance_ESS": 12937.443224776454,
+      "prior_accepted_samples": 16352,
+      "posterior_scales": [
+        0.0385068641752494,
+        0.12471037521639791,
+        0.1039385603240241,
+        0.09229938345837077,
+        0.08227710165912115,
+        0.09658742102592609
+      ]
+    },
+    {
+      "model": "environment_quality",
+      "seed": 202,
+      "n": 16384,
+      "logZ": -879.015830791259,
+      "importance_ESS": 12959.208231908433,
+      "prior_accepted_samples": 16351,
+      "posterior_scales": [
+        0.0385068641752494,
+        0.12471037521639791,
+        0.1039385603240241,
+        0.09229938345837077,
+        0.08227710165912115,
+        0.09658742102592609
+      ]
+    }
+  ],
+  "comparisons": [
+    {
+      "seed": 101,
+      "BF_environment_extension_vs_quality": 1.9405027885250807
+    },
+    {
+      "seed": 202,
+      "BF_environment_extension_vs_quality": 1.9404075952528261
+    }
+  ]
+}

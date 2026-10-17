@@ -1,0 +1,9 @@
+M0a_LCDM {'chi2': 1752.9021645027642, 'logZ': 751.6057752521972, 'logZ_error': 1.383347728132312e-08, 'parameters': {'Om0': 0.3623684044834239, 'M': -19.33928052524433}, 'k': 2, 'method': 'bounded Gaussian intercept integral and adaptive shape quadrature'}
+M1_zT5 {'chi2': 1749.096255729412, 'logZ': 753.3633267957042, 'logZ_error': 1.1745712996535153e-08, 'parameters': {'epsilon_shear_los': 0.8707961608975863, 'M': -19.331443099283025}, 'k': 2, 'method': 'bounded Gaussian intercept integral and adaptive shape quadrature'}
+M1_zT100 {'chi2': 1749.2110230492513, 'logZ': 753.2966705072234, 'logZ_error': 1.1261345281165114e-08, 'parameters': {'epsilon_shear_los': 0.8620094171938436, 'M': -19.33058492446971}, 'k': 2, 'method': 'bounded Gaussian intercept integral and adaptive shape quadrature'}
+M3_wCDM {'chi2': 1748.5096940793223, 'parameters': {'Om0': np.float64(0.20547819362816827), 'w': np.float64(-0.6948847732839587), 'M': -19.328951294514166}, 'k': 3, 'logZ': 752.7953363006294, 'logZ_error': 0.08934882947376546, 'method': 'exact bounded intercept integral; nested shape sampling, 500 live points, dlogz=0.05, seed=20261011'}
+M4_CPL {'chi2': 1746.4350504686934, 'parameters': {'Om0': np.float64(0.45340619564391743), 'w0': np.float64(-0.6313699181579682), 'wa': np.float64(-5.0), 'M': -19.31534968244314}, 'k': 4, 'logZ': 752.599848088191, 'logZ_error': 0.10101896960256883, 'method': 'exact bounded intercept integral; nested shape sampling, 500 live points, dlogz=0.05, seed=20261011'}
+z_above_0.01 -0.07013127373056705 0.9598368274412605
+z_above_0.023 0.7978487975549342 0.6309833181884317
+z_above_0.05 1.2607712440377554 0.5179828812823704
+remove_calibrators -0.6036826227573329 1.244716613409479

@@ -50,15 +50,20 @@ PLANCK_BASELINE = {
 }
 
 
-def run_class_tep(epsilon_T, z_T=5.0, n_T=1.0, lmax=2500):
+def run_class_tep(epsilon_T, z_T=5.0, n_T=2.0, lmax=2500):
     try:
         from classy import Class
     except ImportError:
         return None, "CLASS not available"
     params = dict(PLANCK_BASELINE)
+    # Omega_Lambda=0 / Omega_k=0 match the joint-chain convention: under
+    # tep_mode an unset Omega_Lambda leaves the budget open; the patched
+    # engine fills the remainder with curvature (Omega_k = 1 - Omega_tot),
+    # producing a degenerate closed/matter-dominated branch (theta_s ~ 0.94).
     params.update({"l_max_scalars": lmax, "tep_mode": "yes",
                    "tep_epsilon_T": float(epsilon_T),
-                   "tep_z_T": float(z_T), "tep_n_T": float(n_T)})
+                   "tep_z_T": float(z_T), "tep_n_T": float(n_T),
+                   "Omega_Lambda": 0.0, "Omega_k": 0.0})
     cosmo = Class()
     try:
         cosmo.set(params)
@@ -99,27 +104,38 @@ def run() -> dict:
     print_status(f"Starting {STEP_ID}", "TITLE")
     ensure_dirs()
 
-    # Use epsilon_T from step_017 (TEP-CLASS CMB fit) for consistency
-    # step_022 M1_NoLambda gives epsilon_T~0.1 which may not be optimal for CMB
+    # Use the acoustic-sector epsilon_T from step_05_03's TEP-CLASS fit,
+    # which itself pulls the joint Pantheon+ + Planck posterior
+    # (step_03_05). The SNe line-of-sight amplitude epsilon_shear_los is a
+    # different functional and must NOT be fed to the homogeneous engine.
+    epsilon_T = None
     step017_path = step_json_path("step_05_03_cmb_boltzmann")
     if step017_path.exists():
         step017 = read_json(step017_path)
-        epsilon_T = float(step017.get("parameters", {}).get("epsilon_T_mixed_mle", 0.28865))
-        print_status(f"Using epsilon_T={epsilon_T:.5f} from step_017 (TEP-CLASS CMB fit)", "INFO")
-    else:
-        # Fallback to step_022 if step_017 not available
-        step022_path = step_json_path("step_03_01_three_model_comparison")
-        if not step022_path.exists():
+        eps_val = step017.get("parameters", {}).get("tep_epsilon_T")
+        if eps_val is not None:
+            epsilon_T = float(eps_val)
+            print_status(f"Using epsilon_T={epsilon_T:.5f} from step_05_03 (joint-fit acoustic amplitude)", "INFO")
+    if epsilon_T is None:
+        step035_path = step_json_path("step_03_05_analyze_cobaya")
+        if not step035_path.exists():
             payload = {"step": STEP_ID, "status": "blocked",
                        "validation": {"research_grade": False, "claim_gate": "blocked",
-                                      "blockers": ["step_017 and step_022 not found"]}}
+                                      "blockers": ["step_05_03 and step_03_05 not found"]}}
             write_json(step_json_path(STEP_ID), payload)
             return payload
-        step022 = read_json(step022_path)
-        m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
-        m1 = step022["models"][m1_key]["parameters_mle"]
-        epsilon_T = float(m1.get("epsilon_T", 0.28865))
-        print_status(f"Using epsilon_T={epsilon_T:.5f} from step_022 (fallback)", "WARNING")
+        step035 = read_json(step035_path)
+        for constraint in step035.get("constraints", []):
+            if constraint.get("parameter") == "tep_epsilon_T":
+                epsilon_T = float(constraint["mean"])
+                print_status(f"Using epsilon_T={epsilon_T:.5f} from step_03_05 joint fit (fallback)", "INFO")
+                break
+    if epsilon_T is None:
+        payload = {"step": STEP_ID, "status": "blocked",
+                   "validation": {"research_grade": False, "claim_gate": "blocked",
+                                  "blockers": ["tep_epsilon_T not found in step_05_03 or step_03_05"]}}
+        write_json(step_json_path(STEP_ID), payload)
+        return payload
     lmax = int(os.getenv("TEP_CMB_LMAX", "2500"))
 
     # Run LCDM
@@ -150,9 +166,9 @@ def run() -> dict:
         rs_rec_lcdm_safe = max(lcdm_derived["rs_rec"], np.finfo(float).tiny)
         delta_rs = (tep_derived["rs_rec"] - lcdm_derived["rs_rec"]) / rs_rec_lcdm_safe * 100
 
-        # Chi2 vs Planck
-        l_A_planck_safe = max(planck["l_A"], np.finfo(float).tiny)
-        l_A_sigma = abs(l_A_tep - planck["l_A"]) / l_A_planck_safe
+        # Chi2 vs Planck: deviation in units of the l_A measurement error
+        l_A_err_safe = max(planck["l_A_err"], np.finfo(float).tiny)
+        l_A_sigma = abs(l_A_tep - planck["l_A"]) / l_A_err_safe
 
         # Spectrum comparison
         Dl_lcdm = dl(lcdm["ell"], lcdm["tt"])

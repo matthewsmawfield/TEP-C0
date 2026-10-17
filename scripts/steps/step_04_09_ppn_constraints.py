@@ -19,8 +19,9 @@ The module evaluates three screening prescriptions:
 This resolves the density-regime paradox of the old ρ-dependent form:
 - The old f(ρ) suppressed at LOW density (good for PPN, bad for growth).
 - The new f(g) suppresses where |∇Φ| is large (good for PPN AND local tests).
-- Galactic halos have g ~ 10⁻¹⁰ m/s² << g_t = 10⁻⁹ m/s², so coupling
-  remains ~98.6% active, preserving cosmological growth predictions.
+- At the declared wide-binary acceleration 1.2e-10 m/s², the master
+  threshold 3.40e-10 m/s² leaves the envelope about 88.9% active.
+  Halo response depends on acceleration; this is a reduced benchmark.
 
 TEP screening is described as suppression of the locally observable
 Temporal Shear/source-charge sector, not as a commitment to a specific
@@ -41,7 +42,6 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from c0_common import (
-    RESULTS_DIR,
     TEPLogger,
     ensure_dirs,
     print_status,
@@ -66,7 +66,8 @@ BETA_LLR_ERR = 1.2e-4               # Nordtvedt effect
 BETA_A = -1.0                       # Locked TEP conformal coupling
 
 # Gradient-dependent screening parameters (g = |∇Φ| in m/s²)
-G_T = 1.0e-9                        # threshold acceleration [m/s²]
+from c0_screening_constants import SCREENING_ACCELERATION_M_S2
+G_T = SCREENING_ACCELERATION_M_S2  # master c H0/(2 beta_A^2), m/s²
 DEFAULT_N = 2.0                     # steepness (symmetric field, (∇φ)² kinetic)
 
 # Solar System parameters
@@ -180,7 +181,6 @@ def run():
 
     f_wb = gradient_screening_factor(g_wide_binary)
     beta_eff_wb = BETA_A * f_wb
-    gamma_wb = compute_ppn_gamma(beta_eff_wb)
 
     print_status(f"  Cassini gate (g={g_saturn_orbit:.2e} m/s²): f={f_cassini:.2e}, β_eff={beta_eff_cassini:.2e}, γ={gamma_cassini_screened:.10f}", "SUCCESS" if cassini_pass else "WARNING")
     print_status(f"  Wide-binary gate (g={g_wide_binary:.2e} m/s²): f={f_wb:.6f}, β_eff={beta_eff_wb:.6f} — coupling {100*f_wb:.1f}% active", "INFO")

@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import numpy as np
 from core.cosmology import TEPCosmology
 from c0_common import TEPLogger, ensure_dirs, print_status, read_json, rounded, set_step_logger, step_csv_path, step_json_path, write_csv, write_json
+from c0_common import load_model_comparison
 
 STEP_ID = "step_04_01_sn_time_dilation"
 
@@ -26,10 +27,7 @@ def load_step022_results() -> dict:
     The time dilation data from Pantheon+ is independent of the model fitting process.
     This is a forward-propagating use of fitted parameters for validation.
     """
-    results_file = step_json_path("step_03_01_three_model_comparison")
-    if not results_file.exists():
-        raise FileNotFoundError("step_022 results not found. Run step_022 first.")
-    return read_json(results_file)
+    return load_model_comparison()
 
 
 def load_pantheon_stretch_data():
@@ -44,7 +42,7 @@ def load_pantheon_stretch_data():
     if pantheon_file is not None:
         try:
             df = pd.read_csv(pantheon_file, sep=r'\s+', comment='#')
-            z = df['zCMB'].values if 'zCMB' in df.columns else df['zHD'].values
+            z = df['zHD'].values if 'zHD' in df.columns else df['zCMB'].values
             x1 = df['x1'].values
             x1_err = df['x1ERR'].values if 'x1ERR' in df.columns else np.full(len(x1), 0.15)
             
@@ -107,18 +105,29 @@ def run():
         tep_factor = 1 + z_data
         print_status("Using LCDM time dilation as fallback", "WARNING")
     
-    # Time dilation factor (1 + z_T) = Gamma_TEP
-    td_tep = tep_factor
+    # Regression predictors. SALT2 x1 is a rest-frame quantity: the
+    # observed-frame duration is already divided by (1+z_spec) inside the
+    # light-curve fit. The residual non-kinematic factor a rest-frame
+    # stretch can carry is therefore the accumulated path factor
+    # gamma_TEP(z) alone, not the total observed dilation
+    # gamma_TEP(z)*(1+z). Using the total factor as the TEP predictor
+    # would double-count the kinematic term and, since
+    # ln(gamma*(1+z)) ~ (1+eps)*ln(1+z) for z << z_T, would make the TEP
+    # regressor nearly proportional to the LCDM one (corr ~ 0.999),
+    # suppressing the shape discrimination the test is designed to
+    # measure. The LCDM side keeps the generic ln(1+z) trend law.
+    gamma_path = cosmo.tep_gamma(z_data)
+    td_tep = gamma_path
     td_lcdm = 1 + z_data
     
-    # SALT2 stretch x1 relates to time dilation through x1 ~ ln(Gamma).
-    # A zero-parameter comparison x1 == ln(td) is not a fit: the stretch
-    # parameter carries an arbitrary standardisation offset, so the raw
-    # chi2 is dominated by the intercept mismatch and discriminates
-    # nothing. The literature-standard diagnostic is the symmetric
-    # regression x1 = a + b * ln(td), fitted per model with identical
-    # degrees of freedom, so that only the shape of the predicted
-    # dilation law discriminates between hypotheses.
+    # SALT2 stretch x1 relates to the residual transport factor through
+    # x1 ~ ln(gamma). A zero-parameter comparison x1 == ln(gamma) is not
+    # a fit: the stretch parameter carries an arbitrary standardisation
+    # offset, so the raw chi2 is dominated by the intercept mismatch and
+    # discriminates nothing. The literature-standard diagnostic is the
+    # symmetric regression x1 = a + b * ln(predictor), fitted per
+    # hypothesis with identical degrees of freedom, so that only the
+    # shape of the predicted residual-trend law discriminates.
     x1_err_safe = np.maximum(x1_err, np.finfo(float).tiny)
 
     def wls_regression(pred, y, s):
@@ -150,10 +159,27 @@ def run():
     td_grid = cosmo.tep_gamma(z_grid) * (1 + z_grid)
     td_lcdm_grid = 1 + z_grid
 
-    print_status(f"Symmetric regression x1 = a + b*ln(td):", "INFO")
-    print_status(f"  TEP:   a={a_tep:.4f}+-{a_tep_err:.4f} b={b_tep:.4f}+-{b_tep_err:.4f}  chi2={chi2_tep:.1f} (reduced {rchi2_tep:.3f})", "INFO")
-    print_status(f"  LCDM:  a={a_lcdm:.4f}+-{a_lcdm_err:.4f} b={b_lcdm:.4f}+-{b_lcdm_err:.4f}  chi2={chi2_lcdm:.1f} (reduced {rchi2_lcdm:.3f})", "INFO")
+    # Channel-amplitude calibration: at fixed canonical z_T, scan the
+    # transport amplitude to locate the stretch channel's effective
+    # response. The fitted slope b at the canonical amplitude measures
+    # the response ratio directly; the scan also locates the unit-slope
+    # crossing (where x1 ~ a + ln(gamma) exactly) and the chi2 optimum.
+    eps_grid = np.linspace(0.1, 40.0, 800)
+    scan_rows = []
+    for eps_c in eps_grid:
+        g_c = 1.0 + eps_c * np.log1p(z_data) * np.exp(-(z_data / z_T) ** 2)
+        a_c, b_c, _, _, chi2_c = wls_regression(np.log(g_c), x1_data, x1_err_safe)
+        scan_rows.append((eps_c, a_c, b_c, chi2_c))
+    opt_row = min(scan_rows, key=lambda r: r[3])
+    eps_x1_opt, a_opt, b_opt, chi2_opt = opt_row
+    unit_row = min(scan_rows, key=lambda r: abs(r[2] - 1.0))
+    eps_x1_unity, a_unity, b_unity, chi2_unity = unit_row
+
+    print_status(f"Symmetric regression x1 = a + b*ln(predictor):", "INFO")
+    print_status(f"  TEP path factor: a={a_tep:.4f}+-{a_tep_err:.4f} b={b_tep:.4f}+-{b_tep_err:.4f}  chi2={chi2_tep:.1f} (reduced {rchi2_tep:.3f})", "INFO")
+    print_status(f"  LCDM ln(1+z):  a={a_lcdm:.4f}+-{a_lcdm_err:.4f} b={b_lcdm:.4f}+-{b_lcdm_err:.4f}  chi2={chi2_lcdm:.1f} (reduced {rchi2_lcdm:.3f})", "INFO")
     print_status(f"  delta chi2 (LCDM - TEP) = {chi2_lcdm - chi2_tep:.1f}", "INFO")
+    print_status(f"  Channel amplitude scan (fixed z_T): eps_x1*={eps_x1_opt:.2f} chi2={chi2_opt:.1f}; unit slope at eps_x1={eps_x1_unity:.2f} (b={b_unity:.3f}, chi2={chi2_unity:.1f})", "INFO")
     print_status(f"  Raw zero-parameter reference: TEP {chi2_raw_tep:.1f}, LCDM {chi2_raw_lcdm:.1f} (normalisation-dominated, not a model comparison)", "INFO")
 
     results = {
@@ -167,7 +193,7 @@ def run():
             'z_T': rounded(z_T, 3)
         },
         'regression': {
-            'model': 'x1 = a + b * ln(time-dilation factor), weighted least squares on x1ERR, two free parameters per hypothesis',
+            'model': 'x1 = a + b * ln(predictor), weighted least squares on x1ERR, two free parameters per hypothesis; TEP predictor is the rest-frame residual path factor ln(gamma_TEP(z)) (x1 is rest-frame by SALT2 construction, so the kinematic (1+z) is already removed); LCDM predictor is the generic trend ln(1+z)',
             'a_tep': rounded(a_tep, 4),
             'a_tep_err': rounded(a_tep_err, 4),
             'b_tep': rounded(b_tep, 4),
@@ -187,7 +213,20 @@ def run():
             'chi2_raw_tep': rounded(chi2_raw_tep, 1),
             'chi2_raw_lcdm': rounded(chi2_raw_lcdm, 1),
         },
-        'key_finding': 'At matched two-parameter normalisation freedom, the TEP path-enhancement factor improves the stretch-redshift regression over (1+z) by delta_chi2; both branches carry reduced chi2 ~ 89 because the x1 population has intrinsic scatter beyond the tabulated errors - the comparison is a relative shape diagnostic, not an absolute validation',
+        'channel_amplitude_calibration': {
+            'description': 'Free-amplitude scan of ln(1 + eps*ln(1+z)*S(z)) at the fixed canonical z_T; the fitted slope at the prescribed amplitude measures the stretch-channel response ratio, and the scan locates the unit-slope crossing and chi2 optimum. This is a calibrated diagnostic, not the prescribed fixed-shape comparison.',
+            'z_T_fixed': rounded(z_T, 3),
+            'eps_x1_opt': rounded(eps_x1_opt, 3),
+            'chi2_at_eps_opt': rounded(chi2_opt, 1),
+            'delta_chi2_at_eps_opt': rounded(chi2_lcdm - chi2_opt, 1),
+            'b_at_eps_opt': rounded(b_opt, 4),
+            'eps_x1_unity_slope': rounded(eps_x1_unity, 3),
+            'b_at_unity': rounded(b_unity, 4),
+            'chi2_at_unity': rounded(chi2_unity, 1),
+            'delta_chi2_at_unity': rounded(chi2_lcdm - chi2_unity, 1),
+            'channel_response_ratio_vs_distance': rounded(b_tep, 3),
+        },
+        'key_finding': 'At matched two-parameter normalisation freedom, the rest-frame TEP path factor improves the stretch-redshift regression over the generic ln(1+z) trend by delta_chi2; both branches carry reduced chi2 ~ 89 because the x1 population has intrinsic scatter beyond the tabulated errors - the comparison is a relative shape diagnostic, not an absolute validation',
         'test_passed': True,
         'interpretation': 'Internal consistency check - SALT2 x1 as diagnostic proxy for temporal shear effects',
         'test_classification': 'diagnostic_consistency',

@@ -1,0 +1,644 @@
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+{
+  "dchi2_TEP_zT5_vs_LCDM_shared": -3.449818876264999,
+  "dchi2_TEP_zT5_vs_LCDM_anchored": -0.766666392444904,
+  "dchi2_TEP_free_vs_LCDM_shared": -3.3005537060907955,
+  "dchi2_TEP_free_vs_LCDM_anchored": -0.28870358358472004
+}
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TE/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle//Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: divide by zero encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: overflow encountered in matmul
+  return float(y @ y)
+/Users/matthewsmawfield/www/Temporal Equivalence Principle/TEP-C0/scripts/audit_anchored_likelihood.py:52: RuntimeWarning: invalid value encountered in matmul
+  return float(y @ y)
+M1_free_zT: shared lnZ=753.40+-0.16  anchored lnZ=806.35+-0.16
+Saved results/audit_anchored_likelihood.json

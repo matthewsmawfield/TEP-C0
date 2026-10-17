@@ -1,0 +1,71 @@
+{
+  "conventions": {
+    "redshift_column": "zHD",
+    "observer_redshift_column": "zHEL",
+    "luminosity_distance": "(1+zHEL) chi(z_distance)",
+    "n_calibrators": 77,
+    "anchored_residual_calibrator": "m_b - CEPH_DIST - M",
+    "anchored_residual_field": "m_b - mu_model(z) - M",
+    "anchored_covariance": "supplied full Pantheon+SH0ES covariance, without additional diagonal inflation",
+    "nested_nlive": 200,
+    "nested_dlogz": 0.3
+  },
+  "M0a_LCDM": {
+    "shared": {
+      "chi2": 1752.9021645030198,
+      "params": [
+        0.3623681639089902,
+        -19.339280633909222
+      ]
+    },
+    "anchored": {
+      "chi2": 1534.4457485547039,
+      "params": [
+        0.34231976234551453,
+        -19.347465386066613
+      ]
+    }
+  },
+  "M1_zT5": {
+    "shared": {
+      "chi2": 1749.0962557774287,
+      "params": [
+        0.8708039323167764,
+        -19.331444695939943
+      ]
+    },
+    "anchored": {
+      "chi2": 1533.0690795701175,
+      "params": [
+        0.9157493337044581,
+        -19.3408928449594
+      ]
+    }
+  },
+  "M1_free_zT": {
+    "shared": {
+      "chi2": 1749.095029567301,
+      "params": [
+        0.8699473884275799,
+        5.262579331041082,
+        -19.331361874728405
+      ]
+    },
+    "anchored": {
+      "chi2": 1532.877100430032,
+      "params": [
+        0.9265624010953607,
+        3.3658288050052643,
+        -19.341922195281622
+      ]
+    }
+  },
+  "mle_comparison": {
+    "dchi2_TEP_zT5_vs_LCDM_shared": -3.8059087255910526,
+    "dchi2_TEP_zT5_vs_LCDM_anchored": -1.3766689845863311,
+    "dchi2_TEP_free_vs_LCDM_shared": -3.80713493571875,
+    "dchi2_TEP_free_vs_LCDM_anchored": -1.5686481246718813
+  },
+  "nested_error": "Nested sampling explicitly skipped; no new BF claimed",
+  "interpretation": "Controlled comparison using independent CEPH_DIST anchors and supplied covariance. Corpus sample/redshift convention retained; not an exact official-likelihood reproduction."
+}

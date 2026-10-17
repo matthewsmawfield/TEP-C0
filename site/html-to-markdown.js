@@ -126,7 +126,7 @@ class HTMLToMarkdownConverter {
         const header = `# ${manifest.title}\n**${manifest.author}**\nVersion: ${manifest.version}\nFirst published: ${manifest.first_published} - Last updated: ${manifest.date}\nDOI: ${manifest.doi}\n\n---\n\n`;
         const markdown = header + this.htmlToMarkdown(body) + '\n';
         const versionOnly = manifest.version.replace(/\s*\([^)]+\)/, '');
-        const outputPath = path.join(__dirname, '..', `26-TEP-C0-${versionOnly}-${manifest.codename}.md`);
+        const outputPath = path.join(__dirname, '..', `F26-TEP-C0-${versionOnly}-${manifest.codename}.md`);
         fs.writeFileSync(outputPath, markdown, 'utf8');
         console.log(`Markdown saved to: ${outputPath}`);
 

@@ -1,0 +1,159 @@
+{
+  "E0_uniform": {
+    "M": -19.331443097122243,
+    "chi2": 1749.0962557294206,
+    "delta_chi2_vs_lcdm": -3.80590877334771,
+    "epsilon_los": 0.8707961202225981,
+    "k": 2,
+    "lnL": 762.711559284885
+  },
+  "E1_binary_mass_gate": {
+    "M": -19.332253388327278,
+    "chi2": 1745.7979657513276,
+    "delta_chi2_vs_lcdm": -7.104198751440663,
+    "delta_chi2_vs_uniform": -3.298289978092953,
+    "env_params": [
+      0.07965427937843829
+    ],
+    "epsilon_los": 0.871793548418665,
+    "k": 3,
+    "lnL": 764.3607042739313
+  },
+  "E2_continuous_mass_gate": {
+    "M": -19.33209035541698,
+    "chi2": 1746.339570635164,
+    "delta_chi2_vs_lcdm": -6.562593867604392,
+    "delta_chi2_vs_uniform": -2.7566850942566816,
+    "env_params": [
+      0.0132254103573905
+    ],
+    "epsilon_los": 0.8776757266417323,
+    "k": 3,
+    "lnL": 764.0899018320133
+  },
+  "E2_permutation_null": {
+    "n_permutations": 100,
+    "null_max_gain": 10.653787107616608,
+    "null_mean_gain": 1.051307037638428,
+    "null_std_gain": 1.6965723347141584,
+    "p_value": 0.13861386138613863,
+    "real_gain_chi2": 2.7566850942566816
+  },
+  "E3_logistic_depth_gate": {
+    "M": -19.3314431058567,
+    "chi2": 1749.0962557294167,
+    "delta_chi2_vs_lcdm": -3.8059087733515753,
+    "delta_chi2_vs_uniform": -3.865352482534945e-12,
+    "env_params": [
+      0.0,
+      10.577490706250046
+    ],
+    "epsilon_los": 0.8707961720165279,
+    "k": 4,
+    "lnL": 762.7115592848868
+  },
+  "E4_locked_SA_prediction": {
+    "M": -19.320917938452695,
+    "chi2": 1782.6619074133414,
+    "delta_chi2_vs_lcdm": 29.759742910573095,
+    "delta_chi2_vs_uniform": 33.565651683920805,
+    "env_params": [],
+    "epsilon_los": 0.8540131250260683,
+    "k": 2,
+    "lnL": 745.9287334429246,
+    "w_mean": 0.9400794812120005,
+    "w_range": [
+      0.0684496648241994,
+      1.0
+    ]
+  },
+  "E5_free_class_amplitudes": {
+    "M": -19.3322533770484,
+    "chi2": 1745.7979657513092,
+    "delta_chi2_vs_lcdm": -7.10419875145908,
+    "delta_chi2_vs_uniform": -3.29828997811137,
+    "epsilon_high_mass": 0.9072152217902916,
+    "epsilon_low_mass": 0.837754723763228,
+    "k": 3,
+    "lnL": 764.3607042739404
+  },
+  "evidence": {
+    "BF_E0_vs_lcdm": 6.5827674880703375,
+    "BF_E1_vs_E0": 0.16583667505225808,
+    "BF_E1_vs_lcdm": 1.0916642728636896,
+    "BF_E2_vs_E0": 0.035510102334018134,
+    "BF_E2_vs_lcdm": 0.23375474714242517,
+    "lnBF_E1_vs_E0": -1.7967518601857364,
+    "lnBF_E2_vs_E0": -3.33793805019468,
+    "lnZ_E0_uniform": -883.8807663760998,
+    "lnZ_E1_binary": -885.6775182362856,
+    "lnZ_E2_continuous": -887.2187044262945,
+    "lnZ_lcdm": -885.7652216239056,
+    "lnZerr_E0": 0.10476708882655111,
+    "lnZerr_E1": 0.12194674165294014,
+    "lnZerr_E2": 0.1282818692558821,
+    "lnZerr_lcdm": 0.10465558590307851,
+    "nlive": 1000
+  },
+  "lcdm": {
+    "M": -19.339280540030604,
+    "Omega_m": 0.3623683662213161,
+    "chi2": 1752.9021645027683,
+    "lnL": 760.8086048982113
+  },
+  "mass_split_fits": {
+    "high_mass": {
+      "M": -19.332103646123738,
+      "chi2": 991.5485220648216,
+      "epsilon_los": 0.9108431636960741,
+      "n": 927
+    },
+    "low_mass": {
+      "M": -19.323666016051213,
+      "chi2": 750.0238659995566,
+      "epsilon_los": 0.8163699344090406,
+      "n": 774
+    }
+  },
+  "meta": {
+    "H0_ref": 70.0,
+    "covariance": "full 1701x1701 Pantheon+SH0ES.cov",
+    "locked_screening": {
+      "fj_slope": 0.25,
+      "m_ref_log": 11.0,
+      "sigma_T_SA_kms": 65.0,
+      "sigma_ref_kms": 207.0
+    },
+    "mass_split": 10.0,
+    "n_T": 2.0,
+    "n_calibrators": 77,
+    "n_missing_host_mass": 1,
+    "n_sne": 1701,
+    "redshift_column": "zHD",
+    "runtime_seconds": 532.3,
+    "step_id": "step_03_11_env_modulated_kernel",
+    "z_T": 5.0
+  },
+  "residual_by_host_mass": {
+    "0-9.5": {
+      "mean_raw_resid_mag": 0.006316307410310308,
+      "mean_whitened_resid": -0.026307177331244855,
+      "n": 531
+    },
+    "10.0-10.5": {
+      "mean_raw_resid_mag": 0.021006982803758827,
+      "mean_whitened_resid": 0.1206791073978523,
+      "n": 359
+    },
+    "10.5-13.0": {
+      "mean_raw_resid_mag": 0.0020441311691948645,
+      "mean_whitened_resid": 0.015420371459370355,
+      "n": 568
+    },
+    "9.5-10.0": {
+      "mean_raw_resid_mag": 0.002361943276527977,
+      "mean_whitened_resid": -0.048795663255953775,
+      "n": 243
+    }
+  }
+}

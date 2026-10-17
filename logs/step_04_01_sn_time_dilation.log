@@ -1,14 +1,15 @@
-[04:54:01] [INFO] 
-[04:54:01] [INFO] ================================================================================
-[04:54:01] [INFO]    Starting step_04_01_sn_time_dilation
-[04:54:01] [INFO] ================================================================================
-[04:54:01] [INFO] 
-[04:54:01] [INFO] Parameters: H0=70.00, epsilon_T=0.826, z_T=136.56755735056186
-[04:54:01] [INFO] Loaded 1701 SN stretch measurements
-[04:54:01] [PROCESS] Computing TEP time dilation predictions
-[04:54:01] [INFO] Symmetric regression x1 = a + b*ln(td):
-[04:54:01] [INFO]   TEP:   a=-0.4048+-0.0028 b=0.9920+-0.0164  chi2=150571.3 (reduced 88.624)
-[04:54:01] [INFO]   LCDM:  a=-0.4018+-0.0028 b=1.6822+-0.0281  chi2=150639.2 (reduced 88.663)
-[04:54:01] [INFO]   delta chi2 (LCDM - TEP) = 67.9
-[04:54:01] [INFO]   Raw zero-parameter reference: TEP 177961.0, LCDM 174194.5 (normalisation-dominated, not a model comparison)
-[04:54:01] [SUCCESS] Step step_04_01_sn_time_dilation completed successfully
+[09:59:50] [INFO] 
+[09:59:50] [INFO] ================================================================================
+[09:59:50] [INFO]    Starting step_04_01_sn_time_dilation
+[09:59:50] [INFO] ================================================================================
+[09:59:50] [INFO] 
+[09:59:50] [INFO] Parameters: H0=70.00, epsilon_T=0.870, z_T=5.262579331041082
+[09:59:51] [INFO] Loaded 1701 SN stretch measurements
+[09:59:51] [PROCESS] Computing TEP time dilation predictions
+[09:59:51] [INFO] Symmetric regression x1 = a + b*ln(predictor):
+[09:59:51] [INFO]   TEP path factor: a=-0.4101+-0.0028 b=2.3284+-0.0380  chi2=150449.6 (reduced 88.552)
+[09:59:51] [INFO]   LCDM ln(1+z):  a=-0.4022+-0.0028 b=1.6847+-0.0282  chi2=150629.7 (reduced 88.658)
+[09:59:51] [INFO]   delta chi2 (LCDM - TEP) = 180.1
+[09:59:51] [INFO]   Channel amplitude scan (fixed z_T): eps_x1*=15.83 chi2=150015.6; unit slope at eps_x1=2.55 (b=1.000, chi2=150278.0)
+[09:59:51] [INFO]   Raw zero-parameter reference: TEP 173558.3, LCDM 174204.8 (normalisation-dominated, not a model comparison)
+[09:59:51] [SUCCESS] Step step_04_01_sn_time_dilation completed successfully

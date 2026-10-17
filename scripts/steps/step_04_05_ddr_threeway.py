@@ -22,6 +22,7 @@ from pathlib import Path
 import numpy as np
 
 from c0_common import (
+    load_model_comparison,
     RAW_DIR,
     RESULTS_DIR,
     TEPLogger,
@@ -116,7 +117,7 @@ def run() -> dict:
     bao_z = [c["z"] for c in bao_constraints]
 
     # Load absolute magnitude from step_022
-    step022 = load_step_data("step_03_01_three_model_comparison")
+    step022 = load_model_comparison()
     m1_key = "M1_free_zT" if "M1_free_zT" in step022.get("models", {}) else "M1_NoLambda_zT5"
     M_sn = step022.get("models", {}).get(m1_key, {}).get("parameters_mle", {}).get("M", -19.36)
     

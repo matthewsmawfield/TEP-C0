@@ -1,0 +1,6 @@
+[TITLE] Starting step_04_02_sn_tolman
+[PROCESS] Loading Pantheon+ redshifts for Tolman consistency check
+[PROCESS] Evaluating Tolman and time-dilation factors for 1590 objects
+[SUCCESS] Tolman factor at z=1: 0.0625
+[SUCCESS] Step step_04_02_sn_tolman completed successfully
+{'step': 'step_04_02_sn_tolman', 'description': 'Tolman surface-brightness decomposition evaluated over the real Pantheon+ redshift distribution.', 'metrics': {'sn_object_count': 1590, 'sn_time_dilation_factor_at_z1': 2.0, 'tolman_factor_at_z1': 0.0625, 'clock_sector_factors_recovered': True, 'angular_area_term_status': 'integrable-limit geometry; not derived by clock cadence alone'}, 'artifacts': {'csv': 'results/step_04_02_sn_tolman.csv', 'figure': 'results/figures/step_04_02_sn_tolman.png'}, 'interpretation': 'The Tolman consistency check is now grounded in the real observational distribution of supernovae.'}

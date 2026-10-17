@@ -1,0 +1,25 @@
+[01:02:49] [INFO] 
+[01:02:49] [INFO] ================================================================================
+[01:02:49] [INFO]    Starting step_03_05_analyze_cobaya
+[01:02:49] [INFO] ================================================================================
+[01:02:49] [INFO] 
+[01:02:49] [PROCESS] Loading chains from results/outputs/tep_cobaya_joint_combined...
+[01:02:49] [SUCCESS] Chains loaded successfully.
+
+--- Parameter Constraints (68% limits) ---
+tep_epsilon_T: -0.0015 +/- 0.0037
+tep_z_T: 49.6892 +/- 41.3735
+H0: 66.7018 +/- 0.5825
+omega_b: 0.0222 +/- 0.0001
+omega_cdm: 0.1216 +/- 0.0013
+tau_reio: 0.0520 +/- 0.0078
+logA: 3.0444 +/- 0.0162
+n_s: 0.9610 +/- 0.0042
+--------------------------------------------
+
+[01:02:52] [PROCESS] Generating triangle plot...
+/Users/matthewsmawfield/opt/miniconda3/lib/python3.13/site-packages/getdist/plots.py:3800: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  self.fig.savefig(fname, bbox_extra_artists=self.extra_artists, bbox_inches="tight", **kwargs)
+[01:02:56] [SUCCESS] Plot saved to results/figures/step_03_05_analyze_cobaya_triangle.png
+[01:02:56] [INFO] NOTE: This is a joint SNe+CMB background/acoustic MCMC diagnostic. tep_epsilon_T here is the homogeneous acoustic-sector amplitude, distinct from epsilon_shear_los fitted to SNe alone. H0 boundary behaviour is separately stress-tested.
+[01:02:56] [SUCCESS] Summary stats saved to results/outputs/tep_cobaya_joint_converged_stats.txt

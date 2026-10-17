@@ -18,6 +18,8 @@ from c0_common import (
     write_csv, write_json
 )
 
+from c0_common import load_model_comparison
+
 STEP_ID = "step_08_04_evidence_matrix"
 
 def run() -> dict:
@@ -27,7 +29,7 @@ def run() -> dict:
     ensure_dirs()
 
     # Load real results
-    comp = read_json(step_json_path("step_03_01_three_model_comparison"))
+    comp = load_model_comparison()
     m1_key = "M1_free_zT" if "M1_free_zT" in comp.get("models", {}) else "M1_NoLambda_zT5"
     m1 = comp["models"][m1_key]
     m0 = comp["models"]["M0a_LCDM"]

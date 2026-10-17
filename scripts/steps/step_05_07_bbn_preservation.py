@@ -9,6 +9,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 import csv
 import numpy as np
 from c0_common import PROCESSED_DIR, TEPLogger, ensure_dirs, print_status, read_json, rounded, set_step_logger, step_json_path, write_json
+from c0_common import load_model_comparison
 from scripts.utils.bbn_network_resolver import BBNInputs, chi2_against_registry, run_network
 from scripts.utils.bbn_parameter_posterior import BBNPosteriorConfig, load_bbn_registry, run_bbn_mcmc
 from scripts.utils.bbn_working import BBNWorking
@@ -21,10 +22,7 @@ STEP_ID = "step_05_07_bbn_preservation"
 
 
 def load_step022():
-    f = step_json_path("step_03_01_three_model_comparison")
-    if not f.exists():
-        raise FileNotFoundError("step_022 required")
-    return read_json(f)
+    return load_model_comparison()
 
 
 def load_bbn_registry() -> list[dict]:
@@ -49,7 +47,12 @@ def run():
     # Dimensionless-distance models fix H0_ref = 70.0; no H0 parameter in fit
     H0_lcdm, H0_tep = 70.0, 70.0
     Sigma_0 = float(m1.get('Sigma_0', 0.0))
-    epsilon_T = float(m1.get('epsilon_T', 0.0))
+    # The SNaive-extrapolation amplitude is the SNe line-of-sight fit
+    # epsilon_shear_los (~0.87). At z_BBN ~ 1e9 the kernel suppression
+    # S(z) = exp[-(z/z_T)^2] = 0 to machine precision, so even this
+    # amplitude cannot reach the MeV epoch — the naive branch must return
+    # standard abundances by construction of the turnover.
+    epsilon_T = float(m1.get('epsilon_shear_los', m1.get('epsilon_T', 0.0)))
     registry_rows = load_bbn_registry()
     
     eta = 6.1e-10
