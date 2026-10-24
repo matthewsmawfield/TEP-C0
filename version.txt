@@ -1,6 +1,5 @@
-v0.4 (Athens) — 17 October 2026 — Joint global screening boundary, Pantheon+ prior-sensitivity grid, and per-sightline environmental gating
+v0.5 (Athens) — 24 October 2026 — Single-background joint SNe+BAO+CMB fit, DES Year 6 dark-energy comparison, and static-manifold Tolman closure
 
-- Recomputed the Pantheon+ model-comparison evidence across a prior-sensitivity grid (BF ~ 5.8 on the conservative z_los = 5 branch, 5.4 at z_los = 100 and broad free-z_los; 0.63 at z > 0.023), clarifying the uniform U[0.0, 1.2] joint global screening exploration prior and the [-0.05, 0.05] Cobaya background/acoustic MCMC interval
-- Added the per-sightline environmental gate (joint fit a = +0.213, b = -0.226; block-permutation p = 0.036) and evaluated the SN Ia progenitor luminosity-drift profile bound (epsilon < 0.150 at 3 sigma, Delta chi^2 = 805.8 at epsilon = 1, matching the deep-well host-assembly derivation epsilon_eff ~ 0.004)
-- Integrated the unified (3+1) ADM unstretched-space metric and two-branch PPN screening (|gamma_PPN - 1| = 4.32 x 10^-8 at 1.6 R_sun) across the theoretical and cosmological sections
-- Synchronized the shared core library and gate registry outputs
+- Added a single-background joint likelihood fit across Pantheon+ supernovae, DESI DR2 BAO, and the Planck acoustic scale and clarified the kinematic clock-drift role of the Temporal Shear term in the distance–redshift Jacobian
+- Integrated the completed Dark Energy Survey Year 6 (DES Y6) multi-probe dynamical dark energy results into the late-time turnover comparison
+- Added the phase-space conservation proof showing exact preservation of supernova time dilation, distance duality, Tolman surface brightness, and the CMB blackbody spectrum on a static manifold

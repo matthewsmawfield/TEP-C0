@@ -1,11 +1,11 @@
-[20:31:54] [INFO] 
-[20:31:54] [INFO] ================================================================================
-[20:31:54] [INFO]    Starting step_08_06_claim_audit
-[20:31:54] [INFO] ================================================================================
-[20:31:54] [INFO] 
-[20:31:54] [PROCESS] Reading manuscript components and README
-[20:31:54] [PROCESS] Checking required guardrails
-[20:31:54] [PROCESS] Auditing step consistency
-[20:31:54] [PROCESS] Auditing statistical values
-[20:31:54] [PROCESS] Auditing Bayes Factors
-[20:31:54] [SUCCESS] Audit completed with 0 failures
+[22:18:48] [INFO] 
+[22:18:48] [INFO] ================================================================================
+[22:18:48] [INFO]    Starting step_08_06_claim_audit
+[22:18:48] [INFO] ================================================================================
+[22:18:48] [INFO] 
+[22:18:48] [PROCESS] Reading manuscript components and README
+[22:18:48] [PROCESS] Checking required guardrails
+[22:18:48] [PROCESS] Auditing step consistency
+[22:18:48] [PROCESS] Auditing statistical values
+[22:18:48] [PROCESS] Auditing Bayes Factors
+[22:18:48] [SUCCESS] Audit completed with 0 failures
